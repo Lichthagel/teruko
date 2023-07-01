@@ -7,9 +7,6 @@ import {
   text,
   timestamp,
 } from "drizzle-orm/pg-core";
-import env from "./env";
-import postgres from "postgres";
-import { drizzle } from "drizzle-orm/postgres-js";
 
 export const dImage = pgTable(
   "Image",
@@ -93,7 +90,7 @@ export const _ImageToTagRelations = relations(d_ImageToTag, ({ one }) => ({
   }),
 }));
 
-export const schema = {
+const schema = {
   Image: dImage,
   ImageRelations,
   Tag: dTag,
@@ -104,15 +101,4 @@ export const schema = {
   _ImageToTagRelations,
 };
 
-export const pgClient = postgres(env.DATABASE_URL, {
-  connection: {
-    application_name: "teruko-svelte",
-  },
-});
-
-export const db = drizzle(pgClient, {
-  schema,
-  logger: env.NODE_ENV === "development",
-});
-
-export * as drizzle from "drizzle-orm";
+export default schema;
