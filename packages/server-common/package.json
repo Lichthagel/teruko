@@ -1,0 +1,34 @@
+{
+  "name": "server-common",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.ts",
+  "types": "index.ts",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "keywords": [],
+  "author": "Lichthagel",
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "eslint-config-lichthagel": "github:lichthagel/eslint-config-lichthagel",
+    "tsconfig": "workspace:*",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@envelop/graphql-jit": "^6.0.1",
+    "@graphql-yoga/plugin-apq": "^2.0.3",
+    "@graphql-yoga/plugin-response-cache": "^2.1.0",
+    "@pothos/core": "^3.30.0",
+    "@pothos/plugin-relay": "^3.43.0",
+    "bowlingx-znv": "^0.4.0",
+    "dotenv": "^16.3.1",
+    "drizzle-orm": "^0.27.0",
+    "graphql": "^16.7.1",
+    "graphql-yoga": "^4.0.3",
+    "postgres": "^3.3.5",
+    "models": "workspace:*",
+    "zod": "^3.21.4"
+  }
+}

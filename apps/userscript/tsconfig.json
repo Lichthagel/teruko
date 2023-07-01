@@ -1,0 +1,18 @@
+{
+  "extends": "tsconfig/base.json",
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "noEmit": true,
+    "noImplicitReturns": true
+  },
+  "include": [
+    "./vite.config.ts",
+    "./src/**/*.js",
+    "./src/**/*.cjs",
+    "./src/**/*.mjs",
+    "./src/**/*.ts"
+  ]
+}
