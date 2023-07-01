@@ -8,7 +8,7 @@ import {
   type GraphQLRequest,
   type OperationResult,
 } from "@urql/svelte";
-import type { ImageExt, ImageSort } from "./models";
+import type { ImageExt, ImageSort } from "models";
 import { writable, type Readable } from "svelte/store";
 import { browser } from "$app/environment";
 

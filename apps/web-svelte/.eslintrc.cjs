@@ -45,5 +45,5 @@ module.exports = {
       extends: ["lichthagel/typescript"],
     },
   ],
-  ignorePatterns: ["node_modules", ".svelte-kit", ".eslintrc.cjs"],
+  ignorePatterns: ["node_modules", ".svelte-kit", ".eslintrc.cjs", "build"],
 };

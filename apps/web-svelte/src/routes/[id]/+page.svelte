@@ -2,7 +2,7 @@
   import { page } from "$app/stores";
   import StatusBar from "$lib/components/StatusBar.svelte";
   import TagChip from "$lib/components/TagChip.svelte";
-  import type { ImageExt } from "types";
+  import type { ImageExt } from "models";
   import { getContextClient, queryStore, gql } from "@urql/svelte";
   import { DownloadIcon } from "lucide-svelte";
   import type { EventHandler } from "svelte/elements";

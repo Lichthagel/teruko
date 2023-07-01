@@ -2,7 +2,7 @@
   import ImageCard from "./ImageCard.svelte";
   import imagesStore from "$lib/imagesStore";
   import { getContextClient } from "@urql/svelte";
-  import type { ImageSort } from "$lib/models";
+  import type { ImageSort } from "models";
   import type { Action } from "svelte/action";
   import StatusBar from "./StatusBar.svelte";
 

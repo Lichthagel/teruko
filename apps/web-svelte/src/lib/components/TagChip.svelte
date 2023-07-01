@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { TagExt } from "$lib/models";
+  import type { TagExt } from "models";
 
   export let tag: TagExt;
 </script>
