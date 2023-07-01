@@ -1,0 +1,25 @@
+{
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/pnpm:2": {}
+  },
+  "mounts": [
+    "source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ],
+  "postCreateCommand": {
+    "setup pnpm": "sudo chown node node_modules && pnpm config set store-dir ${containerWorkspaceFolder}/node_modules/.pnpm-store",
+    "setup db": "psql -h localhost -U postgres -d postgres -w -f ${containerWorkspaceFolder}/setup.sql"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "Vue.volar"
+      ]
+    }
+  }
+}
