@@ -3,6 +3,7 @@
   import { goto } from "$app/navigation";
   import { ListX } from "lucide-svelte";
   import TagQuery from "./TagQuery.svelte";
+  import SortSelect from "./SortSelect.svelte";
 
   $: tags = $page.url.searchParams.getAll("tag");
 
@@ -19,7 +20,7 @@
   <!-- TAG CHIPS -->
 
   {#if tags.length > 0}
-    <div class="flex">
+    <div class="inline-flex">
       {#each tags as tag}
         {#key tag}
           <TagQuery {tag} />
@@ -37,4 +38,5 @@
   <!-- TAG INPUT -->
 
   <!-- SORT SELECT -->
+  <SortSelect />
 </div>
