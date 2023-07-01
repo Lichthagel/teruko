@@ -1,6 +1,8 @@
 import SchemaBuilder from "@pothos/core";
 import RelayPlugin from "@pothos/plugin-relay";
 
+import "./schema";
+
 export const builder = new SchemaBuilder<{
   Scalars: {
     DateTime: {

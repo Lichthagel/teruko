@@ -13,6 +13,7 @@ export const urqlClient = new Client({
       resolvers: {
         Query: {
           image: (parent, { id }) => ({ __typename: "Image", id }),
+          tag: (parent, { slug }) => ({ __typename: "Tag", slug }),
         },
         Image: {
           createdAt: (parent) => new Date(parent.createdAt as string),
