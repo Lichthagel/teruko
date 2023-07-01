@@ -26,7 +26,7 @@
 
   $: tags = $page.url.searchParams.getAll("tag");
 
-  const removeTag = (tag: string) => {
+  const removeTag = () => {
     const newTags = tags.filter((t) => t !== tag);
 
     const url = new URL($page.url);
@@ -45,7 +45,7 @@
   <span class="mx-1">{tag}</span>
   <button
     class="mx-1 rounded transition hover:bg-black/20"
-    on:click|preventDefault={() => removeTag(tag)}
+    on:click|preventDefault={() => removeTag()}
   >
     <X />
   </button>
