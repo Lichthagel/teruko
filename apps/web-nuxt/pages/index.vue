@@ -24,6 +24,8 @@ const sort: ComputedRef<ImageSort> = computed(
 
 <template>
   <div class="container mx-auto">
+    <Filters />
+
     <Gallery :tags="tags" :sort="sort" />
   </div>
 </template>

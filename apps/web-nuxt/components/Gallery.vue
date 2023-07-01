@@ -15,8 +15,6 @@ const { images, fetching, error, stale, fetchMore } = useImages(
 const observer = ref<IntersectionObserver>();
 
 const endRef = (node: Element | ComponentPublicInstance | null) => {
-  console.log("endRef", node);
-
   if (observer.value) observer.value.disconnect();
 
   observer.value = new IntersectionObserver((entries) => {
