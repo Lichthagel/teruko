@@ -21,8 +21,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
+          cache: pnpm
       - name: Install dependencies
         run: pnpm install
+      - uses: dtinth/setup-github-actions-caching-for-turbo@v1
       - name: Build
         run: pnpm build
       - name: Lint
