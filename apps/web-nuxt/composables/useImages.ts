@@ -1,5 +1,6 @@
 /* eslint-disable promise/prefer-await-to-then */
 import {
+  CombinedError,
   OperationResult,
   createRequest,
   gql,
@@ -94,7 +95,7 @@ export const useImages = (tags: Ref<string[]>, sort: Ref<ImageSort>) => {
 
   const fetching = ref(false);
   const stale = ref(false);
-  const error = ref();
+  const error = ref<CombinedError>();
 
   const edges = ref<ImagesResult["images"]["edges"]>([]);
   const hasNextPage = ref(true);

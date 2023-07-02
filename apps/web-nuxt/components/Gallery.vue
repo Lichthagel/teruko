@@ -38,11 +38,9 @@ const endRef = (node: Element | ComponentPublicInstance | null) => {
     </template>
   </div>
 
-  <div v-if="fetching || stale"><LoadBar /></div>
-  <div v-else-if="error">
-    <ErrorBar />
-    Error: {{ error.message }}
-  </div>
+  <div v-if="error">Error: {{ error.message }}</div>
+
+  <StatusBar :fetching="fetching || stale" :error="!!error" />
 
   <ScrollButtons />
 </template>

@@ -9,7 +9,7 @@ const props = defineProps<{
   tag: string;
 }>();
 
-const result = useQuery<{ tag: TagExt }>({
+const { data, fetching, stale, error } = useQuery<{ tag: TagExt }>({
   query: gql`
     query Tag($slug: String!) {
       tag(slug: $slug) {
@@ -38,7 +38,7 @@ const removeTag = () => {
   <div
     class="m-0.5 flex h-10 select-none items-center whitespace-nowrap rounded bg-gray-500 px-2 text-white"
     :style="{
-      backgroundColor: result.data.value?.tag?.category?.color ?? undefined,
+      backgroundColor: data?.tag?.category?.color ?? undefined,
     }"
   >
     <span class="mx-1">{{ props.tag }}</span>
@@ -49,6 +49,6 @@ const removeTag = () => {
       <X />
     </button>
   </div>
-</template>
 
-<!-- TODO status bar -->
+  <StatusBar :fetching="fetching || stale" :error="!!error" />
+</template>
