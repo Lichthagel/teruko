@@ -39,6 +39,9 @@ module.exports = {
         parser: "@typescript-eslint/parser",
       },
       extends: ["lichthagel/typescript"],
+      rules: {
+        "unicorn/no-useless-undefined": "off", // clashes with optional props
+      },
     },
     {
       files: ["**/*.ts?(x)"],

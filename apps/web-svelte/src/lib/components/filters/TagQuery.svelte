@@ -4,7 +4,7 @@
   import { getContextClient, gql, queryStore } from "@urql/svelte";
   import type { TagExt } from "models";
   import { X } from "lucide-svelte";
-  import StatusBar from "../StatusBar.svelte";
+  import StatusBar from "$lib/components/status/StatusBar.svelte";
 
   export let tag: string;
 

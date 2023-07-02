@@ -44,7 +44,7 @@ export default {
           "primary": "#7287fd", // lavender
           "secondary": "#1e66f5", // blue
           "accent": "#8839ef", // mauve
-          "neutral": "#9ca0b0", // overlay 0
+          "neutral": "#ccd0da", // surface0
           "neutral-content": "#5c5f77", // subtext1
           "base-100": "#eff1f5", // base
           "base-content": "#4c4f69", // text
@@ -59,7 +59,7 @@ export default {
           "primary": "#b4befe", // lavender
           "secondary": "#89b4fa", // blue
           "accent": "#cba6f7", // mauve
-          "neutral": "#6c7086", // overlay 0
+          "neutral": "#313244", // surface0
           "neutral-content": "#bac2de", // subtext1
           "base-100": "#1e1e2e", // base
           "base-content": "#cdd6f4", // text

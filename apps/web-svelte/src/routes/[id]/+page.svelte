@@ -1,11 +1,12 @@
 <script lang="ts">
   import { page } from "$app/stores";
-  import StatusBar from "$lib/components/StatusBar.svelte";
+  import StatusBar from "$lib/components/status/StatusBar.svelte";
   import TagChip from "$lib/components/TagChip.svelte";
   import type { ImageExt } from "models";
   import { getContextClient, queryStore, gql } from "@urql/svelte";
   import { DownloadIcon } from "lucide-svelte";
   import type { EventHandler } from "svelte/elements";
+  import ErrorMessage from "$lib/components/status/ErrorMessage.svelte";
 
   const { id } = $page.params;
 
@@ -130,6 +131,14 @@
       </div>
     </div>
   </div>
+{/if}
+
+{#if $result.error}
+  <ErrorMessage title={$result.error.name} error={$result.error} />
+{/if}
+
+{#if !$result.fetching && !$result.error && !$result.data?.image}
+  <ErrorMessage title="Not Found" />
 {/if}
 
 <StatusBar fetching={$result.fetching} error={!!$result.error} />

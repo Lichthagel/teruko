@@ -4,7 +4,8 @@
   import { getContextClient } from "@urql/svelte";
   import type { ImageSort } from "models";
   import type { Action } from "svelte/action";
-  import StatusBar from "./StatusBar.svelte";
+  import ErrorMessage from "./status/ErrorMessage.svelte";
+  import StatusBar from "$lib/components/status/StatusBar.svelte";
 
   export let tags: string[] = [];
   export let sort: ImageSort = "NEWEST";
@@ -42,7 +43,7 @@
 {/if}
 
 {#if $result.error}
-  <div class="text-center text-error">{$result.error.message}</div>
+  <ErrorMessage title={$result.error.name} error={$result.error} />
 {/if}
 
 <StatusBar fetching={$result.fetching} error={!!$result.error} />
