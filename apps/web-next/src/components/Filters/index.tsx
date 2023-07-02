@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import TagQuery from "./TagQuery";
 import SortSelect from "./SortSelect";
+import TagSearch from "./TagSearch";
 
 const Filters = () => {
   const searchParams = useSearchParams();
@@ -18,6 +19,8 @@ const Filters = () => {
           ))}
         </div>
       )}
+
+      <TagSearch />
 
       <SortSelect />
     </div>
