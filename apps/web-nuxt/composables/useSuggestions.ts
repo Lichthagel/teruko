@@ -17,8 +17,6 @@ const useSuggestions = (
   const suggestions = ref<TagExt[]>([]);
 
   watch(query, (query) => {
-    console.log("query", query);
-
     if (query.length < 3) {
       suggestions.value = [];
       fetching.value = false;

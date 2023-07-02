@@ -4,6 +4,7 @@
   import { ListX } from "lucide-svelte";
   import TagQuery from "./TagQuery.svelte";
   import SortSelect from "./SortSelect.svelte";
+  import TagSearch from "./TagSearch.svelte";
 
   $: tags = $page.url.searchParams.getAll("tag");
 
@@ -36,6 +37,7 @@
   {/if}
 
   <!-- TAG INPUT -->
+  <TagSearch />
 
   <!-- SORT SELECT -->
   <SortSelect />
