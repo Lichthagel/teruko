@@ -1,5 +1,7 @@
+import { NuxtConfig } from "nuxt/schema";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
+const config: NuxtConfig = defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxtjs/eslint-module", "@nuxtjs/tailwindcss"],
   plugins: ["~/plugins/urql/index.ts"],
@@ -8,3 +10,5 @@ export default defineNuxtConfig({
     { path: "~/components/Filters", prefix: "Filters" },
   ],
 });
+
+export default config;

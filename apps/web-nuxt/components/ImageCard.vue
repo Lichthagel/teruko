@@ -8,7 +8,7 @@ const props = defineProps<{
 
 <template>
   <div
-    class="mb-1 bg-zinc-300 shadow-xl animate-in fade-in slide-in-from-bottom duration-500 dark:bg-gray-700"
+    class="animate-in fade-in slide-in-from-bottom mb-1 bg-zinc-300 shadow-xl duration-500 dark:bg-gray-700"
   >
     <NuxtLink :href="`/${props.image.id}`">
       <div class="relative">
@@ -27,7 +27,7 @@ const props = defineProps<{
       </div>
     </NuxtLink>
     <div
-      class="scrollbar-none snap flex snap-x flex-row flex-nowrap overflow-x-scroll"
+      class="snap flex snap-x flex-row flex-nowrap overflow-x-scroll scrollbar-none"
     >
       <template
         v-for="tag in props.image.tags?.filter(
@@ -46,14 +46,3 @@ const props = defineProps<{
     </div>
   </div>
 </template>
-
-<style scoped>
-.scrollbar-none {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.scrollbar-none::-webkit-scrollbar {
-  display: none;
-}
-</style>
