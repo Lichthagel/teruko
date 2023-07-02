@@ -1,5 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
+import SortSelect from "./SortSelect.vue";
 import TagQuery from "./TagQuery.vue";
 import { ListX } from "lucide-vue-next";
 
@@ -36,5 +37,7 @@ const resetTags = () => {
         <ListX class="h-6 w-6" />
       </button>
     </div>
+
+    <SortSelect />
   </div>
 </template>
