@@ -1,13 +1,12 @@
 "use client";
 
-import ErrorBar from "@/components/ErrorBar";
-import LoadBar from "@/components/LoadBar";
 import TagChip from "@/components/TagChip";
 import { ImageExt } from "models";
 import { DownloadIcon } from "lucide-react";
 import Image from "next/image";
 import { ReactElement, ReactEventHandler, useMemo } from "react";
 import { gql, useQuery } from "urql";
+import StatusBar from "@/components/StatusBar";
 
 const scroll: ReactEventHandler<HTMLImageElement> = (e) => {
   e.currentTarget.scrollIntoView({
@@ -125,9 +124,7 @@ const ImagePage = ({ params }: { params: { id: string } }): ReactElement => {
         </div>
       )}
 
-      {(fetching || stale) && <LoadBar />}
-
-      {error && <ErrorBar />}
+      <StatusBar busy={fetching || stale} error={!!error} />
     </>
   );
 };

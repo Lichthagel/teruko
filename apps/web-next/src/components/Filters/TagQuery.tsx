@@ -2,6 +2,7 @@ import { X } from "lucide-react";
 import { TagExt } from "models";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { gql, useQuery } from "urql";
+import StatusBar from "../StatusBar";
 
 type TagQueryProps = {
   slug: string;
@@ -58,7 +59,7 @@ const TagQuery = ({ slug }: TagQueryProps) => {
         </button>
       </div>
 
-      {/* TODO status bar */}
+      <StatusBar busy={fetching || stale} error={!!error} />
     </>
   );
 };

@@ -2,10 +2,9 @@
 
 import ImageCard from "./ImageCard";
 import { type ReactElement, useRef, useCallback, Fragment } from "react";
-import LoadBar from "./LoadBar";
-import ErrorBar from "./ErrorBar";
 import useImages from "@/hooks/useImages";
 import { ImageSort } from "models";
+import StatusBar from "./StatusBar";
 
 type GalleryProps = {
   tags: string[];
@@ -37,28 +36,24 @@ const Gallery: React.FC<GalleryProps> = ({
     [fetchMore, fetching]
   );
 
-  if (error)
-    return (
-      <>
-        <ErrorBar />
-        Error: {error.message}
-      </>
-    );
-
   return (
     <>
-      <div className="grid grid-cols-1 grid-rows-masonry gap-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
-        {images.map((image, index) => (
-          <div
-            key={image.id}
-            ref={index === images.length - 1 ? endRef : undefined}
-          >
-            <ImageCard image={image} />
-          </div>
-        ))}
-      </div>
+      {images.length > 0 && (
+        <div className="grid grid-cols-1 grid-rows-masonry gap-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
+          {images.map((image, index) => (
+            <div
+              key={image.id}
+              ref={index === images.length - 1 ? endRef : undefined}
+            >
+              <ImageCard image={image} />
+            </div>
+          ))}
+        </div>
+      )}
 
-      {(fetching || stale) && <LoadBar />}
+      {error && <>Error: {error.message}</>}
+
+      <StatusBar busy={fetching || stale} error={!!error} />
     </>
   );
 };
