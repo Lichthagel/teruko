@@ -1,29 +1,22 @@
 <script setup lang="ts">
-import { ImageSort, zImageSort } from "models";
+import { ImageSort } from "models";
 
-const route = useRoute();
+const { sort, setSort } = useFilters();
 
-const sort = ref<ImageSort>(
-  zImageSort.nullish().parse(route.query.sort) ?? "NEWEST"
-);
+const sortSel = ref<ImageSort>(sort.value);
 
 const sortChange = () => {
-  navigateTo({
-    query: {
-      ...route.query,
-      sort: sort.value,
-    },
-  });
+  setSort(sortSel.value);
 };
 
-watch(route, () => {
-  sort.value = zImageSort.nullish().parse(route.query.sort) ?? "NEWEST";
+watch(sort, () => {
+  sortSel.value = sort.value;
 });
 </script>
 
 <template>
   <select
-    v-model="sort"
+    v-model="sortSel"
     class="h-10 w-24 rounded bg-base-100 px-2"
     @change="sortChange"
   >

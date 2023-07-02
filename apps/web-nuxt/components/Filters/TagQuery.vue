@@ -3,7 +3,7 @@ import { gql, useQuery } from "@urql/vue";
 import { X } from "lucide-vue-next";
 import { TagExt } from "models";
 
-const route = useRoute();
+const { tags, setTags } = useFilters();
 
 const props = defineProps<{
   tag: string;
@@ -23,14 +23,7 @@ const { data, fetching, stale, error } = useQuery<{ tag: TagExt }>({
 });
 
 const removeTag = () => {
-  navigateTo({
-    query: {
-      ...route.query,
-      tag: Array.isArray(route.query.tag)
-        ? route.query.tag.filter((tag) => tag !== props.tag)
-        : undefined,
-    },
-  });
+  setTags(tags.value.filter((tag) => tag !== props.tag));
 };
 </script>
 

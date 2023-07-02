@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TagExt } from "~/shared/models";
+import { TagExt } from "models";
 
 const props = defineProps<{
   tag: TagExt;

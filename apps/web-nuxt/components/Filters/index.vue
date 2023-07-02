@@ -2,28 +2,10 @@
 <script setup lang="ts">
 import SortSelect from "./SortSelect.vue";
 import TagQuery from "./TagQuery.vue";
+import TagSearch from "./TagSearch.vue";
 import { ListX } from "lucide-vue-next";
 
-const route = useRoute();
-
-const tags: ComputedRef<string[]> = computed(() => {
-  if (Array.isArray(route.query.tag)) {
-    return route.query.tag.filter((tag): tag is string => !!tag);
-  } else if (typeof route.query.tag === "string") {
-    return [route.query.tag];
-  } else {
-    return [];
-  }
-});
-
-const resetTags = () => {
-  navigateTo({
-    query: {
-      ...route.query,
-      tag: undefined,
-    },
-  });
-};
+const { tags, setTags } = useFilters();
 </script>
 
 <template>
@@ -32,11 +14,13 @@ const resetTags = () => {
       <TagQuery v-for="tag in tags" :key="tag" :tag="tag" />
       <button
         class="m-0.5 box-border inline-block h-10 w-10 rounded bg-neutral px-2 text-neutral-content transition hover:brightness-75"
-        @click="resetTags"
+        @click="() => setTags(undefined)"
       >
         <ListX class="h-6 w-6" />
       </button>
     </div>
+
+    <TagSearch />
 
     <SortSelect />
   </div>
