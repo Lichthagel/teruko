@@ -7,7 +7,7 @@
   export let error: Error | undefined = undefined;
 </script>
 
-<div class="fixed inset-0 flex items-center justify-center bg-black/50">
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
   <div class="container">
     <div class="my-3 px-8 text-white">
       <a class="flex flex-row items-center space-x-1" href="/">
