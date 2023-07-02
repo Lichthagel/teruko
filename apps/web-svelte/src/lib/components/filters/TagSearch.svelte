@@ -20,12 +20,12 @@
   const handleSubmit = () => {
     if (suggestions.length === 0) return;
 
-    tagInput = "";
-    activeSuggestion = 0;
-
     const searchParams = new URLSearchParams($page.url.searchParams);
 
     searchParams.append("tag", suggestions[activeSuggestion].slug);
+
+    tagInput = "";
+    activeSuggestion = 0;
 
     void goto(`${$page.url.pathname}?${searchParams.toString()}`, {
       keepFocus: true,
