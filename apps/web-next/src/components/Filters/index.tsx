@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import TagQuery from "./TagQuery";
+import SortSelect from "./SortSelect";
 
 const Filters = () => {
   const searchParams = useSearchParams();
@@ -17,6 +18,8 @@ const Filters = () => {
           ))}
         </div>
       )}
+
+      <SortSelect />
     </div>
   );
 };
