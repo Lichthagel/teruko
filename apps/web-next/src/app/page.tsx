@@ -1,3 +1,4 @@
+import Filters from "@/components/Filters";
 import Gallery from "@/components/Gallery";
 import ScrollButtons from "@/components/ScrollButtons";
 import { zImageSort } from "models";
@@ -24,6 +25,8 @@ const Home = ({
   return (
     <>
       <div className="container mx-auto">
+        <Filters />
+
         <Gallery tags={tags} sort={sort} />
       </div>
       <ScrollButtons />
