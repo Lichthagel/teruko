@@ -48,11 +48,7 @@ const scroll = (payload: Event) => {
 useHead({
   title: computed(
     () =>
-      `${
-        data.value.image &&
-        data.value.image.title &&
-        `${data.value.image.title} - `
-      }てる子`
+      `${data.value?.image?.title ? `${data.value.image.title} - ` : ""}てる子`
   ),
 });
 </script>
@@ -140,6 +136,10 @@ useHead({
         </div>
       </div>
     </div>
+
+    <ErrorMessage v-if="error" :title="error.name" :message="error.message" />
+
+    <ErrorMessage v-if="!fetching && !error && !data.image" title="Not Found" />
 
     <StatusBar :fetching="fetching || stale" :error="!!error" />
   </div>

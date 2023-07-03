@@ -38,7 +38,7 @@ const endRef = (node: Element | ComponentPublicInstance | null) => {
     </template>
   </div>
 
-  <div v-if="error">Error: {{ error.message }}</div>
+  <ErrorMessage v-if="error" :title="error.name" :error="error" />
 
   <StatusBar :fetching="fetching || stale" :error="!!error" />
 
