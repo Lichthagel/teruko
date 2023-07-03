@@ -28,7 +28,7 @@ type ImagesResult = {
 };
 
 type ImagesArgs = {
-  tags: string[];
+  tags: readonly string[];
   after: string | null;
   before: string | null;
   first: number | null;
@@ -38,7 +38,7 @@ type ImagesArgs = {
 type ImagesOperationResult = OperationResult<ImagesResult, ImagesArgs>;
 
 const getRequest = (
-  tags: string[],
+  tags: readonly string[],
   sort: ImageSort,
   cursor: string | null = null
 ): GraphQLRequest<ImagesResult, ImagesArgs> =>
@@ -116,7 +116,7 @@ const initialResult: Result = {
 
 export default (
   client: Client,
-  tags: string[],
+  tags: readonly string[],
   sort: ImageSort
 ): Readable<Result> => {
   let edges: ImagesResult["images"]["edges"] = [];

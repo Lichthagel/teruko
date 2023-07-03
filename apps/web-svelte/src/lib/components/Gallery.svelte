@@ -7,7 +7,7 @@
   import ErrorMessage from "./status/ErrorMessage.svelte";
   import StatusBar from "$lib/components/status/StatusBar.svelte";
 
-  export let tags: string[] = [];
+  export let tags: readonly string[] = [];
   export let sort: ImageSort = "NEWEST";
 
   const client = getContextClient();

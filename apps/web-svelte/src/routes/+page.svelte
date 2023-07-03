@@ -1,13 +1,8 @@
 <script lang="ts">
   import Gallery from "$lib/components/Gallery.svelte";
   import ScrollButtons from "$lib/components/ScrollButtons.svelte";
-  import { page } from "$app/stores";
-  import { zImageSort } from "models";
   import Filters from "$lib/components/filters/Filters.svelte";
-
-  $: tags = $page.url.searchParams.getAll("tag");
-  $: sort =
-    zImageSort.nullish().parse($page.url.searchParams.get("sort")) ?? "NEWEST";
+  import { tags, sort } from "server-common/stores";
 </script>
 
 <svelte:head>
@@ -17,9 +12,9 @@
 <div class="container mx-auto">
   <Filters />
 
-  {#key tags}
-    {#key sort}
-      <Gallery {tags} {sort} />
+  {#key $tags}
+    {#key $sort || "NEWEST"}
+      <Gallery tags={$tags} sort={$sort || "NEWEST"} />
     {/key}
   {/key}
 </div>

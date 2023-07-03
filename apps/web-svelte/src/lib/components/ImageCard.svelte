@@ -1,8 +1,13 @@
 <script lang="ts">
   import type { ImageExt } from "models";
   import { fly } from "svelte/transition";
+  import { tags } from "server-common/stores";
 
   export let image: ImageExt;
+
+  const onTagClick = (slug: string) => {
+    tags.set([slug]);
+  };
 </script>
 
 <div class="mb-1 bg-zinc-300 shadow-xl dark:bg-gray-700" in:fly={{ y: 200 }}>
@@ -28,13 +33,13 @@
     class="snap flex snap-x flex-row flex-nowrap overflow-x-scroll scrollbar-none"
   >
     {#each (image.tags ?? []).filter((tag) => !tag.slug.startsWith("artist_")) as tag}
-      <a
+      <button
         class="m-0.5 inline-block select-none whitespace-nowrap rounded bg-gray-500 px-1 text-sm text-white transition hover:brightness-75"
         style:background-color={tag.category?.color ?? "gray"}
-        href={`/?tag=${tag.slug}`}
+        on:click={() => onTagClick(tag.slug)}
       >
         {tag.slug}
-      </a>
+      </button>
     {/each}
   </div>
 </div>

@@ -1,28 +1,21 @@
 <script lang="ts">
-  import { page } from "$app/stores";
-  import { goto } from "$app/navigation";
   import { ListX } from "lucide-svelte";
   import TagQuery from "./TagQuery.svelte";
   import SortSelect from "./SortSelect.svelte";
   import TagSearch from "./TagSearch.svelte";
-
-  $: tags = $page.url.searchParams.getAll("tag");
+  import { tags } from "server-common/stores";
 
   const resetTags = () => {
-    const url = new URL($page.url);
-
-    url.searchParams.delete("tag");
-
-    void goto(url);
+    tags.set([]);
   };
 </script>
 
 <div class="mb-2">
   <!-- TAG CHIPS -->
 
-  {#if tags.length > 0}
+  {#if $tags.length > 0}
     <div class="inline-flex">
-      {#each tags as tag}
+      {#each $tags as tag}
         {#key tag}
           <TagQuery {tag} />
         {/key}

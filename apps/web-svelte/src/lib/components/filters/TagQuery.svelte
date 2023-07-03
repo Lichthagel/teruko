@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { page } from "$app/stores";
-  import { goto } from "$app/navigation";
   import { getContextClient, gql, queryStore } from "@urql/svelte";
   import type { TagExt } from "models";
   import { X } from "lucide-svelte";
   import StatusBar from "$lib/components/status/StatusBar.svelte";
+  import { tags } from "server-common/stores";
 
   export let tag: string;
 
@@ -24,17 +23,10 @@
     variables: { slug: tag },
   });
 
-  $: tags = $page.url.searchParams.getAll("tag");
-
   const removeTag = () => {
-    const newTags = tags.filter((t) => t !== tag);
+    const newTags = $tags.filter((t) => t !== tag);
 
-    const url = new URL($page.url);
-
-    url.searchParams.delete("tag");
-    for (const t of newTags) url.searchParams.append("tag", t);
-
-    void goto(url);
+    tags.set(newTags);
   };
 </script>
 

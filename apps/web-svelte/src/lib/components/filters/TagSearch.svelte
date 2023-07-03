@@ -1,10 +1,8 @@
 <script lang="ts">
-  /** eslint-disable promise/prefer-await-to-then */
-  import { goto } from "$app/navigation";
-  import { page } from "$app/stores";
   import suggestionsStore from "$lib/suggestionsStore";
   import { getContextClient } from "@urql/svelte";
   import { Loader2 } from "lucide-svelte";
+  import { tags } from "server-common/stores";
 
   const client = getContextClient();
 
@@ -20,16 +18,10 @@
   const handleSubmit = () => {
     if (suggestions.length === 0) return;
 
-    const searchParams = new URLSearchParams($page.url.searchParams);
-
-    searchParams.append("tag", suggestions[activeSuggestion].slug);
-
     tagInput = "";
     activeSuggestion = 0;
 
-    void goto(`${$page.url.pathname}?${searchParams.toString()}`, {
-      keepFocus: true,
-    });
+    tags.set([...$tags, suggestions[activeSuggestion].slug]);
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -65,13 +57,7 @@
         tagInput = "";
         activeSuggestion = 0;
 
-        const searchParams = new URLSearchParams($page.url.searchParams);
-
-        searchParams.delete("tag");
-
-        void goto(`${$page.url.pathname}?${searchParams.toString()}`, {
-          keepFocus: true,
-        });
+        tags.set([]);
 
         break;
       }
