@@ -51,6 +51,9 @@ importers:
 
   apps/web-next:
     dependencies:
+      '@nanostores/react':
+        specifier: ^0.7.1
+        version: 0.7.1(nanostores@0.9.3)(react@18.2.0)
       client-common:
         specifier: workspace:*
         version: link:../../packages/client-common
@@ -1631,6 +1634,17 @@ packages:
       - encoding
       - supports-color
     dev: true
+
+  /@nanostores/react@0.7.1(nanostores@0.9.3)(react@18.2.0):
+    resolution: {integrity: sha512-EXQg9N4MdI4eJQz/AZLIx3hxQ6BuBmV4Q55bCd5YCSgEOAW7tGTsIZxpRXxvxLXzflNvHTBvfrDNY38TlSVBkQ==}
+    engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
+    peerDependencies:
+      nanostores: ^0.9.0
+      react: '>=18.0.0'
+    dependencies:
+      nanostores: 0.9.3
+      react: 18.2.0
+    dev: false
 
   /@nanostores/vue@0.9.1(nanostores@0.9.3)(vue@3.3.4):
     resolution: {integrity: sha512-Yv9datKSdDcfLz20NgS7jIX/vsYffic3nymHgujj3KFBtmtgVPC6LyJora669wtj7BwmK3qGfFY5Ylby72NIXg==}

@@ -1,26 +1,16 @@
+"use client";
+
 import Filters from "@/components/Filters";
 import Gallery from "@/components/Gallery";
 import ScrollButtons from "@/components/ScrollButtons";
-import { zImageSort } from "models";
 import type { ReactElement } from "react";
+import { tagsStore, sortStore } from "client-common/stores";
+import { useStore } from "@nanostores/react";
 
-const Home = ({
-  searchParams,
-}: {
-  params: { slug: string };
-  searchParams: Record<string, string | string[] | undefined>;
-}): ReactElement => {
-  const tags = ((): string[] => {
-    if (Array.isArray(searchParams.tag)) {
-      return searchParams.tag;
-    } else if (typeof searchParams.tag === "string") {
-      return [searchParams.tag];
-    } else {
-      return [];
-    }
-  })();
+const Home = (): ReactElement => {
+  const tags = useStore(tagsStore);
 
-  const sort = zImageSort.optional().parse(searchParams.sort) ?? "NEWEST";
+  const sort = useStore(sortStore) ?? "NEWEST";
 
   return (
     <>

@@ -1,19 +1,12 @@
-import { ImageSort, zImageSort } from "models";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { ImageSort } from "models";
+import { sortStore } from "client-common/stores";
+import { useStore } from "@nanostores/react";
 
 const SortSelect = () => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  const sort = zImageSort.nullish().parse(searchParams.get("sort")) ?? "NEWEST";
+  const sort = useStore(sortStore) ?? "NEWEST";
 
   const setSort = (sort: ImageSort) => {
-    const newSearchParams = new URLSearchParams(searchParams.toString());
-
-    newSearchParams.set("sort", sort);
-
-    router.push(`${pathname}?${newSearchParams.toString()}`);
+    sortStore.set(sort);
   };
 
   return (

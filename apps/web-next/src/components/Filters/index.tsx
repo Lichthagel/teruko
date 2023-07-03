@@ -1,14 +1,13 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import TagQuery from "./TagQuery";
 import SortSelect from "./SortSelect";
 import TagSearch from "./TagSearch";
+import { tagsStore } from "client-common/stores";
+import { useStore } from "@nanostores/react";
 
 const Filters = () => {
-  const searchParams = useSearchParams();
-
-  const tags = searchParams.getAll("tag");
+  const tags = useStore(tagsStore);
 
   return (
     <div className="mb-2">

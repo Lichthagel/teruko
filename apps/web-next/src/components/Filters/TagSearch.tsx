@@ -1,13 +1,12 @@
 import useSuggestions from "@/hooks/useSuggestions";
 import clsx from "clsx";
 import { Loader2 } from "lucide-react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
+import { tagsStore } from "client-common/stores";
+import { useStore } from "@nanostores/react";
 
 const TagInput = () => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const tags = useStore(tagsStore);
 
   const [tagInput, setTagInput] = useState("");
   const [activeSuggestion, setActiveSuggestion] = useState(0);
@@ -16,16 +15,12 @@ const TagInput = () => {
 
   const handleSubmit = useCallback(
     (tagSlug: string) => {
+      tagsStore.set([...tags, tagSlug]);
+
       setTagInput("");
       setActiveSuggestion(0);
-
-      const newSearchParams = new URLSearchParams(searchParams.toString());
-
-      newSearchParams.append("tag", tagSlug);
-
-      router.push(`${pathname}?${newSearchParams.toString()}`);
     },
-    [pathname, router, searchParams]
+    [tags]
   );
 
   const handleKeyDown = useCallback(
@@ -64,25 +59,14 @@ const TagInput = () => {
           setTagInput("");
           setActiveSuggestion(0);
 
-          const newSearchParams = new URLSearchParams(searchParams.toString());
-
-          newSearchParams.delete("tag");
-
-          router.push(`${pathname}?${newSearchParams.toString()}`);
+          tagsStore.set([]);
 
           break;
         }
         // No default
       }
     },
-    [
-      activeSuggestion,
-      handleSubmit,
-      pathname,
-      router,
-      searchParams,
-      suggestions,
-    ]
+    [activeSuggestion, handleSubmit, suggestions]
   );
 
   return (

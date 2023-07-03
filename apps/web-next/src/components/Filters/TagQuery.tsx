@@ -1,18 +1,16 @@
 import { X } from "lucide-react";
 import { TagExt } from "models";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { gql, useQuery } from "urql";
 import StatusBar from "../StatusBar";
+import { tagsStore } from "client-common/stores";
+import { useStore } from "@nanostores/react";
 
 type TagQueryProps = {
   slug: string;
 };
 
 const TagQuery = ({ slug }: TagQueryProps) => {
-  const router = useRouter();
-
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const tags = useStore(tagsStore);
 
   const [{ data, fetching, stale, error }] = useQuery<{ tag: TagExt | null }>({
     query: gql`
@@ -28,18 +26,7 @@ const TagQuery = ({ slug }: TagQueryProps) => {
   });
 
   const removeTag = () => {
-    const newSearchParams = new URLSearchParams(searchParams.toString());
-
-    newSearchParams.delete("tag");
-    for (const tag of searchParams.getAll("tag")) {
-      if (tag !== slug) {
-        newSearchParams.append("tag", tag);
-      }
-    }
-
-    console.log(newSearchParams.toString());
-
-    router.push(`${pathname}?${newSearchParams.toString()}`);
+    tagsStore.set(tags.filter((tag) => tag !== slug));
   };
 
   return (
