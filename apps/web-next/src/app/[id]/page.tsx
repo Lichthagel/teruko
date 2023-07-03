@@ -7,6 +7,7 @@ import Image from "next/image";
 import { ReactElement, ReactEventHandler, useMemo } from "react";
 import { gql, useQuery } from "urql";
 import StatusBar from "@/components/StatusBar";
+import ErrorMessage from "@/components/ErrorMessage";
 
 const scroll: ReactEventHandler<HTMLImageElement> = (e) => {
   e.currentTarget.scrollIntoView({
@@ -123,6 +124,10 @@ const ImagePage = ({ params }: { params: { id: string } }): ReactElement => {
           </div>
         </div>
       )}
+
+      {error && <ErrorMessage title={error.name} error={error} />}
+
+      {!fetching && !error && !image && <ErrorMessage title="Not Found" />}
 
       <StatusBar busy={fetching || stale} error={!!error} />
     </>

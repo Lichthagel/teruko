@@ -5,6 +5,7 @@ import { type ReactElement, useRef, useCallback, Fragment } from "react";
 import useImages from "@/hooks/useImages";
 import { ImageSort } from "models";
 import StatusBar from "./StatusBar";
+import ErrorMessage from "./ErrorMessage";
 
 type GalleryProps = {
   tags: string[];
@@ -51,7 +52,7 @@ const Gallery: React.FC<GalleryProps> = ({
         </div>
       )}
 
-      {error && <>Error: {error.message}</>}
+      {error && <ErrorMessage title={error.name} error={error} />}
 
       <StatusBar busy={fetching || stale} error={!!error} />
     </>
