@@ -103,7 +103,7 @@
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
         <li
-          class="my-1 h-10 cursor-pointer rounded p-2"
+          class="my-1 h-10 cursor-pointer truncate rounded p-2"
           class:bg-primary={index === activeSuggestion}
           class:text-primary-content={index === activeSuggestion}
           class:bg-neutral={index !== activeSuggestion}

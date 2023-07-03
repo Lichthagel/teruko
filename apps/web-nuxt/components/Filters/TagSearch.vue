@@ -76,7 +76,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
           'bg-primary text-primary-content': index === activeSuggestion,
           'bg-neutral text-neutral-content': index !== activeSuggestion,
         }"
-        class="my-1 h-10 cursor-pointer rounded p-2"
+        class="my-1 h-10 cursor-pointer truncate rounded p-2"
         :style="{
           'background-color':
             (index === activeSuggestion &&

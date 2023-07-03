@@ -108,7 +108,7 @@ const TagInput = () => {
           {suggestions.map((suggestion, index) => (
             <li
               key={suggestion.slug}
-              className={clsx("my-1 h-10 cursor-pointer rounded p-2", {
+              className={clsx("my-1 h-10 cursor-pointer truncate rounded p-2", {
                 "bg-primary text-primary-content": index === activeSuggestion,
                 "bg-neutral text-neutral-content": index !== activeSuggestion,
               })}
