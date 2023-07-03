@@ -3,7 +3,7 @@
   import type { TagExt } from "models";
   import { X } from "lucide-svelte";
   import StatusBar from "$lib/components/status/StatusBar.svelte";
-  import { tags } from "server-common/stores";
+  import { tagsStore } from "client-common/stores";
 
   export let tag: string;
 
@@ -24,9 +24,9 @@
   });
 
   const removeTag = () => {
-    const newTags = $tags.filter((t) => t !== tag);
+    const newTags = $tagsStore.filter((t) => t !== tag);
 
-    tags.set(newTags);
+    tagsStore.set(newTags);
   };
 </script>
 

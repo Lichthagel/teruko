@@ -1,12 +1,12 @@
 <script lang="ts">
   import type { ImageExt } from "models";
   import { fly } from "svelte/transition";
-  import { tags } from "server-common/stores";
+  import { tagsStore } from "client-common/stores";
 
   export let image: ImageExt;
 
   const onTagClick = (slug: string) => {
-    tags.set([slug]);
+    tagsStore.set([slug]);
   };
 </script>
 

@@ -2,7 +2,7 @@
   import suggestionsStore from "$lib/suggestionsStore";
   import { getContextClient } from "@urql/svelte";
   import { Loader2 } from "lucide-svelte";
-  import { tags } from "server-common/stores";
+  import { tagsStore } from "client-common/stores";
 
   const client = getContextClient();
 
@@ -18,10 +18,9 @@
   const handleSubmit = () => {
     if (suggestions.length === 0) return;
 
+    tagsStore.set([...$tagsStore, suggestions[activeSuggestion].slug]);
     tagInput = "";
     activeSuggestion = 0;
-
-    tags.set([...$tags, suggestions[activeSuggestion].slug]);
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -57,7 +56,7 @@
         tagInput = "";
         activeSuggestion = 0;
 
-        tags.set([]);
+        tagsStore.set([]);
 
         break;
       }

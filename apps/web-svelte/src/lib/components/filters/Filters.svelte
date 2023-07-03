@@ -3,19 +3,19 @@
   import TagQuery from "./TagQuery.svelte";
   import SortSelect from "./SortSelect.svelte";
   import TagSearch from "./TagSearch.svelte";
-  import { tags } from "server-common/stores";
+  import { tagsStore } from "client-common/stores";
 
   const resetTags = () => {
-    tags.set([]);
+    tagsStore.set([]);
   };
 </script>
 
 <div class="mb-2">
   <!-- TAG CHIPS -->
 
-  {#if $tags.length > 0}
+  {#if $tagsStore.length > 0}
     <div class="inline-flex">
-      {#each $tags as tag}
+      {#each $tagsStore as tag}
         {#key tag}
           <TagQuery {tag} />
         {/key}

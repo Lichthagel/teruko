@@ -1,12 +1,12 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import type { TagExt } from "models";
-  import { tags } from "server-common/stores";
+  import { tagsStore } from "client-common/stores";
 
   export let tag: TagExt;
 
   const onClick = () => {
-    tags.set([tag.slug]);
+    tagsStore.set([tag.slug]);
     void goto("/");
   };
 </script>
