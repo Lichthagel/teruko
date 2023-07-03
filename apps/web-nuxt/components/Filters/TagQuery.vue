@@ -2,8 +2,10 @@
 import { gql, useQuery } from "@urql/vue";
 import { X } from "lucide-vue-next";
 import { TagExt } from "models";
+import { useStore } from "@nanostores/vue";
+import { tagsStore } from "client-common/stores";
 
-const { tags, setTags } = useFilters();
+const tags = useStore(tagsStore);
 
 const props = defineProps<{
   tag: string;
@@ -23,7 +25,7 @@ const { data, fetching, stale, error } = useQuery<{ tag: TagExt }>({
 });
 
 const removeTag = () => {
-  setTags(tags.value.filter((tag) => tag !== props.tag));
+  tagsStore.set(tags.value.filter((tag) => tag !== props.tag));
 };
 </script>
 

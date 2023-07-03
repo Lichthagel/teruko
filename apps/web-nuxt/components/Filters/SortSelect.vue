@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { ImageSort } from "models";
+import { useStore } from "@nanostores/vue";
+import { sortStore } from "client-common/stores";
 
-const { sort, setSort } = useFilters();
+const sort = useStore(sortStore);
 
-const sortSel = ref<ImageSort>(sort.value);
+const sortSel = ref<ImageSort>(sort.value || "NEWEST"); // TODO initial selection
 
 const sortChange = () => {
-  setSort(sortSel.value);
+  sortStore.set(sortSel.value);
 };
 
 watch(sort, () => {
-  sortSel.value = sort.value;
+  sortSel.value = sort.value || "NEWEST";
 });
 </script>
 

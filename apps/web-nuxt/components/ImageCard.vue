@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ImageExt } from "models";
+import { tagsStore } from "client-common/stores";
 
 const props = defineProps<{
   image: ImageExt;
@@ -8,7 +9,7 @@ const props = defineProps<{
 
 <template>
   <div
-    class="animate-in fade-in slide-in-from-bottom mb-1 bg-zinc-300 shadow-xl duration-500 dark:bg-gray-700"
+    class="mb-1 bg-zinc-300 shadow-xl animate-in fade-in slide-in-from-bottom duration-500 dark:bg-gray-700"
   >
     <NuxtLink :href="`/${props.image.id}`">
       <div class="relative">
@@ -35,13 +36,13 @@ const props = defineProps<{
         )"
         :key="tag.slug"
       >
-        <NuxtLink
+        <button
           class="m-0.5 inline-block select-none whitespace-nowrap rounded bg-gray-500 px-1 text-sm text-white transition hover:brightness-75"
-          :href="`/?tag=${encodeURIComponent(tag.slug)}`"
           :style="{ backgroundColor: tag.category?.color ?? 'gray' }"
+          @click="() => tagsStore.set([tag.slug])"
         >
           {{ tag.slug }}
-        </NuxtLink>
+        </button>
       </template>
     </div>
   </div>

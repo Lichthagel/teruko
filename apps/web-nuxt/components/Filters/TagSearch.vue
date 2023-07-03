@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { Loader2 } from "lucide-vue-next";
+import { useStore } from "@nanostores/vue";
+import { tagsStore } from "client-common/stores";
 
-const { tags, setTags } = useFilters();
+const tags = useStore(tagsStore);
 
 const tagInput = ref("");
 const activeSuggestion = ref(0);
@@ -11,9 +13,12 @@ const { fetching, suggestions } = useSuggestions(tagInput); // TODO handle error
 const handleSubmit = () => {
   if (suggestions.value.length === 0) return;
 
+  tagsStore.set([
+    ...tags.value,
+    suggestions.value[activeSuggestion.value].slug,
+  ]);
   tagInput.value = "";
   activeSuggestion.value = 0;
-  setTags([...tags.value, suggestions.value[activeSuggestion.value].slug]);
 };
 
 const handleKeyDown = (e: KeyboardEvent) => {
@@ -41,7 +46,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
     case "Escape": {
       tagInput.value = "";
       activeSuggestion.value = 0;
-      setTags(undefined);
+      tagsStore.set([]);
 
       break;
     }

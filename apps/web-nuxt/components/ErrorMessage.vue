@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Home } from "lucide-vue-next";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const props = defineProps<{
   title?: string;
   subtitle?: string;

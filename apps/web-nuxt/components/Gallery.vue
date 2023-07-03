@@ -3,7 +3,7 @@
 import { ImageSort } from "models";
 
 const props = defineProps<{
-  tags: string[];
+  tags: readonly string[];
   sort: ImageSort;
 }>();
 

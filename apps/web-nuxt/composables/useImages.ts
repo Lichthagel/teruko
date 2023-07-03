@@ -24,7 +24,7 @@ type ImagesResult = {
 };
 
 type ImagesArgs = {
-  tags: string[];
+  tags: readonly string[];
   after?: string;
   before?: string;
   first?: number;
@@ -33,7 +33,11 @@ type ImagesArgs = {
 
 type ImagesOperationResult = OperationResult<ImagesResult, ImagesArgs>;
 
-const getRequest = (tags: string[], sort: ImageSort, cursor?: string) =>
+const getRequest = (
+  tags: readonly string[],
+  sort: ImageSort,
+  cursor?: string
+) =>
   createRequest(
     gql`
       query Images(
@@ -90,7 +94,10 @@ const getRequest = (tags: string[], sort: ImageSort, cursor?: string) =>
     }
   );
 
-export const useImages = (tags: Ref<string[]>, sort: Ref<ImageSort>) => {
+export const useImages = (
+  tags: Ref<readonly string[]>,
+  sort: Ref<ImageSort>
+) => {
   const clientHandle = useClientHandle();
 
   const fetching = ref(false);
