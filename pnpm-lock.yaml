@@ -376,7 +376,7 @@ importers:
         version: 6.0.1(@envelop/core@4.0.0)(graphql@16.7.1)
       '@graphql-yoga/plugin-apq':
         specifier: ^2.0.3
-        version: 2.0.3(@graphql-tools/utils@10.0.1)(graphql-yoga@4.0.3)
+        version: 2.0.3(@graphql-tools/utils@10.0.2)(graphql-yoga@4.0.3)
       '@graphql-yoga/plugin-response-cache':
         specifier: ^2.1.0
         version: 2.1.0(@envelop/core@4.0.0)(graphql-yoga@4.0.3)(graphql@16.7.1)
@@ -810,19 +810,19 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
 
-  /@csstools/cascade-layer-name-parser@1.0.2(@csstools/css-parser-algorithms@2.2.0)(@csstools/css-tokenizer@2.1.1):
-    resolution: {integrity: sha512-xm7Mgwej/wBfLoK0K5LfntmPJzoULayl1XZY9JYgQgT29JiqNw++sLnx95u5y9zCihblzkyaRYJrsRMhIBzRdg==}
+  /@csstools/cascade-layer-name-parser@1.0.3(@csstools/css-parser-algorithms@2.3.0)(@csstools/css-tokenizer@2.1.1):
+    resolution: {integrity: sha512-ks9ysPP8012j90EQCCFtDsQIXOTCOpTQFIyyoRku06y8CXtUQ+8bXI8KVm9Q9ovwDUVthWuWKZWJD3u1rwnEfw==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
-      '@csstools/css-parser-algorithms': ^2.1.1
+      '@csstools/css-parser-algorithms': ^2.3.0
       '@csstools/css-tokenizer': ^2.1.1
     dependencies:
-      '@csstools/css-parser-algorithms': 2.2.0(@csstools/css-tokenizer@2.1.1)
+      '@csstools/css-parser-algorithms': 2.3.0(@csstools/css-tokenizer@2.1.1)
       '@csstools/css-tokenizer': 2.1.1
     dev: true
 
-  /@csstools/css-parser-algorithms@2.2.0(@csstools/css-tokenizer@2.1.1):
-    resolution: {integrity: sha512-9BoQ/jSrPq4vv3b9jjLW+PNNv56KlDH5JMx5yASSNrCtvq70FCNZUjXRvbCeR9hYj9ZyhURtqpU/RFIgg6kiOw==}
+  /@csstools/css-parser-algorithms@2.3.0(@csstools/css-tokenizer@2.1.1):
+    resolution: {integrity: sha512-dTKSIHHWc0zPvcS5cqGP+/TPFUJB0ekJ9dGKvMAFoNuBFhDPBt9OMGNZiIA5vTiNdGHHBeScYPXIGBMnVOahsA==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       '@csstools/css-tokenizer': ^2.1.1
@@ -874,7 +874,7 @@ packages:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       '@envelop/core': 4.0.0
-      '@graphql-tools/utils': 10.0.1(graphql@16.7.1)
+      '@graphql-tools/utils': 10.0.2(graphql@16.7.1)
       '@whatwg-node/fetch': 0.9.7
       fast-json-stable-stringify: 2.1.0
       graphql: 16.7.1
@@ -1369,7 +1369,7 @@ packages:
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
-      '@graphql-tools/utils': 10.0.1(graphql@16.7.1)
+      '@graphql-tools/utils': 10.0.2(graphql@16.7.1)
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.7.1)
       '@repeaterjs/repeater': 3.0.4
       graphql: 16.7.1
@@ -1383,7 +1383,7 @@ packages:
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
-      '@graphql-tools/utils': 10.0.1(graphql@16.7.1)
+      '@graphql-tools/utils': 10.0.2(graphql@16.7.1)
       graphql: 16.7.1
       tslib: 2.6.0
     dev: false
@@ -1395,19 +1395,20 @@ packages:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
       '@graphql-tools/merge': 9.0.0(graphql@16.7.1)
-      '@graphql-tools/utils': 10.0.1(graphql@16.7.1)
+      '@graphql-tools/utils': 10.0.2(graphql@16.7.1)
       graphql: 16.7.1
       tslib: 2.6.0
       value-or-promise: 1.0.12
     dev: false
 
-  /@graphql-tools/utils@10.0.1(graphql@16.7.1):
-    resolution: {integrity: sha512-i1FozbDGHgdsFA47V/JvQZ0FE8NAy0Eiz7HGCJO2MkNdZAKNnwei66gOq0JWYVFztwpwbVQ09GkKhq7Kjcq5Cw==}
+  /@graphql-tools/utils@10.0.2(graphql@16.7.1):
+    resolution: {integrity: sha512-lm3ApMyjWqRurLHvqK/pUK8zbZzdCzJoff2Y6XIyAHJT3P69n/uSF+Tl6YRV10SPGoJJdRn+XObFv9jXQ/NhkQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.7.1)
+      dset: 3.1.2
       graphql: 16.7.1
       tslib: 2.6.0
     dev: false
@@ -1427,14 +1428,14 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /@graphql-yoga/plugin-apq@2.0.3(@graphql-tools/utils@10.0.1)(graphql-yoga@4.0.3):
+  /@graphql-yoga/plugin-apq@2.0.3(@graphql-tools/utils@10.0.2)(graphql-yoga@4.0.3):
     resolution: {integrity: sha512-QdlY34nP6fUef36151XvPqBmcOANPnnxeSXn/1T6sLib9yedanSc6sCta0rFk2kmMQlSnWcpEZPoN5hxUf7D7g==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@graphql-tools/utils': ^10.0.0
       graphql-yoga: ^4.0.3
     dependencies:
-      '@graphql-tools/utils': 10.0.1(graphql@16.7.1)
+      '@graphql-tools/utils': 10.0.2(graphql@16.7.1)
       graphql-yoga: 4.0.3(graphql@16.7.1)
     dev: false
 
@@ -2014,9 +2015,9 @@ packages:
       std-env: 3.3.3
       strip-literal: 1.0.1
       ufo: 1.1.2
-      unplugin: 1.3.1
+      unplugin: 1.3.2
       vite: 4.3.9(@types/node@20.3.3)
-      vite-node: 0.32.2(@types/node@20.3.3)
+      vite-node: 0.32.4(@types/node@20.3.3)
       vite-plugin-checker: 0.6.1(eslint@8.44.0)(typescript@5.1.6)(vite@4.3.9)
       vue: 3.3.4
       vue-bundle-renderer: 1.0.3
@@ -2074,7 +2075,7 @@ packages:
       micromatch: 4.0.5
       pathe: 1.1.1
       postcss: 8.4.24
-      postcss-custom-properties: 13.2.0(postcss@8.4.24)
+      postcss-custom-properties: 13.2.1(postcss@8.4.24)
       postcss-nesting: 11.3.0(postcss@8.4.24)
       radix3: 1.0.1
       tailwind-config-viewer: 1.7.2(tailwindcss@3.3.2)
@@ -3599,7 +3600,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.9
-      caniuse-lite: 1.0.30001510
+      caniuse-lite: 1.0.30001511
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -3731,7 +3732,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001510
+      caniuse-lite: 1.0.30001511
       electron-to-chromium: 1.4.447
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11(browserslist@4.21.9)
@@ -3876,13 +3877,13 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.21.9
-      caniuse-lite: 1.0.30001510
+      caniuse-lite: 1.0.30001511
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
 
-  /caniuse-lite@1.0.30001510:
-    resolution: {integrity: sha512-z35lD6xjHklPNgjW4P68R30Er5OCIZE0C1bUf8IMXSh34WJYXfIy+GxIEraQXYJ2dvTU8TumjYAeLrPhpMlsuw==}
+  /caniuse-lite@1.0.30001511:
+    resolution: {integrity: sha512-NaWPJawcoedlghN4P7bDNeADD7K+rZaY6V8ZcME7PkEZo/nfOg+lnrUgRWiKbNxcQ4/toFKSxnS4WdbyPZnKkw==}
     dev: true
 
   /chalk@2.4.2:
@@ -6251,7 +6252,7 @@ packages:
       '@envelop/core': 4.0.0
       '@graphql-tools/executor': 1.1.0(graphql@16.7.1)
       '@graphql-tools/schema': 10.0.0(graphql@16.7.1)
-      '@graphql-tools/utils': 10.0.1(graphql@16.7.1)
+      '@graphql-tools/utils': 10.0.2(graphql@16.7.1)
       '@graphql-yoga/logger': 1.0.0
       '@graphql-yoga/subscription': 4.0.0
       '@whatwg-node/fetch': 0.9.7
@@ -7806,7 +7807,7 @@ packages:
       '@next/env': 13.4.7
       '@swc/helpers': 0.5.1
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001510
+      caniuse-lite: 1.0.30001511
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -8219,7 +8220,7 @@ packages:
       unctx: 2.3.1
       unenv: 1.5.1
       unimport: 3.0.11(rollup@3.26.0)
-      unplugin: 1.3.1
+      unplugin: 1.3.2
       unplugin-vue-router: 0.6.4(vue-router@4.2.2)(vue@3.3.4)
       untyped: 1.3.2
       vue: 3.3.4
@@ -8744,14 +8745,14 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /postcss-custom-properties@13.2.0(postcss@8.4.24):
-    resolution: {integrity: sha512-UYiPqbqmVayyv56y0mtGhvUKZClflwE9cTTmPaqEX8fOVjVwsotqKGYtJXSLxrJLwf9tt7ka+Luyh1ZAOhGHWA==}
+  /postcss-custom-properties@13.2.1(postcss@8.4.24):
+    resolution: {integrity: sha512-Z8UmzwVkRh8aITyeZoZnT4McSSPmS2EFl+OyPspfvx7v+N36V2UseMAODp3oBriZvcf/tQpzag9165x/VcC3kg==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4
     dependencies:
-      '@csstools/cascade-layer-name-parser': 1.0.2(@csstools/css-parser-algorithms@2.2.0)(@csstools/css-tokenizer@2.1.1)
-      '@csstools/css-parser-algorithms': 2.2.0(@csstools/css-tokenizer@2.1.1)
+      '@csstools/cascade-layer-name-parser': 1.0.3(@csstools/css-parser-algorithms@2.3.0)(@csstools/css-tokenizer@2.1.1)
+      '@csstools/css-parser-algorithms': 2.3.0(@csstools/css-tokenizer@2.1.1)
       '@csstools/css-tokenizer': 2.1.1
       postcss: 8.4.24
       postcss-value-parser: 4.2.0
@@ -10968,7 +10969,7 @@ packages:
       acorn: 8.9.0
       estree-walker: 3.0.3
       magic-string: 0.30.0
-      unplugin: 1.3.1
+      unplugin: 1.3.2
     dev: true
 
   /undici@5.22.1:
@@ -11010,7 +11011,7 @@ packages:
       pkg-types: 1.0.3
       scule: 1.0.0
       strip-literal: 1.0.1
-      unplugin: 1.3.1
+      unplugin: 1.3.2
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -11053,7 +11054,7 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
       scule: 1.0.0
-      unplugin: 1.3.1
+      unplugin: 1.3.2
       vue-router: 4.2.2(vue@3.3.4)
       yaml: 2.3.1
     transitivePeerDependencies:
@@ -11061,8 +11062,8 @@ packages:
       - vue
     dev: true
 
-  /unplugin@1.3.1:
-    resolution: {integrity: sha512-h4uUTIvFBQRxUKS2Wjys6ivoeofGhxzTe2sRWlooyjHXVttcVfV/JiavNd3d4+jty0SVV0dxGw9AkY9MwiaCEw==}
+  /unplugin@1.3.2:
+    resolution: {integrity: sha512-Lh7/2SryjXe/IyWqx9K7IKwuKhuOFZEhotiBquOODsv2IVyDkI9lv/XhgfjdXf/xdbv32txmnBNnC/JVTDJlsA==}
     dependencies:
       acorn: 8.9.0
       chokidar: 3.5.3
@@ -11227,8 +11228,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite-node@0.32.2(@types/node@20.3.3):
-    resolution: {integrity: sha512-dTQ1DCLwl2aEseov7cfQ+kDMNJpM1ebpyMMMwWzBvLbis8Nla/6c9WQcqpPssTwS6Rp/+U6KwlIj8Eapw4bLdA==}
+  /vite-node@0.32.4(@types/node@20.3.3):
+    resolution: {integrity: sha512-L2gIw+dCxO0LK14QnUMoqSYpa9XRGnTTTDjW2h19Mr+GR0EFj4vx52W41gFXfMLqpA00eK4ZjOVYo1Xk//LFEw==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
     dependencies:
