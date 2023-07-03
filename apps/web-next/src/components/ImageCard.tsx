@@ -24,7 +24,7 @@ const ImageCard: React.FC<ImageCardProps> = ({ image }: ImageCardProps) => (
         )}
       </div>
     </NextLink>
-    <div className="scrollbar-none snap flex snap-x flex-row flex-nowrap overflow-x-scroll">
+    <div className="snap flex snap-x flex-row flex-nowrap overflow-x-scroll scrollbar-none">
       {(image.tags || [])
         .filter((tag) => !tag.slug.startsWith("artist_"))
         .map((tag) => (

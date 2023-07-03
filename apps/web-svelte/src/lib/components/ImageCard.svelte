@@ -25,7 +25,7 @@
     </div>
   </a>
   <div
-    class="scrollbar-none snap flex snap-x flex-row flex-nowrap overflow-x-scroll"
+    class="snap flex snap-x flex-row flex-nowrap overflow-x-scroll scrollbar-none"
   >
     {#each (image.tags ?? []).filter((tag) => !tag.slug.startsWith("artist_")) as tag}
       <a

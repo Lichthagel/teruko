@@ -15,4 +15,8 @@ module.exports = {
     },
   },
   ignorePatterns: ["node_modules", ".eslintrc.cjs"],
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    project: path.join(__dirname, "tsconfig.json"),
+  },
 };
