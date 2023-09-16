@@ -9,7 +9,7 @@ import { useAPQ } from "@graphql-yoga/plugin-apq";
 import schema from "./schema";
 
 export const getYoga = (
-  fetchAPI: YogaServerOptions<object, object>["fetchAPI"]
+  fetchAPI: YogaServerOptions<object, object>["fetchAPI"],
 ): YogaServerInstance<object, object> =>
   createYoga({
     schema,
@@ -24,6 +24,9 @@ export const getYoga = (
       }),
       useAPQ(),
     ],
+    cors: {
+      origin: "*",
+    },
   });
 
 export type { YogaServerInstance } from "graphql-yoga";
