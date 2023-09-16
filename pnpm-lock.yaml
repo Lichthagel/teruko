@@ -136,16 +136,10 @@ importers:
 
   apps/web-nuxt:
     dependencies:
-      '@fontsource-variable/m-plus-1':
+      '@fontsource-variable/m-plus-2':
         specifier: ^5.0.7
         version: 5.0.7
-      '@fontsource-variable/readex-pro':
-        specifier: ^5.0.8
-        version: 5.0.8
-      '@fontsource/m-plus-1':
-        specifier: 5.0.7
-        version: 5.0.7
-      '@fontsource/readex-pro':
+      '@fontsource-variable/sora':
         specifier: ^5.0.8
         version: 5.0.8
       '@nanostores/vue':
@@ -224,16 +218,10 @@ importers:
 
   apps/web-svelte:
     dependencies:
-      '@fontsource-variable/m-plus-1':
+      '@fontsource-variable/m-plus-2':
         specifier: ^5.0.7
         version: 5.0.7
-      '@fontsource-variable/readex-pro':
-        specifier: ^5.0.8
-        version: 5.0.8
-      '@fontsource/m-plus-1':
-        specifier: ^5.0.7
-        version: 5.0.7
-      '@fontsource/readex-pro':
+      '@fontsource-variable/sora':
         specifier: ^5.0.8
         version: 5.0.8
       '@urql/svelte':
@@ -1383,20 +1371,12 @@ packages:
     resolution: {integrity: sha512-J8TOSBq3SoZbDhM9+R/u77hP93gz/rajSA+K2kGyijPpORPWUXHUpTaleoj+92As0S9uPRP7Oi8IqMf0u+ro6A==}
     dev: false
 
-  /@fontsource-variable/m-plus-1@5.0.7:
-    resolution: {integrity: sha512-pWtpeE8syrS5UNIPtYPfYYIpHr9BDDV6c8IHqKFtd805HHr8Ejz9icwEm4esExBf9BAhskKDnr9o49o3Tnfzkw==}
+  /@fontsource-variable/m-plus-2@5.0.7:
+    resolution: {integrity: sha512-Qc4zXGmL8S6Ug+z+u0aMJHFbR2ZLIguWbFEXsh6FUUHGFWAI22jjXEzx5Jf+hGB0msNK450YYlSRTVKb2P6FIw==}
     dev: false
 
-  /@fontsource-variable/readex-pro@5.0.8:
-    resolution: {integrity: sha512-hl1pW5gcDtKxufNLf7Tjxw3uUO/kp/dfK0UmiZlCNZqyOQI/awvVtsOXcAHceU4BhnRsoVf8QYvR95SSidBC6g==}
-    dev: false
-
-  /@fontsource/m-plus-1@5.0.7:
-    resolution: {integrity: sha512-uAi35flgRRl//8y6Xr9q0YukKer9HdzvP3oZCgjNJNwghTaxy2lAq5BNnJTgOTD8DUKU1DQDpfaVTADknNqoUw==}
-    dev: false
-
-  /@fontsource/readex-pro@5.0.8:
-    resolution: {integrity: sha512-EAL80pZt8y68000NeRO+MibNRk9rbTMelLy2ra2jAZQDOaekRb7zIhkebW1bPIoicncgkRMMowSk1RrDFTMytw==}
+  /@fontsource-variable/sora@5.0.8:
+    resolution: {integrity: sha512-/KAMDJwGk4XPyLrawqN4u+fvKqgs21eg9j81OcFULs2P7+In35dwF5XQbgRaoUa7Jq+chrFTgg+LLmy8q9x2Pw==}
     dev: false
 
   /@graphql-tools/executor@1.2.0(graphql@16.8.0):
@@ -2282,6 +2262,7 @@ packages:
     dependencies:
       is-glob: 4.0.3
       micromatch: 4.0.5
+      napi-wasm: 1.1.0
     dev: true
     bundledDependencies:
       - napi-wasm
@@ -5437,7 +5418,7 @@ packages:
       eslint: 8.49.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.7.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.49.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.7.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.49.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@5.62.0)(eslint@8.49.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.49.0)
       eslint-plugin-react: 7.33.2(eslint@8.49.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.49.0)
@@ -5509,7 +5490,7 @@ packages:
       enhanced-resolve: 5.15.0
       eslint: 8.49.0
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.7.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0)(eslint@8.49.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.7.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.49.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@5.62.0)(eslint@8.49.0)
       fast-glob: 3.3.1
       get-tsconfig: 4.7.0
       is-core-module: 2.13.0
@@ -5621,7 +5602,7 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.7.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.49.0):
+  /eslint-plugin-import@2.28.1(@typescript-eslint/parser@5.62.0)(eslint@8.49.0):
     resolution: {integrity: sha512-9I9hFlITvOV55alzoKBI+K9q74kv0iKMeY6av5+umsNwayt59fz692daGyjR+oStBQgx6nwR9rXldDev3Clw+A==}
     engines: {node: '>=4'}
     peerDependencies:
@@ -5631,7 +5612,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 6.7.0(eslint@8.49.0)(typescript@5.2.2)
+      '@typescript-eslint/parser': 5.62.0(eslint@8.49.0)(typescript@5.2.2)
       array-includes: 3.1.7
       array.prototype.findlastindex: 1.2.3
       array.prototype.flat: 1.3.2
@@ -5640,7 +5621,7 @@ packages:
       doctrine: 2.1.0
       eslint: 8.49.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.7.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0)(eslint@8.49.0)
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0)(eslint@8.49.0)
       has: 1.0.3
       is-core-module: 2.13.0
       is-glob: 4.0.3
@@ -8184,6 +8165,10 @@ packages:
   /napi-build-utils@1.0.2:
     resolution: {integrity: sha512-ONmRUqK7zj7DWX0D9ADe03wbwOBZxNAfF20PlGfCWQcD3+/MakShIHrMqx9YwPTfxDdF1zLeL+RGZiR9kGMLdg==}
     dev: false
+
+  /napi-wasm@1.1.0:
+    resolution: {integrity: sha512-lHwIAJbmLSjF9VDRm9GoVOy9AGp3aIvkjv+Kvz9h16QR3uSVYH78PNQUnT2U4X53mhlnV2M7wrhibQ3GHicDmg==}
+    dev: true
 
   /natural-compare-lite@1.4.0:
     resolution: {integrity: sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g==}

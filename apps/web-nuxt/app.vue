@@ -1,7 +1,6 @@
 <script>
-// TODO use variable when fixed
-import "@fontsource/readex-pro";
-import "@fontsource/m-plus-1";
+import "@fontsource-variable/sora";
+import "@fontsource-variable/m-plus-2";
 </script>
 
 <template>

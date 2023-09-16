@@ -12,7 +12,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-readex-pro)", "var(--font-m-plus-1)", "sans-serif"],
+        sans: ["var(--font-sora)", "var(--font-m-plus-2)", "sans-serif"],
       },
     },
   },

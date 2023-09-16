@@ -3,17 +3,17 @@ import "./globals.css";
 import type { Metadata } from "next";
 import UrqlProvider from "@/components/UrqlProvider";
 import { StrictMode, type ReactElement } from "react";
-import { Readex_Pro, M_PLUS_1 } from "next/font/google";
+import { Sora, M_PLUS_2 } from "next/font/google";
 import clsx from "clsx";
 
-const readex_pro = Readex_Pro({
+const sora = Sora({
   subsets: ["latin"],
-  variable: "--font-readex-pro",
+  variable: "--font-sora",
 });
 
-const m_plus_1 = M_PLUS_1({
+const m_plus_2 = M_PLUS_2({
   subsets: ["latin"],
-  variable: "--font-m-plus-1",
+  variable: "--font-m-plus-2",
 });
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ const RootLayout = ({
   children: React.ReactNode;
 }): ReactElement => (
   <StrictMode>
-    <html lang="en" className={clsx(readex_pro.variable, m_plus_1.variable)}>
+    <html lang="en" className={clsx(sora.variable, m_plus_2.variable)}>
       <body>
         <Nav />
 

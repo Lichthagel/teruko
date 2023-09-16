@@ -31,7 +31,7 @@ export default {
         load: "load 1s ease-in-out infinite",
       },
       fontFamily: {
-        sans: ["'Readex Pro'", "'M Plus 1'", "sans-serif"],
+        sans: ["'Sora Variable'", "'M Plus 2 Variable'", "sans-serif"],
       },
       screens: {
         "3xl": "2120px",
