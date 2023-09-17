@@ -11,6 +11,7 @@ import { finished } from "node:stream/promises";
 import { createId } from "@paralleldrive/cuid2";
 import { ImageExt, ImageMeta, mergeImageMeta } from "models";
 import { getPixivMetadata, matchFilename } from "../../util/pixiv";
+import { GraphQLError } from "graphql";
 
 const inUpload: string[] = [];
 
@@ -39,7 +40,7 @@ export default (b: typeof builder) => {
               !fileType ||
               !/^image\/(jpeg|gif|png|webp|avif)$/.test(fileType.mime)
             )
-              throw new Error("not an image");
+              throw new GraphQLError("not an image");
 
             // check for existing image
             if (
@@ -47,10 +48,10 @@ export default (b: typeof builder) => {
                 where: (images, { eq }) => eq(images.filename, filename),
               })
             )
-              throw new Error("image with that filename already exists");
+              throw new GraphQLError("image with that filename already exists");
 
             if (inUpload.includes(filename))
-              throw new Error("image is already being uploaded");
+              throw new GraphQLError("image is already being uploaded");
 
             // upload image
             inUpload.push(filename);
@@ -69,7 +70,7 @@ export default (b: typeof builder) => {
             const metadata = await transform.metadata();
 
             if (!metadata.width || !metadata.height)
-              throw new Error("cant read image dimensions");
+              throw new GraphQLError("cant read image dimensions");
 
             let imageMeta: ImageMeta = {};
 
