@@ -42,3 +42,23 @@ export const zImageExt = zImage.extend({
 });
 
 export type ImageExt = z.infer<typeof zImageExt>;
+
+export type ImageMeta = {
+  title?: string | null;
+  source?: string | null;
+  tags?:
+    | {
+        slug: string;
+        categorySlug?: string | null;
+      }[]
+    | null;
+};
+
+export const mergeImageMeta = (
+  meta: ImageMeta,
+  meta2: ImageMeta,
+): ImageMeta => ({
+  title: meta.title ?? meta2.title,
+  source: meta.source ?? meta2.source,
+  tags: meta.tags ? [...meta.tags, ...(meta2.tags ?? [])] : meta2.tags,
+});
