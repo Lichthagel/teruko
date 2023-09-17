@@ -44,13 +44,13 @@ async function newImage(url: string, open: boolean, target: HTMLDivElement) {
           files: [file],
         },
         {
-          url: "http://192.168.1.178:3030/graphql",
+          url: "http://127.0.0.1:5173/graphql",
           fetchOptions: {
             headers: {
               "Apollo-Require-Preflight": "true",
             },
           },
-        }
+        },
       )
       .toPromise();
 
@@ -58,17 +58,17 @@ async function newImage(url: string, open: boolean, target: HTMLDivElement) {
     if (result.data) {
       if (open)
         window.open(
-          `http://192.168.1.178:3000/${
-            result.data.createImage[0].id as string
-          }`,
-          "_blank"
+          `http://127.0.0.1:5173/${result.data.createImage[0].id as string}`,
+          "_blank",
         );
       else
         target.textContent = `id: ${result.data.createImage[0].id as string}`;
       // alert(`uploaded (id: ${result.data.createImage[0].id})`);
     } else {
       target.classList.add("terukoButtonSmall");
-      target.textContent = result.toString();
+      target.textContent = result.error
+        ? result.error.message
+        : JSON.stringify(result);
       // alert(`error: ${result}`);
     }
   } catch (error) {
