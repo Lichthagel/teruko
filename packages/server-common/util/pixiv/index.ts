@@ -68,8 +68,13 @@ export const toImageMeta = (
 
   if (pixivResult.body.tags && pixivResult.body.tags.tags) {
     for (const tag of pixivResult.body.tags.tags) {
+      const slug =
+        (tag.translation && tag.translation.en) || tag.romaji || tag.tag;
+
+      if (tags.findIndex((value) => value.slug === slug) !== -1) continue;
+
       tags.push({
-        slug: (tag.translation && tag.translation.en) || tag.romaji || tag.tag,
+        slug,
       });
     }
   }
