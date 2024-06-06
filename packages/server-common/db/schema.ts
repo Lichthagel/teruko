@@ -31,11 +31,11 @@ export const dImage = pgTable(
     width: integer("width").notNull(),
   },
   (table) => ({
-    createdAtIdx: index("Image_createdAt_idx")
-      .on(table.createdAt)
-      .desc()
-      .nullsFirst(),
-  })
+    createdAtIdx: index("Image_createdAt_idx").using(
+      "btree",
+      table.createdAt.desc().nullsLast(),
+    ),
+  }),
 );
 
 export const ImageRelations = relations(dImage, ({ many }) => ({
