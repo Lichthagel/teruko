@@ -12,6 +12,7 @@ const config: NuxtConfig = defineNuxtConfig({
     "~/components",
     { path: "~/components/Filters", prefix: "Filters" },
   ],
+  telemetry: false,
 });
 
 export default config;
