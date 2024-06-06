@@ -29,8 +29,10 @@ const TagInput = () => {
         case "Enter": {
           e.preventDefault();
 
-          if (suggestions.length > 0) {
-            handleSubmit(suggestions[activeSuggestion].slug);
+          const suggestion = suggestions[activeSuggestion];
+
+          if (suggestion) {
+            handleSubmit(suggestion.slug);
           }
 
           break;
