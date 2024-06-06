@@ -1,17 +1,16 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
-  "globalDotEnv": [".env"],
-  "pipeline": {
+  "globalDependencies": [".env"],
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": [
         ".next/**",
         "!.next/cache/**",
         ".output/**",
-        ".svelte-kit/**"
-      ],
-      "outputMode": "new-only"
+        ".svelte-kit/**",
+        "dist/**"
+      ]
     },
     "lint": {},
     "dev": {
