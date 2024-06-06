@@ -1,5 +1,5 @@
 /* eslint-disable promise/prefer-await-to-then */
-import newImage from "./newImage";
+import newImage from "./newImage.js";
 import "./style.css";
 
 let timeout: number | undefined;

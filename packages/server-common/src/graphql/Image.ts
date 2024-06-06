@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
-import { PothosTag } from "./Tag";
-import { builder } from "./builder";
-import { db, dImage, dTag, dTagCategory, d_ImageToTag } from "../db";
+import { PothosTag } from "./Tag.js";
+import { builder } from "./builder.js";
+import { db, dImage, dTag, dTagCategory, d_ImageToTag } from "../db/index.js";
 import { ImageExt } from "models";
 
 export const PothosImage = builder.objectRef<ImageExt>("Image");

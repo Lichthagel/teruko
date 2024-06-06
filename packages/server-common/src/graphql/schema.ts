@@ -1,11 +1,11 @@
-import { builder } from "./builder";
+import { builder } from "./builder.js";
 
 applyQuery(builder);
 applyMutation(builder);
 
 import "./Image";
-import { applyMutation } from "./Mutation";
-import { applyQuery } from "./Query";
+import { applyMutation } from "./Mutation/index.js";
+import { applyQuery } from "./Query/index.js";
 import "./Tag";
 import "./TagCategory";
 

@@ -1,7 +1,7 @@
-import { db, dTag, dTagCategory } from "../../db";
-import { builder } from "../builder";
+import { db, dTag, dTagCategory } from "../../db/index.js";
+import { builder } from "../builder.js";
 import { eq } from "drizzle-orm";
-import { PothosTag } from "../Tag";
+import { PothosTag } from "../Tag.js";
 
 export default (b: typeof builder) =>
   b.queryField("tag", (t) =>
@@ -20,12 +20,14 @@ export default (b: typeof builder) =>
           .where(eq(dTag.slug, slug))
           .leftJoin(dTagCategory, eq(dTag.categorySlug, dTagCategory.slug))
           .limit(1);
+        
+        const item = result[0];
 
-        return result.length === 0
-          ? null
-          : {
-              ...result[0].Tag,
-              category: result[0].TagCategory,
+        if (!item) return null;
+
+        return {
+              ...item.Tag,
+              category: item.TagCategory,
             };
       },
     })

@@ -1,5 +1,5 @@
 import { ImageMeta } from "models";
-import PixivIllustResult from "./PixivIllustResult";
+import PixivIllustResult from "./PixivIllustResult.js";
 
 export const matchFilename = (filename: string) => {
   const matches = filename.match(/(\d+)_p\d+\.(?:jpg|png|gif|jpeg|webp|avif)/);

@@ -6,7 +6,7 @@ import {
 import { useGraphQlJit } from "@envelop/graphql-jit";
 import { useResponseCache } from "@graphql-yoga/plugin-response-cache";
 import { useAPQ } from "@graphql-yoga/plugin-apq";
-import schema from "./schema";
+import schema from "./schema.js";
 
 export const getYoga = (
   fetchAPI: YogaServerOptions<object, object>["fetchAPI"],
@@ -31,4 +31,4 @@ export const getYoga = (
 
 export type { YogaServerInstance } from "graphql-yoga";
 
-export { default as schema } from "./schema";
+export { default as schema } from "./schema.js";

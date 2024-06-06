@@ -2,17 +2,17 @@ import {
   resolveCursorConnection,
   type ResolveCursorConnectionArgs,
 } from "@pothos/plugin-relay";
-import { PothosImage } from "../Image";
-import { builder } from "../builder";
+import { PothosImage } from "../Image.js";
+import { builder } from "../builder.js";
 import { asc, eq, gt, lt, desc, inArray, and, or, SQL, sql } from "drizzle-orm";
 import { z } from "zod";
-import { db, d_ImageToTag, dImage, dTag, dTagCategory } from "../../db";
+import { db, d_ImageToTag, dImage, dTag, dTagCategory } from "../../db/index.js";
 import { ImageExt } from "models";
 import { GraphQLError, GraphQLResolveInfo } from "graphql";
 import { decodeBase64, encodeBase64 } from "@pothos/core";
 
 const shouldIncludeTags = (info: GraphQLResolveInfo) =>
-  info.fieldNodes[0].selectionSet?.selections.some(
+  info.fieldNodes[0]?.selectionSet?.selections.some(
     (selection) =>
       selection.kind === "Field" &&
       selection.name.value === "edges" &&
@@ -27,19 +27,21 @@ const shouldIncludeTags = (info: GraphQLResolveInfo) =>
       )
   );
 
-const parseCursor = (cursor: string) => {
+const parseCursor = (cursor: string): {
+  date: Date;
+  id: string;
+} => {
   const match = /^(?<date>.+)-(?<id>.+)$/.exec(decodeBase64(cursor));
 
-  if (!match) {
+  if (!match || !match.groups) {
     throw new GraphQLError("Invalid cursor");
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { date, id } = match.groups!;
+  const { date, id } = match.groups;
 
   const dateParsed = z.coerce.date().safeParse(date);
 
-  if (!dateParsed.success) {
+  if (!dateParsed.success || !id) {
     throw new GraphQLError("Invalid cursor");
   }
 

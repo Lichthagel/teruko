@@ -1,3 +1,4 @@
+/* eslint-disable n/no-process-env */
 import { parseEnv, z } from "bowlingx-znv";
 import { config } from "dotenv";
 
@@ -5,8 +6,11 @@ config({
   path: "../../.env",
 });
 
-// eslint-disable-next-line n/no-process-env
-const env = parseEnv(process.env, {
+const env: Readonly<{
+  DATABASE_URL: string;
+  IMG_FOLDER: string;
+  NODE_ENV: string;
+}> = parseEnv(process.env, {
   DATABASE_URL: z
     .string()
     .url()

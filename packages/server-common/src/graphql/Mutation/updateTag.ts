@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
-import { dTag, d_ImageToTag, db } from "../../db";
-import { PothosTag } from "../Tag";
-import { builder } from "../builder";
+import { dTag, d_ImageToTag, db } from "../../db/index.js";
+import { PothosTag } from "../Tag.js";
+import { builder } from "../builder.js";
 
 export default (b: typeof builder) => {
   b.mutationField("updateTag", (t) =>
@@ -15,34 +15,34 @@ export default (b: typeof builder) => {
         category: t.arg.string(),
       },
       resolve: async (parent, { slug, newSlug, category }) => {
-        const rename: boolean =
-          newSlug !== undefined && newSlug !== null && newSlug !== slug;
+        const rename = newSlug && newSlug !== slug;
 
         if (rename) {
           // TODO less requests, without non-null assertion
           const res = await db.transaction(async (tx) => {
             // get old tag
-            const oldTag = await tx
+            const oldTagResult = await tx
               .select()
               .from(dTag)
               .where(eq(dTag.slug, slug));
 
-            if (oldTag.length === 0) {
+            const oldTag = oldTagResult[0];
+
+            if (!oldTag) {
               throw new Error("Tag not found");
             }
 
             // upsert new tag
-            const newTag = await tx
+            const newTagResult = await tx
               .insert(dTag)
               .values({
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                slug: newSlug!,
-                categorySlug: category ?? oldTag[0].categorySlug,
+                slug: newSlug,
+                categorySlug: category ?? oldTag.categorySlug,
               })
               .onConflictDoUpdate({
                 target: dTag.slug,
                 set: {
-                  categorySlug: category ?? oldTag[0].categorySlug,
+                  categorySlug: category ?? oldTag.categorySlug,
                 },
               })
               .returning();
@@ -58,8 +58,7 @@ export default (b: typeof builder) => {
               .values(
                 existing.map((e) => ({
                   A: e.A,
-                  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                  B: newSlug!,
+                  B: newSlug,
                 })),
               )
               .onConflictDoNothing();
@@ -67,7 +66,13 @@ export default (b: typeof builder) => {
             // delete old tag
             await tx.delete(dTag).where(eq(dTag.slug, slug));
 
-            return newTag[0];
+            const newTag = newTagResult[0];
+
+            if (!newTag) {
+              throw new Error("Tag not found");
+            }
+
+            return newTag;
           });
 
           return res;
@@ -78,11 +83,13 @@ export default (b: typeof builder) => {
             .where(eq(dTag.slug, slug))
             .returning();
 
-          if (res.length === 0) {
+          const item = res[0];
+
+          if (!item) {
             throw new Error("Tag not found");
           }
 
-          return res[0];
+          return item;
         }
       },
     }),

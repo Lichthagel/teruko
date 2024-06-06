@@ -3,13 +3,28 @@
   "private": true,
   "version": "0.0.0",
   "description": "",
-  "main": "index.ts",
-  "types": "index.ts",
-  "scripts": {
-    "lint": "eslint ."
-  },
   "keywords": [],
   "author": "Lichthagel",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./db": {
+      "types": "./dist/db/index.d.ts",
+      "default": "./dist/db/index.js"
+    },
+    "./graphql": {
+      "types": "./dist/graphql/index.d.ts",
+      "default": "./dist/graphql/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint ."
+  },
   "devDependencies": {
     "eslint": "^8.49.0",
     "eslint-config-lichthagel": "github:lichthagel/eslint-config-lichthagel",

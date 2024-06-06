@@ -1,17 +1,23 @@
-import { PothosImage } from "../Image";
-import { builder } from "../builder";
+import { PothosImage } from "../Image.js";
+import { builder } from "../builder.js";
 import { fileTypeFromBlob } from "file-type";
-import { dImage, dTag, d_ImageToTag, db } from "../../db";
+import { dImage, dTag, d_ImageToTag, db } from "../../db/index.js";
 import sharp from "sharp";
 import fs from "node:fs";
 import path from "node:path";
-import env from "../../env";
+import env from "../../env.js";
 import { Readable } from "node:stream";
 import { finished } from "node:stream/promises";
 import { createId } from "@paralleldrive/cuid2";
 import { ImageExt, ImageMeta, mergeImageMeta } from "models";
-import { getPixivMetadata, matchFilename } from "../../util/pixiv";
+import { getPixivMetadata, matchFilename } from "../../util/pixiv/index.js";
 import { GraphQLError } from "graphql";
+import { PgInsertValue } from "drizzle-orm/pg-core";
+
+const hasDimensions = (
+  metadata: sharp.Metadata,
+): metadata is sharp.Metadata & { width: number; height: number } =>
+  metadata.width !== undefined && metadata.height !== undefined;
 
 const inUpload: string[] = [];
 
@@ -69,7 +75,7 @@ export default (b: typeof builder) => {
 
             const metadata = await transform.metadata();
 
-            if (!metadata.width || !metadata.height)
+            if (!hasDimensions(metadata))
               throw new GraphQLError("cant read image dimensions");
 
             let imageMeta: ImageMeta = {};
@@ -89,20 +95,26 @@ export default (b: typeof builder) => {
             // insert image into db
 
             const image = await db.transaction(async (tx) => {
-              const res = await tx
+              const imageResults = await tx
                 .insert(dImage)
                 .values({
-                  id: createId(), // TODO false positive?
+                  id: createId(),
                   filename,
                   width: metadata.width,
                   height: metadata.height,
                   title: imageMeta.title,
                   source: imageMeta.source,
-                })
+                } satisfies PgInsertValue<typeof dImage>)
                 .returning();
 
+              const imageResult = imageResults[0];
+
+              if (!imageResult) {
+                throw new Error("Image not created");
+              }
+
               const image: ImageExt = {
-                ...res[0],
+                ...imageResult,
                 tags: [],
               };
 

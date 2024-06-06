@@ -3,13 +3,24 @@
   "private": true,
   "version": "0.0.0",
   "description": "",
-  "main": "index.ts",
-  "types": "index.ts",
-  "scripts": {
-    "lint": "eslint ."
-  },
   "keywords": [],
   "author": "Lichthagel",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./stores": {
+      "types": "./dist/stores.d.ts",
+      "default": "./dist/stores.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint ."
+  },
   "devDependencies": {
     "eslint": "^8.49.0",
     "eslint-config-lichthagel": "github:lichthagel/eslint-config-lichthagel",

@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
-import { db, dTag, dTagCategory } from "../db";
-import { builder } from "./builder";
-import { PothosTagCategory } from "./TagCategory";
+import { db, dTag, dTagCategory } from "../db/index.js";
+import { builder } from "./builder.js";
+import { PothosTagCategory } from "./TagCategory.js";
 import { TagExt } from "models";
 
 export const PothosTag = builder.objectRef<TagExt>("Tag");
@@ -17,9 +17,13 @@ builder.node(PothosTag, {
       .where(eq(dTag.slug, id))
       .leftJoin(dTagCategory, eq(dTag.categorySlug, dTagCategory.slug));
 
+    const item = res[0];
+
+    if (!item) return null;
+
     return {
-      ...res[0].Tag,
-      category: res[0].TagCategory,
+      ...item.Tag,
+      category: item.TagCategory,
     };
   },
   fields: (t) => ({
