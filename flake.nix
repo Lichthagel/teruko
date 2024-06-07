@@ -27,7 +27,7 @@
           default = pkgs.mkShell {
             packages = with pkgs; [
               nodejs
-              nodePackages.pnpm
+              corepack
             ];
           };
         }
@@ -35,6 +35,6 @@
     };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
   };
 }
