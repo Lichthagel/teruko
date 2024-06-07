@@ -14,11 +14,11 @@ export const GET = (async ({ params }): Promise<Response> => {
     .where(drizzle.eq(dImage.id, id))
     .limit(1);
 
-  const [{ filename }] = image;
-
-  if (!filename) {
+  if (!image[0]) {
     return new Response(null, { status: 404 });
   }
+
+  const [{ filename }] = image;
 
   const filepath = path.resolve(env.IMG_FOLDER, filename);
 
@@ -29,7 +29,7 @@ export const GET = (async ({ params }): Promise<Response> => {
       "Content-Type": "application/octet-stream",
       "Content-Disposition": `attachment; filename=${filename.replace(
         /[^./\\]+$/,
-        "webp"
+        "webp",
       )}`,
     },
   });

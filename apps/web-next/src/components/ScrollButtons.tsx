@@ -11,7 +11,7 @@ const ScrollButtons = () => {
   const handleScroll = () => {
     setShowToTop(window.scrollY > 100);
     setShowToBottom(
-      window.scrollY + window.innerHeight < document.body.scrollHeight - 100
+      window.scrollY + window.innerHeight < document.body.scrollHeight - 100,
     );
   };
 
@@ -23,13 +23,13 @@ const ScrollButtons = () => {
   return (
     <div className="join fixed bottom-3 right-3 z-10 bg-base-100">
       <button
-        className={clsx("btn-ghost btn-square btn", { hidden: !showToTop })}
+        className={clsx("btn btn-square btn-ghost", { hidden: !showToTop })}
         onClick={() => window.scrollTo({ behavior: "smooth", top: 0 })}
       >
         <ChevronUp />
       </button>
       <button
-        className={clsx("btn-ghost btn-square btn", { hidden: !showToBottom })}
+        className={clsx("btn btn-square btn-ghost", { hidden: !showToBottom })}
         onClick={() => {
           window.scrollTo({
             behavior: "smooth",

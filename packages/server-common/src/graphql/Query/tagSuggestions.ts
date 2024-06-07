@@ -17,7 +17,7 @@ export default (b: typeof builder) =>
           .select()
           .from(dTag)
           .where(
-            sql`LOWER(${dTag.slug}) LIKE LOWER(${`%${query}%`}) ESCAPE '\\'`
+            sql`LOWER(${dTag.slug}) LIKE LOWER(${`%${query}%`}) ESCAPE '\\'`,
           )
           .orderBy(sql`CHAR_LENGTH(${dTag.slug})`)
           .limit(10)
@@ -28,5 +28,5 @@ export default (b: typeof builder) =>
           category: r.TagCategory,
         }));
       },
-    })
+    }),
   );

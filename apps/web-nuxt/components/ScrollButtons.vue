@@ -34,14 +34,14 @@ onBeforeUnmount(() => {
 <template>
   <div class="join fixed bottom-3 right-3 z-10 bg-base-100">
     <button
-      class="btn-ghost btn-square btn"
+      class="btn btn-square btn-ghost"
       :class="{ hidden: !showToTop }"
       @click="scrollToTop"
     >
       <ChevronUp />
     </button>
     <button
-      class="btn-ghost btn-square btn"
+      class="btn btn-square btn-ghost"
       :class="{ hidden: !showToBottom }"
       @click="scrollToBottom"
     >

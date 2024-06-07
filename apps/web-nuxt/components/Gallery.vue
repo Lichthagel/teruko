@@ -9,7 +9,7 @@ const props = defineProps<{
 
 const { images, fetching, error, stale, fetchMore } = useImages(
   toRef(() => props.tags),
-  toRef(() => props.sort)
+  toRef(() => props.sort),
 );
 
 const observer = ref<IntersectionObserver>();

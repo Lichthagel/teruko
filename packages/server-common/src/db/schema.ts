@@ -76,7 +76,7 @@ export const d_ImageToTag = pgTable(
   },
   (table) => ({
     pk: primaryKey(table.A, table.B),
-  })
+  }),
 );
 
 export const _ImageToTagRelations = relations(d_ImageToTag, ({ one }) => ({

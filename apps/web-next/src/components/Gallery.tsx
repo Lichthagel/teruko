@@ -36,7 +36,7 @@ const Gallery: React.FC<GalleryProps> = ({
 
       if (node) observer.current.observe(node);
     },
-    [fetchMore, fetching]
+    [fetchMore, fetching],
   );
 
   return (

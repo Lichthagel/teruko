@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
 
   event.node.res.setHeader(
     "Content-Disposition",
-    `attachment; filename=${filename}`
+    `attachment; filename=${filename}`,
   );
 
   return sendStream(event, fs.createReadStream(filepath));

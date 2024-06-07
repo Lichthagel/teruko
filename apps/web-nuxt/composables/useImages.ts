@@ -36,7 +36,7 @@ type ImagesOperationResult = OperationResult<ImagesResult, ImagesArgs>;
 const getRequest = (
   tags: readonly string[],
   sort: ImageSort,
-  cursor?: string
+  cursor?: string,
 ) =>
   createRequest(
     gql`
@@ -91,12 +91,12 @@ const getRequest = (
       first: sort === "NEWEST" || sort === "RANDOM" ? 20 : undefined,
       last: sort === "OLDEST" ? 20 : undefined,
       random: sort === "RANDOM" ? true : undefined,
-    }
+    },
   );
 
 export const useImages = (
   tags: Ref<readonly string[]>,
-  sort: Ref<ImageSort>
+  sort: Ref<ImageSort>,
 ) => {
   const clientHandle = useClientHandle();
 
@@ -119,13 +119,13 @@ export const useImages = (
         if (newEdges.length > 0) {
           if (usedCursor) {
             const idx = prevEdges.findIndex(
-              (edge) => edge.cursor === usedCursor
+              (edge) => edge.cursor === usedCursor,
             );
 
             return [...prevEdges.slice(0, idx + 1), ...newEdges];
           } else {
             const idx = prevEdges.findIndex(
-              (image) => image.cursor === newEdges.at(-1)?.cursor
+              (image) => image.cursor === newEdges.at(-1)?.cursor,
             );
 
             return idx === -1

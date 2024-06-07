@@ -20,15 +20,15 @@ export default (b: typeof builder) =>
           .where(eq(dTag.slug, slug))
           .leftJoin(dTagCategory, eq(dTag.categorySlug, dTagCategory.slug))
           .limit(1);
-        
+
         const item = result[0];
 
         if (!item) return null;
 
         return {
-              ...item.Tag,
-              category: item.TagCategory,
-            };
+          ...item.Tag,
+          category: item.TagCategory,
+        };
       },
-    })
+    }),
   );

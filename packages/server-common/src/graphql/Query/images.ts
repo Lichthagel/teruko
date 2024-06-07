@@ -6,7 +6,13 @@ import { PothosImage } from "../Image.js";
 import { builder } from "../builder.js";
 import { asc, eq, gt, lt, desc, inArray, and, or, SQL, sql } from "drizzle-orm";
 import { z } from "zod";
-import { db, d_ImageToTag, dImage, dTag, dTagCategory } from "../../db/index.js";
+import {
+  db,
+  d_ImageToTag,
+  dImage,
+  dTag,
+  dTagCategory,
+} from "../../db/index.js";
 import { ImageExt } from "models";
 import { GraphQLError, GraphQLResolveInfo } from "graphql";
 import { decodeBase64, encodeBase64 } from "@pothos/core";
@@ -22,12 +28,14 @@ const shouldIncludeTags = (info: GraphQLResolveInfo) =>
           selection.name.value === "node" &&
           selection.selectionSet?.selections.some(
             (selection) =>
-              selection.kind === "Field" && selection.name.value === "tags"
-          )
-      )
+              selection.kind === "Field" && selection.name.value === "tags",
+          ),
+      ),
   );
 
-const parseCursor = (cursor: string): {
+const parseCursor = (
+  cursor: string,
+): {
   date: Date;
   id: string;
 } => {
@@ -86,8 +94,8 @@ export default (b: typeof builder) =>
               conditions.push(
                 or(
                   gt(dImage.createdAt, date),
-                  and(eq(dImage.createdAt, date), gt(dImage.id, id))
-                )
+                  and(eq(dImage.createdAt, date), gt(dImage.id, id)),
+                ),
               );
             }
 
@@ -97,8 +105,8 @@ export default (b: typeof builder) =>
               conditions.push(
                 or(
                   lt(dImage.createdAt, date),
-                  and(eq(dImage.createdAt, date), lt(dImage.id, id))
-                )
+                  and(eq(dImage.createdAt, date), lt(dImage.id, id)),
+                ),
               );
             }
 
@@ -111,7 +119,7 @@ export default (b: typeof builder) =>
                     .where(eq(d_ImageToTag.B, tag));
 
                   return inArray(dImage.id, sq);
-                })
+                }),
               );
             }
 
@@ -124,7 +132,7 @@ export default (b: typeof builder) =>
                   : [
                       inverted ? asc(dImage.createdAt) : desc(dImage.createdAt),
                       asc(dImage.id),
-                    ])
+                    ]),
               )
               .where(and(...conditions))
               .limit(limit)
@@ -148,7 +156,7 @@ export default (b: typeof builder) =>
                 desc(dImage.createdAt),
                 inverted ? asc(dImage.id) : desc(dImage.id),
                 asc(dTag.categorySlug),
-                asc(dTag.slug)
+                asc(dTag.slug),
               );
 
             // Build object from the returned rows
@@ -187,7 +195,7 @@ export default (b: typeof builder) =>
             }
 
             return reduced;
-          }
+          },
         ),
-    })
+    }),
   );

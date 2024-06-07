@@ -4,7 +4,7 @@ import { CombinedError, gql, useClientHandle } from "@urql/vue";
 import { TagExt } from "models";
 
 const useSuggestions = (
-  query: Ref<string>
+  query: Ref<string>,
 ): {
   fetching: Ref<boolean>;
   error: Ref<CombinedError | null>;
@@ -37,7 +37,7 @@ const useSuggestions = (
               }
             }
           `,
-          { query }
+          { query },
         )
         .toPromise()
         .then(({ data }) => {

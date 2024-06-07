@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
 
   event.node.res.setHeader(
     "Content-Disposition",
-    `attachment; filename=${filename.replace(/[^./\\]+$/, "avif")}`
+    `attachment; filename=${filename.replace(/[^./\\]+$/, "avif")}`,
   );
 
   return sendStream(event, sharp(filepath).webp({ quality: 100 }));

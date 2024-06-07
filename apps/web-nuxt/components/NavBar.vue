@@ -6,12 +6,12 @@ import { Plus } from "lucide-vue-next";
   <div class="navbar bg-base-100">
     <div class="container mx-auto">
       <div class="flex-1">
-        <NuxtLink class="btn-ghost btn text-xl normal-case" href="/">
+        <NuxtLink class="btn btn-ghost text-xl normal-case" href="/">
           てる子
         </NuxtLink>
       </div>
       <div class="flex-none">
-        <NuxtLink class="btn-ghost btn-square btn" href="/new">
+        <NuxtLink class="btn btn-square btn-ghost" href="/new">
           <Plus />
         </NuxtLink>
       </div>

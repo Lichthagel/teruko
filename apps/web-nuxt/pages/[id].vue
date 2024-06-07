@@ -48,7 +48,7 @@ const scroll = (payload: Event) => {
 useHead({
   title: computed(
     () =>
-      `${data.value?.image?.title ? `${data.value.image.title} - ` : ""}てる子`
+      `${data.value?.image?.title ? `${data.value.image.title} - ` : ""}てる子`,
   ),
 });
 </script>

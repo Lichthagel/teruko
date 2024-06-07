@@ -6,7 +6,7 @@ import fs from "node:fs/promises";
 
 export async function GET(
   request: NextRequest,
-  context: { params: { filename: string } }
+  context: { params: { filename: string } },
 ): Promise<Response> {
   const filename = z.string().parse(context.params.filename);
 

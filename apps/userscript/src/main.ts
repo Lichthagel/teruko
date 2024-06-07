@@ -10,7 +10,7 @@ const observer = new MutationObserver(() => {
   timeout = window.setTimeout(() => {
     document
       .querySelectorAll(
-        "div[role=presentation] > a.gtm-expand-full-size-illust"
+        "div[role=presentation] > a.gtm-expand-full-size-illust",
       )
       // eslint-disable-next-line unicorn/no-array-for-each
       .forEach((node) => {
@@ -29,7 +29,7 @@ const observer = new MutationObserver(() => {
           newImage(
             (node as HTMLLinkElement).href,
             event.shiftKey,
-            event.target as HTMLDivElement
+            event.target as HTMLDivElement,
           ).catch(console.error);
         });
 

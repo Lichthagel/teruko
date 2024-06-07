@@ -19,11 +19,11 @@ const ImageCard: React.FC<ImageCardProps> = ({ image }: ImageCardProps) => {
       tagsStore.set([tagSlug]);
       router.push("/");
     },
-    [router]
+    [router],
   );
 
   return (
-    <div className="mb-1 bg-zinc-300 shadow-xl animate-in fade-in slide-in-from-bottom duration-500 dark:bg-gray-700">
+    <div className="mb-1 bg-zinc-300 shadow-xl duration-500 animate-in fade-in slide-in-from-bottom dark:bg-gray-700">
       <NextLink href={`/${image.id}`}>
         <div className="relative">
           <NextImage

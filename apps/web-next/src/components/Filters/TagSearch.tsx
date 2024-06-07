@@ -11,7 +11,7 @@ const TagInput = () => {
   const [tagInput, setTagInput] = useState("");
   const [activeSuggestion, setActiveSuggestion] = useState(0);
 
-  const { fetching, error, suggestions } = useSuggestions(tagInput);
+  const { fetching, suggestions } = useSuggestions(tagInput); // TODO handle error
 
   const handleSubmit = useCallback(
     (tagSlug: string) => {
@@ -20,7 +20,7 @@ const TagInput = () => {
       setTagInput("");
       setActiveSuggestion(0);
     },
-    [tags]
+    [tags],
   );
 
   const handleKeyDown = useCallback(
@@ -68,7 +68,7 @@ const TagInput = () => {
         // No default
       }
     },
-    [activeSuggestion, handleSubmit, suggestions]
+    [activeSuggestion, handleSubmit, suggestions],
   );
 
   return (

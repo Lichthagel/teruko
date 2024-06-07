@@ -12,13 +12,18 @@
   $: suggestionsResult = suggestionsStore(client, tagInput);
 
   $: fetching = $suggestionsResult.fetching;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   $: error = $suggestionsResult.error; // TODO: Handle error
   $: suggestions = $suggestionsResult.suggestions;
 
   const handleSubmit = () => {
-    if (suggestions.length === 0) return;
+    const suggestion = suggestions[activeSuggestion];
 
-    tagsStore.set([...$tagsStore, suggestions[activeSuggestion].slug]);
+    if (!suggestion) {
+      return;
+    }
+
+    tagsStore.set([...$tagsStore, suggestion.slug]);
     tagInput = "";
     activeSuggestion = 0;
   };

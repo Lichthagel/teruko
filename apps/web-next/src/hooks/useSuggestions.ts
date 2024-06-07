@@ -32,7 +32,7 @@ const useSuggestions = (query: string) => {
               }
             }
           `,
-          { query }
+          { query },
         )
         .toPromise()
         .then(({ data }) => {

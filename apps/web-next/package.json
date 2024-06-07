@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "prettier --check . && next lint",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@nanostores/react": "^0.7.1",

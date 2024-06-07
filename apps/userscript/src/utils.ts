@@ -1,7 +1,7 @@
 export async function waitForElement(
   selector: (container: Document) => Element | null | undefined,
   container = document,
-  timeoutSecs = 7
+  timeoutSecs = 7,
 ): Promise<Element> {
   const element = selector(container);
   if (element) {

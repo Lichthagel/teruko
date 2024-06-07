@@ -37,7 +37,7 @@ const suggestionsStore = (client: Client, query: string) => {
               }
             }
           `,
-          { query }
+          { query },
         )
         .subscribe(({ data, error }) => {
           result.set({
@@ -50,7 +50,7 @@ const suggestionsStore = (client: Client, query: string) => {
       return () => {
         querySubscription.unsubscribe();
       };
-    }
+    },
   );
 
   return result;

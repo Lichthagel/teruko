@@ -40,7 +40,7 @@ type ImagesOperationResult = OperationResult<ImagesResult, ImagesArgs>;
 const getRequest = (
   tags: readonly string[],
   sort: ImageSort,
-  cursor: string | null = null
+  cursor: string | null = null,
 ): GraphQLRequest<ImagesResult, ImagesArgs> =>
   createRequest(
     gql`
@@ -95,7 +95,7 @@ const getRequest = (
       first: sort === "NEWEST" || sort === "RANDOM" ? 20 : null,
       last: sort === "OLDEST" ? 20 : null,
       random: sort === "RANDOM",
-    }
+    },
   );
 
 type Result = {
@@ -117,7 +117,7 @@ const initialResult: Result = {
 export default (
   client: Client,
   tags: readonly string[],
-  sort: ImageSort
+  sort: ImageSort,
 ): Readable<Result> => {
   let edges: ImagesResult["images"]["edges"] = [];
 
@@ -136,7 +136,7 @@ export default (
           edges = [...edges, ...newEdges];
         } else {
           const idx = edges.findIndex(
-            (edge) => edge.cursor === newEdges.at(-1)?.cursor
+            (edge) => edge.cursor === newEdges.at(-1)?.cursor,
           );
 
           edges =

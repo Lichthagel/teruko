@@ -39,7 +39,7 @@ type ImagesOperationResult = OperationResult<ImagesResult, ImagesArgs>;
 const getRequest = (
   tags: string[],
   sort: ImageSort,
-  cursor: string | null = null
+  cursor: string | null = null,
 ): GraphQLRequest<ImagesResult, ImagesArgs> =>
   createRequest(
     gql`
@@ -94,7 +94,7 @@ const getRequest = (
       first: sort === "NEWEST" || sort === "RANDOM" ? 20 : null,
       last: sort === "OLDEST" ? 20 : null,
       random: sort === "RANDOM",
-    }
+    },
   );
 
 type RequestParams = {
@@ -175,13 +175,13 @@ const useImages = (tags: string[], sort: ImageSort) => {
           if (newEdges.length > 0) {
             if (usedCursor) {
               const idx = prevEdges.findIndex(
-                (edge) => edge.cursor === usedCursor
+                (edge) => edge.cursor === usedCursor,
               );
 
               return [...prevEdges.slice(0, idx + 1), ...newEdges];
             } else {
               const idx = prevEdges.findIndex(
-                (edge) => edge.cursor === newEdges.at(-1)?.cursor
+                (edge) => edge.cursor === newEdges.at(-1)?.cursor,
               );
 
               return idx === -1
@@ -196,7 +196,7 @@ const useImages = (tags: string[], sort: ImageSort) => {
         setHasMore(
           res.operation.variables.last
             ? pageInfo.hasPreviousPage
-            : pageInfo.hasNextPage
+            : pageInfo.hasNextPage,
         );
       }
 
@@ -210,7 +210,7 @@ const useImages = (tags: string[], sort: ImageSort) => {
         resetTimeout();
       }
     },
-    [cancelTimeout, resetTimeout]
+    [cancelTimeout, resetTimeout],
   );
 
   useEffect(() => {

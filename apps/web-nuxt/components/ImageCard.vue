@@ -9,7 +9,7 @@ const props = defineProps<{
 
 <template>
   <div
-    class="mb-1 bg-zinc-300 shadow-xl animate-in fade-in slide-in-from-bottom duration-500 dark:bg-gray-700"
+    class="mb-1 bg-zinc-300 shadow-xl duration-500 animate-in fade-in slide-in-from-bottom dark:bg-gray-700"
   >
     <NuxtLink :href="`/${props.image.id}`">
       <div class="relative">
@@ -32,7 +32,7 @@ const props = defineProps<{
     >
       <template
         v-for="tag in props.image.tags?.filter(
-          (tag) => !tag.slug.startsWith('artist_')
+          (tag) => !tag.slug.startsWith('artist_'),
         )"
         :key="tag.slug"
       >
