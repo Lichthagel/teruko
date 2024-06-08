@@ -10,6 +10,22 @@
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write ."
   },
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": [
+          "{projectRoot}/.output"
+        ]
+      }
+    },
+    "includedScripts": [
+      "build",
+      "dev",
+      "format",
+      "lint",
+      "preview"
+    ]
+  },
   "devDependencies": {
     "@nuxt/devtools": "^0.8.3",
     "@nuxt/eslint-config": "^0.2.0",
