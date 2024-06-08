@@ -1,5 +1,5 @@
 /* eslint-disable n/no-process-env */
-import { parseEnv, z } from "bowlingx-znv";
+import { parseEnv, z } from "znv";
 import { config } from "dotenv";
 
 config({

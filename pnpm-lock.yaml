@@ -380,9 +380,6 @@ importers:
       '@pothos/plugin-relay':
         specifier: ^3.43.1
         version: 3.43.1(@pothos/core@3.35.0(graphql@16.8.0))(graphql@16.8.0)
-      bowlingx-znv:
-        specifier: ^0.4.7
-        version: 0.4.7(zod@3.22.2)
       dotenv:
         specifier: ^16.3.1
         version: 16.3.1
@@ -410,6 +407,9 @@ importers:
       sharp:
         specifier: ^0.32.5
         version: 0.32.5
+      znv:
+        specifier: ^0.4.0
+        version: 0.4.0(zod@3.22.2)
       zod:
         specifier: ^3.22.2
         version: 3.22.2
@@ -2297,11 +2297,6 @@ packages:
 
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
-
-  bowlingx-znv@0.4.7:
-    resolution: {integrity: sha512-NWUurFKTQ+1U/s7MZD8/itEPyuZCDnFDcuSF1kX/zzJUVip7cxh2dnCA0qCRPfr0gDV1o51dejDJm7KO66Ex9g==}
-    peerDependencies:
-      zod: ^3.13.2
 
   boxen@7.1.1:
     resolution: {integrity: sha512-2hCgjEmP8YLWQ130n2FerGv7rYpfBmnmp9Uy2Le1vge6X3gZIfSmEzP5QTDElFxcvVcXlEn8Aq6MU/PZygIOog==}
@@ -6539,6 +6534,11 @@ packages:
     resolution: {integrity: sha512-UfZ0oa0C8LI58wJ+moL46BDIMgCQbnsb+2PoiJYtonhBsMh2bq1eRBVkvjfVsqbEHd9/EgKPUuL9saSSsec8OA==}
     engines: {node: '>= 12.0.0'}
 
+  znv@0.4.0:
+    resolution: {integrity: sha512-6/pGsQhBisLzKdyC90mUCRgYDtCfQ4aQ68sDybexq3GMzqqkp662GH6qIyuCHJC1i72hJPHbWAhccTJVuZUQfA==}
+    peerDependencies:
+      zod: ^3.13.2
+
   zod@3.21.4:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
 
@@ -8697,11 +8697,6 @@ snapshots:
       readable-stream: 3.6.2
 
   boolbase@1.0.0: {}
-
-  bowlingx-znv@0.4.7(zod@3.22.2):
-    dependencies:
-      colorette: 2.0.20
-      zod: 3.22.2
 
   boxen@7.1.1:
     dependencies:
@@ -13674,6 +13669,11 @@ snapshots:
       archiver-utils: 4.0.1
       compress-commons: 5.0.1
       readable-stream: 3.6.2
+
+  znv@0.4.0(zod@3.22.2):
+    dependencies:
+      colorette: 2.0.20
+      zod: 3.22.2
 
   zod@3.21.4: {}
 
