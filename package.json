@@ -3,11 +3,13 @@
   "scripts": {
     "build": "nx run-many -t build",
     "lint": "nx run-many -t lint",
-    "format": "nx run-many -t format"
+    "format": "nx run-many -t format",
+    "prepare": "husky"
   },
   "devDependencies": {
     "eslint": "^8.49.0",
     "eslint-config-lichthagel": "github:lichthagel/eslint-config-lichthagel",
+    "husky": "^9.0.11",
     "nx": "19.2.2",
     "prettier": "^3.0.3"
   },
