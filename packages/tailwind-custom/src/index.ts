@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+
 import daisyui from "daisyui";
 import plugin from "tailwindcss/plugin.js";
 import animate from "tailwindcss-animate";
