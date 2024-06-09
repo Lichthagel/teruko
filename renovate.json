@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": ["config:recommended", ":disableDigestUpdates"],
   "baseBranches": ["main"],
   "labels": ["dependencies"],
   "schedule": ["before 5am on the first day of the week"],
