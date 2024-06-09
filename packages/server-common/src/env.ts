@@ -1,6 +1,6 @@
 /* eslint-disable n/no-process-env */
-import { parseEnv, z } from "znv";
 import { config } from "dotenv";
+import { parseEnv, z } from "znv";
 
 config({
   path: "../../.env",

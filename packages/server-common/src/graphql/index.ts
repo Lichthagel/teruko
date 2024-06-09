@@ -1,11 +1,12 @@
+import { useGraphQlJit } from "@envelop/graphql-jit";
+import { useAPQ } from "@graphql-yoga/plugin-apq";
+import { useResponseCache } from "@graphql-yoga/plugin-response-cache";
 import {
   YogaServerInstance,
   YogaServerOptions,
   createYoga,
 } from "graphql-yoga";
-import { useGraphQlJit } from "@envelop/graphql-jit";
-import { useResponseCache } from "@graphql-yoga/plugin-response-cache";
-import { useAPQ } from "@graphql-yoga/plugin-apq";
+
 import schema from "./schema.js";
 
 export const getYoga = (
@@ -29,6 +30,6 @@ export const getYoga = (
     },
   });
 
-export type { YogaServerInstance } from "graphql-yoga";
-
 export { default as schema } from "./schema.js";
+
+export type { YogaServerInstance } from "graphql-yoga";

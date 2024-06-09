@@ -1,16 +1,18 @@
+import { asc, eq } from "drizzle-orm";
 import { ImageExt } from "models";
+
 import {
-  db,
   dImage,
   dTag,
   dTagCategory,
+  // eslint-disable-next-line perfectionist/sort-named-imports
   d_ImageToTag,
+  db,
 } from "../../db/index.js";
 import { PothosImage } from "../Image.js";
 import { builder } from "../builder.js";
-import { asc, eq } from "drizzle-orm";
 
-export default (b: typeof builder) =>
+const image = (b: typeof builder) =>
   b.queryField("image", (t) =>
     t.field({
       type: PothosImage,
@@ -67,5 +69,6 @@ export default (b: typeof builder) =>
 
         return reduced[0] ?? undefined;
       },
-    }),
-  );
+    }));
+
+export default image;

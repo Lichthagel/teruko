@@ -1,9 +1,11 @@
 import { eq } from "drizzle-orm";
+
+// eslint-disable-next-line perfectionist/sort-named-imports
 import { dTag, d_ImageToTag, db } from "../../db/index.js";
 import { PothosTag } from "../Tag.js";
 import { builder } from "../builder.js";
 
-export default (b: typeof builder) => {
+const updateTag = (b: typeof builder) => {
   b.mutationField("updateTag", (t) =>
     t.field({
       type: PothosTag,
@@ -92,6 +94,7 @@ export default (b: typeof builder) => {
           return item;
         }
       },
-    }),
-  );
+    }));
 };
+
+export default updateTag;

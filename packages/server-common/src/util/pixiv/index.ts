@@ -1,9 +1,12 @@
 import { ImageMeta } from "models";
+
 import PixivIllustResult from "./PixivIllustResult.js";
 
 export const matchFilename = (filename: string) => {
   const matches = filename.match(/(\d+)_p\d+\.(?:jpg|png|gif|jpeg|webp|avif)/);
-  if (matches) return matches[1];
+  if (matches) {
+    return matches[1];
+  }
   return null;
 };
 
@@ -30,13 +33,14 @@ export const toImageMeta = (
     },
   ];
 
-  if (!pixivResult.body)
+  if (!pixivResult.body) {
     return {
-      source: pixivIdFallback
-        ? `https://www.pixiv.net/en/artworks/${pixivIdFallback}`
-        : undefined,
+      source: pixivIdFallback ?
+        `https://www.pixiv.net/en/artworks/${pixivIdFallback}` :
+        undefined,
       tags,
     };
+  }
 
   if (pixivResult.body.userId) {
     const userId = `artist_${pixivResult.body.userId}`;
@@ -71,7 +75,9 @@ export const toImageMeta = (
       const slug =
         (tag.translation && tag.translation.en) || tag.romaji || tag.tag;
 
-      if (tags.findIndex((value) => value.slug === slug) !== -1) continue;
+      if (tags.findIndex((value) => value.slug === slug) !== -1) {
+        continue;
+      }
 
       tags.push({
         slug,

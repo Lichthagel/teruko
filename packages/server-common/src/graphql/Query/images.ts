@@ -1,34 +1,38 @@
+import { decodeBase64, encodeBase64 } from "@pothos/core";
 import {
-  resolveCursorConnection,
   type ResolveCursorConnectionArgs,
+  resolveCursorConnection,
 } from "@pothos/plugin-relay";
-import { PothosImage } from "../Image.js";
-import { builder } from "../builder.js";
-import { asc, eq, gt, lt, desc, inArray, and, or, SQL, sql } from "drizzle-orm";
-import { z } from "zod";
 import {
-  db,
-  d_ImageToTag,
+  SQL, and, asc, desc, eq, gt, inArray, lt, or, sql,
+} from "drizzle-orm";
+import { GraphQLError, GraphQLResolveInfo, Kind } from "graphql";
+import { ImageExt } from "models";
+import { z } from "zod";
+
+import {
   dImage,
   dTag,
   dTagCategory,
+  // eslint-disable-next-line perfectionist/sort-named-imports
+  d_ImageToTag,
+  db,
 } from "../../db/index.js";
-import { ImageExt } from "models";
-import { GraphQLError, GraphQLResolveInfo } from "graphql";
-import { decodeBase64, encodeBase64 } from "@pothos/core";
+import { PothosImage } from "../Image.js";
+import { builder } from "../builder.js";
 
 const shouldIncludeTags = (info: GraphQLResolveInfo) =>
   info.fieldNodes[0]?.selectionSet?.selections.some(
     (selection) =>
-      selection.kind === "Field" &&
+      selection.kind === Kind.FIELD &&
       selection.name.value === "edges" &&
       selection.selectionSet?.selections.some(
         (selection) =>
-          selection.kind === "Field" &&
+          selection.kind === Kind.FIELD &&
           selection.name.value === "node" &&
           selection.selectionSet?.selections.some(
             (selection) =>
-              selection.kind === "Field" && selection.name.value === "tags",
+              selection.kind === Kind.FIELD && selection.name.value === "tags",
           ),
       ),
   );
@@ -59,7 +63,7 @@ const parseCursor = (
   };
 };
 
-export default (b: typeof builder) =>
+const images = (b: typeof builder) =>
   b.queryField("images", (t) =>
     t.connection({
       type: PothosImage,
@@ -127,12 +131,9 @@ export default (b: typeof builder) =>
               .select()
               .from(dImage)
               .orderBy(
-                ...(random
-                  ? [sql`RANDOM()`]
-                  : [
-                      inverted ? asc(dImage.createdAt) : desc(dImage.createdAt),
-                      asc(dImage.id),
-                    ]),
+                ...(random ?
+                    [sql`RANDOM()`] :
+                    [inverted ? asc(dImage.createdAt) : desc(dImage.createdAt), asc(dImage.id)]),
               )
               .where(and(...conditions))
               .limit(limit)
@@ -197,5 +198,6 @@ export default (b: typeof builder) =>
             return reduced;
           },
         ),
-    }),
-  );
+    }));
+
+export default images;

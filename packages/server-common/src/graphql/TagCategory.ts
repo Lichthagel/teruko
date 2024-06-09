@@ -1,7 +1,9 @@
 import type { TagCategory } from "models";
-import { db, dTagCategory } from "../db/index.js";
-import { builder } from "./builder.js";
+
 import { eq } from "drizzle-orm";
+
+import { dTagCategory, db } from "../db/index.js";
+import { builder } from "./builder.js";
 
 export const PothosTagCategory = builder.objectRef<TagCategory>("TagCategory");
 

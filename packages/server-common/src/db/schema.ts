@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import { relations } from "drizzle-orm";
 import {
   index,

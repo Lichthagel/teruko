@@ -1,27 +1,31 @@
-import { PothosImage } from "../Image.js";
-import { builder } from "../builder.js";
+import { createId } from "@paralleldrive/cuid2";
+import { PgInsertValue } from "drizzle-orm/pg-core";
 import { fileTypeFromBlob } from "file-type";
-import { dImage, dTag, d_ImageToTag, db } from "../../db/index.js";
-import sharp from "sharp";
+import { GraphQLError } from "graphql";
+import { ImageExt, ImageMeta, mergeImageMeta } from "models";
 import fs from "node:fs";
 import path from "node:path";
-import env from "../../env.js";
 import { Readable } from "node:stream";
 import { finished } from "node:stream/promises";
-import { createId } from "@paralleldrive/cuid2";
-import { ImageExt, ImageMeta, mergeImageMeta } from "models";
+import sharp from "sharp";
+
+import {
+  // eslint-disable-next-line perfectionist/sort-named-imports
+  dImage, dTag, d_ImageToTag, db,
+} from "../../db/index.js";
+import env from "../../env.js";
 import { getPixivMetadata, matchFilename } from "../../util/pixiv/index.js";
-import { GraphQLError } from "graphql";
-import { PgInsertValue } from "drizzle-orm/pg-core";
+import { PothosImage } from "../Image.js";
+import { builder } from "../builder.js";
 
 const hasDimensions = (
   metadata: sharp.Metadata,
-): metadata is sharp.Metadata & { width: number; height: number } =>
+): metadata is { width: number; height: number } & sharp.Metadata =>
   metadata.width !== undefined && metadata.height !== undefined;
 
 const inUpload: string[] = [];
 
-export default (b: typeof builder) => {
+const createImage = (b: typeof builder) => {
   b.mutationField("createImage", (t) =>
     t.field({
       type: [PothosImage],
@@ -45,19 +49,18 @@ export default (b: typeof builder) => {
             if (
               !fileType ||
               !/^image\/(jpeg|gif|png|webp|avif)$/.test(fileType.mime)
-            )
-              throw new GraphQLError("not an image");
+            ) { throw new GraphQLError("not an image"); }
 
             // check for existing image
             if (
               await db.query.Image.findFirst({
                 where: (images, { eq }) => eq(images.filename, filename),
               })
-            )
-              throw new GraphQLError("image with that filename already exists");
+            ) { throw new GraphQLError("image with that filename already exists"); }
 
-            if (inUpload.includes(filename))
+            if (inUpload.includes(filename)) {
               throw new GraphQLError("image is already being uploaded");
+            }
 
             // upload image
             inUpload.push(filename);
@@ -75,8 +78,9 @@ export default (b: typeof builder) => {
 
             const metadata = await transform.metadata();
 
-            if (!hasDimensions(metadata))
+            if (!hasDimensions(metadata)) {
               throw new GraphQLError("cant read image dimensions");
+            }
 
             let imageMeta: ImageMeta = {};
 
@@ -140,6 +144,7 @@ export default (b: typeof builder) => {
             return image;
           }),
         ),
-    }),
-  );
+    }));
 };
+
+export default createImage;

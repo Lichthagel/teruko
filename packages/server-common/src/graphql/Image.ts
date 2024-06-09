@@ -1,8 +1,12 @@
 import { eq } from "drizzle-orm";
+import { ImageExt } from "models";
+
+import {
+  // eslint-disable-next-line perfectionist/sort-named-imports
+  dImage, dTag, dTagCategory, d_ImageToTag, db,
+} from "../db/index.js";
 import { PothosTag } from "./Tag.js";
 import { builder } from "./builder.js";
-import { db, dImage, dTag, dTagCategory, d_ImageToTag } from "../db/index.js";
-import { ImageExt } from "models";
 
 export const PothosImage = builder.objectRef<ImageExt>("Image");
 
@@ -30,7 +34,9 @@ builder.node(PothosImage, {
     tags: t.field({
       type: [PothosTag],
       resolve: async (parent) => {
-        if (parent.tags !== undefined) return parent.tags;
+        if (parent.tags !== undefined) {
+          return parent.tags;
+        }
 
         const res = await db
           .select()

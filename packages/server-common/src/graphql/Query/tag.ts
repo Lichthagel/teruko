@@ -1,9 +1,10 @@
-import { db, dTag, dTagCategory } from "../../db/index.js";
-import { builder } from "../builder.js";
 import { eq } from "drizzle-orm";
-import { PothosTag } from "../Tag.js";
 
-export default (b: typeof builder) =>
+import { dTag, dTagCategory, db } from "../../db/index.js";
+import { PothosTag } from "../Tag.js";
+import { builder } from "../builder.js";
+
+const tag = (b: typeof builder) =>
   b.queryField("tag", (t) =>
     t.field({
       type: PothosTag,
@@ -23,12 +24,15 @@ export default (b: typeof builder) =>
 
         const item = result[0];
 
-        if (!item) return null;
+        if (!item) {
+          return null;
+        }
 
         return {
           ...item.Tag,
           category: item.TagCategory,
         };
       },
-    }),
-  );
+    }));
+
+export default tag;

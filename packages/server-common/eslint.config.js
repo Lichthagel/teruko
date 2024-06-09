@@ -4,7 +4,9 @@ import lichthagel from "@lichthagel/eslint-config";
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
 export default [
-  ...(await lichthagel({})),
+  ...(await lichthagel({
+    node: true,
+  })),
   {
     languageOptions: {
       parserOptions: {
