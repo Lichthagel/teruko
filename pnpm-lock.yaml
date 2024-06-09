@@ -36,6 +36,12 @@ importers:
         specifier: ^16.8.0
         version: 16.8.0
     devDependencies:
+      '@lichthagel/eslint-config':
+        specifier: github:Lichthagel/eslint-config
+        version: https://codeload.github.com/Lichthagel/eslint-config/tar.gz/76389a255e6381df2e63bfcabc66624d6f0132c2(eslint-plugin-react-hooks@4.6.2(eslint@8.57.0))(eslint-plugin-react@7.34.2(eslint@8.57.0))(eslint@8.57.0)(svelte-eslint-parser@0.33.0(svelte@4.2.0))(svelte@4.2.0)(typescript@5.2.2)(vue-eslint-parser@9.3.1(eslint@8.57.0))
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
       tsconfig:
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -1156,6 +1162,26 @@ packages:
 
   '@kwsites/promise-deferred@1.1.1':
     resolution: {integrity: sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==}
+
+  '@lichthagel/eslint-config@https://codeload.github.com/Lichthagel/eslint-config/tar.gz/76389a255e6381df2e63bfcabc66624d6f0132c2':
+    resolution: {tarball: https://codeload.github.com/Lichthagel/eslint-config/tar.gz/76389a255e6381df2e63bfcabc66624d6f0132c2}
+    version: 0.0.0
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      eslint: '>=8.40.0'
+      eslint-plugin-n: ^17.2.1
+      eslint-plugin-react: ^7.34.1
+      eslint-plugin-react-hooks: ^4.6.0
+      eslint-plugin-svelte: ^2.39.0
+    peerDependenciesMeta:
+      eslint-plugin-n:
+        optional: true
+      eslint-plugin-react:
+        optional: true
+      eslint-plugin-react-hooks:
+        optional: true
+      eslint-plugin-svelte:
+        optional: true
 
   '@lichthagel/eslint-config@https://codeload.github.com/lichthagel/eslint-config/tar.gz/76389a255e6381df2e63bfcabc66624d6f0132c2':
     resolution: {tarball: https://codeload.github.com/lichthagel/eslint-config/tar.gz/76389a255e6381df2e63bfcabc66624d6f0132c2}
@@ -7677,6 +7703,26 @@ snapshots:
       - supports-color
 
   '@kwsites/promise-deferred@1.1.1': {}
+
+  '@lichthagel/eslint-config@https://codeload.github.com/Lichthagel/eslint-config/tar.gz/76389a255e6381df2e63bfcabc66624d6f0132c2(eslint-plugin-react-hooks@4.6.2(eslint@8.57.0))(eslint-plugin-react@7.34.2(eslint@8.57.0))(eslint@8.57.0)(svelte-eslint-parser@0.33.0(svelte@4.2.0))(svelte@4.2.0)(typescript@5.2.2)(vue-eslint-parser@9.3.1(eslint@8.57.0))':
+    dependencies:
+      '@eslint/js': 9.4.0
+      '@stylistic/eslint-plugin': 2.1.0(eslint@8.57.0)(typescript@5.2.2)
+      eslint: 8.57.0
+      eslint-plugin-perfectionist: 2.10.0(eslint@8.57.0)(svelte-eslint-parser@0.33.0(svelte@4.2.0))(svelte@4.2.0)(typescript@5.2.2)(vue-eslint-parser@9.3.1(eslint@8.57.0))
+      eslint-plugin-unicorn: 53.0.0(eslint@8.57.0)
+      globals: 15.4.0
+      typescript-eslint: 7.12.0(eslint@8.57.0)(typescript@5.2.2)
+    optionalDependencies:
+      eslint-plugin-react: 7.34.2(eslint@8.57.0)
+      eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
+    transitivePeerDependencies:
+      - astro-eslint-parser
+      - supports-color
+      - svelte
+      - svelte-eslint-parser
+      - typescript
+      - vue-eslint-parser
 
   '@lichthagel/eslint-config@https://codeload.github.com/lichthagel/eslint-config/tar.gz/76389a255e6381df2e63bfcabc66624d6f0132c2(eslint-plugin-react-hooks@4.6.2(eslint@8.57.0))(eslint-plugin-react@7.34.2(eslint@8.57.0))(eslint@8.57.0)(svelte-eslint-parser@0.33.0(svelte@4.2.0))(svelte@4.2.0)(typescript@5.2.2)(vue-eslint-parser@9.3.1(eslint@8.57.0))':
     dependencies:

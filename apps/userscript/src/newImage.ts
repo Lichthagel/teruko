@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { urqlClient } from "client-common";
 import { CombinedError, gql } from "@urql/core";
+import { urqlClient } from "client-common";
 
 const NEW_IMAGE = gql`
   mutation ($files: [Upload!]!) {
@@ -56,13 +56,14 @@ async function newImage(url: string, open: boolean, target: HTMLDivElement) {
 
     window.removeEventListener("beforeunload", beforeUnload);
     if (result.data) {
-      if (open)
+      if (open) {
         window.open(
           `http://127.0.0.1:5173/${result.data.createImage[0].id as string}`,
           "_blank",
         );
-      else
+      } else {
         target.textContent = `id: ${result.data.createImage[0].id as string}`;
+      }
       // alert(`uploaded (id: ${result.data.createImage[0].id})`);
     } else {
       target.classList.add("terukoButtonSmall");

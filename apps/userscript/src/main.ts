@@ -1,4 +1,3 @@
-/* eslint-disable promise/prefer-await-to-then */
 import newImage from "./newImage.js";
 import "./style.css";
 
@@ -14,7 +13,9 @@ const observer = new MutationObserver(() => {
       )
       // eslint-disable-next-line unicorn/no-array-for-each
       .forEach((node) => {
-        if (node.querySelector(".terukoButton")) return;
+        if (node.querySelector(".terukoButton")) {
+          return;
+        }
 
         // const img = node.querySelector("img");
 
@@ -35,7 +36,7 @@ const observer = new MutationObserver(() => {
 
         node.append(dlButton);
 
-        console.log("added button");
+        // console.log("added button");
       });
   }, 20);
 });
