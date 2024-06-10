@@ -27,8 +27,8 @@ importers:
   apps/userscript:
     dependencies:
       '@urql/core':
-        specifier: ^4.1.2
-        version: 4.3.0(graphql@16.8.1)
+        specifier: ^5.0.0
+        version: 5.0.4(graphql@16.8.1)
       client-common:
         specifier: workspace:*
         version: link:../../packages/client-common
@@ -86,7 +86,7 @@ importers:
         version: link:../../packages/server-common
       urql:
         specifier: ^4.0.5
-        version: 4.1.0(@urql/core@4.3.0(graphql@16.8.1))(react@18.3.1)
+        version: 4.1.0(@urql/core@5.0.4(graphql@16.8.1))(react@18.3.1)
       zod:
         specifier: ^3.22.2
         version: 3.23.8
@@ -159,7 +159,7 @@ importers:
         version: 0.10.0(@vue/devtools-api@6.6.3)(nanostores@0.10.3)(vue@3.4.27(typescript@5.4.5))
       '@urql/vue':
         specifier: ^1.1.2
-        version: 1.2.1(@urql/core@4.3.0(graphql@16.8.1))(vue@3.4.27(typescript@5.4.5))
+        version: 1.2.1(@urql/core@5.0.4(graphql@16.8.1))(vue@3.4.27(typescript@5.4.5))
       client-common:
         specifier: workspace:*
         version: link:../../packages/client-common
@@ -238,7 +238,7 @@ importers:
         version: 5.0.18
       '@urql/svelte':
         specifier: ^4.0.4
-        version: 4.2.0(@urql/core@4.3.0(graphql@16.8.1))(svelte@4.2.18)
+        version: 4.2.0(@urql/core@5.0.4(graphql@16.8.1))(svelte@4.2.18)
       client-common:
         specifier: workspace:*
         version: link:../../packages/client-common
@@ -337,8 +337,8 @@ importers:
   packages/client-common:
     dependencies:
       '@urql/core':
-        specifier: ^4.1.2
-        version: 4.3.0(graphql@16.8.1)
+        specifier: ^5.0.0
+        version: 5.0.4(graphql@16.8.1)
       '@urql/exchange-graphcache':
         specifier: ^6.3.3
         version: 6.5.1(graphql@16.8.1)
@@ -2292,8 +2292,8 @@ packages:
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0 || ^5.0.0-0
 
-  '@urql/core@4.3.0':
-    resolution: {integrity: sha512-wT+FeL8DG4x5o6RfHEnONNFVDM3616ouzATMYUClB6CB+iIu2mwfBKd7xSUxYOZmwtxna5/hDRQdMl3nbQZlnw==}
+  '@urql/core@5.0.4':
+    resolution: {integrity: sha512-gl86J6B6gWXvvkx5omZ+CaGiPQ0chCUGM0jBsm0zTtkDQPRqufv0NSUN6sp2JhGGtTOB0NR6Pd+w7XAVGGyUOA==}
 
   '@urql/exchange-graphcache@6.5.1':
     resolution: {integrity: sha512-Ky77kuaTuo1H+VKZatXyNDqTMw+z03KV3Ep/6TQjktlc+0RDhEZq3rI4F/ViwqLaDUtGqPCYjmnHdoupXqdK0g==}
@@ -9695,7 +9695,7 @@ snapshots:
     transitivePeerDependencies:
       - rollup
 
-  '@urql/core@4.3.0(graphql@16.8.1)':
+  '@urql/core@5.0.4(graphql@16.8.1)':
     dependencies:
       '@0no-co/graphql.web': 1.0.7(graphql@16.8.1)
       wonka: 6.3.4
@@ -9705,20 +9705,20 @@ snapshots:
   '@urql/exchange-graphcache@6.5.1(graphql@16.8.1)':
     dependencies:
       '@0no-co/graphql.web': 1.0.7(graphql@16.8.1)
-      '@urql/core': 4.3.0(graphql@16.8.1)
+      '@urql/core': 5.0.4(graphql@16.8.1)
       wonka: 6.3.4
     transitivePeerDependencies:
       - graphql
 
-  '@urql/svelte@4.2.0(@urql/core@4.3.0(graphql@16.8.1))(svelte@4.2.18)':
+  '@urql/svelte@4.2.0(@urql/core@5.0.4(graphql@16.8.1))(svelte@4.2.18)':
     dependencies:
-      '@urql/core': 4.3.0(graphql@16.8.1)
+      '@urql/core': 5.0.4(graphql@16.8.1)
       svelte: 4.2.18
       wonka: 6.3.4
 
-  '@urql/vue@1.2.1(@urql/core@4.3.0(graphql@16.8.1))(vue@3.4.27(typescript@5.4.5))':
+  '@urql/vue@1.2.1(@urql/core@5.0.4(graphql@16.8.1))(vue@3.4.27(typescript@5.4.5))':
     dependencies:
-      '@urql/core': 4.3.0(graphql@16.8.1)
+      '@urql/core': 5.0.4(graphql@16.8.1)
       vue: 3.4.27(typescript@5.4.5)
       wonka: 6.3.4
 
@@ -15517,9 +15517,9 @@ snapshots:
 
   urlpattern-polyfill@8.0.2: {}
 
-  urql@4.1.0(@urql/core@4.3.0(graphql@16.8.1))(react@18.3.1):
+  urql@4.1.0(@urql/core@5.0.4(graphql@16.8.1))(react@18.3.1):
     dependencies:
-      '@urql/core': 4.3.0(graphql@16.8.1)
+      '@urql/core': 5.0.4(graphql@16.8.1)
       react: 18.3.1
       wonka: 6.3.4
 
