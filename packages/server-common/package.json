@@ -6,6 +6,9 @@
   "keywords": [],
   "author": "Lichthagel",
   "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -28,6 +31,7 @@
   "devDependencies": {
     "@lichthagel/eslint-config": "github:lichthagel/eslint-config",
     "eslint": "^8.57.0",
+    "eslint-plugin-n": "^17.8.1",
     "tsconfig": "workspace:*",
     "typescript": "^5.2.2"
   },

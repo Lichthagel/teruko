@@ -15,6 +15,9 @@ export default [
         project: "./tsconfig.eslint.json",
       },
     },
+    rules: {
+      "n/no-unsupported-features/node-builtins": ["error", { ignores: ["fetch"] }],
+    },
   },
   {
     files: ["eslint.config.js"],
