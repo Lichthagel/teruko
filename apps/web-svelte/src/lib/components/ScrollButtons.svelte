@@ -16,14 +16,14 @@
 
 <div class="join fixed bottom-3 right-3 z-10 bg-base-100">
   <button
-    class="btn-ghost btn-square btn"
+    class="btn btn-square btn-ghost"
     class:hidden={!showToTop}
     on:click={() => window.scrollTo({ behavior: "smooth", top: 0 })}
   >
     <ChevronUp />
   </button>
   <button
-    class="btn-ghost btn-square btn"
+    class="btn btn-square btn-ghost"
     class:hidden={!showToBottom}
     on:click={() => {
       window.scrollTo({
