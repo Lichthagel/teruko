@@ -1,7 +1,7 @@
 import SchemaBuilder from "@pothos/core";
 import RelayPlugin from "@pothos/plugin-relay";
 
-import "./schema";
+import "./schema.js";
 
 export const builder = new SchemaBuilder<{
   Scalars: {
