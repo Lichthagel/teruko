@@ -1,4 +1,4 @@
-import { env } from "server-common";
+import env from "server-env";
 import type { RequestHandler } from "@sveltejs/kit";
 import fs from "node:fs/promises";
 import path from "node:path";

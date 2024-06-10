@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
+import { dTag, dTagCategory, db } from "server-db";
 
-import { dTag, dTagCategory, db } from "../../db/index.js";
 import { PothosTag } from "../Tag.js";
 import { builder } from "../builder.js";
 

@@ -1,6 +1,5 @@
 import { asc, eq } from "drizzle-orm";
 import { ImageExt } from "models";
-
 import {
   dImage,
   dTag,
@@ -8,7 +7,8 @@ import {
   // eslint-disable-next-line perfectionist/sort-named-imports
   d_ImageToTag,
   db,
-} from "../../db/index.js";
+} from "server-db";
+
 import { PothosImage } from "../Image.js";
 import { builder } from "../builder.js";
 

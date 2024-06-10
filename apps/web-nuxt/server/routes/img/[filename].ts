@@ -1,7 +1,7 @@
 import path from "node:path";
 import { z } from "zod";
 import fs from "node:fs";
-import { env } from "server-common";
+import env from "server-env";
 
 export default defineEventHandler((event) => {
   const { filename } = z

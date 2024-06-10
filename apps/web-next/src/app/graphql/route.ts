@@ -1,4 +1,4 @@
-import { getYoga } from "server-common/graphql";
+import { getYoga } from "server-graphql";
 
 const { handleRequest } = getYoga({ Response });
 

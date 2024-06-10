@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import { TagExt } from "models";
+import { dTag, dTagCategory, db } from "server-db";
 
-import { dTag, dTagCategory, db } from "../db/index.js";
 import { PothosTagCategory } from "./TagCategory.js";
 import { builder } from "./builder.js";
 

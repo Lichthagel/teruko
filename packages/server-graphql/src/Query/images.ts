@@ -8,8 +8,6 @@ import {
 } from "drizzle-orm";
 import { GraphQLError, GraphQLResolveInfo, Kind } from "graphql";
 import { ImageExt } from "models";
-import { z } from "zod";
-
 import {
   dImage,
   dTag,
@@ -17,7 +15,9 @@ import {
   // eslint-disable-next-line perfectionist/sort-named-imports
   d_ImageToTag,
   db,
-} from "../../db/index.js";
+} from "server-db";
+import { z } from "zod"; // TODO zod is only used once in the package
+
 import { PothosImage } from "../Image.js";
 import { builder } from "../builder.js";
 

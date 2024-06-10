@@ -1,7 +1,9 @@
 import { eq } from "drizzle-orm";
+import {
+  // eslint-disable-next-line perfectionist/sort-named-imports
+  dTag, d_ImageToTag, db,
+} from "server-db";
 
-// eslint-disable-next-line perfectionist/sort-named-imports
-import { dTag, d_ImageToTag, db } from "../../db/index.js";
 import { PothosTag } from "../Tag.js";
 import { builder } from "../builder.js";
 

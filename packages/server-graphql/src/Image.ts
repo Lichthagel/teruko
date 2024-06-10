@@ -1,10 +1,10 @@
 import { eq } from "drizzle-orm";
 import { ImageExt } from "models";
-
 import {
   // eslint-disable-next-line perfectionist/sort-named-imports
   dImage, dTag, dTagCategory, d_ImageToTag, db,
-} from "../db/index.js";
+} from "server-db";
+
 import { PothosTag } from "./Tag.js";
 import { builder } from "./builder.js";
 

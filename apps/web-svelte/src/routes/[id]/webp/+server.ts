@@ -2,8 +2,9 @@ import type { RequestHandler } from "@sveltejs/kit";
 import path from "node:path";
 import { z } from "zod";
 import sharp from "sharp";
-import { dImage, db, drizzle } from "server-common/db";
-import { env } from "server-common";
+import { dImage, db } from "server-db";
+import env from "server-env";
+import { eq } from "drizzle-orm";
 
 export const GET = (async ({ params }): Promise<Response> => {
   const { id } = z.object({ id: z.string() }).parse(params);
@@ -11,7 +12,7 @@ export const GET = (async ({ params }): Promise<Response> => {
   const image = await db
     .select()
     .from(dImage)
-    .where(drizzle.eq(dImage.id, id))
+    .where(eq(dImage.id, id))
     .limit(1);
 
   if (!image[0]) {

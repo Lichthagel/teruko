@@ -1,5 +1,4 @@
 import { createId } from "@paralleldrive/cuid2";
-import { PgInsertValue } from "drizzle-orm/pg-core";
 import { fileTypeFromBlob } from "file-type";
 import { GraphQLError } from "graphql";
 import { ImageExt, ImageMeta, mergeImageMeta } from "models";
@@ -7,16 +6,16 @@ import fs from "node:fs";
 import path from "node:path";
 import { Readable } from "node:stream";
 import { finished } from "node:stream/promises";
-import sharp from "sharp";
-
 import {
   // eslint-disable-next-line perfectionist/sort-named-imports
   dImage, dTag, d_ImageToTag, db,
-} from "../../db/index.js";
-import env from "../../env.js";
-import { getPixivMetadata, matchFilename } from "../../util/pixiv/index.js";
+} from "server-db";
+import env from "server-env";
+import sharp from "sharp";
+
 import { PothosImage } from "../Image.js";
 import { builder } from "../builder.js";
+import { getPixivMetadata, matchFilename } from "../util/pixiv/index.js";
 
 const hasDimensions = (
   metadata: sharp.Metadata,
@@ -108,7 +107,7 @@ const createImage = (b: typeof builder) => {
                   height: metadata.height,
                   title: imageMeta.title,
                   source: imageMeta.source,
-                } satisfies PgInsertValue<typeof dImage>)
+                })
                 .returning();
 
               const imageResult = imageResults[0];

@@ -1,7 +1,7 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
+import env from "server-env";
 
-import env from "../env.js";
 import schema from "./schema.js";
 
 export const pgClient = postgres(env.DATABASE_URL, {
@@ -16,4 +16,3 @@ export const db = drizzle(pgClient, {
 });
 
 export * from "./schema.js";
-export * as drizzle from "drizzle-orm";

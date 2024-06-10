@@ -1,4 +1,4 @@
-import { env } from "server-common";
+import env from "server-env";
 import type { NextRequest } from "next/server";
 import path from "node:path";
 import { z } from "zod";

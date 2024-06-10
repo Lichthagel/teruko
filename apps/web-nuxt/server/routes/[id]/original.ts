@@ -1,8 +1,9 @@
 import path from "node:path";
 import { z } from "zod";
-import { env } from "server-common";
+import env from "server-env";
 import fs from "node:fs";
-import { db, dImage, drizzle } from "server-common/db";
+import { db, dImage } from "server-db";
+import { eq } from "drizzle-orm";
 
 export default defineEventHandler(async (event) => {
   const { id } = z.object({ id: z.string() }).parse(event.context.params);
@@ -10,7 +11,7 @@ export default defineEventHandler(async (event) => {
   const image = await db
     .select()
     .from(dImage)
-    .where(drizzle.eq(dImage.id, id))
+    .where(eq(dImage.id, id))
     .limit(1);
 
   const [{ filename }] = image;

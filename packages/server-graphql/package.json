@@ -1,5 +1,5 @@
 {
-  "name": "server-common",
+  "name": "server-graphql",
   "private": true,
   "version": "0.0.0",
   "description": "",
@@ -13,14 +13,6 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    },
-    "./db": {
-      "types": "./dist/db/index.d.ts",
-      "default": "./dist/db/index.js"
-    },
-    "./graphql": {
-      "types": "./dist/graphql/index.d.ts",
-      "default": "./dist/graphql/index.js"
     }
   },
   "scripts": {
@@ -29,11 +21,10 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@lichthagel/eslint-config": "github:lichthagel/eslint-config",
-    "eslint": "^8.57.0",
-    "eslint-plugin-n": "^17.8.1",
-    "tsconfig": "workspace:*",
-    "typescript": "^5.2.2"
+    "@lichthagel/eslint-config": "^0.0.0",
+    "tsconfig": "workspace:^",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.12.0"
   },
   "dependencies": {
     "@envelop/graphql-jit": "^8.0.0",
@@ -42,16 +33,14 @@
     "@paralleldrive/cuid2": "^2.2.2",
     "@pothos/core": "^3.35.0",
     "@pothos/plugin-relay": "^3.43.1",
-    "dotenv": "^16.3.1",
     "drizzle-orm": "^0.31.1",
     "file-type": "^19.0.0",
     "graphql": "^16.8.0",
     "graphql-yoga": "^5.0.0",
-    "models": "workspace:*",
-    "nanostores": "^0.10.0",
-    "postgres": "^3.4.4",
+    "models": "workspace:^",
+    "server-db": "workspace:^",
+    "server-env": "workspace:^",
     "sharp": "^0.33.0",
-    "znv": "^0.4.0",
     "zod": "^3.22.2"
   }
 }
