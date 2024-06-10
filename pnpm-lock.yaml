@@ -132,7 +132,7 @@ importers:
         version: 8.4.38
       prettier-plugin-tailwindcss:
         specifier: ^0.6.0
-        version: 0.6.2(prettier-plugin-svelte@3.2.4(prettier@3.3.1))(prettier@3.3.1)
+        version: 0.6.2(prettier-plugin-svelte@3.2.4(prettier@3.3.1)(svelte@4.2.18))(prettier@3.3.1)
       tailwind-custom:
         specifier: workspace:*
         version: link:../../packages/tailwind-custom
@@ -217,7 +217,7 @@ importers:
         version: 8.4.38
       prettier-plugin-tailwindcss:
         specifier: ^0.6.0
-        version: 0.6.2(prettier-plugin-svelte@3.2.4(prettier@3.3.1))(prettier@3.3.1)
+        version: 0.6.2(prettier-plugin-svelte@3.2.4(prettier@3.3.1)(svelte@4.2.18))(prettier@3.3.1)
       tailwind-custom:
         specifier: workspace:*
         version: link:../../packages/tailwind-custom
@@ -308,7 +308,7 @@ importers:
         version: 3.2.4(prettier@3.3.1)(svelte@4.2.18)
       prettier-plugin-tailwindcss:
         specifier: ^0.6.0
-        version: 0.6.2(prettier-plugin-svelte@3.2.4(prettier@3.3.1))(prettier@3.3.1)
+        version: 0.6.2(prettier-plugin-svelte@3.2.4(prettier@3.3.1)(svelte@4.2.18))(prettier@3.3.1)
       svelte:
         specifier: ^4.2.0
         version: 4.2.18
@@ -382,13 +382,13 @@ importers:
     dependencies:
       '@envelop/graphql-jit':
         specifier: ^6.0.2
-        version: 6.0.5(@envelop/core@4.0.3)(graphql@16.8.1)
+        version: 6.0.5(@envelop/core@5.0.1)(graphql@16.8.1)
       '@graphql-yoga/plugin-apq':
         specifier: ^2.0.4
-        version: 2.0.5(@graphql-tools/utils@10.2.1(graphql@16.8.1))(graphql-yoga@4.0.5(graphql@16.8.1))
+        version: 2.0.5(@graphql-tools/utils@10.2.1(graphql@16.8.1))(graphql-yoga@5.3.1(graphql@16.8.1))
       '@graphql-yoga/plugin-response-cache':
         specifier: ^2.1.1
-        version: 2.2.0(@envelop/core@4.0.3)(graphql-yoga@4.0.5(graphql@16.8.1))(graphql@16.8.1)
+        version: 2.2.0(@envelop/core@5.0.1)(graphql-yoga@5.3.1(graphql@16.8.1))(graphql@16.8.1)
       '@paralleldrive/cuid2':
         specifier: ^2.2.2
         version: 2.2.2
@@ -411,8 +411,8 @@ importers:
         specifier: ^16.8.0
         version: 16.8.1
       graphql-yoga:
-        specifier: ^4.0.4
-        version: 4.0.5(graphql@16.8.1)
+        specifier: ^5.0.0
+        version: 5.3.1(graphql@16.8.1)
       models:
         specifier: workspace:*
         version: link:../models
@@ -459,7 +459,7 @@ importers:
     devDependencies:
       '@lichthagel/eslint-config':
         specifier: github:lichthagel/eslint-config
-        version: https://codeload.github.com/lichthagel/eslint-config/tar.gz/f593f2bb7b052279248872358be5a70e4a29ce14(eslint-plugin-react-hooks@4.6.2(eslint@8.57.0))(eslint-plugin-react@7.34.2(eslint@8.57.0))(eslint-plugin-svelte@2.39.3(eslint@8.57.0)(svelte@4.2.18))(eslint@8.57.0)(svelte-eslint-parser@0.33.0(svelte@4.2.18))(svelte@4.2.18)(typescript@5.4.5)(vue-eslint-parser@9.4.3(eslint@8.57.0))
+        version: https://codeload.github.com/lichthagel/eslint-config/tar.gz/f593f2bb7b052279248872358be5a70e4a29ce14(eslint-plugin-react-hooks@4.6.2(eslint@8.57.0))(eslint-plugin-react@7.34.2(eslint@8.57.0))(eslint-plugin-svelte@2.39.3(eslint@8.57.0)(svelte@4.2.18)(ts-node@10.9.1))(eslint@8.57.0)(svelte-eslint-parser@0.33.0(svelte@4.2.18))(svelte@4.2.18)(vue-eslint-parser@9.4.3(eslint@8.57.0))
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -708,9 +708,9 @@ packages:
   '@emnapi/runtime@1.2.0':
     resolution: {integrity: sha512-bV21/9LQmcQeCPEg3BDFtvwL6cwiTMksYNWQQ4KOxCZikEGalWtenoZ0wCiukJINlGCIi2KXx01g4FoH/LxpzQ==}
 
-  '@envelop/core@4.0.3':
-    resolution: {integrity: sha512-O0Vz8E0TObT6ijAob8jYFVJavcGywKThM3UAsxUIBBVPYZTMiqI9lo2gmAnbMUnrDcAYkUTZEW9FDYPRdF5l6g==}
-    engines: {node: '>=16.0.0'}
+  '@envelop/core@5.0.1':
+    resolution: {integrity: sha512-wxA8EyE1fPnlbP0nC/SFI7uU8wSNf4YjxZhAPu0P63QbgIvqHtHsH4L3/u+rsTruzhk3OvNRgQyLsMfaR9uzAQ==}
+    engines: {node: '>=18.0.0'}
 
   '@envelop/graphql-jit@6.0.5':
     resolution: {integrity: sha512-yrgZslAtOBPPfJlW4orT5Ge/k1gSy1gn/1QDNcPVv/6lprbHYaC/QXAo5WdHxSA0KYgzxqYOSX1jnSQjMDkOWA==}
@@ -726,9 +726,9 @@ packages:
       '@envelop/core': ^4.0.3
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
 
-  '@envelop/types@4.0.1':
-    resolution: {integrity: sha512-ULo27/doEsP7uUhm2iTnElx13qTO6I5FKvmLoX41cpfuw8x6e0NUFknoqhEsLzAbgz8xVS5mjwcxGCXh4lDYzg==}
-    engines: {node: '>=16.0.0'}
+  '@envelop/types@5.0.0':
+    resolution: {integrity: sha512-IPjmgSc4KpQRlO4qbEDnBEixvtb06WDmjKfi/7fkZaryh5HuOmTtixe1EupQI5XfXO8joc3d27uUZ0QdC++euA==}
+    engines: {node: '>=18.0.0'}
 
   '@es-joy/jsdoccomment@0.43.1':
     resolution: {integrity: sha512-I238eDtOolvCuvtxrnqtlBaw0BwdQuYqK7eA6XIonicMdOOOb75mqdIzkGDUbS04+1Di007rgm9snFRNeVrOog==}
@@ -1081,9 +1081,9 @@ packages:
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
 
-  '@graphql-yoga/logger@1.0.0':
-    resolution: {integrity: sha512-JYoxwnPggH2BfO+dWlWZkDeFhyFZqaTRGLvFhy+Pjp2UxitEW6nDrw+pEDw/K9tJwMjIFMmTT9VfTqrnESmBHg==}
-    engines: {node: '>=16.0.0'}
+  '@graphql-yoga/logger@2.0.0':
+    resolution: {integrity: sha512-Mg8psdkAp+YTG1OGmvU+xa6xpsAmSir0hhr3yFYPyLNwzUj95DdIwsMpKadDj9xDpYgJcH3Hp/4JMal9DhQimA==}
+    engines: {node: '>=18.0.0'}
 
   '@graphql-yoga/plugin-apq@2.0.5':
     resolution: {integrity: sha512-XYoFzfrG9euEskWJi6OcfPuxjG89r98MLOE/uxKnj9HTZGnxVCNrPaXlUWQExJHMwkPEobzSurdxPypEXSkwJQ==}
@@ -1099,13 +1099,13 @@ packages:
       graphql: ^15.2.0 || ^16.0.0
       graphql-yoga: ^4.0.5
 
-  '@graphql-yoga/subscription@4.0.0':
-    resolution: {integrity: sha512-0qsN/BPPZNMoC2CZ8i+P6PgiJyHh1H35aKDt37qARBDaIOKDQuvEOq7+4txUKElcmXi7DYFo109FkhSQoEajrg==}
-    engines: {node: '>=16.0.0'}
+  '@graphql-yoga/subscription@5.0.0':
+    resolution: {integrity: sha512-Ri7sK8hmxd/kwaEa0YT8uqQUb2wOLsmBMxI90QDyf96lzOMJRgBuNYoEkU1pSgsgmW2glceZ96sRYfaXqwVxUw==}
+    engines: {node: '>=18.0.0'}
 
-  '@graphql-yoga/typed-event-target@2.0.0':
-    resolution: {integrity: sha512-oA/VGxGmaSDym1glOHrltw43qZsFwLLjBwvh57B79UKX/vo3+UQcRgOyE44c5RP7DCYjkrC2tuArZmb6jCzysw==}
-    engines: {node: '>=16.0.0'}
+  '@graphql-yoga/typed-event-target@3.0.0':
+    resolution: {integrity: sha512-w+liuBySifrstuHbFrHoHAEyVnDFVib+073q8AeAJ/qqJfvFvAwUPLLtNohR/WDVRgSasfXtl3dcNuVJWN+rjg==}
+    engines: {node: '>=18.0.0'}
 
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -4474,9 +4474,9 @@ packages:
     peerDependencies:
       graphql: '>=15'
 
-  graphql-yoga@4.0.5:
-    resolution: {integrity: sha512-vIbJU9QX5RP4PoxbMCHcfOlt/3EsC/0uLdAOlKaiUvlwJDTFCaIHo2X10vL4i/27Gw8g90ECIwm2YbmeLDwcqg==}
-    engines: {node: '>=16.0.0'}
+  graphql-yoga@5.3.1:
+    resolution: {integrity: sha512-n918QV6TF7xTjb9ASnozgsr4ydMc08c+x4eRAWKxxWVwSnzdP2xeN2zw1ljIzRD0ccSCNoBajGDKwcZkJDitPA==}
+    engines: {node: '>=18.0.0'}
     peerDependencies:
       graphql: ^15.2.0 || ^16.0.0
 
@@ -7982,22 +7982,22 @@ snapshots:
       tslib: 2.6.3
     optional: true
 
-  '@envelop/core@4.0.3':
+  '@envelop/core@5.0.1':
     dependencies:
-      '@envelop/types': 4.0.1
+      '@envelop/types': 5.0.0
       tslib: 2.6.3
 
-  '@envelop/graphql-jit@6.0.5(@envelop/core@4.0.3)(graphql@16.8.1)':
+  '@envelop/graphql-jit@6.0.5(@envelop/core@5.0.1)(graphql@16.8.1)':
     dependencies:
-      '@envelop/core': 4.0.3
+      '@envelop/core': 5.0.1
       graphql: 16.8.1
       graphql-jit: 0.8.6(graphql@16.8.1)
       lru-cache: 10.2.2
       tslib: 2.6.3
 
-  '@envelop/response-cache@5.5.0(@envelop/core@4.0.3)(graphql@16.8.1)':
+  '@envelop/response-cache@5.5.0(@envelop/core@5.0.1)(graphql@16.8.1)':
     dependencies:
-      '@envelop/core': 4.0.3
+      '@envelop/core': 5.0.1
       '@graphql-tools/utils': 10.2.1(graphql@16.8.1)
       '@whatwg-node/fetch': 0.9.18
       fast-json-stable-stringify: 2.1.0
@@ -8005,7 +8005,7 @@ snapshots:
       lru-cache: 10.2.2
       tslib: 2.6.3
 
-  '@envelop/types@4.0.1':
+  '@envelop/types@5.0.0':
     dependencies:
       tslib: 2.6.3
 
@@ -8247,31 +8247,31 @@ snapshots:
     dependencies:
       graphql: 16.8.1
 
-  '@graphql-yoga/logger@1.0.0':
+  '@graphql-yoga/logger@2.0.0':
     dependencies:
       tslib: 2.6.3
 
-  '@graphql-yoga/plugin-apq@2.0.5(@graphql-tools/utils@10.2.1(graphql@16.8.1))(graphql-yoga@4.0.5(graphql@16.8.1))':
+  '@graphql-yoga/plugin-apq@2.0.5(@graphql-tools/utils@10.2.1(graphql@16.8.1))(graphql-yoga@5.3.1(graphql@16.8.1))':
     dependencies:
       '@graphql-tools/utils': 10.2.1(graphql@16.8.1)
-      graphql-yoga: 4.0.5(graphql@16.8.1)
+      graphql-yoga: 5.3.1(graphql@16.8.1)
 
-  '@graphql-yoga/plugin-response-cache@2.2.0(@envelop/core@4.0.3)(graphql-yoga@4.0.5(graphql@16.8.1))(graphql@16.8.1)':
+  '@graphql-yoga/plugin-response-cache@2.2.0(@envelop/core@5.0.1)(graphql-yoga@5.3.1(graphql@16.8.1))(graphql@16.8.1)':
     dependencies:
-      '@envelop/response-cache': 5.5.0(@envelop/core@4.0.3)(graphql@16.8.1)
+      '@envelop/response-cache': 5.5.0(@envelop/core@5.0.1)(graphql@16.8.1)
       graphql: 16.8.1
-      graphql-yoga: 4.0.5(graphql@16.8.1)
+      graphql-yoga: 5.3.1(graphql@16.8.1)
     transitivePeerDependencies:
       - '@envelop/core'
 
-  '@graphql-yoga/subscription@4.0.0':
+  '@graphql-yoga/subscription@5.0.0':
     dependencies:
-      '@graphql-yoga/typed-event-target': 2.0.0
+      '@graphql-yoga/typed-event-target': 3.0.0
       '@repeaterjs/repeater': 3.0.6
       '@whatwg-node/events': 0.1.1
       tslib: 2.6.3
 
-  '@graphql-yoga/typed-event-target@2.0.0':
+  '@graphql-yoga/typed-event-target@3.0.0':
     dependencies:
       '@repeaterjs/repeater': 3.0.6
       tslib: 2.6.3
@@ -8461,6 +8461,27 @@ snapshots:
     optionalDependencies:
       eslint-plugin-react: 7.34.2(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
+      eslint-plugin-svelte: 2.39.3(eslint@8.57.0)(svelte@4.2.18)(ts-node@10.9.1(@types/node@20.14.2)(typescript@5.4.5))
+    transitivePeerDependencies:
+      - astro-eslint-parser
+      - supports-color
+      - svelte
+      - svelte-eslint-parser
+      - typescript
+      - vue-eslint-parser
+
+  '@lichthagel/eslint-config@https://codeload.github.com/lichthagel/eslint-config/tar.gz/f593f2bb7b052279248872358be5a70e4a29ce14(eslint-plugin-react-hooks@4.6.2(eslint@8.57.0))(eslint-plugin-react@7.34.2(eslint@8.57.0))(eslint-plugin-svelte@2.39.3(eslint@8.57.0)(svelte@4.2.18)(ts-node@10.9.1))(eslint@8.57.0)(svelte-eslint-parser@0.33.0(svelte@4.2.18))(svelte@4.2.18)(vue-eslint-parser@9.4.3(eslint@8.57.0))':
+    dependencies:
+      '@eslint/js': 9.4.0
+      '@stylistic/eslint-plugin': 2.1.0(eslint@8.57.0)(typescript@5.4.5)
+      eslint: 8.57.0
+      eslint-plugin-perfectionist: 2.10.0(eslint@8.57.0)(svelte-eslint-parser@0.33.0(svelte@4.2.18))(svelte@4.2.18)(typescript@5.4.5)(vue-eslint-parser@9.4.3(eslint@8.57.0))
+      eslint-plugin-unicorn: 53.0.0(eslint@8.57.0)
+      globals: 15.4.0
+      typescript-eslint: 7.12.0(eslint@8.57.0)(typescript@5.4.5)
+    optionalDependencies:
+      eslint-plugin-react: 7.34.2(eslint@8.57.0)
+      eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
       eslint-plugin-svelte: 2.39.3(eslint@8.57.0)(svelte@4.2.18)(ts-node@10.9.1)
     transitivePeerDependencies:
       - astro-eslint-parser
@@ -8482,7 +8503,7 @@ snapshots:
     optionalDependencies:
       eslint-plugin-react: 7.34.2(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
-      eslint-plugin-svelte: 2.39.3(eslint@8.57.0)(svelte@4.2.18)(ts-node@10.9.1)
+      eslint-plugin-svelte: 2.39.3(eslint@8.57.0)(svelte@4.2.18)(ts-node@10.9.1(@types/node@20.14.2)(typescript@5.4.5))
     transitivePeerDependencies:
       - astro-eslint-parser
       - supports-color
@@ -11656,8 +11677,8 @@ snapshots:
       '@typescript-eslint/parser': 6.7.0(eslint@8.57.0)(typescript@5.4.5)
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.0)(eslint@8.57.0)
+      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.57.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.57.0)
       eslint-plugin-react: 7.34.2(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
@@ -11722,13 +11743,13 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.57.0))(eslint@8.57.0):
+  eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.57.0):
     dependencies:
       debug: 4.3.5
       enhanced-resolve: 5.15.0
       eslint: 8.57.0
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.0)(eslint@8.57.0)
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.57.0))(eslint@8.57.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.0
       is-core-module: 2.13.0
@@ -11759,14 +11780,25 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.8.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0):
+  eslint-module-utils@2.8.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
       '@typescript-eslint/parser': 6.7.0(eslint@8.57.0)(typescript@5.4.5)
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.57.0))(eslint@8.57.0)
+      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.57.0)
+    transitivePeerDependencies:
+      - supports-color
+
+  eslint-module-utils@2.8.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.4.5))(eslint-plugin-i@2.27.5-3)(eslint@8.57.0))(eslint@8.57.0):
+    dependencies:
+      debug: 3.2.7
+    optionalDependencies:
+      '@typescript-eslint/parser': 5.62.0(eslint@8.57.0)(typescript@5.4.5)
+      eslint: 8.57.0
+      eslint-import-resolver-node: 0.3.9
+      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.4.5))(eslint-plugin-i@2.27.5-3)(eslint@8.57.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -11781,24 +11813,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.8.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint@8.57.0):
-    dependencies:
-      debug: 3.2.7
-    optionalDependencies:
-      '@typescript-eslint/parser': 6.21.0(eslint@8.57.0)(typescript@5.4.5)
-      eslint: 8.57.0
-      eslint-import-resolver-node: 0.3.9
-    transitivePeerDependencies:
-      - supports-color
-
-  eslint-module-utils@2.8.1(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0):
+  eslint-module-utils@2.8.1(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
       '@typescript-eslint/parser': 6.7.0(eslint@8.57.0)(typescript@5.4.5)
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.57.0))(eslint@8.57.0)
+      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.57.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -11817,7 +11839,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint@8.57.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.4.5))(eslint-plugin-i@2.27.5-3)(eslint@8.57.0))(eslint@8.57.0)
       get-tsconfig: 4.7.5
       has: 1.0.4
       is-core-module: 2.13.1
@@ -11872,7 +11894,7 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.0)(eslint@8.57.0):
+  eslint-plugin-import@2.28.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0):
     dependencies:
       array-includes: 3.1.8
       array.prototype.findlastindex: 1.2.3
@@ -11882,7 +11904,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.1(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.57.0))(eslint@8.57.0)
       has: 1.0.4
       is-core-module: 2.13.1
       is-glob: 4.0.3
@@ -11893,7 +11915,7 @@ snapshots:
       semver: 6.3.1
       tsconfig-paths: 3.14.2
     optionalDependencies:
-      '@typescript-eslint/parser': 6.7.0(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/parser': 5.62.0(eslint@8.57.0)(typescript@5.4.5)
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
@@ -12628,14 +12650,14 @@ snapshots:
       lodash.merge: 4.6.2
       lodash.mergewith: 4.6.2
 
-  graphql-yoga@4.0.5(graphql@16.8.1):
+  graphql-yoga@5.3.1(graphql@16.8.1):
     dependencies:
-      '@envelop/core': 4.0.3
+      '@envelop/core': 5.0.1
       '@graphql-tools/executor': 1.2.6(graphql@16.8.1)
       '@graphql-tools/schema': 10.0.4(graphql@16.8.1)
       '@graphql-tools/utils': 10.2.1(graphql@16.8.1)
-      '@graphql-yoga/logger': 1.0.0
-      '@graphql-yoga/subscription': 4.0.0
+      '@graphql-yoga/logger': 2.0.0
+      '@graphql-yoga/subscription': 5.0.0
       '@whatwg-node/fetch': 0.9.18
       '@whatwg-node/server': 0.9.34
       dset: 3.1.3
@@ -14481,7 +14503,7 @@ snapshots:
       prettier: 3.3.1
       svelte: 4.2.18
 
-  prettier-plugin-tailwindcss@0.6.2(prettier-plugin-svelte@3.2.4(prettier@3.3.1))(prettier@3.3.1):
+  prettier-plugin-tailwindcss@0.6.2(prettier-plugin-svelte@3.2.4(prettier@3.3.1)(svelte@4.2.18))(prettier@3.3.1):
     dependencies:
       prettier: 3.3.1
     optionalDependencies:
