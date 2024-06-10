@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-import { ImageSort } from "models";
+import { type ImageSort } from "models";
 
 const props = defineProps<{
   tags: readonly string[];

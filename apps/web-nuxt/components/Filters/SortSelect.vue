@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ImageSort } from "models";
+import { type ImageSort } from "models";
 import { useStore } from "@nanostores/vue";
 import { sortStore } from "client-common/stores";
 

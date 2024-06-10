@@ -1,12 +1,12 @@
 /* eslint-disable promise/prefer-await-to-then */
 import {
   CombinedError,
-  OperationResult,
+  type OperationResult,
   createRequest,
   gql,
   useClientHandle,
 } from "@urql/vue";
-import { ImageExt, ImageSort } from "models";
+import type { ImageExt, ImageSort } from "models";
 
 type ImagesResult = {
   images: {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TagExt } from "models";
+import { type TagExt } from "models";
 import { tagsStore } from "client-common/stores";
 
 const router = useRouter();

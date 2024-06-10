@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ImageExt } from "models";
+import { type ImageExt } from "models";
 import { tagsStore } from "client-common/stores";
 
 const props = defineProps<{
