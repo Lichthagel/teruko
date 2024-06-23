@@ -75,7 +75,7 @@ export const toImageMeta = (
       const slug =
         (tag.translation && tag.translation.en) || tag.romaji || tag.tag;
 
-      if (tags.findIndex((value) => value.slug === slug) !== -1) {
+      if (tags.some((value) => value.slug === slug)) {
         continue;
       }
 
