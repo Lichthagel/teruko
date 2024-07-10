@@ -16,7 +16,7 @@ export const builder = new SchemaBuilder<{
   };
 }>({
   plugins: [RelayPlugin],
-  relayOptions: {
+  relay: {
     clientMutationId: "omit",
     cursorType: "String",
     idFieldName: "_id",
