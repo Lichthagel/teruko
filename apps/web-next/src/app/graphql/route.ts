@@ -1,6 +1,6 @@
 import { getYoga } from "server-graphql";
 
-const { handleRequest } = getYoga({ Response });
+const { handleRequest }: any = getYoga({ Response });
 
 export {
   handleRequest as GET,
