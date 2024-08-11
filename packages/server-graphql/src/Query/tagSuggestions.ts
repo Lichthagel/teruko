@@ -1,8 +1,9 @@
 import { eq, sql } from "drizzle-orm";
 import { dTag, dTagCategory, db } from "server-db";
 
+import type { builder } from "../builder.js";
+
 import { PothosTag } from "../Tag.js";
-import { builder } from "../builder.js";
 
 const tagSuggestions = (b: typeof builder) =>
   b.queryField("tagSuggestions", (t) =>

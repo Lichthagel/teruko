@@ -4,8 +4,9 @@ import {
   dTag, d_ImageToTag, db,
 } from "server-db";
 
+import type { builder } from "../builder.js";
+
 import { PothosTag } from "../Tag.js";
-import { builder } from "../builder.js";
 
 const updateTag = (b: typeof builder) => {
   b.mutationField("updateTag", (t) =>

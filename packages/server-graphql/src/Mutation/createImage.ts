@@ -13,8 +13,9 @@ import {
 import env from "server-env";
 import sharp from "sharp";
 
+import type { builder } from "../builder.js";
+
 import { PothosImage } from "../Image.js";
-import { builder } from "../builder.js";
 import { getPixivMetadata, matchFilename } from "../util/pixiv/index.js";
 
 const hasDimensions = (

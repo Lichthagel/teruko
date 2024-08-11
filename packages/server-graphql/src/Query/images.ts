@@ -18,8 +18,9 @@ import {
 } from "server-db";
 import { z } from "zod"; // TODO zod is only used once in the package
 
+import type { builder } from "../builder.js";
+
 import { PothosImage } from "../Image.js";
-import { builder } from "../builder.js";
 
 const shouldIncludeTags = (info: GraphQLResolveInfo) =>
   info.fieldNodes[0]?.selectionSet?.selections.some(
