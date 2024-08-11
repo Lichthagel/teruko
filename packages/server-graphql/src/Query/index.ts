@@ -1,4 +1,5 @@
-import { builder as schemaBuilder } from "../builder.js";
+import type { builder as schemaBuilder } from "../builder.js";
+
 import image from "./image.js";
 import images from "./images.js";
 import tag from "./tag.js";

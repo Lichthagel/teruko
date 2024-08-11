@@ -9,8 +9,9 @@ import {
   db,
 } from "server-db";
 
+import type { builder } from "../builder.js";
+
 import { PothosImage } from "../Image.js";
-import { builder } from "../builder.js";
 
 const image = (b: typeof builder) =>
   b.queryField("image", (t) =>
