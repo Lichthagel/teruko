@@ -42,8 +42,8 @@ export default {
   plugins: [
     daisyui,
     animate,
-    plugin(({ addUtilities }) => {
-      addUtilities({
+    plugin((pluginAPI) => {
+      pluginAPI.addUtilities({
         ".scrollbar-none": {
           "scrollbar-width": "none",
           "-ms-overflow-style": "none",
