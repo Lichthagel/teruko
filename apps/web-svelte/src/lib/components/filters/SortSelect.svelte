@@ -2,6 +2,7 @@
   import type { FormEventHandler } from "svelte/elements";
   import { sortStore } from "client-common/stores";
   import { zImageSort } from "models";
+  import { ArrowDownNarrowWide } from "lucide-svelte";
 
   const handleInput: FormEventHandler<HTMLSelectElement> = (event) => {
     const parsedSort = zImageSort.parse(event.currentTarget.value);
@@ -10,12 +11,19 @@
   };
 </script>
 
-<select
-  class="h-10 w-24 rounded bg-base-100 px-2"
-  value={$sortStore || "NEWEST"}
-  on:input|preventDefault={handleInput}
+<div
+  class="relative inline-flex h-10 items-center gap-1 rounded bg-base-200 focus-within:outline focus-within:outline-2 focus-within:outline-primary"
 >
-  <option value="NEWEST">newest</option>
-  <option value="OLDEST">oldest</option>
-  <option value="RANDOM">random</option>
-</select>
+  <ArrowDownNarrowWide class="absolute left-2" />
+
+  <!-- class="h-10 w-24 rounded bg-white px-2 focus:outline focus:outline-primary focus:outline-2" -->
+  <select
+    class="w-full bg-transparent pl-11 pr-2"
+    value={$sortStore || "NEWEST"}
+    on:input|preventDefault={handleInput}
+  >
+    <option value="NEWEST">newest</option>
+    <option value="OLDEST">oldest</option>
+    <option value="RANDOM">random</option>
+  </select>
+</div>

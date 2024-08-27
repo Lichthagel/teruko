@@ -10,7 +10,7 @@
   };
 </script>
 
-<div class="mb-2">
+<div class="mb-2 flex w-full flex-wrap gap-1">
   <!-- TAG CHIPS -->
 
   {#if $tagsStore.length > 0}

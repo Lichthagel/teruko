@@ -1,7 +1,7 @@
 <script lang="ts">
   import suggestionsStore from "$lib/suggestionsStore";
   import { getContextClient } from "@urql/svelte";
-  import { Loader2 } from "lucide-svelte";
+  import { Loader2, Search } from "lucide-svelte";
   import { tagsStore } from "client-common/stores";
 
   const client = getContextClient();
@@ -70,10 +70,14 @@
   };
 </script>
 
-<div class="relative inline-block">
+<div
+  class="relative inline-flex h-10 items-center gap-1 rounded bg-base-200 px-2 focus-within:outline focus-within:outline-2 focus-within:outline-primary"
+>
+  <Search />
+
   <input
     type="text"
-    class="h-10 rounded bg-base-100 px-2 focus:outline-none"
+    class="h-full rounded bg-transparent focus:outline-none"
     placeholder="Search..."
     bind:value={tagInput}
     on:keydown={handleKeyDown}
@@ -88,7 +92,7 @@
   {/if}
 
   {#if suggestions.length > 0}
-    <ul class="absolute left-0 right-0 z-20 block bg-base-100 p-1">
+    <ul class="absolute left-0 right-0 top-10 z-20 block bg-base-100 p-1">
       {#each suggestions as suggestion, index (suggestion.slug)}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
