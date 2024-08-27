@@ -58,7 +58,7 @@ export default {
     themes: [
       {
         "catpuccin-latte": {
-          "primary": "#7287fd", // lavender
+          "primary": "#ea76cb", // pink
           "secondary": "#1e66f5", // blue
           "accent": "#8839ef", // mauve
           "neutral": "#ccd0da", // surface0
@@ -73,7 +73,7 @@ export default {
       },
       {
         "catpuccin-mocha": {
-          "primary": "#b4befe", // lavender
+          "primary": "#f5c2e7", // pink
           "secondary": "#89b4fa", // blue
           "accent": "#cba6f7", // mauve
           "neutral": "#313244", // surface0
