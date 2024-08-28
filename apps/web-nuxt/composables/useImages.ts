@@ -1,4 +1,6 @@
-/* eslint-disable promise/prefer-await-to-then */
+/* eslint-disable no-use-before-define */
+import type { ImageExt, ImageSort } from "models";
+
 import {
   CombinedError,
   type OperationResult,
@@ -6,7 +8,6 @@ import {
   gql,
   useClientHandle,
 } from "@urql/vue";
-import type { ImageExt, ImageSort } from "models";
 
 type ImagesResult = {
   images: {
@@ -109,9 +110,9 @@ export const useImages = (
 
   const handleChange = (res: ImagesOperationResult): void => {
     if (res.data) {
-      const usedCursor = res.operation.variables.last
-        ? res.operation.variables.before
-        : res.operation.variables.after;
+      const usedCursor = res.operation.variables.last ?
+        res.operation.variables.before :
+        res.operation.variables.after;
 
       const { edges: newEdges, pageInfo } = res.data.images;
 
@@ -128,18 +129,18 @@ export const useImages = (
               (image) => image.cursor === newEdges.at(-1)?.cursor,
             );
 
-            return idx === -1
-              ? newEdges
-              : [...newEdges, ...prevEdges.slice(idx + 1)];
+            return idx === -1 ?
+              newEdges :
+                [...newEdges, ...prevEdges.slice(idx + 1)];
           }
         }
 
         return prevEdges;
       })(edges.value);
 
-      hasNextPage.value = res.operation.variables.last
-        ? pageInfo.hasPreviousPage
-        : pageInfo.hasNextPage;
+      hasNextPage.value = res.operation.variables.last ?
+        pageInfo.hasPreviousPage :
+        pageInfo.hasNextPage;
     }
 
     fetching.value = false;
@@ -164,8 +165,8 @@ export const useImages = (
       })
       .toPromise()
       .then(handleChange)
-      .catch((error) => {
-        error.value = error;
+      .catch((error_: CombinedError) => {
+        error.value = error_;
       });
   };
 

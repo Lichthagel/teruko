@@ -1,8 +1,9 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { Provider } from "urql";
+
 import { urqlClient } from "client-common";
+import { Provider } from "urql";
 
 type UrqlProviderProps = {
   children: ReactNode;

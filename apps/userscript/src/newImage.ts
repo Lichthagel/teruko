@@ -31,7 +31,6 @@ async function newImage(url: string, open: boolean, target: HTMLDivElement) {
 
     const blob = await res.blob();
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const file = new File([blob], url.split("/").at(-1)!, {
       type: blob.type,
     });
@@ -68,9 +67,9 @@ async function newImage(url: string, open: boolean, target: HTMLDivElement) {
       // alert(`uploaded (id: ${result.data.createImage[0].id})`);
     } else {
       target.classList.add("terukoButtonSmall");
-      target.textContent = result.error
-        ? result.error.message
-        : JSON.stringify(result);
+      target.textContent = result.error ?
+        result.error.message :
+        JSON.stringify(result);
       // alert(`error: ${result}`);
     }
   } catch (error) {

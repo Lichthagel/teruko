@@ -14,7 +14,10 @@ const props = defineProps<{
   <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
     <div class="container">
       <div class="my-3 px-8 text-white">
-        <a class="flex flex-row items-center space-x-1" href="/">
+        <a
+          class="flex flex-row items-center space-x-1"
+          href="/"
+        >
           <Home />
           <span>return home</span>
         </a>
@@ -22,8 +25,13 @@ const props = defineProps<{
       <div
         class="rounded border-4 border-error bg-neutral p-8 text-neutral-content"
       >
-        <h1 class="mb-2 text-5xl">{{ title || "An error occurred" }}</h1>
-        <h2 v-if="subtitle || error" class="my-2 text-3xl">
+        <h1 class="mb-2 text-5xl">
+          {{ title || "An error occurred" }}
+        </h1>
+        <h2
+          class="my-2 text-3xl"
+          v-if="subtitle || error"
+        >
           {{ subtitle || error?.message }}
         </h2>
         <span v-if="message">{{ message }}</span>

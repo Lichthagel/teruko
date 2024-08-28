@@ -1,11 +1,11 @@
 {
   "name": "models",
-  "private": true,
-  "version": "0.0.0",
-  "description": "",
-  "keywords": [],
-  "author": "Lichthagel",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "author": "Lichthagel",
+  "keywords": [],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -14,17 +14,13 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
-    "lint": "eslint ."
-  },
-  "devDependencies": {
-    "@lichthagel/eslint-config": "github:Lichthagel/eslint-config",
-    "eslint": "^8.57.0",
-    "tsconfig": "workspace:^",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^8.0.0"
+    "dev": "tsc --watch"
   },
   "dependencies": {
     "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "tsconfig": "workspace:^",
+    "typescript": "^5.4.5"
   }
 }

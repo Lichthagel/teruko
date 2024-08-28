@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+
 import preset from "tailwind-custom";
 
 /** @type {import('tailwindcss').Config} */

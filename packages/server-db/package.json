@@ -1,36 +1,23 @@
 {
   "name": "server-db",
-  "private": true,
-  "version": "0.0.0",
-  "description": "",
-  "keywords": [],
-  "author": "Lichthagel",
   "type": "module",
-  "engines": {
-    "node": ">=20.0.0"
-  },
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "author": "Lichthagel",
+  "keywords": [],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     }
   },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
-    "lint": "eslint ."
-  },
-  "devDependencies": {
-    "@lichthagel/eslint-config": "github:Lichthagel/eslint-config",
-    "eslint": "^8.57.0",
-    "tsconfig": "workspace:^",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^8.0.0"
-  },
-  "dependencies": {
-    "drizzle-orm": "^0.33.0",
-    "postgres": "^3.4.4",
-    "server-env": "workspace:^"
+    "dev": "tsc --watch"
   },
   "peerDependencies": {
     "drizzle-orm": "^0.31.1 || ^0.32.0 || ^0.33.0"
@@ -39,5 +26,14 @@
     "drizzle-orm": {
       "optional": true
     }
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.33.0",
+    "postgres": "^3.4.4",
+    "server-env": "workspace:^"
+  },
+  "devDependencies": {
+    "tsconfig": "workspace:^",
+    "typescript": "^5.4.5"
   }
 }

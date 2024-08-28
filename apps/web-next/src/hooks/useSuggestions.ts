@@ -1,5 +1,3 @@
-/* eslint-disable promise/always-return */
-/* eslint-disable promise/prefer-await-to-then */
 import { TagExt } from "models";
 import { useEffect, useState } from "react";
 import { CombinedError, gql, useClient } from "urql";
@@ -13,11 +11,14 @@ const useSuggestions = (query: string) => {
 
   useEffect(() => {
     if (query.length < 3) {
+      // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
       setSuggestions([]);
+      // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
       setFetching(false);
       return;
     }
 
+    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
     setFetching(true);
     const timeout = setTimeout(() => {
       client

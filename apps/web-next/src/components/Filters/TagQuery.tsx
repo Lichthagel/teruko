@@ -1,9 +1,10 @@
+import { useStore } from "@nanostores/react";
+import { tagsStore } from "client-common/stores";
 import { X } from "lucide-react";
 import { TagExt } from "models";
 import { gql, useQuery } from "urql";
+
 import StatusBar from "../StatusBar";
-import { tagsStore } from "client-common/stores";
-import { useStore } from "@nanostores/react";
 
 type TagQueryProps = {
   slug: string;
@@ -12,7 +13,11 @@ type TagQueryProps = {
 const TagQuery = ({ slug }: TagQueryProps) => {
   const tags = useStore(tagsStore);
 
-  const [{ data, fetching, stale, error }] = useQuery<{ tag: TagExt | null }>({
+  const [
+    {
+      data, fetching, stale, error,
+    },
+  ] = useQuery<{ tag: TagExt | null }>({
     query: gql`
       query Tag($slug: String!) {
         tag(slug: $slug) {
@@ -41,6 +46,7 @@ const TagQuery = ({ slug }: TagQueryProps) => {
         <button
           className="mx-1 rounded transition hover:bg-black/20"
           onClick={removeTag}
+          type="button"
         >
           <X />
         </button>

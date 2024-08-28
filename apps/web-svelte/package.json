@@ -1,15 +1,17 @@
 {
   "name": "web-svelte",
+  "type": "module",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": ">=21.0.0"
+  },
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint": "prettier --check . && eslint .",
-    "format": "prettier --write ."
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "nx": {
     "targets": {
@@ -28,32 +30,6 @@
       "format"
     ]
   },
-  "devDependencies": {
-    "@sveltejs/adapter-node": "^5.0.0",
-    "@sveltejs/kit": "^2.0.0",
-    "@sveltejs/vite-plugin-svelte": "^3.1.1",
-    "@types/node": "^20.6.2",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "@typescript-eslint/parser": "^8.0.0",
-    "autoprefixer": "^10.4.15",
-    "eslint": "^8.49.0",
-    "eslint-config-lichthagel": "github:lichthagel/eslint-config#9a3b34517573a0ca4f475c060bc25cbd038816b2",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-svelte": "^2.33.1",
-    "postcss": "^8.4.29",
-    "prettier": "^3.0.3",
-    "prettier-plugin-svelte": "^3.0.3",
-    "prettier-plugin-tailwindcss": "^0.6.0",
-    "svelte": "^4.2.0",
-    "svelte-check": "^3.5.1",
-    "tailwind-custom": "workspace:*",
-    "tailwindcss": "^3.3.3",
-    "tsconfig": "workspace:*",
-    "tslib": "^2.6.2",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.0"
-  },
-  "type": "module",
   "dependencies": {
     "@fontsource-variable/m-plus-2": "^5.0.7",
     "@fontsource-variable/sora": "^5.0.8",
@@ -68,5 +44,21 @@
     "server-graphql": "workspace:^",
     "sharp": "^0.33.0",
     "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-node": "^5.0.0",
+    "@sveltejs/kit": "^2.0.0",
+    "@sveltejs/vite-plugin-svelte": "^3.1.1",
+    "@types/node": "^20.6.2",
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.29",
+    "svelte": "^4.2.0",
+    "svelte-check": "^3.5.1",
+    "tailwind-custom": "workspace:*",
+    "tailwindcss": "^3.3.3",
+    "tsconfig": "workspace:*",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0"
   }
 }

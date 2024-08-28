@@ -1,8 +1,8 @@
 <script lang="ts">
   import suggestionsStore from "$lib/suggestionsStore";
   import { getContextClient } from "@urql/svelte";
-  import { Loader2, Search } from "lucide-svelte";
   import { tagsStore } from "client-common/stores";
+  import { Loader2, Search } from "lucide-svelte";
 
   const client = getContextClient();
 
@@ -65,28 +65,24 @@
 
         break;
       }
-      // No default
+    // No default
     }
   };
 </script>
 
-<div
-  class="relative inline-flex h-10 items-center gap-1 rounded bg-base-200 px-2 focus-within:outline focus-within:outline-2 focus-within:outline-primary"
->
+<div class="relative inline-flex h-10 items-center gap-1 rounded bg-base-200 px-2 focus-within:outline focus-within:outline-2 focus-within:outline-primary">
   <Search />
 
   <input
-    type="text"
-    class="h-full rounded bg-transparent focus:outline-none"
-    placeholder="Search..."
     bind:value={tagInput}
+    class="h-full rounded bg-transparent focus:outline-none"
     on:keydown={handleKeyDown}
+    placeholder="Search..."
+    type="text"
   />
 
   {#if fetching}
-    <div
-      class="absolute left-0 right-0 z-20 flex h-20 items-center justify-center bg-base-100 p-1"
-    >
+    <div class="absolute left-0 right-0 z-20 flex h-20 items-center justify-center bg-base-100 p-1">
       <Loader2 class="h-14 w-14 animate-spin" />
     </div>
   {/if}
@@ -98,10 +94,10 @@
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
         <li
           class="my-1 h-10 cursor-pointer truncate rounded p-2"
-          class:bg-primary={index === activeSuggestion}
-          class:text-primary-content={index === activeSuggestion}
           class:bg-neutral={index !== activeSuggestion}
+          class:bg-primary={index === activeSuggestion}
           class:text-neutral-content={index !== activeSuggestion}
+          class:text-primary-content={index === activeSuggestion}
           on:click={() => handleSubmit()}
           on:mouseenter={() => (activeSuggestion = index)}
           style:background-color={(index === activeSuggestion &&

@@ -1,16 +1,17 @@
-/* eslint-disable promise/prefer-await-to-then */
-/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable no-use-before-define */
+
+import type { ImageExt, ImageSort } from "models";
+
+import { browser } from "$app/environment";
 import {
   Client,
   CombinedError,
-  createRequest,
-  gql,
   type GraphQLRequest,
   type OperationResult,
+  createRequest,
+  gql,
 } from "@urql/svelte";
-import type { ImageExt, ImageSort } from "models";
-import { writable, type Readable } from "svelte/store";
-import { browser } from "$app/environment";
+import { type Readable, writable } from "svelte/store";
 
 type ImagesResult = {
   images: {
@@ -114,7 +115,7 @@ const initialResult: Result = {
   fetchMore: () => {},
 };
 
-export default (
+const imagesStore = (
   client: Client,
   tags: readonly string[],
   sort: ImageSort,
@@ -125,9 +126,9 @@ export default (
 
   const handleChange = (res: ImagesOperationResult): void => {
     if (res.data) {
-      const usedCursor = res.operation.variables.last
-        ? res.operation.variables.before
-        : res.operation.variables.after;
+      const usedCursor = res.operation.variables.last ?
+        res.operation.variables.before :
+        res.operation.variables.after;
 
       const { edges: newEdges, pageInfo } = res.data.images;
 
@@ -144,9 +145,9 @@ export default (
         }
       }
 
-      hasNextPage = res.operation.variables.last
-        ? pageInfo.hasPreviousPage
-        : pageInfo.hasNextPage;
+      hasNextPage = res.operation.variables.last ?
+        pageInfo.hasPreviousPage :
+        pageInfo.hasNextPage;
     }
 
     result.set({
@@ -155,15 +156,18 @@ export default (
       error: res.error,
       images: edges.map((edge) => edge.node),
       fetchMore:
-        hasNextPage && !res.error
-          ? () => {
+        hasNextPage && !res.error ?
+            () => {
               newQuery(edges.at(-1)?.cursor, false);
-            }
-          : () => {},
+            } :
+            () => {},
     });
 
-    if (!res.error && !res.stale && sort === "NEWEST") resetTimeout();
-    else cancelTimeout();
+    if (!res.error && !res.stale && sort === "NEWEST") {
+      resetTimeout();
+    } else {
+      cancelTimeout();
+    }
   };
 
   const newQuery = (cursor?: string, refresh = false) => {
@@ -193,13 +197,19 @@ export default (
   let timeoutId: number | undefined;
 
   const cancelTimeout = () => {
-    if (!browser) return;
+    if (!browser) {
+      return;
+    }
 
-    if (timeoutId) window.clearTimeout(timeoutId);
+    if (timeoutId) {
+      window.clearTimeout(timeoutId);
+    }
   };
 
   const resetTimeout = () => {
-    if (!browser) return;
+    if (!browser) {
+      return;
+    }
 
     cancelTimeout();
 
@@ -215,3 +225,5 @@ export default (
 
   return result;
 };
+
+export default imagesStore;

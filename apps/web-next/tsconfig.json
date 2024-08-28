@@ -1,19 +1,19 @@
 {
   "extends": "tsconfig/base.json",
   "compilerOptions": {
-    "target": "es6",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "noEmit": true,
-    "jsx": "preserve",
     "incremental": true,
+    "target": "es6",
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "noEmit": true,
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    ]
   },
   "include": [
     ".eslintrc.cjs",

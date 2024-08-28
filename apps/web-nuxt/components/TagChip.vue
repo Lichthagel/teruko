@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { type TagExt } from "models";
 import { tagsStore } from "client-common/stores";
+import { type TagExt } from "models";
 
 const router = useRouter();
 
@@ -10,15 +10,15 @@ const props = defineProps<{
 
 const onClick = () => {
   tagsStore.set([props.tag.slug]);
-  router.push("/");
+  void router.push("/");
 };
 </script>
 
 <template>
   <button
-    class="m-0.5 inline-block select-none whitespace-nowrap rounded bg-gray-500 px-2 py-1 text-white transition hover:brightness-75"
     :style="{ 'background-color': props.tag.category?.color ?? undefined }"
     @click="onClick"
+    class="m-0.5 inline-block select-none whitespace-nowrap rounded bg-gray-500 px-2 py-1 text-white transition hover:brightness-75"
   >
     {{ props.tag.slug }}
   </button>

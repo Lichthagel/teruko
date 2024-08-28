@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { ListX } from "lucide-svelte";
-  import TagQuery from "./TagQuery.svelte";
-  import SortSelect from "./SortSelect.svelte";
-  import TagSearch from "./TagSearch.svelte";
   import { tagsStore } from "client-common/stores";
+  import { ListX } from "lucide-svelte";
+
+  import SortSelect from "./SortSelect.svelte";
+  import TagQuery from "./TagQuery.svelte";
+  import TagSearch from "./TagSearch.svelte";
 
   const resetTags = () => {
     tagsStore.set([]);

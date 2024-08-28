@@ -1,13 +1,13 @@
 "use client";
 
+import ErrorMessage from "@/components/ErrorMessage";
+import StatusBar from "@/components/StatusBar";
 import TagChip from "@/components/TagChip";
-import { ImageExt } from "models";
 import { DownloadIcon } from "lucide-react";
+import { ImageExt } from "models";
 import Image from "next/image";
 import { ReactElement, ReactEventHandler, useMemo } from "react";
 import { gql, useQuery } from "urql";
-import StatusBar from "@/components/StatusBar";
-import ErrorMessage from "@/components/ErrorMessage";
 
 const scroll: ReactEventHandler<HTMLImageElement> = (e) => {
   e.currentTarget.scrollIntoView({
@@ -43,7 +43,9 @@ const ImagePage = ({ params }: { params: { id: string } }): ReactElement => {
     variables: { id },
   });
 
-  const { data, fetching, stale, error } = result;
+  const {
+    data, fetching, stale, error,
+  } = result;
 
   const image = useMemo(() => data?.image, [data]);
   const fileExt = useMemo(() => image?.filename.split(".").pop(), [image]);
@@ -53,12 +55,12 @@ const ImagePage = ({ params }: { params: { id: string } }): ReactElement => {
       {image && (
         <div className="space-y-1">
           <Image
-            src={`/img/${image.filename}`}
             alt={image.title ?? image.filename}
-            width={image.width}
-            height={image.height}
             className="mx-auto max-h-screen object-contain"
+            height={image.height}
             onLoad={scroll}
+            src={`/img/${image.filename}`}
+            width={image.width}
           />
 
           <div className="container mx-auto pb-12">
@@ -69,10 +71,10 @@ const ImagePage = ({ params }: { params: { id: string } }): ReactElement => {
                 <span className="text-sm">
                   Source:
                   <a
-                    href={image.source || ""}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="link"
+                    href={image.source || ""}
+                    rel="noopener noreferrer"
+                    target="_blank"
                   >
                     {image.source}
                   </a>
@@ -118,6 +120,7 @@ const ImagePage = ({ params }: { params: { id: string } }): ReactElement => {
 
             <div className="w-full text-center lg:text-start">
               {(image.tags || []).map((tag) => (
+                // eslint-disable-next-line @eslint-react/no-duplicate-key
                 <TagChip key={tag.slug} tag={tag} />
               ))}
             </div>
@@ -125,7 +128,7 @@ const ImagePage = ({ params }: { params: { id: string } }): ReactElement => {
         </div>
       )}
 
-      {error && <ErrorMessage title={error.name} error={error} />}
+      {error && <ErrorMessage error={error} title={error.name} />}
 
       {!fetching && !error && !image && <ErrorMessage title="Not Found" />}
 

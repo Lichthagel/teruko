@@ -1,9 +1,9 @@
 import useSuggestions from "@/hooks/useSuggestions";
+import { useStore } from "@nanostores/react";
+import { tagsStore } from "client-common/stores";
 import clsx from "clsx";
 import { Loader2 } from "lucide-react";
 import { useCallback, useState } from "react";
-import { tagsStore } from "client-common/stores";
-import { useStore } from "@nanostores/react";
 
 const TagInput = () => {
   const tags = useStore(tagsStore);
@@ -74,15 +74,15 @@ const TagInput = () => {
   return (
     <div className="relative inline-block">
       <input
-        type="text"
         className="h-10 rounded bg-base-100 px-2 focus:outline-none"
-        placeholder="Search..."
-        value={tagInput}
         onChange={(e) => {
           setTagInput(e.target.value);
           setActiveSuggestion(0);
         }}
         onKeyDown={handleKeyDown}
+        placeholder="Search..."
+        type="text"
+        value={tagInput}
       />
       {fetching && (
         <div className="absolute left-0 right-0 z-20 flex h-20 items-center justify-center bg-base-100 p-1">
@@ -93,11 +93,12 @@ const TagInput = () => {
         <ul className="absolute left-0 right-0 z-20 block bg-base-100 p-1">
           {suggestions.map((suggestion, index) => (
             <li
-              key={suggestion.slug}
               className={clsx("my-1 h-10 cursor-pointer truncate rounded p-2", {
                 "bg-primary text-primary-content": index === activeSuggestion,
                 "bg-neutral text-neutral-content": index !== activeSuggestion,
               })}
+              // eslint-disable-next-line @eslint-react/no-duplicate-key
+              key={suggestion.slug}
               onClick={() => handleSubmit(suggestion.slug)}
               onMouseEnter={() => setActiveSuggestion(index)}
               style={{
@@ -105,12 +106,12 @@ const TagInput = () => {
                   (index === activeSuggestion &&
                     suggestion.category &&
                     suggestion.category.color) ||
-                  undefined,
+                    undefined,
                 color:
                   (index !== activeSuggestion &&
                     suggestion.category &&
                     suggestion.category.color) ||
-                  undefined,
+                    undefined,
               }}
             >
               {suggestion.slug}
