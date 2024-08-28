@@ -25,6 +25,7 @@ const ScrollButtons = () => {
       <button
         className={clsx("btn btn-square btn-ghost", { hidden: !showToTop })}
         onClick={() => window.scrollTo({ behavior: "smooth", top: 0 })}
+        type="button"
       >
         <ChevronUp />
       </button>
@@ -36,6 +37,7 @@ const ScrollButtons = () => {
             top: window.document.body.scrollHeight,
           });
         }}
+        type="button"
       >
         <ChevronDown />
       </button>

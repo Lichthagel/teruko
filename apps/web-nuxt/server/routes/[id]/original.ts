@@ -1,9 +1,9 @@
-import path from "node:path";
-import { z } from "zod";
-import env from "server-env";
-import fs from "node:fs";
-import { db, dImage } from "server-db";
 import { eq } from "drizzle-orm";
+import fs from "node:fs";
+import path from "node:path";
+import { dImage, db } from "server-db";
+import env from "server-env";
+import { z } from "zod";
 
 export default defineEventHandler(async (event) => {
   const { id } = z.object({ id: z.string() }).parse(event.context.params);

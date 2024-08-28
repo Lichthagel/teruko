@@ -1,10 +1,12 @@
-import Nav from "@/components/Nav";
-import "./globals.css";
 import type { Metadata } from "next";
+
+import Nav from "@/components/Nav";
 import UrqlProvider from "@/components/UrqlProvider";
-import { StrictMode, type ReactElement } from "react";
-import { Sora, M_PLUS_2 } from "next/font/google";
 import clsx from "clsx";
+import { M_PLUS_2, Sora } from "next/font/google";
+import { type ReactElement, StrictMode } from "react";
+
+import "./globals.css";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -26,7 +28,7 @@ const RootLayout = ({
   children: React.ReactNode;
 }): ReactElement => (
   <StrictMode>
-    <html lang="en" className={clsx(sora.variable, m_plus_2.variable)}>
+    <html className={clsx(sora.variable, m_plus_2.variable)} lang="en">
       <body>
         <Nav />
 

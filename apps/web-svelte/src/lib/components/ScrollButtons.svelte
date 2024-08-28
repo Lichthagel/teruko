@@ -6,9 +6,7 @@
 
   const onScroll = () => {
     showToTop = window.scrollY > 50;
-    showToBottom =
-      window.scrollY + window.innerHeight <
-      window.document.body.scrollHeight - 50;
+    showToBottom = window.scrollY + window.innerHeight < window.document.body.scrollHeight - 50;
   };
 </script>
 

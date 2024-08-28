@@ -1,6 +1,6 @@
-import { ImageSort } from "models";
-import { sortStore } from "client-common/stores";
 import { useStore } from "@nanostores/react";
+import { sortStore } from "client-common/stores";
+import { ImageSort } from "models";
 
 const SortSelect = () => {
   const sort = useStore(sortStore) ?? "NEWEST";
@@ -12,8 +12,8 @@ const SortSelect = () => {
   return (
     <select
       className="h-10 w-24 rounded bg-base-100 px-2"
-      value={sort}
       onChange={(e) => setSort(e.target.value as ImageSort)}
+      value={sort}
     >
       <option value="NEWEST">newest</option>
       <option value="OLDEST">oldest</option>

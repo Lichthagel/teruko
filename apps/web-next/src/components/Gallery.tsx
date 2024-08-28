@@ -1,11 +1,14 @@
 "use client";
 
-import ImageCard from "./ImageCard";
-import { type ReactElement, useRef, useCallback, Fragment } from "react";
 import useImages from "@/hooks/useImages";
 import { ImageSort } from "models";
-import StatusBar from "./StatusBar";
+import {
+  type ReactElement, useCallback, useRef,
+} from "react";
+
 import ErrorMessage from "./ErrorMessage";
+import ImageCard from "./ImageCard";
+import StatusBar from "./StatusBar";
 
 type GalleryProps = {
   tags: string[];
@@ -16,15 +19,21 @@ const Gallery: React.FC<GalleryProps> = ({
   tags,
   sort,
 }: GalleryProps): ReactElement => {
-  const { fetching, stale, error, images, fetchMore } = useImages(tags, sort);
+  const {
+    fetching, stale, error, images, fetchMore,
+  } = useImages(tags, sort);
 
   const observer = useRef<IntersectionObserver>();
 
   const endRef = useCallback(
     (node: HTMLDivElement) => {
-      if (fetching) return;
+      if (fetching) {
+        return;
+      }
 
-      if (observer.current) observer.current.disconnect();
+      if (observer.current) {
+        observer.current.disconnect();
+      }
 
       observer.current = new IntersectionObserver((entries) => {
         const entry = entries[0];
@@ -34,7 +43,9 @@ const Gallery: React.FC<GalleryProps> = ({
         }
       });
 
-      if (node) observer.current.observe(node);
+      if (node) {
+        observer.current.observe(node);
+      }
     },
     [fetchMore, fetching],
   );
@@ -45,6 +56,7 @@ const Gallery: React.FC<GalleryProps> = ({
         <div className="grid grid-cols-1 grid-rows-masonry gap-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
           {images.map((image, index) => (
             <div
+              // eslint-disable-next-line @eslint-react/no-duplicate-key
               key={image.id}
               ref={index === images.length - 1 ? endRef : undefined}
             >
@@ -54,7 +66,7 @@ const Gallery: React.FC<GalleryProps> = ({
         </div>
       )}
 
-      {error && <ErrorMessage title={error.name} error={error} />}
+      {error && <ErrorMessage error={error} title={error.name} />}
 
       <StatusBar busy={fetching || stale} error={!!error} />
     </>

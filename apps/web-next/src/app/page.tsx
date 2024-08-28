@@ -1,11 +1,12 @@
 "use client";
 
+import type { ReactElement } from "react";
+
 import Filters from "@/components/Filters";
 import Gallery from "@/components/Gallery";
 import ScrollButtons from "@/components/ScrollButtons";
-import type { ReactElement } from "react";
-import { tagsStore, sortStore } from "client-common/stores";
 import { useStore } from "@nanostores/react";
+import { sortStore, tagsStore } from "client-common/stores";
 
 const Home = (): ReactElement => {
   const tags = useStore(tagsStore);
@@ -17,7 +18,7 @@ const Home = (): ReactElement => {
       <div className="container mx-auto">
         <Filters />
 
-        <Gallery tags={tags} sort={sort} />
+        <Gallery sort={sort} tags={tags} />
       </div>
       <ScrollButtons />
     </>

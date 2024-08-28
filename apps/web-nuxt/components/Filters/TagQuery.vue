@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { useStore } from "@nanostores/vue";
 import { gql, useQuery } from "@urql/vue";
+import { tagsStore } from "client-common/stores";
 import { X } from "lucide-vue-next";
 import { type TagExt } from "models";
-import { useStore } from "@nanostores/vue";
-import { tagsStore } from "client-common/stores";
 
 const tags = useStore(tagsStore);
 
@@ -11,7 +11,9 @@ const props = defineProps<{
   tag: string;
 }>();
 
-const { data, fetching, stale, error } = useQuery<{ tag: TagExt }>({
+const {
+  data, fetching, stale, error,
+} = useQuery<{ tag: TagExt }>({
   query: gql`
     query Tag($slug: String!) {
       tag(slug: $slug) {
@@ -31,19 +33,22 @@ const removeTag = () => {
 
 <template>
   <div
-    class="m-0.5 flex h-10 select-none items-center whitespace-nowrap rounded bg-gray-500 px-2 text-white"
     :style="{
       backgroundColor: data?.tag?.category?.color ?? undefined,
     }"
+    class="m-0.5 flex h-10 select-none items-center whitespace-nowrap rounded bg-gray-500 px-2 text-white"
   >
     <span class="mx-1">{{ props.tag }}</span>
     <button
-      class="mx-1 rounded transition hover:bg-black/20"
       @click="removeTag"
+      class="mx-1 rounded transition hover:bg-black/20"
     >
       <X />
     </button>
   </div>
 
-  <StatusBar :fetching="fetching || stale" :error="!!error" />
+  <StatusBar
+    :error="!!error"
+    :fetching="fetching || stale"
+  />
 </template>

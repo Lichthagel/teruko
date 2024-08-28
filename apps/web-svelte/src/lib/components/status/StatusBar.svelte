@@ -5,7 +5,7 @@
 
 <div
   class="fixed bottom-0 left-0 right-0 z-10 h-1"
-  class:bg-error={error}
   class:animate-load={fetching}
+  class:bg-error={error}
   class:bg-primary={fetching}
 />

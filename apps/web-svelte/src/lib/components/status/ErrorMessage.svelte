@@ -2,9 +2,9 @@
   import { Home } from "lucide-svelte";
 
   export let title: string | undefined = "An error occurred";
-  export let subtitle: string | undefined = undefined;
-  export let message: string | undefined = undefined;
-  export let error: Error | undefined = undefined;
+  export let subtitle: string | undefined;
+  export let message: string | undefined;
+  export let error: Error | undefined;
 </script>
 
 <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
@@ -15,9 +15,7 @@
         <span>return home</span>
       </a>
     </div>
-    <div
-      class="rounded border-4 border-error bg-neutral p-8 text-neutral-content"
-    >
+    <div class="rounded border-4 border-error bg-neutral p-8 text-neutral-content">
       <h1 class="mb-2 text-5xl">{title || "An error occurred"}</h1>
       {#if subtitle || error}
         <h2 class="my-2 text-3xl">{subtitle || error?.message}</h2>

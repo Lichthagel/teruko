@@ -1,9 +1,10 @@
 "use client";
 
 import type { ImageExt } from "models";
+
+import { tagsStore } from "client-common/stores";
 import NextImage from "next/image";
 import NextLink from "next/link";
-import { tagsStore } from "client-common/stores";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 
@@ -27,10 +28,10 @@ const ImageCard: React.FC<ImageCardProps> = ({ image }: ImageCardProps) => {
       <NextLink href={`/${image.id}`}>
         <div className="relative">
           <NextImage
-            src={`/img/${image.filename}`}
             alt={image.title ?? image.filename}
-            width={image.width}
             height={image.height}
+            src={`/img/${image.filename}`}
+            width={image.width}
           />
 
           {image.title && (
@@ -45,10 +46,12 @@ const ImageCard: React.FC<ImageCardProps> = ({ image }: ImageCardProps) => {
           .filter((tag) => !tag.slug.startsWith("artist_"))
           .map((tag) => (
             <button
-              key={tag.slug}
               className="m-0.5 inline-block select-none whitespace-nowrap rounded bg-gray-500 px-1 text-sm text-white transition hover:brightness-75"
-              style={{ backgroundColor: tag.category?.color ?? "gray" }}
+              // eslint-disable-next-line @eslint-react/no-duplicate-key
+              key={tag.slug}
               onClick={() => onClick(tag.slug)}
+              style={{ backgroundColor: tag.category?.color ?? "gray" }}
+              type="button"
             >
               {tag.slug}
             </button>

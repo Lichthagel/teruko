@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { getContextClient, gql, queryStore } from "@urql/svelte";
   import type { TagExt } from "models";
-  import { X } from "lucide-svelte";
+
   import StatusBar from "$lib/components/status/StatusBar.svelte";
+  import { getContextClient, gql, queryStore } from "@urql/svelte";
   import { tagsStore } from "client-common/stores";
+  import { X } from "lucide-svelte";
 
   export let tag: string;
 
@@ -43,4 +44,4 @@
   </button>
 </div>
 
-<StatusBar fetching={$result.fetching} error={!!$result.error} />
+<StatusBar error={!!$result.error} fetching={$result.fetching} />

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronUp, ChevronDown } from "lucide-vue-next";
+import { ChevronDown, ChevronUp } from "lucide-vue-next";
 
 const showToTop = ref(false);
 const showToBottom = ref(false);
@@ -8,7 +8,7 @@ const onScroll = () => {
   showToTop.value = window.scrollY > 50;
   showToBottom.value =
     window.scrollY + window.innerHeight <
-    window.document.body.scrollHeight - 50;
+      window.document.body.scrollHeight - 50;
 };
 
 const scrollToTop = () => {
@@ -34,16 +34,16 @@ onBeforeUnmount(() => {
 <template>
   <div class="join fixed bottom-3 right-3 z-10 bg-base-100">
     <button
-      class="btn btn-square btn-ghost"
       :class="{ hidden: !showToTop }"
       @click="scrollToTop"
+      class="btn btn-square btn-ghost"
     >
       <ChevronUp />
     </button>
     <button
-      class="btn btn-square btn-ghost"
       :class="{ hidden: !showToBottom }"
       @click="scrollToBottom"
+      class="btn btn-square btn-ghost"
     >
       <ChevronDown />
     </button>

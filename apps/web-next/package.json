@@ -2,12 +2,13 @@
   "name": "web-next",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=21.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "prettier --check . && next lint",
-    "format": "prettier --write ."
+    "start": "next start"
   },
   "nx": {
     "targets": {
@@ -34,20 +35,12 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
-    "@types/eslint": "^9.0.0",
     "@types/node": "20.16.1",
     "@types/react": "18.3.4",
     "@types/react-dom": "18.3.0",
     "autoprefixer": "10.4.20",
-    "eslint": "9.9.1",
-    "eslint-config-lichthagel": "github:lichthagel/eslint-config#9a3b34517573a0ca4f475c060bc25cbd038816b2",
-    "eslint-config-next": "14.2.6",
-    "eslint-plugin-react": "^7.34.2",
-    "eslint-plugin-react-hooks": "^4.6.2",
     "next": "14.2.6",
     "postcss": "8.4.41",
-    "prettier": "^3.0.3",
-    "prettier-plugin-tailwindcss": "^0.6.0",
     "tailwind-custom": "workspace:*",
     "tailwindcss": "3.4.10",
     "tsconfig": "workspace:*",

@@ -1,7 +1,6 @@
-/* eslint-disable promise/always-return */
-/* eslint-disable promise/prefer-await-to-then */
-import { CombinedError, gql, useClientHandle } from "@urql/vue";
 import type { TagExt } from "models";
+
+import { CombinedError, gql, useClientHandle } from "@urql/vue";
 
 const useSuggestions = (
   query: Ref<string>,

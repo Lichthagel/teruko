@@ -1,4 +1,4 @@
-import { NuxtConfig } from "nuxt/schema";
+import type { NuxtConfig } from "nuxt/schema";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const config: NuxtConfig = defineNuxtConfig({
@@ -6,12 +6,9 @@ const config: NuxtConfig = defineNuxtConfig({
   devServer: {
     host: "0.0.0.0",
   },
-  modules: ["@nuxtjs/eslint-module", "@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/tailwindcss"],
   plugins: ["~/plugins/urql/index.ts"],
-  components: [
-    "~/components",
-    { path: "~/components/Filters", prefix: "Filters" },
-  ],
+  components: ["~/components", { path: "~/components/Filters", prefix: "Filters" }],
   telemetry: false,
 });
 

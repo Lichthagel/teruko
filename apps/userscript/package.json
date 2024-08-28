@@ -1,27 +1,25 @@
 {
   "name": "userscript",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=21.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "lint": "prettier --check . && eslint .",
-    "format": "prettier --write ."
-  },
-  "devDependencies": {
-    "@lichthagel/eslint-config": "github:Lichthagel/eslint-config",
-    "eslint": "^9.0.0",
-    "prettier": "^3.0.3",
-    "tsconfig": "workspace:*",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.0",
-    "vite-plugin-monkey": "^4.0.0"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@urql/core": "^5.0.0",
     "client-common": "workspace:*",
     "graphql": "^16.8.0"
+  },
+  "devDependencies": {
+    "tsconfig": "workspace:*",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0",
+    "vite-plugin-monkey": "^4.0.0"
   }
 }

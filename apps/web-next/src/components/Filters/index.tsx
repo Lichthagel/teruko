@@ -1,10 +1,11 @@
 "use client";
 
-import TagQuery from "./TagQuery";
-import SortSelect from "./SortSelect";
-import TagSearch from "./TagSearch";
-import { tagsStore } from "client-common/stores";
 import { useStore } from "@nanostores/react";
+import { tagsStore } from "client-common/stores";
+
+import SortSelect from "./SortSelect";
+import TagQuery from "./TagQuery";
+import TagSearch from "./TagSearch";
 
 const Filters = () => {
   const tags = useStore(tagsStore);
@@ -14,6 +15,7 @@ const Filters = () => {
       {tags.length > 0 && (
         <div className="inline-flex">
           {tags.map((tag) => (
+            // eslint-disable-next-line @eslint-react/no-duplicate-key
             <TagQuery key={tag} slug={tag} />
           ))}
         </div>

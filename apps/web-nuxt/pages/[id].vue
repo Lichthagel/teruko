@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { ImageExt } from "models";
+
 import { gql, useQuery } from "@urql/vue";
 import { DownloadIcon } from "lucide-vue-next";
 
@@ -6,7 +8,7 @@ const route = useRoute();
 
 const id = route.params.id as string;
 
-const result = useQuery({
+const result = useQuery<{ image: ImageExt | null }>({
   query: gql`
     query Image($id: ID!) {
       image(id: $id) {
@@ -30,13 +32,11 @@ const result = useQuery({
   },
 });
 
-const { data, fetching, stale, error } = result;
+const {
+  data, fetching, stale, error,
+} = result;
 
-const fileExt = computed(() => {
-  if (data.value?.image.filename) {
-    return data.value.image.filename.split(".").pop();
-  }
-});
+const fileExt = computed<string | null>(() => data.value?.image?.filename ? (data.value.image.filename.split(".").pop() ?? null) : null);
 
 const scroll = (payload: Event) => {
   (payload.target as HTMLElement).scrollIntoView({
@@ -55,23 +55,34 @@ useHead({
 
 <template>
   <div>
-    <div v-if="data && data.image" class="space-y-1">
+    <div
+      class="space-y-1"
+      v-if="data && data.image"
+    >
       <img
         :src="`/img/${data.image.filename}`"
-        class="mx-auto max-h-screen"
         @load="scroll"
-      />
+        class="mx-auto max-h-screen"
+      >
 
       <div class="container mx-auto pb-12">
         <div class="my-4 w-full p-1 lg:flex">
           <div class="overflow-hidden lg:flex-grow">
-            <h1 class="text-3xl">{{ data.image.title }}</h1>
+            <h1 class="text-3xl">
+              {{ data.image.title }}
+            </h1>
 
             <span class="text-sm">
               Source:
-              <NuxtLink :href="data.image.source" target="_blank" class="link">
+              <NuxtLink
+                :href="data.image.source"
+                class="link"
+                target="_blank"
+                v-if="data.image.source"
+              >
                 {{ data.image.source }}
               </NuxtLink>
+              <span v-else>unknown</span>
             </span>
           </div>
 
@@ -90,9 +101,9 @@ useHead({
             </div>
 
             <NuxtLink
-              class="relative pb-2"
-              :href="`/${data.image.id}/original`"
               :external="true"
+              :href="`/${data.image.id}/original`"
+              class="relative pb-2"
             >
               <DownloadIcon class="mx-1 h-10 w-10" />
               <span
@@ -103,10 +114,10 @@ useHead({
             </NuxtLink>
 
             <NuxtLink
-              v-if="!!fileExt && fileExt !== 'avif'"
-              class="relative pb-2"
-              :href="`/${data.image.id}/avif`"
               :external="true"
+              :href="`/${data.image.id}/avif`"
+              class="relative pb-2"
+              v-if="!!fileExt && fileExt !== 'avif'"
             >
               <DownloadIcon class="mx-1 h-10 w-10" />
               <span
@@ -117,9 +128,9 @@ useHead({
             </NuxtLink>
 
             <NuxtLink
-              class="relative pb-2"
-              :href="`/${data.image.id}/webp`"
               :external="true"
+              :href="`/${data.image.id}/webp`"
+              class="relative pb-2"
             >
               <DownloadIcon class="mx-1 h-10 w-10" />
               <span
@@ -132,15 +143,29 @@ useHead({
         </div>
 
         <div class="w-full text-center lg:text-start">
-          <TagChip v-for="tag in data.image.tags" :key="tag.slug" :tag="tag" />
+          <TagChip
+            :key="tag.slug"
+            :tag="tag"
+            v-for="tag in data.image.tags"
+          />
         </div>
       </div>
     </div>
 
-    <ErrorMessage v-if="error" :title="error.name" :message="error.message" />
+    <ErrorMessage
+      :message="error.message"
+      :title="error.name"
+      v-if="error"
+    />
 
-    <ErrorMessage v-if="!fetching && !error && !data.image" title="Not Found" />
+    <ErrorMessage
+      title="Not Found"
+      v-if="!fetching && !error && (!data || !data.image)"
+    />
 
-    <StatusBar :fetching="fetching || stale" :error="!!error" />
+    <StatusBar
+      :error="!!error"
+      :fetching="fetching || stale"
+    />
   </div>
 </template>

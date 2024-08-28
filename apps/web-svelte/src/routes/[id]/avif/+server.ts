@@ -1,10 +1,11 @@
 import type { RequestHandler } from "@sveltejs/kit";
-import path from "node:path";
-import { z } from "zod";
-import sharp from "sharp";
-import { db, dImage } from "server-db";
-import env from "server-env";
+
 import { eq } from "drizzle-orm";
+import path from "node:path";
+import { dImage, db } from "server-db";
+import env from "server-env";
+import sharp from "sharp";
+import { z } from "zod";
 
 export const GET = (async ({ params }): Promise<Response> => {
   const { id } = z.object({ id: z.string() }).parse(params);
@@ -23,7 +24,8 @@ export const GET = (async ({ params }): Promise<Response> => {
 
   const filepath = path.resolve(env.IMG_FOLDER, filename);
 
-  const data = await sharp(filepath).avif({ quality: 90 }).toBuffer();
+  const data = await sharp(filepath).avif({ quality: 90 })
+    .toBuffer();
 
   const response = new Response(data.buffer, {
     headers: {

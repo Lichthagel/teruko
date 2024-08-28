@@ -1,6 +1,8 @@
-/* eslint-disable unicorn/consistent-function-scoping */
-/* eslint-disable promise/prefer-await-to-then */
+/* eslint-disable @eslint-react/hooks-extra/no-direct-set-state-in-use-effect */
 import { ImageExt, ImageSort } from "models";
+import {
+  useCallback, useEffect, useRef, useState,
+} from "react";
 import {
   CombinedError,
   GraphQLRequest,
@@ -9,7 +11,6 @@ import {
   gql,
   useClient,
 } from "urql";
-import { useCallback, useEffect, useRef, useState } from "react";
 
 type ImagesResult = {
   images: {
@@ -143,7 +144,12 @@ const useImages = (tags: string[], sort: ImageSort) => {
         refresh: false,
       }));
     }
-  }, [edges, error, fetching, hasMore]);
+  }, [
+    edges,
+    error,
+    fetching,
+    hasMore,
+  ]);
 
   const refresh = useCallback(() => {
     setRequestParams((prev) => ({ ...prev, cursor: undefined, refresh: true }));
@@ -152,22 +158,25 @@ const useImages = (tags: string[], sort: ImageSort) => {
   const timeoutId = useRef<number>(); // this runs in the browser...
 
   const cancelTimeout = useCallback(() => {
-    if (timeoutId.current) window.clearTimeout(timeoutId.current);
+    if (timeoutId.current) {
+      window.clearTimeout(timeoutId.current);
+    }
   }, [timeoutId]);
 
   const resetTimeout = useCallback(() => {
     cancelTimeout();
 
-    if (sort === "NEWEST")
+    if (sort === "NEWEST") {
       timeoutId.current = window.setTimeout(refresh, 20_000);
+    }
   }, [cancelTimeout, refresh, sort]);
 
   const handleChange = useCallback(
     (res: ImagesOperationResult): void => {
       if (res.data) {
-        const usedCursor = res.operation.variables.last
-          ? res.operation.variables.before
-          : res.operation.variables.after;
+        const usedCursor = res.operation.variables.last ?
+          res.operation.variables.before :
+          res.operation.variables.after;
 
         const { edges: newEdges, pageInfo } = res.data.images;
 
@@ -184,9 +193,9 @@ const useImages = (tags: string[], sort: ImageSort) => {
                 (edge) => edge.cursor === newEdges.at(-1)?.cursor,
               );
 
-              return idx === -1
-                ? newEdges
-                : [...newEdges, ...prevEdges.slice(idx + 1)];
+              return idx === -1 ?
+                newEdges :
+                  [...newEdges, ...prevEdges.slice(idx + 1)];
             }
           }
 
@@ -194,9 +203,9 @@ const useImages = (tags: string[], sort: ImageSort) => {
         });
 
         setHasMore(
-          res.operation.variables.last
-            ? pageInfo.hasPreviousPage
-            : pageInfo.hasNextPage,
+          res.operation.variables.last ?
+            pageInfo.hasPreviousPage :
+            pageInfo.hasNextPage,
         );
       }
 
@@ -215,7 +224,9 @@ const useImages = (tags: string[], sort: ImageSort) => {
 
   useEffect(() => {
     if (requestParams) {
-      const { cursor, refresh, sort, tags } = requestParams;
+      const {
+        cursor, refresh, sort, tags,
+      } = requestParams;
 
       setFetching(true);
       setStale(false);
