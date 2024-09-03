@@ -97,7 +97,6 @@ const TagInput = () => {
                 "bg-primary text-primary-content": index === activeSuggestion,
                 "bg-neutral text-neutral-content": index !== activeSuggestion,
               })}
-              // eslint-disable-next-line @eslint-react/no-duplicate-key
               key={suggestion.slug}
               onClick={() => handleSubmit(suggestion.slug)}
               onMouseEnter={() => setActiveSuggestion(index)}

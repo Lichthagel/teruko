@@ -47,7 +47,6 @@ const ImageCard: React.FC<ImageCardProps> = ({ image }: ImageCardProps) => {
           .map((tag) => (
             <button
               className="m-0.5 inline-block select-none whitespace-nowrap rounded bg-gray-500 px-1 text-sm text-white transition hover:brightness-75"
-              // eslint-disable-next-line @eslint-react/no-duplicate-key
               key={tag.slug}
               onClick={() => onClick(tag.slug)}
               style={{ backgroundColor: tag.category?.color ?? "gray" }}

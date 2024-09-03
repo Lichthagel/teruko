@@ -120,7 +120,6 @@ const ImagePage = ({ params }: { params: { id: string } }): ReactElement => {
 
             <div className="w-full text-center lg:text-start">
               {(image.tags || []).map((tag) => (
-                // eslint-disable-next-line @eslint-react/no-duplicate-key
                 <TagChip key={tag.slug} tag={tag} />
               ))}
             </div>

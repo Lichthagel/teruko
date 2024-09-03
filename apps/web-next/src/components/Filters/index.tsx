@@ -15,7 +15,6 @@ const Filters = () => {
       {tags.length > 0 && (
         <div className="inline-flex">
           {tags.map((tag) => (
-            // eslint-disable-next-line @eslint-react/no-duplicate-key
             <TagQuery key={tag} slug={tag} />
           ))}
         </div>
