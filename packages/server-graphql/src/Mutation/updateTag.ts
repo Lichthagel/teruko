@@ -52,10 +52,16 @@ const updateTag = (b: typeof builder) => {
               })
               .returning();
 
+            const newTag = newTagResult[0];
+
+            if (!newTag) {
+              throw new Error("Could not create/return new tag");
+            }
+
             // update all tag references
             const existing = await tx
               .delete(d_ImageToTag)
-              .where(eq(d_ImageToTag.tagSlug, slug))
+              .where(eq(d_ImageToTag.tagId, oldTag.id))
               .returning();
 
             await tx
@@ -63,19 +69,13 @@ const updateTag = (b: typeof builder) => {
               .values(
                 existing.map((e) => ({
                   imageId: e.imageId,
-                  tagSlug: newSlug,
+                  tagId: newTag.id,
                 })),
               )
               .onConflictDoNothing();
 
             // delete old tag
-            await tx.delete(dTag).where(eq(dTag.slug, slug));
-
-            const newTag = newTagResult[0];
-
-            if (!newTag) {
-              throw new Error("Tag not found");
-            }
+            await tx.delete(dTag).where(eq(dTag.id, oldTag.id));
 
             return newTag;
           });

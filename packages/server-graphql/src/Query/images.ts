@@ -121,7 +121,8 @@ const images = (b: typeof builder) =>
                   const sq = db
                     .select({ id: d_ImageToTag.imageId })
                     .from(d_ImageToTag)
-                    .where(eq(d_ImageToTag.tagSlug, tag));
+                    .leftJoin(dTag, eq(d_ImageToTag.tagId, dTag.id))
+                    .where(eq(dTag.slug, tag));
 
                   return inArray(dImage.id, sq);
                 }),
@@ -152,7 +153,7 @@ const images = (b: typeof builder) =>
               .select()
               .from(query)
               .leftJoin(d_ImageToTag, eq(query.id, d_ImageToTag.imageId))
-              .leftJoin(dTag, eq(d_ImageToTag.tagSlug, dTag.slug))
+              .leftJoin(dTag, eq(d_ImageToTag.tagId, dTag.id))
               .leftJoin(dTagCategory, eq(dTag.categorySlug, dTagCategory.slug))
               .orderBy(
                 desc(dImage.createdAt),

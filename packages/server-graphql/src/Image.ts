@@ -41,7 +41,7 @@ builder.node(PothosImage, {
         const res = await db
           .select()
           .from(dTag)
-          .innerJoin(d_ImageToTag, eq(dTag.slug, d_ImageToTag.tagSlug))
+          .innerJoin(d_ImageToTag, eq(dTag.id, d_ImageToTag.tagId))
           .where(eq(d_ImageToTag.imageId, parent.id))
           .orderBy(dTag.categorySlug, dTag.slug)
           .leftJoin(dTagCategory, eq(dTagCategory.slug, dTag.categorySlug));

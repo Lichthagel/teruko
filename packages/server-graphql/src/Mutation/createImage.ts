@@ -1,3 +1,4 @@
+import { sql } from "drizzle-orm";
 import { fileTypeFromBlob } from "file-type";
 import { GraphQLError } from "graphql";
 import { ImageExt, ImageMeta, mergeImageMeta } from "models";
@@ -129,7 +130,7 @@ const createImage = (b: typeof builder) => {
                 await tx.insert(d_ImageToTag).values(
                   imageMeta.tags.map((tag) => ({
                     imageId: image.id,
-                    tagSlug: tag.slug,
+                    tagId: sql`SELECT id FROM "Tag" WHERE slug = ${tag.slug}`,
                   })),
                 );
               }

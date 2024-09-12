@@ -29,7 +29,7 @@ const image = (b: typeof builder) =>
           .from(dImage)
           .where(eq(dImage.id, Number.parseInt(id)))
           .leftJoin(d_ImageToTag, eq(dImage.id, d_ImageToTag.imageId))
-          .leftJoin(dTag, eq(d_ImageToTag.tagSlug, dTag.slug))
+          .leftJoin(dTag, eq(d_ImageToTag.tagId, dTag.id))
           .leftJoin(dTagCategory, eq(dTag.categorySlug, dTagCategory.slug))
           .orderBy(asc(dTag.categorySlug), asc(dTag.slug));
 

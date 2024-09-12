@@ -46,7 +46,9 @@ export const ImageRelations = relations(dImage, ({ many }) => ({
 }));
 
 export const dTag = pgTable("Tag", {
-  slug: text("slug").primaryKey(),
+  id: serial("id").primaryKey(),
+  slug: text("slug").notNull()
+    .unique(),
   categorySlug: text("categorySlug").references(() => dTagCategory.slug),
 });
 
@@ -73,12 +75,12 @@ export const d_ImageToTag = pgTable(
     imageId: integer("imageId")
       .notNull()
       .references(() => dImage.id),
-    tagSlug: text("tagSlug")
+    tagId: integer("tagId")
       .notNull()
-      .references(() => dTag.slug),
+      .references(() => dTag.id),
   },
   (table) => ({
-    pk: primaryKey(table.imageId, table.tagSlug),
+    pk: primaryKey(table.imageId, table.tagId),
   }),
 );
 
@@ -88,8 +90,8 @@ export const _ImageToTagRelations = relations(d_ImageToTag, ({ one }) => ({
     references: [dImage.id],
   }),
   tag: one(dTag, {
-    fields: [d_ImageToTag.tagSlug],
-    references: [dTag.slug],
+    fields: [d_ImageToTag.tagId],
+    references: [dTag.id],
   }),
 }));
 
