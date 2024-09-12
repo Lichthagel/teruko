@@ -55,15 +55,15 @@ const updateTag = (b: typeof builder) => {
             // update all tag references
             const existing = await tx
               .delete(d_ImageToTag)
-              .where(eq(d_ImageToTag.B, slug))
+              .where(eq(d_ImageToTag.tagSlug, slug))
               .returning();
 
             await tx
               .insert(d_ImageToTag)
               .values(
                 existing.map((e) => ({
-                  A: e.A,
-                  B: newSlug,
+                  imageId: e.imageId,
+                  tagSlug: newSlug,
                 })),
               )
               .onConflictDoNothing();

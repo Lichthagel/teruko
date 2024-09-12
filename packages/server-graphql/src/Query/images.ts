@@ -99,7 +99,7 @@ const images = (b: typeof builder) =>
               conditions.push(
                 or(
                   gt(dImage.createdAt, date),
-                  and(eq(dImage.createdAt, date), gt(dImage.id, id)),
+                  and(eq(dImage.createdAt, date), gt(dImage.id, Number.parseInt(id))),
                 ),
               );
             }
@@ -110,7 +110,7 @@ const images = (b: typeof builder) =>
               conditions.push(
                 or(
                   lt(dImage.createdAt, date),
-                  and(eq(dImage.createdAt, date), lt(dImage.id, id)),
+                  and(eq(dImage.createdAt, date), lt(dImage.id, Number.parseInt(id))),
                 ),
               );
             }
@@ -119,9 +119,9 @@ const images = (b: typeof builder) =>
               conditions.push(
                 ...args.tags.map((tag) => {
                   const sq = db
-                    .select({ id: d_ImageToTag.A })
+                    .select({ id: d_ImageToTag.imageId })
                     .from(d_ImageToTag)
-                    .where(eq(d_ImageToTag.B, tag));
+                    .where(eq(d_ImageToTag.tagSlug, tag));
 
                   return inArray(dImage.id, sq);
                 }),
@@ -151,8 +151,8 @@ const images = (b: typeof builder) =>
             const res = await db
               .select()
               .from(query)
-              .leftJoin(d_ImageToTag, eq(query.id, d_ImageToTag.A))
-              .leftJoin(dTag, eq(d_ImageToTag.B, dTag.slug))
+              .leftJoin(d_ImageToTag, eq(query.id, d_ImageToTag.imageId))
+              .leftJoin(dTag, eq(d_ImageToTag.tagSlug, dTag.slug))
               .leftJoin(dTagCategory, eq(dTag.categorySlug, dTagCategory.slug))
               .orderBy(
                 desc(dImage.createdAt),

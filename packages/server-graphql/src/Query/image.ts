@@ -27,9 +27,9 @@ const image = (b: typeof builder) =>
         const result = await db
           .select()
           .from(dImage)
-          .where(eq(dImage.id, id.toString()))
-          .leftJoin(d_ImageToTag, eq(dImage.id, d_ImageToTag.A))
-          .leftJoin(dTag, eq(d_ImageToTag.B, dTag.slug))
+          .where(eq(dImage.id, Number.parseInt(id)))
+          .leftJoin(d_ImageToTag, eq(dImage.id, d_ImageToTag.imageId))
+          .leftJoin(dTag, eq(d_ImageToTag.tagSlug, dTag.slug))
           .leftJoin(dTagCategory, eq(dTag.categorySlug, dTagCategory.slug))
           .orderBy(asc(dTag.categorySlug), asc(dTag.slug));
 

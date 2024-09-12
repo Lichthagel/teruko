@@ -1,9 +1,8 @@
 import { z } from "zod";
 
 export const zImage = z.object({
-  id: z.string().cuid2()
-    .or(z.number().positive()
-      .int()),
+  id: z.number().int()
+    .positive(),
   filename: z.string(),
   title: z.string().nullable(),
   source: z.string().nullable(),

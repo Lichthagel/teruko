@@ -5,6 +5,7 @@ import {
   integer,
   pgTable,
   primaryKey,
+  serial,
   text,
   timestamp,
 } from "drizzle-orm/pg-core";
@@ -12,8 +13,9 @@ import {
 export const dImage = pgTable(
   "Image",
   {
-    id: text("id").primaryKey(),
-    filename: text("filename").notNull(),
+    id: serial("id").primaryKey(),
+    filename: text("filename").notNull()
+      .unique(),
     title: text("title"),
     source: text("source"),
     createdAt: timestamp("createdAt", {
@@ -68,25 +70,25 @@ export const TagCategoryRelations = relations(dTagCategory, ({ many }) => ({
 export const d_ImageToTag = pgTable(
   "_ImageToTag",
   {
-    A: text("A")
+    imageId: integer("imageId")
       .notNull()
       .references(() => dImage.id),
-    B: text("B")
+    tagSlug: text("tagSlug")
       .notNull()
       .references(() => dTag.slug),
   },
   (table) => ({
-    pk: primaryKey(table.A, table.B),
+    pk: primaryKey(table.imageId, table.tagSlug),
   }),
 );
 
 export const _ImageToTagRelations = relations(d_ImageToTag, ({ one }) => ({
   image: one(dImage, {
-    fields: [d_ImageToTag.A],
+    fields: [d_ImageToTag.imageId],
     references: [dImage.id],
   }),
   tag: one(dTag, {
-    fields: [d_ImageToTag.B],
+    fields: [d_ImageToTag.tagSlug],
     references: [dTag.slug],
   }),
 }));
