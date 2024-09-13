@@ -3,7 +3,7 @@
 
   import { goto } from "$app/navigation";
   import { base } from "$app/paths";
-  import { tagsStore } from "client-common/stores";
+  import { tagsStore } from "client-stores";
 
   export let tag: TagExt;
 

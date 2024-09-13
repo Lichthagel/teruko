@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 
-import { urqlClient } from "client-common";
+import { urqlClient } from "client-graphql";
 import { Provider } from "urql";
 
 type UrqlProviderProps = {

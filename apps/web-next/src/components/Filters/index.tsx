@@ -1,7 +1,7 @@
 "use client";
 
 import { useStore } from "@nanostores/react";
-import { tagsStore } from "client-common/stores";
+import { tagsStore } from "client-stores";
 
 import SortSelect from "./SortSelect";
 import TagQuery from "./TagQuery";

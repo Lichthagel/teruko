@@ -1,5 +1,5 @@
 {
-  "name": "client-common",
+  "name": "client-stores",
   "type": "module",
   "version": "0.0.0",
   "private": true,
@@ -10,10 +10,6 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    },
-    "./stores": {
-      "types": "./dist/stores.d.ts",
-      "default": "./dist/stores.js"
     }
   },
   "scripts": {
@@ -21,8 +17,6 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@urql/core": "^5.0.0",
-    "@urql/exchange-graphcache": "^7.0.0",
     "models": "workspace:*",
     "nanostores": "^0.11.3"
   },

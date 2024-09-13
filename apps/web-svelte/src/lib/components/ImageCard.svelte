@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { ImageExt } from "models";
 
-  import { tagsStore } from "client-common/stores";
+  import { tagsStore } from "client-stores";
   import { fly } from "svelte/transition";
 
   export let image: ImageExt;

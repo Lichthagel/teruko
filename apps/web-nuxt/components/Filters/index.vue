@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import { useStore } from "@nanostores/vue";
-import { tagsStore } from "client-common/stores";
+import { tagsStore } from "client-stores";
 import { ListX } from "lucide-vue-next";
 
 import SortSelect from "./SortSelect.vue";

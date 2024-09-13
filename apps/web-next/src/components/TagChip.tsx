@@ -1,6 +1,6 @@
 "use client";
 
-import { tagsStore } from "client-common/stores";
+import { tagsStore } from "client-stores";
 import { TagExt } from "models";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { tagsStore } from "client-common/stores";
+  import { tagsStore } from "client-stores";
   import { ListX } from "lucide-svelte";
 
   import SortSelect from "./SortSelect.svelte";

@@ -1,6 +1,6 @@
 import useSuggestions from "@/hooks/useSuggestions";
 import { useStore } from "@nanostores/react";
-import { tagsStore } from "client-common/stores";
+import { tagsStore } from "client-stores";
 import clsx from "clsx";
 import { Loader2 } from "lucide-react";
 import { useCallback, useState } from "react";

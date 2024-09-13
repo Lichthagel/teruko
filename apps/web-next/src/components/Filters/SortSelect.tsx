@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/react";
-import { sortStore } from "client-common/stores";
+import { sortStore } from "client-stores";
 import { ImageSort } from "models";
 
 const SortSelect = () => {

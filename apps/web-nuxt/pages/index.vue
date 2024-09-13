@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useStore } from "@nanostores/vue";
-import { sortStore, tagsStore } from "client-common/stores";
+import { sortStore, tagsStore } from "client-stores";
 
 useHead({
   title: "てる子",

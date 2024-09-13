@@ -3,7 +3,7 @@
 
   import StatusBar from "$lib/components/status/StatusBar.svelte";
   import { getContextClient, gql, queryStore } from "@urql/svelte";
-  import { tagsStore } from "client-common/stores";
+  import { tagsStore } from "client-stores";
   import { X } from "lucide-svelte";
 
   export let tag: string;

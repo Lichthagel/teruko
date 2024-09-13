@@ -6,7 +6,7 @@ import Filters from "@/components/Filters";
 import Gallery from "@/components/Gallery";
 import ScrollButtons from "@/components/ScrollButtons";
 import { useStore } from "@nanostores/react";
-import { sortStore, tagsStore } from "client-common/stores";
+import { sortStore, tagsStore } from "client-stores";
 
 const Home = (): ReactElement => {
   const tags = useStore(tagsStore);

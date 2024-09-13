@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useSuggestions } from "#imports";
 import { useStore } from "@nanostores/vue";
-import { tagsStore } from "client-common/stores";
+import { tagsStore } from "client-stores";
 import { Loader2 } from "lucide-vue-next";
 
 const tags = useStore(tagsStore);

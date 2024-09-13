@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { FormEventHandler } from "svelte/elements";
 
-  import { sortStore } from "client-common/stores";
+  import { sortStore } from "client-stores";
   import { ArrowDownNarrowWide } from "lucide-svelte";
   import { zImageSort } from "models";
 

@@ -2,7 +2,7 @@
 
 import type { ImageExt } from "models";
 
-import { tagsStore } from "client-common/stores";
+import { tagsStore } from "client-stores";
 import NextImage from "next/image";
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";

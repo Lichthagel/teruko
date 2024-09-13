@@ -1,7 +1,7 @@
 <script lang="ts">
   import suggestionsStore from "$lib/suggestionsStore";
   import { getContextClient } from "@urql/svelte";
-  import { tagsStore } from "client-common/stores";
+  import { tagsStore } from "client-stores";
   import { Loader2, Search } from "lucide-svelte";
 
   const client = getContextClient();

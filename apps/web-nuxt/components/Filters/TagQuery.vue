@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useStore } from "@nanostores/vue";
 import { gql, useQuery } from "@urql/vue";
-import { tagsStore } from "client-common/stores";
+import { tagsStore } from "client-stores";
 import { X } from "lucide-vue-next";
 import { type TagExt } from "models";
 

@@ -2,7 +2,7 @@
   import Gallery from "$lib/components/Gallery.svelte";
   import ScrollButtons from "$lib/components/ScrollButtons.svelte";
   import Filters from "$lib/components/filters/Filters.svelte";
-  import { sortStore, tagsStore } from "client-common/stores";
+  import { sortStore, tagsStore } from "client-stores";
 </script>
 
 <svelte:head>

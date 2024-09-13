@@ -1,0 +1,27 @@
+{
+  "name": "client-graphql",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "author": "Lichthagel",
+  "keywords": [],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@urql/core": "^5.0.0",
+    "@urql/exchange-graphcache": "^7.0.0"
+  },
+  "devDependencies": {
+    "tsconfig": "workspace:^",
+    "typescript": "^5.4.5"
+  }
+}

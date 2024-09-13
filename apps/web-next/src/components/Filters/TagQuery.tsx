@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/react";
-import { tagsStore } from "client-common/stores";
+import { tagsStore } from "client-stores";
 import { X } from "lucide-react";
 import { TagExt } from "models";
 import { gql, useQuery } from "urql";

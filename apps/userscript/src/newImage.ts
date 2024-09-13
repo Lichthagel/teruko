@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { CombinedError, gql } from "@urql/core";
-import { urqlClient } from "client-common";
+import { urqlClient } from "client-graphql";
 
 const NEW_IMAGE = gql`
   mutation ($files: [Upload!]!) {
