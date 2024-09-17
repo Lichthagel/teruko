@@ -9,7 +9,8 @@ const NEW_IMAGE = gql`
     }
   }
 `;
-const TERUKO_BASE = "https://desktop.licht.moe:3030";
+
+const TERUKO_BASE_URL = import.meta.env.VITE_TERUKO_BASE_URL as string;
 
 const beforeUnload = (event: BeforeUnloadEvent) => {
   event.preventDefault();
@@ -44,7 +45,7 @@ async function newImage(url: string, open: boolean, target: HTMLDivElement) {
           files: [file],
         },
         {
-          url: `${TERUKO_BASE}/graphql`,
+          url: `${TERUKO_BASE_URL}/graphql`,
           fetchOptions: {
             headers: {
               "Apollo-Require-Preflight": "true",
@@ -58,7 +59,7 @@ async function newImage(url: string, open: boolean, target: HTMLDivElement) {
     if (result.data) {
       if (open) {
         window.open(
-          `${TERUKO_BASE}/${result.data.createImage[0].id as string}`,
+          `${TERUKO_BASE_URL}/${result.data.createImage[0].id as string}`,
           "_blank",
         );
       } else {
