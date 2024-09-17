@@ -1,7 +1,7 @@
 import { Client, fetchExchange } from "@urql/core";
 import { cacheExchange } from "@urql/exchange-graphcache";
 
-import resolvers from "./resolvers";
+import resolvers from "./resolvers/index.js";
 
 export const urqlClient = new Client({
   url: "/graphql",
