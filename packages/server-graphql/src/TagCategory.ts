@@ -1,7 +1,7 @@
 import type { TagCategory } from "models";
 
 import { eq } from "drizzle-orm";
-import { dTagCategory, db } from "server-db";
+import { db, dTagCategory } from "server-db";
 
 import { builder } from "./builder.js";
 

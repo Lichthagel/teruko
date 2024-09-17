@@ -1,9 +1,9 @@
 import { eq } from "drizzle-orm";
 import { TagExt } from "models";
-import { dTag, dTagCategory, db } from "server-db";
+import { db, dTag, dTagCategory } from "server-db";
 
-import { PothosTagCategory } from "./TagCategory.js";
 import { builder } from "./builder.js";
+import { PothosTagCategory } from "./TagCategory.js";
 
 export const PothosTag = builder.objectRef<TagExt>("Tag");
 

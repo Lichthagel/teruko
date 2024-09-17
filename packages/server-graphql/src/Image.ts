@@ -5,8 +5,8 @@ import {
   dImage, dTag, dTagCategory, d_ImageToTag, db,
 } from "server-db";
 
-import { PothosTag } from "./Tag.js";
 import { builder } from "./builder.js";
+import { PothosTag } from "./Tag.js";
 
 export const PothosImage = builder.objectRef<ImageExt>("Image");
 

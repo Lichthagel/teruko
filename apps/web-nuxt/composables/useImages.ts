@@ -3,9 +3,9 @@ import type { ImageExt, ImageSort } from "models";
 
 import {
   CombinedError,
-  type OperationResult,
   createRequest,
   gql,
+  type OperationResult,
   useClientHandle,
 } from "@urql/vue";
 

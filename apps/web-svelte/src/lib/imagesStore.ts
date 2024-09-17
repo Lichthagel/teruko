@@ -6,10 +6,10 @@ import { browser } from "$app/environment";
 import {
   Client,
   CombinedError,
-  type GraphQLRequest,
-  type OperationResult,
   createRequest,
   gql,
+  type GraphQLRequest,
+  type OperationResult,
 } from "@urql/svelte";
 import { type Readable, writable } from "svelte/store";
 

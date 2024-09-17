@@ -3,9 +3,9 @@
   import type { EventHandler } from "svelte/elements";
 
   import { page } from "$app/stores";
-  import TagChip from "$lib/components/TagChip.svelte";
   import ErrorMessage from "$lib/components/status/ErrorMessage.svelte";
   import StatusBar from "$lib/components/status/StatusBar.svelte";
+  import TagChip from "$lib/components/TagChip.svelte";
   import { getContextClient, gql, queryStore } from "@urql/svelte";
   import { DownloadIcon } from "lucide-svelte";
 

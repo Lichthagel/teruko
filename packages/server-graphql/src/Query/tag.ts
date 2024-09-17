@@ -1,5 +1,5 @@
 import { eq } from "drizzle-orm";
-import { dTag, dTagCategory, db } from "server-db";
+import { db, dTag, dTagCategory } from "server-db";
 
 import type { builder } from "../builder.js";
 

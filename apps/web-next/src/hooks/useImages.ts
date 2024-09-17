@@ -5,10 +5,10 @@ import {
 } from "react";
 import {
   CombinedError,
-  GraphQLRequest,
-  OperationResult,
   createRequest,
   gql,
+  GraphQLRequest,
+  OperationResult,
   useClient,
 } from "urql";
 
