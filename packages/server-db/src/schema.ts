@@ -80,7 +80,10 @@ export const d_ImageToTag = pgTable(
       .references(() => dTag.id),
   },
   (table) => ({
-    pk: primaryKey(table.imageId, table.tagId),
+    pk: primaryKey({
+      name: "_ImageToTag_pkey",
+      columns: [table.imageId, table.tagId],
+    }),
   }),
 );
 
