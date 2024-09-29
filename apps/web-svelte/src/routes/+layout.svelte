@@ -1,11 +1,10 @@
 <script lang="ts">
   import Nav from "$lib/components/Nav.svelte";
-  import "@fontsource-variable/m-plus-2";
-  import "@fontsource-variable/sora";
   import { setContextClient } from "@urql/svelte";
   import { urqlClient } from "client-graphql";
 
   import "../app.css";
+  import "client-css/global.scss";
 
   setContextClient(urqlClient);
 </script>
