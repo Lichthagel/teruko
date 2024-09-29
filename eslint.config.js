@@ -66,6 +66,7 @@ export default [
       "**/.output/**",
       "**/.nuxt/**",
       "**/build/**",
+      "eslint.config.js",
     ],
   },
 ];
