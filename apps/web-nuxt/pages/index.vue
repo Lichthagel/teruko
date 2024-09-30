@@ -11,7 +11,7 @@ const tags = useStore(tagsStore);
 </script>
 
 <template>
-  <div class="container mx-auto">
+  <div class="container">
     <Filters />
 
     <Gallery

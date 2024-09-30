@@ -2,6 +2,7 @@
 import type { ImageExt } from "models";
 
 import { gql, useQuery } from "@urql/vue";
+import styles from "client-css/m/imagepage.module.scss";
 import { DownloadIcon } from "lucide-vue-next";
 
 const route = useRoute();
@@ -56,27 +57,25 @@ useHead({
 <template>
   <div>
     <div
-      class="space-y-1"
       v-if="data && data.image"
     >
       <img
+        :class="styles.image"
         :src="`/img/${data.image.filename}`"
         @load="scroll"
-        class="mx-auto max-h-screen"
       >
 
-      <div class="container mx-auto pb-12">
-        <div class="my-4 w-full p-1 lg:flex">
-          <div class="overflow-hidden lg:flex-grow">
-            <h1 class="text-3xl">
+      <div class="container">
+        <div :class="styles['meta-container']">
+          <div :class="styles['meta-title']">
+            <h1>
               {{ data.image.title }}
             </h1>
 
-            <span class="text-sm">
+            <span>
               Source:
               <NuxtLink
                 :href="data.image.source"
-                class="link"
                 target="_blank"
                 v-if="data.image.source"
               >
@@ -86,63 +85,55 @@ useHead({
             </span>
           </div>
 
-          <div class="flex items-center lg:flex-shrink-0">
-            <div
-              class="my-1 flex-grow text-xs lg:mx-2 lg:text-right lg:text-sm"
-            >
+          <div :class="styles['meta-rest']">
+            <div :class="styles['meta-dates']">
               <div>
-                <span class="font-light">Created At: </span>
+                <span>Created At: </span>
                 {{ new Date(data.image.createdAt).toLocaleString() }}
               </div>
               <div>
-                <span class="font-light">Updated At: </span>
+                <span>Updated At: </span>
                 {{ new Date(data.image.updatedAt).toLocaleString() }}
               </div>
             </div>
 
             <NuxtLink
+              :class="styles['meta-dlicon']"
               :external="true"
               :href="`/${data.image.id}/original`"
-              class="relative pb-2"
             >
-              <DownloadIcon class="mx-1 h-10 w-10" />
-              <span
-                class="absolute bottom-0 left-0 right-0 mx-auto px-1 text-center text-[0.5rem] uppercase"
-              >
+              <DownloadIcon :class="styles.icon" />
+              <span>
                 {{ fileExt }}
               </span>
             </NuxtLink>
 
             <NuxtLink
+              :class="styles['meta-dlicon']"
               :external="true"
               :href="`/${data.image.id}/avif`"
-              class="relative pb-2"
               v-if="!!fileExt && fileExt !== 'avif'"
             >
-              <DownloadIcon class="mx-1 h-10 w-10" />
-              <span
-                class="absolute bottom-0 left-0 right-0 mx-auto px-1 text-center text-[0.5rem] uppercase"
-              >
+              <DownloadIcon :class="styles.icon" />
+              <span>
                 avif
               </span>
             </NuxtLink>
 
             <NuxtLink
+              :class="styles['meta-dlicon']"
               :external="true"
               :href="`/${data.image.id}/webp`"
-              class="relative pb-2"
             >
-              <DownloadIcon class="mx-1 h-10 w-10" />
-              <span
-                class="absolute bottom-0 left-0 right-0 mx-auto px-1 text-center text-[0.5rem] uppercase"
-              >
+              <DownloadIcon :class="styles.icon" />
+              <span>
                 webp
               </span>
             </NuxtLink>
           </div>
         </div>
 
-        <div class="w-full text-center lg:text-start">
+        <div :class="styles.tags">
           <TagChip
             :key="tag.slug"
             :tag="tag"

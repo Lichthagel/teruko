@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { type ComponentPublicInstance, useImages } from "#imports";
+import styles from "client-css/m/gallery.module.scss";
 import { type ImageSort } from "models";
 
 const props = defineProps<{
@@ -35,7 +36,7 @@ const endRef = (node: ComponentPublicInstance | Element | null) => {
 
 <template>
   <div
-    class="grid grid-cols-1 grid-rows-masonry gap-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5"
+    :class="styles.gallery"
   >
     <template
       :key="image.id"

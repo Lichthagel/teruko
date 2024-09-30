@@ -3,10 +3,56 @@
 
 @import "modern-normalize";
 
+@import "variables";
 @import "palette";
 
 :root {
   background-color: var(--base);
   color: var(--text);
   font-family: 'Sora Variable', 'M Plus 2 Variable', sans-serif;
+  margin-inline: $size-4;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  @media (width >=$size-xxs) {
+    max-width: $size-xxs;
+  }
+
+  @media (width >=$size-xs) {
+    max-width: $size-xs;
+  }
+
+  @media (width >=$size-sm) {
+    max-width: $size-sm;
+  }
+
+  @media (width >=$size-md) {
+    max-width: $size-md;
+  }
+
+  @media (width >=$size-lg) {
+    max-width: $size-lg;
+  }
+
+  @media (width >=$size-xl) {
+    max-width: $size-xl;
+  }
+
+  @media (width >=$size-xxl) {
+    max-width: $size-xxl;
+  }
 }

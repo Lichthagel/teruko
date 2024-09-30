@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import { useStore } from "@nanostores/vue";
+import styles from "client-css/m/filters.module.scss";
 import { tagsStore } from "client-stores";
-import { ListX } from "lucide-vue-next";
 
 import SortSelect from "./SortSelect.vue";
 import TagQuery from "./TagQuery.vue";
@@ -12,9 +12,9 @@ const tags = useStore(tagsStore);
 </script>
 
 <template>
-  <div class="mb-2">
+  <div :class="styles.main">
     <div
-      class="inline-flex"
+      :class="styles['tag-container']"
       v-if="tags.length > 0"
     >
       <TagQuery
@@ -22,12 +22,12 @@ const tags = useStore(tagsStore);
         :tag="tag"
         v-for="tag in tags"
       />
-      <button
+      <!-- TODO <button
         @click="() => tagsStore.set([])"
         class="m-0.5 box-border inline-block h-10 w-10 rounded bg-neutral px-2 text-neutral-content transition hover:brightness-75"
       >
         <ListX class="h-6 w-6" />
-      </button>
+      </button> -->
     </div>
 
     <TagSearch />

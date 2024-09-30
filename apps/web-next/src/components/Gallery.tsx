@@ -1,6 +1,7 @@
 "use client";
 
 import useImages from "@/hooks/useImages";
+import styles from "client-css/m/gallery.module.scss";
 import { ImageSort } from "models";
 import {
   type ReactElement, useCallback, useRef,
@@ -53,7 +54,7 @@ const Gallery: React.FC<GalleryProps> = ({
   return (
     <>
       {images.length > 0 && (
-        <div className="grid grid-cols-1 grid-rows-masonry gap-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
+        <div className={styles.gallery}>
           {images.map((image, index) => (
             <div
               key={image.id}

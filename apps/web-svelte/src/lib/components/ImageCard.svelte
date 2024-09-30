@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { ImageExt } from "models";
 
+  import styles from "client-css/m/gallery.module.scss";
   import { tagsStore } from "client-stores";
   import { fly } from "svelte/transition";
 
@@ -11,9 +12,9 @@
   };
 </script>
 
-<div class="mb-1 bg-zinc-300 shadow-xl dark:bg-gray-700" in:fly={{ y: 200 }}>
+<div class={styles.card} in:fly={{ y: 200 }}>
   <a href={`/${image.id}`}>
-    <div class="relative">
+    <div class={styles["image-container"]}>
       <img
         alt={image.title ?? image.filename}
         height={image.height}
@@ -22,19 +23,19 @@
       />
 
       {#if !!image.title}
-        <div class="text-shadow-xl absolute bottom-0 left-0 right-0 z-10 overflow-hidden whitespace-nowrap bg-gradient-to-b from-transparent to-black/80 px-1 text-sm text-white">
+        <div>
           {image.title}
         </div>
       {/if}
     </div>
   </a>
-  <div class="snap flex snap-x flex-row flex-nowrap overflow-x-scroll scrollbar-none"
+  <div class={styles["tag-list"]}
   >
     {#each (image.tags ?? []).filter((tag) => !tag.slug.startsWith("artist_")) as tag}
       <button
-        class="m-0.5 inline-block select-none whitespace-nowrap rounded bg-gray-500 px-1 text-sm text-white transition hover:brightness-75"
         on:click={() => onTagClick(tag.slug)}
         style:background-color={tag.category?.color ?? "gray"}
+        type="button"
       >
         {tag.slug}
       </button>

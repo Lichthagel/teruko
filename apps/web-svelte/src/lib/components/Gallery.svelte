@@ -5,6 +5,7 @@
   import StatusBar from "$lib/components/status/StatusBar.svelte";
   import imagesStore from "$lib/imagesStore";
   import { getContextClient } from "@urql/svelte";
+  import styles from "client-css/m/gallery.module.scss";
 
   import ImageCard from "./ImageCard.svelte";
   import ErrorMessage from "./status/ErrorMessage.svelte";
@@ -34,7 +35,7 @@
 </script>
 
 {#if $result.images}
-  <div class="grid grid-cols-1 grid-rows-masonry gap-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
+  <div class={styles.gallery}>
     {#each $result.images as image}
       <ImageCard {image} />
     {/each}

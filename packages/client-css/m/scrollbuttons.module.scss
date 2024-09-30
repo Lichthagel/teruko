@@ -1,0 +1,31 @@
+@import "../variables";
+
+.buttons {
+  position: fixed;
+  bottom: $size-2;
+  right: $size-2;
+  z-index: 10;
+  background-color: var(--mantle);
+  border-radius: $radius;
+
+  button {
+    height: $size-6;
+    width: $size-6;
+    padding: 0;
+    background-color: transparent;
+    border-width: 0;
+    border-radius: $radius;
+    color: inherit;
+    transition: background-color 0.2s;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--surface0);
+      }
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+}

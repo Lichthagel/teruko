@@ -3,6 +3,7 @@
 
   import StatusBar from "$lib/components/status/StatusBar.svelte";
   import { getContextClient, gql, queryStore } from "@urql/svelte";
+  import styles from "client-css/m/filters.module.scss";
   import { tagsStore } from "client-stores";
   import { X } from "lucide-svelte";
 
@@ -32,13 +33,13 @@
 </script>
 
 <div
-  class="m-0.5 flex h-10 select-none items-center whitespace-nowrap rounded bg-gray-500 px-2 text-white"
+  class={styles["tag-query"]}
   style:background-color={$result.data?.tag.category?.color}
 >
-  <span class="mx-1">{tag}</span>
+  <span>{tag}</span>
   <button
-    class="mx-1 rounded transition hover:bg-black/20"
     on:click|preventDefault={() => removeTag()}
+    type="button"
   >
     <X />
   </button>

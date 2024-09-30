@@ -3,6 +3,7 @@
 
   import { goto } from "$app/navigation";
   import { base } from "$app/paths";
+  import styles from "client-css/m/imagepage.module.scss";
   import { tagsStore } from "client-stores";
 
   export let tag: TagExt;
@@ -14,9 +15,10 @@
 </script>
 
 <button
-  class="m-0.5 inline-block select-none whitespace-nowrap rounded bg-gray-500 px-2 py-1 text-white transition hover:brightness-75"
+  class={styles["tag-chip"]}
   on:click={onClick}
   style={tag.category?.color && `background-color: ${tag.category?.color}`}
+  type="button"
 >
   {tag.slug}
 </button>

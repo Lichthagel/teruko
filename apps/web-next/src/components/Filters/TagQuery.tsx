@@ -1,4 +1,5 @@
 import { useStore } from "@nanostores/react";
+import styles from "client-css/m/filters.module.scss";
 import { tagsStore } from "client-stores";
 import { X } from "lucide-react";
 import { TagExt } from "models";
@@ -37,14 +38,13 @@ const TagQuery = ({ slug }: TagQueryProps) => {
   return (
     <>
       <div
-        className="m-0.5 flex h-10 select-none items-center whitespace-nowrap rounded bg-gray-500 px-2 text-white"
+        className={styles["tag-query"]}
         style={{
           backgroundColor: data?.tag?.category?.color ?? undefined,
         }}
       >
-        <span className="mx-1">{slug}</span>
+        <span>{slug}</span>
         <button
-          className="mx-1 rounded transition hover:bg-black/20"
           onClick={removeTag}
           type="button"
         >

@@ -1,6 +1,7 @@
 "use client";
 
 import { useStore } from "@nanostores/react";
+import styles from "client-css/m/filters.module.scss";
 import { tagsStore } from "client-stores";
 
 import SortSelect from "./SortSelect";
@@ -11,9 +12,9 @@ const Filters = () => {
   const tags = useStore(tagsStore);
 
   return (
-    <div className="mb-2">
+    <div className={styles.main}>
       {tags.length > 0 && (
-        <div className="inline-flex">
+        <div className={styles["tag-container"]}>
           {tags.map((tag) => (
             <TagQuery key={tag} slug={tag} />
           ))}

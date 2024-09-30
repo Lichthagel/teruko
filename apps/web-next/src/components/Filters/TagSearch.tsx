@@ -1,8 +1,9 @@
 import useSuggestions from "@/hooks/useSuggestions";
 import { useStore } from "@nanostores/react";
+import styles from "client-css/m/filters.module.scss";
 import { tagsStore } from "client-stores";
 import clsx from "clsx";
-import { Loader2 } from "lucide-react";
+import { Loader2, Search } from "lucide-react";
 import { useCallback, useState } from "react";
 
 const TagInput = () => {
@@ -72,9 +73,10 @@ const TagInput = () => {
   );
 
   return (
-    <div className="relative inline-block">
+    <div className={styles["search-container"]}>
+      <Search />
+
       <input
-        className="h-10 rounded bg-base-100 px-2 focus:outline-none"
         onChange={(e) => {
           setTagInput(e.target.value);
           setActiveSuggestion(0);
@@ -85,18 +87,15 @@ const TagInput = () => {
         value={tagInput}
       />
       {fetching && (
-        <div className="absolute left-0 right-0 z-20 flex h-20 items-center justify-center bg-base-100 p-1">
-          <Loader2 className="h-14 w-14 animate-spin" />
+        <div className={styles["suggestions-loading"]}>
+          <Loader2 className={styles.icon} />
         </div>
       )}
       {suggestions.length > 0 && (
-        <ul className="absolute left-0 right-0 z-20 block bg-base-100 p-1">
+        <ul className={styles["suggestions-container"]}>
           {suggestions.map((suggestion, index) => (
             <li
-              className={clsx("my-1 h-10 cursor-pointer truncate rounded p-2", {
-                "bg-primary text-primary-content": index === activeSuggestion,
-                "bg-neutral text-neutral-content": index !== activeSuggestion,
-              })}
+              className={clsx(index === activeSuggestion && styles.active)}
               key={suggestion.slug}
               onClick={() => handleSubmit(suggestion.slug)}
               onMouseEnter={() => setActiveSuggestion(index)}

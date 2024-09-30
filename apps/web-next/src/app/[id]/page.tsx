@@ -3,6 +3,7 @@
 import ErrorMessage from "@/components/ErrorMessage";
 import StatusBar from "@/components/StatusBar";
 import TagChip from "@/components/TagChip";
+import styles from "client-css/m/imagepage.module.scss";
 import { DownloadIcon } from "lucide-react";
 import { ImageExt } from "models";
 import Image from "next/image";
@@ -53,25 +54,25 @@ const ImagePage = ({ params }: { params: { id: string } }): ReactElement => {
   return (
     <>
       {image && (
-        <div className="space-y-1">
+        <div>
           <Image
             alt={image.title ?? image.filename}
-            className="mx-auto max-h-screen object-contain"
+            className={styles.image}
             height={image.height}
             onLoad={scroll}
             src={`/img/${image.filename}`}
             width={image.width}
           />
 
-          <div className="container mx-auto pb-12">
-            <div className="my-4 w-full p-1 lg:flex">
-              <div className="overflow-hidden lg:flex-grow">
-                <h1 className="text-3xl">{image.title}</h1>
+          <div className="container">
+            <div className={styles["meta-container"]}>
+              <div className={styles["meta-title"]}>
+                <h1>{image.title}</h1>
 
-                <span className="text-sm">
+                <span>
                   Source:
+                  {" "}
                   <a
-                    className="link"
                     href={image.source || ""}
                     rel="noopener noreferrer"
                     target="_blank"
@@ -81,44 +82,44 @@ const ImagePage = ({ params }: { params: { id: string } }): ReactElement => {
                 </span>
               </div>
 
-              <div className="flex items-center lg:flex-shrink-0">
-                <div className="my-1 flex-grow text-xs lg:mx-2 lg:text-right lg:text-sm">
+              <div className={styles["meta-rest"]}>
+                <div className={styles["meta-dates"]}>
                   <div>
-                    <span className="font-light">Created At: </span>
+                    <span>Created At: </span>
                     {image.createdAt.toLocaleString()}
                   </div>
                   <div>
-                    <span className="font-light">Updated At: </span>
+                    <span>Updated At: </span>
                     {image.updatedAt.toLocaleString()}
                   </div>
                 </div>
 
-                <a className="relative pb-2" href={`/${image.id}/original`}>
-                  <DownloadIcon className="mx-1 h-10 w-10" />
-                  <span className="absolute bottom-0 left-0 right-0 mx-auto px-1 text-center text-[0.5rem] uppercase">
+                <a className={styles["meta-dlicon"]} href={`/${image.id}/original`}>
+                  <DownloadIcon className={styles.icon} />
+                  <span>
                     {fileExt}
                   </span>
                 </a>
 
                 {!!fileExt && fileExt === "webp" && (
-                  <a className="relative pb-2" href={`/${image.id}/avif`}>
-                    <DownloadIcon className="mx-1 h-10 w-10" />
-                    <span className="absolute bottom-0 left-0 right-0 mx-auto px-1 text-center text-[0.5rem] uppercase">
+                  <a className={styles["meta-dlicon"]} href={`/${image.id}/avif`}>
+                    <DownloadIcon className={styles.icon} />
+                    <span>
                       avif
                     </span>
                   </a>
                 )}
 
-                <a className="relative pb-2" href={`/${image.id}/webp`}>
-                  <DownloadIcon className="mx-1 h-10 w-10" />
-                  <span className="absolute bottom-0 left-0 right-0 mx-auto px-1 text-center text-[0.5rem] uppercase">
+                <a className={styles["meta-dlicon"]} href={`/${image.id}/webp`}>
+                  <DownloadIcon className={styles.icon} />
+                  <span>
                     webp
                   </span>
                 </a>
               </div>
             </div>
 
-            <div className="w-full text-center lg:text-start">
+            <div className={styles.tags}>
               {(image.tags || []).map((tag) => (
                 <TagChip key={tag.slug} tag={tag} />
               ))}

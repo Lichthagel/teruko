@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 
 import Nav from "@/components/Nav";
 import UrqlProvider from "@/components/UrqlProvider";
-import { type ReactElement, StrictMode } from "react";
-
-import "./globals.css";
 import "client-css/global.scss";
+import { type ReactElement, StrictMode } from "react";
 
 export const metadata: Metadata = {
   title: "てる子",

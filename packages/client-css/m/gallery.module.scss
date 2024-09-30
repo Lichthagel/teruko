@@ -1,0 +1,78 @@
+@import "../variables";
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-rows: masonry;
+  gap: $gap;
+
+  @media (width >= $size-md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (width >= $size-xl) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (width >= $size-xxl) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.card {
+  margin-block-end: $size-1;
+  background-color: var(--surface0);
+  box-shadow: 0 0 0.5rem 0.25rem var(--crust); // TODO variable
+
+  .image-container {
+    position: relative;
+
+    > div {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      overflow: hidden;
+      white-space: nowrap;
+      background-image: linear-gradient(to bottom, transparent, var(--base));
+      color: var(--text);
+      font-size: 0.875rem; // TODO font size mixin?
+      line-height: 1.25rem;
+      padding-inline: $size-1;
+    }
+  }
+  
+  .tag-list {
+    display: flex;
+    flex-flow: row nowrap;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    button {
+      margin: $size-0;
+      display: inline-block;
+      user-select: none;
+      white-space: nowrap;
+      border-radius: $radius;
+      background-color: var(--subtext0);
+      padding-inline: $size-1;
+      font-size: 0.875rem; // TODO font size mixin?
+      line-height: 1.25rem;
+      color: var(--inverted-text);
+      border-width: 0;
+      transition: filter 0.25s;
+
+      @media (hover: hover) {
+        &:hover {
+          filter: brightness(.75);
+        }
+      }
+    }
+  }
+}
