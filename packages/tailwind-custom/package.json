@@ -5,14 +5,12 @@
   "private": true,
   "license": "MIT",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    }
+    ".": "./src/index.ts"
   },
+  "files": [
+    "src"
+  ],
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
     "lint": "eslint ."
   },
   "dependencies": {
