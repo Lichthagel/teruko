@@ -1,0 +1,37 @@
+@import "../variables";
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0 0 0 / 50%);
+}
+
+.above {
+  margin-block: $size-2;
+  padding-inline: $size-6;
+  color: var(--base);
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--text);
+  }
+
+  a {
+    color: inherit;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $size-1;
+    text-decoration-line: none;
+  }
+}
+
+.content {
+  border: 4px solid var(--red);
+  border-radius: $radius-2;
+  padding: $size-4;
+  background-color: var(--surface0);
+}

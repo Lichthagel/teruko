@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useSuggestions } from "#imports";
 import { useStore } from "@nanostores/vue";
+import styles from "client-css/m/filters.module.scss";
 import { tagsStore } from "client-stores";
-import { Loader2 } from "lucide-vue-next";
+import { Loader2, Search } from "lucide-vue-next";
 
 const tags = useStore(tagsStore);
 
@@ -56,29 +57,27 @@ const handleKeyDown = (e: KeyboardEvent) => {
 </script>
 
 <template>
-  <div class="relative inline-block">
+  <div :class="styles['search-container']">
+    <Search />
+
     <input
       @keydown="handleKeyDown"
-      class="h-10 rounded bg-base-100 px-2 focus:outline-none"
       placeholder="Search..."
       type="text"
       v-model="tagInput"
     >
     <div
-      class="absolute left-0 right-0 z-20 flex h-20 items-center justify-center bg-base-100 p-1"
+      :class="styles['suggestions-loading']"
       v-if="fetching"
     >
-      <Loader2 class="h-14 w-14 animate-spin" />
+      <Loader2 :class="styles.icon" />
     </div>
     <ul
-      class="absolute left-0 right-0 z-20 block bg-base-100 p-1"
+      :class="styles['suggestions-container']"
       v-if="suggestions.length > 0"
     >
       <li
-        :class="{
-          'bg-primary text-primary-content': index === activeSuggestion,
-          'bg-neutral text-neutral-content': index !== activeSuggestion,
-        }"
+        :class="index === activeSuggestion && styles.active"
         :key="suggestion.slug"
         :style="{
           'background-color':
@@ -94,7 +93,6 @@ const handleKeyDown = (e: KeyboardEvent) => {
         }"
         @click="handleSubmit"
         @mouseenter="activeSuggestion = index"
-        class="my-1 h-10 cursor-pointer truncate rounded p-2"
         v-for="(suggestion, index) in suggestions"
       >
         {{ suggestion.slug }}

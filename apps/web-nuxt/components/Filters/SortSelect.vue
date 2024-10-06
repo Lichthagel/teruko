@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useStore } from "@nanostores/vue";
+import styles from "client-css/m/filters.module.scss";
 import { sortStore } from "client-stores";
+import { ArrowDownNarrowWide } from "lucide-vue-next";
 import { type ImageSort } from "models";
 
 const sort = useStore(sortStore);
@@ -17,19 +19,22 @@ watch(sort, () => {
 </script>
 
 <template>
-  <select
-    @change="sortChange"
-    class="h-10 w-24 rounded bg-base-100 px-2"
-    v-model="sortSel"
-  >
-    <option value="NEWEST">
-      newest
-    </option>
-    <option value="OLDEST">
-      oldest
-    </option>
-    <option value="RANDOM">
-      random
-    </option>
-  </select>
+  <div :class="styles.sort">
+    <ArrowDownNarrowWide :class="styles.icon" />
+
+    <select
+      @change="sortChange"
+      v-model="sortSel"
+    >
+      <option value="NEWEST">
+        newest
+      </option>
+      <option value="OLDEST">
+        oldest
+      </option>
+      <option value="RANDOM">
+        random
+      </option>
+    </select>
+  </div>
 </template>

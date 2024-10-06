@@ -7,6 +7,7 @@
   import StatusBar from "$lib/components/status/StatusBar.svelte";
   import TagChip from "$lib/components/TagChip.svelte";
   import { getContextClient, gql, queryStore } from "@urql/svelte";
+  import styles from "client-css/m/imagepage.module.scss";
   import { DownloadIcon } from "lucide-svelte";
 
   const { id } = $page.params;
@@ -52,27 +53,26 @@
 </svelte:head>
 
 {#if image}
-  <div class="space-y-1">
+  <div>
     <img
       alt={image.title ?? image.filename}
-      class="mx-auto max-h-screen object-contain"
+      class={styles.image}
       height={image.height}
       on:load={scroll}
       src={`/img/${image.filename}`}
       width={image.width}
     />
 
-    <div class="container mx-auto pb-12">
-      <div class="my-4 w-full p-1 lg:flex">
-        <div class="overflow-hidden lg:flex-grow">
-          <h1 class="text-3xl" class:text-neutral-content={!image.title}>
+    <div class="container">
+      <div class={styles["meta-container"]}>
+        <div class={styles["meta-title"]}>
+          <h1>
             {image.title || "No title"}
           </h1>
 
-          <span class="text-sm">
+          <span>
             Source:
             <a
-              class="link"
               href={image.source}
               rel="noopener noreferrer"
               target="_blank"
@@ -82,44 +82,44 @@
           </span>
         </div>
 
-        <div class="flex items-center lg:flex-shrink-0">
-          <div class="my-1 flex-grow text-xs lg:mx-2 lg:text-right lg:text-sm">
+        <div class={styles["meta-rest"]}>
+          <div class={styles["meta-dates"]}>
             <div>
-              <span class="font-light">Created At: </span>
+              <span>Created At: </span>
               {image.createdAt.toLocaleString()}
             </div>
             <div>
-              <span class="font-light">Updated At: </span>
+              <span>Updated At: </span>
               {image.updatedAt.toLocaleString()}
             </div>
           </div>
 
-          <a class="relative pb-2" href={`/${image.id}/original`}>
-            <DownloadIcon class="mx-1 h-10 w-10" />
-            <span class="absolute bottom-0 left-0 right-0 mx-auto px-1 text-center text-[0.5rem] uppercase">
+          <a class={styles["meta-dlicon"]} href={`/${image.id}/original`}>
+            <DownloadIcon class={styles.icon} />
+            <span>
               {fileExt}
             </span>
           </a>
 
           {#if !!fileExt && fileExt !== "avif"}
-            <a class="relative pb-2" href={`/${image.id}/avif`}>
-              <DownloadIcon class="mx-1 h-10 w-10" />
-              <span class="absolute bottom-0 left-0 right-0 mx-auto px-1 text-center text-[0.5rem] uppercase">
+            <a class={styles["meta-dlicon"]} href={`/${image.id}/avif`}>
+              <DownloadIcon class={styles.icon} />
+              <span>
                 avif
               </span>
             </a>
           {/if}
 
-          <a class="relative pb-2" href={`/${image.id}/webp`}>
-            <DownloadIcon class="mx-1 h-10 w-10" />
-            <span class="absolute bottom-0 left-0 right-0 mx-auto px-1 text-center text-[0.5rem] uppercase">
+          <a class={styles["meta-dlicon"]} href={`/${image.id}/webp`}>
+            <DownloadIcon class={styles.icon} />
+            <span>
               webp
             </span>
           </a>
         </div>
       </div>
 
-      <div class="w-full text-center lg:text-start">
+      <div class={styles.tags}>
         {#each image.tags || [] as tag (tag.slug)}
           <TagChip {tag} />
         {/each}

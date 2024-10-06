@@ -1,4 +1,5 @@
 <script lang="ts">
+  import styles from "client-css/m/error.module.scss";
   import { Home } from "lucide-svelte";
 
   export let title: string | undefined = "An error occurred";
@@ -7,18 +8,18 @@
   export let error: Error | undefined;
 </script>
 
-<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+<div class={styles.backdrop}>
   <div class="container">
-    <div class="my-3 px-8 text-white">
-      <a class="flex flex-row items-center space-x-1" href="/">
+    <div class={styles.above}>
+      <a href="/">
         <Home />
         <span>return home</span>
       </a>
     </div>
-    <div class="rounded border-4 border-error bg-neutral p-8 text-neutral-content">
-      <h1 class="mb-2 text-5xl">{title || "An error occurred"}</h1>
+    <div class={styles.content}>
+      <h1>{title || "An error occurred"}</h1>
       {#if subtitle || error}
-        <h2 class="my-2 text-3xl">{subtitle || error?.message}</h2>
+        <h2>{subtitle || error?.message}</h2>
       {/if}
       {#if message}
         <span>{message}</span>

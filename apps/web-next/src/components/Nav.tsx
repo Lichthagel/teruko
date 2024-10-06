@@ -1,16 +1,18 @@
+import styles from "client-css/m/nav.module.scss";
+import clsx from "clsx";
 import { Plus } from "lucide-react";
 import NextLink from "next/link";
 
 const Nav: React.FC = () => (
-  <nav className="navbar bg-base-100">
-    <div className="container mx-auto">
-      <div className="flex-1">
-        <NextLink className="btn btn-ghost text-xl normal-case" href="/">
+  <nav className={styles.bar}>
+    <div className={clsx("container", styles.content)}>
+      <div className={styles.left}>
+        <NextLink className={styles.button} href="/">
           てる子
         </NextLink>
       </div>
-      <div className="flex-none">
-        <NextLink className="btn btn-square btn-ghost" href="/new">
+      <div>
+        <NextLink className={clsx(styles.button, styles.square)} href="/new">
           <Plus />
         </NextLink>
       </div>

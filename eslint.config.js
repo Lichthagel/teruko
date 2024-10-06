@@ -66,6 +66,8 @@ export default [
       "**/.output/**",
       "**/.nuxt/**",
       "**/build/**",
+      "eslint.config.js",
+      "**/postcss.config.{cjs,js,mjs}",
     ],
   },
 ];

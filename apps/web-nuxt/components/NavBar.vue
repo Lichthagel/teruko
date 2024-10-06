@@ -1,21 +1,22 @@
 <script setup lang="ts">
+import styles from "client-css/m/nav.module.scss";
 import { Plus } from "lucide-vue-next";
 </script>
 
 <template>
-  <div class="navbar bg-base-100">
-    <div class="container mx-auto">
-      <div class="flex-1">
+  <div :class="styles.bar">
+    <div :class="['container', styles.content]">
+      <div :class="styles.left">
         <NuxtLink
-          class="btn btn-ghost text-xl normal-case"
+          :class="styles.button"
           href="/"
         >
           てる子
         </NuxtLink>
       </div>
-      <div class="flex-none">
+      <div>
         <NuxtLink
-          class="btn btn-square btn-ghost"
+          :class="[styles.button, styles.square]"
           href="/new"
         >
           <Plus />

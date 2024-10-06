@@ -28,10 +28,9 @@
     ]
   },
   "dependencies": {
-    "@fontsource-variable/m-plus-2": "^5.0.7",
-    "@fontsource-variable/sora": "^5.0.8",
     "@nanostores/vue": "^0.10.0",
     "@urql/vue": "^1.1.2",
+    "client-css": "workspace:*",
     "client-graphql": "workspace:*",
     "client-stores": "workspace:*",
     "drizzle-orm": "^0.33.0",
@@ -46,13 +45,8 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.0.0",
-    "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/node": "^20.6.2",
-    "autoprefixer": "^10.4.15",
     "nuxt": "^3.7.3",
-    "postcss": "^8.4.29",
-    "tailwind-custom": "workspace:*",
-    "tailwindcss": "^3.3.3",
     "tsconfig": "workspace:*"
   }
 }

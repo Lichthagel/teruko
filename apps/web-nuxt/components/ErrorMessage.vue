@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import styles from "client-css/m/error.module.scss";
 import { Home } from "lucide-vue-next";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -11,11 +12,10 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+  <div :class="styles.backdrop">
     <div class="container">
-      <div class="my-3 px-8 text-white">
+      <div :class="styles.above">
         <a
-          class="flex flex-row items-center space-x-1"
           href="/"
         >
           <Home />
@@ -23,13 +23,12 @@ const props = defineProps<{
         </a>
       </div>
       <div
-        class="rounded border-4 border-error bg-neutral p-8 text-neutral-content"
+        :class="styles.content"
       >
-        <h1 class="mb-2 text-5xl">
+        <h1>
           {{ title || "An error occurred" }}
         </h1>
         <h2
-          class="my-2 text-3xl"
           v-if="subtitle || error"
         >
           {{ subtitle || error?.message }}

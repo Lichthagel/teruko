@@ -9,7 +9,7 @@
   <title>てる子</title>
 </svelte:head>
 
-<div class="container mx-auto">
+<div class="container">
   <Filters />
 
   {#key $tagsStore}

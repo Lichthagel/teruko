@@ -1,4 +1,5 @@
 <script lang="ts">
+  import styles from "client-css/m/scrollbuttons.module.scss";
   import { ChevronDown, ChevronUp } from "lucide-svelte";
 
   let showToTop = false;
@@ -12,17 +13,15 @@
 
 <svelte:window on:scroll={onScroll} />
 
-<div class="join fixed bottom-3 right-3 z-10 bg-base-100">
+<div class={styles.buttons}>
   <button
-    class="btn btn-square btn-ghost"
-    class:hidden={!showToTop}
+    class={showToTop ? undefined : styles.hidden}
     on:click={() => window.scrollTo({ behavior: "smooth", top: 0 })}
   >
     <ChevronUp />
   </button>
   <button
-    class="btn btn-square btn-ghost"
-    class:hidden={!showToBottom}
+    class={showToBottom ? undefined : styles.hidden}
     on:click={() => {
       window.scrollTo({
         behavior: "smooth",

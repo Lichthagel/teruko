@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useStore } from "@nanostores/vue";
 import { gql, useQuery } from "@urql/vue";
+import styles from "client-css/m/filters.module.scss";
 import { tagsStore } from "client-stores";
 import { X } from "lucide-vue-next";
 import { type TagExt } from "models";
@@ -33,15 +34,15 @@ const removeTag = () => {
 
 <template>
   <div
+    :class="styles['tag-query']"
     :style="{
       backgroundColor: data?.tag?.category?.color ?? undefined,
     }"
-    class="m-0.5 flex h-10 select-none items-center whitespace-nowrap rounded bg-gray-500 px-2 text-white"
   >
-    <span class="mx-1">{{ props.tag }}</span>
+    <span>{{ props.tag }}</span>
     <button
       @click="removeTag"
-      class="mx-1 rounded transition hover:bg-black/20"
+      type="button"
     >
       <X />
     </button>

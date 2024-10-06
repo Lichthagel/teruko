@@ -1,0 +1,47 @@
+@import "../variables";
+
+$bar-height: 4rem;
+
+.bar {
+  display: flex;
+  align-items: center;
+  min-height: $bar-height;
+  width: 100%;
+}
+
+.content {
+  display: inline-flex;
+  align-items: center;
+}
+
+.left {
+  flex-grow: 1;
+}
+
+.button {
+  font-size: 1.25rem; // TODO font size mixin?
+  line-height: 1.75rem;
+  display: inline-flex;
+  height: $size-7;
+  min-height: $size-7;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-2;
+  padding-inline: $size-3;
+  font-weight: 600;
+  color: currentColor;
+  text-decoration-line: none;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--surface0);
+    }
+  }
+
+  &.square {
+    height: $size-7;
+    width: $size-7;
+    padding: 0;
+  }
+}

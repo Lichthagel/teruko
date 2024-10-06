@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "client-css/m/imagepage.module.scss";
 import { tagsStore } from "client-stores";
 import { TagExt } from "models";
 import { useRouter } from "next/navigation";
@@ -19,7 +20,7 @@ const TagChip: React.FC<TagChipProps> = ({ tag }: TagChipProps) => {
 
   return (
     <button
-      className="m-0.5 inline-block select-none whitespace-nowrap rounded bg-gray-500 px-2 py-1 text-white transition hover:brightness-75"
+      className={styles["tag-chip"]}
       onClick={onClick}
       style={{ backgroundColor: tag.category?.color ?? undefined }}
       type="button"

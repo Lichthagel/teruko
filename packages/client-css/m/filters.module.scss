@@ -1,0 +1,159 @@
+@import "../variables";
+
+$height: 2.5rem;
+
+.main {
+  margin-bottom: $size-2;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: $gap;
+}
+
+.tag-container {
+  display: inline-flex;
+  gap: $size-0;
+}
+
+.tag-query {
+  display: flex;
+  height: $height;
+  user-select: none;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: $radius;
+  background-color: var(--subtext0);
+  color: var(--inverted-text);
+  padding-inline: $size-1;
+
+  > * {
+    margin-inline: $size-1;
+  }
+
+  > button {
+    border-radius: $radius;
+    border: 0;
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+    transition: background-color 0.2s;
+    cursor: pointer;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: rgb(0 0 0 / 20%);
+      }
+    }
+
+    svg {
+      display: block;
+    }
+  }
+}
+
+.search-container {
+  position: relative;
+  display: inline-flex;
+  height: $height;
+  align-items: center;
+  gap: $gap;
+  border-radius: $radius;
+  background-color: var(--mantle);
+  padding-inline: $size-2;
+
+  &:focus-within {
+    outline: var(--pink) solid 2px;
+  }
+
+  input {
+    height: 100%;
+    background-color: transparent;
+    border-width: 0;
+    color: var(--text);
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.suggestions-loading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--surface0);
+  padding: $size-1;
+
+  .icon {
+    height: $size-7;
+    width: $size-7;
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    animation: spin 2s linear infinite;
+  }
+}
+
+.suggestions-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 20;
+  display: block;
+  background-color: var(--surface0);
+  margin: 0;
+  padding: 0;
+  border-radius: $radius;
+
+  li {
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: inherit;
+    padding: $size-1;
+    line-height: $size-4;
+
+    &.active {
+      background-color: var(--pink);
+      color: var(--inverted-text);
+    }
+  }
+}
+
+.sort {
+  position: relative;
+  display: inline-flex;
+  height: $height;
+  align-items: center;
+  gap: $gap;
+  border-radius: $radius;
+  background-color: var(--mantle);
+
+  &:focus-within {
+    outline: var(--pink) solid 2px;
+  }
+
+  .icon {
+    position: absolute;
+    left: $size-2;
+  }
+
+  select {
+    border: 0;
+    color: var(--text);
+    width: 100%;
+    background-color: transparent;
+    padding-inline: (2rem + $size-2) $size-2;
+  }
+}

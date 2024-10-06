@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const props = defineProps<{
+import styles from "client-css/m/status.module.scss";
+
+const { error, fetching } = defineProps<{
   fetching: boolean;
   error: boolean;
 }>();
@@ -7,10 +9,6 @@ const props = defineProps<{
 
 <template>
   <div
-    :class="{
-      'bg-error': props.error,
-      'animate-load bg-primary': props.fetching,
-    }"
-    class="fixed bottom-0 left-0 right-0 z-10 h-1"
+    :class="[styles.bar, error && styles.error, fetching && styles.busy]"
   />
 </template>

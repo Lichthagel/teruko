@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "client-css/m/scrollbuttons.module.scss";
 import clsx from "clsx";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -21,16 +22,16 @@ const ScrollButtons = () => {
   }, []);
 
   return (
-    <div className="join fixed bottom-3 right-3 z-10 bg-base-100">
+    <div className={styles.buttons}>
       <button
-        className={clsx("btn btn-square btn-ghost", { hidden: !showToTop })}
+        className={clsx(!showToTop && styles.hidden)}
         onClick={() => window.scrollTo({ behavior: "smooth", top: 0 })}
         type="button"
       >
         <ChevronUp />
       </button>
       <button
-        className={clsx("btn btn-square btn-ghost", { hidden: !showToBottom })}
+        className={clsx(!showToBottom && styles.hidden)}
         onClick={() => {
           window.scrollTo({
             behavior: "smooth",

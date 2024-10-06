@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import styles from "client-css/m/imagepage.module.scss";
 import { tagsStore } from "client-stores";
 import { type TagExt } from "models";
 
@@ -16,9 +17,9 @@ const onClick = () => {
 
 <template>
   <button
+    :class="styles['tag-chip']"
     :style="{ 'background-color': props.tag.category?.color ?? undefined }"
     @click="onClick"
-    class="m-0.5 inline-block select-none whitespace-nowrap rounded bg-gray-500 px-2 py-1 text-white transition hover:brightness-75"
   >
     {{ props.tag.slug }}
   </button>

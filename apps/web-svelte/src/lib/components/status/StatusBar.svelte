@@ -1,11 +1,8 @@
 <script lang="ts">
+  import styles from "client-css/m/status.module.scss";
+
   export let fetching: boolean;
   export let error: boolean;
 </script>
 
-<div
-  class="fixed bottom-0 left-0 right-0 z-10 h-1"
-  class:animate-load={fetching}
-  class:bg-error={error}
-  class:bg-primary={fetching}
-/>
+<div class="{styles.bar}{fetching ? ` ${styles.busy}` : ""}{error ? ` ${styles.error}` : ""}" />

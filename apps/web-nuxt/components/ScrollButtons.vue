@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import styles from "client-css/m/scrollbuttons.module.scss";
 import { ChevronDown, ChevronUp } from "lucide-vue-next";
 
 const showToTop = ref(false);
@@ -32,18 +33,18 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="join fixed bottom-3 right-3 z-10 bg-base-100">
+  <div :class="styles.buttons">
     <button
-      :class="{ hidden: !showToTop }"
+      :class="!showToTop && styles.hidden"
       @click="scrollToTop"
-      class="btn btn-square btn-ghost"
+      type="button"
     >
       <ChevronUp />
     </button>
     <button
-      :class="{ hidden: !showToBottom }"
+      :class="!showToBottom && styles.hidden"
       @click="scrollToBottom"
-      class="btn btn-square btn-ghost"
+      type="button"
     >
       <ChevronDown />
     </button>
