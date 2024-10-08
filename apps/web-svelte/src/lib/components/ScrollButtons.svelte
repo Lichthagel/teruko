@@ -7,7 +7,7 @@
 
   const onScroll = () => {
     showToTop = window.scrollY > 50;
-    showToBottom = window.scrollY + window.innerHeight < window.document.body.scrollHeight - 50;
+    showToBottom = window.scrollY + window.innerHeight < globalThis.document.body.scrollHeight - 50;
   };
 </script>
 
@@ -25,7 +25,7 @@
     on:click={() => {
       window.scrollTo({
         behavior: "smooth",
-        top: window.document.body.scrollHeight,
+        top: globalThis.document.body.scrollHeight,
       });
     }}
   >

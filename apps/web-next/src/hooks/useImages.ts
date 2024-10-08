@@ -155,11 +155,11 @@ const useImages = (tags: string[], sort: ImageSort) => {
     setRequestParams((prev) => ({ ...prev, cursor: undefined, refresh: true }));
   }, []);
 
-  const timeoutId = useRef<number>(); // this runs in the browser...
+  const timeoutId = useRef<ReturnType<typeof globalThis.setTimeout>>(); // this runs in the browser...
 
   const cancelTimeout = useCallback(() => {
     if (timeoutId.current) {
-      window.clearTimeout(timeoutId.current);
+      globalThis.clearTimeout(timeoutId.current);
     }
   }, [timeoutId]);
 
@@ -167,7 +167,7 @@ const useImages = (tags: string[], sort: ImageSort) => {
     cancelTimeout();
 
     if (sort === "NEWEST") {
-      timeoutId.current = window.setTimeout(refresh, 20_000);
+      timeoutId.current = globalThis.setTimeout(refresh, 20_000);
     }
   }, [cancelTimeout, refresh, sort]);
 

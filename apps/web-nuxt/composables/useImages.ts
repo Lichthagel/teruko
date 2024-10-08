@@ -180,18 +180,18 @@ export const useImages = (
     newQuery(undefined, true);
   };
 
-  const timeoutId = ref<number | undefined>();
+  const timeoutId = ref<ReturnType<typeof globalThis.setTimeout>>();
 
   const cancelTimeout = () => {
-    window.clearTimeout(timeoutId.value);
+    globalThis.clearTimeout(timeoutId.value);
     timeoutId.value = undefined;
   };
 
   const resetTimeout = () => {
-    window.clearTimeout(timeoutId.value);
+    globalThis.clearTimeout(timeoutId.value);
 
     if (!fetching.value && !stale.value && sort.value === "NEWEST") {
-      timeoutId.value = window.setTimeout(refresh, 20_000);
+      timeoutId.value = globalThis.setTimeout(refresh, 20_000);
     }
   };
 

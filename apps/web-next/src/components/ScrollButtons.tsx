@@ -35,7 +35,7 @@ const ScrollButtons = () => {
         onClick={() => {
           window.scrollTo({
             behavior: "smooth",
-            top: window.document.body.scrollHeight,
+            top: globalThis.document.body.scrollHeight,
           });
         }}
         type="button"

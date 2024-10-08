@@ -9,7 +9,7 @@ const onScroll = () => {
   showToTop.value = window.scrollY > 50;
   showToBottom.value =
     window.scrollY + window.innerHeight <
-      window.document.body.scrollHeight - 50;
+      globalThis.document.body.scrollHeight - 50;
 };
 
 const scrollToTop = () => {
@@ -19,7 +19,7 @@ const scrollToTop = () => {
 const scrollToBottom = () => {
   window.scrollTo({
     behavior: "smooth",
-    top: window.document.body.scrollHeight,
+    top: globalThis.document.body.scrollHeight,
   });
 };
 

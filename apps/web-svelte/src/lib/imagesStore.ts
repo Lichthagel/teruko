@@ -194,7 +194,7 @@ const imagesStore = (
     newQuery(undefined, true);
   };
 
-  let timeoutId: number | undefined;
+  let timeoutId: ReturnType<typeof globalThis.setTimeout> | undefined;
 
   const cancelTimeout = () => {
     if (!browser) {
@@ -202,7 +202,7 @@ const imagesStore = (
     }
 
     if (timeoutId) {
-      window.clearTimeout(timeoutId);
+      globalThis.clearTimeout(timeoutId);
     }
   };
 
@@ -213,7 +213,7 @@ const imagesStore = (
 
     cancelTimeout();
 
-    timeoutId = window.setTimeout(refresh, 20_000);
+    timeoutId = globalThis.setTimeout(refresh, 20_000);
   };
 
   const result = writable<Result>(initialResult, () => {

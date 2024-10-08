@@ -1,12 +1,12 @@
 import newImage from "./newImage.js";
 import "./style.css";
 
-let timeout: number | undefined;
+let timeout: ReturnType<typeof globalThis.setTimeout> | undefined;
 
 const observer = new MutationObserver(() => {
-  window.clearTimeout(timeout);
+  globalThis.clearTimeout(timeout);
 
-  timeout = window.setTimeout(() => {
+  timeout = globalThis.setTimeout(() => {
     document
       .querySelectorAll(
         "div[role=presentation] > a.gtm-expand-full-size-illust",
