@@ -1,7 +1,7 @@
 {
   "name": "userscript",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "engines": {
     "node": ">=21.0.0"
@@ -10,11 +10,6 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
-  },
-  "dependencies": {
-    "@urql/core": "^5.0.0",
-    "client-graphql": "workspace:*",
-    "graphql": "^16.8.0"
   },
   "devDependencies": {
     "tsconfig": "workspace:*",

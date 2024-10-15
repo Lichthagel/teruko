@@ -1,8 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { CombinedError, gql } from "@urql/core";
-import { urqlClient } from "client-graphql";
-
-const NEW_IMAGE = gql`
+const NEW_IMAGE = `
   mutation ($files: [Upload!]!) {
     createImage(files: $files) {
       id
@@ -38,45 +34,54 @@ async function newImage(url: string, open: boolean, target: HTMLDivElement) {
 
     target.textContent = "up...";
 
-    const result = await urqlClient
-      .mutation(
-        NEW_IMAGE,
-        {
-          files: [file],
-        },
-        {
-          url: `${TERUKO_BASE_URL}/graphql`,
-          fetchOptions: {
-            headers: {
-              "Apollo-Require-Preflight": "true",
-            },
-          },
-        },
-      )
-      .toPromise();
+    const formData = new FormData();
+    formData.append("operations", JSON.stringify({
+      query: NEW_IMAGE,
+      variables: {
+        files: [null],
+      },
+    }));
+    formData.append("map", JSON.stringify({
+      0: ["variables.files.0"],
+    }));
+    formData.append("0", file);
+
+    const result = await fetch(`${TERUKO_BASE_URL}/graphql`, {
+      method: "POST",
+      body: formData,
+      headers: {
+        "Apollo-Require-Preflight": "true",
+      },
+    })
+      .then((res) => res.json() as Promise<{
+        data: {
+          createImage: { id: string }[];
+        } | null;
+        errors?: {
+          message: string;
+        }[];
+      }>);
 
     window.removeEventListener("beforeunload", beforeUnload);
     if (result.data) {
       if (open) {
         window.open(
-          `${TERUKO_BASE_URL}/${result.data.createImage[0].id as string}`,
+          `${TERUKO_BASE_URL}/${result.data.createImage[0]?.id as string}`,
           "_blank",
         );
       } else {
-        target.textContent = `id: ${result.data.createImage[0].id as string}`;
+        target.textContent = `id: ${result.data.createImage[0]?.id as string}`;
       }
       // alert(`uploaded (id: ${result.data.createImage[0].id})`);
     } else {
       target.classList.add("terukoButtonSmall");
-      target.textContent = result.error ?
-        result.error.message :
-        JSON.stringify(result);
+      target.textContent = result.errors?.[0]?.message ?? JSON.stringify(result);
       // alert(`error: ${result}`);
     }
   } catch (error) {
     window.removeEventListener("beforeunload", beforeUnload);
     target.classList.add("terukoButtonSmall");
-    target.textContent = (error as CombinedError).message;
+    target.textContent = String(error);
   }
 }
 
