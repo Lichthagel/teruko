@@ -1,27 +1,25 @@
-export async function waitForElement(
-  selector: (container: Document) => Element | null | undefined,
-  container = document,
-  timeoutSecs = 7,
-): Promise<Element> {
-  const element = selector(container);
-  if (element) {
-    return element;
-  }
+export function applyToAllConstantlyDebounced(
+  selector: (el: Element) => NodeListOf<Element>,
+  callback: (el: Element) => void,
+  container: Element = document.body,
+  delay = 50,
+) {
+  let timeout: ReturnType<typeof setTimeout> | null = null;
 
-  return new Promise((resolve, reject) => {
-    const timeoutTime = Date.now() + timeoutSecs * 1000;
+  const observer = new MutationObserver(() => {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
 
-    const handler = () => {
-      const element = selector(container);
-      if (element) {
-        resolve(element);
-      } else if (Date.now() > timeoutTime) {
-        reject(new Error("Timed out waiting for element"));
-      } else {
-        setTimeout(handler, 100);
-      }
-    };
+    timeout = setTimeout(() => {
+      const elements = selector(container);
 
-    handler();
+      // eslint-disable-next-line unicorn/no-array-for-each
+      elements.forEach((el) => {
+        callback(el);
+      });
+    }, delay);
   });
+
+  observer.observe(container, { childList: true, subtree: true });
 }
