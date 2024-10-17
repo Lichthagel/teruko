@@ -7,7 +7,6 @@ export default [
   ...await lichthagel({
     browser: true,
     node: true,
-    react: false,
     svelte: true,
   }),
   ...vue.configs["flat/recommended"],
