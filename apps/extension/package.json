@@ -1,0 +1,39 @@
+{
+  "name": "extension",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "wxt",
+    "dev:chrome": "wxt -b chrome",
+    "build": "wxt build",
+    "build:chrome": "wxt build -b chrome",
+    "zip": "wxt zip",
+    "zip:chrome": "wxt zip -b chrome",
+    "compile": "tsc --noEmit",
+    "postinstall": "wxt prepare"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": [
+          "{projectRoot}/.output/firefox-mv2"
+        ]
+      },
+      "build:chrome": {
+        "outputs": [
+          "{projectRoot}/.output/chrome-mv3"
+        ]
+      }
+    }
+  },
+  "dependencies": {
+    "solid-js": "^1.9.1"
+  },
+  "devDependencies": {
+    "@wxt-dev/module-solid": "^1.1.2",
+    "solid-element": "^1.9.0",
+    "typescript": "^5.6.2",
+    "wxt": "^0.19.11"
+  }
+}

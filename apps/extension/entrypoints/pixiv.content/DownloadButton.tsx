@@ -1,8 +1,9 @@
+/* eslint-disable n/no-unsupported-features/es-syntax */
+/* eslint-disable n/no-unsupported-features/node-builtins */
+import { CREATE_IMAGE, TERUKO_BASE_URL } from "@/assets/constants";
+import styles from "@/assets/style.css?inline";
 import { customElement } from "solid-element";
 import { Component, createSignal } from "solid-js";
-
-import { CREATE_IMAGE, TERUKO_BASE_URL } from "./constants.js";
-import styles from "./style.css?inline";
 
 type Props = {
   url: string | null;
@@ -70,11 +71,11 @@ const DownloadButton: Component<Props> = (props) => {
       if (result.data) {
         if (open) {
           window.open(
-            `${TERUKO_BASE_URL}/${result.data.createImage[0]?.id as string}`,
+            `${TERUKO_BASE_URL}/${result.data.createImage[0]?.id}`,
             "_blank",
           );
         } else {
-          setText(`id: ${result.data.createImage[0]?.id as string}`);
+          setText(`id: ${result.data.createImage[0]?.id}`);
         }
         // alert(`uploaded (id: ${result.data.createImage[0].id})`);
       } else {

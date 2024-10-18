@@ -67,6 +67,7 @@ export default [
       "**/build/**",
       "eslint.config.js",
       "**/postcss.config.{cjs,js,mjs}",
+      "**/.wxt/**",
     ],
   },
 ];
