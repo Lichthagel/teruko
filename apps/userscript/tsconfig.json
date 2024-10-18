@@ -5,13 +5,12 @@
     "useDefineForClassFields": true,
     "lib": ["ESNext", "DOM"],
     "noEmit": true,
-    "noImplicitReturns": true
+    "noImplicitReturns": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
   },
-  "include": [
-    "./vite.config.ts",
-    "./src/**/*.js",
-    "./src/**/*.cjs",
-    "./src/**/*.mjs",
-    "./src/**/*.ts"
+  "exclude": [
+    "node_modules",
+    "dist",
   ]
 }

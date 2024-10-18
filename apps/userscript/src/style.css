@@ -1,16 +1,19 @@
-.terukoButton {
+.button {
   font-size: 3rem;
   line-height: 3rem;
   color: #fff;
   background-color: #000;
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: .5rem;
+  right: .5rem;
+  border-radius: 0.25rem;
   z-index: 100;
   cursor: pointer;
+  outline: none;
+  border: none;
 }
 
-.terukoButton.terukoButtonSmall {
+.button.small {
   font-size: 1rem;
   line-height: 1rem;
 }
