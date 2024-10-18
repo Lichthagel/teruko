@@ -3,7 +3,7 @@ import { defineConfig, UserManifest } from "wxt";
 // See https://wxt.dev/api/config.html
 export default defineConfig({
   modules: ["@wxt-dev/module-solid"],
-  manifest: ({ manifestVersion }) => {
+  manifest: ({ manifestVersion, browser }) => {
     const defaults = {
       name: "Teruko",
       permissions: [],
@@ -15,7 +15,15 @@ export default defineConfig({
 
     const mv2 = {} satisfies UserManifest;
 
-    return { ...defaults, ...(manifestVersion === 3 ? mv3 : mv2) };
+    const firefox = {
+      browser_specific_settings: {
+        gecko: {
+          id: "teruko@lichthagel.xyz",
+        },
+      },
+    } satisfies UserManifest;
+
+    return { ...defaults, ...(manifestVersion === 3 ? mv3 : mv2), ...(browser === "firefox" ? firefox : {}) };
   },
   browser: "firefox",
 });
