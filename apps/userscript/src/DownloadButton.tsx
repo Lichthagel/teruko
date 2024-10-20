@@ -67,7 +67,11 @@ const DownloadButton: Component<Props> = (props) => {
         }>);
 
       window.removeEventListener("beforeunload", beforeUnload);
-      if (result.data) {
+      if (result.errors) {
+        setSmall(true);
+        setText(result.errors?.[0]?.message ?? JSON.stringify(result));
+        // alert(`error: ${result}`);
+      } else if (result.data) {
         if (open) {
           window.open(
             `${TERUKO_BASE_URL}/${result.data.createImage[0]?.id as string}`,
@@ -79,8 +83,8 @@ const DownloadButton: Component<Props> = (props) => {
         // alert(`uploaded (id: ${result.data.createImage[0].id})`);
       } else {
         setSmall(true);
-        setText(result.errors?.[0]?.message ?? JSON.stringify(result));
-        // alert(`error: ${result}`);
+        setText("no data");
+        // alert("no data");
       }
     } catch (error) {
       window.removeEventListener("beforeunload", beforeUnload);
