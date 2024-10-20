@@ -1,43 +1,34 @@
 /* eslint-disable no-use-before-define */
-import { relations } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 import {
-  index,
-  integer,
-  pgTable,
-  primaryKey,
-  serial,
-  text,
-  timestamp,
-} from "drizzle-orm/pg-core";
+  index, integer, primaryKey, sqliteTable, text,
+} from "drizzle-orm/sqlite-core";
 
-export const dImage = pgTable(
+export const dImage = sqliteTable(
   "Image",
   {
-    id: serial("id").primaryKey(),
-    filename: text("filename").notNull()
+    id: integer("id")
+      .primaryKey({ autoIncrement: true }),
+    filename: text("filename")
+      .notNull()
       .unique(),
     title: text("title"),
     source: text("source"),
-    createdAt: timestamp("createdAt", {
-      withTimezone: true,
-      precision: 3,
+    createdAt: integer("createdAt", {
+      mode: "timestamp",
     })
       .notNull()
-      .defaultNow(),
-    updatedAt: timestamp("updatedAt", {
-      withTimezone: true,
-      precision: 3,
+      .default(sql`(unixepoch('now'))`),
+    updatedAt: integer("updatedAt", {
+      mode: "timestamp",
     })
       .notNull()
-      .defaultNow(),
+      .default(sql`(unixepoch('now'))`),
     height: integer("height").notNull(),
     width: integer("width").notNull(),
   },
   (table) => ({
-    createdAtIdx: index("Image_createdAt_idx").using(
-      "btree",
-      table.createdAt.desc().nullsLast(),
-    ),
+    createdAtIdx: index("Image_createdAt_idx").on(table.createdAt),
   }),
 );
 
@@ -45,11 +36,15 @@ export const ImageRelations = relations(dImage, ({ many }) => ({
   tags: many(d_ImageToTag),
 }));
 
-export const dTag = pgTable("Tag", {
-  id: serial("id").primaryKey(),
+export const dTag = sqliteTable("Tag", {
+  id: integer("id")
+    .primaryKey({ autoIncrement: true }),
   slug: text("slug").notNull()
     .unique(),
-  categorySlug: text("categorySlug").references(() => dTagCategory.slug),
+  categorySlug: text("categorySlug").references(() => dTagCategory.slug, {
+    onDelete: "set null",
+    onUpdate: "cascade",
+  }),
 });
 
 export const TagRelations = relations(dTag, ({ one, many }) => ({
@@ -60,7 +55,7 @@ export const TagRelations = relations(dTag, ({ one, many }) => ({
   }),
 }));
 
-export const dTagCategory = pgTable("TagCategory", {
+export const dTagCategory = sqliteTable("TagCategory", {
   slug: text("slug").primaryKey(),
   color: text("color"),
 });
@@ -69,15 +64,21 @@ export const TagCategoryRelations = relations(dTagCategory, ({ many }) => ({
   tags: many(dTag),
 }));
 
-export const d_ImageToTag = pgTable(
+export const d_ImageToTag = sqliteTable(
   "_ImageToTag",
   {
     imageId: integer("imageId")
       .notNull()
-      .references(() => dImage.id),
+      .references(() => dImage.id, {
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      }),
     tagId: integer("tagId")
       .notNull()
-      .references(() => dTag.id),
+      .references(() => dTag.id, {
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      }),
   },
   (table) => ({
     pk: primaryKey({

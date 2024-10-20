@@ -158,7 +158,7 @@ const images = (b: typeof builder) =>
               .orderBy(
                 desc(dImage.createdAt),
                 inverted ? asc(dImage.id) : desc(dImage.id),
-                asc(dTag.categorySlug),
+                asc(dTag.categorySlug).append(sql` NULLS LAST`),
                 asc(dTag.slug),
               );
 

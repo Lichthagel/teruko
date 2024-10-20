@@ -130,7 +130,7 @@ const createImage = (b: typeof builder) => {
                 await tx.insert(d_ImageToTag).values(
                   imageMeta.tags.map((tag) => ({
                     imageId: image.id,
-                    tagId: sql`SELECT id FROM "Tag" WHERE slug = ${tag.slug}`,
+                    tagId: sql`(SELECT id FROM "Tag" WHERE "slug" = ${tag.slug})`,
                   })),
                 );
               }

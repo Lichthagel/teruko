@@ -28,11 +28,12 @@
     }
   },
   "dependencies": {
+    "@libsql/client": "^0.14.0",
     "drizzle-orm": "^0.35.0",
-    "postgres": "^3.4.4",
     "server-env": "workspace:^"
   },
   "devDependencies": {
+    "drizzle-kit": "^0.26.2",
     "tsconfig": "workspace:^",
     "typescript": "^5.4.5"
   }

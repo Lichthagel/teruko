@@ -21,7 +21,7 @@ const tagSuggestions = (b: typeof builder) =>
           .where(
             sql`LOWER(${dTag.slug}) LIKE LOWER(${`%${query}%`}) ESCAPE '\\'`,
           )
-          .orderBy(sql`CHAR_LENGTH(${dTag.slug})`)
+          .orderBy(sql`LENGTH(${dTag.slug})`)
           .limit(10)
           .leftJoin(dTagCategory, eq(dTag.categorySlug, dTagCategory.slug));
 
