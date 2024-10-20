@@ -16,7 +16,6 @@ export default [
       parserOptions: {
         extraFileExtensions: [".svelte", ".vue"],
         projectService: {
-          allowDefaultProject: ["*.config.js", "*.config.cjs"],
           defaultProject: "./tsconfig.eslint.json",
         },
         tsconfigRootDir: import.meta.dirname,
@@ -56,6 +55,15 @@ export default [
     },
   },
   {
+    files: ["packages/**/*.config.{cjs,js,mjs,ts}"],
+    languageOptions: {
+      parserOptions: {
+        project: "./tsconfig.eslint.json",
+        projectService: false,
+      }
+    }
+  },
+  {
     ignores: [
       "**/node_modules/**",
       "**/dist/**",
@@ -65,8 +73,7 @@ export default [
       "**/.output/**",
       "**/.nuxt/**",
       "**/build/**",
-      "eslint.config.js",
-      "**/postcss.config.{cjs,js,mjs}",
+      "eslint.config.js"
     ],
   },
 ];

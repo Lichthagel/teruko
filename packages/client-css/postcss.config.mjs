@@ -3,8 +3,8 @@
 /** @type {import('postcss-load-config').Config} */
 const config = {
   plugins: {
-    "autoprefixer": {}
-  }
+    autoprefixer: {},
+  },
 };
 
 export default config;
