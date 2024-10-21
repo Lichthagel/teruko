@@ -1,5 +1,5 @@
 <script lang="ts">
-  import suggestionsStore from "$lib/suggestionsStore";
+  import suggestionsStore from "$lib/suggestionsStore.js";
   import { getContextClient } from "@urql/svelte";
   import styles from "client-css/m/filters.module.scss";
   import { tagsStore } from "client-stores";

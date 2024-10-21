@@ -5,7 +5,12 @@
   import { tagsStore } from "client-stores";
   import { fly } from "svelte/transition";
 
-  export let image: ImageExt;
+  type Props = {
+    image: ImageExt;
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const { image }: Props = $props();
 
   const onTagClick = (slug: string) => {
     tagsStore.set([slug]);
@@ -33,7 +38,7 @@
   >
     {#each (image.tags ?? []).filter((tag) => !tag.slug.startsWith("artist_")) as tag}
       <button
-        on:click={() => onTagClick(tag.slug)}
+        onclick={() => onTagClick(tag.slug)}
         style:background-color={tag.category?.color ?? "gray"}
         type="button"
       >
