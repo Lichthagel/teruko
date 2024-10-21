@@ -1,4 +1,3 @@
-import { getPixivMetadata, matchFilename } from "#util/pixiv/index.js";
 import { sql } from "drizzle-orm";
 import { fileTypeFromBlob } from "file-type";
 import { GraphQLError } from "graphql";
@@ -13,6 +12,8 @@ import {
 } from "server-db";
 import env from "server-env";
 import sharp from "sharp";
+
+import { getPixivMetadata, matchFilename } from "#util/pixiv/index.js";
 
 import type { builder } from "../builder.js";
 

@@ -1,10 +1,11 @@
-import useSuggestions from "@/hooks/useSuggestions";
 import { useStore } from "@nanostores/react";
 import styles from "client-css/m/filters.module.scss";
 import { tagsStore } from "client-stores";
 import clsx from "clsx";
 import { Loader2, Search } from "lucide-react";
 import { useCallback, useState } from "react";
+
+import useSuggestions from "@/hooks/useSuggestions";
 
 const TagInput = () => {
   const tags = useStore(tagsStore);
@@ -27,13 +28,11 @@ const TagInput = () => {
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       switch (e.key) {
-        case "Enter": {
+        case "ArrowDown": {
           e.preventDefault();
 
-          const suggestion = suggestions[activeSuggestion];
-
-          if (suggestion) {
-            handleSubmit(suggestion.slug);
+          if (activeSuggestion < suggestions.length - 1) {
+            setActiveSuggestion(activeSuggestion + 1);
           }
 
           break;
@@ -47,11 +46,13 @@ const TagInput = () => {
 
           break;
         }
-        case "ArrowDown": {
+        case "Enter": {
           e.preventDefault();
 
-          if (activeSuggestion < suggestions.length - 1) {
-            setActiveSuggestion(activeSuggestion + 1);
+          const suggestion = suggestions[activeSuggestion];
+
+          if (suggestion) {
+            handleSubmit(suggestion.slug);
           }
 
           break;

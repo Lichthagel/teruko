@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { useSuggestions } from "#imports";
 import { useStore } from "@nanostores/vue";
 import styles from "client-css/m/filters.module.scss";
 import { tagsStore } from "client-stores";
 import { Loader2, Search } from "lucide-vue-next";
+
+import { useSuggestions } from "#imports";
 
 const tags = useStore(tagsStore);
 
@@ -24,8 +25,10 @@ const handleSubmit = () => {
 
 const handleKeyDown = (e: KeyboardEvent) => {
   switch (e.key) {
-    case "Enter": {
-      handleSubmit();
+    case "ArrowDown": {
+      e.preventDefault();
+      activeSuggestion.value =
+        (activeSuggestion.value + 1) % suggestions.value.length;
 
       break;
     }
@@ -37,10 +40,8 @@ const handleKeyDown = (e: KeyboardEvent) => {
 
       break;
     }
-    case "ArrowDown": {
-      e.preventDefault();
-      activeSuggestion.value =
-        (activeSuggestion.value + 1) % suggestions.value.length;
+    case "Enter": {
+      handleSubmit();
 
       break;
     }

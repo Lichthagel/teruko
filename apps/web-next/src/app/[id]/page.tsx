@@ -1,14 +1,15 @@
 "use client";
 
-import ErrorMessage from "@/components/ErrorMessage";
-import StatusBar from "@/components/StatusBar";
-import TagChip from "@/components/TagChip";
 import styles from "client-css/m/imagepage.module.scss";
 import { DownloadIcon } from "lucide-react";
 import { ImageExt } from "models";
 import Image from "next/image";
 import { ReactElement, ReactEventHandler, useMemo } from "react";
 import { gql, useQuery } from "urql";
+
+import ErrorMessage from "@/components/ErrorMessage";
+import StatusBar from "@/components/StatusBar";
+import TagChip from "@/components/TagChip";
 
 const scroll: ReactEventHandler<HTMLImageElement> = (e) => {
   e.currentTarget.scrollIntoView({

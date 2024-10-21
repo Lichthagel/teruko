@@ -13,7 +13,7 @@ importers:
         version: 1.15.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.6.3)
       '@lichthagel/eslint-config':
         specifier: github:Lichthagel/eslint-config
-        version: https://codeload.github.com/Lichthagel/eslint-config/tar.gz/0021b264c7e43c69d7b55a0908513eebdf807322(eslint-plugin-n@17.10.2(eslint@9.13.0(jiti@2.3.3)))(eslint-plugin-svelte@2.43.0(eslint@9.13.0(jiti@2.3.3))(svelte@5.0.3)(ts-node@10.9.1(@types/node@22.7.7)(typescript@5.6.3)))(eslint@9.13.0(jiti@2.3.3))(svelte-eslint-parser@0.41.1(svelte@5.0.3))(svelte@5.0.3)(typescript@5.6.3)(vue-eslint-parser@9.4.3(eslint@9.13.0(jiti@2.3.3)))
+        version: https://codeload.github.com/Lichthagel/eslint-config/tar.gz/9e8fdb183d0d7c385f46462e5139df8c134e2dd5(eslint-plugin-n@17.10.2(eslint@9.13.0(jiti@2.3.3)))(eslint-plugin-svelte@2.43.0(eslint@9.13.0(jiti@2.3.3))(svelte@5.0.3)(ts-node@10.9.1(@types/node@22.7.7)(typescript@5.6.3)))(eslint@9.13.0(jiti@2.3.3))(svelte-eslint-parser@0.41.1(svelte@5.0.3))(svelte@5.0.3)(typescript@5.6.3)(vue-eslint-parser@9.4.3(eslint@9.13.0(jiti@2.3.3)))
       eslint:
         specifier: ^9.0.0
         version: 9.13.0(jiti@2.3.3)
@@ -1780,8 +1780,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@lichthagel/eslint-config@https://codeload.github.com/Lichthagel/eslint-config/tar.gz/0021b264c7e43c69d7b55a0908513eebdf807322':
-    resolution: {tarball: https://codeload.github.com/Lichthagel/eslint-config/tar.gz/0021b264c7e43c69d7b55a0908513eebdf807322}
+  '@lichthagel/eslint-config@https://codeload.github.com/Lichthagel/eslint-config/tar.gz/9e8fdb183d0d7c385f46462e5139df8c134e2dd5':
+    resolution: {tarball: https://codeload.github.com/Lichthagel/eslint-config/tar.gz/9e8fdb183d0d7c385f46462e5139df8c134e2dd5}
     version: 0.0.0
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -2548,10 +2548,6 @@ packages:
 
   '@typescript-eslint/types@8.10.0':
     resolution: {integrity: sha512-k/E48uzsfJCRRbGLapdZgrX52csmWJ2rcowwPvOZ8lwPUv3xW6CcFeJAXgx4uJm+Ge4+a4tFOkdYvSpxhRhg1w==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@typescript-eslint/types@8.7.0':
-    resolution: {integrity: sha512-LLt4BLHFwSfASHSF2K29SZ+ZCsbQOM+LuarPjRUuHm+Qd09hSe3GCeaQbcCr+Mik+0QFRmep/FyZBO6fJ64U3w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@typescript-eslint/types@8.8.1':
@@ -3705,8 +3701,8 @@ packages:
     peerDependencies:
       eslint: '>=8.23.0'
 
-  eslint-plugin-perfectionist@3.7.0:
-    resolution: {integrity: sha512-pemhfcR3LDbYVWeveHok9u048yR7GpsnfyPvn6RsDkp/UV7iqBV0y5K0aGb9ZJMsemOyWok7akxGzPLsz+mHKQ==}
+  eslint-plugin-perfectionist@3.9.1:
+    resolution: {integrity: sha512-9WRzf6XaAxF4Oi5t/3TqKP5zUjERhasHmLFHin2Yw6ZAp/EP/EVA2dr3BhQrrHWCm5SzTMZf0FcjDnBkO2xFkA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
       astro-eslint-parser: ^1.0.2
@@ -4579,6 +4575,7 @@ packages:
 
   libsql@0.4.6:
     resolution: {integrity: sha512-F5M+ltteK6dCcpjMahrkgT96uFJvVI8aQ4r9f2AzHQjC7BkAYtvfMSTWGvRBezRgMUIU2h1Sy0pF9nOGOD5iyA==}
+    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@2.1.0:
@@ -7825,12 +7822,12 @@ snapshots:
   '@libsql/win32-x64-msvc@0.4.6':
     optional: true
 
-  '@lichthagel/eslint-config@https://codeload.github.com/Lichthagel/eslint-config/tar.gz/0021b264c7e43c69d7b55a0908513eebdf807322(eslint-plugin-n@17.10.2(eslint@9.13.0(jiti@2.3.3)))(eslint-plugin-svelte@2.43.0(eslint@9.13.0(jiti@2.3.3))(svelte@5.0.3)(ts-node@10.9.1(@types/node@22.7.7)(typescript@5.6.3)))(eslint@9.13.0(jiti@2.3.3))(svelte-eslint-parser@0.41.1(svelte@5.0.3))(svelte@5.0.3)(typescript@5.6.3)(vue-eslint-parser@9.4.3(eslint@9.13.0(jiti@2.3.3)))':
+  '@lichthagel/eslint-config@https://codeload.github.com/Lichthagel/eslint-config/tar.gz/9e8fdb183d0d7c385f46462e5139df8c134e2dd5(eslint-plugin-n@17.10.2(eslint@9.13.0(jiti@2.3.3)))(eslint-plugin-svelte@2.43.0(eslint@9.13.0(jiti@2.3.3))(svelte@5.0.3)(ts-node@10.9.1(@types/node@22.7.7)(typescript@5.6.3)))(eslint@9.13.0(jiti@2.3.3))(svelte-eslint-parser@0.41.1(svelte@5.0.3))(svelte@5.0.3)(typescript@5.6.3)(vue-eslint-parser@9.4.3(eslint@9.13.0(jiti@2.3.3)))':
     dependencies:
       '@eslint/js': 9.11.1
       '@stylistic/eslint-plugin': 2.9.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.6.3)
       eslint: 9.13.0(jiti@2.3.3)
-      eslint-plugin-perfectionist: 3.7.0(eslint@9.13.0(jiti@2.3.3))(svelte-eslint-parser@0.41.1(svelte@5.0.3))(svelte@5.0.3)(typescript@5.6.3)(vue-eslint-parser@9.4.3(eslint@9.13.0(jiti@2.3.3)))
+      eslint-plugin-perfectionist: 3.9.1(eslint@9.13.0(jiti@2.3.3))(svelte-eslint-parser@0.41.1(svelte@5.0.3))(svelte@5.0.3)(typescript@5.6.3)(vue-eslint-parser@9.4.3(eslint@9.13.0(jiti@2.3.3)))
       eslint-plugin-unicorn: 56.0.0(eslint@9.13.0(jiti@2.3.3))
       globals: 15.9.0
       typescript-eslint: 8.10.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.6.3)
@@ -8677,8 +8674,6 @@ snapshots:
       - supports-color
 
   '@typescript-eslint/types@8.10.0': {}
-
-  '@typescript-eslint/types@8.7.0': {}
 
   '@typescript-eslint/types@8.8.1': {}
 
@@ -9940,9 +9935,9 @@ snapshots:
       semver: 7.6.3
     optional: true
 
-  eslint-plugin-perfectionist@3.7.0(eslint@9.13.0(jiti@2.3.3))(svelte-eslint-parser@0.41.1(svelte@5.0.3))(svelte@5.0.3)(typescript@5.6.3)(vue-eslint-parser@9.4.3(eslint@9.13.0(jiti@2.3.3))):
+  eslint-plugin-perfectionist@3.9.1(eslint@9.13.0(jiti@2.3.3))(svelte-eslint-parser@0.41.1(svelte@5.0.3))(svelte@5.0.3)(typescript@5.6.3)(vue-eslint-parser@9.4.3(eslint@9.13.0(jiti@2.3.3))):
     dependencies:
-      '@typescript-eslint/types': 8.7.0
+      '@typescript-eslint/types': 8.10.0
       '@typescript-eslint/utils': 8.10.0(eslint@9.13.0(jiti@2.3.3))(typescript@5.6.3)
       eslint: 9.13.0(jiti@2.3.3)
       minimatch: 9.0.5

@@ -1,11 +1,12 @@
 "use client";
 
-import useImages from "@/hooks/useImages";
 import styles from "client-css/m/gallery.module.scss";
 import { ImageSort } from "models";
 import {
   type ReactElement, useCallback, useRef,
 } from "react";
+
+import useImages from "@/hooks/useImages";
 
 import ErrorMessage from "./ErrorMessage";
 import ImageCard from "./ImageCard";

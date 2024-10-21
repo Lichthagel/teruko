@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { type ComponentPublicInstance, useImages } from "#imports";
 import styles from "client-css/m/gallery.module.scss";
 import { type ImageSort } from "models";
+
+import { type ComponentPublicInstance, useImages } from "#imports";
 
 const props = defineProps<{
   tags: readonly string[];

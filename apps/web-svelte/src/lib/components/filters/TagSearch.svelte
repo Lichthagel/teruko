@@ -31,10 +31,12 @@
 
   const handleKeyDown = (e: KeyboardEvent) => {
     switch (e.key) {
-      case "Enter": {
+      case "ArrowDown": {
         e.preventDefault();
 
-        handleSubmit();
+        if (activeSuggestion < suggestions.length - 1) {
+          activeSuggestion++;
+        }
 
         break;
       }
@@ -47,12 +49,10 @@
 
         break;
       }
-      case "ArrowDown": {
+      case "Enter": {
         e.preventDefault();
 
-        if (activeSuggestion < suggestions.length - 1) {
-          activeSuggestion++;
-        }
+        handleSubmit();
 
         break;
       }
