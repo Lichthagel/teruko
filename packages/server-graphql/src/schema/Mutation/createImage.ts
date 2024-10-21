@@ -1,3 +1,4 @@
+import { getPixivMetadata, matchFilename } from "#util/pixiv/index.js";
 import { sql } from "drizzle-orm";
 import { fileTypeFromBlob } from "file-type";
 import { GraphQLError } from "graphql";
@@ -15,7 +16,6 @@ import sharp from "sharp";
 
 import type { builder } from "../builder.js";
 
-import { getPixivMetadata, matchFilename } from "../../util/pixiv/index.js";
 import { PothosImage } from "../Image.js";
 
 const hasDimensions = (
