@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "nx run-many -t build",
-    "lint": "eslint . && pnpm -F client-css lint",
+    "lint": "nx run-many -t lint",
     "format": "nx run-many -t format",
     "prepare": "husky"
   },

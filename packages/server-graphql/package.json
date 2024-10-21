@@ -17,7 +17,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@envelop/graphql-jit": "^8.0.0",

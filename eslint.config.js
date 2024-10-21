@@ -1,6 +1,7 @@
 import react from "@eslint-react/eslint-plugin";
 import lichthagel from "@lichthagel/eslint-config";
 import vue from "eslint-plugin-vue";
+import path from "node:path";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
@@ -16,7 +17,8 @@ export default [
       parserOptions: {
         extraFileExtensions: [".svelte", ".vue"],
         projectService: {
-          defaultProject: "./tsconfig.eslint.json",
+          allowDefaultProject: ["*.config.js", "*.config.cjs"],
+          defaultProject: path.join(import.meta.dirname, "tsconfig.eslint.json"),
         },
         tsconfigRootDir: import.meta.dirname,
       },
