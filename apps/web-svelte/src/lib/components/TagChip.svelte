@@ -6,7 +6,12 @@
   import styles from "client-css/m/imagepage.module.scss";
   import { tagsStore } from "client-stores";
 
-  export let tag: TagExt;
+  type Props = {
+    tag: TagExt;
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const { tag }: Props = $props();
 
   const onClick = () => {
     tagsStore.set([tag.slug]);
@@ -16,7 +21,7 @@
 
 <button
   class={styles["tag-chip"]}
-  on:click={onClick}
+  onclick={onClick}
   style={tag.category?.color && `background-color: ${tag.category?.color}`}
   type="button"
 >

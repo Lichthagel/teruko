@@ -7,7 +7,12 @@
   import { tagsStore } from "client-stores";
   import { X } from "lucide-svelte";
 
-  export let tag: string;
+  type Props = {
+    tag: string;
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const { tag }: Props = $props();
 
   const client = getContextClient();
 
@@ -38,7 +43,10 @@
 >
   <span>{tag}</span>
   <button
-    on:click|preventDefault={() => removeTag()}
+    onclick={(e) => {
+      e.preventDefault();
+      removeTag();
+    }}
     type="button"
   >
     <X />

@@ -2,10 +2,20 @@
   import styles from "client-css/m/error.module.scss";
   import { Home } from "lucide-svelte";
 
-  export let title: string | undefined = "An error occurred";
-  export let subtitle: string | undefined;
-  export let message: string | undefined;
-  export let error: Error | undefined;
+  type Props = {
+    error?: Error;
+    message?: string;
+    subtitle?: string;
+    title?: string;
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const {
+    title = "An error occurred",
+    subtitle,
+    message,
+    error,
+  }: Props = $props();
 </script>
 
 <div class={styles.backdrop}>
