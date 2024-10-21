@@ -18,13 +18,17 @@ const hasDimensions = (
 ): metadata is { width: number; height: number } & sharp.Metadata =>
   metadata.width !== undefined && metadata.height !== undefined;
 
-const saveBlob = async (blob: Blob, filename: string) => {
+const toFilename = (basename: string) => `${basename}.avif`;
+
+const saveBlob = async (blob: Blob, basename: string) => {
   const fileType = await fileTypeFromBlob(blob);
 
   if (
     !fileType ||
     !/^image\/(jpeg|gif|png|webp|avif)$/.test(fileType.mime)
   ) { throw new GraphQLError("not an image"); }
+
+  const filename = toFilename(basename);
 
   // check for existing image
   if (
@@ -110,29 +114,30 @@ const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: { width: number; hei
   return image;
 };
 
-export const processBlob = async (blob: Blob, filename: string, meta: ImageMeta) => {
-  const { metadata } = await saveBlob(blob, filename);
+export const processBlob = async (blob: Blob, basename: string, meta: ImageMeta) => {
+  const { metadata } = await saveBlob(blob, basename);
 
   try {
-    return await insertIntoDB(meta, metadata, filename);
+    return await insertIntoDB(meta, metadata, toFilename(basename));
   } catch (error) {
-    fs.rmSync(path.resolve(env.IMG_FOLDER, filename));
+    fs.rmSync(path.resolve(env.IMG_FOLDER, basename));
     throw error;
   }
 };
 
-export const processFile = async (file: File, meta: ImageMeta) => processBlob(file, file.name, meta);
+export const processFile = async (file: File, meta: ImageMeta) => {
+  const basename = file.name.replace(/\.[^.]+$/, "");
+
+  return processBlob(file, basename, meta);
+};
 
 export const processUrl = async (url: string, meta: ImageMeta) => {
   const res = await fetch(url);
 
   const basename = url.split("/").pop();
   if (!basename) {
-    throw new GraphQLError("failed to parse filename");
+    throw new GraphQLError("failed to parse basename");
   }
 
-  // check if basename contains file extension otherwise use content-type
-  const filename = basename.includes(".") ? basename : `${basename}.${res.headers.get("content-type")?.split("/")[1]}`; // TODO improve
-
-  return processBlob(await res.blob(), filename, meta);
+  return processBlob(await res.blob(), basename, meta);
 };

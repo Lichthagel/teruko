@@ -1,6 +1,6 @@
 import { ImageMeta, mergeImageMeta } from "models";
 
-import { processBlob } from "#lib/index.js";
+import { processFile } from "#lib/index.js";
 import { getPixivMetadata, matchFilename } from "#util/pixiv/index.js";
 
 import type { builder } from "../builder.js";
@@ -39,7 +39,7 @@ const createImage = (b: typeof builder) => {
             }
 
             // insert image into db
-            return processBlob(file, filename, imageMeta);
+            return processFile(file, imageMeta);
           }),
         ),
     }));
