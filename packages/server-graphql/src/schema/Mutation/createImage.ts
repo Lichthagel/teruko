@@ -15,8 +15,8 @@ import sharp from "sharp";
 
 import type { builder } from "../builder.js";
 
+import { getPixivMetadata, matchFilename } from "../../util/pixiv/index.js";
 import { PothosImage } from "../Image.js";
-import { getPixivMetadata, matchFilename } from "../util/pixiv/index.js";
 
 const hasDimensions = (
   metadata: sharp.Metadata,

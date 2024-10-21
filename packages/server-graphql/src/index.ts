@@ -7,7 +7,7 @@ import {
   YogaServerOptions,
 } from "graphql-yoga";
 
-import schema from "./schema.js";
+import schema from "./schema/index.js";
 
 export const getYoga = (
   fetchAPI: YogaServerOptions<object, object>["fetchAPI"],
@@ -30,6 +30,6 @@ export const getYoga = (
     },
   });
 
-export { default as schema } from "./schema.js";
+export { default as schema } from "./schema/index.js";
 
 export type { YogaServerInstance } from "graphql-yoga";
