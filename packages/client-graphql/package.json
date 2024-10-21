@@ -15,7 +15,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@urql/core": "^5.0.0",

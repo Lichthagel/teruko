@@ -10,7 +10,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "clean": "rm -rf dist"
   },
   "devDependencies": {
     "solid-element": "^1.9.0",
