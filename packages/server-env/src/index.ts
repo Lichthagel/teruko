@@ -14,7 +14,7 @@ const env: Readonly<{
   DATABASE_URL: z
     .string()
     .url()
-    .default("postgres://postgres@localhost:5432/teruko"),
+    .default("file:./local.db"),
   IMG_FOLDER: z.string().default("./data"),
   NODE_ENV: z.string().default("production"),
 });
