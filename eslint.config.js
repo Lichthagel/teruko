@@ -2,6 +2,7 @@ import react from "@eslint-react/eslint-plugin";
 import lichthagel from "@lichthagel/eslint-config";
 import vue from "eslint-plugin-vue";
 import path from "node:path";
+import next from "@next/eslint-plugin-next";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
@@ -12,6 +13,22 @@ export default [
   }),
   ...vue.configs["flat/recommended"],
   react.configs.recommended,
+  {
+    name: "@next/eslint-plugin-next/recommended",
+    plugins: {
+      "@next/next": next,
+    },
+    rules: {
+      ...(Object.fromEntries(
+        Object.entries(next.configs.recommended.rules).map(([key]) => [key, "error"])
+      )),
+    },
+    settings: {
+      next: {
+        rootDir: path.join(import.meta.dirname, "./apps/web-next"),
+      },
+    }
+  },
   {
     languageOptions: {
       parserOptions: {

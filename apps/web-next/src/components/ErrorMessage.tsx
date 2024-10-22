@@ -1,5 +1,6 @@
 import styles from "client-css/m/error.module.scss";
 import { Home } from "lucide-react";
+import Link from "next/link";
 
 type ErrorMessageProps = {
   title?: string;
@@ -17,10 +18,10 @@ const ErrorMessage = ({
   <div className={styles.backdrop}>
     <div className="container">
       <div className={styles.above}>
-        <a href="/">
+        <Link href="/">
           <Home />
           <span>return home</span>
-        </a>
+        </Link>
       </div>
       <div className={styles.content}>
         <h1>{title || "An error occurred"}</h1>
