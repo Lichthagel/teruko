@@ -16,18 +16,27 @@ const createImage = (b: typeof builder) => {
           type: ["Upload"],
           required: true,
         }),
+        title: t.arg.string(),
+        source: t.arg.string(),
+        tags: t.arg.stringList(),
       },
-      resolve: async (parent, { files }) =>
-        Promise.all(
+      resolve: async (parent, {
+        files, title, source, tags,
+      }) => {
+        const imageMetaArgs = {
+          title: title ?? undefined,
+          source: source ?? undefined,
+          tags: ((tags ?? []).map((slug) => ({ slug }))),
+        };
+
+        return Promise.all(
           files.map(async (file) => {
             // destructure file
-
             const filename = file.name;
 
             let imageMeta: ImageMeta = {};
 
             // pixiv stuff
-
             const pixivId = matchFilename(filename);
 
             if (pixivId) {
@@ -38,10 +47,13 @@ const createImage = (b: typeof builder) => {
               }
             }
 
+            imageMeta = mergeImageMeta(imageMeta, imageMetaArgs);
+
             // insert image into db
             return processFile(file, imageMeta);
           }),
-        ),
+        );
+      },
     }));
 };
 
