@@ -4,7 +4,9 @@ import styles from "client-css/m/imagepage.module.scss";
 import { DownloadIcon } from "lucide-react";
 import { ImageExt } from "models";
 import Image from "next/image";
-import { ReactElement, ReactEventHandler, useMemo } from "react";
+import {
+  ReactElement, ReactEventHandler, use, useMemo,
+} from "react";
 import { gql, useQuery } from "urql";
 
 import ErrorMessage from "@/components/ErrorMessage";
@@ -18,7 +20,8 @@ const scroll: ReactEventHandler<HTMLImageElement> = (e) => {
   });
 };
 
-const ImagePage = ({ params }: { params: { id: string } }): ReactElement => {
+const ImagePage = (props: { params: Promise<{ id: string }> }): ReactElement => {
+  const params = use(props.params);
   const { id } = params;
 
   const [result] = useQuery<{ image?: ImageExt }>({

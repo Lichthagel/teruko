@@ -7,9 +7,11 @@ import { z } from "zod";
 
 export async function GET(
   request: NextRequest,
-  context: { params: { filename: string } },
+  context: { params: Promise<{ filename: string }> },
 ): Promise<Response> {
-  const filename = z.string().parse(context.params.filename);
+  const params = await context.params;
+
+  const filename = z.string().parse(params.filename);
 
   const filepath = path.join(env.IMG_FOLDER, filename);
 
