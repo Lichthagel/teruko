@@ -1,6 +1,6 @@
-import { ImageMeta } from "models";
+import { ImageMeta, Tag } from "models";
 
-import { GetPostThreadResponse } from "./types.js";
+import { GetPostThreadResponse, isFacetTag } from "./types.js";
 
 export const BSKY_POST_REGEX = /^(https?:\/\/)?(www\.)?bsky.app\/profile\/(?<handle>[^/]+)\/post\/(?<postId>[^/]+)$/;
 
@@ -37,29 +37,42 @@ export const fetchData = async (handle: string, postId: string) => {
     throw new Error("Post embed does not contain images");
   }
 
+  const tags: Tag[] = [
+    {
+      slug: "bsky",
+      categorySlug: "source",
+    },
+    {
+      slug: `artist_${post.author.handle}`,
+      categorySlug: "artist",
+    },
+    ...(
+      post.author.displayName ?
+          [
+            {
+              slug: post.author.displayName,
+              categorySlug: "artist",
+            },
+          ] :
+          []
+    ),
+  ];
+
+  for (const facet of post.record.facets ?? []) {
+    for (const facetFeature of facet.features) {
+      if (isFacetTag(facetFeature)) {
+        tags.push({
+          slug: facetFeature.tag,
+          categorySlug: null,
+        });
+      }
+    }
+  }
+
   const imageMeta: ImageMeta = {
-    title: ((post.record as Record<string, unknown>).text as string | undefined),
+    title: post.record.text?.replaceAll("\n", " "),
     source: `https://bsky.app/profile/${post.author.handle}/post/${post.author.displayName}`,
-    tags: [
-      {
-        slug: "bsky",
-        categorySlug: "source",
-      },
-      {
-        slug: `artist_${post.author.handle}`,
-        categorySlug: "artist",
-      },
-      ...(
-        post.author.displayName ?
-            [
-              {
-                slug: post.author.displayName,
-                categorySlug: "artist",
-              },
-            ] :
-            []
-      ),
-    ],
+    tags,
   };
 
   return {

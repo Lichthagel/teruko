@@ -43,13 +43,39 @@ export type RecordWithMediaEmbed = {
   media: ExternalEmbed | ImagesEmbed | VideoEmbed;
 };
 
+export type FacetTag = {
+  $type: "app.bsky.richtext.facet#tag";
+  tag: string;
+};
+
+export const isFacetTag =
+  (facetFeature: unknown): facetFeature is FacetTag =>
+    typeof facetFeature === "object" &&
+    facetFeature !== null &&
+    "$type" in facetFeature &&
+    facetFeature.$type === "app.bsky.richtext.facet#tag";
+
+export type Facet = {
+  features: (FacetTag | { $type: string; [k: string]: unknown })[];
+  index: { byteEnd: number; byteStart: number };
+};
+
+export type PostRecord = {
+  $type: "app.bsky.feed.post";
+  createdAt: string;
+  embed?: unknown;
+  facets?: Facet[];
+  langs?: unknown[];
+  text?: string;
+};
+
 export type Embed = ExternalEmbed | ImagesEmbed | RecordEmbed | RecordWithMediaEmbed | VideoEmbed;
 
 export type Post = {
   uri: string;
   cid: string;
   author: Author;
-  record: unknown;
+  record: PostRecord;
   embed?: Embed;
   replyCount?: number;
   repostCount?: number;
