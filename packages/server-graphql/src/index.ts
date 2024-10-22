@@ -1,6 +1,5 @@
 import { useGraphQlJit } from "@envelop/graphql-jit";
 import { useAPQ } from "@graphql-yoga/plugin-apq";
-import { useResponseCache } from "@graphql-yoga/plugin-response-cache";
 import {
   createYoga,
   YogaServerInstance,
@@ -16,15 +15,7 @@ export const getYoga = (
     schema,
     graphqlEndpoint: "/graphql",
     fetchAPI,
-    plugins: [
-      useGraphQlJit(),
-      useResponseCache({
-        session: () => null,
-        idFields: ["id", "slug"],
-        ttl: 30_000,
-      }),
-      useAPQ(),
-    ],
+    plugins: [useGraphQlJit(), useAPQ()],
     cors: {
       origin: "*",
     },
