@@ -13,7 +13,7 @@ const config: NuxtConfig = defineNuxtConfig({
   modules: [],
   plugins: ["~/plugins/urql/index.ts"],
   postcss: {
-    plugins: postcssConfig.plugins as Record<string, unknown>,
+    plugins: postcssConfig.plugins as { [key: string]: unknown },
   },
   components: ["~/components", { path: "~/components/Filters", prefix: "Filters" }],
   telemetry: false,

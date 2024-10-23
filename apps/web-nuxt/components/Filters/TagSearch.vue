@@ -27,16 +27,16 @@ const handleKeyDown = (e: KeyboardEvent) => {
   switch (e.key) {
     case "ArrowDown": {
       e.preventDefault();
-      activeSuggestion.value =
-        (activeSuggestion.value + 1) % suggestions.value.length;
+      activeSuggestion.value
+        = (activeSuggestion.value + 1) % suggestions.value.length;
 
       break;
     }
     case "ArrowUp": {
       e.preventDefault();
-      activeSuggestion.value =
-        (activeSuggestion.value - 1 + suggestions.value.length) %
-        suggestions.value.length;
+      activeSuggestion.value
+        = (activeSuggestion.value - 1 + suggestions.value.length)
+        % suggestions.value.length;
 
       break;
     }

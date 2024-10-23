@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import type { ImageExt, ImageSort } from "models";
 
 import {
@@ -110,9 +109,9 @@ export const useImages = (
 
   const handleChange = (res: ImagesOperationResult): void => {
     if (res.data) {
-      const usedCursor = res.operation.variables.last ?
-        res.operation.variables.before :
-        res.operation.variables.after;
+      const usedCursor = res.operation.variables.last
+        ? res.operation.variables.before
+        : res.operation.variables.after;
 
       const { edges: newEdges, pageInfo } = res.data.images;
 
@@ -129,18 +128,18 @@ export const useImages = (
               (image) => image.cursor === newEdges.at(-1)?.cursor,
             );
 
-            return idx === -1 ?
-              newEdges :
-                [...newEdges, ...prevEdges.slice(idx + 1)];
+            return idx === -1
+              ? newEdges
+              : [...newEdges, ...prevEdges.slice(idx + 1)];
           }
         }
 
         return prevEdges;
       })(edges.value);
 
-      hasNextPage.value = res.operation.variables.last ?
-        pageInfo.hasPreviousPage :
-        pageInfo.hasNextPage;
+      hasNextPage.value = res.operation.variables.last
+        ? pageInfo.hasPreviousPage
+        : pageInfo.hasNextPage;
     }
 
     fetching.value = false;

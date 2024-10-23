@@ -35,9 +35,9 @@ export const toImageMeta = (
 
   if (!pixivResult.body) {
     return {
-      source: pixivIdFallback ?
-        `https://www.pixiv.net/en/artworks/${pixivIdFallback}` :
-        undefined,
+      source: pixivIdFallback
+        ? `https://www.pixiv.net/en/artworks/${pixivIdFallback}`
+        : undefined,
       tags,
     };
   }
@@ -72,8 +72,8 @@ export const toImageMeta = (
 
   if (pixivResult.body.tags && pixivResult.body.tags.tags) {
     for (const tag of pixivResult.body.tags.tags) {
-      const slug =
-        (tag.translation && tag.translation.en) || tag.romaji || tag.tag;
+      const slug
+        = (tag.translation && tag.translation.en) || tag.romaji || tag.tag;
 
       if (tags.some((value) => value.slug === slug)) {
         continue;

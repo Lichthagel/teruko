@@ -61,13 +61,13 @@ export const mergeImageMeta = (
 ): ImageMeta => ({
   title: meta.title ?? meta2.title,
   source: meta.source ?? meta2.source,
-  tags: meta.tags ?
-      [
+  tags: meta.tags
+    ? [
         ...meta.tags,
         ...(meta2.tags?.filter(
           (value) =>
             meta.tags?.findIndex((value2) => value2.slug === value.slug) === -1,
         ) ?? []),
-      ] :
-    meta2.tags,
+      ]
+    : meta2.tags,
 });

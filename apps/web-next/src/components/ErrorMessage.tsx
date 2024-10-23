@@ -25,10 +25,10 @@ const ErrorMessage = ({
       </div>
       <div className={styles.content}>
         <h1>{title || "An error occurred"}</h1>
-        {subtitle ||
-          (error && (
-            <h2>{subtitle || error?.message}</h2>
-          ))}
+        {subtitle
+        || (error && (
+          <h2>{subtitle || error?.message}</h2>
+        ))}
         {message && <span>{message}</span>}
       </div>
     </div>

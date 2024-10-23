@@ -24,8 +24,8 @@ const saveBlob = async (blob: Blob, basename: string) => {
   const fileType = await fileTypeFromBlob(blob);
 
   if (
-    !fileType ||
-    !/^image\/(jpeg|gif|png|webp|avif)$/.test(fileType.mime)
+    !fileType
+    || !/^image\/(jpeg|gif|png|webp|avif)$/.test(fileType.mime)
   ) { throw new GraphQLError("not an image"); }
 
   const filename = toFilename(basename);

@@ -43,7 +43,7 @@ type PixivIllust = {
   userId: string;
   userName: string;
   userAccount: string;
-  userIllusts: Record<string, null>;
+  userIllusts: { [key: string]: null };
   likeData: boolean;
   width: number;
   height: number;

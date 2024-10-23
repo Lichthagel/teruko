@@ -47,14 +47,14 @@ export const fetchData = async (handle: string, postId: string) => {
       categorySlug: "artist",
     },
     ...(
-      post.author.displayName ?
-          [
+      post.author.displayName
+        ? [
             {
               slug: post.author.displayName,
               categorySlug: "artist",
             },
-          ] :
-          []
+          ]
+        : []
     ),
   ];
 

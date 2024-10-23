@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import { builder } from "./builder.js";
 
 applyQuery(builder);

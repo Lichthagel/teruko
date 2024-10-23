@@ -102,15 +102,15 @@ const TagInput = () => {
               onMouseEnter={() => setActiveSuggestion(index)}
               style={{
                 backgroundColor:
-                  (index === activeSuggestion &&
-                    suggestion.category &&
-                    suggestion.category.color) ||
-                    undefined,
+                  (index === activeSuggestion
+                    && suggestion.category
+                    && suggestion.category.color)
+                    || undefined,
                 color:
-                  (index !== activeSuggestion &&
-                    suggestion.category &&
-                    suggestion.category.color) ||
-                    undefined,
+                  (index !== activeSuggestion
+                    && suggestion.category
+                    && suggestion.category.color)
+                    || undefined,
               }}
             >
               {suggestion.slug}

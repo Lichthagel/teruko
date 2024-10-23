@@ -174,9 +174,9 @@ const useImages = (tags: string[], sort: ImageSort) => {
   const handleChange = useCallback(
     (res: ImagesOperationResult): void => {
       if (res.data) {
-        const usedCursor = res.operation.variables.last ?
-          res.operation.variables.before :
-          res.operation.variables.after;
+        const usedCursor = res.operation.variables.last
+          ? res.operation.variables.before
+          : res.operation.variables.after;
 
         const { edges: newEdges, pageInfo } = res.data.images;
 
@@ -193,9 +193,9 @@ const useImages = (tags: string[], sort: ImageSort) => {
                 (edge) => edge.cursor === newEdges.at(-1)?.cursor,
               );
 
-              return idx === -1 ?
-                newEdges :
-                  [...newEdges, ...prevEdges.slice(idx + 1)];
+              return idx === -1
+                ? newEdges
+                : [...newEdges, ...prevEdges.slice(idx + 1)];
             }
           }
 
@@ -203,9 +203,9 @@ const useImages = (tags: string[], sort: ImageSort) => {
         });
 
         setHasMore(
-          res.operation.variables.last ?
-            pageInfo.hasPreviousPage :
-            pageInfo.hasNextPage,
+          res.operation.variables.last
+            ? pageInfo.hasPreviousPage
+            : pageInfo.hasNextPage,
         );
       }
 

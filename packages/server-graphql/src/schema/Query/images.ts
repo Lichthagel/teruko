@@ -25,13 +25,13 @@ import { PothosImage } from "../Image.js";
 const shouldIncludeTags = (info: GraphQLResolveInfo) =>
   info.fieldNodes[0]?.selectionSet?.selections.some(
     (selection) =>
-      selection.kind === Kind.FIELD &&
-      selection.name.value === "edges" &&
-      selection.selectionSet?.selections.some(
+      selection.kind === Kind.FIELD
+      && selection.name.value === "edges"
+      && selection.selectionSet?.selections.some(
         (selection) =>
-          selection.kind === Kind.FIELD &&
-          selection.name.value === "node" &&
-          selection.selectionSet?.selections.some(
+          selection.kind === Kind.FIELD
+          && selection.name.value === "node"
+          && selection.selectionSet?.selections.some(
             (selection) =>
               selection.kind === Kind.FIELD && selection.name.value === "tags",
           ),
@@ -133,9 +133,9 @@ const images = (b: typeof builder) =>
               .select()
               .from(dImage)
               .orderBy(
-                ...(random ?
-                    [sql`RANDOM()`] :
-                    [inverted ? asc(dImage.createdAt) : desc(dImage.createdAt), asc(dImage.id)]),
+                ...(random
+                  ? [sql`RANDOM()`]
+                  : [inverted ? asc(dImage.createdAt) : desc(dImage.createdAt), asc(dImage.id)]),
               )
               .where(and(...conditions))
               .limit(limit)

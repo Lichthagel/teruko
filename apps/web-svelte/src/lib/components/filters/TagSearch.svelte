@@ -96,14 +96,14 @@
           class={index === activeSuggestion ? styles.active : undefined}
           on:click={() => handleSubmit()}
           on:mouseenter={() => (activeSuggestion = index)}
-          style:background-color={(index === activeSuggestion &&
-            suggestion.category &&
-            suggestion.category.color) ||
-            undefined}
-          style:color={(index !== activeSuggestion &&
-            suggestion.category &&
-            suggestion.category.color) ||
-            undefined}
+          style:background-color={(index === activeSuggestion
+            && suggestion.category
+            && suggestion.category.color)
+            || undefined}
+          style:color={(index !== activeSuggestion
+            && suggestion.category
+            && suggestion.category.color)
+            || undefined}
         >
           {suggestion.slug}
         </li>

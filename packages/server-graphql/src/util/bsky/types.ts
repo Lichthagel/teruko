@@ -48,12 +48,12 @@ export type FacetTag = {
   tag: string;
 };
 
-export const isFacetTag =
-  (facetFeature: unknown): facetFeature is FacetTag =>
-    typeof facetFeature === "object" &&
-    facetFeature !== null &&
-    "$type" in facetFeature &&
-    facetFeature.$type === "app.bsky.richtext.facet#tag";
+export const isFacetTag
+  = (facetFeature: unknown): facetFeature is FacetTag =>
+    typeof facetFeature === "object"
+    && facetFeature !== null
+    && "$type" in facetFeature
+    && facetFeature.$type === "app.bsky.richtext.facet#tag";
 
 export type Facet = {
   features: (FacetTag | { $type: string; [k: string]: unknown })[];

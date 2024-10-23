@@ -1,5 +1,3 @@
-/* eslint-disable no-use-before-define */
-
 import type { ImageExt, ImageSort } from "models";
 
 import { browser } from "$app/environment";
@@ -126,9 +124,9 @@ const imagesStore = (
 
   const handleChange = (res: ImagesOperationResult): void => {
     if (res.data) {
-      const usedCursor = res.operation.variables.last ?
-        res.operation.variables.before :
-        res.operation.variables.after;
+      const usedCursor = res.operation.variables.last
+        ? res.operation.variables.before
+        : res.operation.variables.after;
 
       const { edges: newEdges, pageInfo } = res.data.images;
 
@@ -140,14 +138,14 @@ const imagesStore = (
             (edge) => edge.cursor === newEdges.at(-1)?.cursor,
           );
 
-          edges =
-            idx === -1 ? newEdges : [...newEdges, ...edges.slice(idx + 1)];
+          edges
+            = idx === -1 ? newEdges : [...newEdges, ...edges.slice(idx + 1)];
         }
       }
 
-      hasNextPage = res.operation.variables.last ?
-        pageInfo.hasPreviousPage :
-        pageInfo.hasNextPage;
+      hasNextPage = res.operation.variables.last
+        ? pageInfo.hasPreviousPage
+        : pageInfo.hasNextPage;
     }
 
     result.set({
@@ -156,11 +154,11 @@ const imagesStore = (
       error: res.error,
       images: edges.map((edge) => edge.node),
       fetchMore:
-        hasNextPage && !res.error ?
-            () => {
+        hasNextPage && !res.error
+          ? () => {
               newQuery(edges.at(-1)?.cursor, false);
-            } :
-            () => {},
+            }
+          : () => {},
     });
 
     if (!res.error && !res.stale && sort === "NEWEST") {
