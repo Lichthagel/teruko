@@ -105,12 +105,12 @@ const TagInput = () => {
                   (index === activeSuggestion
                     && suggestion.category
                     && suggestion.category.color)
-                    || undefined,
+                  || undefined,
                 color:
                   (index !== activeSuggestion
                     && suggestion.category
                     && suggestion.category.color)
-                    || undefined,
+                  || undefined,
               }}
             >
               {suggestion.slug}
