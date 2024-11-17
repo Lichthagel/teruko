@@ -8,20 +8,17 @@
       "description": "Group linter upgrades together",
       "extends": ["packages:linters"],
       "matchPackageNames": ["@eslint-react/**"],
-      "groupName": "linters",
-      "schedule": ["before 5am on the first day of the week"]
+      "groupName": "linters"
     },
     {
       "description": "Group lucide upgrades together",
       "matchPackageNames": ["lucide**"],
-      "groupName": "lucide",
-      "schedule": ["before 5am on the first day of the week"]
+      "groupName": "lucide"
     },
     {
       "description": "Group graphql-yoga upgrades together",
       "matchPackageNames": ["graphql-yoga", "@graphql-yoga/**"],
-      "groupName": "graphql-yoga",
-      "schedule": ["before 5am on the first day of the week"]
+      "groupName": "graphql-yoga"
     }
   ]
 }
