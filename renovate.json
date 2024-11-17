@@ -9,6 +9,13 @@
       "matchUpdateTypes": ["minor", "patch", "digest"],
       "groupName": "minor and patch upgrades",
       "schedule": ["before 5am on the first day of the week"]
+    },
+    {
+      "description": "Group linter upgrades together",
+      "extends": ["packages:linters"],
+      "matchPackageNames": ["@eslint-react/**"],
+      "groupName": "linters",
+      "schedule": ["before 5am on the first day of the week"]
     }
   ]
 }
