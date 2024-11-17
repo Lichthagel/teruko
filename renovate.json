@@ -16,6 +16,12 @@
       "matchPackageNames": ["@eslint-react/**"],
       "groupName": "linters",
       "schedule": ["before 5am on the first day of the week"]
+    },
+    {
+      "description": "Group lucide upgrades together",
+      "matchPackageNames": ["lucide**"],
+      "groupName": "lucide",
+      "schedule": ["before 5am on the first day of the week"]
     }
   ]
 }
