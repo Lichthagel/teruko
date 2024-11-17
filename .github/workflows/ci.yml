@@ -28,7 +28,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "latest"
+          node-version: "lts/*"
           cache: pnpm
       - name: Install dependencies
         run: pnpm install
