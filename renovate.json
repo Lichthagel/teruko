@@ -3,18 +3,6 @@
   "extends": ["config:recommended", ":disableDigestUpdates"],
   "baseBranches": ["main"],
   "labels": ["dependencies"],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "fileMatch": ["^\\.github\\/workflows\\/.*\\.ya?ml$"],
-      "matchStrings": [
-        "node-version: '(?<currentValue>.+?)'"
-      ],
-      "depNameTemplate": "node",
-      "datasourceTemplate": "node-version",
-      "versioningTemplate": "node"
-    }
-  ],
   "packageRules": [
     {
       "description": "Group linter upgrades together",
