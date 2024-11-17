@@ -22,6 +22,12 @@
       "matchPackageNames": ["lucide**"],
       "groupName": "lucide",
       "schedule": ["before 5am on the first day of the week"]
+    },
+    {
+      "description": "Group graphql-yoga upgrades together",
+      "matchPackageNames": ["graphql-yoga", "@graphql-yoga/**"],
+      "groupName": "graphql-yoga",
+      "schedule": ["before 5am on the first day of the week"]
     }
   ]
 }
