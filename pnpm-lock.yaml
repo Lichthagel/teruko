@@ -232,10 +232,10 @@ importers:
     devDependencies:
       '@sveltejs/adapter-node':
         specifier: ^5.2.9
-        version: 5.2.9(@sveltejs/kit@2.8.0(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0)))(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0)))
+        version: 5.2.9(@sveltejs/kit@2.8.1(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0)))(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0)))
       '@sveltejs/kit':
         specifier: ^2.7.4
-        version: 2.8.0(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0)))(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0))
+        version: 2.8.1(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0)))(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0))
       '@sveltejs/vite-plugin-svelte':
         specifier: ^4.0.0
         version: 4.0.0(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0))
@@ -2269,8 +2269,8 @@ packages:
     peerDependencies:
       '@sveltejs/kit': ^2.4.0
 
-  '@sveltejs/kit@2.8.0':
-    resolution: {integrity: sha512-HCiWupCuKJQ3aPaC4Xc6lpPdjOOnoGzEiYjOqMqppdtfGtY2ABrx932Vw66ZwS2RGXc0BmZvFvNq5SzqlmDVLg==}
+  '@sveltejs/kit@2.8.1':
+    resolution: {integrity: sha512-uuOfFwZ4xvnfPsiTB6a4H1ljjTUksGhWnYq5X/Y9z4x5+3uM2Md8q/YVeHL+7w+mygAwoEFdgKZ8YkUuk+VKww==}
     engines: {node: '>=18.13'}
     hasBin: true
     peerDependencies:
@@ -5182,6 +5182,10 @@ packages:
 
   postcss@8.4.47:
     resolution: {integrity: sha512-56rxCq7G/XfB4EkXq9Egn5GCqugWvDFjafDOThIdMBsI15iqPqR5r15TfSr1YPYeEI19YeaXMCbY6u88Y76GLQ==}
+    engines: {node: ^10 || ^12 || >=14}
+
+  postcss@8.4.49:
+    resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
     engines: {node: ^10 || ^12 || >=14}
 
   postgres@3.4.4:
@@ -8229,15 +8233,15 @@ snapshots:
       - supports-color
       - typescript
 
-  '@sveltejs/adapter-node@5.2.9(@sveltejs/kit@2.8.0(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0)))(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0)))':
+  '@sveltejs/adapter-node@5.2.9(@sveltejs/kit@2.8.1(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0)))(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0)))':
     dependencies:
       '@rollup/plugin-commonjs': 28.0.1(rollup@4.24.3)
       '@rollup/plugin-json': 6.1.0(rollup@4.24.3)
       '@rollup/plugin-node-resolve': 15.3.0(rollup@4.24.3)
-      '@sveltejs/kit': 2.8.0(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0)))(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0))
+      '@sveltejs/kit': 2.8.1(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0)))(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0))
       rollup: 4.24.3
 
-  '@sveltejs/kit@2.8.0(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0)))(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0))':
+  '@sveltejs/kit@2.8.1(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0)))(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0))':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 4.0.0(svelte@5.1.13)(vite@5.4.10(@types/node@22.9.0)(sass-embedded@1.79.4)(sass@1.80.6)(terser@5.36.0))
       '@types/cookie': 0.6.0
@@ -9779,9 +9783,9 @@ snapshots:
       eslint-compat-utils: 0.5.1(eslint@9.14.0(jiti@2.4.0))
       esutils: 2.0.3
       known-css-properties: 0.34.0
-      postcss: 8.4.47
-      postcss-load-config: 3.1.4(postcss@8.4.47)(ts-node@10.9.1(@types/node@22.9.0)(typescript@5.6.3))
-      postcss-safe-parser: 6.0.0(postcss@8.4.47)
+      postcss: 8.4.49
+      postcss-load-config: 3.1.4(postcss@8.4.49)(ts-node@10.9.1(@types/node@22.9.0)(typescript@5.6.3))
+      postcss-safe-parser: 6.0.0(postcss@8.4.49)
       postcss-selector-parser: 6.1.2
       semver: 7.6.3
       svelte-eslint-parser: 0.41.1(svelte@5.1.13)
@@ -11423,12 +11427,12 @@ snapshots:
     dependencies:
       postcss: 8.4.47
 
-  postcss-load-config@3.1.4(postcss@8.4.47)(ts-node@10.9.1(@types/node@22.9.0)(typescript@5.6.3)):
+  postcss-load-config@3.1.4(postcss@8.4.49)(ts-node@10.9.1(@types/node@22.9.0)(typescript@5.6.3)):
     dependencies:
       lilconfig: 2.1.0
       yaml: 1.10.2
     optionalDependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       ts-node: 10.9.1(@types/node@22.9.0)(typescript@5.6.3)
     optional: true
 
@@ -11537,9 +11541,9 @@ snapshots:
 
   postcss-resolve-nested-selector@0.1.6: {}
 
-  postcss-safe-parser@6.0.0(postcss@8.4.47):
+  postcss-safe-parser@6.0.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
     optional: true
 
   postcss-safe-parser@7.0.1(postcss@8.4.47):
@@ -11549,6 +11553,11 @@ snapshots:
   postcss-scss@4.0.9(postcss@8.4.47):
     dependencies:
       postcss: 8.4.47
+
+  postcss-scss@4.0.9(postcss@8.4.49):
+    dependencies:
+      postcss: 8.4.49
+    optional: true
 
   postcss-selector-parser@6.1.2:
     dependencies:
@@ -11579,6 +11588,13 @@ snapshots:
       nanoid: 3.3.7
       picocolors: 1.1.1
       source-map-js: 1.2.1
+
+  postcss@8.4.49:
+    dependencies:
+      nanoid: 3.3.7
+      picocolors: 1.1.1
+      source-map-js: 1.2.1
+    optional: true
 
   postgres@3.4.4:
     optional: true
@@ -12295,8 +12311,8 @@ snapshots:
       eslint-scope: 7.2.2
       eslint-visitor-keys: 3.4.3
       espree: 9.6.1
-      postcss: 8.4.47
-      postcss-scss: 4.0.9(postcss@8.4.47)
+      postcss: 8.4.49
+      postcss-scss: 4.0.9(postcss@8.4.49)
     optionalDependencies:
       svelte: 5.1.13
     optional: true
