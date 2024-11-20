@@ -15,7 +15,7 @@ const inUpload: string[] = [];
 
 const hasDimensions = (
   metadata: sharp.Metadata,
-): metadata is { width: number; height: number } & sharp.Metadata =>
+): metadata is sharp.Metadata & { width: number; height: number } =>
   metadata.width !== undefined && metadata.height !== undefined;
 
 const toFilename = (basename: string) => `${basename}.avif`;
@@ -66,7 +66,7 @@ const saveBlob = async (blob: Blob, basename: string) => {
   };
 };
 
-const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: { width: number; height: number } & sharp.Metadata, filename: string) => {
+const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: sharp.Metadata & { width: number; height: number }, filename: string) => {
   const image = await db.transaction(async (tx) => {
     const imageResults = await tx
       .insert(dImage)

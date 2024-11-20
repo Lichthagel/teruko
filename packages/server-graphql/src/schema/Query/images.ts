@@ -9,12 +9,11 @@ import {
 import { GraphQLError, GraphQLResolveInfo, Kind } from "graphql";
 import { ImageExt } from "models";
 import {
+  d_ImageToTag,
+  db,
   dImage,
   dTag,
   dTagCategory,
-  // eslint-disable-next-line perfectionist/sort-named-imports
-  d_ImageToTag,
-  db,
 } from "server-db";
 import { z } from "zod"; // TODO zod is only used once in the package
 
