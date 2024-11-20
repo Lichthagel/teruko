@@ -12,6 +12,16 @@ import {
   useClient,
 } from "urql";
 
+type ImagesArgs = {
+  tags: string[];
+  after: string | null;
+  before: string | null;
+  first: number | null;
+  last: number | null;
+};
+
+type ImagesOperationResult = OperationResult<ImagesResult, ImagesArgs>;
+
 type ImagesResult = {
   images: {
     edges: {
@@ -26,16 +36,6 @@ type ImagesResult = {
     };
   };
 };
-
-type ImagesArgs = {
-  tags: string[];
-  after: string | null;
-  before: string | null;
-  first: number | null;
-  last: number | null;
-};
-
-type ImagesOperationResult = OperationResult<ImagesResult, ImagesArgs>;
 
 const getRequest = (
   tags: string[],

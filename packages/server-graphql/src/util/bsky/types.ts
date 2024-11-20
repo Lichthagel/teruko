@@ -11,6 +11,15 @@ export type Author = {
   createdAt?: string;
 };
 
+export type ExternalEmbed = {
+  external: unknown;
+};
+
+export type FacetTag = {
+  $type: "app.bsky.richtext.facet#tag";
+  tag: string;
+};
+
 export type Image = {
   thumb: string;
   fullsize: string;
@@ -22,18 +31,6 @@ export type ImagesEmbed = {
   images: Image[];
 };
 
-export type VideoEmbed = {
-  cid: string;
-  playlist: string;
-  thumbnail?: string;
-  alt?: string;
-  aspectRatio?: unknown;
-};
-
-export type ExternalEmbed = {
-  external: unknown;
-};
-
 export type RecordEmbed = {
   record: unknown;
 };
@@ -43,9 +40,12 @@ export type RecordWithMediaEmbed = {
   media: ExternalEmbed | ImagesEmbed | VideoEmbed;
 };
 
-export type FacetTag = {
-  $type: "app.bsky.richtext.facet#tag";
-  tag: string;
+export type VideoEmbed = {
+  cid: string;
+  playlist: string;
+  thumbnail?: string;
+  alt?: string;
+  aspectRatio?: unknown;
 };
 
 export const isFacetTag
@@ -55,21 +55,27 @@ export const isFacetTag
     && "$type" in facetFeature
     && facetFeature.$type === "app.bsky.richtext.facet#tag";
 
+export type BlockedPost = {
+  uri: string;
+  blocked: true;
+  author: unknown;
+};
+
+export type Embed = ExternalEmbed | ImagesEmbed | RecordEmbed | RecordWithMediaEmbed | VideoEmbed;
+
 export type Facet = {
   features: (FacetTag | { $type: string; [k: string]: unknown })[];
   index: { byteEnd: number; byteStart: number };
 };
 
-export type PostRecord = {
-  $type: "app.bsky.feed.post";
-  createdAt: string;
-  embed?: unknown;
-  facets?: Facet[];
-  langs?: unknown[];
-  text?: string;
+export type GetPostThreadResponse = {
+  thread: BlockedPost | NotFoundPost | ThreadPost;
 };
 
-export type Embed = ExternalEmbed | ImagesEmbed | RecordEmbed | RecordWithMediaEmbed | VideoEmbed;
+export type NotFoundPost = {
+  uri: string;
+  notFound: true;
+};
 
 export type Post = {
   uri: string;
@@ -87,23 +93,17 @@ export type Post = {
   threadgate?: unknown;
 };
 
+export type PostRecord = {
+  $type: "app.bsky.feed.post";
+  createdAt: string;
+  embed?: unknown;
+  facets?: Facet[];
+  langs?: unknown[];
+  text?: string;
+};
+
 export type ThreadPost = {
   post: Post;
   parent: unknown;
   replies: unknown[];
-};
-
-export type NotFoundPost = {
-  uri: string;
-  notFound: true;
-};
-
-export type BlockedPost = {
-  uri: string;
-  blocked: true;
-  author: unknown;
-};
-
-export type GetPostThreadResponse = {
-  thread: BlockedPost | NotFoundPost | ThreadPost;
 };

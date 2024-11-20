@@ -8,6 +8,16 @@ import {
   useClientHandle,
 } from "@urql/vue";
 
+type ImagesArgs = {
+  tags: readonly string[];
+  after?: string;
+  before?: string;
+  first?: number;
+  last?: number;
+};
+
+type ImagesOperationResult = OperationResult<ImagesResult, ImagesArgs>;
+
 type ImagesResult = {
   images: {
     edges: {
@@ -22,16 +32,6 @@ type ImagesResult = {
     };
   };
 };
-
-type ImagesArgs = {
-  tags: readonly string[];
-  after?: string;
-  before?: string;
-  first?: number;
-  last?: number;
-};
-
-type ImagesOperationResult = OperationResult<ImagesResult, ImagesArgs>;
 
 const getRequest = (
   tags: readonly string[],

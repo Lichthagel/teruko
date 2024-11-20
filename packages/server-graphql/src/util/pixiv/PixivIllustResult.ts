@@ -1,17 +1,3 @@
-type PixivTranslation = {
-  en?: string;
-};
-
-type PixivTag = {
-  tag: string;
-  locked: boolean;
-  deletable: boolean;
-  userId?: string;
-  romaji?: string;
-  translation?: PixivTranslation;
-  userName?: string;
-};
-
 type PixivIllust = {
   illustId: string;
   illustTitle?: string;
@@ -64,6 +50,20 @@ type PixivIllustResult = {
   error: boolean;
   message: string;
   body?: PixivIllust;
+};
+
+type PixivTag = {
+  tag: string;
+  locked: boolean;
+  deletable: boolean;
+  userId?: string;
+  romaji?: string;
+  translation?: PixivTranslation;
+  userName?: string;
+};
+
+type PixivTranslation = {
+  en?: string;
 };
 
 export default PixivIllustResult;

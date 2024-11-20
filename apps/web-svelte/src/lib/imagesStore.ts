@@ -11,6 +11,16 @@ import {
 } from "@urql/svelte";
 import { type Readable, writable } from "svelte/store";
 
+type ImagesArgs = {
+  tags: readonly string[];
+  after: string | null;
+  before: string | null;
+  first: number | null;
+  last: number | null;
+};
+
+type ImagesOperationResult = OperationResult<ImagesResult, ImagesArgs>;
+
 type ImagesResult = {
   images: {
     edges: {
@@ -25,16 +35,6 @@ type ImagesResult = {
     };
   };
 };
-
-type ImagesArgs = {
-  tags: readonly string[];
-  after: string | null;
-  before: string | null;
-  first: number | null;
-  last: number | null;
-};
-
-type ImagesOperationResult = OperationResult<ImagesResult, ImagesArgs>;
 
 const getRequest = (
   tags: readonly string[],
