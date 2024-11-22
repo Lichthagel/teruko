@@ -152,7 +152,7 @@ importers:
         version: link:../../packages/client-stores
       drizzle-orm:
         specifier: ^0.36.0
-        version: 0.36.3(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1)
+        version: 0.36.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1)
       graphql:
         specifier: ^16.9.0
         version: 16.9.0
@@ -186,7 +186,7 @@ importers:
         version: 22.9.1
       nuxt:
         specifier: ^3.13.2
-        version: 3.14.1592(@libsql/client@0.14.0)(@parcel/watcher@2.5.0)(@types/node@22.9.1)(drizzle-orm@0.36.3(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1))(encoding@0.1.13)(eslint@9.15.0(jiti@2.4.0))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.27.3)(sass-embedded@1.79.4)(sass@1.81.0)(stylelint@16.10.0(typescript@5.6.3))(terser@5.36.0)(typescript@5.6.3)(vite@5.4.11(@types/node@22.9.1)(sass-embedded@1.79.4)(sass@1.81.0)(terser@5.36.0))
+        version: 3.14.1592(@libsql/client@0.14.0)(@parcel/watcher@2.5.0)(@types/node@22.9.1)(drizzle-orm@0.36.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1))(encoding@0.1.13)(eslint@9.15.0(jiti@2.4.0))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.27.3)(sass-embedded@1.79.4)(sass@1.81.0)(stylelint@16.10.0(typescript@5.6.3))(terser@5.36.0)(typescript@5.6.3)(vite@5.4.11(@types/node@22.9.1)(sass-embedded@1.79.4)(sass@1.81.0)(terser@5.36.0))
       tsconfig:
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -207,7 +207,7 @@ importers:
         version: link:../../packages/client-stores
       drizzle-orm:
         specifier: ^0.36.0
-        version: 0.36.3(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1)
+        version: 0.36.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1)
       lucide-svelte:
         specifier: ^0.460.0
         version: 0.460.1(svelte@5.2.7)
@@ -344,7 +344,7 @@ importers:
         version: 0.14.0
       drizzle-orm:
         specifier: ^0.36.0
-        version: 0.36.3(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1)
+        version: 0.36.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1)
       server-env:
         specifier: workspace:^
         version: link:../server-env
@@ -391,7 +391,7 @@ importers:
         version: 4.3.0(@pothos/core@4.3.0(graphql@16.9.0))(graphql@16.9.0)
       drizzle-orm:
         specifier: ^0.36.0
-        version: 0.36.3(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1)
+        version: 0.36.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1)
       file-type:
         specifier: ^19.6.0
         version: 19.6.0
@@ -3284,15 +3284,15 @@ packages:
     resolution: {integrity: sha512-JimOV+ystXTWMgZkLHYHf2w3oS28hxiH1FR0dkmJLc7GHzdGJoJAQtQS5DRppnabsRZwE2U1F6CuezVBgmsBBQ==}
     hasBin: true
 
-  drizzle-orm@0.36.3:
-    resolution: {integrity: sha512-ffQB7CcyCTvQBK6xtRLMl/Jsd5xFTBs+UTHrgs1hbk68i5TPkbsoCPbKEwiEsQZfq2I7VH632XJpV1g7LS2H9Q==}
+  drizzle-orm@0.36.4:
+    resolution: {integrity: sha512-1OZY3PXD7BR00Gl61UUOFihslDldfH4NFRH2MbP54Yxi0G/PKn4HfO65JYZ7c16DeP3SpM3Aw+VXVG9j6CRSXA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
       '@electric-sql/pglite': '>=0.2.0'
       '@libsql/client': '>=0.10.0'
       '@libsql/client-wasm': '>=0.10.0'
-      '@neondatabase/serverless': '>=0.1'
+      '@neondatabase/serverless': '>=0.10.0'
       '@op-engineering/op-sqlite': '>=2'
       '@opentelemetry/api': ^1.4.1
       '@planetscale/database': '>=1'
@@ -9129,10 +9129,10 @@ snapshots:
 
   data-uri-to-buffer@4.0.1: {}
 
-  db0@0.2.1(@libsql/client@0.14.0)(drizzle-orm@0.36.3(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1)):
+  db0@0.2.1(@libsql/client@0.14.0)(drizzle-orm@0.36.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1)):
     optionalDependencies:
       '@libsql/client': 0.14.0
-      drizzle-orm: 0.36.3(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1)
+      drizzle-orm: 0.36.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1)
 
   debug@2.6.9:
     dependencies:
@@ -9245,7 +9245,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.36.3(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1):
+  drizzle-orm@0.36.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1):
     optionalDependencies:
       '@libsql/client': 0.14.0
       '@libsql/client-wasm': 0.14.0
@@ -10698,7 +10698,7 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nitropack@2.10.4(@libsql/client@0.14.0)(drizzle-orm@0.36.3(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1))(encoding@0.1.13)(typescript@5.6.3):
+  nitropack@2.10.4(@libsql/client@0.14.0)(drizzle-orm@0.36.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1))(encoding@0.1.13)(typescript@5.6.3):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@netlify/functions': 2.8.2
@@ -10722,7 +10722,7 @@ snapshots:
       cookie-es: 1.2.2
       croner: 9.0.0
       crossws: 0.3.1
-      db0: 0.2.1(@libsql/client@0.14.0)(drizzle-orm@0.36.3(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1))
+      db0: 0.2.1(@libsql/client@0.14.0)(drizzle-orm@0.36.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1))
       defu: 6.1.4
       destr: 2.0.3
       dot-prop: 9.0.0
@@ -10852,7 +10852,7 @@ snapshots:
 
   nuxi@3.15.0: {}
 
-  nuxt@3.14.1592(@libsql/client@0.14.0)(@parcel/watcher@2.5.0)(@types/node@22.9.1)(drizzle-orm@0.36.3(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1))(encoding@0.1.13)(eslint@9.15.0(jiti@2.4.0))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.27.3)(sass-embedded@1.79.4)(sass@1.81.0)(stylelint@16.10.0(typescript@5.6.3))(terser@5.36.0)(typescript@5.6.3)(vite@5.4.11(@types/node@22.9.1)(sass-embedded@1.79.4)(sass@1.81.0)(terser@5.36.0)):
+  nuxt@3.14.1592(@libsql/client@0.14.0)(@parcel/watcher@2.5.0)(@types/node@22.9.1)(drizzle-orm@0.36.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1))(encoding@0.1.13)(eslint@9.15.0(jiti@2.4.0))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.27.3)(sass-embedded@1.79.4)(sass@1.81.0)(stylelint@16.10.0(typescript@5.6.3))(terser@5.36.0)(typescript@5.6.3)(vite@5.4.11(@types/node@22.9.1)(sass-embedded@1.79.4)(sass@1.81.0)(terser@5.36.0)):
     dependencies:
       '@nuxt/devalue': 2.0.2
       '@nuxt/devtools': 1.6.1(rollup@4.27.3)(vite@5.4.11(@types/node@22.9.1)(sass-embedded@1.79.4)(sass@1.81.0)(terser@5.36.0))(vue@3.5.13(typescript@5.6.3))
@@ -10889,7 +10889,7 @@ snapshots:
       magic-string: 0.30.13
       mlly: 1.7.3
       nanotar: 0.1.1
-      nitropack: 2.10.4(@libsql/client@0.14.0)(drizzle-orm@0.36.3(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1))(encoding@0.1.13)(typescript@5.6.3)
+      nitropack: 2.10.4(@libsql/client@0.14.0)(drizzle-orm@0.36.4(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(postgres@3.4.4)(react@18.3.1))(encoding@0.1.13)(typescript@5.6.3)
       nuxi: 3.15.0
       nypm: 0.3.12
       ofetch: 1.4.1
