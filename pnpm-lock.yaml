@@ -13,7 +13,7 @@ importers:
         version: 1.17.1(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
       '@lichthagel/eslint-config':
         specifier: ^1.0.1
-        version: 1.0.3(eslint-plugin-n@17.10.2(eslint@9.15.0(jiti@2.4.0)))(eslint-plugin-svelte@2.43.0(eslint@9.15.0(jiti@2.4.0))(svelte@5.2.8)(ts-node@10.9.1(@types/node@22.10.0)(typescript@5.7.2)))(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
+        version: 1.0.4(eslint-plugin-n@17.10.2(eslint@9.15.0(jiti@2.4.0)))(eslint-plugin-svelte@2.43.0(eslint@9.15.0(jiti@2.4.0))(svelte@5.2.8)(ts-node@10.9.1(@types/node@22.10.0)(typescript@5.7.2)))(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
       '@next/eslint-plugin-next':
         specifier: ^15.0.2
         version: 15.0.3
@@ -1561,8 +1561,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@lichthagel/eslint-config@1.0.3':
-    resolution: {integrity: sha512-+bDq7DjCEdJxo8u3Ld74dyBSANy3L1Y+pDj2Pj3/6UW1K6miRJwY8wRWeJj9kghydJoPePcF2cs5SUdLwCkEag==}
+  '@lichthagel/eslint-config@1.0.4':
+    resolution: {integrity: sha512-6/WPtNLH1pmb5NPk9I+YLcZtJC2BG+4IL1Bih9lN9QFdAjfpFvLPhwofKbp4m+HK1fBcZ3niJ1+W/wWsAjEuBQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       eslint: '>=8.40.0'
@@ -3546,8 +3546,8 @@ packages:
     peerDependencies:
       eslint: '>=8.23.0'
 
-  eslint-plugin-perfectionist@4.0.3:
-    resolution: {integrity: sha512-CyafnreF6boy4lf1XaF72U8NbkwrfjU/mOf1y6doaDMS9zGXhUU1DSk+ZPf/rVwCf1PL1m+rhHqFs+IcB8kDmA==}
+  eslint-plugin-perfectionist@4.1.2:
+    resolution: {integrity: sha512-YjXPWB/rKe/gPUsyuxw75wTUrzN5MuJnRV0PH9NoonFvgcdVIXk551mkBKPr59nRZCbu7S3dFHwfo4gA42DB2w==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
       eslint: '>=8.0.0'
@@ -5998,6 +5998,10 @@ packages:
     resolution: {integrity: sha512-3IMSWgP7C5KSQqmo1wjhKrwsvXAtF33jO3QY+Uy++ia7hqvgSK6iXbbg5PbDBc1P2ZbNEDgejOrN4YooXvhwCw==}
     engines: {node: '>=16'}
 
+  type-fest@4.28.1:
+    resolution: {integrity: sha512-LO/+yb3mf46YqfUC7QkkoAlpa7CTYh//V1Xy9+NQ+pKqDqXIq0NTfPfQRwFfCt+if4Qkwb9gzZfsl6E5TkXZGw==}
+    engines: {node: '>=16'}
+
   typescript-eslint@8.16.0:
     resolution: {integrity: sha512-wDkVmlY6O2do4V+lZd0GtRfbtXbeD0q9WygwXXSJnC1xorE8eqyC2L1tJimqpSeFrOzRlYtWnUp/uzgHQOgfBQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -7439,12 +7443,12 @@ snapshots:
   '@libsql/win32-x64-msvc@0.4.6':
     optional: true
 
-  '@lichthagel/eslint-config@1.0.3(eslint-plugin-n@17.10.2(eslint@9.15.0(jiti@2.4.0)))(eslint-plugin-svelte@2.43.0(eslint@9.15.0(jiti@2.4.0))(svelte@5.2.8)(ts-node@10.9.1(@types/node@22.10.0)(typescript@5.7.2)))(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)':
+  '@lichthagel/eslint-config@1.0.4(eslint-plugin-n@17.10.2(eslint@9.15.0(jiti@2.4.0)))(eslint-plugin-svelte@2.43.0(eslint@9.15.0(jiti@2.4.0))(svelte@5.2.8)(ts-node@10.9.1(@types/node@22.10.0)(typescript@5.7.2)))(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)':
     dependencies:
       '@eslint/js': 9.15.0
       '@stylistic/eslint-plugin': 2.11.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
       eslint: 9.15.0(jiti@2.4.0)
-      eslint-plugin-perfectionist: 4.0.3(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
+      eslint-plugin-perfectionist: 4.1.2(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
       eslint-plugin-unicorn: 56.0.1(eslint@9.15.0(jiti@2.4.0))
       globals: 15.12.0
       typescript-eslint: 8.16.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
@@ -9555,9 +9559,9 @@ snapshots:
       semver: 7.6.3
     optional: true
 
-  eslint-plugin-perfectionist@4.0.3(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2):
+  eslint-plugin-perfectionist@4.1.2(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2):
     dependencies:
-      '@typescript-eslint/types': 8.15.0
+      '@typescript-eslint/types': 8.16.0
       '@typescript-eslint/utils': 8.16.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
       eslint: 9.15.0(jiti@2.4.0)
       natural-orderby: 5.0.0
@@ -11247,7 +11251,7 @@ snapshots:
     dependencies:
       '@babel/code-frame': 7.26.2
       index-to-position: 0.1.2
-      type-fest: 4.27.0
+      type-fest: 4.28.1
 
   parse-path@7.0.0:
     dependencies:
@@ -12401,6 +12405,8 @@ snapshots:
   type-fest@0.8.1: {}
 
   type-fest@4.27.0: {}
+
+  type-fest@4.28.1: {}
 
   typescript-eslint@8.16.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2):
     dependencies:
