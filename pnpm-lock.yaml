@@ -13,7 +13,7 @@ importers:
         version: 1.17.1(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
       '@lichthagel/eslint-config':
         specifier: ^1.0.1
-        version: 1.0.4(eslint-plugin-n@17.10.2(eslint@9.15.0(jiti@2.4.0)))(eslint-plugin-svelte@2.43.0(eslint@9.15.0(jiti@2.4.0))(svelte@5.2.11)(ts-node@10.9.1(@types/node@22.10.1)(typescript@5.7.2)))(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
+        version: 1.0.5(eslint-plugin-n@17.10.2(eslint@9.15.0(jiti@2.4.0)))(eslint-plugin-svelte@2.43.0(eslint@9.15.0(jiti@2.4.0))(svelte@5.2.11)(ts-node@10.9.1(@types/node@22.10.1)(typescript@5.7.2)))(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
       '@next/eslint-plugin-next':
         specifier: ^15.0.2
         version: 15.0.3
@@ -1271,6 +1271,10 @@ packages:
     resolution: {integrity: sha512-tMTqrY+EzbXmKJR5ToI8lxu7jaN5EdmrBFJpQk5JmSlyLsx6o4t27r883K5xsLuCYCpfKBCGswMSWXsM+jB7lg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
+  '@eslint/js@9.16.0':
+    resolution: {integrity: sha512-tw2HxzQkrbeuvyj1tG2Yqq+0H9wGoI2IMk4EOsQeX+vmd75FtJAzf+gTA69WF+baUKRYQ3x2kbLE08js5OsTVg==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
   '@eslint/object-schema@2.1.4':
     resolution: {integrity: sha512-BsWiH1yFGjXXS2yvrf5LyuoSIIbPrGUWob917o+BTKuZ7qJdxX8aJLRxs1fS9n6r7vESrq1OUqb68dANcFXuQQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -1561,8 +1565,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@lichthagel/eslint-config@1.0.4':
-    resolution: {integrity: sha512-6/WPtNLH1pmb5NPk9I+YLcZtJC2BG+4IL1Bih9lN9QFdAjfpFvLPhwofKbp4m+HK1fBcZ3niJ1+W/wWsAjEuBQ==}
+  '@lichthagel/eslint-config@1.0.5':
+    resolution: {integrity: sha512-eFsq2DEdDptYjDvaeGnRCBzN7y8q3bSIHukym0zrBPS21cm2xb6abKte/1Q4j1u8eobMmKWd4+e0smqbLkDjVw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       eslint: '>=8.40.0'
@@ -5920,8 +5924,8 @@ packages:
     resolution: {integrity: sha512-3IMSWgP7C5KSQqmo1wjhKrwsvXAtF33jO3QY+Uy++ia7hqvgSK6iXbbg5PbDBc1P2ZbNEDgejOrN4YooXvhwCw==}
     engines: {node: '>=16'}
 
-  type-fest@4.28.1:
-    resolution: {integrity: sha512-LO/+yb3mf46YqfUC7QkkoAlpa7CTYh//V1Xy9+NQ+pKqDqXIq0NTfPfQRwFfCt+if4Qkwb9gzZfsl6E5TkXZGw==}
+  type-fest@4.29.0:
+    resolution: {integrity: sha512-RPYt6dKyemXJe7I6oNstcH24myUGSReicxcHTvCLgzm4e0n8y05dGvcGB15/SoPRBmhlMthWQ9pvKyL81ko8nQ==}
     engines: {node: '>=16'}
 
   typescript-eslint@8.16.0:
@@ -7132,6 +7136,8 @@ snapshots:
 
   '@eslint/js@9.15.0': {}
 
+  '@eslint/js@9.16.0': {}
+
   '@eslint/object-schema@2.1.4': {}
 
   '@eslint/plugin-kit@0.2.3':
@@ -7405,9 +7411,9 @@ snapshots:
   '@libsql/win32-x64-msvc@0.4.6':
     optional: true
 
-  '@lichthagel/eslint-config@1.0.4(eslint-plugin-n@17.10.2(eslint@9.15.0(jiti@2.4.0)))(eslint-plugin-svelte@2.43.0(eslint@9.15.0(jiti@2.4.0))(svelte@5.2.11)(ts-node@10.9.1(@types/node@22.10.1)(typescript@5.7.2)))(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)':
+  '@lichthagel/eslint-config@1.0.5(eslint-plugin-n@17.10.2(eslint@9.15.0(jiti@2.4.0)))(eslint-plugin-svelte@2.43.0(eslint@9.15.0(jiti@2.4.0))(svelte@5.2.11)(ts-node@10.9.1(@types/node@22.10.1)(typescript@5.7.2)))(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)':
     dependencies:
-      '@eslint/js': 9.15.0
+      '@eslint/js': 9.16.0
       '@stylistic/eslint-plugin': 2.11.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
       eslint: 9.15.0(jiti@2.4.0)
       eslint-plugin-perfectionist: 4.1.2(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
@@ -11173,7 +11179,7 @@ snapshots:
     dependencies:
       '@babel/code-frame': 7.26.2
       index-to-position: 0.1.2
-      type-fest: 4.28.1
+      type-fest: 4.29.0
 
   parse-path@7.0.0:
     dependencies:
@@ -12309,7 +12315,7 @@ snapshots:
 
   type-fest@4.27.0: {}
 
-  type-fest@4.28.1: {}
+  type-fest@4.29.0: {}
 
   typescript-eslint@8.16.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2):
     dependencies:
