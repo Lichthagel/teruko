@@ -25,7 +25,7 @@ const Gallery: React.FC<GalleryProps> = ({
     fetching, stale, error, images, fetchMore,
   } = useImages(tags, sort);
 
-  const observer = useRef<IntersectionObserver>();
+  const observer = useRef<IntersectionObserver>(null);
 
   const endRef = useCallback(
     (node: HTMLDivElement) => {

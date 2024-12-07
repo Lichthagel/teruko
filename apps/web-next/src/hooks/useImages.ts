@@ -155,7 +155,7 @@ const useImages = (tags: string[], sort: ImageSort) => {
     setRequestParams((prev) => ({ ...prev, cursor: undefined, refresh: true }));
   }, []);
 
-  const timeoutId = useRef<ReturnType<typeof globalThis.setTimeout>>(); // this runs in the browser...
+  const timeoutId = useRef<ReturnType<typeof globalThis.setTimeout>>(null); // this runs in the browser...
 
   const cancelTimeout = useCallback(() => {
     if (timeoutId.current) {
