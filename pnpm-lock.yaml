@@ -151,8 +151,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/client-stores
       drizzle-orm:
-        specifier: ^0.37.0
-        version: 0.37.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0)
+        specifier: ^0.38.0
+        version: 0.38.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0)
       graphql:
         specifier: ^16.9.0
         version: 16.9.0
@@ -186,7 +186,7 @@ importers:
         version: 22.10.1
       nuxt:
         specifier: ^3.13.2
-        version: 3.14.1592(@libsql/client@0.14.0)(@parcel/watcher@2.5.0)(@types/node@22.10.1)(drizzle-orm@0.37.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0))(encoding@0.1.13)(eslint@9.15.0(jiti@2.4.1))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.28.0)(sass-embedded@1.79.4)(sass@1.82.0)(stylelint@16.11.0(typescript@5.7.2))(terser@5.36.0)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.1)(sass-embedded@1.79.4)(sass@1.82.0)(terser@5.36.0))
+        version: 3.14.1592(@libsql/client@0.14.0)(@parcel/watcher@2.5.0)(@types/node@22.10.1)(drizzle-orm@0.38.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0))(encoding@0.1.13)(eslint@9.15.0(jiti@2.4.1))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.28.0)(sass-embedded@1.79.4)(sass@1.82.0)(stylelint@16.11.0(typescript@5.7.2))(terser@5.36.0)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.1)(sass-embedded@1.79.4)(sass@1.82.0)(terser@5.36.0))
       tsconfig:
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -206,8 +206,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/client-stores
       drizzle-orm:
-        specifier: ^0.37.0
-        version: 0.37.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0)
+        specifier: ^0.38.0
+        version: 0.38.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0)
       lucide-svelte:
         specifier: ^0.468.0
         version: 0.468.0(svelte@5.9.1)
@@ -343,8 +343,8 @@ importers:
         specifier: ^0.14.0
         version: 0.14.0
       drizzle-orm:
-        specifier: ^0.37.0
-        version: 0.37.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0)
+        specifier: ^0.38.0
+        version: 0.38.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0)
       server-env:
         specifier: workspace:^
         version: link:../server-env
@@ -390,8 +390,8 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0(@pothos/core@4.3.0(graphql@16.9.0))(graphql@16.9.0)
       drizzle-orm:
-        specifier: ^0.37.0
-        version: 0.37.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0)
+        specifier: ^0.38.0
+        version: 0.38.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0)
       file-type:
         specifier: ^19.6.0
         version: 19.6.0
@@ -3281,8 +3281,8 @@ packages:
     resolution: {integrity: sha512-zAf0qg/BX2lV/Xip4igXrtbDv+Ub8S39U6qSOEGNvqcHrnmaQjS4mkkFZOUsgXRbuH56QUeWZxfnLHefrKCV5g==}
     hasBin: true
 
-  drizzle-orm@0.37.0:
-    resolution: {integrity: sha512-AsCNACQ/T2CyZUkrBRUqFT2ibHJ9ZHz3+lzYJFFn3hnj7ylIeItMz5kacRG89uSE74nXYShqehr6u+6ks4JR1A==}
+  drizzle-orm@0.38.0:
+    resolution: {integrity: sha512-Ev1UYKOUxiVwLZZfos4hoNDMDkp313FqF0CHelhR+BeOdb76z/a6pKF6SgYQSrmj6EXH4cy6QIkmuxl2KIFW0A==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=4'
@@ -9254,10 +9254,10 @@ snapshots:
 
   data-uri-to-buffer@4.0.1: {}
 
-  db0@0.2.1(@libsql/client@0.14.0)(drizzle-orm@0.37.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0)):
+  db0@0.2.1(@libsql/client@0.14.0)(drizzle-orm@0.38.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0)):
     optionalDependencies:
       '@libsql/client': 0.14.0
-      drizzle-orm: 0.37.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0)
+      drizzle-orm: 0.38.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0)
 
   debug@2.6.9:
     dependencies:
@@ -9370,7 +9370,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.37.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0):
+  drizzle-orm@0.38.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0):
     optionalDependencies:
       '@libsql/client': 0.14.0
       '@libsql/client-wasm': 0.14.0
@@ -10835,7 +10835,7 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nitropack@2.10.4(@libsql/client@0.14.0)(drizzle-orm@0.37.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0))(encoding@0.1.13)(typescript@5.7.2):
+  nitropack@2.10.4(@libsql/client@0.14.0)(drizzle-orm@0.38.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0))(encoding@0.1.13)(typescript@5.7.2):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@netlify/functions': 2.8.2
@@ -10859,7 +10859,7 @@ snapshots:
       cookie-es: 1.2.2
       croner: 9.0.0
       crossws: 0.3.1
-      db0: 0.2.1(@libsql/client@0.14.0)(drizzle-orm@0.37.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0))
+      db0: 0.2.1(@libsql/client@0.14.0)(drizzle-orm@0.38.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0))
       defu: 6.1.4
       destr: 2.0.3
       dot-prop: 9.0.0
@@ -10989,7 +10989,7 @@ snapshots:
 
   nuxi@3.15.0: {}
 
-  nuxt@3.14.1592(@libsql/client@0.14.0)(@parcel/watcher@2.5.0)(@types/node@22.10.1)(drizzle-orm@0.37.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0))(encoding@0.1.13)(eslint@9.15.0(jiti@2.4.1))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.28.0)(sass-embedded@1.79.4)(sass@1.82.0)(stylelint@16.11.0(typescript@5.7.2))(terser@5.36.0)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.1)(sass-embedded@1.79.4)(sass@1.82.0)(terser@5.36.0)):
+  nuxt@3.14.1592(@libsql/client@0.14.0)(@parcel/watcher@2.5.0)(@types/node@22.10.1)(drizzle-orm@0.38.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0))(encoding@0.1.13)(eslint@9.15.0(jiti@2.4.1))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.28.0)(sass-embedded@1.79.4)(sass@1.82.0)(stylelint@16.11.0(typescript@5.7.2))(terser@5.36.0)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.1)(sass-embedded@1.79.4)(sass@1.82.0)(terser@5.36.0)):
     dependencies:
       '@nuxt/devalue': 2.0.2
       '@nuxt/devtools': 1.6.3(rollup@4.28.0)(vite@5.4.11(@types/node@22.10.1)(sass-embedded@1.79.4)(sass@1.82.0)(terser@5.36.0))(vue@3.5.13(typescript@5.7.2))
@@ -11026,7 +11026,7 @@ snapshots:
       magic-string: 0.30.13
       mlly: 1.7.3
       nanotar: 0.1.1
-      nitropack: 2.10.4(@libsql/client@0.14.0)(drizzle-orm@0.37.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0))(encoding@0.1.13)(typescript@5.7.2)
+      nitropack: 2.10.4(@libsql/client@0.14.0)(drizzle-orm@0.38.0(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@19.0.1)(postgres@3.4.4)(react@19.0.0))(encoding@0.1.13)(typescript@5.7.2)
       nuxi: 3.15.0
       nypm: 0.3.12
       ofetch: 1.4.1
