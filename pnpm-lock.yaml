@@ -78,8 +78,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/client-stores
       drizzle-orm:
-        specifier: ^0.37.0
-        version: 0.37.0(@libsql/client@0.14.0)
+        specifier: ^0.38.0
+        version: 0.38.2(@libsql/client@0.14.0)
       graphql:
         specifier: ^16.9.0
         version: 16.9.0
@@ -113,7 +113,7 @@ importers:
         version: 22.10.2
       nuxt:
         specifier: ^3.13.2
-        version: 3.14.1592(@libsql/client@0.14.0)(@parcel/watcher@2.5.0)(@types/node@22.10.2)(drizzle-orm@0.37.0(@libsql/client@0.14.0))(eslint@9.17.0(jiti@2.4.1))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.28.1)(sass-embedded@1.83.0)(stylelint@16.11.0(typescript@5.7.2))(terser@5.37.0)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.2)(sass-embedded@1.83.0)(terser@5.37.0))
+        version: 3.14.1592(@libsql/client@0.14.0)(@parcel/watcher@2.5.0)(@types/node@22.10.2)(drizzle-orm@0.38.2(@libsql/client@0.14.0))(eslint@9.17.0(jiti@2.4.1))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.28.1)(sass-embedded@1.83.0)(stylelint@16.11.0(typescript@5.7.2))(terser@5.37.0)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.2)(sass-embedded@1.83.0)(terser@5.37.0))
       sass-embedded:
         specifier: ^1.83.0
         version: 1.83.0
@@ -136,8 +136,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/client-stores
       drizzle-orm:
-        specifier: ^0.37.0
-        version: 0.37.0(@libsql/client@0.14.0)
+        specifier: ^0.38.0
+        version: 0.38.2(@libsql/client@0.14.0)
       lucide-svelte:
         specifier: ^0.468.0
         version: 0.468.0(svelte@5.12.0)
@@ -276,8 +276,8 @@ importers:
         specifier: ^0.14.0
         version: 0.14.0
       drizzle-orm:
-        specifier: ^0.37.0
-        version: 0.37.0(@libsql/client@0.14.0)
+        specifier: ^0.38.0
+        version: 0.38.2(@libsql/client@0.14.0)
       server-env:
         specifier: workspace:^
         version: link:../server-env
@@ -323,8 +323,8 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0(@pothos/core@4.3.0(graphql@16.9.0))(graphql@16.9.0)
       drizzle-orm:
-        specifier: ^0.37.0
-        version: 0.37.0(@libsql/client@0.14.0)
+        specifier: ^0.38.0
+        version: 0.38.2(@libsql/client@0.14.0)
       file-type:
         specifier: ^19.6.0
         version: 19.6.0
@@ -2852,8 +2852,8 @@ packages:
     resolution: {integrity: sha512-HmA/NeewvHywhJ2ENXD3KvOuM/+K2dGLJfxVfIHsGwaqKICJnS+Ke2L6UcSrSrtMJLJaT0Im1Qv4TFXfaZShyw==}
     hasBin: true
 
-  drizzle-orm@0.37.0:
-    resolution: {integrity: sha512-AsCNACQ/T2CyZUkrBRUqFT2ibHJ9ZHz3+lzYJFFn3hnj7ylIeItMz5kacRG89uSE74nXYShqehr6u+6ks4JR1A==}
+  drizzle-orm@0.38.2:
+    resolution: {integrity: sha512-eCE3yPRAskLo1WpM9OHpFaM70tBEDsWhwR/0M3CKyztAXKR9Qs3asZlcJOEliIcUSg8GuwrlY0dmYDgmm6y5GQ==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=4'
@@ -6375,7 +6375,7 @@ snapshots:
   '@eslint/config-array@0.19.1':
     dependencies:
       '@eslint/object-schema': 2.1.5
-      debug: 4.4.0
+      debug: 4.4.0(supports-color@9.4.0)
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -6387,7 +6387,7 @@ snapshots:
   '@eslint/eslintrc@3.2.0':
     dependencies:
       ajv: 6.12.6
-      debug: 4.4.0
+      debug: 4.4.0(supports-color@9.4.0)
       espree: 10.3.0
       globals: 14.0.0
       ignore: 5.3.2
@@ -7331,7 +7331,7 @@ snapshots:
       '@typescript-eslint/types': 8.18.0
       '@typescript-eslint/typescript-estree': 8.18.0(typescript@5.7.2)
       '@typescript-eslint/visitor-keys': 8.18.0
-      debug: 4.4.0
+      debug: 4.4.0(supports-color@9.4.0)
       eslint: 9.17.0(jiti@2.4.1)
       typescript: 5.7.2
     transitivePeerDependencies:
@@ -7346,7 +7346,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/typescript-estree': 8.18.0(typescript@5.7.2)
       '@typescript-eslint/utils': 8.18.0(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)
-      debug: 4.4.0
+      debug: 4.4.0(supports-color@9.4.0)
       eslint: 9.17.0(jiti@2.4.1)
       ts-api-utils: 1.4.3(typescript@5.7.2)
       typescript: 5.7.2
@@ -7359,7 +7359,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 8.18.0
       '@typescript-eslint/visitor-keys': 8.18.0
-      debug: 4.4.0
+      debug: 4.4.0(supports-color@9.4.0)
       fast-glob: 3.3.2
       is-glob: 4.0.3
       minimatch: 9.0.5
@@ -8152,18 +8152,14 @@ snapshots:
 
   data-uri-to-buffer@4.0.1: {}
 
-  db0@0.2.1(@libsql/client@0.14.0)(drizzle-orm@0.37.0(@libsql/client@0.14.0)):
+  db0@0.2.1(@libsql/client@0.14.0)(drizzle-orm@0.38.2(@libsql/client@0.14.0)):
     optionalDependencies:
       '@libsql/client': 0.14.0
-      drizzle-orm: 0.37.0(@libsql/client@0.14.0)
+      drizzle-orm: 0.38.2(@libsql/client@0.14.0)
 
   debug@2.6.9:
     dependencies:
       ms: 2.0.0
-
-  debug@4.4.0:
-    dependencies:
-      ms: 2.1.3
 
   debug@4.4.0(supports-color@9.4.0):
     dependencies:
@@ -8267,7 +8263,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.37.0(@libsql/client@0.14.0):
+  drizzle-orm@0.38.2(@libsql/client@0.14.0):
     optionalDependencies:
       '@libsql/client': 0.14.0
 
@@ -8555,7 +8551,7 @@ snapshots:
       ajv: 6.12.6
       chalk: 4.1.2
       cross-spawn: 7.0.6
-      debug: 4.4.0
+      debug: 4.4.0(supports-color@9.4.0)
       escape-string-regexp: 4.0.0
       eslint-scope: 8.2.0
       eslint-visitor-keys: 4.2.0
@@ -9497,7 +9493,7 @@ snapshots:
 
   natural-orderby@5.0.0: {}
 
-  nitropack@2.10.4(@libsql/client@0.14.0)(drizzle-orm@0.37.0(@libsql/client@0.14.0))(typescript@5.7.2):
+  nitropack@2.10.4(@libsql/client@0.14.0)(drizzle-orm@0.38.2(@libsql/client@0.14.0))(typescript@5.7.2):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@netlify/functions': 2.8.2
@@ -9521,7 +9517,7 @@ snapshots:
       cookie-es: 1.2.2
       croner: 9.0.0
       crossws: 0.3.1
-      db0: 0.2.1(@libsql/client@0.14.0)(drizzle-orm@0.37.0(@libsql/client@0.14.0))
+      db0: 0.2.1(@libsql/client@0.14.0)(drizzle-orm@0.38.2(@libsql/client@0.14.0))
       defu: 6.1.4
       destr: 2.0.3
       dot-prop: 9.0.0
@@ -9642,7 +9638,7 @@ snapshots:
 
   nuxi@3.16.0: {}
 
-  nuxt@3.14.1592(@libsql/client@0.14.0)(@parcel/watcher@2.5.0)(@types/node@22.10.2)(drizzle-orm@0.37.0(@libsql/client@0.14.0))(eslint@9.17.0(jiti@2.4.1))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.28.1)(sass-embedded@1.83.0)(stylelint@16.11.0(typescript@5.7.2))(terser@5.37.0)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.2)(sass-embedded@1.83.0)(terser@5.37.0)):
+  nuxt@3.14.1592(@libsql/client@0.14.0)(@parcel/watcher@2.5.0)(@types/node@22.10.2)(drizzle-orm@0.38.2(@libsql/client@0.14.0))(eslint@9.17.0(jiti@2.4.1))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.28.1)(sass-embedded@1.83.0)(stylelint@16.11.0(typescript@5.7.2))(terser@5.37.0)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.2)(sass-embedded@1.83.0)(terser@5.37.0)):
     dependencies:
       '@nuxt/devalue': 2.0.2
       '@nuxt/devtools': 1.6.4(rollup@4.28.1)(vite@5.4.11(@types/node@22.10.2)(sass-embedded@1.83.0)(terser@5.37.0))(vue@3.5.13(typescript@5.7.2))
@@ -9679,7 +9675,7 @@ snapshots:
       magic-string: 0.30.15
       mlly: 1.7.3
       nanotar: 0.1.1
-      nitropack: 2.10.4(@libsql/client@0.14.0)(drizzle-orm@0.37.0(@libsql/client@0.14.0))(typescript@5.7.2)
+      nitropack: 2.10.4(@libsql/client@0.14.0)(drizzle-orm@0.38.2(@libsql/client@0.14.0))(typescript@5.7.2)
       nuxi: 3.16.0
       nypm: 0.3.12
       ofetch: 1.4.1
@@ -11328,7 +11324,7 @@ snapshots:
 
   vue-eslint-parser@9.4.3(eslint@9.17.0(jiti@2.4.1)):
     dependencies:
-      debug: 4.4.0
+      debug: 4.4.0(supports-color@9.4.0)
       eslint: 9.17.0(jiti@2.4.1)
       eslint-scope: 7.2.2
       eslint-visitor-keys: 3.4.3
