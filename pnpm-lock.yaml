@@ -13,7 +13,7 @@ importers:
     devDependencies:
       '@lichthagel/eslint-config':
         specifier: ^1.0.1
-        version: 1.0.7(eslint-plugin-n@17.15.0(eslint@9.17.0(jiti@2.4.1)))(eslint-plugin-svelte@2.46.1(eslint@9.17.0(jiti@2.4.1))(svelte@5.12.0))(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)
+        version: 1.0.8(eslint-plugin-n@17.15.0(eslint@9.17.0(jiti@2.4.1)))(eslint-plugin-svelte@2.46.1(eslint@9.17.0(jiti@2.4.1))(svelte@5.12.0))(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)
       eslint:
         specifier: ^9.14.0
         version: 9.17.0(jiti@2.4.1)
@@ -1457,8 +1457,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@lichthagel/eslint-config@1.0.7':
-    resolution: {integrity: sha512-9kfB8Yvx+YPezgcK+cXb+aKwl6mR1OxRFOCYN0XKHWa49NOLzuTT7TAxSka/eue86y7HGsWvOFVE0B5FAvMjfg==}
+  '@lichthagel/eslint-config@1.0.8':
+    resolution: {integrity: sha512-cEv4b5qbojGc01mok7d5oEY7vi3Rpf0g1CdnP7UQVgWSidL6xi3RaawXPkVhzVpvqoHjs2XeXGwIWWQ1sb/7Kw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       eslint: '>=8.40.0'
@@ -3832,6 +3832,7 @@ packages:
 
   libsql@0.4.7:
     resolution: {integrity: sha512-T9eIRCs6b0J1SHKYIvD8+KCJMcWZ900iZyxdnSCdqxN12Z1ijzT+jY5nrk72Jw4B0HGzms2NgpryArlJqvc3Lw==}
+    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@2.1.0:
@@ -6667,7 +6668,7 @@ snapshots:
   '@libsql/win32-x64-msvc@0.4.7':
     optional: true
 
-  '@lichthagel/eslint-config@1.0.7(eslint-plugin-n@17.15.0(eslint@9.17.0(jiti@2.4.1)))(eslint-plugin-svelte@2.46.1(eslint@9.17.0(jiti@2.4.1))(svelte@5.12.0))(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)':
+  '@lichthagel/eslint-config@1.0.8(eslint-plugin-n@17.15.0(eslint@9.17.0(jiti@2.4.1)))(eslint-plugin-svelte@2.46.1(eslint@9.17.0(jiti@2.4.1))(svelte@5.12.0))(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)':
     dependencies:
       '@eslint/js': 9.17.0
       '@stylistic/eslint-plugin': 2.12.1(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)
