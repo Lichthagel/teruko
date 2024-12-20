@@ -58,7 +58,7 @@ importers:
         version: 6.0.5(@types/node@22.10.2)(jiti@2.4.1)(sass-embedded@1.83.0)(terser@5.37.0)(yaml@2.6.1)
       vite-plugin-monkey:
         specifier: ^5.0.0
-        version: 5.0.0(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.1)(sass-embedded@1.83.0)(terser@5.37.0)(yaml@2.6.1))
+        version: 5.0.2(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.1)(sass-embedded@1.83.0)(terser@5.37.0)(yaml@2.6.1))
       vite-plugin-solid:
         specifier: ^2.10.2
         version: 2.11.0(solid-js@1.9.3)(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.1)(sass-embedded@1.83.0)(terser@5.37.0)(yaml@2.6.1))
@@ -5527,8 +5527,8 @@ packages:
       '@nuxt/kit':
         optional: true
 
-  vite-plugin-monkey@5.0.0:
-    resolution: {integrity: sha512-ke0x/zw3gjJSND27mSjwUfXRN884keSVBfbPu5Tl4Ow0NAZrO5JUHfz0ebkRjdIhvoHQ4r5iyNLIPczvrBALLw==}
+  vite-plugin-monkey@5.0.2:
+    resolution: {integrity: sha512-9X2wnV1Ql7otrn2ldK6p1rVNuMpUPxJR4xP2ZCcvqA+LXHTX7B/kGFIEha/DqZoJVvPjmaiP/3TBDQCzU1wkEw==}
     peerDependencies:
       vite: ^5.4.11 || ^6.0.0
     peerDependenciesMeta:
@@ -11020,7 +11020,7 @@ snapshots:
       estree-walker: 3.0.3
       fast-glob: 3.3.2
       local-pkg: 0.5.1
-      magic-string: 0.30.15
+      magic-string: 0.30.17
       mlly: 1.7.3
       pathe: 1.1.2
       picomatch: 4.0.2
@@ -11206,13 +11206,13 @@ snapshots:
       - rollup
       - supports-color
 
-  vite-plugin-monkey@5.0.0(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.1)(sass-embedded@1.83.0)(terser@5.37.0)(yaml@2.6.1)):
+  vite-plugin-monkey@5.0.2(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.1)(sass-embedded@1.83.0)(terser@5.37.0)(yaml@2.6.1)):
     dependencies:
       acorn-walk: 8.3.4
       cross-spawn: 7.0.6
       htmlparser2: 9.1.0
       import-meta-resolve: 4.1.0
-      magic-string: 0.30.15
+      magic-string: 0.30.17
       mrmime: 2.0.0
       open: 10.1.0
       picocolors: 1.1.1
@@ -11243,7 +11243,7 @@ snapshots:
       '@vue/babel-plugin-jsx': 1.2.5(@babel/core@7.26.0)
       '@vue/compiler-dom': 3.5.13
       kolorist: 1.8.0
-      magic-string: 0.30.15
+      magic-string: 0.30.17
       vite: 5.4.11(@types/node@22.10.2)(sass-embedded@1.83.0)(terser@5.37.0)
     transitivePeerDependencies:
       - supports-color
