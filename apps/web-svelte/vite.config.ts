@@ -6,4 +6,7 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ["@urql/svelte"],
   },
+  css: {
+    postcss: "client-css/postcss",
+  },
 });

@@ -1,19 +1,31 @@
 {
   "name": "client-css",
+  "type": "module",
   "version": "0.0.0",
   "private": true,
   "description": "",
   "author": "Lichthagel",
   "keywords": [],
+  "exports": {
+    "./postcss": {
+      "types": "./dist/postcss.config.d.ts",
+      "default": "./dist/postcss.config.js"
+    },
+    "./*": "./scss/*"
+  },
   "scripts": {
-    "lint": "stylelint '**/*.{css,scss}'"
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint . && stylelint '**/*.{css,scss}'",
+    "clean": "rm -rf dist"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "postcss-load-config": "^6.0.1",
     "stylelint": "^16.10.0",
-    "stylelint-config-standard-scss": "^14.0.0"
+    "stylelint-config-standard-scss": "^14.0.0",
+    "typescript": "^5.6.3"
   },
   "dependencies": {
     "@catppuccin/palette": "^1.7.1",

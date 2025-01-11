@@ -1,6 +1,6 @@
 import type { NuxtConfig } from "nuxt/schema";
 
-import postcssConfig from "client-css/postcss.config.mjs";
+import postcssConfig from "client-css/postcss";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const config: NuxtConfig = defineNuxtConfig({
@@ -13,7 +13,7 @@ const config: NuxtConfig = defineNuxtConfig({
   modules: [],
   plugins: ["~/plugins/urql/index.ts"],
   postcss: {
-    plugins: postcssConfig.plugins as { [key: string]: unknown },
+    plugins: postcssConfig.plugins,
   },
   components: ["~/components", { path: "~/components/Filters", prefix: "Filters" }],
   telemetry: false,
