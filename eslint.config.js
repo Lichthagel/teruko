@@ -55,7 +55,7 @@ export default [
     },
   },
   {
-    files: ["packages/**/*.config.{cjs,js,mjs,ts}"],
+    files: ["packages/**/*.config?(.d).?(c|m){js,ts}"],
     languageOptions: {
       parserOptions: {
         project: "./tsconfig.eslint.json",
