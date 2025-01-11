@@ -1,4 +1,4 @@
-@import "../variables";
+@use "../variables";
 
 .backdrop {
   position: fixed;
@@ -11,8 +11,8 @@
 }
 
 .above {
-  margin-block: $size-2;
-  padding-inline: $size-6;
+  margin-block: variables.$size-2;
+  padding-inline: variables.$size-6;
   color: var(--base);
 
   @media (prefers-color-scheme: dark) {
@@ -24,14 +24,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: $size-1;
+    gap: variables.$size-1;
     text-decoration-line: none;
   }
 }
 
 .content {
   border: 4px solid var(--red);
-  border-radius: $radius-2;
-  padding: $size-4;
+  border-radius: variables.$radius-2;
+  padding: variables.$size-4;
   background-color: var(--surface0);
 }

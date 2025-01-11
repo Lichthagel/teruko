@@ -1,11 +1,11 @@
-@import "../variables";
+@use "../variables";
 
 .bar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: $size-1;
+  height: variables.$size-1;
 
   &.error {
     background-color: var(--red);
@@ -13,8 +13,9 @@
 
   &.busy {
     background-color: var(--pink);
+    animation: status-load 1s ease-in-out infinite;
 
-    @keyframes load {
+    @keyframes status-load {
       0% {
         opacity: 0;
         transform: scaleX(0);
@@ -24,13 +25,11 @@
         opacity: 1;
         transform: scaleX(0.2);
       }
-      
+
       100% {
         opacity: 0;
         transform: scaleX(1);
       }
     }
-
-    animation: load 1s ease-in-out infinite;
   }
 }

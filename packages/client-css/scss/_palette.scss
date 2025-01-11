@@ -1,10 +1,10 @@
 // initially taken from https://github.com/catppuccin/website/blob/0cf4429f24b73c7ea1c3907308d5cf0c65033850/src/styles/_palette.scss
 @use "sass:string";
 
-@import "@catppuccin/palette/scss/catppuccin";
+@use "@catppuccin/palette/scss/catppuccin";
 
 :root {
-  @each $flavor, $colors in $palette {
+  @each $flavor, $colors in catppuccin.$palette {
     @if string.index($flavor, "latte") {
       @each $color, $value in $colors {
         --#{$color}: #{$value};
@@ -16,7 +16,7 @@
   --selection-color: var(--blue);
 
   @media (prefers-color-scheme: dark) {
-    @each $flavor, $colors in $palette {
+    @each $flavor, $colors in catppuccin.$palette {
       @if string.index($flavor, "mocha") {
         @each $color, $value in $colors {
           --#{$color}: #{$value};

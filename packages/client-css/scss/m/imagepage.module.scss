@@ -1,4 +1,4 @@
-@import "../variables";
+@use "../variables";
 
 .image {
   margin-inline: auto;
@@ -7,18 +7,18 @@
 }
 
 .meta-container {
-  margin-block: $size-2;
+  margin-block: variables.$size-2;
   width: 100%;
-  padding: $size-1;
+  padding: variables.$size-1;
 
-  @media (width >=$size-lg) {
+  @media (width >= (variables.$size-lg)) {
     display: flex;
   }
 
-  &>.meta-title {
+  & > .meta-title {
     overflow: hidden;
 
-    @media (width >=$size-lg) {
+    @media (width >= (variables.$size-lg)) {
       flex-grow: 1;
     }
 
@@ -37,22 +37,22 @@
     }
   }
 
-  &>.meta-rest {
+  & > .meta-rest {
     display: flex;
     align-items: center;
 
-    @media (width>=$size-lg) {
+    @media (width >= (variables.$size-lg)) {
       flex-shrink: 0;
     }
 
-    &>.meta-dates {
-      margin-block: $size-1;
+    & > .meta-dates {
+      margin-block: variables.$size-1;
       flex-grow: 1;
       font-size: 0.75rem;
       line-height: 1rem;
 
-      @media (width>=$size-lg) {
-        margin-inline: $size-2;
+      @media (width >= (variables.$size-lg)) {
+        margin-inline: variables.$size-2;
         text-align: right;
         font-size: 0.875rem;
         line-height: 1.25rem;
@@ -63,15 +63,15 @@
       }
     }
 
-    &>.meta-dlicon {
+    & > .meta-dlicon {
       position: relative;
-      padding-bottom: $size-2;
+      padding-bottom: variables.$size-2;
       color: inherit;
 
       .icon {
-        margin-inline: $size-1;
-        width: $size-6;
-        height: $size-6;
+        margin-inline: variables.$size-1;
+        width: variables.$size-6;
+        height: variables.$size-6;
       }
 
       span {
@@ -80,9 +80,9 @@
         left: 0;
         right: 0;
         margin-inline: auto;
-        padding-inline: $size-1;
+        padding-inline: variables.$size-1;
         text-align: center;
-        font-size: $size-2;
+        font-size: variables.$size-2;
         text-transform: uppercase;
       }
     }
@@ -93,20 +93,20 @@
   width: 100%;
   text-align: center;
 
-  @media (width >=$size-lg) {
+  @media (width >= (variables.$size-lg)) {
     text-align: start;
   }
 }
 
 .tag-chip {
-  margin: $size-0;
+  margin: variables.$size-0;
   display: inline-block;
   user-select: none;
   white-space: nowrap;
-  border-radius: $radius;
+  border-radius: variables.$radius;
   background-color: var(--subtext0);
-  padding-inline: $size-2;
-  padding-block: $size-1;
+  padding-inline: variables.$size-2;
+  padding-block: variables.$size-1;
   color: var(--inverted-text);
   transition: filter 0.25s;
   border: none;

@@ -1,16 +1,16 @@
-@import "@fontsource-variable/m-plus-2";
-@import "@fontsource-variable/sora";
+@use "@fontsource-variable/m-plus-2";
+@use "@fontsource-variable/sora";
 
-@import "modern-normalize";
+@use "modern-normalize";
 
-@import "variables";
-@import "palette";
+@use "variables";
+@use "palette";
 
 :root {
   background-color: var(--base);
   color: var(--text);
   font-family: 'Sora Variable', 'M Plus 2 Variable', sans-serif;
-  margin-inline: $size-4;
+  margin-inline: variables.$size-4;
 }
 
 button {
@@ -28,31 +28,31 @@ img {
   margin-right: auto;
   width: 100%;
 
-  @media (width >=$size-xxs) {
-    max-width: $size-xxs;
+  @media (width >=(variables.$size-xxs)) {
+    max-width: variables.$size-xxs;
   }
 
-  @media (width >=$size-xs) {
-    max-width: $size-xs;
+  @media (width >=(variables.$size-xs)) {
+    max-width: variables.$size-xs;
   }
 
-  @media (width >=$size-sm) {
-    max-width: $size-sm;
+  @media (width >=(variables.$size-sm)) {
+    max-width: variables.$size-sm;
   }
 
-  @media (width >=$size-md) {
-    max-width: $size-md;
+  @media (width >=(variables.$size-md)) {
+    max-width: variables.$size-md;
   }
 
-  @media (width >=$size-lg) {
-    max-width: $size-lg;
+  @media (width >=(variables.$size-lg)) {
+    max-width: variables.$size-lg;
   }
 
-  @media (width >=$size-xl) {
-    max-width: $size-xl;
+  @media (width >=(variables.$size-xl)) {
+    max-width: variables.$size-xl;
   }
 
-  @media (width >=$size-xxl) {
-    max-width: $size-xxl;
+  @media (width >=(variables.$size-xxl)) {
+    max-width: variables.$size-xxl;
   }
 }

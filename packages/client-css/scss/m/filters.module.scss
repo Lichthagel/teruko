@@ -1,18 +1,18 @@
-@import "../variables";
+@use "../variables";
 
 $height: 2.5rem;
 
 .main {
-  margin-bottom: $size-2;
+  margin-bottom: variables.$size-2;
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  gap: $gap;
+  gap: variables.$gap;
 }
 
 .tag-container {
   display: inline-flex;
-  gap: $size-0;
+  gap: variables.$size-0;
 }
 
 .tag-query {
@@ -21,17 +21,17 @@ $height: 2.5rem;
   user-select: none;
   align-items: center;
   white-space: nowrap;
-  border-radius: $radius;
+  border-radius: variables.$radius;
   background-color: var(--subtext0);
   color: var(--inverted-text);
-  padding-inline: $size-1;
+  padding-inline: variables.$size-1;
 
   > * {
-    margin-inline: $size-1;
+    margin-inline: variables.$size-1;
   }
 
   > button {
-    border-radius: $radius;
+    border-radius: variables.$radius;
     border: 0;
     background-color: transparent;
     color: inherit;
@@ -56,10 +56,10 @@ $height: 2.5rem;
   display: inline-flex;
   height: $height;
   align-items: center;
-  gap: $gap;
-  border-radius: $radius;
+  gap: variables.$gap;
+  border-radius: variables.$radius;
   background-color: var(--mantle);
-  padding-inline: $size-2;
+  padding-inline: variables.$size-2;
 
   &:focus-within {
     outline: var(--pink) solid 2px;
@@ -87,19 +87,18 @@ $height: 2.5rem;
   justify-content: center;
   align-items: center;
   background-color: var(--surface0);
-  padding: $size-1;
+  padding: variables.$size-1;
 
   .icon {
-    height: $size-7;
-    width: $size-7;
+    height: variables.$size-7;
+    width: variables.$size-7;
+    animation: spin 2s linear infinite;
 
     @keyframes spin {
       to {
         transform: rotate(360deg);
       }
     }
-
-    animation: spin 2s linear infinite;
   }
 }
 
@@ -113,7 +112,7 @@ $height: 2.5rem;
   background-color: var(--surface0);
   margin: 0;
   padding: 0;
-  border-radius: $radius;
+  border-radius: variables.$radius;
 
   li {
     cursor: pointer;
@@ -121,8 +120,8 @@ $height: 2.5rem;
     text-overflow: ellipsis;
     white-space: nowrap;
     border-radius: inherit;
-    padding: $size-1;
-    line-height: $size-4;
+    padding: variables.$size-1;
+    line-height: variables.$size-4;
 
     &.active {
       background-color: var(--pink);
@@ -136,8 +135,8 @@ $height: 2.5rem;
   display: inline-flex;
   height: $height;
   align-items: center;
-  gap: $gap;
-  border-radius: $radius;
+  gap: variables.$gap;
+  border-radius: variables.$radius;
   background-color: var(--mantle);
 
   &:focus-within {
@@ -146,7 +145,7 @@ $height: 2.5rem;
 
   .icon {
     position: absolute;
-    left: $size-2;
+    left: variables.$size-2;
   }
 
   select {
@@ -154,6 +153,6 @@ $height: 2.5rem;
     color: var(--text);
     width: 100%;
     background-color: transparent;
-    padding-inline: (2rem + $size-2) $size-2;
+    padding-inline: (2rem + variables.$size-2) variables.$size-2;
   }
 }

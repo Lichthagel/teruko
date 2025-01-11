@@ -1,20 +1,20 @@
-@import "../variables";
+@use "../variables";
 
 .buttons {
   position: fixed;
-  bottom: $size-2;
-  right: $size-2;
+  bottom: variables.$size-2;
+  right: variables.$size-2;
   z-index: 10;
   background-color: var(--mantle);
-  border-radius: $radius;
+  border-radius: variables.$radius;
 
   button {
-    height: $size-6;
-    width: $size-6;
+    height: variables.$size-6;
+    width: variables.$size-6;
     padding: 0;
     background-color: transparent;
     border-width: 0;
-    border-radius: $radius;
+    border-radius: variables.$radius;
     color: inherit;
     transition: background-color 0.2s;
 

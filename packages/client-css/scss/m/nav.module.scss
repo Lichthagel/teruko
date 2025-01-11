@@ -1,4 +1,4 @@
-@import "../variables";
+@use "../variables";
 
 $bar-height: 4rem;
 
@@ -22,13 +22,13 @@ $bar-height: 4rem;
   font-size: 1.25rem; // TODO font size mixin?
   line-height: 1.75rem;
   display: inline-flex;
-  height: $size-7;
-  min-height: $size-7;
+  height: variables.$size-7;
+  min-height: variables.$size-7;
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  border-radius: $radius-2;
-  padding-inline: $size-3;
+  border-radius: variables.$radius-2;
+  padding-inline: variables.$size-3;
   font-weight: 600;
   color: currentColor;
   text-decoration-line: none;
@@ -40,8 +40,8 @@ $bar-height: 4rem;
   }
 
   &.square {
-    height: $size-7;
-    width: $size-7;
+    height: variables.$size-7;
+    width: variables.$size-7;
     padding: 0;
   }
 }
