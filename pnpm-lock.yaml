@@ -205,11 +205,11 @@ importers:
       '@catppuccin/palette':
         specifier: ^1.7.1
         version: 1.7.1
-      '@fontsource-variable/m-plus-2':
-        specifier: ^5.1.0
+      '@fontsource-variable/gabarito':
+        specifier: ^5.1.1
         version: 5.1.1
-      '@fontsource-variable/sora':
-        specifier: ^5.1.0
+      '@fontsource-variable/noto-sans-jp':
+        specifier: ^5.1.1
         version: 5.1.1
       modern-normalize:
         specifier: ^3.0.1
@@ -359,6 +359,9 @@ importers:
         specifier: ^3.23.8
         version: 3.24.1
     devDependencies:
+      '@types/node':
+        specifier: ^22.8.7
+        version: 22.10.5
       tsconfig:
         specifier: workspace:^
         version: link:../tsconfig
@@ -1254,11 +1257,11 @@ packages:
   '@fastify/merge-json-schemas@0.1.1':
     resolution: {integrity: sha512-fERDVz7topgNjtXsJTTW1JKLy0rhuLRcquYqNR9rF7OcVpCa2OVW49ZPDIhaRRCaUuvVxI+N416xUoF76HNSXA==}
 
-  '@fontsource-variable/m-plus-2@5.1.1':
-    resolution: {integrity: sha512-MnALBnDkiwNFeU5M2VQotE+GngvbTMNMSOpAX5hXDVBkl128KXJPzgeqKWGvn07aE46CLGZz5xx2tIv9QgbGtA==}
+  '@fontsource-variable/gabarito@5.1.1':
+    resolution: {integrity: sha512-qiVssXMWQMu7pS5N4DaCCN9wlzvRgHJonjPU88kSE90Xmt+Ir9DPV6acA0/A6SpXGsf2uR5yjwDdyyLoBMCsDA==}
 
-  '@fontsource-variable/sora@5.1.1':
-    resolution: {integrity: sha512-4/lwIdsyjFy13GM77TH6tMAaUezpB+yX0JmGaWMLcXbpkQKrO8GrldC5D393ttHTkfzMawE7nPBO0NxW0UUGSA==}
+  '@fontsource-variable/noto-sans-jp@5.1.1':
+    resolution: {integrity: sha512-fOuEtA3b+3M1nJJycPx8JQyKUTz10nTUOQSusC6gBtq6ff22vl59c3NSg3ZM5/QsO3y5AHhn+KKvhpRcDvgyJg==}
 
   '@graphql-tools/executor@1.3.12':
     resolution: {integrity: sha512-FzLXZQJOZHB75SecYFOIEEHw/qcxkRFViw0lVqHpaL07c+GqDxv6VOto0FZCIiV9RgGdyRj3O8lXDCp9Cw1MbA==}
@@ -6770,9 +6773,9 @@ snapshots:
     dependencies:
       fast-deep-equal: 3.1.3
 
-  '@fontsource-variable/m-plus-2@5.1.1': {}
+  '@fontsource-variable/gabarito@5.1.1': {}
 
-  '@fontsource-variable/sora@5.1.1': {}
+  '@fontsource-variable/noto-sans-jp@5.1.1': {}
 
   '@graphql-tools/executor@1.3.12(graphql@17.0.0-alpha.7)':
     dependencies:

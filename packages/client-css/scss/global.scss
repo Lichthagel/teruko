@@ -1,5 +1,5 @@
-@use "@fontsource-variable/m-plus-2";
-@use "@fontsource-variable/sora";
+@use "@fontsource-variable/gabarito";
+@use "@fontsource-variable/noto-sans-jp";
 
 @use "modern-normalize";
 
@@ -9,7 +9,7 @@
 :root {
   background-color: var(--base);
   color: var(--text);
-  font-family: 'Sora Variable', 'M Plus 2 Variable', sans-serif;
+  font-family: 'Gabarito Variable', 'Noto Sans JP Variable', sans-serif;
   margin-inline: variables.$size-4;
 }
 
