@@ -1,34 +1,12 @@
-import { eq } from "drizzle-orm";
-import path from "node:path";
-import { db, dImage } from "server-db";
-import env from "server-env";
+import { Readable } from "node:stream";
 import sharp from "sharp";
-import { z } from "zod";
 
-export default defineEventHandler(async (event) => {
-  const { id } = z.object({ id: z.string() }).parse(event.context.params);
+import { defineDownloadEventHandler } from "~/server/utils/downloadEventHandler";
 
-  const image = await db
-    .select()
-    .from(dImage)
-    .where(eq(dImage.id, id))
-    .limit(1);
-
-  const [{ filename }] = image;
-
-  if (!filename) {
-    throw createError({
-      statusCode: 404,
-      statusMessage: "Not Found",
-    });
-  }
-
-  const filepath = path.resolve(env.IMG_FOLDER, filename);
-
-  event.node.res.setHeader(
-    "Content-Disposition",
-    `attachment; filename=${filename.replace(/[^./\\]+$/, "avif")}`,
-  );
-
-  return sendStream(event, sharp(filepath).webp({ quality: 100 }));
-});
+export default defineDownloadEventHandler(
+  (filepath) =>
+    sharp(filepath).webp({ quality: 100 })
+      .toBuffer()
+      .then((buffer) => Readable.from(buffer)),
+  "webp",
+);
