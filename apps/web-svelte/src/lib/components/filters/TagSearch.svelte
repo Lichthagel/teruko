@@ -3,7 +3,8 @@
   import { getContextClient } from "@urql/svelte";
   import styles from "client-css/m/filters.module.scss";
   import { tagsStore } from "client-stores";
-  import { Loader2, Search } from "lucide-svelte";
+  import Loader2 from "lucide-svelte/icons/loader-2";
+  import Search from "lucide-svelte/icons/search";
 
   const client = getContextClient();
 

@@ -6,11 +6,11 @@
     fetching?: boolean;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const {
     fetching,
     error,
   }: Props = $props();
 </script>
 
-<div class="{styles.bar}{fetching ? ` ${styles.busy}` : ""}{error ? ` ${styles.error}` : ""}"></div>
+<!-- eslint-disable-next-line @stylistic/quotes -->
+<div class="{styles.bar}{fetching ? ` ${styles.busy}` : ''}{error ? ` ${styles.error}` : ''}"></div>

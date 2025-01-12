@@ -15,7 +15,6 @@
     sort?: ImageSort;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { tags = [], sort = "NEWEST" }: Props = $props();
 
   const client = getContextClient();

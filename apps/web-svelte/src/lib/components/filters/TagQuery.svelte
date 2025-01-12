@@ -5,13 +5,12 @@
   import { getContextClient, gql, queryStore } from "@urql/svelte";
   import styles from "client-css/m/filters.module.scss";
   import { tagsStore } from "client-stores";
-  import { X } from "lucide-svelte";
+  import X from "lucide-svelte/icons/x";
 
   type Props = {
     tag: string;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { tag }: Props = $props();
 
   const client = getContextClient();

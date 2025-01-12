@@ -1,6 +1,6 @@
 <script lang="ts">
   import styles from "client-css/m/error.module.scss";
-  import { Home } from "lucide-svelte";
+  import Home from "lucide-svelte/icons/home";
 
   type Props = {
     error?: Error;
@@ -9,7 +9,6 @@
     title?: string;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const {
     title = "An error occurred",
     subtitle,

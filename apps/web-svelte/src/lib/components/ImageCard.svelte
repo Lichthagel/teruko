@@ -9,7 +9,6 @@
     image: ImageExt;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { image }: Props = $props();
 
   const onTagClick = (slug: string) => {

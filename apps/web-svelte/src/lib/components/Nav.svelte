@@ -1,6 +1,6 @@
 <script lang="ts">
   import styles from "client-css/m/nav.module.scss";
-  import { Plus } from "lucide-svelte";
+  import Plus from "lucide-svelte/icons/plus";
 </script>
 
 <div class={styles.bar}>

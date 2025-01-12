@@ -1,6 +1,7 @@
 <script lang="ts">
   import styles from "client-css/m/scrollbuttons.module.scss";
-  import { ChevronDown, ChevronUp } from "lucide-svelte";
+  import ChevronDown from "lucide-svelte/icons/chevron-down";
+  import ChevronUp from "lucide-svelte/icons/chevron-up";
 
   let showToTop = $state(false);
   let showToBottom = $state(false);

@@ -3,7 +3,7 @@
 
   import styles from "client-css/m/filters.module.scss";
   import { sortStore } from "client-stores";
-  import { ArrowDownNarrowWide } from "lucide-svelte";
+  import ArrowDownNarrowWide from "lucide-svelte/icons/arrow-down-narrow-wide";
   import { zImageSort } from "models";
 
   const handleInput: FormEventHandler<HTMLSelectElement> = (event) => {

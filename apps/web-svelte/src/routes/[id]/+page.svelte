@@ -2,15 +2,15 @@
   import type { ImageExt } from "models";
   import type { EventHandler } from "svelte/elements";
 
-  import { page } from "$app/stores";
+  import { page } from "$app/state";
   import ErrorMessage from "$lib/components/status/ErrorMessage.svelte";
   import StatusBar from "$lib/components/status/StatusBar.svelte";
   import TagChip from "$lib/components/TagChip.svelte";
   import { getContextClient, gql, queryStore } from "@urql/svelte";
   import styles from "client-css/m/imagepage.module.scss";
-  import { DownloadIcon } from "lucide-svelte";
+  import DownloadIcon from "lucide-svelte/icons/download";
 
-  const { id } = $page.params;
+  const { id } = page.params;
 
   const result = queryStore<{ image: ImageExt | null }>({
     client: getContextClient(),
