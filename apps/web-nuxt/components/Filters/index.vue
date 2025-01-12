@@ -3,6 +3,7 @@
 import { useStore } from "@nanostores/vue";
 import styles from "client-css/m/filters.module.scss";
 import { tagsStore } from "client-stores";
+import { ListX } from "lucide-vue-next";
 
 import SortSelect from "./SortSelect.vue";
 import TagQuery from "./TagQuery.vue";
@@ -22,12 +23,11 @@ const tags = useStore(tagsStore);
         :tag="tag"
         v-for="tag in tags"
       />
-      <!-- TODO <button
-        @click="() => tagsStore.set([])"
-        class="m-0.5 box-border inline-block h-10 w-10 rounded bg-neutral px-2 text-neutral-content transition hover:brightness-75"
-      >
-        <ListX class="h-6 w-6" />
-      </button> -->
+      <div :class="[styles['tag-query'], styles.reset]">
+        <button @click="() => tagsStore.set([])">
+          <ListX />
+        </button>
+      </div>
     </div>
 
     <TagSearch />
