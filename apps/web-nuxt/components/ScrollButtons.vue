@@ -9,7 +9,7 @@ const onScroll = () => {
   showToTop.value = window.scrollY > 50;
   showToBottom.value
     = window.scrollY + window.innerHeight
-    < globalThis.document.body.scrollHeight - 50;
+      < globalThis.document.body.scrollHeight - 50;
 };
 
 const scrollToTop = () => {
