@@ -36,7 +36,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
       e.preventDefault();
       activeSuggestion.value
         = (activeSuggestion.value - 1 + suggestions.value.length)
-        % suggestions.value.length;
+          % suggestions.value.length;
 
       break;
     }
