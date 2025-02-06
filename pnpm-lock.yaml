@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  graphql: 17.0.0-alpha.7
+  graphql: 17.0.0-alpha.8
 
 importers:
 
@@ -70,7 +70,7 @@ importers:
         version: 0.11.0(nanostores@0.11.3)(vue@3.5.13(typescript@5.7.3))
       '@urql/vue':
         specifier: ^1.4.1
-        version: 1.4.2(@urql/core@5.1.0(graphql@17.0.0-alpha.7))(vue@3.5.13(typescript@5.7.3))
+        version: 1.4.2(@urql/core@5.1.0(graphql@17.0.0-alpha.8))(vue@3.5.13(typescript@5.7.3))
       client-css:
         specifier: workspace:*
         version: link:../../packages/client-css
@@ -84,8 +84,8 @@ importers:
         specifier: ^0.39.0
         version: 0.39.2(@libsql/client@0.14.0)
       graphql:
-        specifier: 17.0.0-alpha.7
-        version: 17.0.0-alpha.7
+        specifier: 17.0.0-alpha.8
+        version: 17.0.0-alpha.8
       lucide-vue-next:
         specifier: ^0.474.0
         version: 0.474.0(vue@3.5.13(typescript@5.7.3))
@@ -128,7 +128,7 @@ importers:
     dependencies:
       '@urql/svelte':
         specifier: ^4.2.1
-        version: 4.2.2(@urql/core@5.1.0(graphql@17.0.0-alpha.7))(svelte@5.19.8)
+        version: 4.2.2(@urql/core@5.1.0(graphql@17.0.0-alpha.8))(svelte@5.19.8)
       client-css:
         specifier: workspace:*
         version: link:../../packages/client-css
@@ -176,8 +176,8 @@ importers:
         specifier: ^22.8.7
         version: 22.13.1
       graphql:
-        specifier: 17.0.0-alpha.7
-        version: 17.0.0-alpha.7
+        specifier: 17.0.0-alpha.8
+        version: 17.0.0-alpha.8
       sass-embedded:
         specifier: ^1.83.0
         version: 1.83.4
@@ -238,10 +238,10 @@ importers:
     dependencies:
       '@urql/core':
         specifier: ^5.0.8
-        version: 5.1.0(graphql@17.0.0-alpha.7)
+        version: 5.1.0(graphql@17.0.0-alpha.8)
       '@urql/exchange-graphcache':
         specifier: ^7.2.1
-        version: 7.2.2(@urql/core@5.1.0(graphql@17.0.0-alpha.7))(graphql@17.0.0-alpha.7)
+        version: 7.2.2(@urql/core@5.1.0(graphql@17.0.0-alpha.8))(graphql@17.0.0-alpha.8)
     devDependencies:
       tsconfig:
         specifier: workspace:^
@@ -321,16 +321,16 @@ importers:
     dependencies:
       '@envelop/graphql-jit':
         specifier: ^8.0.3
-        version: 8.0.4(@envelop/core@5.0.3)(graphql@17.0.0-alpha.7)
+        version: 8.0.4(@envelop/core@5.0.3)(graphql@17.0.0-alpha.8)
       '@graphql-yoga/plugin-apq':
         specifier: ^3.8.0
-        version: 3.11.0(graphql-yoga@5.11.0(graphql@17.0.0-alpha.7))
+        version: 3.11.0(graphql-yoga@5.11.0(graphql@17.0.0-alpha.8))
       '@pothos/core':
         specifier: ^4.3.0
-        version: 4.3.0(graphql@17.0.0-alpha.7)
+        version: 4.3.0(graphql@17.0.0-alpha.8)
       '@pothos/plugin-relay':
         specifier: ^4.3.0
-        version: 4.3.0(@pothos/core@4.3.0(graphql@17.0.0-alpha.7))(graphql@17.0.0-alpha.7)
+        version: 4.3.0(@pothos/core@4.3.0(graphql@17.0.0-alpha.8))(graphql@17.0.0-alpha.8)
       drizzle-orm:
         specifier: ^0.39.0
         version: 0.39.2(@libsql/client@0.14.0)
@@ -338,11 +338,11 @@ importers:
         specifier: ^20.0.0
         version: 20.1.0
       graphql:
-        specifier: 17.0.0-alpha.7
-        version: 17.0.0-alpha.7
+        specifier: 17.0.0-alpha.8
+        version: 17.0.0-alpha.8
       graphql-yoga:
         specifier: ^5.8.0
-        version: 5.11.0(graphql@17.0.0-alpha.7)
+        version: 5.11.0(graphql@17.0.0-alpha.8)
       models:
         specifier: workspace:^
         version: link:../models
@@ -376,7 +376,7 @@ packages:
   '@0no-co/graphql.web@1.0.13':
     resolution: {integrity: sha512-jqYxOevheVTU1S36ZdzAkJIdvRp2m3OYIG5SEoKDw5NI8eVwkoI0D/Q3DYNGmXCxkA6CQuoa7zvMiDPTLqUNuw==}
     peerDependencies:
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
     peerDependenciesMeta:
       graphql:
         optional: true
@@ -589,7 +589,7 @@ packages:
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@envelop/core': ^5.0.2
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
 
   '@envelop/types@5.0.0':
     resolution: {integrity: sha512-IPjmgSc4KpQRlO4qbEDnBEixvtb06WDmjKfi/7fkZaryh5HuOmTtixe1EupQI5XfXO8joc3d27uUZ0QdC++euA==}
@@ -1070,30 +1070,30 @@ packages:
     resolution: {integrity: sha512-FzLXZQJOZHB75SecYFOIEEHw/qcxkRFViw0lVqHpaL07c+GqDxv6VOto0FZCIiV9RgGdyRj3O8lXDCp9Cw1MbA==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
 
   '@graphql-tools/merge@9.0.17':
     resolution: {integrity: sha512-3K4g8KKbIqfdmK0L5+VtZsqwAeElPkvT5ejiH+KEhn2wyKNCi4HYHxpQk8xbu+dSwLlm9Lhet1hylpo/mWCkuQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
 
   '@graphql-tools/schema@10.0.16':
     resolution: {integrity: sha512-G2zgb8hNg9Sx6Z2FSXm57ToNcwMls9A9cUm+EsCrnGGDsryzN5cONYePUpSGj5NCFivVp3o1FT5dg19P/1qeqQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
 
   '@graphql-tools/utils@10.7.2':
     resolution: {integrity: sha512-Wn85S+hfkzfVFpXVrQ0hjnePa3p28aB6IdAGCiD1SqBCSMDRzL+OFEtyAyb30nV9Mqflqs9lCqjqlR2puG857Q==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
 
   '@graphql-typed-document-node/core@3.2.0':
     resolution: {integrity: sha512-mB9oAsNCm9aM3/SOv4YtBMqZbYj10R7dkq8byBqxGY/ncFwhf2oQzMV+LCRlWoDSEBJ3COiR1yeDvMtsoOsuFQ==}
     peerDependencies:
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
 
   '@graphql-yoga/logger@2.0.1':
     resolution: {integrity: sha512-Nv0BoDGLMg9QBKy9cIswQ3/6aKaKjlTh87x3GiBg2Z4RrjyrM48DvOOK0pJh1C1At+b0mUIM67cwZcFTDLN4sA==}
@@ -1610,13 +1610,13 @@ packages:
   '@pothos/core@4.3.0':
     resolution: {integrity: sha512-i4nyI8wSCjxdHUomqQ2K3FH0Glklomfv4tJNifQVU9lPtQKoKaS69VxGv+fru0HAZzb1eC1XPEPN3XPCYcvZ7Q==}
     peerDependencies:
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
 
   '@pothos/plugin-relay@4.3.0':
     resolution: {integrity: sha512-sa8PWNQJLSNf7AVY43T3rSq4EnspuAcrPWcH3mCyocaqKzCqZA8DOdJ0tTWeGCJp1lsWkKFSrdb81g9FVJGTIg==}
     peerDependencies:
       '@pothos/core': '*'
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
 
   '@redocly/ajv@8.11.2':
     resolution: {integrity: sha512-io1JpnwtIcvojV7QKDUSIuMN/ikdOUd1ReEnUnMKGfDVridQZ31J0MmIuqwuRjWDZfmvr+Q0MqCcfHM2gTivOg==}
@@ -3423,16 +3423,16 @@ packages:
   graphql-jit@0.8.7:
     resolution: {integrity: sha512-KGzCrsxQPfEiXOUIJCexWKiWF6ycjO89kAO6SdO8OWRGwYXbG0hsLuTnbFfMq0gj7d7/ib/Gh7jtst7FHZEEjw==}
     peerDependencies:
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
 
   graphql-yoga@5.11.0:
     resolution: {integrity: sha512-zyeXE79hKBzEvb/jYK3bnouoPsNNtv+pyNR6BeMHyeGmavimSvi1LH3vqSlh1sjxUTMXZu715X0L4T8RrexCcA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
 
-  graphql@17.0.0-alpha.7:
-    resolution: {integrity: sha512-kdteHez9s0lfNAGntSwnDBpxSl09sBWEFxFRPS/Z8K1nCD4FZ2wVGwXuj5dvrTKcqOA+O8ujAJ3CiY/jXhs14g==}
+  graphql@17.0.0-alpha.8:
+    resolution: {integrity: sha512-j9Jn56NCWVaLMt1hSNkMDoCuAisBwY3bxp/5tbrJuPtNtHg9dAf4NjKnlVDCksVP3jBVcipFaEXKWsdNxTlcyg==}
     engines: {node: ^16.19.0 || ^18.14.0 || >=19.7.0}
 
   gzip-size@7.0.0:
@@ -5772,9 +5772,9 @@ packages:
 
 snapshots:
 
-  '@0no-co/graphql.web@1.0.13(graphql@17.0.0-alpha.7)':
+  '@0no-co/graphql.web@1.0.13(graphql@17.0.0-alpha.8)':
     optionalDependencies:
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
 
   '@ampproject/remapping@2.3.0':
     dependencies:
@@ -6023,11 +6023,11 @@ snapshots:
       '@envelop/types': 5.0.0
       tslib: 2.8.1
 
-  '@envelop/graphql-jit@8.0.4(@envelop/core@5.0.3)(graphql@17.0.0-alpha.7)':
+  '@envelop/graphql-jit@8.0.4(@envelop/core@5.0.3)(graphql@17.0.0-alpha.8)':
     dependencies:
       '@envelop/core': 5.0.3
-      graphql: 17.0.0-alpha.7
-      graphql-jit: 0.8.7(graphql@17.0.0-alpha.7)
+      graphql: 17.0.0-alpha.8
+      graphql-jit: 0.8.7(graphql@17.0.0-alpha.8)
       tslib: 2.8.1
       value-or-promise: 1.0.12
 
@@ -6305,49 +6305,49 @@ snapshots:
 
   '@fontsource-variable/noto-sans-jp@5.1.1': {}
 
-  '@graphql-tools/executor@1.3.12(graphql@17.0.0-alpha.7)':
+  '@graphql-tools/executor@1.3.12(graphql@17.0.0-alpha.8)':
     dependencies:
-      '@graphql-tools/utils': 10.7.2(graphql@17.0.0-alpha.7)
-      '@graphql-typed-document-node/core': 3.2.0(graphql@17.0.0-alpha.7)
+      '@graphql-tools/utils': 10.7.2(graphql@17.0.0-alpha.8)
+      '@graphql-typed-document-node/core': 3.2.0(graphql@17.0.0-alpha.8)
       '@repeaterjs/repeater': 3.0.6
       '@whatwg-node/disposablestack': 0.0.5
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
       tslib: 2.8.1
       value-or-promise: 1.0.12
 
-  '@graphql-tools/merge@9.0.17(graphql@17.0.0-alpha.7)':
+  '@graphql-tools/merge@9.0.17(graphql@17.0.0-alpha.8)':
     dependencies:
-      '@graphql-tools/utils': 10.7.2(graphql@17.0.0-alpha.7)
-      graphql: 17.0.0-alpha.7
+      '@graphql-tools/utils': 10.7.2(graphql@17.0.0-alpha.8)
+      graphql: 17.0.0-alpha.8
       tslib: 2.8.1
 
-  '@graphql-tools/schema@10.0.16(graphql@17.0.0-alpha.7)':
+  '@graphql-tools/schema@10.0.16(graphql@17.0.0-alpha.8)':
     dependencies:
-      '@graphql-tools/merge': 9.0.17(graphql@17.0.0-alpha.7)
-      '@graphql-tools/utils': 10.7.2(graphql@17.0.0-alpha.7)
-      graphql: 17.0.0-alpha.7
+      '@graphql-tools/merge': 9.0.17(graphql@17.0.0-alpha.8)
+      '@graphql-tools/utils': 10.7.2(graphql@17.0.0-alpha.8)
+      graphql: 17.0.0-alpha.8
       tslib: 2.8.1
       value-or-promise: 1.0.12
 
-  '@graphql-tools/utils@10.7.2(graphql@17.0.0-alpha.7)':
+  '@graphql-tools/utils@10.7.2(graphql@17.0.0-alpha.8)':
     dependencies:
-      '@graphql-typed-document-node/core': 3.2.0(graphql@17.0.0-alpha.7)
+      '@graphql-typed-document-node/core': 3.2.0(graphql@17.0.0-alpha.8)
       cross-inspect: 1.0.1
       dset: 3.1.4
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
       tslib: 2.8.1
 
-  '@graphql-typed-document-node/core@3.2.0(graphql@17.0.0-alpha.7)':
+  '@graphql-typed-document-node/core@3.2.0(graphql@17.0.0-alpha.8)':
     dependencies:
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
 
   '@graphql-yoga/logger@2.0.1':
     dependencies:
       tslib: 2.8.1
 
-  '@graphql-yoga/plugin-apq@3.11.0(graphql-yoga@5.11.0(graphql@17.0.0-alpha.7))':
+  '@graphql-yoga/plugin-apq@3.11.0(graphql-yoga@5.11.0(graphql@17.0.0-alpha.8))':
     dependencies:
-      graphql-yoga: 5.11.0(graphql@17.0.0-alpha.7)
+      graphql-yoga: 5.11.0(graphql@17.0.0-alpha.8)
 
   '@graphql-yoga/subscription@5.0.3':
     dependencies:
@@ -6972,14 +6972,14 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
-  '@pothos/core@4.3.0(graphql@17.0.0-alpha.7)':
+  '@pothos/core@4.3.0(graphql@17.0.0-alpha.8)':
     dependencies:
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
 
-  '@pothos/plugin-relay@4.3.0(@pothos/core@4.3.0(graphql@17.0.0-alpha.7))(graphql@17.0.0-alpha.7)':
+  '@pothos/plugin-relay@4.3.0(@pothos/core@4.3.0(graphql@17.0.0-alpha.8))(graphql@17.0.0-alpha.8)':
     dependencies:
-      '@pothos/core': 4.3.0(graphql@17.0.0-alpha.7)
-      graphql: 17.0.0-alpha.7
+      '@pothos/core': 4.3.0(graphql@17.0.0-alpha.8)
+      graphql: 17.0.0-alpha.8
 
   '@redocly/ajv@8.11.2':
     dependencies:
@@ -7450,30 +7450,30 @@ snapshots:
       unhead: 1.11.18
       vue: 3.5.13(typescript@5.7.3)
 
-  '@urql/core@5.1.0(graphql@17.0.0-alpha.7)':
+  '@urql/core@5.1.0(graphql@17.0.0-alpha.8)':
     dependencies:
-      '@0no-co/graphql.web': 1.0.13(graphql@17.0.0-alpha.7)
+      '@0no-co/graphql.web': 1.0.13(graphql@17.0.0-alpha.8)
       wonka: 6.3.4
     transitivePeerDependencies:
       - graphql
 
-  '@urql/exchange-graphcache@7.2.2(@urql/core@5.1.0(graphql@17.0.0-alpha.7))(graphql@17.0.0-alpha.7)':
+  '@urql/exchange-graphcache@7.2.2(@urql/core@5.1.0(graphql@17.0.0-alpha.8))(graphql@17.0.0-alpha.8)':
     dependencies:
-      '@0no-co/graphql.web': 1.0.13(graphql@17.0.0-alpha.7)
-      '@urql/core': 5.1.0(graphql@17.0.0-alpha.7)
+      '@0no-co/graphql.web': 1.0.13(graphql@17.0.0-alpha.8)
+      '@urql/core': 5.1.0(graphql@17.0.0-alpha.8)
       wonka: 6.3.4
     transitivePeerDependencies:
       - graphql
 
-  '@urql/svelte@4.2.2(@urql/core@5.1.0(graphql@17.0.0-alpha.7))(svelte@5.19.8)':
+  '@urql/svelte@4.2.2(@urql/core@5.1.0(graphql@17.0.0-alpha.8))(svelte@5.19.8)':
     dependencies:
-      '@urql/core': 5.1.0(graphql@17.0.0-alpha.7)
+      '@urql/core': 5.1.0(graphql@17.0.0-alpha.8)
       svelte: 5.19.8
       wonka: 6.3.4
 
-  '@urql/vue@1.4.2(@urql/core@5.1.0(graphql@17.0.0-alpha.7))(vue@3.5.13(typescript@5.7.3))':
+  '@urql/vue@1.4.2(@urql/core@5.1.0(graphql@17.0.0-alpha.8))(vue@3.5.13(typescript@5.7.3))':
     dependencies:
-      '@urql/core': 5.1.0(graphql@17.0.0-alpha.7)
+      '@urql/core': 5.1.0(graphql@17.0.0-alpha.8)
       vue: 3.5.13(typescript@5.7.3)
       wonka: 6.3.4
 
@@ -8902,32 +8902,32 @@ snapshots:
 
   graphemer@1.4.0: {}
 
-  graphql-jit@0.8.7(graphql@17.0.0-alpha.7):
+  graphql-jit@0.8.7(graphql@17.0.0-alpha.8):
     dependencies:
-      '@graphql-typed-document-node/core': 3.2.0(graphql@17.0.0-alpha.7)
+      '@graphql-typed-document-node/core': 3.2.0(graphql@17.0.0-alpha.8)
       fast-json-stringify: 5.16.1
       generate-function: 2.3.1
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
       lodash.memoize: 4.1.2
       lodash.merge: 4.6.2
       lodash.mergewith: 4.6.2
 
-  graphql-yoga@5.11.0(graphql@17.0.0-alpha.7):
+  graphql-yoga@5.11.0(graphql@17.0.0-alpha.8):
     dependencies:
       '@envelop/core': 5.0.3
-      '@graphql-tools/executor': 1.3.12(graphql@17.0.0-alpha.7)
-      '@graphql-tools/schema': 10.0.16(graphql@17.0.0-alpha.7)
-      '@graphql-tools/utils': 10.7.2(graphql@17.0.0-alpha.7)
+      '@graphql-tools/executor': 1.3.12(graphql@17.0.0-alpha.8)
+      '@graphql-tools/schema': 10.0.16(graphql@17.0.0-alpha.8)
+      '@graphql-tools/utils': 10.7.2(graphql@17.0.0-alpha.8)
       '@graphql-yoga/logger': 2.0.1
       '@graphql-yoga/subscription': 5.0.3
       '@whatwg-node/fetch': 0.10.3
       '@whatwg-node/server': 0.9.66
       dset: 3.1.4
-      graphql: 17.0.0-alpha.7
+      graphql: 17.0.0-alpha.8
       lru-cache: 10.4.3
       tslib: 2.8.1
 
-  graphql@17.0.0-alpha.7: {}
+  graphql@17.0.0-alpha.8: {}
 
   gzip-size@7.0.0:
     dependencies:
