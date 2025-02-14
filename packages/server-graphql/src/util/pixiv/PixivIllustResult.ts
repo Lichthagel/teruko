@@ -1,3 +1,9 @@
+export type PixivIllustResult = {
+  error: boolean;
+  message: string;
+  body?: PixivIllust;
+};
+
 type PixivIllust = {
   illustId: string;
   illustTitle?: string;
@@ -46,12 +52,6 @@ type PixivIllust = {
   [key: string]: unknown;
 };
 
-type PixivIllustResult = {
-  error: boolean;
-  message: string;
-  body?: PixivIllust;
-};
-
 type PixivTag = {
   tag: string;
   locked: boolean;
@@ -65,5 +65,3 @@ type PixivTag = {
 type PixivTranslation = {
   en?: string;
 };
-
-export default PixivIllustResult;
