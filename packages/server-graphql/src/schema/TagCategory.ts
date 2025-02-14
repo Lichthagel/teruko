@@ -24,5 +24,3 @@ builder.node(PothosTagCategory, {
     color: t.exposeString("color", { nullable: true }),
   }),
 });
-
-export {};

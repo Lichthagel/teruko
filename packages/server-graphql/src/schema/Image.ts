@@ -1,5 +1,5 @@
 import { eq } from "drizzle-orm";
-import { ImageExt } from "models";
+import { type ImageExt } from "models";
 import {
   // eslint-disable-next-line perfectionist/sort-named-imports
   dImage, dTag, dTagCategory, d_ImageToTag, db,
@@ -54,5 +54,3 @@ builder.node(PothosImage, {
     }),
   }),
 });
-
-export {};

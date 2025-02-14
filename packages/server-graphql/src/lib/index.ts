@@ -1,7 +1,7 @@
 import { sql } from "drizzle-orm";
 import { fileTypeFromBlob } from "file-type";
 import { GraphQLError } from "graphql";
-import { ImageExt, ImageMeta } from "models";
+import { type ImageExt, type ImageMeta } from "models";
 import fs from "node:fs";
 import path from "node:path";
 import { finished } from "node:stream/promises";

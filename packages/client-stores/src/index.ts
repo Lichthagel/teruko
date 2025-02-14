@@ -1,4 +1,4 @@
-import { ImageSort } from "models";
+import { type ImageSort } from "models";
 import { atom } from "nanostores";
 
 export const tagsStore = atom<string[]>([]);

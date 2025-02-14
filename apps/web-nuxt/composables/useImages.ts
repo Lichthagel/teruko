@@ -1,7 +1,7 @@
 import type { ImageExt, ImageSort } from "models";
 
 import {
-  CombinedError,
+  type CombinedError,
   createRequest,
   gql,
   type OperationResult,

@@ -2,8 +2,8 @@ import type { ImageExt, ImageSort } from "models";
 
 import { browser } from "$app/environment";
 import {
-  Client,
-  CombinedError,
+  type Client,
+  type CombinedError,
   createRequest,
   gql,
   type GraphQLRequest,

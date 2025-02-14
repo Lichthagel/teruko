@@ -1,5 +1,5 @@
 import { customElement } from "solid-element";
-import { Component, createSignal } from "solid-js";
+import { type Component, createSignal } from "solid-js";
 
 import { CREATE_IMAGE, TERUKO_BASE_URL } from "./constants.js";
 import styles from "./style.css?inline";
