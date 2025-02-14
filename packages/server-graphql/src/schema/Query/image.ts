@@ -1,5 +1,5 @@
 import { asc, eq } from "drizzle-orm";
-import { ImageExt } from "models";
+import { type ImageExt } from "models";
 import {
   d_ImageToTag,
   db,

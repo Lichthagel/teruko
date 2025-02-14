@@ -1,4 +1,4 @@
-import { ImageMeta, mergeImageMeta } from "models";
+import { type ImageMeta, mergeImageMeta } from "models";
 
 import { processFile } from "#lib/index.js";
 import { getPixivMetadata, matchFilename } from "#util/pixiv/index.js";

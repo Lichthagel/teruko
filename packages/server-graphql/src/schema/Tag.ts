@@ -1,5 +1,5 @@
 import { eq } from "drizzle-orm";
-import { TagExt } from "models";
+import { type TagExt } from "models";
 import { db, dTag, dTagCategory } from "server-db";
 
 import { builder } from "./builder.js";
@@ -53,5 +53,3 @@ builder.node(PothosTag, {
     }),
   }),
 });
-
-export {};

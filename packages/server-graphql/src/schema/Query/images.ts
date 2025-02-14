@@ -4,10 +4,10 @@ import {
   type ResolveCursorConnectionArgs,
 } from "@pothos/plugin-relay";
 import {
-  and, asc, desc, eq, gt, inArray, lt, or, SQL, sql,
+  and, asc, desc, eq, gt, inArray, lt, or, type SQL, sql,
 } from "drizzle-orm";
-import { GraphQLError, GraphQLResolveInfo, Kind } from "graphql";
-import { ImageExt } from "models";
+import { GraphQLError, type GraphQLResolveInfo, Kind } from "graphql";
+import { type ImageExt } from "models";
 import {
   d_ImageToTag,
   db,

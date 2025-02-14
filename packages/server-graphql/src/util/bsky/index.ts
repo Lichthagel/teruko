@@ -1,6 +1,6 @@
-import { ImageMeta, Tag } from "models";
+import { type ImageMeta, type Tag } from "models";
 
-import { GetPostThreadResponse, isFacetTag } from "./types.js";
+import { type GetPostThreadResponse, isFacetTag } from "./types.js";
 
 export const BSKY_POST_REGEX = /^(https?:\/\/)?(www\.)?bsky.app\/profile\/(?<handle>[^/]+)\/post\/(?<postId>[^/]+)$/;
 

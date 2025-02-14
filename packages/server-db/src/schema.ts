@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import { relations, sql } from "drizzle-orm";
 import {
   index, integer, primaryKey, sqliteTable, text,

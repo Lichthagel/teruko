@@ -2,8 +2,8 @@ import { useGraphQlJit } from "@envelop/graphql-jit";
 import { useAPQ } from "@graphql-yoga/plugin-apq";
 import {
   createYoga,
-  YogaServerInstance,
-  YogaServerOptions,
+  type YogaServerInstance,
+  type YogaServerOptions,
 } from "graphql-yoga";
 
 import schema from "./schema/index.js";

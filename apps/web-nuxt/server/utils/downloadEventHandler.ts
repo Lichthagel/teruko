@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import path from "node:path";
-import { Readable } from "node:stream";
-import { ReadableStream } from "node:stream/web";
+import { type Readable } from "node:stream";
+import { type ReadableStream } from "node:stream/web";
 import { db, dImage } from "server-db";
 import env from "server-env";
 import { z } from "zod";
