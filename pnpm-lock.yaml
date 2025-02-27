@@ -321,7 +321,7 @@ importers:
     dependencies:
       '@envelop/graphql-jit':
         specifier: ^9.0.0
-        version: 9.0.0(@envelop/core@5.1.0)(graphql@17.0.0-alpha.8)
+        version: 9.0.1(@envelop/core@5.1.0)(graphql@17.0.0-alpha.8)
       '@graphql-yoga/plugin-apq':
         specifier: ^3.8.0
         version: 3.12.1(graphql-yoga@5.12.1(graphql@17.0.0-alpha.8))
@@ -584,11 +584,11 @@ packages:
     resolution: {integrity: sha512-tH5bntVdGaV9ZKFI0a2U4bn6HgtkBscCPdvLqZRlXR2XRWKe+AAUjkYo4vQ4iZTAzBaKJlRe/hVWuad/vcftPw==}
     engines: {node: '>=18.0.0'}
 
-  '@envelop/graphql-jit@9.0.0':
-    resolution: {integrity: sha512-XC5BrpspGXUj5PPfG4cNw+LqU/X8816n2UQa5q8YLbsOgp8qAAUgWzrvY1+Ts1FLWXnLtJ6iFJPl83sc3bYbLA==}
+  '@envelop/graphql-jit@9.0.1':
+    resolution: {integrity: sha512-GkPhjnY3nJnctZUUGVPcY56dd2DPwY9kBYxSdH0kFqwuGIIjOC03K8z0emgqBe6QggKqQsy03KsdvFuH6szWWg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      '@envelop/core': ^5.1.0
+      '@envelop/core': ^5.1.1
       graphql: 17.0.0-alpha.8
 
   '@envelop/types@5.1.0':
@@ -6088,7 +6088,7 @@ snapshots:
       '@envelop/types': 5.1.0
       tslib: 2.8.1
 
-  '@envelop/graphql-jit@9.0.0(@envelop/core@5.1.0)(graphql@17.0.0-alpha.8)':
+  '@envelop/graphql-jit@9.0.1(@envelop/core@5.1.0)(graphql@17.0.0-alpha.8)':
     dependencies:
       '@envelop/core': 5.1.0
       graphql: 17.0.0-alpha.8
