@@ -15,10 +15,8 @@
 <div class={styles.main}>
   {#if $tagsStore.length > 0}
     <div class={styles["tag-container"]}>
-      {#each $tagsStore as tag}
-        {#key tag}
-          <TagQuery {tag} />
-        {/key}
+      {#each $tagsStore as tag (tag)}
+        <TagQuery {tag} />
       {/each}
       <div class={[styles["tag-query"], styles.reset]}>
         <button on:click|preventDefault={resetTags}>

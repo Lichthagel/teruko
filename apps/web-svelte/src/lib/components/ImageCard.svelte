@@ -33,9 +33,8 @@
       {/if}
     </div>
   </a>
-  <div class={styles["tag-list"]}
-  >
-    {#each (image.tags ?? []).filter((tag) => !tag.slug.startsWith("artist_")) as tag}
+  <div class={styles["tag-list"]}>
+    {#each (image.tags ?? []).filter((tag) => !tag.slug.startsWith("artist_")) as tag (tag.slug)}
       <button
         onclick={() => onTagClick(tag.slug)}
         style:background-color={tag.category?.color ?? "gray"}
