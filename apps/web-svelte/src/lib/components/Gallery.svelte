@@ -40,7 +40,7 @@
 
 {#if $result.images}
   <div class={styles.gallery}>
-    {#each $result.images as image}
+    {#each $result.images as image (image.id)}
       <ImageCard {image} />
     {/each}
     <div use:endAction></div>
