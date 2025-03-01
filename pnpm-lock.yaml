@@ -327,10 +327,10 @@ importers:
         version: 3.12.1(graphql-yoga@5.12.1(graphql@17.0.0-alpha.8))
       '@pothos/core':
         specifier: ^4.3.0
-        version: 4.4.0(graphql@17.0.0-alpha.8)
+        version: 4.5.0(graphql@17.0.0-alpha.8)
       '@pothos/plugin-relay':
         specifier: ^4.3.0
-        version: 4.3.0(@pothos/core@4.4.0(graphql@17.0.0-alpha.8))(graphql@17.0.0-alpha.8)
+        version: 4.4.0(@pothos/core@4.5.0(graphql@17.0.0-alpha.8))(graphql@17.0.0-alpha.8)
       drizzle-orm:
         specifier: ^0.40.0
         version: 0.40.0(@libsql/client@0.14.0)(gel@2.0.0)
@@ -1767,13 +1767,13 @@ packages:
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
 
-  '@pothos/core@4.4.0':
-    resolution: {integrity: sha512-+xehqCaQGJ5d2fsaAoXHIpsCvVMYTKZpN1sc96LSM5gGVYKDM1cU8MhYtZ1lOQGi20YqN4MqAZSpyeRKKCK0LQ==}
+  '@pothos/core@4.5.0':
+    resolution: {integrity: sha512-OBktnbaTkcS3pZMGCC2375tNSypsvVRP2SJSjN0VW9MXlJFP9+2lZTNeKyGFndTH5QLbxoLUe3nUSVdkBHMLzA==}
     peerDependencies:
       graphql: 17.0.0-alpha.8
 
-  '@pothos/plugin-relay@4.3.0':
-    resolution: {integrity: sha512-sa8PWNQJLSNf7AVY43T3rSq4EnspuAcrPWcH3mCyocaqKzCqZA8DOdJ0tTWeGCJp1lsWkKFSrdb81g9FVJGTIg==}
+  '@pothos/plugin-relay@4.4.0':
+    resolution: {integrity: sha512-ifCnRkBvqlQG9/Inx/Z1+spyecvGllf4hjTsE8vpnyQt1zsgcjdMfWTcw04Jr5LqSiST7Z5NbfVd56TjAOkMPg==}
     peerDependencies:
       '@pothos/core': '*'
       graphql: 17.0.0-alpha.8
@@ -7341,13 +7341,13 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
-  '@pothos/core@4.4.0(graphql@17.0.0-alpha.8)':
+  '@pothos/core@4.5.0(graphql@17.0.0-alpha.8)':
     dependencies:
       graphql: 17.0.0-alpha.8
 
-  '@pothos/plugin-relay@4.3.0(@pothos/core@4.4.0(graphql@17.0.0-alpha.8))(graphql@17.0.0-alpha.8)':
+  '@pothos/plugin-relay@4.4.0(@pothos/core@4.5.0(graphql@17.0.0-alpha.8))(graphql@17.0.0-alpha.8)':
     dependencies:
-      '@pothos/core': 4.4.0(graphql@17.0.0-alpha.8)
+      '@pothos/core': 4.5.0(graphql@17.0.0-alpha.8)
       graphql: 17.0.0-alpha.8
 
   '@redocly/ajv@8.11.2':
