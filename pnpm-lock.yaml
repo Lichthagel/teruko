@@ -241,7 +241,7 @@ importers:
         version: 5.1.0(graphql@17.0.0-alpha.8)
       '@urql/exchange-graphcache':
         specifier: ^7.2.1
-        version: 7.2.2(@urql/core@5.1.0(graphql@17.0.0-alpha.8))(graphql@17.0.0-alpha.8)
+        version: 7.2.3(@urql/core@5.1.0(graphql@17.0.0-alpha.8))(graphql@17.0.0-alpha.8)
     devDependencies:
       tsconfig:
         specifier: workspace:^
@@ -375,6 +375,14 @@ packages:
 
   '@0no-co/graphql.web@1.1.1':
     resolution: {integrity: sha512-F2i3xdycesw78QCOBHmpTn7eaD2iNXGwB2gkfwxcOfBbeauYpr8RBSyJOkDrFtKtVRMclg8Sg3n1ip0ACyUuag==}
+    peerDependencies:
+      graphql: 17.0.0-alpha.8
+    peerDependenciesMeta:
+      graphql:
+        optional: true
+
+  '@0no-co/graphql.web@1.1.2':
+    resolution: {integrity: sha512-N2NGsU5FLBhT8NZ+3l2YrzZSHITjNXNuDhC4iDiikv0IujaJ0Xc6xIxQZ/Ek3Cb+rgPjnLHYyJm11tInuJn+cw==}
     peerDependencies:
       graphql: 17.0.0-alpha.8
     peerDependenciesMeta:
@@ -2161,8 +2169,8 @@ packages:
   '@urql/core@5.1.0':
     resolution: {integrity: sha512-yC3sw8yqjbX45GbXxfiBY8GLYCiyW/hLBbQF9l3TJrv4ro00Y0ChkKaD9I2KntRxAVm9IYBqh0awX8fwWAe/Yw==}
 
-  '@urql/exchange-graphcache@7.2.2':
-    resolution: {integrity: sha512-hSLbPkLTYKYb9zTB+fSZhFxe+zMOaXuIcSsBiaa+bxT8d5Cxt1ed/oAJfUV9vY27SJ+b0UYq6NXWHBhYOjUWNg==}
+  '@urql/exchange-graphcache@7.2.3':
+    resolution: {integrity: sha512-ClxbxlONfcGZOgZQxUIJ2hvy82mwuljQLVd957TgpSDzSCMLWCklWFubnSC5YFvQLR1kZJW+sbhWKd4ZpndF9w==}
     peerDependencies:
       '@urql/core': ^5.0.0
 
@@ -5978,6 +5986,9 @@ packages:
   wonka@6.3.4:
     resolution: {integrity: sha512-CjpbqNtBGNAeyNS/9W6q3kSkKE52+FjIj7AkFlLr11s/VWGUu6a2CdYSdGxocIhIVjaW/zchesBQUKPVU69Cqg==}
 
+  wonka@6.3.5:
+    resolution: {integrity: sha512-SSil+ecw6B4/Dm7Pf2sAshKQ5hWFvfyGlfPbEd6A14dOH6VDjrmbY86u6nZvy9omGwwIPFR8V41+of1EezgoUw==}
+
   word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
@@ -6076,6 +6087,10 @@ packages:
 snapshots:
 
   '@0no-co/graphql.web@1.1.1(graphql@17.0.0-alpha.8)':
+    optionalDependencies:
+      graphql: 17.0.0-alpha.8
+
+  '@0no-co/graphql.web@1.1.2(graphql@17.0.0-alpha.8)':
     optionalDependencies:
       graphql: 17.0.0-alpha.8
 
@@ -7819,11 +7834,11 @@ snapshots:
     transitivePeerDependencies:
       - graphql
 
-  '@urql/exchange-graphcache@7.2.2(@urql/core@5.1.0(graphql@17.0.0-alpha.8))(graphql@17.0.0-alpha.8)':
+  '@urql/exchange-graphcache@7.2.3(@urql/core@5.1.0(graphql@17.0.0-alpha.8))(graphql@17.0.0-alpha.8)':
     dependencies:
-      '@0no-co/graphql.web': 1.1.1(graphql@17.0.0-alpha.8)
+      '@0no-co/graphql.web': 1.1.2(graphql@17.0.0-alpha.8)
       '@urql/core': 5.1.0(graphql@17.0.0-alpha.8)
-      wonka: 6.3.4
+      wonka: 6.3.5
     transitivePeerDependencies:
       - graphql
 
@@ -12020,6 +12035,8 @@ snapshots:
       isexe: 3.1.1
 
   wonka@6.3.4: {}
+
+  wonka@6.3.5: {}
 
   word-wrap@1.2.5: {}
 
