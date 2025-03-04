@@ -70,7 +70,7 @@ importers:
         version: 0.11.0(nanostores@0.11.4)(vue@3.5.13(typescript@5.8.2))
       '@urql/vue':
         specifier: ^1.4.1
-        version: 1.4.2(@urql/core@5.1.0(graphql@17.0.0-alpha.8))(vue@3.5.13(typescript@5.8.2))
+        version: 1.4.3(@urql/core@5.1.0(graphql@17.0.0-alpha.8))(vue@3.5.13(typescript@5.8.2))
       client-css:
         specifier: workspace:*
         version: link:../../packages/client-css
@@ -2172,8 +2172,8 @@ packages:
       '@urql/core': ^5.0.0
       svelte: ^3.0.0 || ^4.0.0 || ^5.0.0
 
-  '@urql/vue@1.4.2':
-    resolution: {integrity: sha512-ELMlVhWsVPaKyIgocNA2eAxSZgwzBqaw5YB4q3wQTAExxGlx6UNVluiBnuDLhs5ctSDIrGBR6Dfkwl6+M3B0QQ==}
+  '@urql/vue@1.4.3':
+    resolution: {integrity: sha512-+zdMQFBHL1V+tdTKzAqhiIP14cJ6GAUDux7uhC3rAt/rQhaVcdRmLuf0dhco04UHC+rdkd6sZ4epemL9VeTfRA==}
     peerDependencies:
       '@urql/core': ^5.0.0
       vue: ^2.7.0 || ^3.0.0
@@ -5978,6 +5978,9 @@ packages:
   wonka@6.3.4:
     resolution: {integrity: sha512-CjpbqNtBGNAeyNS/9W6q3kSkKE52+FjIj7AkFlLr11s/VWGUu6a2CdYSdGxocIhIVjaW/zchesBQUKPVU69Cqg==}
 
+  wonka@6.3.5:
+    resolution: {integrity: sha512-SSil+ecw6B4/Dm7Pf2sAshKQ5hWFvfyGlfPbEd6A14dOH6VDjrmbY86u6nZvy9omGwwIPFR8V41+of1EezgoUw==}
+
   word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
@@ -7833,11 +7836,11 @@ snapshots:
       svelte: 5.21.0
       wonka: 6.3.4
 
-  '@urql/vue@1.4.2(@urql/core@5.1.0(graphql@17.0.0-alpha.8))(vue@3.5.13(typescript@5.8.2))':
+  '@urql/vue@1.4.3(@urql/core@5.1.0(graphql@17.0.0-alpha.8))(vue@3.5.13(typescript@5.8.2))':
     dependencies:
       '@urql/core': 5.1.0(graphql@17.0.0-alpha.8)
       vue: 3.5.13(typescript@5.8.2)
-      wonka: 6.3.4
+      wonka: 6.3.5
 
   '@vercel/nft@0.27.10(rollup@4.34.9)':
     dependencies:
@@ -12020,6 +12023,8 @@ snapshots:
       isexe: 3.1.1
 
   wonka@6.3.4: {}
+
+  wonka@6.3.5: {}
 
   word-wrap@1.2.5: {}
 
