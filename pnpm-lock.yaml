@@ -321,7 +321,7 @@ importers:
     dependencies:
       '@envelop/graphql-jit':
         specifier: ^9.0.0
-        version: 9.1.0(@envelop/core@5.2.1)(graphql@17.0.0-alpha.8)
+        version: 9.1.1(@envelop/core@5.2.1)(graphql@17.0.0-alpha.8)
       '@graphql-yoga/plugin-apq':
         specifier: ^3.8.0
         version: 3.13.0(graphql-yoga@5.13.0(graphql@17.0.0-alpha.8))
@@ -584,11 +584,11 @@ packages:
     resolution: {integrity: sha512-iH/GUc7WNEukD2TKszx+e5MWuCpUuVfc1eS4mSvDpQ2ROA2lCJGqac6PxAC3A171bLqNk7IWlNOXxJ4qUPU1WA==}
     engines: {node: '>=18.0.0'}
 
-  '@envelop/graphql-jit@9.1.0':
-    resolution: {integrity: sha512-0ybYgOTPoxGdJ9J4iOln3HSZVHbGSNDF5mX1z8PVNm65mZnQXBxSSWAWXxu5zPdkIDvcAqQj5kuHhUa3bh8zGg==}
+  '@envelop/graphql-jit@9.1.1':
+    resolution: {integrity: sha512-SYKHqwOme4qbQF+A0g0yTkZa/AwLWgwLyCD7OjtamwHXmAGiI/QziLL7sxWYITovdCk3vk5JmFgLbs/wPtJiTQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      '@envelop/core': ^5.2.0
+      '@envelop/core': ^5.2.1
       graphql: 17.0.0-alpha.8
 
   '@envelop/instruments@1.0.0':
@@ -5709,10 +5709,6 @@ packages:
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
-  value-or-promise@1.0.12:
-    resolution: {integrity: sha512-Z6Uz+TYwEqE7ZN50gwn+1LCVo9ZVrpxRPOhOLnncYkY1ZzOYtrX8Fwf/rFktZ8R5mJms6EZf5TqNOMeZmnPq9Q==}
-    engines: {node: '>=12'}
-
   varint@6.0.0:
     resolution: {integrity: sha512-cXEIW6cfr15lFv563k4GuVuW/fiwjknytD37jIOLSdSWuOI6WnO/oKwmP2FQTU2l01LP8/M5TSAJpzUaGe3uWg==}
 
@@ -6309,13 +6305,13 @@ snapshots:
       '@whatwg-node/promise-helpers': 1.2.4
       tslib: 2.8.1
 
-  '@envelop/graphql-jit@9.1.0(@envelop/core@5.2.1)(graphql@17.0.0-alpha.8)':
+  '@envelop/graphql-jit@9.1.1(@envelop/core@5.2.1)(graphql@17.0.0-alpha.8)':
     dependencies:
       '@envelop/core': 5.2.1
+      '@whatwg-node/promise-helpers': 1.2.4
       graphql: 17.0.0-alpha.8
       graphql-jit: 0.8.7(graphql@17.0.0-alpha.8)
       tslib: 2.8.1
-      value-or-promise: 1.0.12
 
   '@envelop/instruments@1.0.0':
     dependencies:
@@ -11710,8 +11706,6 @@ snapshots:
     dependencies:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
-
-  value-or-promise@1.0.12: {}
 
   varint@6.0.0: {}
 
