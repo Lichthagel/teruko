@@ -87,8 +87,8 @@ importers:
         specifier: 17.0.0-alpha.8
         version: 17.0.0-alpha.8
       lucide-vue-next:
-        specifier: ^0.482.0
-        version: 0.482.0(vue@3.5.13(typescript@5.8.2))
+        specifier: ^0.483.0
+        version: 0.483.0(vue@3.5.13(typescript@5.8.2))
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -142,8 +142,8 @@ importers:
         specifier: ^0.40.0
         version: 0.40.1(@libsql/client@0.15.0)(gel@2.0.1)
       lucide-svelte:
-        specifier: ^0.482.0
-        version: 0.482.0(svelte@5.23.2)
+        specifier: ^0.483.0
+        version: 0.483.0(svelte@5.23.2)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -3856,13 +3856,13 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-svelte@0.482.0:
-    resolution: {integrity: sha512-C8JbaG0ZW6ap65xyUGlbp/1iOxVlSHhmLHp1lqP7AZu2gX/OoB7FjBroSOR8MTL3HjG4PrL+o0I50Yj6Tqh0iA==}
+  lucide-svelte@0.483.0:
+    resolution: {integrity: sha512-MyMgEVLlFfPbyodGpkB+KCpyPkpjI7EKiFw1crA92B1ZXRK5hq5vTsGWAm9Nt3GAKHunoNc5MVsq3EOCz0DZSQ==}
     peerDependencies:
       svelte: ^3 || ^4 || ^5.0.0-next.42
 
-  lucide-vue-next@0.482.0:
-    resolution: {integrity: sha512-XpxrCOAnPzuH1tlKUy3U6epKAmdMfs1iEeL6ziWulGVXzNKv6anorp0v6vCdhziqvCSQ2SsGLnbOXmZ/sjjl9g==}
+  lucide-vue-next@0.483.0:
+    resolution: {integrity: sha512-oMX1hfH7hOAdwaJdddYTSN0Z+WomndF3KXryCP/I6iu+4jZL6a4YyYi1J23EzP3/wOWCaj9mDuVhxgK+xqX8vQ==}
     peerDependencies:
       vue: '>=3.0.1'
 
@@ -9203,11 +9203,11 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-svelte@0.482.0(svelte@5.23.2):
+  lucide-svelte@0.483.0(svelte@5.23.2):
     dependencies:
       svelte: 5.23.2
 
-  lucide-vue-next@0.482.0(vue@3.5.13(typescript@5.8.2)):
+  lucide-vue-next@0.483.0(vue@3.5.13(typescript@5.8.2)):
     dependencies:
       vue: 3.5.13(typescript@5.8.2)
 
