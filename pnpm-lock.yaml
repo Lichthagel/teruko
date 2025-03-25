@@ -307,8 +307,8 @@ importers:
         specifier: ^16.4.5
         version: 16.4.7
       znv:
-        specifier: ^0.4.0
-        version: 0.4.0(zod@3.24.2)
+        specifier: ^0.5.0
+        version: 0.5.0(zod@3.24.2)
     devDependencies:
       tsconfig:
         specifier: workspace:^
@@ -2579,9 +2579,6 @@ packages:
 
   colorette@1.4.0:
     resolution: {integrity: sha512-Y2oEozpomLn7Q3HFP7dpww7AtMJplbM9lGZP6RDfHqmbeRjiwRg4n6VM6j4KLmRke85uWEI7JqF17f3pqdRA0g==}
-
-  colorette@2.0.20:
-    resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
 
   colorjs.io@0.5.2:
     resolution: {integrity: sha512-twmVoizEW7ylZSN32OgKdXRmo1qg+wT5/6C3xu5b9QsWzSFAhHLn2xd8ro0diCsKfCj1RdaTP/nrcW+vAoQPIw==}
@@ -5753,10 +5750,10 @@ packages:
     resolution: {integrity: sha512-zK7YHHz4ZXpW89AHXUPbQVGKI7uvkd3hzusTdotCg1UxyaVtg0zFJSTfW/Dq5f7OBBVnq6cZIaC8Ti4hb6dtCA==}
     engines: {node: '>= 14'}
 
-  znv@0.4.0:
-    resolution: {integrity: sha512-6/pGsQhBisLzKdyC90mUCRgYDtCfQ4aQ68sDybexq3GMzqqkp662GH6qIyuCHJC1i72hJPHbWAhccTJVuZUQfA==}
+  znv@0.5.0:
+    resolution: {integrity: sha512-o4s0CemQU7+ByxBQQnqe72QtlVDsw1GAPxBbTCbQP3sNe7/5bztRJ8fUf2dbOuhZrMapWe82hpOTBZ7QVnjZ2g==}
     peerDependencies:
-      zod: ^3.13.2
+      zod: ^3.24.2
 
   zod@3.24.2:
     resolution: {integrity: sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==}
@@ -7978,8 +7975,6 @@ snapshots:
   colord@2.9.3: {}
 
   colorette@1.4.0: {}
-
-  colorette@2.0.20: {}
 
   colorjs.io@0.5.2: {}
 
@@ -11359,9 +11354,8 @@ snapshots:
       compress-commons: 6.0.2
       readable-stream: 4.7.0
 
-  znv@0.4.0(zod@3.24.2):
+  znv@0.5.0(zod@3.24.2):
     dependencies:
-      colorette: 2.0.20
       zod: 3.24.2
 
   zod@3.24.2: {}
