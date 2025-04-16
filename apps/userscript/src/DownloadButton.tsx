@@ -1,3 +1,4 @@
+import { getPixivMetadata } from "services/pixiv";
 import { customElement } from "solid-element";
 import { type Component, createSignal } from "solid-js";
 
@@ -25,14 +26,21 @@ const DownloadButton: Component<Props> = (props) => {
 
     window.addEventListener("beforeunload", beforeUnload);
 
-    setText("down...");
-
     try {
+      const fileName = props.url.split("/").at(-1);
+      const id = fileName?.split("_p")[0];
+
+      setText("fetching metadata...");
+
+      const meta = id ? await getPixivMetadata(id) : null;
+
+      setText("down...");
+
       const res = await fetch(props.url, { headers: { Referer: location.origin } });
 
       const blob = await res.blob();
 
-      const file = new File([blob], props.url.split("/").at(-1) ?? "image.png", {
+      const file = new File([blob], fileName ?? "image.png", {
         type: blob.type,
       });
 
@@ -43,6 +51,9 @@ const DownloadButton: Component<Props> = (props) => {
         query: CREATE_IMAGE,
         variables: {
           files: [null],
+          title: meta?.title,
+          source: meta?.source,
+          tags: meta?.tags?.map((tag) => tag.slug),
         },
       }));
       formData.append("map", JSON.stringify({

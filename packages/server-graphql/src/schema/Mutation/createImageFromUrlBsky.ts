@@ -1,5 +1,6 @@
+import { BSKY_POST_REGEX, fetchData } from "services/bsky";
+
 import { processUrl } from "#lib/index.js";
-import { BSKY_POST_REGEX, fetchData } from "#util/bsky/index.js";
 
 import type { builder } from "../builder.js";
 

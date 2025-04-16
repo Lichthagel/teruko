@@ -1,7 +1,7 @@
 import { type ImageMeta, mergeImageMeta } from "models";
+import { getPixivMetadata, matchFilename } from "services/pixiv";
 
 import { processFile } from "#lib/index.js";
-import { getPixivMetadata, matchFilename } from "#util/pixiv/index.js";
 
 import type { builder } from "../builder.js";
 
@@ -39,11 +39,17 @@ const createImage = (b: typeof builder) => {
             // pixiv stuff
             const pixivId = matchFilename(filename);
 
-            if (pixivId) {
-              const pixivMeta = await getPixivMetadata(pixivId);
+            if (pixivId && !imageMetaArgs.tags.some((tag) => tag.slug === "pixiv")) {
+              try {
+                const pixivMeta = await getPixivMetadata(pixivId);
 
-              if (pixivMeta) {
-                imageMeta = mergeImageMeta(imageMeta, pixivMeta);
+                if (pixivMeta) {
+                  imageMeta = mergeImageMeta(imageMeta, pixivMeta);
+                }
+              } catch {
+                imageMeta = mergeImageMeta(imageMeta, {
+                  tags: [{ slug: "pixiv meta fetch failed" }],
+                });
               }
             }
 

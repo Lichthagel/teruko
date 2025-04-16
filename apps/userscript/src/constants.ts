@@ -1,6 +1,6 @@
 export const CREATE_IMAGE = `
-mutation ($files: [Upload!]!) {
-  createImage(files: $files) {
+mutation ($files: [Upload!]!, $title: String, $source: String, $tags: [String!]) {
+  createImage(files: $files, title: $title, source: $source, tags: $tags) {
     id
   }
 }

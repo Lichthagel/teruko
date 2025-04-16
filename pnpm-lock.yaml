@@ -41,6 +41,9 @@ importers:
 
   apps/userscript:
     devDependencies:
+      services:
+        specifier: workspace:*
+        version: link:../../packages/services
       solid-element:
         specifier: ^1.9.1
         version: 1.9.1(solid-js@1.9.5)
@@ -352,6 +355,9 @@ importers:
       server-env:
         specifier: workspace:^
         version: link:../server-env
+      services:
+        specifier: workspace:^
+        version: link:../services
       sharp:
         specifier: ^0.34.0
         version: 0.34.1
@@ -368,6 +374,15 @@ importers:
       typescript:
         specifier: ^5.6.3
         version: 5.8.2
+
+  packages/services:
+    devDependencies:
+      models:
+        specifier: workspace:^
+        version: link:../models
+      tsconfig:
+        specifier: workspace:^
+        version: link:../tsconfig
 
   packages/tsconfig: {}
 
@@ -3557,7 +3572,6 @@ packages:
 
   libsql@0.5.6:
     resolution: {integrity: sha512-k0qHpyU47iWBplT4IJKEcMgUbms8jl9cNGE6aqsdOYmSJjtZIaYkn8f4ku5DzxRHpk1+o4FK7ZwGVCExYboZqQ==}
-    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@2.1.0:

@@ -1,0 +1,32 @@
+{
+  "name": "services",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "author": "Lichthagel",
+  "keywords": [],
+  "exports": {
+    "./bsky": {
+      "types": "./dist/bsky/index.d.ts",
+      "default": "./dist/bsky/index.js"
+    },
+    "./pixiv": {
+      "types": "./dist/pixiv/index.d.ts",
+      "default": "./dist/pixiv/index.js"
+    }
+  },
+  "engines": {
+    "node": ">=21.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint .",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "models": "workspace:^",
+    "tsconfig": "workspace:^"
+  }
+}
