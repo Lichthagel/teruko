@@ -119,7 +119,7 @@ importers:
         version: 22.15.24
       nuxt:
         specifier: ^3.13.2
-        version: 3.17.4(@libsql/client@0.15.7)(@parcel/watcher@2.5.1)(@types/node@22.15.24)(db0@0.3.2(@libsql/client@0.15.7)(drizzle-orm@0.43.1(@libsql/client@0.15.7)))(drizzle-orm@0.43.1(@libsql/client@0.15.7))(eslint@9.27.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(meow@13.2.0)(optionator@0.9.4)(rollup@4.41.0)(sass-embedded@1.89.0)(stylelint@16.19.1(typescript@5.8.3))(terser@5.39.2)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.24)(jiti@2.4.2)(sass-embedded@1.89.0)(terser@5.39.2)(yaml@2.8.0))(yaml@2.8.0)
+        version: 3.17.4(@libsql/client@0.15.7)(@parcel/watcher@2.5.1)(@types/node@22.15.24)(db0@0.3.2(@libsql/client@0.15.7)(drizzle-orm@0.43.1(@libsql/client@0.15.7)))(drizzle-orm@0.43.1(@libsql/client@0.15.7))(eslint@9.27.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(meow@13.2.0)(optionator@0.9.4)(rollup@4.41.0)(sass-embedded@1.89.0)(stylelint@16.20.0(typescript@5.8.3))(terser@5.39.2)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.24)(jiti@2.4.2)(sass-embedded@1.89.0)(terser@5.39.2)(yaml@2.8.0))(yaml@2.8.0)
       sass-embedded:
         specifier: ^1.83.0
         version: 1.89.0
@@ -229,10 +229,10 @@ importers:
         version: 6.0.1(jiti@2.4.2)(postcss@8.5.4)(yaml@2.8.0)
       stylelint:
         specifier: ^16.10.0
-        version: 16.19.1(typescript@5.8.3)
+        version: 16.20.0(typescript@5.8.3)
       stylelint-config-standard-scss:
         specifier: ^15.0.0
-        version: 15.0.1(postcss@8.5.4)(stylelint@16.19.1(typescript@5.8.3))
+        version: 15.0.1(postcss@8.5.4)(stylelint@16.20.0(typescript@5.8.3))
       typescript:
         specifier: ^5.6.3
         version: 5.8.3
@@ -5454,8 +5454,8 @@ packages:
     peerDependencies:
       stylelint: ^16.0.2
 
-  stylelint@16.19.1:
-    resolution: {integrity: sha512-C1SlPZNMKl+d/C867ZdCRthrS+6KuZ3AoGW113RZCOL0M8xOGpgx7G70wq7lFvqvm4dcfdGFVLB/mNaLFChRKw==}
+  stylelint@16.20.0:
+    resolution: {integrity: sha512-B5Myu9WRxrgKuLs3YyUXLP2H0mrbejwNxPmyADlACWwFsrL8Bmor/nTSh4OMae5sHjOz6gkSeccQH34gM4/nAw==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -7209,7 +7209,7 @@ snapshots:
     transitivePeerDependencies:
       - magicast
 
-  '@nuxt/vite-builder@3.17.4(@types/node@22.15.24)(eslint@9.27.0(jiti@2.4.2))(magicast@0.3.5)(meow@13.2.0)(optionator@0.9.4)(rollup@4.41.0)(sass-embedded@1.89.0)(stylelint@16.19.1(typescript@5.8.3))(terser@5.39.2)(typescript@5.8.3)(vue@3.5.14(typescript@5.8.3))(yaml@2.8.0)':
+  '@nuxt/vite-builder@3.17.4(@types/node@22.15.24)(eslint@9.27.0(jiti@2.4.2))(magicast@0.3.5)(meow@13.2.0)(optionator@0.9.4)(rollup@4.41.0)(sass-embedded@1.89.0)(stylelint@16.20.0(typescript@5.8.3))(terser@5.39.2)(typescript@5.8.3)(vue@3.5.14(typescript@5.8.3))(yaml@2.8.0)':
     dependencies:
       '@nuxt/kit': 3.17.4(magicast@0.3.5)
       '@rollup/plugin-replace': 6.0.2(rollup@4.41.0)
@@ -7242,7 +7242,7 @@ snapshots:
       unplugin: 2.3.4
       vite: 6.3.5(@types/node@22.15.24)(jiti@2.4.2)(sass-embedded@1.89.0)(terser@5.39.2)(yaml@2.8.0)
       vite-node: 3.1.4(@types/node@22.15.24)(jiti@2.4.2)(sass-embedded@1.89.0)(terser@5.39.2)(yaml@2.8.0)
-      vite-plugin-checker: 0.9.3(eslint@9.27.0(jiti@2.4.2))(meow@13.2.0)(optionator@0.9.4)(stylelint@16.19.1(typescript@5.8.3))(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.24)(jiti@2.4.2)(sass-embedded@1.89.0)(terser@5.39.2)(yaml@2.8.0))
+      vite-plugin-checker: 0.9.3(eslint@9.27.0(jiti@2.4.2))(meow@13.2.0)(optionator@0.9.4)(stylelint@16.20.0(typescript@5.8.3))(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.24)(jiti@2.4.2)(sass-embedded@1.89.0)(terser@5.39.2)(yaml@2.8.0))
       vue: 3.5.14(typescript@5.8.3)
       vue-bundle-renderer: 2.1.1
     transitivePeerDependencies:
@@ -10354,7 +10354,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nuxt@3.17.4(@libsql/client@0.15.7)(@parcel/watcher@2.5.1)(@types/node@22.15.24)(db0@0.3.2(@libsql/client@0.15.7)(drizzle-orm@0.43.1(@libsql/client@0.15.7)))(drizzle-orm@0.43.1(@libsql/client@0.15.7))(eslint@9.27.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(meow@13.2.0)(optionator@0.9.4)(rollup@4.41.0)(sass-embedded@1.89.0)(stylelint@16.19.1(typescript@5.8.3))(terser@5.39.2)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.24)(jiti@2.4.2)(sass-embedded@1.89.0)(terser@5.39.2)(yaml@2.8.0))(yaml@2.8.0):
+  nuxt@3.17.4(@libsql/client@0.15.7)(@parcel/watcher@2.5.1)(@types/node@22.15.24)(db0@0.3.2(@libsql/client@0.15.7)(drizzle-orm@0.43.1(@libsql/client@0.15.7)))(drizzle-orm@0.43.1(@libsql/client@0.15.7))(eslint@9.27.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(meow@13.2.0)(optionator@0.9.4)(rollup@4.41.0)(sass-embedded@1.89.0)(stylelint@16.20.0(typescript@5.8.3))(terser@5.39.2)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.24)(jiti@2.4.2)(sass-embedded@1.89.0)(terser@5.39.2)(yaml@2.8.0))(yaml@2.8.0):
     dependencies:
       '@nuxt/cli': 3.25.1(magicast@0.3.5)
       '@nuxt/devalue': 2.0.2
@@ -10362,7 +10362,7 @@ snapshots:
       '@nuxt/kit': 3.17.4(magicast@0.3.5)
       '@nuxt/schema': 3.17.4
       '@nuxt/telemetry': 2.6.6(magicast@0.3.5)
-      '@nuxt/vite-builder': 3.17.4(@types/node@22.15.24)(eslint@9.27.0(jiti@2.4.2))(magicast@0.3.5)(meow@13.2.0)(optionator@0.9.4)(rollup@4.41.0)(sass-embedded@1.89.0)(stylelint@16.19.1(typescript@5.8.3))(terser@5.39.2)(typescript@5.8.3)(vue@3.5.14(typescript@5.8.3))(yaml@2.8.0)
+      '@nuxt/vite-builder': 3.17.4(@types/node@22.15.24)(eslint@9.27.0(jiti@2.4.2))(magicast@0.3.5)(meow@13.2.0)(optionator@0.9.4)(rollup@4.41.0)(sass-embedded@1.89.0)(stylelint@16.20.0(typescript@5.8.3))(terser@5.39.2)(typescript@5.8.3)(vue@3.5.14(typescript@5.8.3))(yaml@2.8.0)
       '@unhead/vue': 2.0.9(vue@3.5.14(typescript@5.8.3))
       '@vue/shared': 3.5.14
       c12: 3.0.4(magicast@0.3.5)
@@ -11541,33 +11541,33 @@ snapshots:
       postcss: 8.5.4
       postcss-selector-parser: 7.1.0
 
-  stylelint-config-recommended-scss@15.0.1(postcss@8.5.4)(stylelint@16.19.1(typescript@5.8.3)):
+  stylelint-config-recommended-scss@15.0.1(postcss@8.5.4)(stylelint@16.20.0(typescript@5.8.3)):
     dependencies:
       postcss-scss: 4.0.9(postcss@8.5.4)
-      stylelint: 16.19.1(typescript@5.8.3)
-      stylelint-config-recommended: 16.0.0(stylelint@16.19.1(typescript@5.8.3))
-      stylelint-scss: 6.12.0(stylelint@16.19.1(typescript@5.8.3))
+      stylelint: 16.20.0(typescript@5.8.3)
+      stylelint-config-recommended: 16.0.0(stylelint@16.20.0(typescript@5.8.3))
+      stylelint-scss: 6.12.0(stylelint@16.20.0(typescript@5.8.3))
     optionalDependencies:
       postcss: 8.5.4
 
-  stylelint-config-recommended@16.0.0(stylelint@16.19.1(typescript@5.8.3)):
+  stylelint-config-recommended@16.0.0(stylelint@16.20.0(typescript@5.8.3)):
     dependencies:
-      stylelint: 16.19.1(typescript@5.8.3)
+      stylelint: 16.20.0(typescript@5.8.3)
 
-  stylelint-config-standard-scss@15.0.1(postcss@8.5.4)(stylelint@16.19.1(typescript@5.8.3)):
+  stylelint-config-standard-scss@15.0.1(postcss@8.5.4)(stylelint@16.20.0(typescript@5.8.3)):
     dependencies:
-      stylelint: 16.19.1(typescript@5.8.3)
-      stylelint-config-recommended-scss: 15.0.1(postcss@8.5.4)(stylelint@16.19.1(typescript@5.8.3))
-      stylelint-config-standard: 38.0.0(stylelint@16.19.1(typescript@5.8.3))
+      stylelint: 16.20.0(typescript@5.8.3)
+      stylelint-config-recommended-scss: 15.0.1(postcss@8.5.4)(stylelint@16.20.0(typescript@5.8.3))
+      stylelint-config-standard: 38.0.0(stylelint@16.20.0(typescript@5.8.3))
     optionalDependencies:
       postcss: 8.5.4
 
-  stylelint-config-standard@38.0.0(stylelint@16.19.1(typescript@5.8.3)):
+  stylelint-config-standard@38.0.0(stylelint@16.20.0(typescript@5.8.3)):
     dependencies:
-      stylelint: 16.19.1(typescript@5.8.3)
-      stylelint-config-recommended: 16.0.0(stylelint@16.19.1(typescript@5.8.3))
+      stylelint: 16.20.0(typescript@5.8.3)
+      stylelint-config-recommended: 16.0.0(stylelint@16.20.0(typescript@5.8.3))
 
-  stylelint-scss@6.12.0(stylelint@16.19.1(typescript@5.8.3)):
+  stylelint-scss@6.12.0(stylelint@16.20.0(typescript@5.8.3)):
     dependencies:
       css-tree: 3.1.0
       is-plain-object: 5.0.0
@@ -11577,9 +11577,9 @@ snapshots:
       postcss-resolve-nested-selector: 0.1.6
       postcss-selector-parser: 7.1.0
       postcss-value-parser: 4.2.0
-      stylelint: 16.19.1(typescript@5.8.3)
+      stylelint: 16.20.0(typescript@5.8.3)
 
-  stylelint@16.19.1(typescript@5.8.3):
+  stylelint@16.20.0(typescript@5.8.3):
     dependencies:
       '@csstools/css-parser-algorithms': 3.0.4(@csstools/css-tokenizer@3.0.3)
       '@csstools/css-tokenizer': 3.0.3
@@ -12025,7 +12025,7 @@ snapshots:
       - tsx
       - yaml
 
-  vite-plugin-checker@0.9.3(eslint@9.27.0(jiti@2.4.2))(meow@13.2.0)(optionator@0.9.4)(stylelint@16.19.1(typescript@5.8.3))(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.24)(jiti@2.4.2)(sass-embedded@1.89.0)(terser@5.39.2)(yaml@2.8.0)):
+  vite-plugin-checker@0.9.3(eslint@9.27.0(jiti@2.4.2))(meow@13.2.0)(optionator@0.9.4)(stylelint@16.20.0(typescript@5.8.3))(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.24)(jiti@2.4.2)(sass-embedded@1.89.0)(terser@5.39.2)(yaml@2.8.0)):
     dependencies:
       '@babel/code-frame': 7.27.1
       chokidar: 4.0.3
@@ -12041,7 +12041,7 @@ snapshots:
       eslint: 9.27.0(jiti@2.4.2)
       meow: 13.2.0
       optionator: 0.9.4
-      stylelint: 16.19.1(typescript@5.8.3)
+      stylelint: 16.20.0(typescript@5.8.3)
       typescript: 5.8.3
 
   vite-plugin-inspect@11.1.0(@nuxt/kit@3.17.3(magicast@0.3.5))(vite@6.3.5(@types/node@22.15.24)(jiti@2.4.2)(sass-embedded@1.89.0)(terser@5.39.2)(yaml@2.8.0)):
