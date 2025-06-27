@@ -307,8 +307,8 @@ importers:
   packages/server-env:
     dependencies:
       dotenv:
-        specifier: ^16.4.5
-        version: 16.4.7
+        specifier: ^17.0.0
+        version: 17.0.0
       znv:
         specifier: ^0.5.0
         version: 0.5.0(zod@3.25.67)
@@ -2878,6 +2878,10 @@ packages:
 
   dotenv@16.5.0:
     resolution: {integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==}
+    engines: {node: '>=12'}
+
+  dotenv@17.0.0:
+    resolution: {integrity: sha512-A0BJ5lrpJVSfnMMXjmeO0xUnoxqsBHWCoqqTnGwGYVdnctqXXUEhJOO7LxmgxJon9tEZFGpe0xPRX0h2v3AANQ==}
     engines: {node: '>=12'}
 
   drizzle-kit@0.31.3:
@@ -8550,6 +8554,8 @@ snapshots:
   dotenv@16.4.7: {}
 
   dotenv@16.5.0: {}
+
+  dotenv@17.0.0: {}
 
   drizzle-kit@0.31.3:
     dependencies:
