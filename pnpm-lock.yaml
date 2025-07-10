@@ -330,10 +330,10 @@ importers:
         version: 3.14.0(graphql-yoga@5.14.0(graphql@17.0.0-alpha.9))
       '@pothos/core':
         specifier: ^4.3.0
-        version: 4.7.0(graphql@17.0.0-alpha.9)
+        version: 4.7.1(graphql@17.0.0-alpha.9)
       '@pothos/plugin-relay':
         specifier: ^4.3.0
-        version: 4.5.0(@pothos/core@4.7.0(graphql@17.0.0-alpha.9))(graphql@17.0.0-alpha.9)
+        version: 4.6.0(@pothos/core@4.7.1(graphql@17.0.0-alpha.9))(graphql@17.0.0-alpha.9)
       drizzle-orm:
         specifier: ^0.44.0
         version: 0.44.2(@libsql/client@0.15.9)
@@ -1774,13 +1774,13 @@ packages:
   '@poppinss/exception@1.2.2':
     resolution: {integrity: sha512-m7bpKCD4QMlFCjA/nKTs23fuvoVFoA83brRKmObCUNmi/9tVu8Ve3w4YQAnJu4q3Tjf5fr685HYIC/IA2zHRSg==}
 
-  '@pothos/core@4.7.0':
-    resolution: {integrity: sha512-UaUhg8gzV5qv8SyQbD2sha9/jBEFU0keVyWSQWFpe9O2NTKER+f5dySDlVpfhdDtFeASjHOZwkfxbY+LC7ZfhA==}
+  '@pothos/core@4.7.1':
+    resolution: {integrity: sha512-pf8CRy7/zMGyNmLXvQXkEBD5QCbDKt3Uxqza7DkQZiMAKGWp50uPRuTw/Va7RdGsFHTUguHoEP28hcfZr324Dg==}
     peerDependencies:
       graphql: 17.0.0-alpha.9
 
-  '@pothos/plugin-relay@4.5.0':
-    resolution: {integrity: sha512-S9PoOkyJI7VCXigJgGGbcT/GTB7+i90ITPRYPcrdeZy7reMW2Tz1POtJ741gkty4RqtZoXTADxE9eMQ8q4HNVA==}
+  '@pothos/plugin-relay@4.6.0':
+    resolution: {integrity: sha512-VzyEHtlylFtGCm95Xxmn6U8/zBbVDuIxjNRJv1VrA/4AgvWrPV18PTKYiLOhQZqsK8N5RY8pvKFAOhtdJIlvFA==}
     peerDependencies:
       '@pothos/core': '*'
       graphql: 17.0.0-alpha.9
@@ -7435,13 +7435,13 @@ snapshots:
 
   '@poppinss/exception@1.2.2': {}
 
-  '@pothos/core@4.7.0(graphql@17.0.0-alpha.9)':
+  '@pothos/core@4.7.1(graphql@17.0.0-alpha.9)':
     dependencies:
       graphql: 17.0.0-alpha.9
 
-  '@pothos/plugin-relay@4.5.0(@pothos/core@4.7.0(graphql@17.0.0-alpha.9))(graphql@17.0.0-alpha.9)':
+  '@pothos/plugin-relay@4.6.0(@pothos/core@4.7.1(graphql@17.0.0-alpha.9))(graphql@17.0.0-alpha.9)':
     dependencies:
-      '@pothos/core': 4.7.0(graphql@17.0.0-alpha.9)
+      '@pothos/core': 4.7.1(graphql@17.0.0-alpha.9)
       graphql: 17.0.0-alpha.9
 
   '@repeaterjs/repeater@3.0.6': {}
