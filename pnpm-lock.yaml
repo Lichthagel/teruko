@@ -108,8 +108,8 @@ importers:
         specifier: ^0.34.0
         version: 0.34.3
       zod:
-        specifier: ^3.23.8
-        version: 3.25.76
+        specifier: ^4.0.0
+        version: 4.0.8
     devDependencies:
       '@nuxt/devtools':
         specifier: ^2.0.0
@@ -163,8 +163,8 @@ importers:
         specifier: ^0.34.0
         version: 0.34.3
       zod:
-        specifier: ^3.23.8
-        version: 3.25.76
+        specifier: ^4.0.0
+        version: 4.0.8
     devDependencies:
       '@sveltejs/adapter-node':
         specifier: ^5.2.9
@@ -272,8 +272,8 @@ importers:
   packages/models:
     dependencies:
       zod:
-        specifier: ^3.23.8
-        version: 3.25.76
+        specifier: ^4.0.0
+        version: 4.0.8
     devDependencies:
       tsconfig:
         specifier: workspace:^
@@ -311,7 +311,7 @@ importers:
         version: 17.2.0
       znv:
         specifier: ^0.5.0
-        version: 0.5.0(zod@3.25.76)
+        version: 0.5.0(zod@4.0.8)
     devDependencies:
       tsconfig:
         specifier: workspace:^
@@ -362,8 +362,8 @@ importers:
         specifier: ^0.34.0
         version: 0.34.3
       zod:
-        specifier: ^3.23.8
-        version: 3.25.76
+        specifier: ^4.0.0
+        version: 4.0.8
     devDependencies:
       '@types/node':
         specifier: ^22.8.7
@@ -6292,6 +6292,9 @@ packages:
 
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+
+  zod@4.0.8:
+    resolution: {integrity: sha512-+MSh9cZU9r3QKlHqrgHMTSr3QwMGv4PLfR0M4N/sYWV5/x67HgXEhIGObdBkpnX8G78pTgWnIrBL2lZcNJOtfg==}
 
 snapshots:
 
@@ -12440,8 +12443,10 @@ snapshots:
       compress-commons: 6.0.2
       readable-stream: 4.7.0
 
-  znv@0.5.0(zod@3.25.76):
+  znv@0.5.0(zod@4.0.8):
     dependencies:
-      zod: 3.25.76
+      zod: 4.0.8
 
   zod@3.25.76: {}
+
+  zod@4.0.8: {}
