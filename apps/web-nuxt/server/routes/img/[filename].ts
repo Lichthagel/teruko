@@ -8,6 +8,7 @@ export default defineEventHandler((event) => {
     .object({ filename: z.string() })
     .parse(event.context.params);
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   const filepath = path.resolve(env.IMG_FOLDER, filename);
 
   return sendStream(event, fs.createReadStream(filepath));

@@ -1,22 +1,21 @@
 /* eslint-disable n/no-process-env */
 import { config } from "dotenv";
-import { parseEnv, z } from "znv";
+import z from "zod";
 
 config({
   path: "../../.env",
 });
 
-const env: Readonly<{
-  DATABASE_URL: string;
-  IMG_FOLDER: string;
-  NODE_ENV: string;
-}> = parseEnv(process.env, {
+const Env = z.object({
   DATABASE_URL: z
     .string()
-    .url()
     .default("file:./local.db"),
   IMG_FOLDER: z.string().default("./data"),
   NODE_ENV: z.string().default("production"),
 });
+
+type Env = Readonly<z.infer<typeof Env>>;
+
+const env: Env = Env.parse(process.env);
 
 export default env;
