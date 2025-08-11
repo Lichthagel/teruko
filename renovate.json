@@ -1,26 +1,42 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", ":disableDigestUpdates"],
-  "baseBranches": ["main"],
-  "labels": ["dependencies"],
+  "extends": [
+    "config:recommended",
+    ":disableDigestUpdates"
+  ],
+  "baseBranchPatterns": [
+    "main"
+  ],
+  "labels": [
+    "dependencies"
+  ],
   "lockFileMaintenance": {
     "enabled": true
   },
   "packageRules": [
     {
       "description": "Group linter upgrades together",
-      "extends": ["packages:linters"],
-      "matchPackageNames": ["@eslint-react/**"],
+      "extends": [
+        "packages:linters"
+      ],
+      "matchPackageNames": [
+        "@eslint-react/**"
+      ],
       "groupName": "linters"
     },
     {
       "description": "Group lucide upgrades together",
-      "matchPackageNames": ["lucide**"],
+      "matchPackageNames": [
+        "lucide**"
+      ],
       "groupName": "lucide"
     },
     {
       "description": "Group graphql-yoga upgrades together",
-      "matchPackageNames": ["graphql-yoga", "@graphql-yoga/**"],
+      "matchPackageNames": [
+        "graphql-yoga",
+        "@graphql-yoga/**"
+      ],
       "groupName": "graphql-yoga"
     }
   ]
