@@ -73,7 +73,7 @@ importers:
         version: 1.0.1(nanostores@1.0.1)(vue@3.5.18(typescript@5.9.2))
       '@urql/vue':
         specifier: ^2.0.0
-        version: 2.0.0(@urql/core@5.2.0(graphql@17.0.0-alpha.9))(vue@3.5.18(typescript@5.9.2))
+        version: 2.0.0(@urql/core@6.0.1(graphql@17.0.0-alpha.9))(vue@3.5.18(typescript@5.9.2))
       client-css:
         specifier: workspace:*
         version: link:../../packages/client-css
@@ -109,7 +109,7 @@ importers:
         version: 0.34.3
       zod:
         specifier: ^4.0.0
-        version: 4.0.16
+        version: 4.0.17
     devDependencies:
       '@nuxt/devtools':
         specifier: ^2.0.0
@@ -131,7 +131,7 @@ importers:
     dependencies:
       '@urql/svelte':
         specifier: ^4.2.1
-        version: 4.2.3(@urql/core@5.2.0(graphql@17.0.0-alpha.9))(svelte@5.38.0)
+        version: 4.2.3(@urql/core@6.0.1(graphql@17.0.0-alpha.9))(svelte@5.38.0)
       client-css:
         specifier: workspace:*
         version: link:../../packages/client-css
@@ -164,7 +164,7 @@ importers:
         version: 0.34.3
       zod:
         specifier: ^4.0.0
-        version: 4.0.16
+        version: 4.0.17
     devDependencies:
       '@sveltejs/adapter-node':
         specifier: ^5.2.9
@@ -240,11 +240,11 @@ importers:
   packages/client-graphql:
     dependencies:
       '@urql/core':
-        specifier: ^5.0.8
-        version: 5.2.0(graphql@17.0.0-alpha.9)
+        specifier: ^6.0.0
+        version: 6.0.1(graphql@17.0.0-alpha.9)
       '@urql/exchange-graphcache':
-        specifier: ^7.2.1
-        version: 7.2.4(@urql/core@5.2.0(graphql@17.0.0-alpha.9))(graphql@17.0.0-alpha.9)
+        specifier: ^8.0.0
+        version: 8.1.0(@urql/core@6.0.1(graphql@17.0.0-alpha.9))(graphql@17.0.0-alpha.9)
     devDependencies:
       tsconfig:
         specifier: workspace:^
@@ -273,7 +273,7 @@ importers:
     dependencies:
       zod:
         specifier: ^4.0.0
-        version: 4.0.16
+        version: 4.0.17
     devDependencies:
       tsconfig:
         specifier: workspace:^
@@ -311,7 +311,7 @@ importers:
         version: 17.2.1
       zod:
         specifier: ^4.0.8
-        version: 4.0.16
+        version: 4.0.17
     devDependencies:
       tsconfig:
         specifier: workspace:^
@@ -363,7 +363,7 @@ importers:
         version: 0.34.3
       zod:
         specifier: ^4.0.0
-        version: 4.0.16
+        version: 4.0.17
     devDependencies:
       '@types/node':
         specifier: ^22.8.7
@@ -2334,13 +2334,13 @@ packages:
     peerDependencies:
       vue: '>=3.5.18'
 
-  '@urql/core@5.2.0':
-    resolution: {integrity: sha512-/n0ieD0mvvDnVAXEQgX/7qJiVcvYvNkOHeBvkwtylfjydar123caCXcl58PXFY11oU1oquJocVXHxLAbtv4x1A==}
+  '@urql/core@6.0.1':
+    resolution: {integrity: sha512-FZDiQk6jxbj5hixf2rEPv0jI+IZz0EqqGW8mJBEug68/zHTtT+f34guZDmyjJZyiWbj0vL165LoMr/TkeDHaug==}
 
-  '@urql/exchange-graphcache@7.2.4':
-    resolution: {integrity: sha512-kiKbT0ZrtyQmmgNLYR0qkZAJjWHQOtrd+6Dt9JMtm3L/A8r3D6ptcJn668BADP6J+vkxcfNFtdI+0OdmBBkRgw==}
+  '@urql/exchange-graphcache@8.1.0':
+    resolution: {integrity: sha512-KxdDFcGAWhYOkpCz/NLNHb8SaWSxE2G1iv+jlFty2f/ZlCkD+FjtzwQuieGl7fk1MVR8DG1zLmxGNlwfCNksfQ==}
     peerDependencies:
-      '@urql/core': ^5.0.0
+      '@urql/core': ^6.0.0
 
   '@urql/svelte@4.2.3':
     resolution: {integrity: sha512-v3eArfymhdjaM5VQFp3QZxq9veYPadmDfX7ueid/kD4DlRplIycPakJ2FrKigh46SXa5mWqJ3QWuWyRKVu61sw==}
@@ -6347,8 +6347,8 @@ packages:
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
-  zod@4.0.16:
-    resolution: {integrity: sha512-Djo/cM339grjI7/HmN+ixYO2FzEMcWr/On50UlQ/RjrWK1I/hPpWhpC76heCptnRFpH0LMwrEbUY50HDc0V8wg==}
+  zod@4.0.17:
+    resolution: {integrity: sha512-1PHjlYRevNxxdy2JZ8JcNAw7rX8V9P1AKkP+x/xZfxB0K5FYfuV+Ug6P/6NVSR2jHQ+FzDDoDHS04nYUsOIyLQ==}
 
 snapshots:
 
@@ -8184,30 +8184,30 @@ snapshots:
       unhead: 2.0.14
       vue: 3.5.18(typescript@5.9.2)
 
-  '@urql/core@5.2.0(graphql@17.0.0-alpha.9)':
+  '@urql/core@6.0.1(graphql@17.0.0-alpha.9)':
     dependencies:
       '@0no-co/graphql.web': 1.2.0(graphql@17.0.0-alpha.9)
       wonka: 6.3.5
     transitivePeerDependencies:
       - graphql
 
-  '@urql/exchange-graphcache@7.2.4(@urql/core@5.2.0(graphql@17.0.0-alpha.9))(graphql@17.0.0-alpha.9)':
+  '@urql/exchange-graphcache@8.1.0(@urql/core@6.0.1(graphql@17.0.0-alpha.9))(graphql@17.0.0-alpha.9)':
     dependencies:
       '@0no-co/graphql.web': 1.2.0(graphql@17.0.0-alpha.9)
-      '@urql/core': 5.2.0(graphql@17.0.0-alpha.9)
+      '@urql/core': 6.0.1(graphql@17.0.0-alpha.9)
       wonka: 6.3.5
     transitivePeerDependencies:
       - graphql
 
-  '@urql/svelte@4.2.3(@urql/core@5.2.0(graphql@17.0.0-alpha.9))(svelte@5.38.0)':
+  '@urql/svelte@4.2.3(@urql/core@6.0.1(graphql@17.0.0-alpha.9))(svelte@5.38.0)':
     dependencies:
-      '@urql/core': 5.2.0(graphql@17.0.0-alpha.9)
+      '@urql/core': 6.0.1(graphql@17.0.0-alpha.9)
       svelte: 5.38.0
       wonka: 6.3.5
 
-  '@urql/vue@2.0.0(@urql/core@5.2.0(graphql@17.0.0-alpha.9))(vue@3.5.18(typescript@5.9.2))':
+  '@urql/vue@2.0.0(@urql/core@6.0.1(graphql@17.0.0-alpha.9))(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@urql/core': 5.2.0(graphql@17.0.0-alpha.9)
+      '@urql/core': 6.0.1(graphql@17.0.0-alpha.9)
       vue: 3.5.18(typescript@5.9.2)
       wonka: 6.3.5
 
@@ -12598,4 +12598,4 @@ snapshots:
 
   zod@3.25.76: {}
 
-  zod@4.0.16: {}
+  zod@4.0.17: {}
