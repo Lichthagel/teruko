@@ -2,7 +2,7 @@
   import type { TagExt } from "models";
 
   import { goto } from "$app/navigation";
-  import { base } from "$app/paths";
+  import { resolve } from "$app/paths";
   import styles from "client-css/m/imagepage.module.scss";
   import { tagsStore } from "client-stores";
 
@@ -14,7 +14,7 @@
 
   const onClick = () => {
     tagsStore.set([tag.slug]);
-    void goto(`${base}/`);
+    void goto(resolve("/", {}));
   };
 </script>
 

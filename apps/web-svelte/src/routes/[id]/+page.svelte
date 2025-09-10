@@ -2,6 +2,7 @@
   import type { ImageExt } from "models";
   import type { EventHandler } from "svelte/elements";
 
+  import { resolve } from "$app/paths";
   import { page } from "$app/state";
   import ErrorMessage from "$lib/components/status/ErrorMessage.svelte";
   import StatusBar from "$lib/components/status/StatusBar.svelte";
@@ -72,6 +73,7 @@
 
           <span>
             Source:
+            <!-- eslint-disable svelte/no-navigation-without-resolve -->
             <a
               href={image.source}
               rel="noopener noreferrer"
@@ -79,6 +81,7 @@
             >
               {image.source}
             </a>
+            <!-- eslint-enable svelte/no-navigation-without-resolve -->
           </span>
         </div>
 
@@ -94,7 +97,7 @@
             </div>
           </div>
 
-          <a class={styles["meta-dlicon"]} href={`/${image.id}/original`}>
+          <a class={styles["meta-dlicon"]} href={resolve("/[id]/original", { id: `${image.id}` })}>
             <DownloadIcon class={styles.icon} />
             <span>
               {fileExt}
@@ -102,7 +105,7 @@
           </a>
 
           {#if !!fileExt && fileExt !== "avif"}
-            <a class={styles["meta-dlicon"]} href={`/${image.id}/avif`}>
+            <a class={styles["meta-dlicon"]} href={resolve("/[id]/avif", { id: `${image.id}` })}>
               <DownloadIcon class={styles.icon} />
               <span>
                 avif
@@ -110,7 +113,7 @@
             </a>
           {/if}
 
-          <a class={styles["meta-dlicon"]} href={`/${image.id}/webp`}>
+          <a class={styles["meta-dlicon"]} href={resolve("/[id]/webp", { id: `${image.id}` })}>
             <DownloadIcon class={styles.icon} />
             <span>
               webp

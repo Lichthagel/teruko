@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { ImageExt } from "models";
 
+  import { resolve } from "$app/paths";
   import styles from "client-css/m/gallery.module.scss";
   import { tagsStore } from "client-stores";
   import { fly } from "svelte/transition";
@@ -17,7 +18,7 @@
 </script>
 
 <div class={styles.card} in:fly={{ y: 200 }}>
-  <a href={`/${image.id}`}>
+  <a href={resolve(`/[id]`, { id: `${image.id}` })}>
     <div class={styles["image-container"]}>
       <img
         alt={image.title ?? image.filename}
