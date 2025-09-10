@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { resolve } from "$app/paths";
   import styles from "client-css/m/error.module.scss";
   import Home from "lucide-svelte/icons/home";
 
@@ -20,7 +21,7 @@
 <div class={styles.backdrop}>
   <div class="container">
     <div class={styles.above}>
-      <a href="/">
+      <a href={resolve("/", {})}>
         <Home />
         <span>return home</span>
       </a>

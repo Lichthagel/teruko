@@ -21,6 +21,9 @@ export default [
         tsconfigRootDir: import.meta.dirname,
       },
     },
+    rules: {
+      'svelte/no-goto-without-base': 'off',
+    }
   },
   {
     files: ["*.vue", "**/*.vue"],
