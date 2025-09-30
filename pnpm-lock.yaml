@@ -30,8 +30,8 @@ importers:
         specifier: ^9.1.6
         version: 9.1.7
       nx:
-        specifier: 21.5.3
-        version: 21.5.3
+        specifier: 21.6.2
+        version: 21.6.2
       tsconfig:
         specifier: workspace:*
         version: link:packages/tsconfig
@@ -4205,8 +4205,8 @@ packages:
       '@types/node':
         optional: true
 
-  nx@21.5.3:
-    resolution: {integrity: sha512-+XwzK3OWZw/7zLdhNHBms9VdAA8F6w6QsX8qFQ3+3CnbqEy0IDmVxTXb8c711LDMbEtNn94EiWvSV6C00FKw9Q==}
+  nx@21.6.2:
+    resolution: {integrity: sha512-bFZgAsB838vn9kk1vI6a1A9sStKyOA7Q9Ifsx7fYPth3D0GafHKu7X2/YbsC4h1TpmuejkJCPWUw2WtCOQy6IQ==}
     hasBin: true
     peerDependencies:
       '@swc-node/register': ^1.8.0
@@ -8223,7 +8223,7 @@ snapshots:
 
   dotenv-expand@11.0.7:
     dependencies:
-      dotenv: 16.4.7
+      dotenv: 16.6.1
 
   dotenv@16.4.7: {}
 
@@ -9650,7 +9650,7 @@ snapshots:
       - xml2js
       - yaml
 
-  nx@21.5.3:
+  nx@21.6.2:
     dependencies:
       '@napi-rs/wasm-runtime': 0.2.4
       '@yarnpkg/lockfile': 1.1.0
