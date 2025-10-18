@@ -9,17 +9,14 @@
   },
   "scripts": {
     "build": "nx run-many -t build",
-    "lint": "nx run-many -t lint",
+    "lint": "eslint .",
     "format": "nx run-many -t format",
     "clean": "nx run-many -t clean",
     "prepare": "husky"
   },
   "devDependencies": {
-    "@lichthagel/eslint-config": "^1.0.1",
+    "@antfu/eslint-config": "^6.0.0",
     "eslint": "^9.14.0",
-    "eslint-plugin-n": "^17.15.0",
-    "eslint-plugin-svelte": "^3.0.0",
-    "eslint-plugin-vue": "^10.0.0",
     "husky": "^9.1.6",
     "nx": "21.6.5",
     "tsconfig": "workspace:*",
