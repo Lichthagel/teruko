@@ -1,6 +1,7 @@
-import type { TagExt } from "models";
+import type { CombinedError } from "@urql/vue";
 
-import { type CombinedError, gql, useClientHandle } from "@urql/vue";
+import type { TagExt } from "models";
+import { gql, useClientHandle } from "@urql/vue";
 
 const useSuggestions = (
   query: Ref<string>,

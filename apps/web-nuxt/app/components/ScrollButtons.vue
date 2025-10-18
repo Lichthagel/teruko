@@ -36,15 +36,15 @@ onBeforeUnmount(() => {
   <div :class="styles.buttons">
     <button
       :class="!showToTop && styles.hidden"
-      @click="scrollToTop"
       type="button"
+      @click="scrollToTop"
     >
       <ChevronUp />
     </button>
     <button
       :class="!showToBottom && styles.hidden"
-      @click="scrollToBottom"
       type="button"
+      @click="scrollToBottom"
     >
       <ChevronDown />
     </button>

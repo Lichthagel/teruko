@@ -2,8 +2,7 @@
 import styles from "client-css/m/error.module.scss";
 import { Home } from "lucide-vue-next";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const props = defineProps<{
+defineProps<{
   title?: string;
   subtitle?: string;
   message?: string;

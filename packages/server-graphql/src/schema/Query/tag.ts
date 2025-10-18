@@ -1,12 +1,12 @@
-import { eq } from "drizzle-orm";
-import { db, dTag, dTagCategory } from "server-db";
-
 import type { builder } from "../builder.js";
+import { eq } from "drizzle-orm";
+
+import { db, dTag, dTagCategory } from "server-db";
 
 import { PothosTag } from "../Tag.js";
 
 const tag = (b: typeof builder) =>
-  b.queryField("tag", (t) =>
+  b.queryField("tag", t =>
     t.field({
       type: PothosTag,
       nullable: true,

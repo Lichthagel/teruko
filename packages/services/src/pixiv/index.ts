@@ -1,6 +1,6 @@
-import { type ImageMeta } from "models";
+import type { ImageMeta } from "models";
 
-import { type PixivIllustResult } from "./PixivIllustResult.js";
+import type { PixivIllustResult } from "./PixivIllustResult.js";
 
 export const matchFilename = (filename: string) => {
   const matches = filename.match(/(\d+)_p\d+\.(?:jpg|png|gif|jpeg|webp|avif)/);
@@ -70,12 +70,12 @@ export const toImageMeta = (
     });
   }
 
-  if (pixivResult.body.tags && pixivResult.body.tags.tags) {
+  if (pixivResult.body.tags != null && pixivResult.body.tags.tags != null) {
     for (const tag of pixivResult.body.tags.tags) {
       const slug
-        = (tag.translation && tag.translation.en) || tag.romaji || tag.tag;
+        = (tag.translation && tag.translation.en) ?? tag.romaji ?? tag.tag;
 
-      if (tags.some((value) => value.slug === slug)) {
+      if (tags.some(value => value.slug === slug)) {
         continue;
       }
 

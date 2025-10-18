@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import type { ImageSort } from "models";
 import { useStore } from "@nanostores/vue";
 import styles from "client-css/m/filters.module.scss";
 import { sortStore } from "client-stores";
 import { ArrowDownNarrowWide } from "lucide-vue-next";
-import { type ImageSort } from "models";
 
 const sort = useStore(sortStore);
 
@@ -23,8 +23,8 @@ watch(sort, () => {
     <ArrowDownNarrowWide :class="styles.icon" />
 
     <select
-      @change="sortChange"
       v-model="sortSel"
+      @change="sortChange"
     >
       <option value="NEWEST">
         newest

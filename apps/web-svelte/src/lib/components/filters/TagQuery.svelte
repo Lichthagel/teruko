@@ -30,7 +30,7 @@
   });
 
   const removeTag = () => {
-    const newTags = $tagsStore.filter((t) => t !== tag);
+    const newTags = $tagsStore.filter(t => t !== tag);
 
     tagsStore.set(newTags);
   };

@@ -13,4 +13,4 @@
 </script>
 
 <!-- eslint-disable-next-line @stylistic/quotes -->
-<div class="{styles.bar}{fetching ? ` ${styles.busy}` : ''}{error ? ` ${styles.error}` : ''}"></div>
+<div class="{styles.bar}{fetching ? ` ${styles.busy}` : ""}{error ? ` ${styles.error}` : ""}"></div>

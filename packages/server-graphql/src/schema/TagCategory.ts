@@ -9,7 +9,7 @@ export const PothosTagCategory = builder.objectRef<TagCategory>("TagCategory");
 
 builder.node(PothosTagCategory, {
   id: {
-    resolve: (parent) => parent.slug,
+    resolve: parent => parent.slug,
   },
   loadOne: async (id) => {
     const res = await db
@@ -19,7 +19,7 @@ builder.node(PothosTagCategory, {
 
     return res[0];
   },
-  fields: (t) => ({
+  fields: t => ({
     slug: t.exposeString("slug"),
     color: t.exposeString("color", { nullable: true }),
   }),

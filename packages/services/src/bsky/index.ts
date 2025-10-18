@@ -1,6 +1,6 @@
-import { type ImageMeta, type Tag } from "models";
-
-import { type GetPostThreadResponse, isFacetTag } from "./types.js";
+import type { ImageMeta, Tag } from "models";
+import type { GetPostThreadResponse } from "./types.js";
+import { isFacetTag } from "./types.js";
 
 export const BSKY_POST_REGEX = /^(https?:\/\/)?(www\.)?bsky.app\/profile\/(?<handle>[^/]+)\/post\/(?<postId>[^/]+)$/;
 
@@ -77,6 +77,6 @@ export const fetchData = async (handle: string, postId: string) => {
 
   return {
     meta: imageMeta,
-    imageUrls: embed.images.map((image) => image.fullsize),
+    imageUrls: embed.images.map(image => image.fullsize),
   };
 };

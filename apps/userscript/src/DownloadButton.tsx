@@ -1,6 +1,7 @@
+import type { Component } from "solid-js";
 import { getPixivMetadata } from "services/pixiv";
 import { customElement } from "solid-element";
-import { type Component, createSignal } from "solid-js";
+import { createSignal } from "solid-js";
 
 import { CREATE_IMAGE, TERUKO_BASE_URL } from "./constants.js";
 import styles from "./style.css?inline";
@@ -53,7 +54,7 @@ const DownloadButton: Component<Props> = (props) => {
           files: [null],
           title: meta?.title,
           source: meta?.source,
-          tags: meta?.tags?.map((tag) => tag.slug),
+          tags: meta?.tags?.map(tag => tag.slug),
         },
       }));
       formData.append("map", JSON.stringify({
@@ -68,7 +69,7 @@ const DownloadButton: Component<Props> = (props) => {
           "Apollo-Require-Preflight": "true",
         },
       })
-        .then((res) => res.json() as Promise<{
+        .then(async res => res.json() as Promise<{
           data: {
             createImage: { id: string }[];
           } | null;
@@ -126,7 +127,7 @@ export default DownloadButton;
 export const defineDownloadButton = () => {
   customElement<Props>("teruko-download-button", {
     url: null,
-  }, (props) => (
+  }, props => (
     <>
       <style>{styles}</style>
       <DownloadButton {...props} />
@@ -137,7 +138,7 @@ export const defineDownloadButton = () => {
 export type DownloadButtonElement = HTMLElement & Props;
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+  // eslint-disable-next-line ts/consistent-type-definitions
   interface HTMLElementTagNameMap {
     "teruko-download-button": DownloadButtonElement;
   }

@@ -4,7 +4,7 @@ import { applyToAllConstantlyDebounced } from "./utils.js";
 defineDownloadButton();
 
 applyToAllConstantlyDebounced(
-  (el) => el.querySelectorAll("div[role=presentation] > a.gtm-expand-full-size-illust"),
+  el => el.querySelectorAll("div[role=presentation] > a.gtm-expand-full-size-illust"),
   (node) => {
     if (node.querySelector("teruko-download-button")) {
       return;

@@ -5,7 +5,7 @@ import { Plus } from "lucide-vue-next";
 
 <template>
   <div :class="styles.bar">
-    <div :class="['container', styles.content]">
+    <div class="container" :class="[styles.content]">
       <div :class="styles.left">
         <NuxtLink
           :class="styles.button"

@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import styles from "client-css/m/gallery.module.scss";
-import { type ImageSort } from "models";
+import type { ComponentPublicInstance } from "#imports";
+import type { ImageSort } from "models";
+import { useImages } from "#imports";
 
-import { type ComponentPublicInstance, useImages } from "#imports";
+import styles from "client-css/m/gallery.module.scss";
 
 const props = defineProps<{
   tags: readonly string[];
@@ -10,7 +11,11 @@ const props = defineProps<{
 }>();
 
 const {
-  images, fetching, error, stale, fetchMore,
+  images,
+  fetching,
+  error,
+  stale,
+  fetchMore,
 } = useImages(
   toRef(() => props.tags),
   toRef(() => props.sort),
@@ -40,8 +45,8 @@ const endRef = (node: ComponentPublicInstance | Element | null) => {
     :class="styles.gallery"
   >
     <template
-      :key="image.id"
       v-for="image in images"
+      :key="image.id"
     >
       <div :ref="image.id === images.at(-1)?.id ? endRef : undefined">
         <ImageCard :image="image" />
@@ -50,9 +55,9 @@ const endRef = (node: ComponentPublicInstance | Element | null) => {
   </div>
 
   <ErrorMessage
+    v-if="error"
     :error="error"
     :title="error.name"
-    v-if="error"
   />
 
   <StatusBar

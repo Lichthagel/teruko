@@ -1,6 +1,7 @@
-import type { TagExt } from "models";
+import type { Client, CombinedError } from "@urql/svelte";
 
-import { type Client, type CombinedError, gql } from "@urql/svelte";
+import type { TagExt } from "models";
+import { gql } from "@urql/svelte";
 import { readable, writable } from "svelte/store";
 
 type SuggestionsResult = {

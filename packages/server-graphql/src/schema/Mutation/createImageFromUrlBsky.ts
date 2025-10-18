@@ -1,13 +1,13 @@
-import { BSKY_POST_REGEX, fetchData } from "services/bsky";
+import type { builder } from "../builder.js";
 
 import { processUrl } from "#lib/index.js";
 
-import type { builder } from "../builder.js";
+import { BSKY_POST_REGEX, fetchData } from "services/bsky";
 
 import { PothosImage } from "../Image.js";
 
 const createImageFromUrlBsky = (b: typeof builder) => {
-  b.mutationField("createImageFromUrlBsky", (t) =>
+  b.mutationField("createImageFromUrlBsky", t =>
     t.field({
       type: [PothosImage],
       args: {
@@ -30,8 +30,8 @@ const createImageFromUrlBsky = (b: typeof builder) => {
 
         const data = await fetchData(handle, postId);
 
-        return await Promise.all(
-          data.imageUrls.map(async (imageUrl) => processUrl(imageUrl, data.meta)),
+        return Promise.all(
+          data.imageUrls.map(async imageUrl => processUrl(imageUrl, data.meta)),
         );
       },
     }));

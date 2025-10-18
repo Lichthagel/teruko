@@ -1,5 +1,5 @@
+import type { TagExt } from "models";
 import { eq } from "drizzle-orm";
-import { type TagExt } from "models";
 import { db, dTag, dTagCategory } from "server-db";
 
 import { builder } from "./builder.js";
@@ -9,7 +9,7 @@ export const PothosTag = builder.objectRef<TagExt>("Tag");
 
 builder.node(PothosTag, {
   id: {
-    resolve: (parent) => parent.slug,
+    resolve: parent => parent.slug,
   },
   loadOne: async (id) => {
     const res = await db
@@ -29,7 +29,7 @@ builder.node(PothosTag, {
       category: item.TagCategory,
     };
   },
-  fields: (t) => ({
+  fields: t => ({
     slug: t.exposeString("slug"),
     category: t.field({
       type: PothosTagCategory,

@@ -1,8 +1,12 @@
+import type { ImageExt } from "models";
 import { eq } from "drizzle-orm";
-import { type ImageExt } from "models";
 import {
-  // eslint-disable-next-line perfectionist/sort-named-imports
-  dImage, dTag, dTagCategory, d_ImageToTag, db,
+
+  d_ImageToTag,
+  db,
+  dImage,
+  dTag,
+  dTagCategory,
 } from "server-db";
 
 import { builder } from "./builder.js";
@@ -12,7 +16,7 @@ export const PothosImage = builder.objectRef<ImageExt>("Image");
 
 builder.node(PothosImage, {
   id: {
-    resolve: (parent) => parent.id,
+    resolve: parent => parent.id,
   },
   loadOne: async (id) => {
     const res = await db
@@ -22,7 +26,7 @@ builder.node(PothosImage, {
 
     return res[0];
   },
-  fields: (t) => ({
+  fields: t => ({
     id: t.exposeID("id"),
     filename: t.exposeString("filename"),
     title: t.exposeString("title", { nullable: true }),
@@ -46,7 +50,7 @@ builder.node(PothosImage, {
           .orderBy(dTag.categorySlug, dTag.slug)
           .leftJoin(dTagCategory, eq(dTagCategory.slug, dTag.categorySlug));
 
-        return res.map((row) => ({
+        return res.map(row => ({
           ...row.Tag,
           category: row.TagCategory,
         }));

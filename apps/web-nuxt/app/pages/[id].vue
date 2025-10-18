@@ -34,7 +34,10 @@ const result = useQuery<{ image: ImageExt | null }>({
 });
 
 const {
-  data, fetching, stale, error,
+  data,
+  fetching,
+  stale,
+  error,
 } = result;
 
 const fileExt = computed<string | null>(() => data.value?.image?.filename ? (data.value.image.filename.split(".").pop() ?? null) : null);
@@ -75,9 +78,9 @@ useHead({
             <span>
               Source:
               <NuxtLink
+                v-if="data.image.source"
                 :href="data.image.source"
                 target="_blank"
-                v-if="data.image.source"
               >
                 {{ data.image.source }}
               </NuxtLink>
@@ -109,10 +112,10 @@ useHead({
             </NuxtLink>
 
             <NuxtLink
+              v-if="!!fileExt && fileExt !== 'avif'"
               :class="styles['meta-dlicon']"
               :external="true"
               :href="`/${data.image.id}/avif`"
-              v-if="!!fileExt && fileExt !== 'avif'"
             >
               <DownloadIcon :class="styles.icon" />
               <span>
@@ -135,23 +138,23 @@ useHead({
 
         <div :class="styles.tags">
           <TagChip
+            v-for="tag in data.image.tags"
             :key="tag.slug"
             :tag="tag"
-            v-for="tag in data.image.tags"
           />
         </div>
       </div>
     </div>
 
     <ErrorMessage
+      v-if="error"
       :message="error.message"
       :title="error.name"
-      v-if="error"
     />
 
     <ErrorMessage
-      title="Not Found"
       v-if="!fetching && !error && (!data || !data.image)"
+      title="Not Found"
     />
 
     <StatusBar

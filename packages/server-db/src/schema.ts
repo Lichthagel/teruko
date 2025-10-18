@@ -1,6 +1,10 @@
 import { relations, sql } from "drizzle-orm";
 import {
-  index, integer, primaryKey, sqliteTable, text,
+  index,
+  integer,
+  primaryKey,
+  sqliteTable,
+  text,
 } from "drizzle-orm/sqlite-core";
 
 export const dImage = sqliteTable(
@@ -26,7 +30,7 @@ export const dImage = sqliteTable(
     height: integer("height").notNull(),
     width: integer("width").notNull(),
   },
-  (table) => ({
+  table => ({
     createdAtIdx: index("Image_createdAt_idx").on(table.createdAt),
   }),
 );
@@ -38,8 +42,7 @@ export const ImageRelations = relations(dImage, ({ many }) => ({
 export const dTag = sqliteTable("Tag", {
   id: integer("id")
     .primaryKey({ autoIncrement: true }),
-  slug: text("slug").notNull()
-    .unique(),
+  slug: text("slug").notNull().unique(),
   categorySlug: text("categorySlug").references(() => dTagCategory.slug, {
     onDelete: "set null",
     onUpdate: "cascade",
@@ -79,7 +82,7 @@ export const d_ImageToTag = sqliteTable(
         onUpdate: "cascade",
       }),
   },
-  (table) => ({
+  table => ({
     pk: primaryKey({
       name: "_ImageToTag_pkey",
       columns: [table.imageId, table.tagId],

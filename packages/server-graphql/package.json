@@ -6,15 +6,15 @@
   "description": "",
   "author": "Lichthagel",
   "keywords": [],
+  "imports": {
+    "#lib/*": "./dist/lib/*",
+    "#schema/*": "./dist/schema/*"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     }
-  },
-  "imports": {
-    "#lib/*": "./dist/lib/*",
-    "#schema/*": "./dist/schema/*"
   },
   "engines": {
     "node": ">=21.0.0"

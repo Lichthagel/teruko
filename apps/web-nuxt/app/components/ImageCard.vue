@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { ImageExt } from "models";
 import styles from "client-css/m/gallery.module.scss";
 import { tagsStore } from "client-stores";
-import { type ImageExt } from "models";
 
 const props = defineProps<{
   image: ImageExt;
@@ -31,15 +31,15 @@ const props = defineProps<{
       :class="styles['tag-list']"
     >
       <template
-        :key="tag.slug"
         v-for="tag in props.image.tags?.filter(
           (tag) => !tag.slug.startsWith('artist_'),
         )"
+        :key="tag.slug"
       >
         <button
           :style="{ backgroundColor: tag.category?.color ?? 'gray' }"
-          @click="() => tagsStore.set([tag.slug])"
           type="button"
+          @click="() => tagsStore.set([tag.slug])"
         >
           {{ tag.slug }}
         </button>

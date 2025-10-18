@@ -1,15 +1,16 @@
-import { eq } from "drizzle-orm";
-import {
-  // eslint-disable-next-line perfectionist/sort-named-imports
-  dTag, d_ImageToTag, db,
-} from "server-db";
-
 import type { builder } from "../builder.js";
+import { eq } from "drizzle-orm";
+
+import {
+  d_ImageToTag,
+  db,
+  dTag,
+} from "server-db";
 
 import { PothosTag } from "../Tag.js";
 
 const updateTag = (b: typeof builder) => {
-  b.mutationField("updateTag", (t) =>
+  b.mutationField("updateTag", t =>
     t.field({
       type: PothosTag,
       args: {
@@ -67,7 +68,7 @@ const updateTag = (b: typeof builder) => {
             await tx
               .insert(d_ImageToTag)
               .values(
-                existing.map((e) => ({
+                existing.map(e => ({
                   imageId: e.imageId,
                   tagId: newTag.id,
                 })),

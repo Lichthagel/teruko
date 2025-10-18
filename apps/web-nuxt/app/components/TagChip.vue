@@ -1,13 +1,13 @@
 <script setup lang="ts">
+import type { TagExt } from "models";
 import styles from "client-css/m/imagepage.module.scss";
 import { tagsStore } from "client-stores";
-import { type TagExt } from "models";
-
-const router = useRouter();
 
 const props = defineProps<{
   tag: TagExt;
 }>();
+
+const router = useRouter();
 
 const onClick = () => {
   tagsStore.set([props.tag.slug]);

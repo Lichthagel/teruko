@@ -1,5 +1,7 @@
+import type { ImageExt } from "models";
+import type { builder } from "../builder.js";
 import { asc, eq } from "drizzle-orm";
-import { type ImageExt } from "models";
+
 import {
   d_ImageToTag,
   db,
@@ -8,12 +10,10 @@ import {
   dTagCategory,
 } from "server-db";
 
-import type { builder } from "../builder.js";
-
 import { PothosImage } from "../Image.js";
 
 const image = (b: typeof builder) =>
-  b.queryField("image", (t) =>
+  b.queryField("image", t =>
     t.field({
       type: PothosImage,
       nullable: true,

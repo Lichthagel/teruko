@@ -1,10 +1,9 @@
-import type { ImageExt, ImageSort } from "models";
+import type { CombinedError, OperationResult } from "@urql/vue";
 
+import type { ImageExt, ImageSort } from "models";
 import {
-  type CombinedError,
   createRequest,
   gql,
-  type OperationResult,
   useClientHandle,
 } from "@urql/vue";
 
@@ -119,13 +118,13 @@ export const useImages = (
         if (newEdges.length > 0) {
           if (usedCursor) {
             const idx = prevEdges.findIndex(
-              (edge) => edge.cursor === usedCursor,
+              edge => edge.cursor === usedCursor,
             );
 
             return [...prevEdges.slice(0, idx + 1), ...newEdges];
           } else {
             const idx = prevEdges.findIndex(
-              (image) => image.cursor === newEdges.at(-1)?.cursor,
+              image => image.cursor === newEdges.at(-1)?.cursor,
             );
 
             return idx === -1
@@ -205,7 +204,7 @@ export const useImages = (
   watch(sort, () => newQuery());
 
   return {
-    images: computed(() => edges.value.map((edge) => edge.node)),
+    images: computed(() => edges.value.map(edge => edge.node)),
     fetching,
     error,
     stale,

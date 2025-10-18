@@ -1,12 +1,15 @@
-import { sql } from "drizzle-orm";
-import { fileTypeFromBlob } from "file-type";
-import { GraphQLError } from "graphql";
-import { type ImageExt, type ImageMeta } from "models";
+import type { ImageExt, ImageMeta } from "models";
 import fs from "node:fs";
 import path from "node:path";
 import { finished } from "node:stream/promises";
+import { sql } from "drizzle-orm";
+import { fileTypeFromBlob } from "file-type";
+import { GraphQLError } from "graphql";
 import {
-  d_ImageToTag, db, dImage, dTag,
+  d_ImageToTag,
+  db,
+  dImage,
+  dTag,
 } from "server-db";
 import env from "server-env";
 import sharp from "sharp";
@@ -25,7 +28,7 @@ const saveBlob = async (blob: Blob, basename: string) => {
 
   if (
     !fileType
-    || !/^image\/(jpeg|gif|png|webp|avif)$/.test(fileType.mime)
+    || !/^image\/(?:jpeg|gif|png|webp|avif)$/.test(fileType.mime)
   ) { throw new GraphQLError("not an image"); }
 
   const filename = toFilename(basename);
@@ -99,7 +102,7 @@ const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: sharp.Metadata & { w
         .onConflictDoNothing();
 
       await tx.insert(d_ImageToTag).values(
-        imageMeta.tags.map((tag) => ({
+        imageMeta.tags.map(tag => ({
           imageId: image.id,
           tagId: sql`(SELECT id FROM "Tag" WHERE "slug" = ${tag.slug})`,
         })),

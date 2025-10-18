@@ -15,13 +15,13 @@ const tags = useStore(tagsStore);
 <template>
   <div :class="styles.main">
     <div
-      :class="styles['tag-container']"
       v-if="tags.length > 0"
+      :class="styles['tag-container']"
     >
       <TagQuery
+        v-for="tag in tags"
         :key="tag"
         :tag="tag"
-        v-for="tag in tags"
       />
       <div :class="[styles['tag-query'], styles.reset]">
         <button @click="() => tagsStore.set([])">

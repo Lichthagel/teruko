@@ -1,15 +1,15 @@
-import type { ImageExt, ImageSort } from "models";
+import type { Client, CombinedError, GraphQLRequest, OperationResult } from "@urql/svelte";
 
+import type { ImageExt, ImageSort } from "models";
+import type { Readable } from "svelte/store";
 import { browser } from "$app/environment";
 import {
-  type Client,
-  type CombinedError,
+
   createRequest,
   gql,
-  type GraphQLRequest,
-  type OperationResult,
+
 } from "@urql/svelte";
-import { type Readable, writable } from "svelte/store";
+import { writable } from "svelte/store";
 
 type ImagesArgs = {
   tags: readonly string[];
@@ -135,7 +135,7 @@ const imagesStore = (
           edges = [...edges, ...newEdges];
         } else {
           const idx = edges.findIndex(
-            (edge) => edge.cursor === newEdges.at(-1)?.cursor,
+            edge => edge.cursor === newEdges.at(-1)?.cursor,
           );
 
           edges
@@ -152,7 +152,7 @@ const imagesStore = (
       fetching: false,
       stale: res.stale,
       error: res.error,
-      images: edges.map((edge) => edge.node),
+      images: edges.map(edge => edge.node),
       fetchMore:
         hasNextPage && !res.error
           ? () => {
@@ -173,7 +173,7 @@ const imagesStore = (
       fetching: true,
       stale: false,
       error: undefined,
-      images: edges.map((edge) => edge.node),
+      images: edges.map(edge => edge.node),
       fetchMore: () => {},
     });
 

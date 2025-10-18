@@ -1,8 +1,7 @@
 import { z } from "zod";
 
 export const zImage = z.object({
-  id: z.number().int()
-    .positive(),
+  id: z.number().int().positive(),
   filename: z.string(),
   title: z.string().nullable(),
   source: z.string().nullable(),
@@ -65,8 +64,8 @@ export const mergeImageMeta = (
     ? [
         ...meta.tags,
         ...(meta2.tags?.filter(
-          (value) =>
-            meta.tags?.findIndex((value2) => value2.slug === value.slug) === -1,
+          value =>
+            meta.tags?.findIndex(value2 => value2.slug === value.slug) === -1,
         ) ?? []),
       ]
     : meta2.tags,

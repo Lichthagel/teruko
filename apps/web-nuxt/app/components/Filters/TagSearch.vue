@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { useSuggestions } from "#imports";
 import { useStore } from "@nanostores/vue";
 import styles from "client-css/m/filters.module.scss";
 import { tagsStore } from "client-stores";
-import { Loader2, Search } from "lucide-vue-next";
 
-import { useSuggestions } from "#imports";
+import { Loader2, Search } from "lucide-vue-next";
 
 const tags = useStore(tagsStore);
 
@@ -62,39 +62,39 @@ const handleKeyDown = (e: KeyboardEvent) => {
     <Search />
 
     <input
-      @keydown="handleKeyDown"
+      v-model="tagInput"
       placeholder="Search..."
       type="text"
-      v-model="tagInput"
+      @keydown="handleKeyDown"
     >
     <div
-      :class="styles['suggestions-loading']"
       v-if="fetching"
+      :class="styles['suggestions-loading']"
     >
       <Loader2 :class="styles.icon" />
     </div>
     <ul
-      :class="styles['suggestions-container']"
       v-if="suggestions.length > 0"
+      :class="styles['suggestions-container']"
     >
       <li
-        :class="index === activeSuggestion && styles.active"
+        v-for="(suggestion, index) in suggestions"
         :key="suggestion.slug"
+        :class="index === activeSuggestion && styles.active"
         :style="{
           'background-color':
-            (index === activeSuggestion &&
-              suggestion.category &&
-              suggestion.category.color) ||
-            undefined,
+            (index === activeSuggestion
+              && suggestion.category
+              && suggestion.category.color)
+            || undefined,
           'color':
-            (index !== activeSuggestion &&
-              suggestion.category &&
-              suggestion.category.color) ||
-            undefined,
+            (index !== activeSuggestion
+              && suggestion.category
+              && suggestion.category.color)
+            || undefined,
         }"
         @click="handleSubmit"
         @mouseenter="activeSuggestion = index"
-        v-for="(suggestion, index) in suggestions"
       >
         {{ suggestion.slug }}
       </li>

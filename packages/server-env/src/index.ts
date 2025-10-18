@@ -1,4 +1,4 @@
-/* eslint-disable n/no-process-env */
+import process from "node:process";
 import { config } from "dotenv";
 import z from "zod";
 

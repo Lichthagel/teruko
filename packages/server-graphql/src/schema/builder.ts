@@ -27,11 +27,11 @@ builder.queryType();
 builder.mutationType();
 
 builder.scalarType("DateTime", {
-  serialize: (date) => date.toISOString(),
-  parseValue: (value) => new Date(value as string),
+  serialize: date => date.toISOString(),
+  parseValue: value => new Date(value as string),
 });
 
 builder.scalarType("Upload", {
-  serialize: (file) => file,
-  parseValue: (value) => value as File,
+  serialize: file => file,
+  parseValue: value => value as File,
 });

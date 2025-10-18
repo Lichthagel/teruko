@@ -8,9 +8,9 @@ export const urqlClient = new Client({
   exchanges: [
     cacheExchange({
       keys: {
-        Image: (data) => data.id as string | null,
-        Tag: (data) => data.slug as string | null,
-        TagCategory: (data) => data.slug as string | null,
+        Image: data => data.id as string | null,
+        Tag: data => data.slug as string | null,
+        TagCategory: data => data.slug as string | null,
       },
       resolvers,
     }),

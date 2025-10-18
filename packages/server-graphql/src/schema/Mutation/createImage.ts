@@ -1,14 +1,15 @@
-import { type ImageMeta, mergeImageMeta } from "models";
-import { getPixivMetadata, matchFilename } from "services/pixiv";
+import type { ImageMeta } from "models";
+import type { builder } from "../builder.js";
 
 import { processFile } from "#lib/index.js";
+import { mergeImageMeta } from "models";
 
-import type { builder } from "../builder.js";
+import { getPixivMetadata, matchFilename } from "services/pixiv";
 
 import { PothosImage } from "../Image.js";
 
 const createImage = (b: typeof builder) => {
-  b.mutationField("createImage", (t) =>
+  b.mutationField("createImage", t =>
     t.field({
       type: [PothosImage],
       args: {
@@ -21,12 +22,15 @@ const createImage = (b: typeof builder) => {
         tags: t.arg.stringList(),
       },
       resolve: async (parent, {
-        files, title, source, tags,
+        files,
+        title,
+        source,
+        tags,
       }) => {
         const imageMetaArgs = {
           title: title ?? undefined,
           source: source ?? undefined,
-          tags: ((tags ?? []).map((slug) => ({ slug }))),
+          tags: ((tags ?? []).map(slug => ({ slug }))),
         };
 
         return Promise.all(
@@ -39,7 +43,7 @@ const createImage = (b: typeof builder) => {
             // pixiv stuff
             const pixivId = matchFilename(filename);
 
-            if (pixivId && !imageMetaArgs.tags.some((tag) => tag.slug === "pixiv")) {
+            if (pixivId && !imageMetaArgs.tags.some(tag => tag.slug === "pixiv")) {
               try {
                 const pixivMeta = await getPixivMetadata(pixivId);
 

@@ -1,12 +1,12 @@
-import { eq, sql } from "drizzle-orm";
-import { db, dTag, dTagCategory } from "server-db";
-
 import type { builder } from "../builder.js";
+import { eq, sql } from "drizzle-orm";
+
+import { db, dTag, dTagCategory } from "server-db";
 
 import { PothosTag } from "../Tag.js";
 
 const tagSuggestions = (b: typeof builder) =>
-  b.queryField("tagSuggestions", (t) =>
+  b.queryField("tagSuggestions", t =>
     t.field({
       type: [PothosTag],
       args: {
@@ -25,7 +25,7 @@ const tagSuggestions = (b: typeof builder) =>
           .limit(10)
           .leftJoin(dTagCategory, eq(dTag.categorySlug, dTagCategory.slug));
 
-        return result.map((r) => ({
+        return result.map(r => ({
           ...r.Tag,
           category: r.TagCategory,
         }));

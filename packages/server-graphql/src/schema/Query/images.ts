@@ -1,13 +1,26 @@
+import type { ResolveCursorConnectionArgs } from "@pothos/plugin-relay";
+import type { SQL } from "drizzle-orm";
+import type { GraphQLResolveInfo } from "graphql";
+import type { ImageExt } from "models";
+import type { builder } from "../builder.js";
 import { decodeBase64, encodeBase64 } from "@pothos/core";
 import {
   resolveCursorConnection,
-  type ResolveCursorConnectionArgs,
+
 } from "@pothos/plugin-relay";
 import {
-  and, asc, desc, eq, gt, inArray, lt, or, type SQL, sql,
+  and,
+  asc,
+  desc,
+  eq,
+  gt,
+  inArray,
+  lt,
+  or,
+
+  sql,
 } from "drizzle-orm";
-import { GraphQLError, type GraphQLResolveInfo, Kind } from "graphql";
-import { type ImageExt } from "models";
+import { GraphQLError, Kind } from "graphql";
 import {
   d_ImageToTag,
   db,
@@ -15,23 +28,22 @@ import {
   dTag,
   dTagCategory,
 } from "server-db";
-import { z } from "zod"; // TODO zod is only used once in the package
 
-import type { builder } from "../builder.js";
+import { z } from "zod"; // TODO zod is only used once in the package
 
 import { PothosImage } from "../Image.js";
 
 const shouldIncludeTags = (info: GraphQLResolveInfo) =>
   info.fieldNodes[0]?.selectionSet?.selections.some(
-    (selection) =>
+    selection =>
       selection.kind === Kind.FIELD
       && selection.name.value === "edges"
       && selection.selectionSet?.selections.some(
-        (selection) =>
+        selection =>
           selection.kind === Kind.FIELD
           && selection.name.value === "node"
           && selection.selectionSet?.selections.some(
-            (selection) =>
+            selection =>
               selection.kind === Kind.FIELD && selection.name.value === "tags",
           ),
       ),
@@ -43,7 +55,7 @@ const parseCursor = (
   date: Date;
   id: string;
 } => {
-  const match = /^(?<date>.+)-(?<id>.+)$/.exec(decodeBase64(cursor));
+  const match = /^(?<date>[^-]+)-(?<id>[^-]+)$/.exec(decodeBase64(cursor));
 
   if (!match || !match.groups) {
     throw new GraphQLError("Invalid cursor");
@@ -64,7 +76,7 @@ const parseCursor = (
 };
 
 const images = (b: typeof builder) =>
-  b.queryField("images", (t) =>
+  b.queryField("images", t =>
     t.connection({
       type: PothosImage,
       args: {
@@ -75,11 +87,11 @@ const images = (b: typeof builder) =>
           required: false,
         }),
       },
-      resolve: (parent, args, context, info) =>
+      resolve: async (parent, args, context, info) =>
         resolveCursorConnection(
           {
             args,
-            toCursor: (image) =>
+            toCursor: image =>
               encodeBase64(`${image.createdAt.toISOString()}-${image.id}`),
           },
           async ({
@@ -143,7 +155,7 @@ const images = (b: typeof builder) =>
             if (!shouldIncludeTags(info)) {
               const res = await db.select().from(query);
 
-              return res.map((image) => ({
+              return res.map(image => ({
                 ...image,
               }));
             }

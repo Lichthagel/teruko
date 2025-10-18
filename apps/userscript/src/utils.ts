@@ -1,9 +1,9 @@
-export function applyToAllConstantlyDebounced(
+export const applyToAllConstantlyDebounced = (
   selector: (el: Element) => NodeListOf<Element>,
   callback: (el: Element) => void,
   container: Element = document.body,
   delay = 50,
-) {
+) => {
   let timeout: ReturnType<typeof setTimeout> | null = null;
 
   const observer = new MutationObserver(() => {
@@ -14,7 +14,6 @@ export function applyToAllConstantlyDebounced(
     timeout = setTimeout(() => {
       const elements = selector(container);
 
-      // eslint-disable-next-line unicorn/no-array-for-each
       elements.forEach((el) => {
         callback(el);
       });
@@ -22,4 +21,4 @@ export function applyToAllConstantlyDebounced(
   });
 
   observer.observe(container, { childList: true, subtree: true });
-}
+};
