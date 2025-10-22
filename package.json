@@ -2,7 +2,7 @@
   "name": "teruko",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.18.3",
+  "packageManager": "pnpm@10.19.0",
   "engines": {
     "node": ">=21.0.0",
     "pnpm": ">=9.0.0"
@@ -16,7 +16,10 @@
   "devDependencies": {
     "@antfu/eslint-config": "^6.0.0",
     "eslint": "^9.14.0",
+    "eslint-plugin-solid": "^0.14.5",
+    "eslint-plugin-svelte": "^3.12.5",
     "husky": "^9.1.6",
+    "lint-staged": "^16.2.5",
     "nx": "22.0.0",
     "tsconfig": "workspace:*",
     "typescript-eslint": "^8.12.2"
@@ -25,5 +28,10 @@
     "overrides": {
       "graphql": "17.0.0-alpha.9"
     }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue,svelte,css,scss,md,json,yml,yaml}": [
+      "eslint --max-warnings=0 --no-warn-ignored"
+    ]
   }
 }
