@@ -19,6 +19,7 @@
     "eslint-plugin-solid": "^0.14.5",
     "eslint-plugin-svelte": "^3.12.5",
     "husky": "^9.1.6",
+    "lint-staged": "^16.2.5",
     "nx": "21.6.6",
     "tsconfig": "workspace:*",
     "typescript-eslint": "^8.12.2"
@@ -27,5 +28,10 @@
     "overrides": {
       "graphql": "17.0.0-alpha.9"
     }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue,svelte,css,scss,md,json,yml,yaml}": [
+      "eslint --max-warnings=0 --no-warn-ignored"
+    ]
   }
 }
