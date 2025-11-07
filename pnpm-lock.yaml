@@ -324,10 +324,10 @@ importers:
     dependencies:
       '@envelop/graphql-jit':
         specifier: ^11.0.0
-        version: 11.0.0(@envelop/core@5.3.2)(graphql@17.0.0-alpha.9)
+        version: 11.0.0(@envelop/core@5.4.0)(graphql@17.0.0-alpha.9)
       '@graphql-yoga/plugin-apq':
         specifier: ^3.8.0
-        version: 3.16.1(graphql-yoga@5.16.1(graphql@17.0.0-alpha.9))
+        version: 3.16.2(graphql-yoga@5.16.2(graphql@17.0.0-alpha.9))
       '@pothos/core':
         specifier: ^4.3.0
         version: 4.10.0(graphql@17.0.0-alpha.9)
@@ -345,7 +345,7 @@ importers:
         version: 17.0.0-alpha.9
       graphql-yoga:
         specifier: ^5.8.0
-        version: 5.16.1(graphql@17.0.0-alpha.9)
+        version: 5.16.2(graphql@17.0.0-alpha.9)
       models:
         specifier: workspace:^
         version: link:../models
@@ -647,8 +647,8 @@ packages:
   '@emnapi/wasi-threads@1.1.0':
     resolution: {integrity: sha512-WI0DdZ8xFSbgMjR1sFsKABJ/C5OnRrjT06JXbZKexJGrDuPTzZdDYfFlsgcCXCyf+suG5QU2e/y1Wo2V/OapLQ==}
 
-  '@envelop/core@5.3.2':
-    resolution: {integrity: sha512-06Mu7fmyKzk09P2i2kHpGfItqLLgCq7uO5/nX4fc/iHMplWPNuAx4iYR+WXUQoFHDnP6EUbceQNQ5iyeMz9f3g==}
+  '@envelop/core@5.4.0':
+    resolution: {integrity: sha512-/1fat63pySE8rw/dZZArEVytLD90JApY85deDJ0/34gm+yhQ3k70CloSUevxoOE4YCGveG3s9SJJfQeeB4NAtQ==}
     engines: {node: '>=18.0.0'}
 
   '@envelop/graphql-jit@11.0.0':
@@ -1080,11 +1080,11 @@ packages:
     resolution: {integrity: sha512-Nv0BoDGLMg9QBKy9cIswQ3/6aKaKjlTh87x3GiBg2Z4RrjyrM48DvOOK0pJh1C1At+b0mUIM67cwZcFTDLN4sA==}
     engines: {node: '>=18.0.0'}
 
-  '@graphql-yoga/plugin-apq@3.16.1':
-    resolution: {integrity: sha512-kKt+MSx/B1u5XazamWlOXEOYJXBWhsxGGGMdt6jNR6CR/DjxeF450yIGMq2DAKs9jwL64QS57YeIoXnhAxPHrQ==}
+  '@graphql-yoga/plugin-apq@3.16.2':
+    resolution: {integrity: sha512-b4JtAy8g+ZE3GWtCEY36Wk5sgCGTddwfqjn+BkJahodjwbT6w+h9oBNJ/MRc+Q6Na0C2IkZYt1YgLAtW9CZEjg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      graphql-yoga: ^5.16.1
+      graphql-yoga: ^5.16.2
 
   '@graphql-yoga/subscription@5.0.5':
     resolution: {integrity: sha512-oCMWOqFs6QV96/NZRt/ZhTQvzjkGB4YohBOpKM4jH/lDT4qb7Lex/aGCxpi/JD9njw3zBBtMqxbaC22+tFHVvw==}
@@ -3863,8 +3863,8 @@ packages:
     peerDependencies:
       graphql: 17.0.0-alpha.9
 
-  graphql-yoga@5.16.1:
-    resolution: {integrity: sha512-5NIrqJjqUaqP7OtxmCgYCFSj0HDBEdBjkeGQw+Jc5v3N9aQ1ZTFkQ8VusAwYiH1ueRpi5wlrT63LqoSE+Ty54Q==}
+  graphql-yoga@5.16.2:
+    resolution: {integrity: sha512-heaD8ejapeEZ8+8CxB6DbYzkvMfC4gHEXr1Gc2CQCXEb5PVaDcEnQfiThBNic1KLPpuZixqQdJJ0pjcEVc9H7g==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       graphql: 17.0.0-alpha.9
@@ -6711,16 +6711,16 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@envelop/core@5.3.2':
+  '@envelop/core@5.4.0':
     dependencies:
       '@envelop/instrumentation': 1.0.0
       '@envelop/types': 5.2.1
       '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
 
-  '@envelop/graphql-jit@11.0.0(@envelop/core@5.3.2)(graphql@17.0.0-alpha.9)':
+  '@envelop/graphql-jit@11.0.0(@envelop/core@5.4.0)(graphql@17.0.0-alpha.9)':
     dependencies:
-      '@envelop/core': 5.3.2
+      '@envelop/core': 5.4.0
       '@whatwg-node/promise-helpers': 1.3.2
       graphql: 17.0.0-alpha.9
       graphql-jit: 0.8.7(graphql@17.0.0-alpha.9)
@@ -7033,10 +7033,10 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@graphql-yoga/plugin-apq@3.16.1(graphql-yoga@5.16.1(graphql@17.0.0-alpha.9))':
+  '@graphql-yoga/plugin-apq@3.16.2(graphql-yoga@5.16.2(graphql@17.0.0-alpha.9))':
     dependencies:
       '@whatwg-node/promise-helpers': 1.3.2
-      graphql-yoga: 5.16.1(graphql@17.0.0-alpha.9)
+      graphql-yoga: 5.16.2(graphql@17.0.0-alpha.9)
 
   '@graphql-yoga/subscription@5.0.5':
     dependencies:
@@ -10006,9 +10006,9 @@ snapshots:
       lodash.merge: 4.6.2
       lodash.mergewith: 4.6.2
 
-  graphql-yoga@5.16.1(graphql@17.0.0-alpha.9):
+  graphql-yoga@5.16.2(graphql@17.0.0-alpha.9):
     dependencies:
-      '@envelop/core': 5.3.2
+      '@envelop/core': 5.4.0
       '@envelop/instrumentation': 1.0.0
       '@graphql-tools/executor': 1.4.11(graphql@17.0.0-alpha.9)
       '@graphql-tools/schema': 10.0.27(graphql@17.0.0-alpha.9)
