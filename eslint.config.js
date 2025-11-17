@@ -1,4 +1,3 @@
-import path from "node:path";
 import antfu from "@antfu/eslint-config";
 
 export default antfu({
@@ -29,7 +28,6 @@ export default antfu({
     "style/brace-style": ["error", "1tbs", { allowSingleLine: true }],
   },
   typescript: {
-    tsconfigPath: path.join(import.meta.dirname, "tsconfig.eslint.json"),
     ignoresTypeAware: ["**/*.config.js", "**/*.config.cjs", "**/*.config.ts"],
   },
 });

@@ -24,7 +24,6 @@ export const defineDownloadEventHandler = (getData: (filepath: string) => Promis
       });
     }
 
-    // eslint-disable-next-line ts/no-unsafe-member-access
     const filepath = path.resolve(env.IMG_FOLDER as string, filename);
 
     const respFilename = fileType ? filename.replace(/[^./\\]+$/, fileType) : filename;
