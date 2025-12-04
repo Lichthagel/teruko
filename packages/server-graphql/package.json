@@ -26,24 +26,24 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@envelop/graphql-jit": "^11.0.0",
-    "@graphql-yoga/plugin-apq": "^3.8.0",
-    "@pothos/core": "^4.3.0",
-    "@pothos/plugin-relay": "^4.3.0",
-    "drizzle-orm": "^0.45.0",
-    "file-type": "^21.0.0",
-    "graphql": "^17.0.0-alpha",
-    "graphql-yoga": "^5.8.0",
+    "@envelop/graphql-jit": "catalog:",
+    "@graphql-yoga/plugin-apq": "catalog:",
+    "@pothos/core": "catalog:",
+    "@pothos/plugin-relay": "catalog:",
+    "drizzle-orm": "catalog:",
+    "file-type": "catalog:",
+    "graphql": "catalog:",
+    "graphql-yoga": "catalog:",
     "models": "workspace:^",
     "server-db": "workspace:^",
     "server-env": "workspace:^",
     "services": "workspace:^",
-    "sharp": "^0.34.0",
-    "zod": "^4.0.0"
+    "sharp": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "@types/node": "^24.0.0",
+    "@types/node": "catalog:",
     "tsconfig": "workspace:^",
-    "typescript": "^5.6.3"
+    "typescript": "catalog:"
   }
 }
