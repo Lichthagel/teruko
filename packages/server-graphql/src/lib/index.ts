@@ -23,7 +23,7 @@ const hasDimensions = (
 
 const toFilename = (basename: string) => `${basename}.avif`;
 
-const saveBlob = async (blob: Blob, basename: string) => {
+const saveBlob = async (blob: Blob, filename: string) => {
   const fileType = await fileTypeFromBlob(blob);
 
   if (
@@ -31,21 +31,12 @@ const saveBlob = async (blob: Blob, basename: string) => {
     || !/^image\/(?:jpeg|gif|png|webp|avif)$/.test(fileType.mime)
   ) { throw new GraphQLError("not an image"); }
 
-  const filename = toFilename(basename);
-
   // check for existing image
   if (
     await db.query.Image.findFirst({
       where: (images, { eq }) => eq(images.filename, filename),
     })
   ) { throw new GraphQLError("image with that filename already exists"); }
-
-  if (inUpload.includes(filename)) {
-    throw new GraphQLError("image is already being uploaded");
-  }
-
-  // upload image
-  inUpload.push(filename);
 
   const transform = sharp(await blob.arrayBuffer()).avif({ quality: 90 });
 
@@ -112,19 +103,29 @@ const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: sharp.Metadata & { w
     return image;
   });
 
-  inUpload.splice(inUpload.indexOf(filename), 1);
-
   return image;
 };
 
 export const processBlob = async (blob: Blob, basename: string, meta: ImageMeta) => {
-  const { metadata } = await saveBlob(blob, basename);
+  const filename = toFilename(basename);
+
+  if (inUpload.includes(filename)) {
+    throw new GraphQLError("image is already being uploaded");
+  }
+
+  inUpload.push(filename);
 
   try {
-    return await insertIntoDB(meta, metadata, toFilename(basename));
-  } catch (error) {
-    fs.rmSync(path.resolve(env.IMG_FOLDER, basename));
-    throw error;
+    const { metadata } = await saveBlob(blob, filename);
+
+    try {
+      return await insertIntoDB(meta, metadata, filename);
+    } catch (error) {
+      fs.rmSync(path.resolve(env.IMG_FOLDER, basename));
+      throw error;
+    }
+  } finally {
+    inUpload.splice(inUpload.indexOf(filename), 1);
   }
 };
 
