@@ -55,7 +55,7 @@ const parseCursor = (
   date: Date;
   id: string;
 } => {
-  const match = /^(?<date>[^-]+)-(?<id>[^-]+)$/.exec(decodeBase64(cursor));
+  const match = /^(?<date>[^;]+);(?<id>[^;]+)$/.exec(decodeBase64(cursor));
 
   if (!match || !match.groups) {
     throw new GraphQLError("Invalid cursor");
@@ -92,7 +92,7 @@ const images = (b: typeof builder) =>
           {
             args,
             toCursor: image =>
-              encodeBase64(`${image.createdAt.toISOString()}-${image.id}`),
+              encodeBase64(`${image.createdAt.toISOString()};${image.id}`),
           },
           async ({
             before,
