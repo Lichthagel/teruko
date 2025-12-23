@@ -97,11 +97,11 @@ catalogs:
       specifier: ^16.2.5
       version: 16.2.7
     lucide-svelte:
-      specifier: ^0.561.0
-      version: 0.561.0
+      specifier: ^0.562.0
+      version: 0.562.0
     lucide-vue-next:
-      specifier: ^0.561.0
-      version: 0.561.0
+      specifier: ^0.562.0
+      version: 0.562.0
     modern-normalize:
       specifier: ^3.0.1
       version: 3.0.1
@@ -254,7 +254,7 @@ importers:
         version: 17.0.0-alpha.9
       lucide-vue-next:
         specifier: 'catalog:'
-        version: 0.561.0(vue@3.5.25(typescript@5.9.3))
+        version: 0.562.0(vue@3.5.25(typescript@5.9.3))
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -309,7 +309,7 @@ importers:
         version: 0.45.0(@libsql/client@0.15.15)
       lucide-svelte:
         specifier: 'catalog:'
-        version: 0.561.0(svelte@5.45.5)
+        version: 0.562.0(svelte@5.45.5)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -4530,13 +4530,13 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-svelte@0.561.0:
-    resolution: {integrity: sha512-LxKemRvPNMNBjBa7JIVd4gZzBrTtwG1JA2ohpdM15jpQDcZCFWKyJz8eG1McaD0bq2weufkYSuVWQLclmmdUlw==}
+  lucide-svelte@0.562.0:
+    resolution: {integrity: sha512-kSJDH/55lf0mun/o4nqWBXOcq0fWYzPeIjbTD97ywoeumAB9kWxtM06gC7oynqjtK3XhAljWSz5RafIzPEYIQA==}
     peerDependencies:
       svelte: ^3 || ^4 || ^5.0.0-next.42
 
-  lucide-vue-next@0.561.0:
-    resolution: {integrity: sha512-c5HUckO0qHklVSOf/0vaSR3pEb8fYImRDCRDLde56uqS9js0D/e3RAvq0/YFWjkmyOBKCb0/IdskdoHZQEkT5g==}
+  lucide-vue-next@0.562.0:
+    resolution: {integrity: sha512-LN0BLGKMFulv0lnfK29r14DcngRUhIqdcaL0zXTt2o0oS9odlrjCGaU3/X9hIihOjjN8l8e+Y9G/famcNYaI7Q==}
     peerDependencies:
       vue: '>=3.0.1'
 
@@ -10551,11 +10551,11 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-svelte@0.561.0(svelte@5.45.5):
+  lucide-svelte@0.562.0(svelte@5.45.5):
     dependencies:
       svelte: 5.45.5
 
-  lucide-vue-next@0.561.0(vue@3.5.25(typescript@5.9.3)):
+  lucide-vue-next@0.562.0(vue@3.5.25(typescript@5.9.3)):
     dependencies:
       vue: 3.5.25(typescript@5.9.3)
 
