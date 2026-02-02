@@ -14,8 +14,7 @@
   $: suggestionsResult = suggestionsStore(client, tagInput);
 
   $: fetching = $suggestionsResult.fetching;
-  // eslint-disable-next-line no-unused-vars, unused-imports/no-unused-vars
-  $: error = $suggestionsResult.error; // TODO: Handle error
+  // $: error = $suggestionsResult.error; // TODO: Handle error
   $: suggestions = $suggestionsResult.suggestions;
 
   const handleSubmit = () => {
