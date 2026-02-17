@@ -97,11 +97,11 @@ catalogs:
       specifier: ^16.2.5
       version: 16.2.7
     lucide-svelte:
-      specifier: ^0.564.0
-      version: 0.564.0
+      specifier: ^0.574.0
+      version: 0.574.0
     lucide-vue-next:
-      specifier: ^0.564.0
-      version: 0.564.0
+      specifier: ^0.574.0
+      version: 0.574.0
     modern-normalize:
       specifier: ^3.0.1
       version: 3.0.1
@@ -254,7 +254,7 @@ importers:
         version: 17.0.0-alpha.9
       lucide-vue-next:
         specifier: 'catalog:'
-        version: 0.564.0(vue@3.5.27(typescript@5.9.3))
+        version: 0.574.0(vue@3.5.27(typescript@5.9.3))
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -309,7 +309,7 @@ importers:
         version: 0.45.1(@libsql/client@0.17.0)
       lucide-svelte:
         specifier: 'catalog:'
-        version: 0.564.0(svelte@5.50.0)
+        version: 0.574.0(svelte@5.50.0)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -4870,13 +4870,13 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-svelte@0.564.0:
-    resolution: {integrity: sha512-jeubFecyzbeze/Zwu5pFHHrv/u8OtiZ7VesXXus4cAnfRQlmb8TDtiC5gb485z8e4aAqe8FF7I0OVB/TDFAggg==}
+  lucide-svelte@0.574.0:
+    resolution: {integrity: sha512-KhMbh4uFO8jm60bYPWHV5GmNy1P5hs1M6BfDYUjw0CZ5tJoJ+lMzAdTBBb9L+Gj3xOlHIgjsLMVnjQK3qcWrEA==}
     peerDependencies:
       svelte: ^3 || ^4 || ^5.0.0-next.42
 
-  lucide-vue-next@0.564.0:
-    resolution: {integrity: sha512-Zf51QMPVsRPpAmlVdzzp3vUofPMgxxRd/33O+7YsTCC2Aw9J5bSnJg2ZToMZ7SHkXkeDfvpWRZuRSU0+nK2okQ==}
+  lucide-vue-next@0.574.0:
+    resolution: {integrity: sha512-WzsTQJ2YLINuGeN2iM2fmhHmgkyhGdAADbiXnbAvOuizry4ISFbE2oQGRz3ExjwK3wunW9oGe9EC8WNiXW2b9A==}
     peerDependencies:
       vue: '>=3.0.1'
 
@@ -6366,6 +6366,7 @@ packages:
   tar@7.5.7:
     resolution: {integrity: sha512-fov56fJiRuThVFXD6o6/Q354S7pnWMJIVlDBYijsTNx6jKSE4pvrDTs6lUnmGvNyfJwFQQwWy3owKz1ucIhveQ==}
     engines: {node: '>=18'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   terser@5.46.0:
     resolution: {integrity: sha512-jTwoImyr/QbOWFFso3YoU3ik0jBBDJ6JTOQiy/J2YxVJdZCc+5u7skhNwiOR3FQIygFqVUPHl7qbbxtjW2K3Qg==}
@@ -11047,11 +11048,11 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-svelte@0.564.0(svelte@5.50.0):
+  lucide-svelte@0.574.0(svelte@5.50.0):
     dependencies:
       svelte: 5.50.0
 
-  lucide-vue-next@0.564.0(vue@3.5.27(typescript@5.9.3)):
+  lucide-vue-next@0.574.0(vue@3.5.27(typescript@5.9.3)):
     dependencies:
       vue: 3.5.27(typescript@5.9.3)
 
