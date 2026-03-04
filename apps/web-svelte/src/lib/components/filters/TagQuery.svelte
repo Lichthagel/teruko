@@ -2,10 +2,10 @@
   import type { TagExt } from "models";
 
   import StatusBar from "$lib/components/status/StatusBar.svelte";
+  import { X } from "@lucide/svelte";
   import { getContextClient, gql, queryStore } from "@urql/svelte";
   import styles from "client-css/m/filters.module.scss";
   import { tagsStore } from "client-stores";
-  import X from "lucide-svelte/icons/x";
 
   type Props = {
     tag: string;

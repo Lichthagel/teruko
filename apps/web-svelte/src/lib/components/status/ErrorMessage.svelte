@@ -1,7 +1,7 @@
 <script lang="ts">
   import { resolve } from "$app/paths";
+  import { House } from "@lucide/svelte";
   import styles from "client-css/m/error.module.scss";
-  import Home from "lucide-svelte/icons/home";
 
   type Props = {
     error?: Error;
@@ -22,7 +22,7 @@
   <div class="container">
     <div class={styles.above}>
       <a href={resolve("/", {})}>
-        <Home />
+        <House />
         <span>return home</span>
       </a>
     </div>

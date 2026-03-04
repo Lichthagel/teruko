@@ -7,9 +7,9 @@
   import ErrorMessage from "$lib/components/status/ErrorMessage.svelte";
   import StatusBar from "$lib/components/status/StatusBar.svelte";
   import TagChip from "$lib/components/TagChip.svelte";
+  import { Download } from "@lucide/svelte";
   import { getContextClient, gql, queryStore } from "@urql/svelte";
   import styles from "client-css/m/imagepage.module.scss";
-  import DownloadIcon from "lucide-svelte/icons/download";
 
   const { id } = page.params;
 
@@ -38,8 +38,8 @@
     variables: { id },
   });
 
-  $: image = $result.data?.image;
-  $: fileExt = image?.filename.split(".").pop();
+  const image = $derived($result.data?.image);
+  const fileExt = $derived(image?.filename.split(".").pop());
 
   const scroll: EventHandler = (e) => {
     (e.target as HTMLElement).scrollIntoView({
@@ -59,7 +59,7 @@
       alt={image.title ?? image.filename}
       class={styles.image}
       height={image.height}
-      on:load={scroll}
+      onload={scroll}
       src={`/img/${image.filename}`}
       width={image.width}
     />
@@ -98,7 +98,7 @@
           </div>
 
           <a class={styles["meta-dlicon"]} href={resolve("/[id]/original", { id: `${image.id}` })}>
-            <DownloadIcon class={styles.icon} />
+            <Download class={styles.icon} />
             <span>
               {fileExt}
             </span>
@@ -106,7 +106,7 @@
 
           {#if !!fileExt && fileExt !== "avif"}
             <a class={styles["meta-dlicon"]} href={resolve("/[id]/avif", { id: `${image.id}` })}>
-              <DownloadIcon class={styles.icon} />
+              <Download class={styles.icon} />
               <span>
                 avif
               </span>
@@ -114,7 +114,7 @@
           {/if}
 
           <a class={styles["meta-dlicon"]} href={resolve("/[id]/webp", { id: `${image.id}` })}>
-            <DownloadIcon class={styles.icon} />
+            <Download class={styles.icon} />
             <span>
               webp
             </span>

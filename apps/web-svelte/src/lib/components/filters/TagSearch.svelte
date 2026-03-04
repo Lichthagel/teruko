@@ -1,21 +1,20 @@
 <script lang="ts">
   import suggestionsStore from "$lib/suggestionsStore.js";
+  import { LoaderCircle, Search } from "@lucide/svelte";
   import { getContextClient } from "@urql/svelte";
   import styles from "client-css/m/filters.module.scss";
   import { tagsStore } from "client-stores";
-  import Loader2 from "lucide-svelte/icons/loader-2";
-  import Search from "lucide-svelte/icons/search";
 
   const client = getContextClient();
 
-  let tagInput = "";
-  let activeSuggestion = 0;
+  let tagInput = $state("");
+  let activeSuggestion = $state(0);
 
-  $: suggestionsResult = suggestionsStore(client, tagInput);
+  const suggestionsResult = $derived(suggestionsStore(client, tagInput));
 
-  $: fetching = $suggestionsResult.fetching;
+  const fetching = $derived($suggestionsResult.fetching);
   // $: error = $suggestionsResult.error; // TODO: Handle error
-  $: suggestions = $suggestionsResult.suggestions;
+  const suggestions = $derived($suggestionsResult.suggestions);
 
   const handleSubmit = () => {
     const suggestion = suggestions[activeSuggestion];
@@ -76,26 +75,26 @@
 
   <input
     bind:value={tagInput}
-    on:keydown={handleKeyDown}
+    onkeydown={handleKeyDown}
     placeholder="Search..."
     type="text"
   />
 
   {#if fetching}
     <div class={styles["suggestions-loading"]}>
-      <Loader2 class={styles.icon} />
+      <LoaderCircle class={styles.icon} />
     </div>
   {/if}
 
   {#if suggestions.length > 0}
     <ul class={styles["suggestions-container"]}>
       {#each suggestions as suggestion, index (suggestion.slug)}
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
+        <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
         <li
           class={index === activeSuggestion ? styles.active : undefined}
-          on:click={() => handleSubmit()}
-          on:mouseenter={() => (activeSuggestion = index)}
+          onclick={() => handleSubmit()}
+          onmouseenter={() => (activeSuggestion = index)}
           style:background-color={(index === activeSuggestion && suggestion.category && suggestion.category.color) || undefined}
           style:color={(index !== activeSuggestion && suggestion.category && suggestion.category.color) || undefined}
         >

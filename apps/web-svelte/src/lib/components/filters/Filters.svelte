@@ -1,13 +1,15 @@
 <script lang="ts">
-  import styles from "client-css/m/filters.module.scss";
-  import { tagsStore } from "client-stores";
-  import ListX from "lucide-svelte/icons/list-x";
+  import { ListX } from "@lucide/svelte";
 
+  import styles from "client-css/m/filters.module.scss";
+
+  import { tagsStore } from "client-stores";
   import SortSelect from "./SortSelect.svelte";
   import TagQuery from "./TagQuery.svelte";
   import TagSearch from "./TagSearch.svelte";
 
-  const resetTags = () => {
+  const resetTags = (event: Event) => {
+    event.preventDefault();
     tagsStore.set([]);
   };
 </script>
@@ -19,7 +21,7 @@
         <TagQuery {tag} />
       {/each}
       <div class={[styles["tag-query"], styles.reset]}>
-        <button on:click|preventDefault={resetTags}>
+        <button onclick={resetTags}>
           <ListX />
         </button>
       </div>

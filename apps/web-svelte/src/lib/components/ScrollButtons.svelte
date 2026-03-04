@@ -1,7 +1,6 @@
 <script lang="ts">
+  import { ChevronDown, ChevronUp } from "@lucide/svelte";
   import styles from "client-css/m/scrollbuttons.module.scss";
-  import ChevronDown from "lucide-svelte/icons/chevron-down";
-  import ChevronUp from "lucide-svelte/icons/chevron-up";
 
   let showToTop = $state(false);
   let showToBottom = $state(false);
@@ -12,7 +11,7 @@
   };
 </script>
 
-<svelte:window on:scroll={onScroll} />
+<svelte:window onscroll={onScroll} />
 
 <div class={styles.buttons}>
   <button

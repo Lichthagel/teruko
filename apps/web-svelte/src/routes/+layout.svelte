@@ -4,9 +4,15 @@
   import { urqlClient } from "client-graphql";
   import "client-css/global.scss";
 
+  type Props = {
+    children?: import("svelte").Snippet;
+  };
+
+  const { children }: Props = $props();
+
   setContextClient(urqlClient);
 </script>
 
 <Nav />
 
-<slot />
+{@render children?.()}

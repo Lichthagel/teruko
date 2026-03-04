@@ -1,12 +1,15 @@
 <script lang="ts">
   import type { FormEventHandler } from "svelte/elements";
 
+  import { ArrowDownNarrowWide } from "@lucide/svelte";
+
   import styles from "client-css/m/filters.module.scss";
   import { sortStore } from "client-stores";
-  import ArrowDownNarrowWide from "lucide-svelte/icons/arrow-down-narrow-wide";
   import { zImageSort } from "models";
 
   const handleInput: FormEventHandler<HTMLSelectElement> = (event) => {
+    event.preventDefault();
+
     const parsedSort = zImageSort.parse(event.currentTarget.value);
 
     sortStore.set(parsedSort);
@@ -17,7 +20,7 @@
   <ArrowDownNarrowWide class={styles.icon} />
 
   <select
-    on:input|preventDefault={handleInput}
+    oninput={handleInput}
     value={$sortStore || "NEWEST"}
   >
     <option value="NEWEST">newest</option>

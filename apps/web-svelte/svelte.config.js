@@ -16,6 +16,10 @@ const config = {
       trustedOrigins: ["*"],
     },
   },
+
+  compilerOptions: {
+    runes: true,
+  },
 };
 
 export default config;
