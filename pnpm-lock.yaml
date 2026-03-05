@@ -6,9 +6,42 @@ settings:
 
 catalogs:
   default:
+    '@antfu/eslint-config':
+      specifier: ^7.0.0
+      version: 7.6.1
+    '@catppuccin/palette':
+      specifier: ^1.7.1
+      version: 1.7.1
+    '@envelop/graphql-jit':
+      specifier: ^11.0.0
+      version: 11.1.1
+    '@fontsource-variable/gabarito':
+      specifier: ^5.1.1
+      version: 5.2.8
+    '@fontsource-variable/noto-sans-jp':
+      specifier: ^5.1.1
+      version: 5.2.10
+    '@graphql-yoga/plugin-apq':
+      specifier: ^3.8.0
+      version: 3.18.0
+    '@libsql/client':
+      specifier: ^0.17.0
+      version: 0.17.0
     '@lucide/svelte':
       specifier: ^0.577.0
       version: 0.577.0
+    '@nanostores/vue':
+      specifier: ^1.0.0
+      version: 1.0.1
+    '@nuxt/devtools':
+      specifier: ^3.0.0
+      version: 3.2.2
+    '@pothos/core':
+      specifier: ^4.3.0
+      version: 4.12.0
+    '@pothos/plugin-relay':
+      specifier: ^4.3.0
+      version: 4.7.0
     '@sveltejs/adapter-node':
       specifier: ^5.2.9
       version: 5.5.4
@@ -21,18 +54,90 @@ catalogs:
     '@types/node':
       specifier: ^24.0.0
       version: 24.11.0
+    '@urql/core':
+      specifier: ^6.0.0
+      version: 6.0.1
+    '@urql/exchange-graphcache':
+      specifier: ^9.0.0
+      version: 9.0.0
     '@urql/svelte':
       specifier: ^5.0.0
       version: 5.0.0
+    '@urql/vue':
+      specifier: ^2.0.0
+      version: 2.0.0
+    autoprefixer:
+      specifier: ^10.4.20
+      version: 10.4.27
+    dotenv:
+      specifier: ^17.0.0
+      version: 17.3.1
+    drizzle-kit:
+      specifier: ^0.31.0
+      version: 0.31.9
     drizzle-orm:
       specifier: ^0.45.0
       version: 0.45.1
+    eslint:
+      specifier: ^10.0.0
+      version: 10.0.2
+    eslint-plugin-solid:
+      specifier: ^0.14.5
+      version: 0.14.5
+    eslint-plugin-svelte:
+      specifier: ^3.12.5
+      version: 3.15.0
+    file-type:
+      specifier: ^21.0.0
+      version: 21.3.0
+    graphql-yoga:
+      specifier: ^5.8.0
+      version: 5.18.0
+    husky:
+      specifier: ^9.1.6
+      version: 9.1.7
+    lint-staged:
+      specifier: ^16.2.5
+      version: 16.3.1
+    lucide-vue-next:
+      specifier: ^0.576.0
+      version: 0.576.0
+    modern-normalize:
+      specifier: ^3.0.1
+      version: 3.0.1
+    nanostores:
+      specifier: ^1.0.0
+      version: 1.1.1
+    nuxt:
+      specifier: ^4.0.0
+      version: 4.3.1
+    nx:
+      specifier: 22.5.3
+      version: 22.5.3
+    postcss:
+      specifier: ^8.4.47
+      version: 8.5.6
+    postcss-load-config:
+      specifier: ^6.0.1
+      version: 6.0.1
     sass-embedded:
       specifier: ^1.83.0
       version: 1.97.3
     sharp:
       specifier: ^0.34.0
       version: 0.34.5
+    solid-element:
+      specifier: ^1.9.1
+      version: 1.9.1
+    solid-js:
+      specifier: ^1.9.3
+      version: 1.9.11
+    stylelint:
+      specifier: ^17.0.0
+      version: 17.4.0
+    stylelint-config-standard-scss:
+      specifier: ^17.0.0
+      version: 17.0.0
     svelte:
       specifier: ^5.53.5
       version: 5.53.6
@@ -45,9 +150,18 @@ catalogs:
     typescript:
       specifier: ^5.6.3
       version: 5.9.3
+    typescript-eslint:
+      specifier: ^8.12.2
+      version: 8.56.1
     vite:
       specifier: ^7.0.0
       version: 7.3.1
+    vite-plugin-monkey:
+      specifier: ^7.0.0
+      version: 7.1.9
+    vite-plugin-solid:
+      specifier: ^2.10.2
+      version: 2.11.10
     zod:
       specifier: ^4.0.0
       version: 4.3.6
