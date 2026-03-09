@@ -14,6 +14,8 @@ import {
 import env from "server-env";
 import sharp from "sharp";
 
+const mimeTypeRegex = /^image\/(?:jpeg|gif|png|webp|avif)$/;
+
 const inUpload: string[] = [];
 
 const hasDimensions = (
@@ -28,7 +30,7 @@ const saveBlob = async (blob: Blob, filename: string) => {
 
   if (
     !fileType
-    || !/^image\/(?:jpeg|gif|png|webp|avif)$/.test(fileType.mime)
+    || !mimeTypeRegex.test(fileType.mime)
   ) { throw new GraphQLError("not an image"); }
 
   // check for existing image
@@ -129,8 +131,10 @@ export const processBlob = async (blob: Blob, basename: string, meta: ImageMeta)
   }
 };
 
+const fileExtensionRegex = /\.[^.]+$/;
+
 export const processFile = async (file: File, meta: ImageMeta) => {
-  const basename = file.name.replace(/\.[^.]+$/, "");
+  const basename = file.name.replace(fileExtensionRegex, "");
 
   return processBlob(file, basename, meta);
 };

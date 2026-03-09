@@ -5,6 +5,8 @@ import { db, dImage } from "server-db";
 import env from "server-env";
 import { z } from "zod";
 
+const fileExtensionRegex = /[^./\\]+$/;
+
 export const defineDownloadEventHandler = (getData: (filepath: string) => Promise<Readable | globalThis.ReadableStream>, fileType?: "avif" | "webp") => (
   defineEventHandler(async (event) => {
     const { id } = z.object({ id: z.coerce.number().int() }).parse(event.context.params);
@@ -26,7 +28,7 @@ export const defineDownloadEventHandler = (getData: (filepath: string) => Promis
 
     const filepath = path.resolve(env.IMG_FOLDER as string, filename);
 
-    const respFilename = fileType ? filename.replace(/[^./\\]+$/, fileType) : filename;
+    const respFilename = fileType ? filename.replace(fileExtensionRegex, fileType) : filename;
 
     event.node.res.setHeader(
       "Content-Disposition",
