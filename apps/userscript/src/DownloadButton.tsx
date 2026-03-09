@@ -3,7 +3,7 @@ import { getPixivMetadata } from "services/pixiv";
 import { customElement } from "solid-element";
 import { createSignal } from "solid-js";
 
-import { CREATE_IMAGE, TERUKO_BASE_URL } from "./constants.js";
+import { CREATE_IMAGE, TERUKO_BASE_URL, TERUKO_BASIC_AUTH } from "./constants.js";
 import styles from "./style.css?inline";
 
 type Props = {
@@ -67,6 +67,7 @@ const DownloadButton: Component<Props> = (props) => {
         body: formData,
         headers: {
           "Apollo-Require-Preflight": "true",
+          ...(TERUKO_BASIC_AUTH ? { Authorization: `Basic ${TERUKO_BASIC_AUTH}` } : {}),
         },
       })
         .then(async res => res.json() as Promise<{
