@@ -6,6 +6,8 @@ import { db, dImage } from "server-db";
 import env from "server-env";
 import { z } from "zod";
 
+const fileExtensionRegex = /[^./\\]+$/;
+
 export const defineDownloadRequestHandler = (getData: (filepath: string) => Promise<BodyInit>, fileType?: "avif" | "webp") => (
     (async ({ params }): Promise<Response> => {
       const { id } = z.object({ id: z.coerce.number().int() }).parse(params);
@@ -28,7 +30,7 @@ export const defineDownloadRequestHandler = (getData: (filepath: string) => Prom
 
       const responseFilename = fileType
         ? filename.replace(
-            /[^./\\]+$/,
+            fileExtensionRegex,
             fileType,
           )
         : filename;

@@ -2,8 +2,10 @@ import type { ImageMeta } from "models";
 
 import type { PixivIllustResult } from "./PixivIllustResult.js";
 
+const filenameRegex = /(\d+)_p\d+\.(?:jpg|png|gif|jpeg|webp|avif)/;
+
 export const matchFilename = (filename: string) => {
-  const matches = filename.match(/(\d+)_p\d+\.(?:jpg|png|gif|jpeg|webp|avif)/);
+  const matches = filename.match(filenameRegex);
   if (matches) {
     return matches[1];
   }

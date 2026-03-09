@@ -49,13 +49,15 @@ const shouldIncludeTags = (info: GraphQLResolveInfo) =>
       ),
   );
 
+const cursorRegex = /^(?<date>[^;]+);(?<id>[^;]+)$/;
+
 const parseCursor = (
   cursor: string,
 ): {
   date: Date;
   id: string;
 } => {
-  const match = /^(?<date>[^;]+);(?<id>[^;]+)$/.exec(decodeBase64(cursor));
+  const match = cursorRegex.exec(decodeBase64(cursor));
 
   if (!match || !match.groups) {
     throw new GraphQLError("Invalid cursor");
