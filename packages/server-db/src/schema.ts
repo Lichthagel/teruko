@@ -21,9 +21,9 @@ export const dImage = pgTable(
     height: integer("height").notNull(),
     width: integer("width").notNull(),
   },
-  table => (
-    [index("Image_createdAt_idx").on(table.createdAt)]
-  ),
+  table => ([
+    index("Image_createdAt_idx").on(table.createdAt),
+  ]),
 );
 
 export const ImageRelations = relations(dImage, ({ many }) => ({
@@ -107,9 +107,9 @@ export const dTagRule = sqliteTable(
       onUpdate: "cascade",
     }),
   },
-  table => ({
-    otherTagIdIdx: index("TagRule_otherTagId_idx").on(table.otherTagId),
-  }),
+  table => ([
+    index("TagRule_otherTagId_idx").on(table.otherTagId),
+  ]),
 );
 
 export const TagRuleRelations = relations(dTagRule, ({ one }) => ({
