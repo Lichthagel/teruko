@@ -93,6 +93,36 @@ export const _ImageToTagRelations = relations(d_ImageToTag, ({ one }) => ({
   }),
 }));
 
+export const dTagRule = sqliteTable(
+  "TagRule",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    tagId: integer("tagId").notNull().references(() => dTag.id, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    }),
+    ruleKind: text("ruleKind", { enum: ["implies", "delete"] }).notNull(),
+    otherTagId: integer("otherTagId").references(() => dTag.id, {
+      onDelete: "no action",
+      onUpdate: "cascade",
+    }),
+  },
+  table => ({
+    otherTagIdIdx: index("TagRule_otherTagId_idx").on(table.otherTagId),
+  }),
+);
+
+export const TagRuleRelations = relations(dTagRule, ({ one }) => ({
+  tag: one(dTag, {
+    fields: [dTagRule.tagId],
+    references: [dTag.id],
+  }),
+  otherTag: one(dTag, {
+    fields: [dTagRule.otherTagId],
+    references: [dTag.id],
+  }),
+}));
+
 const schema = {
   Image: dImage,
   ImageRelations,
@@ -102,6 +132,8 @@ const schema = {
   TagCategoryRelations,
   _ImageToTag: d_ImageToTag,
   _ImageToTagRelations,
+  TagRule: dTagRule,
+  TagRuleRelations,
 };
 
 export default schema;
