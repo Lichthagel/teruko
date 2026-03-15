@@ -15,6 +15,5 @@
 <Select
   options={[{ value: "NEWEST", label: "newest" }, { value: "OLDEST", label: "oldest" }, { value: "RANDOM", label: "random" }]}
   icon={ArrowDownNarrowWide}
-  value={filters.sort}
-  {setValue}
+  bind:value={() => filters.sort, v => setValue(v)}
 />

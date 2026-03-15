@@ -2,11 +2,10 @@
   import { Icon as IconType } from "@lucide/svelte";
   import styles from "client-css/m/select.module.scss";
 
-  let { icon, options, value = $bindable(), setValue }: {
+  let { icon, options, value = $bindable() }: {
     icon?: typeof IconType;
     options: (string | { value: string; label: string })[];
     value?: string;
-    setValue?: (value?: string) => void;
   } = $props();
 
 </script>
@@ -17,15 +16,7 @@
     <Icon class={styles.icon} />
   {/if}
 
-  <select
-    oninput={(event) => {
-      if (setValue) {
-        event.preventDefault();
-        setValue(event.currentTarget.value);
-      }
-    }}
-    value={value}
-  >
+  <select bind:value={value}>
     {#each options as option (typeof option === "string" ? option : option.value)}
       <option value={typeof option === "string" ? option : option.value}>{typeof option === "string" ? option : option.label}</option>
     {/each}

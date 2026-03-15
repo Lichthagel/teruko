@@ -70,8 +70,7 @@
   {/if}
   <Select
     options={availableRuleKinds}
-    value={ruleKind}
-    setValue={v => ruleKind = v as TagRule["kind"]}
+    bind:value={ruleKind}
   />
   {#if mode === "outgoing"}
     <Input type="text" placeholder="Tag Slug" bind:value={otherTagSlug} disabled={ruleKind === "remove"} />
