@@ -103,10 +103,10 @@ const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: sharp.Metadata & { w
       );
     }
 
-    applyTagRulesToImage(image.id);
-
     return image;
   });
+
+  applyTagRulesToImage(image.id);
 
   return image;
 };
