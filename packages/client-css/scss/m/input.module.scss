@@ -1,0 +1,27 @@
+@use "../variables";
+
+.container {
+  position: relative;
+  display: inline-flex;
+  height: variables.$item-height;
+  align-items: center;
+  gap: variables.$gap;
+  border-radius: variables.$radius;
+  background-color: var(--mantle);
+  padding-inline: variables.$size-2;
+
+  &:focus-within {
+    outline: var(--pink) solid 2px;
+  }
+
+  input {
+    height: 100%;
+    background-color: transparent;
+    border-width: 0;
+    color: var(--text);
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
