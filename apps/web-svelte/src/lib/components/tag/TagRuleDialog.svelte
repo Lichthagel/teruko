@@ -1,10 +1,8 @@
 <script lang="ts">
   import type { TagRuleExt } from "models";
-  import { Plus } from "@lucide/svelte";
   import { getContextClient, gql, queryStore } from "@urql/svelte";
-  import Button from "../common/Button.svelte";
-  import Select from "../common/Select.svelte";
   import Dialog from "../Dialog.svelte";
+  import TagRuleAddRow from "./TagRuleAddRow.svelte";
   import TagRuleRow from "./TagRuleRow.svelte";
 
   let { open = $bindable(false), slug }: { open?: boolean; slug: string } = $props();
@@ -67,14 +65,7 @@
     {#if !$result.data?.tag.rules.length}
       <span>No rules</span>
     {/if}
-    <div class="row">
-      <Select
-        options={["implies", "delete"]}
-        value="implies"
-      />
-      <div>TODO</div>
-      <Button style="flex-grow: 0;" icon={Plus} />
-    </div>
+    <TagRuleAddRow mode="outgoing" tagSlug={slug} />
   </div>
 
   <h2>Incoming rules</h2>
@@ -85,14 +76,7 @@
     {#if !$result.data?.tag.referencingRules.length}
       <span>No rules</span>
     {/if}
-    <div class="row">
-      <div>TODO</div>
-      <Select
-        options={["implies"]}
-        value="implies"
-      />
-      <Button style="flex-grow: 0;" icon={Plus} />
-    </div>
+    <TagRuleAddRow mode="incoming" otherTagSlug={slug} />
   </div>
 </Dialog>
 
@@ -101,16 +85,6 @@
   display: flex;
   flex-direction: column;
   gap: .5rem;
-}
-
-.row {
-  display: flex;
-  gap: .5rem;
-  align-items: center;
-
-  :global * {
-    flex: 1 0;
-  }
 }
 
 :global .tag-dialog {
