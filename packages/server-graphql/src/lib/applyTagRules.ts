@@ -3,17 +3,6 @@ import { alias } from "drizzle-orm/sqlite-core";
 import { d_ImageToTag, db, dTagRule } from "server-db";
 
 export const applyTagRulesToImage = async (imageId: number) => {
-  const resRemove = await db
-    .delete(d_ImageToTag)
-    .where(and(
-      eq(d_ImageToTag.imageId, imageId),
-      inArray(
-        d_ImageToTag.tagId,
-        db.select({ tagId: dTagRule.tagId }).from(dTagRule).where(eq(dTagRule.ruleKind, "remove")),
-      ),
-    ))
-    .returning();
-
   const resImplies = await db
     .insert(d_ImageToTag)
     .select(
@@ -37,8 +26,18 @@ export const applyTagRulesToImage = async (imageId: number) => {
           )),
         )),
     )
-    .returning()
-  ;
+    .returning();
+
+  const resRemove = await db
+    .delete(d_ImageToTag)
+    .where(and(
+      eq(d_ImageToTag.imageId, imageId),
+      inArray(
+        d_ImageToTag.tagId,
+        db.select({ tagId: dTagRule.tagId }).from(dTagRule).where(eq(dTagRule.ruleKind, "remove")),
+      ),
+    ))
+    .returning();
 
   return {
     removed: resRemove.map(row => row.tagId),
@@ -47,13 +46,6 @@ export const applyTagRulesToImage = async (imageId: number) => {
 };
 
 export const applyTagRulesAll = async () => {
-  const resRemove = await db
-    .delete(d_ImageToTag)
-    .where(inArray(
-      d_ImageToTag.tagId,
-      db.select({ tagId: dTagRule.tagId }).from(dTagRule).where(eq(dTagRule.ruleKind, "remove")),
-    ));
-
   const dOther_ImageToTag = alias(d_ImageToTag, "Other_ImageToTag");
 
   const resImplies = await db
@@ -77,8 +69,14 @@ export const applyTagRulesAll = async () => {
             db.select({ tagId: d_ImageToTag.tagId }).from(d_ImageToTag).where(eq(d_ImageToTag.imageId, dOther_ImageToTag.imageId)),
           )),
         )),
-    )
-  ;
+    );
+
+  const resRemove = await db
+    .delete(d_ImageToTag)
+    .where(inArray(
+      d_ImageToTag.tagId,
+      db.select({ tagId: dTagRule.tagId }).from(dTagRule).where(eq(dTagRule.ruleKind, "remove")),
+    ));
 
   return {
     removed: resRemove.rowsAffected,
