@@ -4,8 +4,8 @@
   import { Plus } from "@lucide/svelte";
   import { getContextClient, gql, mutationStore } from "@urql/svelte";
   import Button from "../common/Button.svelte";
-  import Input from "../common/Input.svelte";
   import Select from "../common/Select.svelte";
+  import TagInput from "../common/TagInput.svelte";
 
   const { mode, ...restProps }: { mode: "outgoing"; tagSlug: string } | { mode: "incoming"; otherTagSlug: string } = $props();
 
@@ -66,14 +66,16 @@
 
 <div class="row">
   {#if mode === "incoming"}
-    <Input type="text" placeholder="Tag Slug" bind:value={tagSlug} />
+    <!-- <Input type="text" placeholder="Tag Slug" bind:value={tagSlug} /> -->
+    <TagInput tagInput={tagSlug} clearOnSubmit={false} onSubmit={v => tagSlug = v} />
   {/if}
   <Select
     options={availableRuleKinds}
     bind:value={ruleKind}
   />
   {#if mode === "outgoing"}
-    <Input type="text" placeholder="Tag Slug" bind:value={otherTagSlug} disabled={ruleKind === "remove"} />
+    <!-- <Input type="text" placeholder="Tag Slug" bind:value={otherTagSlug} disabled={ruleKind === "remove"} /> -->
+    <TagInput tagInput={otherTagSlug} clearOnSubmit={false} onSubmit={v => otherTagSlug = v} />
   {/if}
   <Button
     style="flex-grow: 0;"

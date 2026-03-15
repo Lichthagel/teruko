@@ -89,5 +89,6 @@
 
 :global .tag-dialog {
   width: 50rem;
+  padding-bottom: 5rem;
 }
 </style>
