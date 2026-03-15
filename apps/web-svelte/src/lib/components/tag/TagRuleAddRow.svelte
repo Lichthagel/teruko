@@ -17,10 +17,6 @@
 
   let result = $state<OperationResultStore<{ createTagRule: Pick<TagRule, "id" | "kind"> & { tag: { slug: string }; otherTag?: { slug: string } } }>>();
   const createRule = () => {
-    if (!tagSlug.length || !otherTagSlug.length) {
-      return;
-    }
-
     result = mutationStore({
       client,
       query: gql`
@@ -49,6 +45,8 @@
     });
   };
 
+  const availableRuleKinds = $derived<TagRule["kind"][]>(mode === "outgoing" ? ["implies", "remove"] : ["implies"]);
+
   $effect(() => {
     if ("tagSlug" in restProps) {
       tagSlug = restProps.tagSlug;
@@ -58,6 +56,12 @@
       otherTagSlug = restProps.otherTagSlug;
     }
   });
+
+  $effect(() => {
+    if (ruleKind === "remove") {
+      otherTagSlug = "";
+    }
+  });
 </script>
 
 <div class="row">
@@ -65,12 +69,12 @@
     <Input type="text" placeholder="Tag Slug" bind:value={tagSlug} />
   {/if}
   <Select
-    options={mode === "outgoing" ? ["implies", "delete"] : ["implies"]}
+    options={availableRuleKinds}
     value={ruleKind}
     setValue={v => ruleKind = v as TagRule["kind"]}
   />
   {#if mode === "outgoing"}
-    <Input type="text" placeholder="Tag Slug" bind:value={otherTagSlug} />
+    <Input type="text" placeholder="Tag Slug" bind:value={otherTagSlug} disabled={ruleKind === "remove"} />
   {/if}
   <Button
     style="flex-grow: 0;"
