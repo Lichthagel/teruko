@@ -1,8 +1,9 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
+  import type { HTMLDialogAttributes } from "svelte/elements";
   import styles from "client-css/m/dialog.module.scss";
 
-  let { children, open = $bindable(false) }: { children: Snippet; open?: boolean } = $props();
+  let { children, open = $bindable(false), class: className, ...restProps }: { children: Snippet; open?: boolean } & HTMLDialogAttributes = $props();
 
   let dialogRef = $state<HTMLDialogElement>();
 
@@ -18,7 +19,7 @@
 </script>
 
 {#if open}
-  <dialog class={styles.dialog} bind:this={dialogRef} closedby="any" onclose={() => open = false}>
+  <dialog class={[className, styles.dialog]} bind:this={dialogRef} closedby="any" onclose={() => open = false} {...restProps}>
     {@render children?.()}
   </dialog>
 {/if}
