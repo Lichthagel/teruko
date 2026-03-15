@@ -14,6 +14,16 @@ export const urqlClient = new Client({
         TagRule: data => (data.id)?.toString() ?? null,
       },
       resolvers,
+      updates: {
+        Mutation: {
+          deleteTagRule: (_result, args, cache, _info) => {
+            cache.invalidate({
+              __typename: "TagRule",
+              id: args.id as number,
+            });
+          },
+        },
+      },
     }),
     fetchExchange,
   ],

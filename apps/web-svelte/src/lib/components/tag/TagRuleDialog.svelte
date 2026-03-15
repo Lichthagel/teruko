@@ -5,6 +5,7 @@
   import Button from "../common/Button.svelte";
   import Select from "../common/Select.svelte";
   import Dialog from "../Dialog.svelte";
+  import TagRuleRow from "./TagRuleRow.svelte";
 
   let { open = $bindable(false), slug }: { open?: boolean; slug: string } = $props();
 
@@ -17,7 +18,7 @@
         tag(slug: $slug) {
           slug
           rules {
-            _id
+            id
             tag {
               slug
               category {
@@ -33,7 +34,7 @@
             kind
           }
           referencingRules {
-            _id
+            id
             otherTag {
               slug
               category {
@@ -54,58 +55,54 @@
     variables: { slug },
     pause: !open,
   }));
-
-  let outgoingRules = $state<TagRuleExt[]>([]);
-
-  $effect(() => {
-    outgoingRules = $result.data?.tag.rules ?? [];
-  });
-
-  $inspect(outgoingRules);
 </script>
 
 <Dialog bind:open={open} class="tag-dialog">
   <h1>Rules</h1>
   <h2>Outgoing rules</h2>
-  <div>
-    {#each outgoingRules as rule}
-      <div class="row">
-        <Select
-          options={["implies", "delete"]}
-          value={rule.kind}
-          setValue={(value) => {
-            if (value)
-              rule.kind = value as "implies" | "remove";
-          }}
-        />
-        <div>{rule.otherTag?.slug}</div>
-      </div>
+  <div class="list">
+    {#each $result.data?.tag.rules as rule}
+      <TagRuleRow {rule} mode="outgoing" />
     {/each}
-    {#if !outgoingRules.length}
+    {#if !$result.data?.tag.rules.length}
       <span>No rules</span>
     {/if}
-    <div>
-      <Button icon={Plus}>
-        Add rule
-      </Button>
+    <div class="row">
+      <Select
+        options={["implies", "delete"]}
+        value="implies"
+      />
+      <div>TODO</div>
+      <Button style="flex-grow: 0;" icon={Plus} />
     </div>
   </div>
 
   <h2>Incoming rules</h2>
-  <div>
+  <div class="list">
     {#each $result.data?.tag.referencingRules as rule}
-      <div class="row">
-        <div>{rule.tag.slug}</div>
-        <div>{rule.kind}</div>
-      </div>
+      <TagRuleRow {rule} mode="incoming" />
     {/each}
     {#if !$result.data?.tag.referencingRules.length}
       <span>No rules</span>
     {/if}
+    <div class="row">
+      <div>TODO</div>
+      <Select
+        options={["implies"]}
+        value="implies"
+      />
+      <Button style="flex-grow: 0;" icon={Plus} />
+    </div>
   </div>
 </Dialog>
 
 <style>
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
 .row {
   display: flex;
   gap: .5rem;

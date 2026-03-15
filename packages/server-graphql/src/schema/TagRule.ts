@@ -11,7 +11,7 @@ builder.node(PothosTagRule, {
     resolve: parent => parent.id,
   },
   fields: t => ({
-    id: t.exposeID("id"),
+    id: t.exposeInt("id"),
     tag: t.field({
       type: PothosTag,
       resolve: async (parent): Promise<Tag> => {
