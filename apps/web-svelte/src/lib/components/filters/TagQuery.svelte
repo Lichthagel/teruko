@@ -54,6 +54,6 @@
   </button>
 </div>
 
-<TagRuleDialog bind:open={dialogOpen} />
+<TagRuleDialog bind:open={dialogOpen} slug={tag} />
 
 <StatusBar error={!!$result.error} fetching={$result.fetching} />

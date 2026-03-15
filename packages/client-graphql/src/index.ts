@@ -11,6 +11,7 @@ export const urqlClient = new Client({
         Image: data => data.id as string | null,
         Tag: data => data.slug as string | null,
         TagCategory: data => data.slug as string | null,
+        TagRule: data => (data._id)?.toString() ?? null,
       },
       resolvers,
     }),
