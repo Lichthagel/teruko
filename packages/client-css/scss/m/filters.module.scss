@@ -134,30 +134,3 @@ $height: 2.5rem;
     }
   }
 }
-
-.sort {
-  position: relative;
-  display: inline-flex;
-  height: $height;
-  align-items: center;
-  gap: variables.$gap;
-  border-radius: variables.$radius;
-  background-color: var(--mantle);
-
-  &:focus-within {
-    outline: var(--pink) solid 2px;
-  }
-
-  .icon {
-    position: absolute;
-    left: variables.$size-2;
-  }
-
-  select {
-    border: 0;
-    color: var(--text);
-    width: 100%;
-    background-color: transparent;
-    padding-inline: (2rem + variables.$size-2) variables.$size-2;
-  }
-}
