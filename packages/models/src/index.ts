@@ -70,3 +70,19 @@ export const mergeImageMeta = (
       ]
     : meta2.tags,
 });
+
+export const zTagRule = z.object({
+  id: z.number(),
+  tagSlug: z.string(),
+  kind: z.enum(["implies", "remove"]),
+  otherTagSlug: z.string().optional(),
+});
+
+export type TagRule = z.infer<typeof zTagRule>;
+
+export const zTagRuleExt = zTagRule.extend({
+  tag: zTag,
+  otherTag: zTag.optional(),
+});
+
+export type TagRuleExt = z.infer<typeof zTagRuleExt>;

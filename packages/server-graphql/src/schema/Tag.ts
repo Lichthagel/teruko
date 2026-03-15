@@ -1,9 +1,11 @@
-import type { TagExt } from "models";
+import type { TagExt, TagRuleExt } from "models";
 import { eq } from "drizzle-orm";
-import { db, dTag, dTagCategory } from "server-db";
+import { alias } from "drizzle-orm/sqlite-core";
 
+import { db, dTag, dTagCategory, dTagRule } from "server-db";
 import { builder } from "./builder.js";
 import { PothosTagCategory } from "./TagCategory.js";
+import { PothosTagRule } from "./TagRule.js";
 
 export const PothosTag = builder.objectRef<TagExt>("Tag");
 
@@ -49,6 +51,48 @@ builder.node(PothosTag, {
           .where(eq(dTagCategory.slug, parent.categorySlug));
 
         return res[0];
+      },
+    }),
+    rules: t.field({
+      type: [PothosTagRule],
+      resolve: async (parent) => {
+        const dOtherTag = alias(dTag, "OtherTag");
+        const res = await db
+          .select()
+          .from(dTagRule)
+          .innerJoin(dTag, eq(dTag.id, dTagRule.tagId))
+          .where(eq(dTag.slug, parent.slug))
+          .leftJoin(dOtherTag, eq(dOtherTag.id, dTagRule.otherTagId));
+
+        return res.map(row => ({
+          id: row.TagRule.id,
+          tag: row.Tag,
+          tagSlug: row.Tag.slug,
+          kind: row.TagRule.ruleKind,
+          otherTag: row.OtherTag ?? undefined,
+          otherTagSlug: row.OtherTag?.slug,
+        } satisfies TagRuleExt));
+      },
+    }),
+    referencingRules: t.field({
+      type: [PothosTagRule],
+      resolve: async (parent) => {
+        const dOtherTag = alias(dTag, "OtherTag");
+        const res = await db
+          .select()
+          .from(dTagRule)
+          .innerJoin(dOtherTag, eq(dOtherTag.id, dTagRule.otherTagId))
+          .where(eq(dOtherTag.slug, parent.slug))
+          .innerJoin(dTag, eq(dTag.id, dTagRule.tagId));
+
+        return res.map(row => ({
+          id: row.TagRule.id,
+          tag: row.Tag,
+          tagSlug: row.Tag.slug,
+          kind: row.TagRule.ruleKind,
+          otherTag: row.OtherTag,
+          otherTagSlug: row.OtherTag?.slug,
+        } satisfies TagRuleExt));
       },
     }),
   }),

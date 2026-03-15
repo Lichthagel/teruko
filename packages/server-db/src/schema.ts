@@ -101,7 +101,7 @@ export const dTagRule = sqliteTable(
       onDelete: "cascade",
       onUpdate: "cascade",
     }),
-    ruleKind: text("ruleKind", { enum: ["implies", "delete"] }).notNull(),
+    ruleKind: text("ruleKind", { enum: ["implies", "remove"] }).notNull(),
     otherTagId: integer("otherTagId").references(() => dTag.id, {
       onDelete: "no action",
       onUpdate: "cascade",
