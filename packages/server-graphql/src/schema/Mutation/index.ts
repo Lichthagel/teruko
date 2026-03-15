@@ -1,4 +1,6 @@
 import type { builder as schemaBuilder } from "../builder.js";
+import cleanupImage from "./cleanupImage.js";
+import cleanupImages from "./cleanupImages.js";
 
 import createImage from "./createImage.js";
 import createImageFromUrlBsky from "./createImageFromUrlBsky.js";
@@ -12,4 +14,6 @@ export const applyMutation = (builder: typeof schemaBuilder) => {
   createTagRule(builder);
   updateTag(builder);
   deleteTagRule(builder);
+  cleanupImage(builder);
+  cleanupImages(builder);
 };
