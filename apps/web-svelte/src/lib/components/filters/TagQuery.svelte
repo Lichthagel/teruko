@@ -5,7 +5,7 @@
   import { getContextClient, queryStore } from "@urql/svelte";
   import styles from "client-css/m/filters.module.scss";
   import { Tag } from "client-graphql/snippets";
-  import TagRuleDialog from "../tag/TagRuleDialog.svelte";
+  import TagDialog from "../tag/TagDialog.svelte";
 
   type Props = {
     tag: string;
@@ -54,6 +54,6 @@
   </button>
 </div>
 
-<TagRuleDialog bind:open={dialogOpen} slug={tag} />
+<TagDialog bind:open={dialogOpen} slug={tag} />
 
 <StatusBar error={!!$result.error} fetching={$result.fetching} />
