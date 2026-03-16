@@ -7,7 +7,7 @@
   import Input from "../common/Input.svelte";
   import Select from "../common/Select.svelte";
 
-  const { slug }: { slug: string } = $props();
+  const { slug, onSubmit }: { slug: string; onSubmit?: (newSlug?: string) => void } = $props();
 
   let slugInputValue = $state("");
   let categoryInputValue = $state<string>();
@@ -63,6 +63,12 @@
       variables: { slug, newSlug: slugInputValue, category: categoryInputValue },
     });
   };
+
+  $effect(() => {
+    if (onSubmit && $resultUpdateTag?.data?.updateTag) {
+      onSubmit($resultUpdateTag.data.updateTag.slug);
+    }
+  });
 </script>
 
 <h1>Meta</h1>
