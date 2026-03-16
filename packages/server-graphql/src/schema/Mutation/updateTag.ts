@@ -82,7 +82,7 @@ const updateTag = (b: typeof builder) => {
           });
 
           return res;
-        } else {
+        } else if (category !== undefined) {
           const res = await db
             .update(dTag)
             .set({ categorySlug: category })
