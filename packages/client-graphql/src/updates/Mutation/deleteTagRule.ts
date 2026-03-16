@@ -1,7 +1,7 @@
 import type { UpdateResolver } from "@urql/exchange-graphcache";
 import type { TagExt } from "models";
 
-export const deleteTagRule: UpdateResolver = (_result, args, cache, _info) => {
+const deleteTagRule: UpdateResolver = (_result, args, cache, _info) => {
   const id = args.id as number;
   const ruleEntity = {
     __typename: "TagRule",
