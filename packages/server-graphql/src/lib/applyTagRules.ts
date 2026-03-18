@@ -52,7 +52,7 @@ export const applyTagRulesAll = async () => {
     .insert(d_ImageToTag)
     .select(
       db
-        .select(
+        .selectDistinct(
           {
             imageId: dOther_ImageToTag.imageId,
             tagId: dTagRule.otherTagId,
