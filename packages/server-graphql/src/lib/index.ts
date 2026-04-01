@@ -11,8 +11,8 @@ import {
   dImage,
   dTag,
 } from "server-db";
-import env from "server-env";
 import sharp from "sharp";
+import { ENV } from "varlock/env";
 
 const mimeTypeRegex = /^image\/(?:jpeg|gif|png|webp|avif)$/;
 
@@ -43,7 +43,7 @@ const saveBlob = async (blob: Blob, filename: string) => {
   const transform = sharp(await blob.arrayBuffer()).avif({ quality: 90 });
 
   const out = fs.createWriteStream(
-    path.resolve(env.IMG_FOLDER, filename),
+    path.resolve(ENV.IMG_FOLDER, filename),
   );
 
   transform.pipe(out);
@@ -123,7 +123,7 @@ export const processBlob = async (blob: Blob, basename: string, meta: ImageMeta)
     try {
       return await insertIntoDB(meta, metadata, filename);
     } catch (error) {
-      fs.rmSync(path.resolve(env.IMG_FOLDER, basename));
+      fs.rmSync(path.resolve(ENV.IMG_FOLDER, basename));
       throw error;
     }
   } finally {

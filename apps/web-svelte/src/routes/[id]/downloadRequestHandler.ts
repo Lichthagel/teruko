@@ -3,7 +3,7 @@ import type { RequestHandler } from "@sveltejs/kit";
 import path from "node:path";
 import { eq } from "drizzle-orm";
 import { db, dImage } from "server-db";
-import env from "server-env";
+import { ENV } from "varlock/env";
 import { z } from "zod";
 
 const fileExtensionRegex = /[^./\\]+$/;
@@ -24,7 +24,7 @@ export const defineDownloadRequestHandler = (getData: (filepath: string) => Prom
 
       const [{ filename }] = image;
 
-      const filepath = path.resolve(env.IMG_FOLDER, filename);
+      const filepath = path.resolve(ENV.IMG_FOLDER, filename);
 
       const data = await getData(filepath);
 

@@ -37,9 +37,10 @@
   "dependencies": {
     "drizzle-orm": "catalog:",
     "server-db": "workspace:^",
-    "server-env": "workspace:^",
     "server-graphql": "workspace:^",
-    "sharp": "catalog:"
+    "sharp": "catalog:",
+    "varlock": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@lucide/svelte": "catalog:",
@@ -51,6 +52,7 @@
     "client-css": "workspace:*",
     "client-graphql": "workspace:*",
     "client-stores": "workspace:*",
+    "@varlock/vite-integration": "catalog:",
     "graphql": "catalog:",
     "models": "workspace:*",
     "sass-embedded": "catalog:",

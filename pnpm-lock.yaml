@@ -69,12 +69,12 @@ catalogs:
     '@urql/vue':
       specifier: ^2.0.0
       version: 2.0.0
+    '@varlock/vite-integration':
+      specifier: ^0.2.8
+      version: 0.2.8
     autoprefixer:
       specifier: ^10.4.20
       version: 10.4.27
-    dotenv:
-      specifier: ^17.0.0
-      version: 17.3.1
     drizzle-kit:
       specifier: ^0.31.0
       version: 0.31.10
@@ -153,6 +153,9 @@ catalogs:
     typescript-eslint:
       specifier: ^8.12.2
       version: 8.58.0
+    varlock:
+      specifier: ^0.7.0
+      version: 0.7.0
     vite:
       specifier: ^8.0.0
       version: 8.0.0
@@ -173,6 +176,10 @@ overrides:
 importers:
 
   .:
+    dependencies:
+      varlock:
+        specifier: 'catalog:'
+        version: 0.7.0
     devDependencies:
       '@antfu/eslint-config':
         specifier: 'catalog:'
@@ -261,9 +268,6 @@ importers:
       server-db:
         specifier: workspace:^
         version: link:../../packages/server-db
-      server-env:
-        specifier: workspace:^
-        version: link:../../packages/server-env
       server-graphql:
         specifier: workspace:^
         version: link:../../packages/server-graphql
@@ -280,6 +284,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 24.12.0
+      '@varlock/vite-integration':
+        specifier: 'catalog:'
+        version: 0.2.8(varlock@0.7.0)(vite@8.0.3(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.0)(esbuild@0.27.4)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3))
       nuxt:
         specifier: 'catalog:'
         version: 4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@libsql/client@0.17.2)(@parcel/watcher@2.5.6)(@types/node@24.12.0)(@vue/compiler-sfc@3.5.30)(cac@6.7.14)(db0@0.3.4(@libsql/client@0.17.2)(drizzle-orm@0.45.1(@libsql/client@0.17.2)))(drizzle-orm@0.45.1(@libsql/client@0.17.2))(eslint@10.1.0(jiti@2.6.1))(ioredis@5.10.0)(lightningcss@1.32.0)(magicast@0.5.2)(optionator@0.9.4)(rolldown@1.0.0-rc.12(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1))(rollup-plugin-visualizer@6.0.11(rolldown@1.0.0-rc.12(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1))(rollup@4.59.0))(rollup@4.59.0)(sass-embedded@1.98.0)(sass@1.98.0)(stylelint@17.6.0(typescript@6.0.2))(terser@5.46.0)(tsx@4.21.0)(typescript@6.0.2)(vite@8.0.3(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.0)(esbuild@0.27.4)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3))(yaml@2.8.3)
@@ -298,15 +305,18 @@ importers:
       server-db:
         specifier: workspace:^
         version: link:../../packages/server-db
-      server-env:
-        specifier: workspace:^
-        version: link:../../packages/server-env
       server-graphql:
         specifier: workspace:^
         version: link:../../packages/server-graphql
       sharp:
         specifier: 'catalog:'
         version: 0.34.5
+      varlock:
+        specifier: 'catalog:'
+        version: 0.7.0
+      zod:
+        specifier: 'catalog:'
+        version: 4.3.6
     devDependencies:
       '@lucide/svelte':
         specifier: 'catalog:'
@@ -326,6 +336,9 @@ importers:
       '@urql/svelte':
         specifier: 'catalog:'
         version: 5.0.0(@urql/core@6.0.1(graphql@17.0.0-alpha.9))(svelte@5.53.11)
+      '@varlock/vite-integration':
+        specifier: 'catalog:'
+        version: 0.2.8(varlock@0.7.0)(vite@8.0.0(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.0)(esbuild@0.27.4)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3))
       client-css:
         specifier: workspace:*
         version: link:../../packages/client-css
@@ -362,9 +375,6 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 8.0.0(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.0)(esbuild@0.27.4)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3)
-      zod:
-        specifier: 'catalog:'
-        version: 4.3.6
 
   packages/client-css:
     dependencies:
@@ -453,29 +463,10 @@ importers:
       drizzle-orm:
         specifier: 'catalog:'
         version: 0.45.1(@libsql/client@0.17.2)
-      server-env:
-        specifier: workspace:^
-        version: link:../server-env
     devDependencies:
       drizzle-kit:
         specifier: 'catalog:'
         version: 0.31.10
-      tsconfig:
-        specifier: workspace:^
-        version: link:../tsconfig
-      typescript:
-        specifier: 'catalog:'
-        version: 6.0.2
-
-  packages/server-env:
-    dependencies:
-      dotenv:
-        specifier: 'catalog:'
-        version: 17.3.1
-      zod:
-        specifier: 'catalog:'
-        version: 4.3.6
-    devDependencies:
       tsconfig:
         specifier: workspace:^
         version: link:../tsconfig
@@ -515,9 +506,6 @@ importers:
       server-db:
         specifier: workspace:^
         version: link:../server-db
-      server-env:
-        specifier: workspace:^
-        version: link:../server-env
       services:
         specifier: workspace:^
         version: link:../services
@@ -3144,6 +3132,13 @@ packages:
     peerDependencies:
       '@urql/core': ^6.0.0
       vue: ^3.2.0
+
+  '@varlock/vite-integration@0.2.8':
+    resolution: {integrity: sha512-thWLJuOTwH17hkF+hQ2SfWT7kiiEtlZacnpI/f4JJ+wRQsYqycO+6OYKhhHqE0uMj8YGc8lXIaEVCW3ICXKPHw==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      varlock: ^0.7.0
+      vite: '>=5'
 
   '@vercel/nft@1.3.2':
     resolution: {integrity: sha512-HC8venRc4Ya7vNeBsJneKHHMDDWpQie7VaKhAIOst3MKO+DES+Y/SbzSp8mFkD7OzwAE2HhHkeSuSmwS20mz3A==}
@@ -7038,6 +7033,11 @@ packages:
   varint@6.0.0:
     resolution: {integrity: sha512-cXEIW6cfr15lFv563k4GuVuW/fiwjknytD37jIOLSdSWuOI6WnO/oKwmP2FQTU2l01LP8/M5TSAJpzUaGe3uWg==}
 
+  varlock@0.7.0:
+    resolution: {integrity: sha512-jxJIATMakPT1SyTJTPOZiT4zbQS/NhNHF5bvEnE5KR8dnUpUL4N1bGEpdxICkw8xNrkTY7P3GojxLsgN2KeVOA==}
+    engines: {bun: '>=1.3.3', node: '>=22'}
+    hasBin: true
+
   vite-dev-rpc@1.1.0:
     resolution: {integrity: sha512-pKXZlgoXGoE8sEKiKJSng4hI1sQ4wi5YT24FCrwrLt6opmkjlqPPVmiPWWJn8M8byMxRGzp1CrFuqQs4M/Z39A==}
     peerDependencies:
@@ -9692,6 +9692,16 @@ snapshots:
       '@urql/core': 6.0.1(graphql@17.0.0-alpha.9)
       vue: 3.5.30(typescript@6.0.2)
       wonka: 6.3.5
+
+  '@varlock/vite-integration@0.2.8(varlock@0.7.0)(vite@8.0.0(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.0)(esbuild@0.27.4)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3))':
+    dependencies:
+      varlock: 0.7.0
+      vite: 8.0.0(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.0)(esbuild@0.27.4)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3)
+
+  '@varlock/vite-integration@0.2.8(varlock@0.7.0)(vite@8.0.3(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.0)(esbuild@0.27.4)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3))':
+    dependencies:
+      varlock: 0.7.0
+      vite: 8.0.3(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.0)(esbuild@0.27.4)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3)
 
   '@vercel/nft@1.3.2(rollup@4.59.0)':
     dependencies:
@@ -14186,6 +14196,8 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   varint@6.0.0: {}
+
+  varlock@0.7.0: {}
 
   vite-dev-rpc@1.1.0(vite@8.0.3(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.0)(esbuild@0.27.4)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3)):
     dependencies:
