@@ -11,7 +11,7 @@
     "build": "nx run-many -t build",
     "lint": "eslint .",
     "clean": "nx run-many -t clean",
-    "prepare": "husky"
+    "prepare": "husky && varlock typegen"
   },
   "dependencies": {
     "varlock": "catalog:"
