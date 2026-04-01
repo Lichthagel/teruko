@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { ImageSort } from "models";
+import { ArrowDownNarrowWide } from "@lucide/vue";
 import { useStore } from "@nanostores/vue";
 import styles from "client-css/m/filters.module.scss";
 import { sortStore } from "client-stores";
-import { ArrowDownNarrowWide } from "lucide-vue-next";
 
 const sort = useStore(sortStore);
 

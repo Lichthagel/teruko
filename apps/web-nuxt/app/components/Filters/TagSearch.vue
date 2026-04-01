@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useSuggestions } from "#imports";
+import { Loader2, Search } from "@lucide/vue";
 import { useStore } from "@nanostores/vue";
 import styles from "client-css/m/filters.module.scss";
-import { tagsStore } from "client-stores";
 
-import { Loader2, Search } from "lucide-vue-next";
+import { tagsStore } from "client-stores";
 
 const tags = useStore(tagsStore);
 

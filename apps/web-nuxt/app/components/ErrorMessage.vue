@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Home } from "@lucide/vue";
 import styles from "client-css/m/error.module.scss";
-import { Home } from "lucide-vue-next";
 
 defineProps<{
   title?: string;

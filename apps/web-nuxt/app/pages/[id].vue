@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { ImageExt } from "models";
 
+import { DownloadIcon } from "@lucide/vue";
 import { gql, useQuery } from "@urql/vue";
 import styles from "client-css/m/imagepage.module.scss";
-import { DownloadIcon } from "lucide-vue-next";
 
 const route = useRoute();
 
