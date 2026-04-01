@@ -28,8 +28,8 @@ catalogs:
       specifier: ^0.17.0
       version: 0.17.0
     '@lucide/svelte':
-      specifier: ^0.577.0
-      version: 0.577.0
+      specifier: ^1.0.0
+      version: 1.7.0
     '@nanostores/vue':
       specifier: ^1.0.0
       version: 1.1.0
@@ -294,7 +294,7 @@ importers:
     dependencies:
       '@lucide/svelte':
         specifier: 'catalog:'
-        version: 0.577.0(svelte@5.53.11)
+        version: 1.7.0(svelte@5.53.11)
       '@urql/svelte':
         specifier: 'catalog:'
         version: 5.0.0(@urql/core@6.0.1(graphql@17.0.0-alpha.9))(svelte@5.53.11)
@@ -1743,8 +1743,8 @@ packages:
   '@ltd/j-toml@1.38.0':
     resolution: {integrity: sha512-lYtBcmvHustHQtg4X7TXUu1Xa/tbLC3p2wLvgQI+fWVySguVZJF60Snxijw5EiohumxZbR10kWYFFebh1zotiw==}
 
-  '@lucide/svelte@0.577.0':
-    resolution: {integrity: sha512-0P6mkySd2MapIEgq08tADPmcN4DHndC/02PWwaLkOerXlx5Sv9aT4BxyXLIY+eccr0g/nEyCYiJesqS61YdBZQ==}
+  '@lucide/svelte@1.7.0':
+    resolution: {integrity: sha512-YytBKOUBGox7yWcykZnYxOkn5WpR5G1qYXLYXV/j1B79SOTTEKzB+s5yF5Rq9l9OkweDStNH2b4yTqfvhEhV8g==}
     peerDependencies:
       svelte: ^5
 
@@ -8247,7 +8247,7 @@ snapshots:
 
   '@ltd/j-toml@1.38.0': {}
 
-  '@lucide/svelte@0.577.0(svelte@5.53.11)':
+  '@lucide/svelte@1.7.0(svelte@5.53.11)':
     dependencies:
       svelte: 5.53.11
 
