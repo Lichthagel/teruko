@@ -6,29 +6,8 @@ settings:
 
 catalogs:
   default:
-    '@antfu/eslint-config':
-      specifier: ^8.0.0
-      version: 8.0.0
-    '@catppuccin/palette':
-      specifier: ^1.7.1
-      version: 1.7.1
-    '@envelop/graphql-jit':
-      specifier: ^11.0.0
-      version: 11.1.1
-    '@fontsource-variable/gabarito':
-      specifier: ^5.1.1
-      version: 5.2.8
-    '@fontsource-variable/noto-sans-jp':
-      specifier: ^5.1.1
-      version: 5.2.10
-    '@graphql-yoga/plugin-apq':
-      specifier: ^3.8.0
-      version: 3.18.1
-    '@libsql/client':
-      specifier: ^0.17.0
-      version: 0.17.0
-    '@lucide/svelte':
-      specifier: ^1.0.0
+    '@lucide/vue':
+      specifier: ^1.7.0
       version: 1.7.0
     '@nanostores/vue':
       specifier: ^1.0.0
@@ -36,132 +15,24 @@ catalogs:
     '@nuxt/devtools':
       specifier: ^3.0.0
       version: 3.2.3
-    '@pothos/core':
-      specifier: ^4.3.0
-      version: 4.12.0
-    '@pothos/plugin-relay':
-      specifier: ^4.3.0
-      version: 4.7.0
-    '@sveltejs/adapter-node':
-      specifier: ^5.2.9
-      version: 5.5.4
-    '@sveltejs/kit':
-      specifier: ^2.53.3
-      version: 2.54.0
-    '@sveltejs/vite-plugin-svelte':
-      specifier: ^7.0.0
-      version: 7.0.0
     '@types/node':
       specifier: ^24.0.0
       version: 24.12.0
-    '@urql/core':
-      specifier: ^6.0.0
-      version: 6.0.1
-    '@urql/exchange-graphcache':
-      specifier: ^9.0.0
-      version: 9.0.0
-    '@urql/svelte':
-      specifier: ^5.0.0
-      version: 5.0.0
     '@urql/vue':
       specifier: ^2.0.0
       version: 2.0.0
-    autoprefixer:
-      specifier: ^10.4.20
-      version: 10.4.27
-    dotenv:
-      specifier: ^17.0.0
-      version: 17.3.1
-    drizzle-kit:
-      specifier: ^0.31.0
-      version: 0.31.9
     drizzle-orm:
       specifier: ^0.45.0
       version: 0.45.1
-    eslint:
-      specifier: ^10.0.0
-      version: 10.0.3
-    eslint-plugin-solid:
-      specifier: ^0.14.5
-      version: 0.14.5
-    eslint-plugin-svelte:
-      specifier: ^3.12.5
-      version: 3.15.2
-    file-type:
-      specifier: ^21.3.2
-      version: 21.3.2
-    graphql-yoga:
-      specifier: ^5.8.0
-      version: 5.18.1
-    husky:
-      specifier: ^9.1.6
-      version: 9.1.7
-    lint-staged:
-      specifier: ^16.2.5
-      version: 16.3.3
-    lucide-vue-next:
-      specifier: ^0.577.0
-      version: 0.577.0
-    modern-normalize:
-      specifier: ^3.0.1
-      version: 3.0.1
-    nanostores:
-      specifier: ^1.0.0
-      version: 1.1.1
     nuxt:
       specifier: ^4.0.0
       version: 4.4.2
-    nx:
-      specifier: 22.6.3
-      version: 22.6.3
-    postcss:
-      specifier: ^8.4.47
-      version: 8.5.8
-    postcss-load-config:
-      specifier: ^6.0.1
-      version: 6.0.1
     sass-embedded:
       specifier: ^1.83.0
       version: 1.98.0
     sharp:
       specifier: ^0.34.0
       version: 0.34.5
-    solid-element:
-      specifier: ^1.9.1
-      version: 1.9.1
-    solid-js:
-      specifier: ^1.9.3
-      version: 1.9.11
-    stylelint:
-      specifier: ^17.0.0
-      version: 17.4.0
-    stylelint-config-standard-scss:
-      specifier: ^17.0.0
-      version: 17.0.0
-    svelte:
-      specifier: ^5.53.5
-      version: 5.53.11
-    svelte-check:
-      specifier: ^4.0.5
-      version: 4.4.5
-    tslib:
-      specifier: ^2.8.1
-      version: 2.8.1
-    typescript:
-      specifier: ^5.6.3
-      version: 5.9.3
-    typescript-eslint:
-      specifier: ^8.12.2
-      version: 8.57.0
-    vite:
-      specifier: ^8.0.0
-      version: 8.0.0
-    vite-plugin-monkey:
-      specifier: ^7.0.0
-      version: 7.1.9
-    vite-plugin-solid:
-      specifier: ^2.10.2
-      version: 2.11.10
     zod:
       specifier: ^4.0.0
       version: 4.3.6
@@ -231,6 +102,9 @@ importers:
 
   apps/web-nuxt:
     dependencies:
+      '@lucide/vue':
+        specifier: 'catalog:'
+        version: 1.7.0(vue@3.5.30(typescript@5.9.3))
       '@nanostores/vue':
         specifier: 'catalog:'
         version: 1.1.0(@vue/devtools-api@8.0.7)(nanostores@1.1.1)(vue@3.5.30(typescript@5.9.3))
@@ -252,9 +126,6 @@ importers:
       graphql:
         specifier: 17.0.0-alpha.9
         version: 17.0.0-alpha.9
-      lucide-vue-next:
-        specifier: 'catalog:'
-        version: 0.577.0(vue@3.5.30(typescript@5.9.3))
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -1747,6 +1618,11 @@ packages:
     resolution: {integrity: sha512-YytBKOUBGox7yWcykZnYxOkn5WpR5G1qYXLYXV/j1B79SOTTEKzB+s5yF5Rq9l9OkweDStNH2b4yTqfvhEhV8g==}
     peerDependencies:
       svelte: ^5
+
+  '@lucide/vue@1.7.0':
+    resolution: {integrity: sha512-X3gTarOkNh2ThNK7IaDa4gdjFAtZyoKH/eoScklvmtNTWE5uxkycBQOuchGExY5swCqh1WptEIAWrmbuQcy2fA==}
+    peerDependencies:
+      vue: '>=3.0.1'
 
   '@mapbox/node-pre-gyp@2.0.3':
     resolution: {integrity: sha512-uwPAhccfFJlsfCxMYTwOdVfOz3xqyj8xYL3zJj8f0pb30tLohnnFPhLuqp4/qoEz8sNxe4SESZedcBojRefIzg==}
@@ -5170,11 +5046,6 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-vue-next@0.577.0:
-    resolution: {integrity: sha512-py05bAfv9SHVJqscbiOnjcnLlEmOffA58a+7XhZuFxrs6txe1E8VoR1ngWGTYO+9aVKABAz8l3ee3PqiQN9QPA==}
-    peerDependencies:
-      vue: '>=3.0.1'
-
   magic-regexp@0.10.0:
     resolution: {integrity: sha512-Uly1Bu4lO1hwHUW0CQeSWuRtzCMNO00CmXtS8N6fyvB3B979GOEEeAkiTUDsmbYLAbvpUS/Kt5c4ibosAzVyVg==}
 
@@ -8250,6 +8121,10 @@ snapshots:
   '@lucide/svelte@1.7.0(svelte@5.53.11)':
     dependencies:
       svelte: 5.53.11
+
+  '@lucide/vue@1.7.0(vue@3.5.30(typescript@5.9.3))':
+    dependencies:
+      vue: 3.5.30(typescript@5.9.3)
 
   '@mapbox/node-pre-gyp@2.0.3':
     dependencies:
@@ -11613,10 +11488,6 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
-
-  lucide-vue-next@0.577.0(vue@3.5.30(typescript@5.9.3)):
-    dependencies:
-      vue: 3.5.30(typescript@5.9.3)
 
   magic-regexp@0.10.0:
     dependencies:

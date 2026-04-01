@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { ChevronDown, ChevronUp } from "@lucide/vue";
 import styles from "client-css/m/scrollbuttons.module.scss";
-import { ChevronDown, ChevronUp } from "lucide-vue-next";
 
 const showToTop = ref(false);
 const showToBottom = ref(false);

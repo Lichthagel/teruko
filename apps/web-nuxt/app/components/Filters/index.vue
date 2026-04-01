@@ -1,9 +1,9 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
+import { ListX } from "@lucide/vue";
 import { useStore } from "@nanostores/vue";
 import styles from "client-css/m/filters.module.scss";
 import { tagsStore } from "client-stores";
-import { ListX } from "lucide-vue-next";
 
 import SortSelect from "./SortSelect.vue";
 import TagQuery from "./TagQuery.vue";

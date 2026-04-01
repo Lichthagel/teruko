@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { TagExt } from "models";
+import { X } from "@lucide/vue";
 import { useStore } from "@nanostores/vue";
 import { gql, useQuery } from "@urql/vue";
 import styles from "client-css/m/filters.module.scss";
 import { tagsStore } from "client-stores";
-import { X } from "lucide-vue-next";
 
 const props = defineProps<{
   tag: string;
