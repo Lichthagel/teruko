@@ -9,11 +9,16 @@ ENV CI=true
 
 WORKDIR /app
 
-# Copy entire project
-COPY . .
+# Copy workspace configuration and lockfile (leveraging Docker cache layers)
+COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.eslint.json .env.schema ./
 
-# Install dependencies
-RUN pnpm install --frozen-lockfile
+# Copy only the necessary source files for building
+COPY packages packages
+COPY apps/web-svelte apps/web-svelte
+COPY nx.json graphql.config.yml ./
+
+# Install dependencies with frozen lockfile
+RUN pnpm install --frozen-lockfile --prefer-offline
 
 # Build the application
 RUN pnpm --filter web-svelte... build
