@@ -10,7 +10,7 @@ ENV CI=true
 WORKDIR /app
 
 # Copy workspace configuration and lockfile (leveraging Docker cache layers)
-COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.eslint.json .env.schema ./
+COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.eslint.json .npmrc ./
 
 # Copy only the necessary source files for building
 COPY packages packages
@@ -26,10 +26,27 @@ RUN pnpm --filter web-svelte... build
 # Production stage
 FROM node:24-alpine
 
+# Create non-root user for security
+RUN addgroup -g 1001 -S nodejs && adduser -S nodejs -u 1001
+
 WORKDIR /app
 
-# Copy the entire project from builder
-COPY --from=builder /app ./
+# Copy built application and dependencies from builder stage
+COPY --chown=nodejs:nodejs --from=builder /app/apps/web-svelte/build apps/web-svelte/build
+COPY --chown=nodejs:nodejs --from=builder /app/node_modules node_modules
+COPY --chown=nodejs:nodejs --from=builder /app/apps/web-svelte/node_modules apps/web-svelte/node_modules
+
+# Copy package.json for reference
+COPY --chown=nodejs:nodejs apps/web-svelte/package.json apps/web-svelte/
+
+# Switch to non-root user
+USER nodejs
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+    CMD node -e "require('http').get('http://localhost:3000', (r)=>{if(r.statusCode!==200)throw new Error(r.statusCode)})"
+
+WORKDIR /app/apps/web-svelte
 
 # Expose port
 EXPOSE 3000
@@ -37,9 +54,6 @@ EXPOSE 3000
 # Set environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
-
-# Set working directory to the svelte app
-WORKDIR /app/apps/web-svelte
 
 # Start the application
 CMD ["node", "build"]
