@@ -3,6 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
+  "files": [
+    "build"
+  ],
   "engines": {
     "node": ">=21.0.0"
   },
@@ -32,31 +35,31 @@
     ]
   },
   "dependencies": {
-    "@lucide/svelte": "catalog:",
-    "@urql/svelte": "catalog:",
-    "client-css": "workspace:*",
-    "client-graphql": "workspace:*",
-    "client-stores": "workspace:*",
     "drizzle-orm": "catalog:",
-    "models": "workspace:*",
     "server-db": "workspace:^",
     "server-env": "workspace:^",
     "server-graphql": "workspace:^",
-    "sharp": "catalog:",
-    "zod": "catalog:"
+    "sharp": "catalog:"
   },
   "devDependencies": {
+    "@lucide/svelte": "catalog:",
     "@sveltejs/adapter-node": "catalog:",
     "@sveltejs/kit": "catalog:",
     "@sveltejs/vite-plugin-svelte": "catalog:",
     "@types/node": "catalog:",
+    "@urql/svelte": "catalog:",
+    "client-css": "workspace:*",
+    "client-graphql": "workspace:*",
+    "client-stores": "workspace:*",
     "graphql": "catalog:",
+    "models": "workspace:*",
     "sass-embedded": "catalog:",
     "svelte": "catalog:",
     "svelte-check": "catalog:",
     "tsconfig": "workspace:*",
     "tslib": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:"
+    "vite": "catalog:",
+    "zod": "catalog:"
   }
 }

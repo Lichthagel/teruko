@@ -21,7 +21,9 @@ COPY nx.json graphql.config.yml ./
 RUN pnpm install --frozen-lockfile --prefer-offline
 
 # Build the application
-RUN pnpm --filter web-svelte... build
+RUN pnpm --filter=web-svelte... build
+
+RUN pnpm --filter=web-svelte --prod --legacy deploy dist
 
 # Production stage
 FROM node:24-alpine
@@ -32,12 +34,8 @@ RUN addgroup -g 1001 -S nodejs && adduser -S nodejs -u 1001
 WORKDIR /app
 
 # Copy built application and dependencies from builder stage
-COPY --chown=nodejs:nodejs --from=builder /app/apps/web-svelte/build apps/web-svelte/build
-COPY --chown=nodejs:nodejs --from=builder /app/node_modules node_modules
-COPY --chown=nodejs:nodejs --from=builder /app/apps/web-svelte/node_modules apps/web-svelte/node_modules
-
-# Copy package.json for reference
-COPY --chown=nodejs:nodejs apps/web-svelte/package.json apps/web-svelte/
+COPY --chown=nodejs:nodejs --from=builder /app/dist/build  build
+COPY --chown=nodejs:nodejs --from=builder /app/dist/node_modules  node_modules
 
 # Switch to non-root user
 USER nodejs
@@ -45,8 +43,6 @@ USER nodejs
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
     CMD node -e "require('http').get('http://localhost:3000', (r)=>{if(r.statusCode!==200)throw new Error(r.statusCode)})"
-
-WORKDIR /app/apps/web-svelte
 
 # Expose port
 EXPOSE 3000
