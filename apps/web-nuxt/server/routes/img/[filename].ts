@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { ENV } from "varlock/env";
+import env from "server-env";
 import { z } from "zod";
 
 export default defineEventHandler(async (event) => {
@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
     .object({ filename: z.string() })
     .parse(event.context.params);
 
-  const filepath = path.resolve(ENV.IMG_FOLDER as string, filename);
+  const filepath = path.resolve(env.IMG_FOLDER as string, filename);
 
   return sendStream(event, fs.createReadStream(filepath));
 });

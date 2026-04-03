@@ -1,13 +1,11 @@
-/// <reference path="../../env.d.ts" />
-
 import { defineConfig } from "drizzle-kit";
-import { ENV } from "varlock/env";
+import env from "server-env";
 
 export default defineConfig({
   out: "./drizzle",
   schema: "./src/schema.ts",
   dialect: "sqlite",
   dbCredentials: {
-    url: ENV.DATABASE_URL,
+    url: env.DATABASE_URL,
   },
 });
