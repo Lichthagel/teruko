@@ -1,8 +1,7 @@
-import antfu from "@antfu/eslint-config";
+import antfu, { react, solid } from "@antfu/eslint-config";
 
 export default antfu({
   vue: true,
-  solid: true,
   svelte: true,
   stylistic: {
     quotes: "double",
@@ -19,6 +18,7 @@ export default antfu({
     "**/build/**",
     "**/.nitro/**",
     "**/.solid-start/**",
+    "**/routeTree.gen.ts",
   ],
   rules: {
     "antfu/top-level-function": "off",
@@ -32,4 +32,11 @@ export default antfu({
   typescript: {
     ignoresTypeAware: ["**/*.config.js", "**/*.config.cjs", "**/*.config.ts"],
   },
-});
+}, solid({
+  files: ["apps/web-solidstart/**", "apps/userscript/**"],
+}), react({
+  files: ["apps/web-tanstack-react/**"],
+  overrides: {
+    "react-refresh/only-export-components": "off",
+  },
+}));
