@@ -1,37 +1,18 @@
-import type { ImageExt } from "models";
 import type { ReactEventHandler } from "react";
 import TagChip from "#/components/TagChip";
 import { createFileRoute } from "@tanstack/react-router";
 import styles from "client-css/m/imagepage.module.scss";
+import { Image } from "client-graphql/snippets";
 import { Download } from "lucide-react";
 import { useMemo } from "react";
-import { gql, useQuery } from "urql";
+import { useQuery } from "urql";
 
 const ImagePage = () => {
   const { id } = Route.useParams();
 
-  const [result] = useQuery<{ image: ImageExt | null }>({
-    query: gql`
-      query Image($id: ID!) {
-        image(id: $id) {
-          id
-          title
-          source
-          filename
-          createdAt
-          updatedAt
-          width
-          height
-          tags {
-            slug
-            category {
-              color
-            }
-          }
-        }
-      }
-    `,
-    variables: { id },
+  const [result] = useQuery({
+    query: Image,
+    variables: { id: Number.parseInt(id) },
   });
 
   const image = useMemo(() => result.data?.image, [result.data?.image]);
