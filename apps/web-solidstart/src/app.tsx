@@ -4,6 +4,7 @@ import { FileRoutes } from "@solidjs/start/router";
 import { Provider } from "@urql/solid";
 import { urqlClient } from "client-graphql";
 import { Suspense } from "solid-js";
+import "client-css/global.scss";
 
 export default function App() {
   return (

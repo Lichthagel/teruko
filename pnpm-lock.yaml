@@ -120,6 +120,9 @@ catalogs:
     lint-staged:
       specifier: ^16.4.0
       version: 16.4.0
+    lucide-solid:
+      specifier: ^1.7.0
+      version: 1.7.0
     modern-normalize:
       specifier: ^3.0.1
       version: 3.0.1
@@ -323,9 +326,15 @@ importers:
       '@urql/solid':
         specifier: 'catalog:'
         version: 1.0.1(@urql/core@6.0.1)(solid-js@1.9.12)
+      client-css:
+        specifier: workspace:*
+        version: link:../../packages/client-css
       client-graphql:
         specifier: workspace:*
         version: link:../../packages/client-graphql
+      lucide-solid:
+        specifier: 'catalog:'
+        version: 1.7.0(solid-js@1.9.12)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -5285,6 +5294,11 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
+
+  lucide-solid@1.7.0:
+    resolution: {integrity: sha512-z+6Vmueb4W3Rf7ZQIEbcwWhQ/ci8vumLnixRzITXXs2uBjFPQvIvhotivUFAlgSj4xDvU822A1p0wioQlFyx8A==}
+    peerDependencies:
+      solid-js: ^1.4.7
 
   magic-regexp@0.10.0:
     resolution: {integrity: sha512-Uly1Bu4lO1hwHUW0CQeSWuRtzCMNO00CmXtS8N6fyvB3B979GOEEeAkiTUDsmbYLAbvpUS/Kt5c4ibosAzVyVg==}
@@ -12260,6 +12274,10 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
+
+  lucide-solid@1.7.0(solid-js@1.9.12):
+    dependencies:
+      solid-js: 1.9.12
 
   magic-regexp@0.10.0:
     dependencies:
