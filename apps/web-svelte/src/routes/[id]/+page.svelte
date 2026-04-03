@@ -1,41 +1,22 @@
 <script lang="ts">
-  import type { ImageExt } from "models";
   import type { EventHandler } from "svelte/elements";
-
   import { resolve } from "$app/paths";
   import { page } from "$app/state";
   import ErrorMessage from "$lib/components/status/ErrorMessage.svelte";
   import StatusBar from "$lib/components/status/StatusBar.svelte";
   import TagChip from "$lib/components/TagChip.svelte";
   import { Download } from "@lucide/svelte";
-  import { getContextClient, gql, queryStore } from "@urql/svelte";
+  import { getContextClient, queryStore } from "@urql/svelte";
   import styles from "client-css/m/imagepage.module.scss";
+  import { Image } from "client-graphql/snippets";
 
   const { id } = page.params;
 
-  const result = queryStore<{ image: ImageExt | null }>({
+  const result = queryStore({
     client: getContextClient(),
-    query: gql`
-      query Image($id: ID!) {
-        image(id: $id) {
-          id
-          title
-          source
-          filename
-          createdAt
-          updatedAt
-          width
-          height
-          tags {
-            slug
-            category {
-              color
-            }
-          }
-        }
-      }
-    `,
-    variables: { id },
+    query: Image,
+    variables: { id: Number.parseInt(id!) },
+    pause: !id,
   });
 
   const image = $derived($result.data?.image);
