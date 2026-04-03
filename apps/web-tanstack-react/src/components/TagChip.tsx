@@ -1,14 +1,17 @@
 import type { TagExt } from "models";
 import type { FC } from "react";
+import { FiltersContext } from "#/contexts/FiltersContext";
 import { useNavigate } from "@tanstack/react-router";
 import styles from "client-css/m/imagepage.module.scss";
-import { tagsStore } from "client-stores";
+import { use } from "react";
 
 const TagChip: FC<{ tag: TagExt }> = ({ tag }) => {
   const navigate = useNavigate();
 
+  const filters = use(FiltersContext);
+
   const onClick = () => {
-    tagsStore.set([tag.slug]);
+    filters.tags = [tag.slug];
     navigate({
       to: "/",
     });

@@ -1,4 +1,5 @@
 import Nav from "#/components/Nav";
+import { FiltersContext } from "#/contexts/FiltersContext";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
@@ -15,7 +16,9 @@ const RootDocument = ({ children }: { children: React.ReactNode }) => {
       <body>
         <Nav />
         <Provider value={urqlClient}>
-          {children}
+          <FiltersContext value={{ tags: [], sort: "NEWEST" }}>
+            {children}
+          </FiltersContext>
         </Provider>
         <TanStackDevtools
           config={{

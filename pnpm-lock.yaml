@@ -508,9 +508,6 @@ importers:
       client-graphql:
         specifier: workspace:*
         version: link:../../packages/client-graphql
-      client-stores:
-        specifier: workspace:*
-        version: link:../../packages/client-stores
       lucide-react:
         specifier: 'catalog:'
         version: 1.7.0(react@19.2.4)
@@ -526,6 +523,9 @@ importers:
       server-env:
         specifier: workspace:*
         version: link:../../packages/server-env
+      server-graphql:
+        specifier: workspace:*
+        version: link:../../packages/server-graphql
       urql:
         specifier: 'catalog:'
         version: 5.0.1(@urql/core@6.0.1)(react@19.2.4)
