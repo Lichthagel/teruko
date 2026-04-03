@@ -1,4 +1,5 @@
 import type { ImageExt } from "models";
+import type { JSX } from "solid-js/h/jsx-runtime";
 import { Title } from "@solidjs/meta";
 import { useParams } from "@solidjs/router";
 import { createQuery, gql } from "@urql/solid";
@@ -37,6 +38,13 @@ export default () => {
   const image = createMemo(() => result.data?.image);
   const fileExt = createMemo(() => image()?.filename.split(".").pop());
 
+  const scroll: JSX.EventHandler<HTMLImageElement, Event> = (e) => {
+    (e.target as HTMLElement).scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  };
+
   return (
     <>
       <Show when={image()?.title}>
@@ -54,6 +62,7 @@ export default () => {
                 alt={image().title ?? image().filename}
                 class={styles.image}
                 height={image().height}
+                onLoad={scroll}
                 src={`/img/${image().filename}`}
                 width={image().width}
               />
