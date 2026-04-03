@@ -1,3 +1,4 @@
+import Nav from "#/components/Nav";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
@@ -10,6 +11,7 @@ const RootDocument = ({ children }: { children: React.ReactNode }) => {
         <HeadContent />
       </head>
       <body>
+        <Nav />
         {children}
         <TanStackDevtools
           config={{
