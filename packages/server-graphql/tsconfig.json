@@ -2,6 +2,7 @@
   "extends": "tsconfig/base.json",
   "compilerOptions": {
     "rootDir": "src",
+    "types": ["../../env.d.ts"],
     "outDir": "dist"
   },
   "include": ["src/**/*"],

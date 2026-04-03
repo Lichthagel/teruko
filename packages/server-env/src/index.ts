@@ -1,21 +1,6 @@
-import process from "node:process";
-import { config } from "dotenv";
-import z from "zod";
+import { ENV } from "varlock/env";
+import "varlock/auto-load";
 
-config({
-  path: "../../.env",
-});
-
-const Env = z.object({
-  DATABASE_URL: z
-    .string()
-    .default("file:./local.db"),
-  IMG_FOLDER: z.string().default("./data"),
-  NODE_ENV: z.string().default("production"),
-});
-
-type Env = Readonly<z.infer<typeof Env>>;
-
-const env: Env = Env.parse(process.env);
+const env = ENV;
 
 export default env;
