@@ -48,10 +48,11 @@ const endRef = (node: ComponentPublicInstance | Element | null) => {
       v-for="image in images"
       :key="image.id"
     >
-      <div :ref="image.id === images.at(-1)?.id ? endRef : undefined">
+      <div>
         <ImageCard :image="image" />
       </div>
     </template>
+    <div :ref="endRef" />
   </div>
 
   <ErrorMessage
