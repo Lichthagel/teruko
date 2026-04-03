@@ -1,11 +1,15 @@
 import type { TagExt } from "models";
 import type { Component } from "solid-js";
+import { useNavigate } from "@solidjs/router";
 import styles from "client-css/m/imagepage.module.scss";
+import { tagsStore } from "client-stores";
 
 const TagChip: Component<{ tag: TagExt }> = (props) => {
+  const navigate = useNavigate();
+
   const onClick = () => {
-    // tagsStore.set([tag.slug]);
-    // void goto(resolve("/", {}));
+    tagsStore.set([props.tag.slug]);
+    navigate("/");
   };
 
   return (

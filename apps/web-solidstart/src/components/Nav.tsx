@@ -1,3 +1,4 @@
+import { A } from "@solidjs/router";
 import styles from "client-css/m/nav.module.scss";
 import { Plus } from "lucide-solid";
 
@@ -6,12 +7,12 @@ const Nav = () => {
     <div class={styles.bar}>
       <div class={`container ${styles.content}`}>
         <div class={styles.left}>
-          <a class={styles.button} href="/">てる子</a>
+          <A class={styles.button} href="/">てる子</A>
         </div>
         <div>
-          <a class={`${styles.button} ${styles.square}`} href="/new">
+          <A class={`${styles.button} ${styles.square}`} href="/new">
             <Plus />
-          </a>
+          </A>
         </div>
       </div>
     </div>
