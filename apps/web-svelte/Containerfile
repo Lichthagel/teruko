@@ -10,7 +10,7 @@ ENV CI=true
 WORKDIR /app
 
 # Copy workspace configuration and lockfile (leveraging Docker cache layers)
-COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.eslint.json .npmrc ./
+COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.eslint.json .env.schema .npmrc ./
 
 # Copy only the necessary source files for building
 COPY packages packages
@@ -36,6 +36,7 @@ WORKDIR /app
 # Copy built application and dependencies from builder stage
 COPY --chown=nodejs:nodejs --from=builder /app/dist/build  build
 COPY --chown=nodejs:nodejs --from=builder /app/dist/node_modules  node_modules
+COPY --chown=nodejs:nodejs --from=builder /app/.env.schema .env.schema
 
 # Switch to non-root user
 USER nodejs
@@ -52,4 +53,4 @@ ENV NODE_ENV=production
 ENV PORT=3000
 
 # Start the application
-CMD ["node", "build"]
+CMD ["node", "--import=varlock/auto-load", "build"]
