@@ -9,38 +9,82 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as GraphqlRouteImport } from './routes/graphql'
+import { Route as IdRouteImport } from './routes/$id'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ImgFilenameRouteImport } from './routes/img/$filename'
 
+const GraphqlRoute = GraphqlRouteImport.update({
+  id: '/graphql',
+  path: '/graphql',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IdRoute = IdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ImgFilenameRoute = ImgFilenameRouteImport.update({
+  id: '/img/$filename',
+  path: '/img/$filename',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$id': typeof IdRoute
+  '/graphql': typeof GraphqlRoute
+  '/img/$filename': typeof ImgFilenameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$id': typeof IdRoute
+  '/graphql': typeof GraphqlRoute
+  '/img/$filename': typeof ImgFilenameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$id': typeof IdRoute
+  '/graphql': typeof GraphqlRoute
+  '/img/$filename': typeof ImgFilenameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/$id' | '/graphql' | '/img/$filename'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/$id' | '/graphql' | '/img/$filename'
+  id: '__root__' | '/' | '/$id' | '/graphql' | '/img/$filename'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  IdRoute: typeof IdRoute
+  GraphqlRoute: typeof GraphqlRoute
+  ImgFilenameRoute: typeof ImgFilenameRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/graphql': {
+      id: '/graphql'
+      path: '/graphql'
+      fullPath: '/graphql'
+      preLoaderRoute: typeof GraphqlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$id': {
+      id: '/$id'
+      path: '/$id'
+      fullPath: '/$id'
+      preLoaderRoute: typeof IdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +92,21 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/img/$filename': {
+      id: '/img/$filename'
+      path: '/img/$filename'
+      fullPath: '/img/$filename'
+      preLoaderRoute: typeof ImgFilenameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  IdRoute: IdRoute,
+  GraphqlRoute: GraphqlRoute,
+  ImgFilenameRoute: ImgFilenameRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

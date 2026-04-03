@@ -222,6 +222,9 @@ catalogs:
     typescript-eslint:
       specifier: ^8.58.0
       version: 8.58.0
+    urql:
+      specifier: ^5.0.1
+      version: 5.0.1
     vite:
       specifier: ^8.0.3
       version: 8.0.3
@@ -502,15 +505,30 @@ importers:
       client-css:
         specifier: workspace:*
         version: link:../../packages/client-css
+      client-graphql:
+        specifier: workspace:*
+        version: link:../../packages/client-graphql
+      client-stores:
+        specifier: workspace:*
+        version: link:../../packages/client-stores
       lucide-react:
         specifier: 'catalog:'
         version: 1.7.0(react@19.2.4)
+      models:
+        specifier: workspace:*
+        version: link:../../packages/models
       react:
         specifier: 'catalog:'
         version: 19.2.4
       react-dom:
         specifier: 'catalog:'
         version: 19.2.4(react@19.2.4)
+      server-env:
+        specifier: workspace:*
+        version: link:../../packages/server-env
+      urql:
+        specifier: 'catalog:'
+        version: 5.0.1(@urql/core@6.0.1)(react@19.2.4)
     devDependencies:
       '@tanstack/devtools-vite':
         specifier: 'catalog:'
@@ -7714,6 +7732,12 @@ packages:
 
   urlpattern-polyfill@10.1.0:
     resolution: {integrity: sha512-IGjKp/o0NL3Bso1PymYURCJxMPNAf/ILOpendP9f5B6e1rTJgdgiOvgfoT8VxCAdY+Wisb9uhGaJJf3yZ2V9nw==}
+
+  urql@5.0.1:
+    resolution: {integrity: sha512-r58gYlWvCTC19QvkTaARaCLV9/bp870byH/qbLaw3S7f8i/bC6x2Szub8RVXptiMxWmqq5dyVBjUL9G+xPEuqg==}
+    peerDependencies:
+      '@urql/core': ^6.0.0
+      react: '>= 16.8.0'
 
   use-sync-external-store@1.6.0:
     resolution: {integrity: sha512-Pp6GSwGP/NrPIrxVFAIkOQeyw8lFenOHijQWkUTrDvrF4ALqylP2C/KCkeS9dpUM3KvYRQhna5vt7IL95+ZQ9w==}
@@ -15896,6 +15920,12 @@ snapshots:
       punycode: 2.3.1
 
   urlpattern-polyfill@10.1.0: {}
+
+  urql@5.0.1(@urql/core@6.0.1)(react@19.2.4):
+    dependencies:
+      '@urql/core': 6.0.1(graphql@17.0.0-alpha.14)
+      react: 19.2.4
+      wonka: 6.3.6
 
   use-sync-external-store@1.6.0(react@19.2.4):
     dependencies:

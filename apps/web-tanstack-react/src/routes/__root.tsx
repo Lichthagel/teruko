@@ -3,6 +3,8 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import globalCss from "client-css/global.scss?url";
+import { urqlClient } from "client-graphql";
+import { Provider } from "urql";
 
 const RootDocument = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -12,7 +14,9 @@ const RootDocument = ({ children }: { children: React.ReactNode }) => {
       </head>
       <body>
         <Nav />
-        {children}
+        <Provider value={urqlClient}>
+          {children}
+        </Provider>
         <TanStackDevtools
           config={{
             position: "bottom-right",
