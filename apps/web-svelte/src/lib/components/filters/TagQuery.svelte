@@ -1,10 +1,9 @@
 <script lang="ts">
-  import type { TagExt } from "models";
-
   import StatusBar from "$lib/components/status/StatusBar.svelte";
   import { X } from "@lucide/svelte";
-  import { getContextClient, gql, queryStore } from "@urql/svelte";
+  import { getContextClient, queryStore } from "@urql/svelte";
   import styles from "client-css/m/filters.module.scss";
+  import { Tag } from "client-graphql/snippets";
   import { tagsStore } from "client-stores";
 
   type Props = {
@@ -15,17 +14,9 @@
 
   const client = getContextClient();
 
-  const result = queryStore<{ tag: TagExt }>({
+  const result = queryStore({
     client,
-    query: gql`
-      query Tag($slug: String!) {
-        tag(slug: $slug) {
-          category {
-            color
-          }
-        }
-      }
-    `,
+    query: Tag,
     variables: { slug: tag },
   });
 

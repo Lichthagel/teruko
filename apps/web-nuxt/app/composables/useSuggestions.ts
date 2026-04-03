@@ -1,7 +1,8 @@
 import type { CombinedError } from "@urql/vue";
 
 import type { TagExt } from "models";
-import { gql, useClientHandle } from "@urql/vue";
+import { useClientHandle } from "@urql/vue";
+import { TagSuggestions } from "client-graphql/snippets";
 
 const useSuggestions = (
   query: Ref<string>,
@@ -26,17 +27,8 @@ const useSuggestions = (
     fetching.value = true;
     const timeout = setTimeout(() => {
       clientHandle.client
-        .query<{ tagSuggestions: TagExt[] }>(
-          gql`
-            query TagSuggestions($query: String!) {
-              tagSuggestions(query: $query) {
-                slug
-                category {
-                  color
-                }
-              }
-            }
-          `,
+        .query(
+          TagSuggestions,
           { query },
         )
         .toPromise()
