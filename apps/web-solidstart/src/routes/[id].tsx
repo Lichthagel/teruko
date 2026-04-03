@@ -1,9 +1,9 @@
-import type { ImageExt } from "models";
 import type { JSX } from "solid-js/h/jsx-runtime";
 import { Title } from "@solidjs/meta";
 import { useParams } from "@solidjs/router";
-import { createQuery, gql } from "@urql/solid";
+import { createQuery } from "@urql/solid";
 import styles from "client-css/m/imagepage.module.scss";
+import { Image } from "client-graphql/snippets";
 import { Download } from "lucide-solid";
 import { createMemo, For, Match, Show, Switch } from "solid-js";
 import TagChip from "~/components/TagChip";
@@ -11,28 +11,9 @@ import TagChip from "~/components/TagChip";
 export default () => {
   const { id } = useParams();
 
-  const [result] = createQuery<{ image: ImageExt | null }>({
-    query: gql`
-      query Image($id: ID!) {
-        image(id: $id) {
-          id
-          title
-          source
-          filename
-          createdAt
-          updatedAt
-          width
-          height
-          tags {
-            slug
-            category {
-              color
-            }
-          }
-        }
-      }
-    `,
-    variables: { id },
+  const [result] = createQuery({
+    query: Image,
+    variables: { id: Number.parseInt(id!) },
   });
 
   const image = createMemo(() => result.data?.image);
