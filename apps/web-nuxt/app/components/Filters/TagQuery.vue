@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { X } from "@lucide/vue";
-import { useStore } from "@nanostores/vue";
 import { useQuery } from "@urql/vue";
 import styles from "client-css/m/filters.module.scss";
 import { Tag } from "client-graphql/snippets";
-import { tagsStore } from "client-stores";
 
 const props = defineProps<{
   tag: string;
 }>();
 
-const tags = useStore(tagsStore);
+const { tags } = useFilters();
 
 const {
   data,
@@ -23,7 +21,7 @@ const {
 });
 
 const removeTag = () => {
-  tagsStore.set(tags.value.filter(tag => tag !== props.tag));
+  tags.value = tags.value.filter(tag => tag !== props.tag);
 };
 </script>
 

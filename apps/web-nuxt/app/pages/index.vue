@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import { useStore } from "@nanostores/vue";
-import { sortStore, tagsStore } from "client-stores";
-
 useHead({
   title: "てる子",
 });
 
-const sort = useStore(sortStore);
-const tags = useStore(tagsStore);
+const { tags, sort } = useFilters();
 </script>
 
 <template>
@@ -15,7 +11,7 @@ const tags = useStore(tagsStore);
     <Filters />
 
     <Gallery
-      :sort="sort || 'NEWEST'"
+      :sort="sort"
       :tags="tags"
     />
   </div>

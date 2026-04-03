@@ -1,15 +1,16 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import { ListX } from "@lucide/vue";
-import { useStore } from "@nanostores/vue";
 import styles from "client-css/m/filters.module.scss";
-import { tagsStore } from "client-stores";
-
 import SortSelect from "./SortSelect.vue";
 import TagQuery from "./TagQuery.vue";
 import TagSearch from "./TagSearch.vue";
 
-const tags = useStore(tagsStore);
+const { tags } = useFilters();
+
+const resetTags = () => {
+  tags.value = [];
+};
 </script>
 
 <template>
@@ -24,7 +25,7 @@ const tags = useStore(tagsStore);
         :tag="tag"
       />
       <div :class="[styles['tag-query'], styles.reset]">
-        <button @click="() => tagsStore.set([])">
+        <button @click="resetTags">
           <ListX />
         </button>
       </div>

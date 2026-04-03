@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import { useSuggestions } from "#imports";
 import { Loader2, Search } from "@lucide/vue";
-import { useStore } from "@nanostores/vue";
 import styles from "client-css/m/filters.module.scss";
 
-import { tagsStore } from "client-stores";
-
-const tags = useStore(tagsStore);
+const { tags } = useFilters();
 
 const tagInput = ref("");
 const activeSuggestion = ref(0);
@@ -18,9 +15,13 @@ const handleSubmit = () => {
     return;
   }
 
-  tagsStore.set([...tags.value, suggestions.value[activeSuggestion.value].slug]);
-  tagInput.value = "";
-  activeSuggestion.value = 0;
+  const activeValue = suggestions.value[activeSuggestion.value];
+
+  if (activeValue) {
+    tags.value = [...tags.value, activeValue.slug];
+    tagInput.value = "";
+    activeSuggestion.value = 0;
+  }
 };
 
 const handleKeyDown = (e: KeyboardEvent) => {
@@ -48,7 +49,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
     case "Escape": {
       tagInput.value = "";
       activeSuggestion.value = 0;
-      tagsStore.set([]);
+      tags.value = [];
 
       break;
     }

@@ -1,9 +1,8 @@
 <script lang="ts">
   import type { ImageExt } from "models";
-
   import { resolve } from "$app/paths";
+  import { filters } from "$lib/filters.svelte.js";
   import styles from "client-css/m/gallery.module.scss";
-  import { tagsStore } from "client-stores";
   import { fly } from "svelte/transition";
 
   type Props = {
@@ -13,7 +12,7 @@
   const { image }: Props = $props();
 
   const onTagClick = (slug: string) => {
-    tagsStore.set([slug]);
+    filters.tags = [slug];
   };
 </script>
 

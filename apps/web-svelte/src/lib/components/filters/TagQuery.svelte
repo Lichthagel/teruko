@@ -1,10 +1,10 @@
 <script lang="ts">
   import StatusBar from "$lib/components/status/StatusBar.svelte";
+  import { filters } from "$lib/filters.svelte.js";
   import { X } from "@lucide/svelte";
   import { getContextClient, queryStore } from "@urql/svelte";
   import styles from "client-css/m/filters.module.scss";
   import { Tag } from "client-graphql/snippets";
-  import { tagsStore } from "client-stores";
 
   type Props = {
     tag: string;
@@ -21,9 +21,9 @@
   });
 
   const removeTag = () => {
-    const newTags = $tagsStore.filter(t => t !== tag);
+    const newTags = filters.tags.filter(t => t !== tag);
 
-    tagsStore.set(newTags);
+    filters.tags = newTags;
   };
 </script>
 

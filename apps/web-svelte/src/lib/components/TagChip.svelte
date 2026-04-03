@@ -3,8 +3,8 @@
 
   import { goto } from "$app/navigation";
   import { resolve } from "$app/paths";
+  import { filters } from "$lib/filters.svelte.js";
   import styles from "client-css/m/imagepage.module.scss";
-  import { tagsStore } from "client-stores";
 
   type Props = {
     tag: TagExt;
@@ -13,7 +13,7 @@
   const { tag }: Props = $props();
 
   const onClick = () => {
-    tagsStore.set([tag.slug]);
+    filters.tags = [tag.slug];
     void goto(resolve("/", {}));
   };
 </script>

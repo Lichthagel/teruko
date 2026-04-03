@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { TagExt } from "models";
 import styles from "client-css/m/imagepage.module.scss";
-import { tagsStore } from "client-stores";
 
 const props = defineProps<{
   tag: TagExt;
@@ -9,8 +8,10 @@ const props = defineProps<{
 
 const router = useRouter();
 
+const { tags } = useFilters();
+
 const onClick = () => {
-  tagsStore.set([props.tag.slug]);
+  tags.value = [props.tag.slug];
   void router.push("/");
 };
 </script>

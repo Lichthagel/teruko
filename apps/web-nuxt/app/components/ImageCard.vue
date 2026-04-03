@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import type { ImageExt } from "models";
 import styles from "client-css/m/gallery.module.scss";
-import { tagsStore } from "client-stores";
 
 const props = defineProps<{
   image: ImageExt;
 }>();
+
+const { tags } = useFilters();
+
+const setTag = (slug: string) => {
+  tags.value = [slug];
+};
 </script>
 
 <template>
@@ -39,7 +44,7 @@ const props = defineProps<{
         <button
           :style="{ backgroundColor: tag.category?.color ?? 'gray' }"
           type="button"
-          @click="() => tagsStore.set([tag.slug])"
+          @click="() => setTag(tag.slug)"
         >
           {{ tag.slug }}
         </button>

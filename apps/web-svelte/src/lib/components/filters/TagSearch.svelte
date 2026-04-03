@@ -1,9 +1,9 @@
 <script lang="ts">
+  import { filters } from "$lib/filters.svelte.js";
   import suggestionsStore from "$lib/suggestionsStore.js";
   import { LoaderCircle, Search } from "@lucide/svelte";
   import { getContextClient } from "@urql/svelte";
   import styles from "client-css/m/filters.module.scss";
-  import { tagsStore } from "client-stores";
 
   const client = getContextClient();
 
@@ -23,7 +23,7 @@
       return;
     }
 
-    tagsStore.set([...$tagsStore, suggestion.slug]);
+    filters.tags = [...filters.tags, suggestion.slug];
     tagInput = "";
     activeSuggestion = 0;
   };
@@ -61,7 +61,7 @@
         tagInput = "";
         activeSuggestion = 0;
 
-        tagsStore.set([]);
+        filters.tags = [];
 
         break;
       }

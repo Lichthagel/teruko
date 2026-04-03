@@ -2,7 +2,7 @@
   import Filters from "$lib/components/filters/Filters.svelte";
   import Gallery from "$lib/components/Gallery.svelte";
   import ScrollButtons from "$lib/components/ScrollButtons.svelte";
-  import { sortStore, tagsStore } from "client-stores";
+  import { filters } from "$lib/filters.svelte.js";
 </script>
 
 <svelte:head>
@@ -12,9 +12,9 @@
 <div class="container">
   <Filters />
 
-  {#key $tagsStore}
-    {#key $sortStore || "NEWEST"}
-      <Gallery sort={$sortStore || "NEWEST"} tags={$tagsStore} />
+  {#key filters.tags}
+    {#key filters.sort}
+      <Gallery sort={filters.sort} tags={filters.tags} />
     {/key}
   {/key}
 </div>

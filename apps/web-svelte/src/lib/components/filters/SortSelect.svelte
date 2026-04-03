@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { FormEventHandler } from "svelte/elements";
 
-  import { ArrowDownNarrowWide } from "@lucide/svelte";
+  import { filters } from "$lib/filters.svelte.js";
 
+  import { ArrowDownNarrowWide } from "@lucide/svelte";
   import styles from "client-css/m/filters.module.scss";
-  import { sortStore } from "client-stores";
   import { zImageSort } from "models";
 
   const handleInput: FormEventHandler<HTMLSelectElement> = (event) => {
@@ -12,7 +12,7 @@
 
     const parsedSort = zImageSort.parse(event.currentTarget.value);
 
-    sortStore.set(parsedSort);
+    filters.sort = parsedSort;
   };
 </script>
 
@@ -21,7 +21,7 @@
 
   <select
     oninput={handleInput}
-    value={$sortStore || "NEWEST"}
+    value={filters.sort}
   >
     <option value="NEWEST">newest</option>
     <option value="OLDEST">oldest</option>
