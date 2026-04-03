@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { TagExt } from "models";
 import { X } from "@lucide/vue";
 import { useStore } from "@nanostores/vue";
-import { gql, useQuery } from "@urql/vue";
+import { useQuery } from "@urql/vue";
 import styles from "client-css/m/filters.module.scss";
+import { Tag } from "client-graphql/snippets";
 import { tagsStore } from "client-stores";
 
 const props = defineProps<{
@@ -17,16 +17,8 @@ const {
   fetching,
   stale,
   error,
-} = useQuery<{ tag: TagExt }>({
-  query: gql`
-    query Tag($slug: String!) {
-      tag(slug: $slug) {
-        category {
-          color
-        }
-      }
-    }
-  `,
+} = useQuery({
+  query: Tag,
   variables: { slug: props.tag },
 });
 

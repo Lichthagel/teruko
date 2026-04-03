@@ -1,36 +1,11 @@
 import type { CombinedError, OperationResult } from "@urql/vue";
-
-import type { ImageExt, ImageSort } from "models";
+import type { ImagesArgs, ImagesResult } from "client-graphql/snippets";
+import type { ImageSort } from "models";
 import {
   createRequest,
-  gql,
   useClientHandle,
 } from "@urql/vue";
-
-type ImagesArgs = {
-  tags: readonly string[];
-  after?: string;
-  before?: string;
-  first?: number;
-  last?: number;
-};
-
-type ImagesOperationResult = OperationResult<ImagesResult, ImagesArgs>;
-
-type ImagesResult = {
-  images: {
-    edges: {
-      node: ImageExt;
-      cursor: string;
-    }[];
-    pageInfo: {
-      startCursor: string;
-      endCursor: string;
-      hasPreviousPage: boolean;
-      hasNextPage: boolean;
-    };
-  };
-};
+import { Images } from "client-graphql/snippets";
 
 const getRequest = (
   tags: readonly string[],
@@ -38,51 +13,7 @@ const getRequest = (
   cursor?: string,
 ) =>
   createRequest(
-    gql`
-      query Images(
-        $tags: [String!]
-        $after: String
-        $before: String
-        $first: Int
-        $last: Int
-        $random: Boolean
-      ) {
-        images(
-          tags: $tags
-          after: $after
-          before: $before
-          first: $first
-          last: $last
-          random: $random
-        ) {
-          edges {
-            cursor
-            node {
-              id
-              title
-              source
-              filename
-              createdAt
-              updatedAt
-              width
-              height
-              tags {
-                slug
-                category {
-                  color
-                }
-              }
-            }
-          }
-          pageInfo {
-            startCursor
-            endCursor
-            hasPreviousPage
-            hasNextPage
-          }
-        }
-      }
-    `,
+    Images,
     {
       tags,
       after: sort === "NEWEST" || sort === "RANDOM" ? cursor : undefined,
@@ -106,7 +37,7 @@ export const useImages = (
   const edges = ref<ImagesResult["images"]["edges"]>([]);
   const hasNextPage = ref(true);
 
-  const handleChange = (res: ImagesOperationResult): void => {
+  const handleChange = (res: OperationResult<ImagesResult, ImagesArgs>): void => {
     if (res.data) {
       const usedCursor = res.operation.variables.last
         ? res.operation.variables.before

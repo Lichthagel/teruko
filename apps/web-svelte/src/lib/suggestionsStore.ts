@@ -1,7 +1,7 @@
 import type { Client, CombinedError } from "@urql/svelte";
 
 import type { TagExt } from "models";
-import { gql } from "@urql/svelte";
+import { TagSuggestions } from "client-graphql/snippets";
 import { readable, writable } from "svelte/store";
 
 type SuggestionsResult = {
@@ -28,17 +28,8 @@ const suggestionsStore = (client: Client, query: string) => {
     },
     () => {
       const querySubscription = client
-        .query<{ tagSuggestions: TagExt[] }>(
-          gql`
-            query TagSuggestions($query: String!) {
-              tagSuggestions(query: $query) {
-                slug
-                category {
-                  color
-                }
-              }
-            }
-          `,
+        .query(
+          TagSuggestions,
           { query },
         )
         .subscribe(({ data, error }) => {

@@ -29,7 +29,7 @@ const endRef = (node: ComponentPublicInstance | Element | null) => {
   }
 
   observer.value = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
+    if (entries[0]?.isIntersecting) {
       fetchMore();
     }
   });

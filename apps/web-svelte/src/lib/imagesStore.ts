@@ -1,92 +1,19 @@
-import type { Client, CombinedError, GraphQLRequest, OperationResult } from "@urql/svelte";
-
+import type { Client, CombinedError, OperationResult } from "@urql/svelte";
+import type { ImagesArgs, ImagesResult } from "client-graphql/snippets";
 import type { ImageExt, ImageSort } from "models";
 import type { Readable } from "svelte/store";
 import { browser } from "$app/environment";
-import {
-
-  createRequest,
-  gql,
-
-} from "@urql/svelte";
+import { createRequest } from "@urql/svelte";
+import { Images } from "client-graphql/snippets";
 import { writable } from "svelte/store";
-
-type ImagesArgs = {
-  tags: readonly string[];
-  after: string | null;
-  before: string | null;
-  first: number | null;
-  last: number | null;
-};
-
-type ImagesOperationResult = OperationResult<ImagesResult, ImagesArgs>;
-
-type ImagesResult = {
-  images: {
-    edges: {
-      cursor: string;
-      node: ImageExt;
-    }[];
-    pageInfo: {
-      startCursor: string;
-      endCursor: string;
-      hasPreviousPage: boolean;
-      hasNextPage: boolean;
-    };
-  };
-};
 
 const getRequest = (
   tags: readonly string[],
   sort: ImageSort,
   cursor: string | null = null,
-): GraphQLRequest<ImagesResult, ImagesArgs> =>
+) =>
   createRequest(
-    gql`
-      query Images(
-        $tags: [String!]
-        $after: String
-        $before: String
-        $first: Int
-        $last: Int
-        $random: Boolean
-      ) {
-        images(
-          tags: $tags
-          after: $after
-          before: $before
-          first: $first
-          last: $last
-          random: $random
-        ) {
-          edges {
-            cursor
-            node {
-              id
-              title
-              source
-              filename
-              createdAt
-              updatedAt
-              width
-              height
-              tags {
-                slug
-                category {
-                  color
-                }
-              }
-            }
-          }
-          pageInfo {
-            startCursor
-            endCursor
-            hasPreviousPage
-            hasNextPage
-          }
-        }
-      }
-    `,
+    Images,
     {
       tags,
       after: sort === "NEWEST" || sort === "RANDOM" ? cursor : null,
@@ -122,7 +49,7 @@ const imagesStore = (
 
   let hasNextPage = true;
 
-  const handleChange = (res: ImagesOperationResult): void => {
+  const handleChange = (res: OperationResult<ImagesResult, ImagesArgs>): void => {
     if (res.data) {
       const usedCursor = res.operation.variables.last
         ? res.operation.variables.before
