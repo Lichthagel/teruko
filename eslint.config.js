@@ -17,6 +17,8 @@ export default antfu({
     "**/.output/**",
     "**/.nuxt/**",
     "**/build/**",
+    "**/.nitro/**",
+    "**/.solid-start/**",
   ],
   rules: {
     "antfu/top-level-function": "off",
