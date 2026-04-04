@@ -9,7 +9,7 @@ config({
 const Env = z.object({
   DATABASE_URL: z
     .string()
-    .default("file:./local.db"),
+    .default("postgresql://postgres:postgres@localhost:5432/postgres"),
   IMG_FOLDER: z.string().default("./data"),
   NODE_ENV: z.string().default("production"),
 });

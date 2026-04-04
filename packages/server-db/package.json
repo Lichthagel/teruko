@@ -30,11 +30,13 @@
     }
   },
   "dependencies": {
-    "@libsql/client": "catalog:",
     "drizzle-orm": "catalog:",
+    "pg": "catalog:",
     "server-env": "workspace:^"
   },
   "devDependencies": {
+    "@libsql/client": "catalog:",
+    "@types/pg": "catalog:",
     "drizzle-kit": "catalog:",
     "tsconfig": "workspace:^",
     "typescript": "catalog:"
