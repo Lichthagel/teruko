@@ -26,11 +26,10 @@ const getRequest = (
 export const useImages = (tags: Accessor<readonly string[]>, sort: Accessor<ImageSort>) => {
   const client = useClient();
 
-  const [cursor, setCursor] = createSignal<string>();
   const [fetching, setFetching] = createSignal(false);
   const [error, setError] = createSignal<CombinedError>();
 
-  const [edges, setEdges] = createSignal<ImagesResult["images"]["edges"]>();
+  const [edges, setEdges] = createSignal<ImagesResult["images"]["edges"]>([]);
   const [hasNextPage, setHasNextPage] = createSignal(true);
 
   const images = createMemo(() => edges()?.map(edge => edge.node) ?? []);
@@ -43,45 +42,90 @@ export const useImages = (tags: Accessor<readonly string[]>, sort: Accessor<Imag
 
       const { edges: newEdges, pageInfo } = result.data.images;
 
-      if (newEdges.length > 0) {
-        if (usedCursor) {
-          setEdges(prev => [...(prev ?? []), ...newEdges]);
-        } else {
-          setEdges((prev) => {
-            const idx = prev?.findIndex(edge => edge.cursor === newEdges.at(-1)?.cursor) ?? -1;
+      setEdges((prevEdges) => {
+        if (newEdges.length > 0) {
+          if (usedCursor) {
+            const idx = prevEdges.findIndex(
+              edge => edge.cursor === usedCursor,
+            );
 
-            return idx === -1 ? newEdges : [...newEdges, ...(prev?.slice(idx + 1) ?? [])];
-          });
+            if (idx >= 0) {
+              const previousKept = prevEdges.slice(0, idx + 1);
+              const filteredNewEdges = newEdges.filter(edge => !previousKept.some(prev => prev.node.id === edge.node.id));
+
+              return [...previousKept, ...filteredNewEdges];
+            } else {
+              return newEdges;
+            }
+          } else {
+            const idx = prevEdges.findIndex(
+              image => image.cursor === newEdges.at(-1)?.cursor,
+            );
+
+            return idx === -1
+              ? newEdges
+              : [...newEdges, ...prevEdges.slice(idx + 1)];
+          }
         }
-      }
+
+        return prevEdges;
+      });
 
       setHasNextPage(result.operation.variables.last ? pageInfo.hasPreviousPage : pageInfo.hasNextPage);
     }
 
+    setFetching(false);
     setError(result.error);
+
+    if (!result.error && !result.stale && sort() === "NEWEST") {
+      resetTimeout();
+    } else {
+      cancelTimeout();
+    }
+  };
+
+  const newQuery = (cursor?: string, refresh = false) => {
+    setFetching(true);
+    setError(undefined);
+
+    client
+      .executeQuery(getRequest(tags(), sort(), cursor), {
+        requestPolicy: refresh ? "network-only" : "cache-first",
+      })
+      .toPromise()
+      .then(handleResult)
+      .catch(setError);
+  };
+
+  const refresh = () => {
+    newQuery(undefined, true);
+  };
+
+  const [timeoutId, setTimeoutId] = createSignal<ReturnType<typeof globalThis.setTimeout>>();
+
+  const cancelTimeout = () => {
+    if (timeoutId()) {
+      globalThis.clearTimeout(timeoutId());
+    }
+  };
+
+  const resetTimeout = () => {
+    cancelTimeout();
+
+    setTimeoutId(globalThis.setTimeout(refresh, 20_000));
   };
 
   createEffect(() => {
-    setFetching(true);
+    newQuery();
 
-    client
-      .executeQuery(getRequest(tags(), sort(), cursor()))
-      .toPromise()
-      .then(handleResult)
-      .catch(error => console.error(error))
-      .finally(() => setFetching(false));
-  });
-
-  createEffect(() => {
-    tags();
-    sort();
-
-    setEdges([]);
+    return () => {
+      cancelTimeout();
+    };
   });
 
   const fetchMore = () => {
     if (hasNextPage() && !error()) {
-      setCursor(edges()?.at(-1)?.cursor);
+      newQuery(edges().at(-1)?.cursor, false);
     }
   };
 
