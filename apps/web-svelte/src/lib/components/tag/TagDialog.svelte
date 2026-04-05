@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { tagsStore } from "client-stores";
+  import { filters } from "$lib/filters.svelte.js";
   import Dialog from "../Dialog.svelte";
   import TagEditSection from "./TagEditSection.svelte";
   import TagRuleSection from "./TagRuleSection.svelte";
@@ -9,9 +9,9 @@
   const onSubmit = (newSlug?: string) => {
     open = false;
     if (newSlug) {
-      const idx = $tagsStore.findIndex(el => el === slug);
+      const idx = filters.tags.findIndex(el => el === slug);
       if (idx >= 0) {
-        $tagsStore = $tagsStore.toSpliced(idx, 1, newSlug);
+        filters.tags = filters.tags.toSpliced(idx, 1, newSlug);
       }
     }
   };
