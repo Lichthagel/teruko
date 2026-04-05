@@ -45,14 +45,18 @@ export const useImages = (
 
       if (newEdges.length > 0) {
         if (usedCursor) {
-          edges = [...edges, ...newEdges];
-        } else {
-          const idx = edges.findIndex(
-            edge => edge.cursor === newEdges.at(-1)?.cursor,
-          );
+          const idx = edges.findIndex(edge => edge.cursor === usedCursor);
 
-          edges
-            = idx === -1 ? newEdges : [...newEdges, ...edges.slice(idx + 1)];
+          if (idx >= 0) {
+            const previousKept = edges.slice(0, idx + 1);
+            const filteredNewEdges = newEdges.filter(edge => !previousKept.some(prev => prev.node.id === edge.node.id));
+
+            edges = [...previousKept, ...filteredNewEdges];
+          } else {
+            edges = newEdges;
+          }
+        } else {
+          edges = newEdges;
         }
       }
 
@@ -120,10 +124,10 @@ export const useImages = (
   });
 
   const fetchMore = () => {
-        if (hasNextPage && !error) {
-          newQuery(edges.at(-1)?.cursor, false);
-        }
-      };
+    if (hasNextPage && !error) {
+      newQuery(edges.at(-1)?.cursor, false);
+    }
+  };
 
   return {
     get fetching() {

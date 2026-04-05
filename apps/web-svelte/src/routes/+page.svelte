@@ -12,11 +12,7 @@
 <div class="container">
   <Filters />
 
-  {#key filters.tags}
-    {#key filters.sort}
-      <Gallery sort={filters.sort} tags={filters.tags} />
-    {/key}
-  {/key}
+  <Gallery sort={filters.sort} tags={filters.tags} />
 </div>
 
 <ScrollButtons />
