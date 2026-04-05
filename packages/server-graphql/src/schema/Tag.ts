@@ -1,7 +1,6 @@
 import type { TagExt, TagRuleExt } from "models";
 import { eq } from "drizzle-orm";
-import { alias } from "drizzle-orm/sqlite-core";
-
+import { alias } from "drizzle-orm/pg-core";
 import { db, dTag, dTagCategory, dTagRule } from "server-db";
 import { builder } from "./builder.js";
 import { PothosTagCategory } from "./TagCategory.js";

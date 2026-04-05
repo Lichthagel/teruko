@@ -1,5 +1,5 @@
 import { and, eq, inArray, not, sql } from "drizzle-orm";
-import { alias } from "drizzle-orm/sqlite-core";
+import { alias } from "drizzle-orm/pg-core";
 import { d_ImageToTag, db, dTagRule } from "server-db";
 
 export const applyTagRulesToImage = async (imageId: number) => {
@@ -79,7 +79,7 @@ export const applyTagRulesAll = async () => {
     ));
 
   return {
-    removed: resRemove.rowsAffected,
-    added: resImplies.rowsAffected,
+    removed: resRemove.rowCount,
+    added: resImplies.rowCount,
   };
 };

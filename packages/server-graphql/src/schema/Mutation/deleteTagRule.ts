@@ -15,11 +15,11 @@ const deleteTagRule = (b: typeof builder) =>
           .delete(dTagRule)
           .where(eq(dTagRule.id, id));
 
-        if (res.rowsAffected === 0) {
+        if (res.rowCount === 0) {
           throw new GraphQLError("not found");
         }
 
-        return res.rowsAffected > 0;
+        return (res.rowCount ?? 0) > 0;
       },
     }));
 
