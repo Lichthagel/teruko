@@ -93,19 +93,25 @@ export const _ImageToTagRelations = relations(d_ImageToTag, ({ one }) => ({
   }),
 }));
 
-export const dTagRule = sqliteTable(
+export const dTagRule = pgTable(
   "TagRule",
   {
-    id: integer("id").primaryKey({ autoIncrement: true }),
-    tagId: integer("tagId").notNull().references(() => dTag.id, {
-      onDelete: "cascade",
-      onUpdate: "cascade",
-    }),
-    ruleKind: text("ruleKind", { enum: ["implies", "remove"] }).notNull(),
-    otherTagId: integer("otherTagId").references(() => dTag.id, {
-      onDelete: "no action",
-      onUpdate: "cascade",
-    }),
+    id: bigint("id", { mode: "number" })
+      .primaryKey()
+      .generatedAlwaysAsIdentity(),
+    tagId: bigint("tagId", { mode: "number" })
+      .notNull()
+      .references(() => dTag.id, {
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      }),
+    ruleKind: text("ruleKind", { enum: ["implies", "remove"] })
+      .notNull(),
+    otherTagId: bigint("otherTagId", { mode: "number" })
+      .references(() => dTag.id, {
+        onDelete: "no action",
+        onUpdate: "cascade",
+      }),
   },
   table => ([
     index("TagRule_otherTagId_idx").on(table.otherTagId),
