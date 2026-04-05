@@ -1,11 +1,9 @@
-import type { Client, CombinedError, OperationResult } from "@urql/svelte";
+import type { CombinedError, OperationResult } from "@urql/svelte";
 import type { ImagesArgs, ImagesResult } from "client-graphql/snippets";
-import type { ImageExt, ImageSort } from "models";
-import type { Readable } from "svelte/store";
+import type { ImageSort } from "models";
 import { browser } from "$app/environment";
-import { createRequest } from "@urql/svelte";
+import { createRequest, getContextClient } from "@urql/svelte";
 import { Images } from "client-graphql/snippets";
-import { writable } from "svelte/store";
 
 const getRequest = (
   tags: readonly string[],
@@ -24,30 +22,18 @@ const getRequest = (
     },
   );
 
-type Result = {
-  fetching: boolean;
-  stale: boolean;
-  error: CombinedError | undefined;
-  images: ImageExt[];
-  fetchMore: () => void;
-};
+export const useImages = (
+  tags: () => readonly string[],
+  sort: () => ImageSort,
+) => {
+  const client = getContextClient();
 
-const initialResult: Result = {
-  fetching: false,
-  stale: false,
-  error: undefined,
-  images: [],
-  fetchMore: () => {},
-};
+  let edges: ImagesResult["images"]["edges"] = $state([]);
+  let hasNextPage = $state(true);
 
-const imagesStore = (
-  client: Client,
-  tags: readonly string[],
-  sort: ImageSort,
-): Readable<Result> => {
-  let edges: ImagesResult["images"]["edges"] = [];
-
-  let hasNextPage = true;
+  let fetching = $state(false);
+  let error = $state<CombinedError>();
+  const images = $derived(edges.map(edge => edge.node));
 
   const handleChange = (res: OperationResult<ImagesResult, ImagesArgs>): void => {
     if (res.data) {
@@ -75,20 +61,10 @@ const imagesStore = (
         : pageInfo.hasNextPage;
     }
 
-    result.set({
-      fetching: false,
-      stale: res.stale,
-      error: res.error,
-      images: edges.map(edge => edge.node),
-      fetchMore:
-        hasNextPage && !res.error
-          ? () => {
-              newQuery(edges.at(-1)?.cursor, false);
-            }
-          : () => {},
-    });
+    fetching = false;
+    error = res.error;
 
-    if (!res.error && !res.stale && sort === "NEWEST") {
+    if (!res.error && !res.stale && sort() === "NEWEST") {
       resetTimeout();
     } else {
       cancelTimeout();
@@ -96,16 +72,10 @@ const imagesStore = (
   };
 
   const newQuery = (cursor?: string, refresh = false) => {
-    result.set({
-      fetching: true,
-      stale: false,
-      error: undefined,
-      images: edges.map(edge => edge.node),
-      fetchMore: () => {},
-    });
+    fetching = true;
 
     client
-      .executeQuery(getRequest(tags, sort, cursor), {
+      .executeQuery(getRequest(tags(), sort(), cursor), {
         requestPolicy: refresh ? "network-only" : "cache-first",
       })
       .toPromise()
@@ -141,14 +111,30 @@ const imagesStore = (
     timeoutId = globalThis.setTimeout(refresh, 20_000);
   };
 
-  const result = writable<Result>(initialResult, () => {
+  $effect(() => {
     newQuery();
+
     return () => {
       cancelTimeout();
     };
   });
 
-  return result;
-};
+  const fetchMore = () => {
+        if (hasNextPage && !error) {
+          newQuery(edges.at(-1)?.cursor, false);
+        }
+      };
 
-export default imagesStore;
+  return {
+    get fetching() {
+      return fetching;
+    },
+    get error() {
+      return error;
+    },
+    get images() {
+      return images;
+    },
+    fetchMore,
+  };
+};
