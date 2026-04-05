@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { filters } from "$lib/filters.svelte.js";
   import suggestionsStore from "$lib/suggestionsStore.js";
   import { Icon as IconType, LoaderCircle } from "@lucide/svelte";
   import { getContextClient } from "@urql/svelte";
