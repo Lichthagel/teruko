@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import styles from "client-css/m/nav.module.scss";
 import { Plus } from "lucide-react";
 
@@ -6,12 +7,13 @@ const Nav = () => {
     <div className={styles.bar}>
       <div className={`container ${styles.content}`}>
         <div className={styles.left}>
-          <a className={styles.button} href="/">てる子</a>
+          <Link className={styles.button} to="/">てる子</Link>
         </div>
         <div>
-          <a className={`${styles.button} ${styles.square}`} href="/new">
+          {/* @ts-expect-error not yet implemented */}
+          <Link className={`${styles.button} ${styles.square}`} to="/new">
             <Plus />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
