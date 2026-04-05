@@ -1,20 +1,17 @@
 <script lang="ts">
   import { filters } from "$lib/filters.svelte.js";
-  import suggestionsStore from "$lib/suggestionsStore.js";
+  import { useSuggestions } from "$lib/suggestions.svelte.js";
   import { LoaderCircle, Search } from "@lucide/svelte";
-  import { getContextClient } from "@urql/svelte";
   import styles from "client-css/m/filters.module.scss";
-
-  const client = getContextClient();
 
   let tagInput = $state("");
   let activeSuggestion = $state(0);
 
-  const suggestionsResult = $derived(suggestionsStore(client, tagInput));
+  const suggestionsResult = useSuggestions(() => tagInput);
 
-  const fetching = $derived($suggestionsResult.fetching);
+  const fetching = $derived(suggestionsResult.fetching);
   // $: error = $suggestionsResult.error; // TODO: Handle error
-  const suggestions = $derived($suggestionsResult.suggestions);
+  const suggestions = $derived(suggestionsResult.suggestions);
 
   const handleSubmit = () => {
     const suggestion = suggestions[activeSuggestion];
