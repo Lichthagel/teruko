@@ -37,9 +37,15 @@
 
 {#if result.images}
   <div class={styles.gallery}>
-    {#each result.images as image (image.id)}
-      <ImageCard {image} />
-    {/each}
+    {#if sort !== "RANDOM"}
+      {#each result.images as image (image.id)}
+        <ImageCard {image} />
+      {/each}
+    {:else}
+      {#each result.images as image}
+        <ImageCard {image} />
+      {/each}
+    {/if}
     <div use:endAction></div>
   </div>
 {/if}
