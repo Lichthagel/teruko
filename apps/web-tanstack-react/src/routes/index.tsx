@@ -1,10 +1,11 @@
+import { Filters } from "#/components/filters/Filters";
 import { createFileRoute } from "@tanstack/react-router";
 
 const App = () => {
   return (
-    <main>
-      Teruko
-    </main>
+    <div className="container">
+      <Filters />
+    </div>
   );
 };
 
