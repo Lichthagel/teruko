@@ -52,7 +52,14 @@ export const useImages = (
               edge => edge.cursor === usedCursor,
             );
 
-            return [...prevEdges.slice(0, idx + 1), ...newEdges];
+            if (idx >= 0) {
+              const previousKept = prevEdges.slice(0, idx + 1);
+              const filteredNewEdges = newEdges.filter(edge => !previousKept.some(prev => prev.node.id === edge.node.id));
+
+              return [...previousKept, ...filteredNewEdges];
+            } else {
+              return newEdges;
+            }
           } else {
             const idx = prevEdges.findIndex(
               image => image.cursor === newEdges.at(-1)?.cursor,

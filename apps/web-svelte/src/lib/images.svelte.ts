@@ -56,7 +56,13 @@ export const useImages = (
             edges = newEdges;
           }
         } else {
-          edges = newEdges;
+            const idx = edges.findIndex(
+              image => image.cursor === newEdges.at(-1)?.cursor,
+            );
+
+            edges = idx === -1
+              ? newEdges
+              : [...newEdges, ...edges.slice(idx + 1)];
         }
       }
 
