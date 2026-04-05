@@ -13,6 +13,7 @@ import {
 } from "server-db";
 import env from "server-env";
 import sharp from "sharp";
+import { applyTagRulesToImage } from "./applyTagRules.js";
 
 const mimeTypeRegex = /^image\/(?:jpeg|gif|png|webp|avif)$/;
 
@@ -104,6 +105,8 @@ const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: sharp.Metadata & { w
 
     return image;
   });
+
+  applyTagRulesToImage(image.id);
 
   return image;
 };

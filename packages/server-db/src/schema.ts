@@ -21,9 +21,9 @@ export const dImage = pgTable(
     height: integer("height").notNull(),
     width: integer("width").notNull(),
   },
-  table => (
-    [index("Image_createdAt_idx").on(table.createdAt)]
-  ),
+  table => ([
+    index("Image_createdAt_idx").on(table.createdAt),
+  ]),
 );
 
 export const ImageRelations = relations(dImage, ({ many }) => ({
@@ -93,6 +93,42 @@ export const _ImageToTagRelations = relations(d_ImageToTag, ({ one }) => ({
   }),
 }));
 
+export const dTagRule = pgTable(
+  "TagRule",
+  {
+    id: bigint("id", { mode: "number" })
+      .primaryKey()
+      .generatedAlwaysAsIdentity(),
+    tagId: bigint("tagId", { mode: "number" })
+      .notNull()
+      .references(() => dTag.id, {
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      }),
+    ruleKind: text("ruleKind", { enum: ["implies", "remove"] })
+      .notNull(),
+    otherTagId: bigint("otherTagId", { mode: "number" })
+      .references(() => dTag.id, {
+        onDelete: "no action",
+        onUpdate: "cascade",
+      }),
+  },
+  table => ([
+    index("TagRule_otherTagId_idx").on(table.otherTagId),
+  ]),
+);
+
+export const TagRuleRelations = relations(dTagRule, ({ one }) => ({
+  tag: one(dTag, {
+    fields: [dTagRule.tagId],
+    references: [dTag.id],
+  }),
+  otherTag: one(dTag, {
+    fields: [dTagRule.otherTagId],
+    references: [dTag.id],
+  }),
+}));
+
 const schema = {
   Image: dImage,
   ImageRelations,
@@ -102,6 +138,8 @@ const schema = {
   TagCategoryRelations,
   _ImageToTag: d_ImageToTag,
   _ImageToTagRelations,
+  TagRule: dTagRule,
+  TagRuleRelations,
 };
 
 export default schema;

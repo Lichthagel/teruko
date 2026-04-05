@@ -406,10 +406,10 @@ importers:
       '@urql/exchange-graphcache':
         specifier: 'catalog:'
         version: 9.0.0(@urql/core@6.0.1)
-    devDependencies:
       models:
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../models
+    devDependencies:
       tsconfig:
         specifier: workspace:^
         version: link:../tsconfig
