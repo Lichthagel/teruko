@@ -2,7 +2,7 @@ import type { ImageSort } from "models";
 import type { Component } from "solid-js";
 import styles from "client-css/m/gallery.module.scss";
 import { For, onCleanup, onMount, Show } from "solid-js";
-import { useImages } from "../hooks/useImages";
+import { useImages } from "../../hooks/useImages";
 import ErrorMessage from "../status/ErrorMessage";
 import { StatusBar } from "../status/StatusBar";
 import { ImageCard } from "./ImageCard";

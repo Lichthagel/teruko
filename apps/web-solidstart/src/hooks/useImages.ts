@@ -116,6 +116,7 @@ export const useImages = (tags: Accessor<readonly string[]>, sort: Accessor<Imag
   };
 
   createEffect(() => {
+    setEdges([]);
     newQuery();
 
     return () => {
