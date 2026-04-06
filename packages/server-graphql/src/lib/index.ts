@@ -123,7 +123,8 @@ export const processBlob = async (blob: Blob, basename: string, meta: ImageMeta)
     try {
       return await insertIntoDB(meta, metadata, filename);
     } catch (error) {
-      fs.rmSync(path.resolve(env.IMG_FOLDER, basename));
+      fs.rmSync(path.resolve(env.IMG_FOLDER, filename));
+      console.error(error);
       throw error;
     }
   } finally {
