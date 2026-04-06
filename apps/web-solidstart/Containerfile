@@ -1,0 +1,56 @@
+# Build stage
+FROM node:24-alpine AS builder
+
+# Enable corepack for pnpm
+RUN corepack enable && corepack prepare pnpm@10.20.0 --activate
+
+# Set CI environment variable for pnpm
+ENV CI=true
+
+WORKDIR /app
+
+# Copy workspace configuration and lockfile (leveraging Docker cache layers)
+COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.eslint.json .npmrc ./
+
+# Install dependencies with frozen lockfile
+RUN pnpm fetch
+
+# Copy only the necessary source files for building
+COPY packages packages
+COPY apps/web-solidstart apps/web-solidstart
+COPY nx.json graphql.config.yml ./
+
+# Install dependencies with frozen lockfile
+RUN pnpm install --frozen-lockfile --offline
+
+# Build the application
+RUN pnpm --filter=web-solidstart... build
+
+# Production stage
+FROM node:24-alpine
+
+# Create non-root user for security
+RUN addgroup -g 1001 -S nodejs && adduser -S nodejs -u 1001
+
+WORKDIR /app
+
+# Copy built application and dependencies from builder stage
+COPY --chown=nodejs:nodejs --from=builder /app/apps/web-solidstart/.output .
+COPY --chown=nodejs:nodejs --from=builder /app/node_modules/@libsql/linux-x64-musl ./node_modules/@libsql/linux-x64-musl
+
+# Switch to non-root user
+USER nodejs
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+    CMD node -e "require('http').get('http://localhost:3000', (r)=>{if(r.statusCode!==200)throw new Error(r.statusCode)})"
+
+# Expose port
+EXPOSE 3000
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=3000
+
+# Start the application
+CMD ["node", "server/index.mjs"]

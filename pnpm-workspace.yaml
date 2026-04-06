@@ -1,3 +1,6 @@
+allowBuilds:
+  esbuild: true
+
 catalogMode: prefer
 
 cleanupUnusedCatalogs: true
@@ -32,6 +35,10 @@ catalog:
   "@nuxt/devtools": 4.0.0-alpha.3
   "@pothos/core": ^4.12.0
   "@pothos/plugin-relay": ^4.7.0
+  "@solidjs/meta": ^0.29.4
+  "@solidjs/router": ^0.16.1
+  "@solidjs/start": https://pkg.pr.new/solidjs/solid-start/@solidjs/start@65448a9
+  "@solidjs/vite-plugin-nitro-2": https://pkg.pr.new/solidjs/solid-start/@solidjs/vite-plugin-nitro-2@65448a9
   "@sveltejs/adapter-node": ^5.5.4
   "@sveltejs/kit": ^2.55.0
   "@sveltejs/vite-plugin-svelte": ^7.0.0
@@ -39,6 +46,7 @@ catalog:
   "@types/pg": ^8.20.0
   "@urql/core": ^6.0.1
   "@urql/exchange-graphcache": ^9.0.0
+  "@urql/solid": ^1.0.1
   "@urql/svelte": ^5.0.0
   "@urql/vue": ^2.1.0
   autoprefixer: ^10.4.27
@@ -53,6 +61,7 @@ catalog:
   graphql-yoga: ^5.19.0
   husky: ^9.1.7
   lint-staged: ^16.4.0
+  lucide-solid: ^1.7.0
   modern-normalize: ^3.0.1
   nuxt: ^4.4.2
   nx: 22.6.4
