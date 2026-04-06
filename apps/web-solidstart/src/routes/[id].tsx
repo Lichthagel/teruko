@@ -79,7 +79,7 @@ export default () => {
                       </div>
                     </div>
 
-                    <a class={styles["meta-dlicon"]} href={`/${image().id}/original`}>
+                    <a class={styles["meta-dlicon"]} href={`/${image().id}/original`} target="_blank">
                       <Download class={styles.icon} />
                       <span>
                         {fileExt()}
@@ -87,7 +87,7 @@ export default () => {
                     </a>
 
                     <Show when={!!fileExt() && fileExt() !== "avif"}>
-                      <a class={styles["meta-dlicon"]} href={`/${image().id}/avif`}>
+                      <a class={styles["meta-dlicon"]} href={`/${image().id}/avif`} target="_blank">
                         <Download class={styles.icon} />
                         <span>
                           avif
@@ -95,7 +95,7 @@ export default () => {
                       </a>
                     </Show>
 
-                    <a class={styles["meta-dlicon"]} href={`/${image().id}/webp`}>
+                    <a class={styles["meta-dlicon"]} href={`/${image().id}/webp`} target="_blank">
                       <Download class={styles.icon} />
                       <span>
                         webp
