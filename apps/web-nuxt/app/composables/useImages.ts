@@ -37,6 +37,8 @@ export const useImages = (
   const edges = ref<ImagesResult["images"]["edges"]>([]);
   const hasNextPage = ref(true);
 
+  let filtersChanged = true;
+
   const handleChange = (res: OperationResult<ImagesResult, ImagesArgs>): void => {
     if (res.data) {
       const usedCursor = res.operation.variables.last
@@ -47,6 +49,11 @@ export const useImages = (
 
       edges.value = ((prevEdges) => {
         if (newEdges.length > 0) {
+          if (filtersChanged) {
+            filtersChanged = false;
+            return newEdges;
+          }
+
           if (usedCursor) {
             const idx = prevEdges.findIndex(
               edge => edge.cursor === usedCursor,
@@ -131,12 +138,17 @@ export const useImages = (
     }
   };
 
-  onMounted(() => newQuery());
-
-  onBeforeUnmount(() => clearTimeout(timeoutId.value));
-
   watch(fetching, resetTimeout);
   watch(stale, resetTimeout);
+
+  watchEffect(() => {
+    filtersChanged = true;
+    newQuery();
+
+    return () => {
+      clearTimeout(timeoutId.value);
+    };
+  });
 
   watch(tags, () => newQuery());
   watch(sort, () => newQuery());

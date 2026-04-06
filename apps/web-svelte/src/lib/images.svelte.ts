@@ -30,6 +30,7 @@ export const useImages = (
 
   let edges: ImagesResult["images"]["edges"] = $state([]);
   let hasNextPage = $state(true);
+  let filtersChanged = true;
 
   let fetching = $state(false);
   let error = $state<CombinedError>();
@@ -44,7 +45,10 @@ export const useImages = (
       const { edges: newEdges, pageInfo } = res.data.images;
 
       if (newEdges.length > 0) {
-        if (usedCursor) {
+        if (filtersChanged) {
+          filtersChanged = false;
+          edges = newEdges;
+        } else if (usedCursor) {
           const idx = edges.findIndex(edge => edge.cursor === usedCursor);
 
           if (idx >= 0) {
@@ -122,6 +126,7 @@ export const useImages = (
   };
 
   $effect(() => {
+    filtersChanged = true;
     newQuery();
 
     return () => {
