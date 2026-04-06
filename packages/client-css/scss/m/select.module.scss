@@ -1,0 +1,32 @@
+@use "../variables";
+
+.select {
+  position: relative;
+  display: inline-flex;
+  height: variables.$item-height;
+  align-items: center;
+  gap: variables.$gap;
+  border-radius: variables.$radius;
+  background-color: var(--mantle);
+
+  &:focus-within {
+    outline: var(--pink) solid 2px;
+  }
+
+  .icon {
+    position: absolute;
+    left: variables.$size-2;
+  }
+
+  select {
+    border: 0;
+    color: var(--text);
+    width: 100%;
+    background-color: transparent;
+    padding: variables.$size-2;
+  }
+
+  &:has(.icon) select {
+    padding-inline-start: (2rem + variables.$size-2);
+  }
+}
