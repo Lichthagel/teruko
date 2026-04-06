@@ -5,6 +5,7 @@ import { Tag } from "client-graphql/snippets";
 import { X } from "lucide-react";
 import { useCallback } from "react";
 import { useQuery } from "urql";
+import StatusBar from "../status/StatusBar";
 
 export const TagQuery: FC<{ tag: string }> = ({ tag }) => {
   const { setTags } = useFilters();
@@ -19,20 +20,24 @@ export const TagQuery: FC<{ tag: string }> = ({ tag }) => {
   }, [setTags, tag]);
 
   return (
-    <div
-      className={styles["tag-query"]}
-      style:background-color={result.data?.tag.category?.color}
-    >
-      <span>{tag}</span>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          removeTag();
-        }}
-        type="button"
+    <>
+      <div
+        className={styles["tag-query"]}
+        style={{ backgroundColor: result.data?.tag.category?.color ?? undefined }}
       >
-        <X />
-      </button>
-    </div>
+        <span>{tag}</span>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            removeTag();
+          }}
+          type="button"
+        >
+          <X />
+        </button>
+      </div>
+
+      <StatusBar error={!!result.error} fetching={result.fetching} />
+    </>
   );
 };
