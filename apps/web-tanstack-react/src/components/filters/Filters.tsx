@@ -1,11 +1,11 @@
 import type { MouseEventHandler } from "react";
 import { useFilters } from "#/stores/filters";
 import styles from "client-css/m/filters.module.scss";
-import { ListX } from "lucide-react";
+import { ListX, Search } from "lucide-react";
 import { useCallback } from "react";
+import TagInput from "../common/TagInput";
 import { SortSelect } from "./SortSelect";
 import { TagQuery } from "./TagQuery";
-import { TagSearch } from "./TagSearch";
 
 export const Filters = () => {
   const { tags, setTags } = useFilters();
@@ -28,7 +28,11 @@ export const Filters = () => {
         </div>
       )}
 
-      <TagSearch />
+      <TagInput
+        icon={Search}
+        onSubmit={value => setTags(prev => [...prev, value])}
+        onEscape={() => setTags([])}
+      />
       <SortSelect />
     </div>
   );

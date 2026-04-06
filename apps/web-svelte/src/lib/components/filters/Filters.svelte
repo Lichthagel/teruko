@@ -1,10 +1,10 @@
 <script lang="ts">
   import { filters } from "$lib/filters.svelte.js";
-  import { ListX } from "@lucide/svelte";
+  import { ListX, Search } from "@lucide/svelte";
   import styles from "client-css/m/filters.module.scss";
+  import TagInput from "../common/TagInput.svelte";
   import SortSelect from "./SortSelect.svelte";
   import TagQuery from "./TagQuery.svelte";
-  import TagSearch from "./TagSearch.svelte";
 
   const resetTags = (event: Event) => {
     event.preventDefault();
@@ -26,7 +26,7 @@
     </div>
   {/if}
 
-  <TagSearch />
+  <TagInput icon={Search} onSubmit={v => filters.tags = [...filters.tags, v]} onEscape={() => filters.tags = []} />
 
   <SortSelect />
 </div>

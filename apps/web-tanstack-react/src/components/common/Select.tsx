@@ -17,8 +17,7 @@ const Select: FunctionComponent<{
 
   return (
     <div className={styles.select}>
-      {Icon
-        && <Icon className={styles.icon} />}
+      {Icon && <Icon className={styles.icon} />}
 
       <select value={value} onInput={handleInput}>
         {options.map(option => (

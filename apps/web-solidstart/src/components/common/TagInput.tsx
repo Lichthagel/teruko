@@ -1,17 +1,36 @@
+import type { LucideIcon } from "lucide-solid";
+import type { Component, JSX } from "solid-js";
 import { createQuery } from "@urql/solid";
-import styles from "client-css/m/filters.module.scss";
+import styles from "client-css/m/taginput.module.scss";
 import { TagSuggestions } from "client-graphql/snippets";
-import { LoaderCircle, Search } from "lucide-solid";
-import { createMemo, createSignal, For, Show } from "solid-js";
-import { setTags } from "~/utils/filters";
+import { LoaderCircle } from "lucide-solid";
+import { createEffect, createMemo, createSignal, For, mergeProps, Show } from "solid-js";
+import { Dynamic } from "solid-js/web";
 
-export const TagSearch = () => {
+const TagInput: Component<{
+  icon?: LucideIcon;
+  tagInput?: string;
+  setTagInput?: (value: string) => void;
+  clearOnSubmit?: boolean;
+  onSubmit?: (value: string) => void;
+  onEscape?: () => void;
+}> = (props_) => {
+  const props = mergeProps({ clearOnSubmit: true }, props_);
+
   const [tagInput, setTagInput] = createSignal("");
   const [activeSuggestion, setActiveSuggestion] = createSignal(0);
 
+  createEffect(() => {
+    setTagInput(props.tagInput ?? "");
+  });
+
+  createEffect(() => {
+    props.setTagInput?.(tagInput());
+  });
+
   const [result] = createQuery(({
     query: TagSuggestions,
-    variables: () => ({ query: tagInput() }),
+    variables: () => ({ query: tagInput() ?? "" }),
     pause: () => tagInput().length < 3,
   }));
 
@@ -25,8 +44,10 @@ export const TagSearch = () => {
       return;
     }
 
-    setTags(prev => [...prev, suggestion.slug]);
-    setTagInput("");
+    props.onSubmit?.(suggestion.slug);
+    if (props.clearOnSubmit) {
+      setTagInput("");
+    }
     setActiveSuggestion(0);
   };
 
@@ -71,7 +92,7 @@ export const TagSearch = () => {
         setTagInput("");
         setActiveSuggestion(0);
 
-        setTags([]);
+        props.onEscape?.();
 
         break;
       }
@@ -79,27 +100,33 @@ export const TagSearch = () => {
     }
   };
 
+  const handleInput: JSX.InputEventHandler<HTMLInputElement, InputEvent> = (e) => {
+    e.preventDefault();
+
+    setTagInput(e.currentTarget.value);
+  };
+
   return (
     <div class={styles["search-container"]}>
-      <Search />
+      <Show when={props.icon}>
+        <Dynamic component={props.icon} class={styles.icon} />
+      </Show>
 
       <input
         value={tagInput()}
-        onInput={e => setTagInput(e.currentTarget.value)}
+        onInput={handleInput}
         onKeyDown={handleKeyDown}
         placeholder="Search..."
         type="text"
       />
 
       <Show when={fetching()}>
-
         <div class={styles["suggestions-loading"]}>
           <LoaderCircle class={styles.icon} />
         </div>
       </Show>
 
       <Show when={suggestions().length > 0}>
-
         <ul class={styles["suggestions-container"]}>
           <For each={suggestions()}>
             {(suggestion, index) => (
@@ -122,3 +149,5 @@ export const TagSearch = () => {
 
   );
 };
+
+export default TagInput;

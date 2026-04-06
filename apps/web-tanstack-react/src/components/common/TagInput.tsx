@@ -1,16 +1,39 @@
+import type { LucideIcon } from "lucide-react";
 import type { TagExt } from "models";
-import type { KeyboardEventHandler } from "react";
-import { useFilters } from "#/stores/filters";
-import styles from "client-css/m/filters.module.scss";
+import type { FunctionComponent, KeyboardEventHandler } from "react";
+import styles from "client-css/m/taginput.module.scss";
 import { TagSuggestions } from "client-graphql/snippets";
-import { LoaderCircle, Search } from "lucide-react";
-import { useCallback, useMemo, useState } from "react";
+import { LoaderCircle } from "lucide-react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useQuery } from "urql";
 
-export const TagSearch = () => {
-  const { setTags } = useFilters();
-
+const TagInput: FunctionComponent<{
+  icon?: LucideIcon;
+  tagInput?: string;
+  setTagInput?: (value: string) => void;
+  clearOnSubmit?: boolean;
+  onSubmit?: (value: string) => void;
+  onEscape?: () => void;
+}> = ({
+  icon: Icon,
+  tagInput: tagInputExt,
+  setTagInput: setTagInputExt,
+  clearOnSubmit = true,
+  onSubmit,
+  onEscape,
+}) => {
   const [tagInput, setTagInput] = useState("");
+
+  useEffect(() => {
+    if (tagInputExt) {
+      // eslint-disable-next-line react/set-state-in-effect
+      setTagInput(tagInputExt);
+    }
+  }, [tagInputExt]);
+  useEffect(() => {
+    setTagInputExt?.(tagInput);
+  }, [setTagInputExt, tagInput]);
+
   const [activeSuggestion, setActiveSuggestion] = useState(0);
 
   const [suggestionsResult] = useQuery({
@@ -31,10 +54,12 @@ export const TagSearch = () => {
       return;
     }
 
-    setTags(prev => [...prev, suggestion.slug]);
-    setTagInput("");
+    onSubmit?.(suggestion.slug);
+    if (clearOnSubmit) {
+      setTagInput("");
+    }
     setActiveSuggestion(0);
-  }, [activeSuggestion, setTags, suggestions]);
+  }, [activeSuggestion, clearOnSubmit, onSubmit, suggestions]);
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = useCallback((e) => {
     switch (e.key) {
@@ -79,27 +104,27 @@ export const TagSearch = () => {
         setTagInput("");
         setActiveSuggestion(0);
 
-        setTags([]);
+        onEscape?.();
 
         break;
       }
     // No default
     }
-  }, [handleSubmit, setTags, suggestions.length]);
+  }, [handleSubmit, onEscape, suggestions.length]);
 
   return (
     <div className={styles["search-container"]}>
-      <Search />
+      {Icon && <Icon className={styles.icon} />}
 
       <input
         value={tagInput}
-        onInput={e => setTagInput((e.target as HTMLInputElement).value)}
+        onInput={event => setTagInput(event.currentTarget.value)}
         onKeyDown={handleKeyDown}
         placeholder="Search..."
         type="text"
       />
 
-      {false // fetching
+      {suggestionsResult.fetching // fetching
         && (
           <div className={styles["suggestions-loading"]}>
             <LoaderCircle className={styles.icon} />
@@ -131,3 +156,5 @@ export const TagSearch = () => {
     </div>
   );
 };
+
+export default TagInput;

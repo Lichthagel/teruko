@@ -1,11 +1,20 @@
 <script setup lang="ts">
+import type { LucideIcon } from "@lucide/vue";
 import { useSuggestions } from "#imports";
-import { Loader2, Search } from "@lucide/vue";
-import styles from "client-css/m/filters.module.scss";
+import { LoaderCircle } from "@lucide/vue";
+import styles from "client-css/m/taginput.module.scss";
 
-const { tags } = useFilters();
-
-const tagInput = ref("");
+const { clearOnSubmit = true } = defineProps<{
+  icon?: LucideIcon;
+  clearOnSubmit?: boolean;
+}>();
+const emit = defineEmits<{
+  (e: "submit", value: string): void;
+  (e: "escape"): void;
+}>();
+const tagInput = defineModel<string>("tagInput", {
+  default: "",
+});
 const activeSuggestion = ref(0);
 
 const { fetching, suggestions } = useSuggestions(tagInput); // TODO handle error
@@ -18,8 +27,10 @@ const handleSubmit = () => {
   const activeValue = suggestions.value[activeSuggestion.value];
 
   if (activeValue) {
-    tags.value = [...tags.value, activeValue.slug];
-    tagInput.value = "";
+    emit("submit", activeValue.slug);
+    if (clearOnSubmit) {
+      tagInput.value = "";
+    }
     activeSuggestion.value = 0;
   }
 };
@@ -49,7 +60,8 @@ const handleKeyDown = (e: KeyboardEvent) => {
     case "Escape": {
       tagInput.value = "";
       activeSuggestion.value = 0;
-      tags.value = [];
+
+      emit("escape");
 
       break;
     }
@@ -60,7 +72,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
 
 <template>
   <div :class="styles['search-container']">
-    <Search />
+    <component :is="icon" v-if="icon" :class="styles.icon" />
 
     <input
       v-model="tagInput"
@@ -72,7 +84,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
       v-if="fetching"
       :class="styles['suggestions-loading']"
     >
-      <Loader2 :class="styles.icon" />
+      <LoaderCircle :class="styles.icon" />
     </div>
     <ul
       v-if="suggestions.length > 0"

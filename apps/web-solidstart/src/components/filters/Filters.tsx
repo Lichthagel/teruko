@@ -1,10 +1,10 @@
 import styles from "client-css/m/filters.module.scss";
-import { ListX } from "lucide-solid";
+import { ListX, Search } from "lucide-solid";
 import { For, Show } from "solid-js";
 import { setTags, tags } from "~/utils/filters";
+import TagInput from "../common/TagInput";
 import { SortSelect } from "./SortSelect";
 import { TagQuery } from "./TagQuery";
-import { TagSearch } from "./TagSearch";
 
 export const Filters = () => {
   const resetTags = (event: Event) => {
@@ -27,7 +27,11 @@ export const Filters = () => {
         </div>
       </Show>
 
-      <TagSearch />
+      <TagInput
+        icon={Search}
+        onSubmit={v => setTags(old => [...old, v])}
+        onEscape={() => setTags([])}
+      />
 
       <SortSelect />
     </div>
