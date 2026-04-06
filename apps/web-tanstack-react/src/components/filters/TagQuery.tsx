@@ -2,13 +2,16 @@ import type { FC } from "react";
 import { useFilters } from "#/stores/filters";
 import styles from "client-css/m/filters.module.scss";
 import { Tag } from "client-graphql/snippets";
-import { X } from "lucide-react";
-import { useCallback } from "react";
+import { Pencil, X } from "lucide-react";
+import { useCallback, useState } from "react";
 import { useQuery } from "urql";
 import StatusBar from "../status/StatusBar";
+import TagDialog from "../tag/TagDialog";
 
 export const TagQuery: FC<{ tag: string }> = ({ tag }) => {
   const { setTags } = useFilters();
+
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const [result] = useQuery({
     query: Tag,
@@ -29,6 +32,15 @@ export const TagQuery: FC<{ tag: string }> = ({ tag }) => {
         <button
           onClick={(e) => {
             e.preventDefault();
+            setDialogOpen(true);
+          }}
+          type="button"
+        >
+          <Pencil />
+        </button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
             removeTag();
           }}
           type="button"
@@ -36,6 +48,8 @@ export const TagQuery: FC<{ tag: string }> = ({ tag }) => {
           <X />
         </button>
       </div>
+
+      <TagDialog open={dialogOpen} setOpen={setDialogOpen} slug={tag} />
 
       <StatusBar error={!!result.error} fetching={result.fetching} />
     </>

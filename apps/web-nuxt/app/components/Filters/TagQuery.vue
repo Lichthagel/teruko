@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { X } from "@lucide/vue";
+import { Pencil, X } from "@lucide/vue";
 import { useQuery } from "@urql/vue";
 import styles from "client-css/m/filters.module.scss";
 import { Tag } from "client-graphql/snippets";
@@ -9,6 +9,8 @@ const props = defineProps<{
 }>();
 
 const { tags } = useFilters();
+
+const dialogOpen = ref(false);
 
 const {
   data,
@@ -35,11 +37,19 @@ const removeTag = () => {
     <span>{{ props.tag }}</span>
     <button
       type="button"
+      @click="dialogOpen = true"
+    >
+      <Pencil />
+    </button>
+    <button
+      type="button"
       @click="removeTag"
     >
       <X />
     </button>
   </div>
+
+  <TagDialog v-model:open=" dialogOpen " :slug="tag" />
 
   <StatusBar
     :error="!!error"

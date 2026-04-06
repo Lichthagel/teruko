@@ -2,11 +2,15 @@ import type { Component, JSX } from "solid-js";
 import { createQuery } from "@urql/solid";
 import styles from "client-css/m/filters.module.scss";
 import { Tag } from "client-graphql/snippets";
-import { X } from "lucide-solid";
+import { Pencil, X } from "lucide-solid";
+import { createSignal } from "solid-js";
 import { setTags } from "~/utils/filters";
 import { StatusBar } from "../status/StatusBar";
+import TagDialog from "../tag/TagDialog";
 
 export const TagQuery: Component<{ tag: string }> = (props) => {
+  const [dialogOpen, setDialogOpen] = createSignal(false);
+
   const [result] = createQuery({
     query: Tag,
     variables: () => ({ slug: props.tag }),
@@ -26,12 +30,23 @@ export const TagQuery: Component<{ tag: string }> = (props) => {
       >
         <span>{props.tag}</span>
         <button
+          onClick={(e) => {
+            e.preventDefault();
+            setDialogOpen(true);
+          }}
+          type="button"
+        >
+          <Pencil />
+        </button>
+        <button
           onClick={removeTag}
           type="button"
         >
           <X />
         </button>
       </div>
+
+      <TagDialog open={dialogOpen()} setOpen={setDialogOpen} slug={props.tag} />
 
       <StatusBar error={!!result.error} fetching={result.fetching} />
     </>
