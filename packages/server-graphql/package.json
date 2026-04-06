@@ -6,6 +6,9 @@
   "description": "",
   "author": "Lichthagel",
   "keywords": [],
+  "sideEffects": [
+    "./dist/schema/**/*.js"
+  ],
   "imports": {
     "#lib/*": "./dist/lib/*",
     "#schema/*": "./dist/schema/*"
