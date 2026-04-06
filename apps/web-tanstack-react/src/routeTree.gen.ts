@@ -13,6 +13,9 @@ import { Route as GraphqlRouteImport } from './routes/graphql'
 import { Route as IdRouteImport } from './routes/$id'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ImgFilenameRouteImport } from './routes/img/$filename'
+import { Route as IdWebpRouteImport } from './routes/$id/webp'
+import { Route as IdOriginalRouteImport } from './routes/$id/original'
+import { Route as IdAvifRouteImport } from './routes/$id/avif'
 
 const GraphqlRoute = GraphqlRouteImport.update({
   id: '/graphql',
@@ -34,37 +37,83 @@ const ImgFilenameRoute = ImgFilenameRouteImport.update({
   path: '/img/$filename',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IdWebpRoute = IdWebpRouteImport.update({
+  id: '/webp',
+  path: '/webp',
+  getParentRoute: () => IdRoute,
+} as any)
+const IdOriginalRoute = IdOriginalRouteImport.update({
+  id: '/original',
+  path: '/original',
+  getParentRoute: () => IdRoute,
+} as any)
+const IdAvifRoute = IdAvifRouteImport.update({
+  id: '/avif',
+  path: '/avif',
+  getParentRoute: () => IdRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/$id': typeof IdRoute
+  '/$id': typeof IdRouteWithChildren
   '/graphql': typeof GraphqlRoute
+  '/$id/avif': typeof IdAvifRoute
+  '/$id/original': typeof IdOriginalRoute
+  '/$id/webp': typeof IdWebpRoute
   '/img/$filename': typeof ImgFilenameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/$id': typeof IdRoute
+  '/$id': typeof IdRouteWithChildren
   '/graphql': typeof GraphqlRoute
+  '/$id/avif': typeof IdAvifRoute
+  '/$id/original': typeof IdOriginalRoute
+  '/$id/webp': typeof IdWebpRoute
   '/img/$filename': typeof ImgFilenameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/$id': typeof IdRoute
+  '/$id': typeof IdRouteWithChildren
   '/graphql': typeof GraphqlRoute
+  '/$id/avif': typeof IdAvifRoute
+  '/$id/original': typeof IdOriginalRoute
+  '/$id/webp': typeof IdWebpRoute
   '/img/$filename': typeof ImgFilenameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$id' | '/graphql' | '/img/$filename'
+  fullPaths:
+    | '/'
+    | '/$id'
+    | '/graphql'
+    | '/$id/avif'
+    | '/$id/original'
+    | '/$id/webp'
+    | '/img/$filename'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$id' | '/graphql' | '/img/$filename'
-  id: '__root__' | '/' | '/$id' | '/graphql' | '/img/$filename'
+  to:
+    | '/'
+    | '/$id'
+    | '/graphql'
+    | '/$id/avif'
+    | '/$id/original'
+    | '/$id/webp'
+    | '/img/$filename'
+  id:
+    | '__root__'
+    | '/'
+    | '/$id'
+    | '/graphql'
+    | '/$id/avif'
+    | '/$id/original'
+    | '/$id/webp'
+    | '/img/$filename'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  IdRoute: typeof IdRoute
+  IdRoute: typeof IdRouteWithChildren
   GraphqlRoute: typeof GraphqlRoute
   ImgFilenameRoute: typeof ImgFilenameRoute
 }
@@ -99,12 +148,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ImgFilenameRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$id/webp': {
+      id: '/$id/webp'
+      path: '/webp'
+      fullPath: '/$id/webp'
+      preLoaderRoute: typeof IdWebpRouteImport
+      parentRoute: typeof IdRoute
+    }
+    '/$id/original': {
+      id: '/$id/original'
+      path: '/original'
+      fullPath: '/$id/original'
+      preLoaderRoute: typeof IdOriginalRouteImport
+      parentRoute: typeof IdRoute
+    }
+    '/$id/avif': {
+      id: '/$id/avif'
+      path: '/avif'
+      fullPath: '/$id/avif'
+      preLoaderRoute: typeof IdAvifRouteImport
+      parentRoute: typeof IdRoute
+    }
   }
 }
 
+interface IdRouteChildren {
+  IdAvifRoute: typeof IdAvifRoute
+  IdOriginalRoute: typeof IdOriginalRoute
+  IdWebpRoute: typeof IdWebpRoute
+}
+
+const IdRouteChildren: IdRouteChildren = {
+  IdAvifRoute: IdAvifRoute,
+  IdOriginalRoute: IdOriginalRoute,
+  IdWebpRoute: IdWebpRoute,
+}
+
+const IdRouteWithChildren = IdRoute._addFileChildren(IdRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  IdRoute: IdRoute,
+  IdRoute: IdRouteWithChildren,
   GraphqlRoute: GraphqlRoute,
   ImgFilenameRoute: ImgFilenameRoute,
 }
