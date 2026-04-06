@@ -31,6 +31,7 @@ export const useImages = (tags: Accessor<readonly string[]>, sort: Accessor<Imag
 
   const [edges, setEdges] = createSignal<ImagesResult["images"]["edges"]>([]);
   const [hasNextPage, setHasNextPage] = createSignal(true);
+  let filtersChanged = true;
 
   const images = createMemo(() => edges()?.map(edge => edge.node) ?? []);
 
@@ -44,6 +45,11 @@ export const useImages = (tags: Accessor<readonly string[]>, sort: Accessor<Imag
 
       setEdges((prevEdges) => {
         if (newEdges.length > 0) {
+          if (filtersChanged) {
+            filtersChanged = false;
+            return newEdges;
+          }
+
           if (usedCursor) {
             const idx = prevEdges.findIndex(
               edge => edge.cursor === usedCursor,
@@ -116,7 +122,7 @@ export const useImages = (tags: Accessor<readonly string[]>, sort: Accessor<Imag
   };
 
   createEffect(() => {
-    setEdges([]);
+    filtersChanged = true;
     newQuery();
 
     return () => {
