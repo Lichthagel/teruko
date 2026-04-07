@@ -20,7 +20,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <dialog v-if="open" ref="dialog" :class="`${className} ${styles.dialog}`" closedby="any" onclose="() => {open = false}">
+  <dialog v-if="open" ref="dialog" :class="`${className} ${styles.dialog}`" closedby="any" @close=" open = false">
     <slot />
   </dialog>
 </template>

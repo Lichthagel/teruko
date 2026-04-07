@@ -1,0 +1,21 @@
+@use "../variables";
+
+.button {
+  border-radius: variables.$radius;
+  border: 0;
+  background-color: var(--subtext0);
+  color: var(--base);
+  transition: background-color 0.2s;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  height: variables.$item-height;
+  padding-block: 0;
+  padding-inline: variables.$size-2;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--subtext1);
+    }
+  }
+}
