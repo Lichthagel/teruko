@@ -4,7 +4,7 @@ import type { ImageSort } from "models";
 import type { Accessor } from "solid-js";
 import { createRequest, useClient } from "@urql/solid";
 import { Images } from "client-graphql/snippets";
-import { createEffect, createMemo, createSignal } from "solid-js";
+import { createEffect, createMemo, createSignal, onCleanup } from "solid-js";
 
 const getRequest = (
   tags: readonly string[],
@@ -124,10 +124,10 @@ export const useImages = (tags: Accessor<readonly string[]>, sort: Accessor<Imag
   createEffect(() => {
     filtersChanged = true;
     newQuery();
+  });
 
-    return () => {
-      cancelTimeout();
-    };
+  onCleanup(() => {
+    cancelTimeout();
   });
 
   const fetchMore = () => {
