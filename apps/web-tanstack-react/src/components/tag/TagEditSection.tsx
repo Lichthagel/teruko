@@ -7,6 +7,7 @@ import { useMutation, useQuery } from "urql";
 import Button from "../common/Button";
 import Input from "../common/Input";
 import Select from "../common/Select";
+import SkeletonLoader from "../common/SkeletonLoader";
 
 export type TagEditSectionProps = {
   slug: string;
@@ -42,23 +43,27 @@ const TagEditSection: FunctionComponent<TagEditSectionProps> = ({ slug, afterUpd
   return (
     <>
       <h1>Meta</h1>
-      <div className={styles.row}>
-        <Input value={slugInputValue} setValue={setSlugInputValue} />
-        <Select
-          options={result.data?.tagCategories.map(v => v.slug) ?? []}
-          value={categoryInputValue}
-          setValue={setCategoryInputValue}
-        />
-        <Button
-          style={{ flexGrow: 0 }}
-          icon={Save}
-          disabled={resultUpdateTag?.fetching}
-          onClick={(e) => {
-            e.preventDefault();
-            updateTag();
-          }}
-        />
-      </div>
+      {result.fetching
+        ? <SkeletonLoader />
+        : (
+            <div className={styles.row}>
+              <Input value={slugInputValue} setValue={setSlugInputValue} />
+              <Select
+                options={result.data?.tagCategories.map(v => v.slug) ?? []}
+                value={categoryInputValue}
+                setValue={setCategoryInputValue}
+              />
+              <Button
+                style={{ flexGrow: 0 }}
+                icon={Save}
+                disabled={resultUpdateTag?.fetching}
+                onClick={(e) => {
+                  e.preventDefault();
+                  updateTag();
+                }}
+              />
+            </div>
+          )}
     </>
   );
 };

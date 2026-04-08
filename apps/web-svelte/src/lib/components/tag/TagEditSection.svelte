@@ -8,6 +8,7 @@
   import Button from "../common/Button.svelte";
   import Input from "../common/Input.svelte";
   import Select from "../common/Select.svelte";
+  import SkeletonLoader from "../common/SkeletonLoader.svelte";
 
   const { slug, afterUpdate }: { slug: string; afterUpdate?: (newSlug?: string) => void } = $props();
 
@@ -50,19 +51,24 @@
 
 <h1>Meta</h1>
 
-<div class={styles.row}>
-  <Input bind:value={slugInputValue} />
-  <Select
-    options={$result.data?.tagCategories.map(v => v.slug) ?? []}
-    bind:value={categoryInputValue}
-  />
-  <Button
-    style="flex-grow: 0;"
-    icon={Save}
-    disabled={$resultUpdateTag?.fetching}
-    onclick={(e) => {
-      e.preventDefault();
-      updateTag();
-    }}
-  />
-</div>
+{#if $result.fetching}
+  <SkeletonLoader />
+{:else if $result.data}
+  <div class={styles.row}>
+    <Input bind:value={slugInputValue} />
+    <Select
+      options={$result.data.tagCategories.map(v => v.slug) ?? []}
+      bind:value={categoryInputValue}
+    />
+    <Button
+      style="flex-grow: 0;"
+      icon={Save}
+      disabled={$resultUpdateTag?.fetching}
+      onclick={(e) => {
+        e.preventDefault();
+        updateTag();
+      }}
+    />
+  </div>
+
+{/if}

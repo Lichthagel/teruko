@@ -3,10 +3,11 @@ import { createMutation, createQuery } from "@urql/solid";
 import styles from "client-css/m/tag.module.scss";
 import { TagEdit, UpdateTag } from "client-graphql/snippets";
 import { Save } from "lucide-solid";
-import { createEffect, createSignal, untrack } from "solid-js";
+import { createEffect, createSignal, Match, Switch, untrack } from "solid-js";
 import Button from "../common/Button";
 import Input from "../common/Input";
 import Select from "../common/Select";
+import SkeletonLoader from "../common/SkeletonLoader";
 
 export type TagEditSectionProps = {
   slug: string;
@@ -43,23 +44,32 @@ const TagEditSection: Component<TagEditSectionProps> = (props) => {
   return (
     <>
       <h1>Meta</h1>
-      <div class={styles.row}>
-        <Input value={slugInputValue()} setValue={setSlugInputValue} />
-        <Select
-          options={result.data?.tagCategories.map(v => v.slug) ?? []}
-          value={categoryInputValue()}
-          setValue={setCategoryInputValue}
-        />
-        <Button
-          style={{ "flex-grow": 0 }}
-          icon={Save}
-          disabled={resultUpdateTag?.fetching}
-          onClick={(e) => {
-            e.preventDefault();
-            updateTag();
-          }}
-        />
-      </div>
+      <Switch>
+        <Match when={result.fetching}>
+          <SkeletonLoader />
+        </Match>
+        <Match when={result.data}>
+          {data => (
+            <div class={styles.row}>
+              <Input value={slugInputValue()} setValue={setSlugInputValue} />
+              <Select
+                options={data().tagCategories.map(v => v.slug) ?? []}
+                value={categoryInputValue()}
+                setValue={setCategoryInputValue}
+              />
+              <Button
+                style={{ "flex-grow": 0 }}
+                icon={Save}
+                disabled={resultUpdateTag?.fetching}
+                onClick={(e) => {
+                  e.preventDefault();
+                  updateTag();
+                }}
+              />
+            </div>
+          )}
+        </Match>
+      </Switch>
     </>
   );
 };

@@ -6,6 +6,7 @@ import { TagEdit, UpdateTag } from "client-graphql/snippets";
 import Button from "../common/Button.vue";
 import Input from "../common/Input.vue";
 import Select from "../common/Select.vue";
+import SkeletonLoader from "../common/SkeletonLoader.vue";
 
 const props = defineProps<{
   slug: string;
@@ -14,7 +15,7 @@ const emit = defineEmits<{
   (e: "afterUpdate", newSlug?: string): void;
 }>();
 
-const { data } = useQuery({
+const { data, fetching } = useQuery({
   query: TagEdit,
   variables: { slug: props.slug },
 });
@@ -39,7 +40,8 @@ watch(dataUpdateTag, (v) => {
 <template>
   <h1>Meta</h1>
 
-  <div :class="styles.row">
+  <SkeletonLoader v-if="fetching" />
+  <div v-else :class="styles.row">
     <Input v-model="slugInput" />
     <Select
       v-model="categoryInput"
