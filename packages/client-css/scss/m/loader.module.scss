@@ -1,0 +1,18 @@
+@use "../variables";
+
+.skeleton {
+  height: variables.$item-height;
+  width: 100%;
+  background-color: var(--overlay0);
+  animation: 1s infinite alternate pulsing;
+  border-radius: variables.$radius;
+}
+
+@keyframes pulsing {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 100%;
+  }
+}
