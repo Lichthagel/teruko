@@ -8,7 +8,6 @@
   gap: variables.$gap;
   border-radius: variables.$radius;
   background-color: var(--mantle);
-  padding-inline: variables.$size-2;
 
   &:focus-within {
     outline: var(--pink) solid 2px;
@@ -16,9 +15,11 @@
 
   input {
     height: 100%;
+    width: 100%;
     background-color: transparent;
     border-width: 0;
     color: var(--text);
+    padding-inline: variables.$size-2;
 
     &:focus {
       outline: none;
