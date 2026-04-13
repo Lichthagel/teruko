@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { bigint, pgTable, text } from "drizzle-orm/pg-core";
+import { bigint, boolean, pgTable, text } from "drizzle-orm/pg-core";
 import { d_ImageToTag } from "./_imageToTag.js";
 import { dTagCategory } from "./tagCategory.js";
 
@@ -12,6 +12,8 @@ export const dTag = pgTable("Tag", {
     onDelete: "set null",
     onUpdate: "cascade",
   }),
+  approved: boolean("approved")
+    .default(false),
 });
 
 export const TagRelations = relations(dTag, ({ one, many }) => ({
