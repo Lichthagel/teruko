@@ -1,13 +1,14 @@
 <script lang="ts">
-  import type { TagExt } from "models";
+  import type { Tag, TagCategory } from "models";
 
   import { goto } from "$app/navigation";
   import { resolve } from "$app/paths";
   import { filters } from "$lib/filters.svelte.js";
+  import { BadgeCheck } from "@lucide/svelte";
   import styles from "client-css/m/imagepage.module.scss";
 
   type Props = {
-    tag: TagExt;
+    tag: Pick<Tag, "slug" | "approved"> & { category?: Pick<TagCategory, "color"> | null };
   };
 
   const { tag }: Props = $props();
@@ -24,5 +25,8 @@
   style={tag.category?.color && `background-color: ${tag.category?.color}`}
   type="button"
 >
-  {tag.slug}
+  <span>{tag.slug}</span>
+  {#if tag.approved}
+    <BadgeCheck size={16} />
+  {/if}
 </button>
