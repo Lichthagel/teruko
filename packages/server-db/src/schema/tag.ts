@@ -13,6 +13,7 @@ export const dTag = pgTable("Tag", {
     onUpdate: "cascade",
   }),
   approved: boolean("approved")
+    .notNull()
     .default(false),
 });
 

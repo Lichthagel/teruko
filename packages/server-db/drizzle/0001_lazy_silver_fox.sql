@@ -1,1 +1,0 @@
-ALTER TABLE "Tag" ADD COLUMN "approved" boolean DEFAULT false;
