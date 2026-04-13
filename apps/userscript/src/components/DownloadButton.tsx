@@ -1,10 +1,7 @@
 import type { Component } from "solid-js";
 import { getPixivMetadata } from "services/pixiv";
-import { customElement } from "solid-element";
-import { createSignal } from "solid-js";
-
-import { CREATE_IMAGE, TERUKO_BASE_URL, TERUKO_BASIC_AUTH } from "./constants.js";
-import styles from "./style.css?inline";
+import { createMemo, createSignal } from "solid-js";
+import { CREATE_IMAGE, TERUKO_BASE_URL, TERUKO_BASIC_AUTH } from "../constants.js";
 
 type Props = {
   url: string | null;
@@ -19,6 +16,7 @@ const beforeUnload = (event: BeforeUnloadEvent) => {
 const DownloadButton: Component<Props> = (props) => {
   const [text, setText] = createSignal("teruko");
   const [small, setSmall] = createSignal(false);
+  const filename = createMemo(() => props.url?.split("/").at(-1));
 
   const uploadImage = async (open = false) => {
     if (!props.url) {
@@ -28,8 +26,7 @@ const DownloadButton: Component<Props> = (props) => {
     window.addEventListener("beforeunload", beforeUnload);
 
     try {
-      const fileName = props.url.split("/").at(-1);
-      const id = fileName?.split("_p")[0];
+      const id = filename()?.split("_p")[0];
 
       setText("fetching metadata...");
 
@@ -41,7 +38,7 @@ const DownloadButton: Component<Props> = (props) => {
 
       const blob = await res.blob();
 
-      const file = new File([blob], fileName ?? "image.png", {
+      const file = new File([blob], filename() ?? "image.png", {
         type: blob.type,
       });
 
@@ -124,23 +121,3 @@ const DownloadButton: Component<Props> = (props) => {
 };
 
 export default DownloadButton;
-
-export const defineDownloadButton = () => {
-  customElement<Props>("teruko-download-button", {
-    url: null,
-  }, props => (
-    <>
-      <style>{styles}</style>
-      <DownloadButton {...props} />
-    </>
-  ));
-};
-
-export type DownloadButtonElement = HTMLElement & Props;
-
-declare global {
-  // eslint-disable-next-line ts/consistent-type-definitions
-  interface HTMLElementTagNameMap {
-    "teruko-download-button": DownloadButtonElement;
-  }
-}

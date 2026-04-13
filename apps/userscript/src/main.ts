@@ -1,19 +1,17 @@
-import { defineDownloadButton } from "./DownloadButton.jsx";
+import { defineActions } from "./components/Actions.jsx";
 import { applyToAllConstantlyDebounced } from "./utils.js";
 
-defineDownloadButton();
+defineActions();
 
 applyToAllConstantlyDebounced(
   el => el.querySelectorAll("div[role=presentation] > a.gtm-expand-full-size-illust"),
   (node) => {
-    if (node.querySelector("teruko-download-button")) {
+    if (node.querySelector("teruko-actions")) {
       return;
     }
 
-    const dlButton = document.createElement("teruko-download-button");
-
-    dlButton.url = (node as HTMLLinkElement).href;
-
-    node.append(dlButton);
+    const actionsElement = document.createElement("teruko-actions");
+    actionsElement.url = (node as HTMLLinkElement).href;
+    node.append(actionsElement);
   },
 );
