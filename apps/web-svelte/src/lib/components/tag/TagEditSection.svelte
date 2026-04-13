@@ -6,6 +6,7 @@
   import styles from "client-css/m/tag.module.scss";
   import { TagEdit, UpdateTag } from "client-graphql/snippets";
   import Button from "../common/Button.svelte";
+  import Checkbox from "../common/Checkbox.svelte";
   import Input from "../common/Input.svelte";
   import Select from "../common/Select.svelte";
   import SkeletonLoader from "../common/SkeletonLoader.svelte";
@@ -14,6 +15,7 @@
 
   let slugInputValue = $state("");
   let categoryInputValue = $state<string>();
+  let approvedInputValue = $state<boolean>(false);
 
   $effect(() => {
     if (slug.length) {
@@ -31,6 +33,7 @@
 
   $effect(() => {
     categoryInputValue = $result.data?.tag?.category?.slug;
+    approvedInputValue = $result.data?.tag?.approved ?? false;
   });
 
   let resultUpdateTag = $state<OperationResultStore<UpdateTagResult>>();
@@ -38,7 +41,12 @@
     resultUpdateTag = mutationStore({
       client,
       query: UpdateTag,
-      variables: { slug, newSlug: slugInputValue, category: categoryInputValue },
+      variables: {
+        slug,
+        newSlug: slugInputValue,
+        category: categoryInputValue,
+        approved: approvedInputValue,
+      },
     });
   };
 
@@ -54,21 +62,25 @@
 {#if $result.fetching}
   <SkeletonLoader />
 {:else if $result.data}
-  <div class={styles.row}>
-    <Input bind:value={slugInputValue} />
-    <Select
-      options={$result.data.tagCategories.map(v => v.slug) ?? []}
-      bind:value={categoryInputValue}
-    />
-    <Button
-      style="flex-grow: 0;"
-      icon={Save}
-      disabled={$resultUpdateTag?.fetching}
-      onclick={(e) => {
-        e.preventDefault();
-        updateTag();
-      }}
-    />
+  <div class={styles.content}>
+    <div class={styles.row}>
+      <Input bind:value={slugInputValue} />
+      <Select
+        options={$result.data.tagCategories.map(v => v.slug) ?? []}
+        bind:value={categoryInputValue}
+      />
+    </div>
+    <div class={styles.row}>
+      <Checkbox bind:checked={approvedInputValue} label="approved" />
+      <Button
+        style="flex-grow: 0;"
+        icon={Save}
+        disabled={$resultUpdateTag?.fetching}
+        onclick={(e) => {
+          e.preventDefault();
+          updateTag();
+        }}
+      />
+    </div>
   </div>
-
 {/if}

@@ -1,10 +1,18 @@
+@use "../variables";
+
 .tag-dialog {
   width: 50rem;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$size-2;
+}
+
 .row {
   display: flex;
-  gap: .5rem;
+  gap: variables.$size-2;
   align-items: center;
 
   >* {

@@ -2,10 +2,10 @@
   import styles from "client-css/m/checkbox.module.scss";
 
   let {
-    value: checked = $bindable(),
+    checked = $bindable(),
     label,
   } = $props<{
-    checked: boolean;
+    checked: boolean | undefined;
     label: string;
   }>();
 </script>
