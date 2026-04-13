@@ -1,7 +1,7 @@
-import type { TagExt } from "models";
+import type { TagCategory, Tag as TagModel } from "models";
 import { gql } from "@urql/core";
 
-export type TagResult = { tag: TagExt };
+export type TagResult = { tag: Pick<TagModel, "approved"> & { category: Pick<TagCategory, "color"> } };
 
 export type TagArgs = { slug: string };
 
@@ -11,6 +11,7 @@ query Tag($slug: String!) {
     category {
       color
     }
+    approved
   }
 }
 `;

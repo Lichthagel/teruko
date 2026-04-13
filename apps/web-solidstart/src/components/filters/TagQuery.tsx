@@ -2,8 +2,8 @@ import type { Component, JSX } from "solid-js";
 import { createQuery } from "@urql/solid";
 import styles from "client-css/m/filters.module.scss";
 import { Tag } from "client-graphql/snippets";
-import { Pencil, X } from "lucide-solid";
-import { createSignal } from "solid-js";
+import { BadgeCheck, Pencil, X } from "lucide-solid";
+import { createSignal, Show } from "solid-js";
 import { setTags } from "~/utils/filters";
 import { StatusBar } from "../status/StatusBar";
 import TagDialog from "../tag/TagDialog";
@@ -29,6 +29,9 @@ export const TagQuery: Component<{ tag: string }> = (props) => {
         style:background-color={result.data?.tag.category?.color}
       >
         <span>{props.tag}</span>
+        <Show when={result.data?.tag.approved}>
+          <BadgeCheck size={16} />
+        </Show>
         <button
           onClick={(e) => {
             e.preventDefault();

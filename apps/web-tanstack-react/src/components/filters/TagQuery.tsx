@@ -2,7 +2,7 @@ import type { FC } from "react";
 import { useFilters } from "#/stores/filters";
 import styles from "client-css/m/filters.module.scss";
 import { Tag } from "client-graphql/snippets";
-import { Pencil, X } from "lucide-react";
+import { BadgeCheck, Pencil, X } from "lucide-react";
 import { useCallback, useState } from "react";
 import { useQuery } from "urql";
 import StatusBar from "../status/StatusBar";
@@ -29,6 +29,7 @@ export const TagQuery: FC<{ tag: string }> = ({ tag }) => {
         style={{ backgroundColor: result.data?.tag.category?.color ?? undefined }}
       >
         <span>{tag}</span>
+        {result.data?.tag.approved && <BadgeCheck size={16} />}
         <button
           onClick={(e) => {
             e.preventDefault();
