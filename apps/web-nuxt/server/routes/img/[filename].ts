@@ -1,14 +1,16 @@
 import fs from "node:fs";
 import path from "node:path";
 import env from "server-env";
-import { z } from "zod";
+import * as v from "valibot";
 
 export default defineEventHandler(async (event) => {
-  const { filename } = z
-    .object({ filename: z.string() })
-    .parse(event.context.params);
+  const { filename } = v.parse(
+    v
+      .object({ filename: v.string() }),
+    event.context.params,
+  );
 
   const filepath = path.resolve(env.IMG_FOLDER as string, filename);
 
-  return sendStream(event, fs.createReadStream(filepath));
+  return fs.createReadStream(filepath);
 });

@@ -3,13 +3,18 @@ import path from "node:path";
 import { eq } from "drizzle-orm";
 import { db, dImage } from "server-db";
 import env from "server-env";
-import { z } from "zod";
+import * as v from "valibot";
 
 const fileExtensionRegex = /[^./\\]+$/;
 
 export const defineDownloadRequestHandler = (getData: (filepath: string) => Promise<BodyInit>, fileType?: "avif" | "webp") =>
   async ({ params }: APIEvent): Promise<Response> => {
-    const { id } = z.object({ id: z.coerce.number().int() }).parse(params);
+    const { id } = v.parse(
+      v.object({
+        id: v.pipe(v.string(), v.toNumber(), v.integer(), v.minValue(0)),
+      }),
+      params,
+    );
 
     const image = await db
       .select()

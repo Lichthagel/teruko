@@ -1,48 +1,54 @@
-import { z } from "zod";
+import * as v from "valibot";
 
-export const zImage = z.object({
-  id: z.number().int().positive(),
-  filename: z.string(),
-  title: z.string().nullable(),
-  source: z.string().nullable(),
-  createdAt: z.date(),
-  updatedAt: z.date(),
-  height: z.number().int(),
-  width: z.number().int(),
+export const vImage = v.object({
+  id: v.pipe(v.number(), v.integer(), v.minValue(1)),
+  filename: v.string(),
+  title: v.nullable(v.string()),
+  source: v.nullable(v.string()),
+  createdAt: v.date(),
+  updatedAt: v.date(),
+  height: v.pipe(v.number(), v.integer()),
+  width: v.pipe(v.number(), v.integer()),
 });
 
-export type Image = z.infer<typeof zImage>;
+export type Image = v.InferOutput<typeof vImage>;
 
-export const zTag = z.object({
-  slug: z.string(),
-  categorySlug: z.string().nullable(),
-  approved: z.boolean().default(false),
+export const vTag = v.object({
+  slug: v.string(),
+  categorySlug: v.nullable(v.string()),
+  approved: v.optional(v.boolean(), false),
 });
 
-export type Tag = z.infer<typeof zTag>;
+export type Tag = v.InferOutput<typeof vTag>;
 
-export const zTagCategory = z.object({
-  slug: z.string(),
-  color: z.string().nullable(),
+export const vTagCategory = v.object({
+  slug: v.string(),
+  color: v.nullable(v.string()),
 });
 
-export type TagCategory = z.infer<typeof zTagCategory>;
+export type TagCategory = v.InferOutput<typeof vTagCategory>;
 
-export const zImageSort = z.enum(["NEWEST", "OLDEST", "RANDOM"]);
+export const vImageSort = v.picklist(["NEWEST", "OLDEST", "RANDOM"]);
 
-export type ImageSort = z.infer<typeof zImageSort>;
+export type ImageSort = v.InferOutput<typeof vImageSort>;
 
-export const zTagExt = zTag.extend({
-  category: zTagCategory.nullish(),
-});
+export const vTagExt = v.intersect([
+  vTag,
+  v.partial(v.object({
+    category: v.nullable(vTagCategory),
+  })),
+]);
 
-export type TagExt = z.infer<typeof zTagExt>;
+export type TagExt = v.InferOutput<typeof vTagExt>;
 
-export const zImageExt = zImage.extend({
-  tags: z.array(zTagExt).optional(),
-});
+export const vImageExt = v.intersect([
+  vImage,
+  v.partial(v.object({
+    tags: v.array(vTagExt),
+  })),
+]);
 
-export type ImageExt = z.infer<typeof zImageExt>;
+export type ImageExt = v.InferOutput<typeof vImageExt>;
 
 export type ImageMeta = {
   title?: string | null;

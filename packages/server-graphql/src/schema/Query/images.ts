@@ -15,7 +15,6 @@ import {
   inArray,
   lt,
   or,
-
   sql,
 } from "drizzle-orm";
 import { GraphQLError, Kind } from "graphql";
@@ -26,7 +25,6 @@ import {
   dTag,
   dTagCategory,
 } from "server-db";
-import { z } from "zod"; // TODO zod is only used once in the package
 import { builder } from "../builder.js";
 import { PothosImage } from "../Image.js";
 
@@ -62,14 +60,18 @@ const parseCursor = (
 
   const { date, id } = match.groups;
 
-  const dateParsed = z.coerce.date().safeParse(date);
+  if (!date || !id) {
+    throw new GraphQLError("Invalid cursor");
+  }
 
-  if (!dateParsed.success || !id) {
+  const dateParsed = new Date(date);
+
+  if (Number.isNaN(dateParsed.valueOf())) {
     throw new GraphQLError("Invalid cursor");
   }
 
   return {
-    date: dateParsed.data,
+    date: dateParsed,
     id,
   };
 };
