@@ -16,8 +16,9 @@ builder.mutationField("updateTag", t =>
       }),
       newSlug: t.arg.string(),
       category: t.arg.string(),
+      approved: t.arg.boolean(),
     },
-    resolve: async (parent, { slug, newSlug, category }) => {
+    resolve: async (parent, { slug, newSlug, category, approved }) => {
       const rename = newSlug && newSlug !== slug;
 
       if (rename) {
@@ -41,11 +42,13 @@ builder.mutationField("updateTag", t =>
             .values({
               slug: newSlug,
               categorySlug: category ?? oldTag.categorySlug,
+              approved: approved ?? oldTag.approved,
             })
             .onConflictDoUpdate({
               target: dTag.slug,
               set: {
                 categorySlug: category ?? oldTag.categorySlug,
+                approved: approved ?? oldTag.approved,
               },
             })
             .returning();
@@ -82,7 +85,7 @@ builder.mutationField("updateTag", t =>
       } else {
         const res = await db
           .update(dTag)
-          .set({ categorySlug: category })
+          .set({ categorySlug: category, approved: approved ?? undefined })
           .where(eq(dTag.slug, slug))
           .returning();
 

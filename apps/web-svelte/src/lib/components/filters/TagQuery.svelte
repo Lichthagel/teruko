@@ -1,7 +1,7 @@
 <script lang="ts">
   import StatusBar from "$lib/components/status/StatusBar.svelte";
   import { filters } from "$lib/filters.svelte.js";
-  import { Pencil, X } from "@lucide/svelte";
+  import { BadgeCheck, Pencil, X } from "@lucide/svelte";
   import { getContextClient, queryStore } from "@urql/svelte";
   import styles from "client-css/m/filters.module.scss";
   import { Tag } from "client-graphql/snippets";
@@ -17,16 +17,14 @@
 
   const client = getContextClient();
 
-  const result = queryStore({
+  const result = $derived(queryStore({
     client,
     query: Tag,
     variables: { slug: tag },
-  });
+  }));
 
   const removeTag = () => {
-    const newTags = filters.tags.filter(t => t !== tag);
-
-    filters.tags = newTags;
+    filters.tags = filters.tags.filter(t => t !== tag);
   };
 </script>
 
@@ -35,6 +33,9 @@
   style:background-color={$result.data?.tag.category?.color}
 >
   <span>{tag}</span>
+  {#if $result.data?.tag.approved}
+    <BadgeCheck size={16} />
+  {/if}
   <button
     onclick={(e) => {
       e.preventDefault();

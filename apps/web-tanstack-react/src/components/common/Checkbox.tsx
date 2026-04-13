@@ -11,7 +11,7 @@ const Checkbox: FunctionComponent<{
       <input
         type="checkbox"
         checked={checked}
-        onInput={e => setChecked(e.currentTarget.checked)}
+        onChange={e => setChecked(e.currentTarget.checked)}
       />
       <span className={styles.checkmark} />
       <span>{label}</span>

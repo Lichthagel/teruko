@@ -16,6 +16,7 @@ export type Image = z.infer<typeof zImage>;
 export const zTag = z.object({
   slug: z.string(),
   categorySlug: z.string().nullable(),
+  approved: z.boolean().default(false),
 });
 
 export type Tag = z.infer<typeof zTag>;

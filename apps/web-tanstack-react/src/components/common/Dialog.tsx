@@ -11,7 +11,7 @@ const Dialog: FunctionComponent<{
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (openExt) {
+    if (openExt !== undefined) {
       // eslint-disable-next-line react/set-state-in-effect
       setOpen(openExt);
     }

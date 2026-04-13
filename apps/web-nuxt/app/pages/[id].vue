@@ -1,35 +1,17 @@
 <script setup lang="ts">
-import type { ImageExt } from "models";
-
 import { DownloadIcon } from "@lucide/vue";
-import { gql, useQuery } from "@urql/vue";
+import { useQuery } from "@urql/vue";
 import styles from "client-css/m/imagepage.module.scss";
+import { Image } from "client-graphql/snippets";
 
 const route = useRoute();
 
 const id = route.params.id as string;
 
-const result = useQuery<{ image: ImageExt | null }>({
-  query: gql`
-    query Image($id: ID!) {
-      image(id: $id) {
-        id
-        title
-        source
-        filename
-        createdAt
-        updatedAt
-        tags {
-          slug
-          category {
-            color
-          }
-        }
-      }
-    }
-  `,
+const result = useQuery({
+  query: Image,
   variables: {
-    id,
+    id: Number.parseInt(id),
   },
 });
 
