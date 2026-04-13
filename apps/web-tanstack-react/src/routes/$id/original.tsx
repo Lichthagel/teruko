@@ -1,4 +1,5 @@
-import fs from "node:fs/promises";
+import { createReadStream } from "node:fs";
+import { Readable } from "node:stream";
 import { defineDownloadRequestHandler } from "#/downloadRequestHandler";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -6,7 +7,8 @@ export const Route = createFileRoute("/$id/original")({
   server: {
     handlers: {
       GET: defineDownloadRequestHandler(
-        async filepath => new Uint8Array(await fs.readFile(filepath)),
+        filepath =>
+          Readable.toWeb(createReadStream(filepath)) as ReadableStream,
       ),
     },
   },

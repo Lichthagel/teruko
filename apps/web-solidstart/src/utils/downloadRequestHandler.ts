@@ -7,7 +7,7 @@ import * as v from "valibot";
 
 const fileExtensionRegex = /[^./\\]+$/;
 
-export const defineDownloadRequestHandler = (getData: (filepath: string) => Promise<BodyInit>, fileType?: "avif" | "webp") =>
+export const defineDownloadRequestHandler = (getData: (filepath: string) => BodyInit | PromiseLike<BodyInit>, fileType?: "avif" | "webp") =>
   async ({ params }: APIEvent): Promise<Response> => {
     const { id } = v.parse(
       v.object({

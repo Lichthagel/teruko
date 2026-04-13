@@ -1,4 +1,3 @@
-import type { Readable } from "node:stream";
 import path from "node:path";
 import { eq } from "drizzle-orm";
 import { HTTPError } from "h3";
@@ -8,7 +7,7 @@ import * as v from "valibot";
 
 const fileExtensionRegex = /[^./\\]+$/;
 
-export const defineDownloadEventHandler = (getData: (filepath: string) => Promise<Readable | globalThis.ReadableStream>, fileType?: "avif" | "webp") => (
+export const defineDownloadEventHandler = (getData: (filepath: string) => BodyInit | PromiseLike<BodyInit>, fileType?: "avif" | "webp") => (
   defineEventHandler(async (event) => {
     const { id } = v.parse(
       v.object({
@@ -36,11 +35,10 @@ export const defineDownloadEventHandler = (getData: (filepath: string) => Promis
 
     const respFilename = fileType ? image.filename.replace(fileExtensionRegex, fileType) : image.filename;
 
-    event.node.res.setHeader(
-      "Content-Disposition",
-      `attachment; filename=${respFilename}`,
-    );
-
-    return await getData(filepath);
+    return new Response(await getData(filepath), {
+      headers: {
+        "Content-Disposition": `attachment; filename=${respFilename}`,
+      },
+    });
   })
 );

@@ -1,19 +1,14 @@
 {
+  "extends": ["tsconfig/base.json"],
   "compilerOptions": {
-    "target": "ESNext",
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
     "paths": {
       "~/*": ["./src/*"]
     },
     "types": ["vite/client"],
-    "allowJs": true,
-    "strict": true,
-    "noEmit": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "isolatedModules": true
+    "noUncheckedIndexedAccess": false,
+    "declaration": false,
+    "declarationMap": false
   }
 }

@@ -1,5 +1,6 @@
-import fs from "node:fs/promises";
+import { createReadStream } from "node:fs";
 import path from "node:path";
+import { Readable } from "node:stream";
 import { createFileRoute } from "@tanstack/react-router";
 import env from "server-env";
 
@@ -9,9 +10,9 @@ export const Route = createFileRoute("/img/$filename")({
       GET: async (ctx) => {
         const filePath = path.join(env.IMG_FOLDER, ctx.params.filename);
 
-        const file = await fs.readFile(filePath);
+        const filestream = Readable.toWeb(createReadStream(filePath)) as ReadableStream;
 
-        const response = new Response(file, {
+        const response = new Response(filestream, {
           headers: {
             "Content-Type": "application/octet-stream",
           },

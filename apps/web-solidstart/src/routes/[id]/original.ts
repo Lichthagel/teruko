@@ -1,6 +1,7 @@
-import fs from "node:fs/promises";
+import { createReadStream } from "node:fs";
+import { Readable } from "node:stream";
 import { defineDownloadRequestHandler } from "~/utils/downloadRequestHandler";
 
 export const GET = defineDownloadRequestHandler(
-  async filepath => new Uint8Array(await fs.readFile(filepath)),
+  filepath => Readable.toWeb(createReadStream(filepath)) as ReadableStream,
 );
