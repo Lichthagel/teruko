@@ -1,8 +1,8 @@
 import type { ImageSort } from "models";
 import type { FunctionComponent } from "react";
-import { useImages } from "#/hooks/useImages";
 import styles from "client-css/m/gallery.module.scss";
 import { useEffect, useRef } from "react";
+import { useImages } from "#/hooks/useImages";
 import ErrorMessage from "../status/ErrorMessage";
 import StatusBar from "../status/StatusBar";
 import ImageCard from "./ImageCard";
