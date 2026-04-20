@@ -1,8 +1,8 @@
 import type { MouseEventHandler } from "react";
-import { useFilters } from "#/stores/filters";
 import styles from "client-css/m/filters.module.scss";
 import { ListX, Search } from "lucide-react";
 import { useCallback } from "react";
+import { useFilters } from "#/stores/filters";
 import TagInput from "../common/TagInput";
 import { SortSelect } from "./SortSelect";
 import { TagQuery } from "./TagQuery";
