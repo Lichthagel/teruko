@@ -1,7 +1,7 @@
 import type { Component } from "solid-js";
 import { getPixivMetadata } from "services/pixiv";
 import { customElement } from "solid-element";
-import { createSignal } from "solid-js";
+import { createEffect, createSignal, on } from "solid-js";
 
 import { CREATE_IMAGE, TERUKO_BASE_URL, TERUKO_BASIC_AUTH } from "./constants.js";
 import styles from "./style.css?inline";
@@ -105,6 +105,11 @@ const DownloadButton: Component<Props> = (props) => {
       setText(String(error));
     }
   };
+
+  createEffect(on(() => props.url, () => {
+    setText("teruko");
+    setSmall(false);
+  }));
 
   return (
     <button
