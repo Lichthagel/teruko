@@ -1,6 +1,6 @@
 import type { Component } from "solid-js";
 import { getPixivMetadata } from "services/pixiv";
-import { createMemo, createSignal } from "solid-js";
+import { createEffect, createMemo, createSignal, on } from "solid-js";
 import { CREATE_IMAGE, TERUKO_BASE_URL, TERUKO_BASIC_AUTH } from "../constants.js";
 
 type Props = {
@@ -102,6 +102,11 @@ const DownloadButton: Component<Props> = (props) => {
       setText(String(error));
     }
   };
+
+  createEffect(on(() => props.url, () => {
+    setText("teruko");
+    setSmall(false);
+  }));
 
   return (
     <button

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { LucideIcon } from "@lucide/vue";
-import { useSuggestions } from "#imports";
 import { LoaderCircle } from "@lucide/vue";
 import styles from "client-css/m/taginput.module.scss";
+import { useSuggestions } from "#imports";
 
 const { clearOnSubmit = true } = defineProps<{
   icon?: LucideIcon;
