@@ -1,9 +1,9 @@
 import type { Component } from "solid-js";
-import { createResource, Match, Switch } from "solid-js";
+import { createEffect, createResource, Match, onCleanup, Switch } from "solid-js";
 import { IMAGE_BY_FILENAME, TERUKO_BASE_URL, TERUKO_BASIC_AUTH } from "../constants";
 
 const Existing: Component<{ filename: string }> = (props) => {
-  const [existingId] = createResource(
+  const [existingId, { refetch }] = createResource(
     () => props.filename,
     async (filename) => {
       const res = await fetch(`${TERUKO_BASE_URL}/graphql`, {
@@ -26,6 +26,16 @@ const Existing: Component<{ filename: string }> = (props) => {
       return (json.data.imageByFilename as { id: string } | null)?.id;
     },
   );
+
+  createEffect(() => {
+    if ((!existingId.loading && !existingId()) || existingId.error) {
+      const timeout = setTimeout(refetch, 5000);
+
+      onCleanup(() => {
+        clearTimeout(timeout);
+      });
+    }
+  });
 
   return (
     <div>
