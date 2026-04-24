@@ -3,30 +3,33 @@ import { createResource, Match, Switch } from "solid-js";
 import { IMAGE_BY_FILENAME, TERUKO_BASE_URL, TERUKO_BASIC_AUTH } from "../constants";
 
 const Existing: Component<{ filename: string }> = (props) => {
-  const [existingId] = createResource(async () => {
-    const res = await fetch(`${TERUKO_BASE_URL}/graphql`, {
-      method: "POST",
-      body: JSON.stringify(
-        {
-          query: IMAGE_BY_FILENAME,
-          variables: { filename: props.filename },
+  const [existingId] = createResource(
+    () => props.filename,
+    async (filename) => {
+      const res = await fetch(`${TERUKO_BASE_URL}/graphql`, {
+        method: "POST",
+        body: JSON.stringify(
+          {
+            query: IMAGE_BY_FILENAME,
+            variables: { filename },
+          },
+        ),
+        headers: {
+          "Content-Type": "application/json",
+          "Apollo-Require-Preflight": "true",
+          ...(TERUKO_BASIC_AUTH ? { Authorization: `Basic ${TERUKO_BASIC_AUTH}` } : {}),
         },
-      ),
-      headers: {
-        "Content-Type": "application/json",
-        "Apollo-Require-Preflight": "true",
-        ...(TERUKO_BASIC_AUTH ? { Authorization: `Basic ${TERUKO_BASIC_AUTH}` } : {}),
-      },
-    });
+      });
 
-    const json = await res.json();
+      const json = await res.json();
 
-    return (json.data.imageByFilename as { id: string } | null)?.id;
-  });
+      return (json.data.imageByFilename as { id: string } | null)?.id;
+    },
+  );
 
   return (
     <div>
-      <Switch>
+      <Switch fallback="missing">
         <Match when={existingId.error}>
           Error:
           {" "}
