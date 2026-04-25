@@ -25,6 +25,7 @@ export const builder = new SchemaBuilder<{
 
 builder.queryType();
 builder.mutationType();
+builder.subscriptionType();
 
 builder.scalarType("DateTime", {
   serialize: date => date.toISOString(),
