@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { finished } from "node:stream/promises";
 import { sql } from "drizzle-orm";
-import { fileTypeFromBlob } from "file-type";
+import { fileTypeFromBuffer } from "file-type";
 import { GraphQLError } from "graphql";
 import {
   d_ImageToTag,
@@ -26,7 +26,9 @@ const hasDimensions = (
 const toFilename = (basename: string) => `${basename}.avif`;
 
 const saveBlob = async (blob: Blob, filename: string) => {
-  const fileType = await fileTypeFromBlob(blob);
+  const buffer = await blob.arrayBuffer();
+
+  const fileType = await fileTypeFromBuffer(buffer);
 
   if (
     !fileType
@@ -40,7 +42,7 @@ const saveBlob = async (blob: Blob, filename: string) => {
     })
   ) { throw new GraphQLError("image with that filename already exists"); }
 
-  const transform = sharp(await blob.arrayBuffer()).avif({ quality: 90 });
+  const transform = sharp(buffer).avif({ quality: 90 });
 
   const out = fs.createWriteStream(
     path.resolve(env.IMG_FOLDER, filename),
