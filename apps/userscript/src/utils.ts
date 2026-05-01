@@ -1,3 +1,5 @@
+import { GM_xmlhttpRequest } from "$";
+
 export const applyToAllConstantlyDebounced = (
   selector: (el: Element) => NodeListOf<Element>,
   callback: (el: Element) => void,
@@ -21,4 +23,20 @@ export const applyToAllConstantlyDebounced = (
   });
 
   observer.observe(container, { childList: true, subtree: true });
+};
+
+export const GMfetch = (url: string, options: Omit<GmXmlhttpRequestOption<"text", any>, "url" | "onload" | "onerror ">) => {
+  return new Promise<GmResponseEvent<"text", any>>((resolve, reject) => {
+    GM_xmlhttpRequest({
+      url,
+      method: "GET",
+      onload(res) {
+        resolve(res);
+      },
+      onerror(event) {
+        reject(event.error);
+      },
+      ...options,
+    });
+  });
 };

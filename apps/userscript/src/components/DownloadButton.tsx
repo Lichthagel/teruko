@@ -2,6 +2,7 @@ import type { Component } from "solid-js";
 import { getPixivMetadata } from "services/pixiv";
 import { createEffect, createMemo, createSignal, on } from "solid-js";
 import { CREATE_IMAGE, TERUKO_BASE_URL, TERUKO_BASIC_AUTH } from "../constants.js";
+import { GMfetch } from "../utils.js";
 
 type Props = {
   url: string | null;
@@ -59,22 +60,22 @@ const DownloadButton: Component<Props> = (props) => {
       }));
       formData.append("0", file);
 
-      const result = await fetch(`${TERUKO_BASE_URL}/graphql`, {
+      const result = await GMfetch(`${TERUKO_BASE_URL}/graphql`, {
         method: "POST",
-        body: formData,
+        data: formData,
         headers: {
           "Apollo-Require-Preflight": "true",
           ...(TERUKO_BASIC_AUTH ? { Authorization: `Basic ${TERUKO_BASIC_AUTH}` } : {}),
         },
       })
-        .then(async res => res.json() as Promise<{
+        .then(res => JSON.parse(res.responseText) as {
           data: {
             createImage: { id: string }[];
           } | null;
           errors?: {
             message: string;
           }[];
-        }>);
+        });
 
       window.removeEventListener("beforeunload", beforeUnload);
       if (result.errors) {
