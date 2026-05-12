@@ -234,9 +234,6 @@ catalogs:
     vite:
       specifier: ^8.0.8
       version: 8.0.12
-    vite-plugin-monkey:
-      specifier: ^8.0.0
-      version: 8.0.4
     vite-plugin-solid:
       specifier: ^2.11.12
       version: 2.11.12
@@ -313,7 +310,7 @@ importers:
         version: 8.0.12(@types/node@25.6.2)(@vitejs/devtools@0.1.22)(esbuild@0.28.0)(jiti@2.7.0)(sass-embedded@1.99.0)(sass@1.99.0)(terser@5.47.1)(tsx@4.21.0)(yaml@2.9.0)
       vite-plugin-monkey:
         specifier: 'catalog:'
-        version: 8.0.4(postcss@8.5.14)(vite@8.0.12)
+        version: 8.0.5(postcss@8.5.14)(vite@8.0.12)
       vite-plugin-solid:
         specifier: 'catalog:'
         version: 2.11.12(solid-js@1.9.12)(vite@8.0.12)
@@ -8341,8 +8338,8 @@ packages:
       '@nuxt/kit':
         optional: true
 
-  vite-plugin-monkey@8.0.4:
-    resolution: {integrity: sha512-hDcPEiL8kckfJ8FhBG4xcJ05/185EcmnGSmNKHghQRuYZb8Iewo2nnPaVBtCj4Ievz1I/5yVrUQcFwi83ZcAhQ==}
+  vite-plugin-monkey@8.0.5:
+    resolution: {integrity: sha512-2ByJCxGEebg6ElEbBkor1RNXtk7PgbfRT1CGmTO13P4wtYPIcMat5c2uN6eMX6t1eB1URG23Ioh1ZM/bDUAmDw==}
     peerDependencies:
       vite: ^8.0.0
     peerDependenciesMeta:
@@ -16942,7 +16939,7 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  vite-plugin-monkey@8.0.4(postcss@8.5.14)(vite@8.0.12):
+  vite-plugin-monkey@8.0.5(postcss@8.5.14)(vite@8.0.12):
     dependencies:
       acorn-walk: 8.3.5
       cross-spawn: 7.0.6
