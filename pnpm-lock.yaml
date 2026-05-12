@@ -395,7 +395,7 @@ importers:
         version: link:../../packages/client-graphql
       drizzle-orm:
         specifier: 'catalog:'
-        version: 0.45.2(@libsql/client@0.17.3)(@types/pg@8.20.0)(pg@8.20.0)
+        version: 0.45.2(@libsql/client@0.17.2)(@types/pg@8.20.0)(pg@8.20.0)
       lucide-solid:
         specifier: 'catalog:'
         version: 1.8.0(solid-js@1.9.12)
@@ -526,6 +526,9 @@ importers:
       client-graphql:
         specifier: workspace:*
         version: link:../../packages/client-graphql
+      drizzle-orm:
+        specifier: 'catalog:'
+        version: 0.45.2(@libsql/client@0.17.2)(@types/pg@8.20.0)(pg@8.20.0)
       lucide-react:
         specifier: 'catalog:'
         version: 1.8.0(react@19.2.5)
@@ -541,6 +544,9 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.2.5(react@19.2.5)
+      server-db:
+        specifier: workspace:*
+        version: link:../../packages/server-db
       server-env:
         specifier: workspace:*
         version: link:../../packages/server-env
@@ -3310,14 +3316,14 @@ packages:
       solid-js: ^1.8.6
 
   '@solidjs/start@https://pkg.pr.new/solidjs/solid-start/@solidjs/start@65448a9':
-    resolution: {integrity: sha512-9tpGrU+RfhB0onWoLzj6AgZBClkTeATj4lo3rMBvoPKMF3lblBMBfGPvKQvU9diJg5A8fQudeEt+BVy3pTdyQQ==, tarball: https://pkg.pr.new/solidjs/solid-start/@solidjs/start@65448a9}
+    resolution: {tarball: https://pkg.pr.new/solidjs/solid-start/@solidjs/start@65448a9}
     version: 2.0.0-alpha.2
     engines: {node: '>=22'}
     peerDependencies:
       vite: ^7
 
   '@solidjs/vite-plugin-nitro-2@https://pkg.pr.new/solidjs/solid-start/@solidjs/vite-plugin-nitro-2@65448a9':
-    resolution: {integrity: sha512-le6OrktHFWZH/kEyblV7fJhdxoCCiyaxvnZIPF+kf69ZkmrHKHmN3NSQ3cWsPTXXnnX6WWoD2bjt70EuCnyMoA==, tarball: https://pkg.pr.new/solidjs/solid-start/@solidjs/vite-plugin-nitro-2@65448a9}
+    resolution: {tarball: https://pkg.pr.new/solidjs/solid-start/@solidjs/vite-plugin-nitro-2@65448a9}
     version: 0.2.0
     peerDependencies:
       vite: ^7
