@@ -393,15 +393,27 @@ importers:
       client-graphql:
         specifier: workspace:*
         version: link:../../packages/client-graphql
+      drizzle-orm:
+        specifier: 'catalog:'
+        version: 0.45.2(@libsql/client@0.17.3)(@types/pg@8.20.0)(pg@8.20.0)
       lucide-solid:
         specifier: 'catalog:'
         version: 1.8.0(solid-js@1.9.12)
       models:
         specifier: workspace:*
         version: link:../../packages/models
+      server-db:
+        specifier: workspace:*
+        version: link:../../packages/server-db
+      server-env:
+        specifier: workspace:*
+        version: link:../../packages/server-env
       server-graphql:
         specifier: workspace:*
         version: link:../../packages/server-graphql
+      sharp:
+        specifier: 'catalog:'
+        version: 0.34.5
       solid-js:
         specifier: 'catalog:'
         version: 1.9.12
