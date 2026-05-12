@@ -27,12 +27,6 @@ catalogs:
     '@libsql/client':
       specifier: ^0.17.2
       version: 0.17.3
-    '@lucide/svelte':
-      specifier: ^1.8.0
-      version: 1.8.0
-    '@lucide/vue':
-      specifier: ^1.8.0
-      version: 1.8.0
     '@nuxt/devtools':
       specifier: 4.0.0-alpha.4
       version: 4.0.0-alpha.4
@@ -307,7 +301,7 @@ importers:
     dependencies:
       '@lucide/vue':
         specifier: 'catalog:'
-        version: 1.8.0(vue@3.5.34(typescript@6.0.3))
+        version: 1.14.0(vue@3.5.34(typescript@6.0.3))
       '@urql/vue':
         specifier: 'catalog:'
         version: 2.1.0(@urql/core@6.0.1(graphql@17.0.0-beta.1))(vue@3.5.34(typescript@6.0.3))
@@ -435,7 +429,7 @@ importers:
     devDependencies:
       '@lucide/svelte':
         specifier: 'catalog:'
-        version: 1.8.0(svelte@5.55.5(@typescript-eslint/types@8.59.3))
+        version: 1.14.0(svelte@5.55.5(@typescript-eslint/types@8.59.3))
       '@sveltejs/adapter-node':
         specifier: 'catalog:'
         version: 5.5.4(@sveltejs/kit@2.59.1(@sveltejs/vite-plugin-svelte@7.0.0(svelte@5.55.5(@typescript-eslint/types@8.59.3))(vite@8.0.8))(svelte@5.55.5(@typescript-eslint/types@8.59.3))(typescript@6.0.3)(vite@8.0.8))
@@ -2081,13 +2075,13 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@lucide/svelte@1.8.0':
-    resolution: {integrity: sha512-+zYQUKqEOVP5lxbGmxL1OVgGMQtRK91eIJ0bR+3Cr1ts4oQEsQfxyzzd5X47psJlblAuGFrl2xm4YuATjR9oaA==}
+  '@lucide/svelte@1.14.0':
+    resolution: {integrity: sha512-MVuP5VRCBQa2OaIpaRbuEV4k5OV2dy9MyxA6Tf4Sz/IN0v3zzUU72ObHc9r2Zn/wSMXDg6lLrHrczqI7w7gCzQ==}
     peerDependencies:
       svelte: ^5
 
-  '@lucide/vue@1.8.0':
-    resolution: {integrity: sha512-Rgy2rxfOx9yP6fWneE3QO6xwUbF2o7f9+MRbzGLRakee4tzUeVWHdX23uRH4ymwEzoq2+8vqRI9yGsxeZhYlWw==}
+  '@lucide/vue@1.14.0':
+    resolution: {integrity: sha512-0s2fsXJGXYqcuyigsRtoTPqbeGGFOiLTYMDFfYvWO4rQNOongaJe1XDiExOLiybbI9+uQPBr5aGoiCdQNlSfQg==}
     peerDependencies:
       vue: '>=3.0.1'
 
@@ -10168,11 +10162,11 @@ snapshots:
   '@libsql/win32-x64-msvc@0.5.29':
     optional: true
 
-  '@lucide/svelte@1.8.0(svelte@5.55.5(@typescript-eslint/types@8.59.3))':
+  '@lucide/svelte@1.14.0(svelte@5.55.5(@typescript-eslint/types@8.59.3))':
     dependencies:
       svelte: 5.55.5(@typescript-eslint/types@8.59.3)
 
-  '@lucide/vue@1.8.0(vue@3.5.34(typescript@6.0.3))':
+  '@lucide/vue@1.14.0(vue@3.5.34(typescript@6.0.3))':
     dependencies:
       vue: 3.5.34(typescript@6.0.3)
 
