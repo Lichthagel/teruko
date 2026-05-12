@@ -30,12 +30,6 @@ catalogs:
     '@libsql/client':
       specifier: ^0.17.2
       version: 0.17.3
-    '@lucide/svelte':
-      specifier: ^1.8.0
-      version: 1.8.0
-    '@lucide/vue':
-      specifier: ^1.8.0
-      version: 1.8.0
     '@nuxt/devtools':
       specifier: 4.0.0-alpha.4
       version: 4.0.0-alpha.4
@@ -180,9 +174,18 @@ catalogs:
     pg:
       specifier: ^8.20.0
       version: 8.20.0
+    postcss:
+      specifier: ^8.5.9
+      version: 8.5.14
     postcss-load-config:
       specifier: ^6.0.1
       version: 6.0.1
+    react:
+      specifier: ^19.2.5
+      version: 19.2.6
+    react-dom:
+      specifier: ^19.2.5
+      version: 19.2.6
     sass-embedded:
       specifier: ^1.99.0
       version: 1.99.0
@@ -201,6 +204,9 @@ catalogs:
     stylelint-config-standard-scss:
       specifier: ^17.0.0
       version: 17.0.0
+    svelte:
+      specifier: ^5.55.3
+      version: 5.55.5
     svelte-check:
       specifier: ^4.4.6
       version: 4.4.8
@@ -222,6 +228,9 @@ catalogs:
     vite:
       specifier: ^8.0.8
       version: 8.0.8
+    vite-plugin-monkey:
+      specifier: ^8.0.0
+      version: 8.0.4
     vite-plugin-solid:
       specifier: ^2.11.12
       version: 2.11.12
@@ -298,7 +307,7 @@ importers:
         version: 8.0.8(@types/node@25.6.2)(@vitejs/devtools@0.1.14)(esbuild@0.28.0)(jiti@2.7.0)(sass-embedded@1.99.0)(sass@1.99.0)(terser@5.46.1)(tsx@4.21.0)(yaml@2.9.0)
       vite-plugin-monkey:
         specifier: 'catalog:'
-        version: 8.0.5(postcss@8.5.14)(vite@8.0.8)
+        version: 8.0.4(postcss@8.5.14)(vite@8.0.8)
       vite-plugin-solid:
         specifier: 'catalog:'
         version: 2.11.12(solid-js@1.9.12)(vite@8.0.8)
@@ -307,7 +316,7 @@ importers:
     dependencies:
       '@lucide/vue':
         specifier: 'catalog:'
-        version: 1.8.0(vue@3.5.34(typescript@6.0.3))
+        version: 1.14.0(vue@3.5.34(typescript@6.0.3))
       '@urql/vue':
         specifier: 'catalog:'
         version: 2.1.0(@urql/core@6.0.1(graphql@17.0.0-beta.1))(vue@3.5.34(typescript@6.0.3))
@@ -435,7 +444,7 @@ importers:
     devDependencies:
       '@lucide/svelte':
         specifier: 'catalog:'
-        version: 1.8.0(svelte@5.55.5(@typescript-eslint/types@8.59.3))
+        version: 1.14.0(svelte@5.55.5(@typescript-eslint/types@8.59.3))
       '@sveltejs/adapter-node':
         specifier: 'catalog:'
         version: 5.5.4(@sveltejs/kit@2.59.1(@sveltejs/vite-plugin-svelte@7.0.0(svelte@5.55.5(@typescript-eslint/types@8.59.3))(vite@8.0.8))(svelte@5.55.5(@typescript-eslint/types@8.59.3))(typescript@6.0.3)(vite@8.0.8))
@@ -2081,13 +2090,13 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@lucide/svelte@1.8.0':
-    resolution: {integrity: sha512-+zYQUKqEOVP5lxbGmxL1OVgGMQtRK91eIJ0bR+3Cr1ts4oQEsQfxyzzd5X47psJlblAuGFrl2xm4YuATjR9oaA==}
+  '@lucide/svelte@1.14.0':
+    resolution: {integrity: sha512-MVuP5VRCBQa2OaIpaRbuEV4k5OV2dy9MyxA6Tf4Sz/IN0v3zzUU72ObHc9r2Zn/wSMXDg6lLrHrczqI7w7gCzQ==}
     peerDependencies:
       svelte: ^5
 
-  '@lucide/vue@1.8.0':
-    resolution: {integrity: sha512-Rgy2rxfOx9yP6fWneE3QO6xwUbF2o7f9+MRbzGLRakee4tzUeVWHdX23uRH4ymwEzoq2+8vqRI9yGsxeZhYlWw==}
+  '@lucide/vue@1.14.0':
+    resolution: {integrity: sha512-0s2fsXJGXYqcuyigsRtoTPqbeGGFOiLTYMDFfYvWO4rQNOongaJe1XDiExOLiybbI9+uQPBr5aGoiCdQNlSfQg==}
     peerDependencies:
       vue: '>=3.0.1'
 
@@ -8706,8 +8715,8 @@ packages:
       '@nuxt/kit':
         optional: true
 
-  vite-plugin-monkey@8.0.5:
-    resolution: {integrity: sha512-2ByJCxGEebg6ElEbBkor1RNXtk7PgbfRT1CGmTO13P4wtYPIcMat5c2uN6eMX6t1eB1URG23Ioh1ZM/bDUAmDw==}
+  vite-plugin-monkey@8.0.4:
+    resolution: {integrity: sha512-hDcPEiL8kckfJ8FhBG4xcJ05/185EcmnGSmNKHghQRuYZb8Iewo2nnPaVBtCj4Ievz1I/5yVrUQcFwi83ZcAhQ==}
     peerDependencies:
       vite: ^8.0.0
     peerDependenciesMeta:
@@ -10194,11 +10203,11 @@ snapshots:
   '@libsql/win32-x64-msvc@0.5.29':
     optional: true
 
-  '@lucide/svelte@1.8.0(svelte@5.55.5(@typescript-eslint/types@8.59.3))':
+  '@lucide/svelte@1.14.0(svelte@5.55.5(@typescript-eslint/types@8.59.3))':
     dependencies:
       svelte: 5.55.5(@typescript-eslint/types@8.59.3)
 
-  '@lucide/vue@1.8.0(vue@3.5.34(typescript@6.0.3))':
+  '@lucide/vue@1.14.0(vue@3.5.34(typescript@6.0.3))':
     dependencies:
       vue: 3.5.34(typescript@6.0.3)
 
@@ -17820,7 +17829,7 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  vite-plugin-monkey@8.0.5(postcss@8.5.14)(vite@8.0.8):
+  vite-plugin-monkey@8.0.4(postcss@8.5.14)(vite@8.0.8):
     dependencies:
       acorn-walk: 8.3.5
       cross-spawn: 7.0.6
