@@ -30,12 +30,6 @@ catalogs:
     '@libsql/client':
       specifier: ^0.17.2
       version: 0.17.3
-    '@lucide/svelte':
-      specifier: ^1.8.0
-      version: 1.14.0
-    '@lucide/vue':
-      specifier: ^1.8.0
-      version: 1.14.0
     '@nuxt/devtools':
       specifier: 4.0.0-alpha.4
       version: 4.0.0-alpha.4
@@ -60,6 +54,9 @@ catalogs:
     '@sveltejs/adapter-node':
       specifier: ^5.5.4
       version: 5.5.4
+    '@sveltejs/kit':
+      specifier: ^2.57.1
+      version: 2.60.1
     '@sveltejs/vite-plugin-svelte':
       specifier: ^7.0.0
       version: 7.1.2
@@ -84,6 +81,9 @@ catalogs:
     '@tanstack/router-plugin':
       specifier: ^1.167.18
       version: 1.167.35
+    '@types/node':
+      specifier: ^25.6.0
+      version: 25.8.0
     '@types/pg':
       specifier: ^8.20.0
       version: 8.20.0
@@ -316,7 +316,7 @@ importers:
     dependencies:
       '@lucide/vue':
         specifier: 'catalog:'
-        version: 1.14.0(vue@3.5.34(typescript@6.0.3))
+        version: 1.16.0(vue@3.5.34(typescript@6.0.3))
       '@urql/vue':
         specifier: 'catalog:'
         version: 2.1.0(@urql/core@6.0.1(graphql@17.0.0-beta.1))(vue@3.5.34(typescript@6.0.3))
@@ -444,7 +444,7 @@ importers:
     devDependencies:
       '@lucide/svelte':
         specifier: 'catalog:'
-        version: 1.14.0(svelte@5.55.7(@typescript-eslint/types@8.59.3))
+        version: 1.16.0(svelte@5.55.7(@typescript-eslint/types@8.59.3))
       '@sveltejs/adapter-node':
         specifier: 'catalog:'
         version: 5.5.4(@sveltejs/kit@2.60.1(@sveltejs/vite-plugin-svelte@7.1.2(svelte@5.55.7(@typescript-eslint/types@8.59.3))(vite@8.0.12))(svelte@5.55.7(@typescript-eslint/types@8.59.3))(typescript@6.0.3)(vite@8.0.12))
@@ -2085,13 +2085,13 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@lucide/svelte@1.14.0':
-    resolution: {integrity: sha512-MVuP5VRCBQa2OaIpaRbuEV4k5OV2dy9MyxA6Tf4Sz/IN0v3zzUU72ObHc9r2Zn/wSMXDg6lLrHrczqI7w7gCzQ==}
+  '@lucide/svelte@1.16.0':
+    resolution: {integrity: sha512-AvvPJnaWxeiNkAljI5MsSEc84yHPLMaWQIAJOcbX7k9au/f9ITS7cxTTQiautDiOFKVOXiYdZ+d6mtl88J+Kbg==}
     peerDependencies:
       svelte: ^5
 
-  '@lucide/vue@1.14.0':
-    resolution: {integrity: sha512-0s2fsXJGXYqcuyigsRtoTPqbeGGFOiLTYMDFfYvWO4rQNOongaJe1XDiExOLiybbI9+uQPBr5aGoiCdQNlSfQg==}
+  '@lucide/vue@1.16.0':
+    resolution: {integrity: sha512-kiHx0fe49DMjQuvNaEOu9Jou6u9FwdqQ8xbZIKlD47sXrOI8g59kIeeQL42NBLI4AvO+UJsbaPX0hEK/4rHSBQ==}
     peerDependencies:
       vue: '>=3.0.1'
 
@@ -10106,11 +10106,11 @@ snapshots:
   '@libsql/win32-x64-msvc@0.5.29':
     optional: true
 
-  '@lucide/svelte@1.14.0(svelte@5.55.7(@typescript-eslint/types@8.59.3))':
+  '@lucide/svelte@1.16.0(svelte@5.55.7(@typescript-eslint/types@8.59.3))':
     dependencies:
       svelte: 5.55.7(@typescript-eslint/types@8.59.3)
 
-  '@lucide/vue@1.14.0(vue@3.5.34(typescript@6.0.3))':
+  '@lucide/vue@1.16.0(vue@3.5.34(typescript@6.0.3))':
     dependencies:
       vue: 3.5.34(typescript@6.0.3)
 
