@@ -72,6 +72,21 @@ catalogs:
     '@tanstack/react-devtools':
       specifier: ^0.10.2
       version: 0.10.5
+    '@tanstack/react-router':
+      specifier: ^1.168.18
+      version: 1.170.1
+    '@tanstack/react-router-devtools':
+      specifier: ^1.166.13
+      version: 1.167.0
+    '@tanstack/react-router-ssr-query':
+      specifier: ^1.166.11
+      version: 1.167.0
+    '@tanstack/react-start':
+      specifier: ^1.167.32
+      version: 1.168.1
+    '@tanstack/router-plugin':
+      specifier: ^1.167.18
+      version: 1.168.1
     '@types/node':
       specifier: ^25.6.0
       version: 25.8.0
@@ -141,6 +156,9 @@ catalogs:
     husky:
       specifier: ^9.1.7
       version: 9.1.7
+    lint-staged:
+      specifier: ^17.0.0
+      version: 17.0.4
     lucide-react:
       specifier: ^1.8.0
       version: 1.16.0
@@ -183,9 +201,6 @@ catalogs:
     solid-element:
       specifier: ^1.9.1
       version: 1.9.1
-    solid-js:
-      specifier: ^1.9.12
-      version: 1.9.12
     stylelint:
       specifier: ^17.6.0
       version: 17.11.1
@@ -259,7 +274,7 @@ importers:
         version: 9.1.7
       lint-staged:
         specifier: 'catalog:'
-        version: 17.0.5
+        version: 17.0.4
       nx:
         specifier: 'catalog:'
         version: 22.7.2
@@ -280,10 +295,10 @@ importers:
         version: link:../../packages/services
       solid-element:
         specifier: 'catalog:'
-        version: 1.9.1(solid-js@1.9.12)
+        version: 1.9.1(solid-js@1.9.13)
       solid-js:
         specifier: 'catalog:'
-        version: 1.9.12
+        version: 1.9.13
       tsconfig:
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -298,7 +313,7 @@ importers:
         version: 8.0.5(postcss@8.5.14)(vite@8.0.13)
       vite-plugin-solid:
         specifier: 'catalog:'
-        version: 2.11.12(solid-js@1.9.12)(vite@8.0.13)
+        version: 2.11.12(solid-js@1.9.13)(vite@8.0.13)
 
   apps/web-nuxt:
     dependencies:
@@ -359,10 +374,10 @@ importers:
     dependencies:
       '@solidjs/meta':
         specifier: 'catalog:'
-        version: 0.29.4(solid-js@1.9.12)
+        version: 0.29.4(solid-js@1.9.13)
       '@solidjs/router':
         specifier: 'catalog:'
-        version: 0.16.1(solid-js@1.9.12)
+        version: 0.16.1(solid-js@1.9.13)
       '@solidjs/start':
         specifier: 'catalog:'
         version: https://pkg.pr.new/solidjs/solid-start/@solidjs/start@65448a9(crossws@0.4.5(srvx@0.11.15))(vite@8.0.13)
@@ -371,7 +386,7 @@ importers:
         version: https://pkg.pr.new/solidjs/solid-start/@solidjs/vite-plugin-nitro-2@65448a9(@libsql/client@0.17.3)(drizzle-orm@0.45.2(@libsql/client@0.17.3)(@types/pg@8.20.0)(pg@8.20.0))(oxc-parser@0.128.0)(rolldown@1.0.1)(vite@8.0.13)
       '@urql/solid':
         specifier: 'catalog:'
-        version: 1.0.1(@urql/core@6.0.1)(solid-js@1.9.12)
+        version: 1.0.1(@urql/core@6.0.1)(solid-js@1.9.13)
       client-css:
         specifier: workspace:*
         version: link:../../packages/client-css
@@ -383,7 +398,7 @@ importers:
         version: 0.45.2(@libsql/client@0.17.3)(@types/pg@8.20.0)(pg@8.20.0)
       lucide-solid:
         specifier: 'catalog:'
-        version: 1.16.0(solid-js@1.9.12)
+        version: 1.16.0(solid-js@1.9.13)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -401,7 +416,7 @@ importers:
         version: 0.34.5
       solid-js:
         specifier: 'catalog:'
-        version: 1.9.12
+        version: 1.9.13
       tsconfig:
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -501,10 +516,10 @@ importers:
         version: 1.167.0(@tanstack/query-core@5.100.10)(@tanstack/react-query@5.100.10(react@19.2.6))(@tanstack/react-router@1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(@tanstack/router-core@1.170.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@tanstack/react-start':
         specifier: 'catalog:'
-        version: 1.168.2(crossws@0.4.5(srvx@0.11.15))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)
+        version: 1.168.1(crossws@0.4.5(srvx@0.11.15))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)
       '@tanstack/router-plugin':
         specifier: 'catalog:'
-        version: 1.168.2(@tanstack/react-router@1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)
+        version: 1.168.1(@tanstack/react-router@1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)
       client-css:
         specifier: workspace:*
         version: link:../../packages/client-css
@@ -3676,8 +3691,8 @@ packages:
       react: '>=18.0.0 || >=19.0.0'
       react-dom: '>=18.0.0 || >=19.0.0'
 
-  '@tanstack/react-start-rsc@0.1.2':
-    resolution: {integrity: sha512-eev2rhu98h1rmuT7iaGsfhejy+nDExuw1FVaU48eZvDRirw5PPmAMkeHVBAV6KlyfPB/rygfbDP10gRXZi6dHw==}
+  '@tanstack/react-start-rsc@0.1.1':
+    resolution: {integrity: sha512-n2r2SmmDiVB4HbslU3/I8tZ6eHYTgDb0yBxywtkmoILjGFBSdd1ipJKtnZeGPULlli6tGWZN+0ZxtBmuxROkNw==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
       '@rspack/core': '>=2.0.0-0'
@@ -3700,8 +3715,8 @@ packages:
       react: '>=18.0.0 || >=19.0.0'
       react-dom: '>=18.0.0 || >=19.0.0'
 
-  '@tanstack/react-start@1.168.2':
-    resolution: {integrity: sha512-WSlL1qXs/7YW3ZW2OWTo9IMUzm5HI5j0mm+MLDmiH1i8MAXE7VSooHXx0RGYncqvLEC5yzwe+RQ2fXpNyZVYbg==}
+  '@tanstack/react-start@1.168.1':
+    resolution: {integrity: sha512-Yq6GfKkcAndJNhOd9eHDT5J8t0vXYWkTZRdNywiM09xwLE16y6818bkVFBHBdZkQ5JjCdLWPVQwJWrmSN33ACQ==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
       '@rsbuild/core': ^2.0.0
@@ -3737,12 +3752,12 @@ packages:
       csstype:
         optional: true
 
-  '@tanstack/router-generator@1.167.2':
-    resolution: {integrity: sha512-LpXmZwlCPsZ/SRRraq3vl1y9baGCgvU7W4Re4QFS30ned1RPHq98IH1DuQ8Kwevplr7Vd3+qRPR4e5vFLaB0oA==}
+  '@tanstack/router-generator@1.167.1':
+    resolution: {integrity: sha512-grpwEwuDht4M8P3nDUPt45B2BXxG0pIB5AdXSe8DHRP+GL++1UWxM5cAHK1WkXViGQhHNA2hhwKYhyP4z8RlcA==}
     engines: {node: '>=20.19'}
 
-  '@tanstack/router-plugin@1.168.2':
-    resolution: {integrity: sha512-JTdpCMN0fKDghVKtjE/u7ZY+ccpRL/jLNuC0PilqpgvCE8A4fk2gBgyuuOdzQJ/jITv0dHTcfRT+Lr71RBodIA==}
+  '@tanstack/router-plugin@1.168.1':
+    resolution: {integrity: sha512-JPxBjrobxjyNqk4lgurHBGWNR7hE90wnlLCtANMBS6aY+Om71RKdxgiHIEqDiv8b6LLCiQFVHObJSa8O6LePNg==}
     engines: {node: '>=20.19'}
     peerDependencies:
       '@rsbuild/core': '>=1.0.2 || ^2.0.0'
@@ -3789,8 +3804,8 @@ packages:
     resolution: {integrity: sha512-QWfUZ3Yo923tdQn38LyKMU8rcTw69zc+T4dAvgTWV4O56SqFRsGfS0lSWIMhJRwXIx/bvdi7nTUBDdZtTHtpTQ==}
     engines: {node: '>=22.12.0'}
 
-  '@tanstack/start-plugin-core@1.170.2':
-    resolution: {integrity: sha512-8d4flsNdFxAWr9aOrRWgxyNWOGJH3wMCL5Kjx0f58iNTPO0D/3HSbL3dXBVeYxLHEP56o4SWScsK4j2uuyh5Bg==}
+  '@tanstack/start-plugin-core@1.170.1':
+    resolution: {integrity: sha512-bzLyKH3MqJaNONtAAIqGz36veWdVMUtxdW6YGPxDidOUPZPSFL/qEoh+D4UbBn8JFmlgiMSJx6VluvFXezs6rg==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
       '@rsbuild/core': ^2.0.0
@@ -6286,8 +6301,8 @@ packages:
     resolution: {integrity: sha512-cNOjgCnLB+FnvWWtyRTzmB3POJ+cXxTA81LoW7u8JdmhfXzriropYwpjShnz1QLLWsQwY7nIxoDmcPTwphDK9w==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  lint-staged@17.0.5:
-    resolution: {integrity: sha512-d12yC+/e8RhBjZtaxZn71FyrgU/P5e+uAPifhCLwdosQZP/zamSdKRWDC30ocVIbzDKiFG1McHc/LUgB92GIPw==}
+  lint-staged@17.0.4:
+    resolution: {integrity: sha512-+rU9lSUyVOZ/hDUmRLVGzyS2v73cDdQjX+XQz1AaOdIE4RysLq0HoPW2HrrgeNCLklkhi904VBU1bmgWLHVnkA==}
     engines: {node: '>=22.22.1'}
     hasBin: true
 
@@ -7731,9 +7746,6 @@ packages:
     resolution: {integrity: sha512-baJy6Qz27oAUgkPlqOf3Y+7RsBiuVQrS51Nrh1ddDbrqrNPvJbIvehpUsTzLNFb2ZHIoHuNnDg330go/ZKcRdg==}
     peerDependencies:
       solid-js: ^1.9.3
-
-  solid-js@1.9.12:
-    resolution: {integrity: sha512-QzKaSJq2/iDrWR1As6MHZQ8fQkdOBf8GReYb7L5iKwMGceg7HxDcaOHk0at66tNgn9U2U7dXo8ZZpLIAmGMzgw==}
 
   solid-js@1.9.13:
     resolution: {integrity: sha512-6hJeJMOcEX8ktqjpDoJZEmld3ijvcvWBDtiXBm7f4332SiFN66QeAQI1REQshvyUoISsSeJ4PHDauKYbwao9JQ==}
@@ -11196,28 +11208,24 @@ snapshots:
       '@solid-primitives/utils': 6.4.0(solid-js@1.9.13)
       solid-js: 1.9.13
 
-  '@solid-primitives/utils@6.4.0(solid-js@1.9.12)':
-    dependencies:
-      solid-js: 1.9.12
-
   '@solid-primitives/utils@6.4.0(solid-js@1.9.13)':
     dependencies:
       solid-js: 1.9.13
 
-  '@solidjs/meta@0.29.4(solid-js@1.9.12)':
+  '@solidjs/meta@0.29.4(solid-js@1.9.13)':
     dependencies:
-      solid-js: 1.9.12
+      solid-js: 1.9.13
 
-  '@solidjs/router@0.16.1(solid-js@1.9.12)':
+  '@solidjs/router@0.16.1(solid-js@1.9.13)':
     dependencies:
-      solid-js: 1.9.12
+      solid-js: 1.9.13
 
   '@solidjs/start@https://pkg.pr.new/solidjs/solid-start/@solidjs/start@65448a9(crossws@0.4.5(srvx@0.11.15))(vite@8.0.13)':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/traverse': 7.29.0
       '@babel/types': 7.29.0
-      '@solidjs/meta': 0.29.4(solid-js@1.9.12)
+      '@solidjs/meta': 0.29.4(solid-js@1.9.13)
       '@tanstack/server-functions-plugin': 1.134.5(vite@8.0.13)
       '@types/babel__traverse': 7.28.0
       '@types/micromatch': 4.0.10
@@ -11236,12 +11244,12 @@ snapshots:
       seroval: 1.5.4
       seroval-plugins: 1.5.4(seroval@1.5.4)
       shiki: 1.29.2
-      solid-js: 1.9.12
+      solid-js: 1.9.13
       source-map-js: 1.2.1
       srvx: 0.11.15
-      terracotta: 1.1.0(solid-js@1.9.12)
+      terracotta: 1.1.0(solid-js@1.9.13)
       vite: 8.0.13(@types/node@25.8.0)(@vitejs/devtools@0.1.24)(esbuild@0.28.0)(jiti@2.7.0)(sass-embedded@1.99.0)(sass@1.99.0)(terser@5.47.1)(tsx@4.22.0)(yaml@2.9.0)
-      vite-plugin-solid: 2.11.12(solid-js@1.9.12)(vite@8.0.13)
+      vite-plugin-solid: 2.11.12(solid-js@1.9.13)(vite@8.0.13)
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - crossws
@@ -11468,7 +11476,7 @@ snapshots:
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
 
-  '@tanstack/react-start-rsc@0.1.2(crossws@0.4.5(srvx@0.11.15))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)':
+  '@tanstack/react-start-rsc@0.1.1(crossws@0.4.5(srvx@0.11.15))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)':
     dependencies:
       '@tanstack/react-router': 1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@tanstack/react-start-server': 1.167.1(crossws@0.4.5(srvx@0.11.15))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -11476,7 +11484,7 @@ snapshots:
       '@tanstack/router-utils': 1.162.0
       '@tanstack/start-client-core': 1.169.1
       '@tanstack/start-fn-stubs': 1.162.0
-      '@tanstack/start-plugin-core': 1.170.2(@tanstack/react-router@1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(crossws@0.4.5(srvx@0.11.15))(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)
+      '@tanstack/start-plugin-core': 1.170.1(@tanstack/react-router@1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(crossws@0.4.5(srvx@0.11.15))(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)
       '@tanstack/start-server-core': 1.168.1(crossws@0.4.5(srvx@0.11.15))
       '@tanstack/start-storage-context': 1.167.1
       pathe: 2.0.3
@@ -11502,15 +11510,15 @@ snapshots:
     transitivePeerDependencies:
       - crossws
 
-  '@tanstack/react-start@1.168.2(crossws@0.4.5(srvx@0.11.15))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)':
+  '@tanstack/react-start@1.168.1(crossws@0.4.5(srvx@0.11.15))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)':
     dependencies:
       '@tanstack/react-router': 1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@tanstack/react-start-client': 1.167.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@tanstack/react-start-rsc': 0.1.2(crossws@0.4.5(srvx@0.11.15))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)
+      '@tanstack/react-start-rsc': 0.1.1(crossws@0.4.5(srvx@0.11.15))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)
       '@tanstack/react-start-server': 1.167.1(crossws@0.4.5(srvx@0.11.15))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@tanstack/router-utils': 1.162.0
       '@tanstack/start-client-core': 1.169.1
-      '@tanstack/start-plugin-core': 1.170.2(@tanstack/react-router@1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(crossws@0.4.5(srvx@0.11.15))(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)
+      '@tanstack/start-plugin-core': 1.170.1(@tanstack/react-router@1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(crossws@0.4.5(srvx@0.11.15))(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)
       '@tanstack/start-server-core': 1.168.1(crossws@0.4.5(srvx@0.11.15))
       pathe: 2.0.3
       react: 19.2.6
@@ -11547,7 +11555,7 @@ snapshots:
     optionalDependencies:
       csstype: 3.2.3
 
-  '@tanstack/router-generator@1.167.2':
+  '@tanstack/router-generator@1.167.1':
     dependencies:
       '@babel/types': 7.29.0
       '@tanstack/router-core': 1.170.1
@@ -11560,7 +11568,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@tanstack/router-plugin@1.168.2(@tanstack/react-router@1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)':
+  '@tanstack/router-plugin@1.168.1(@tanstack/react-router@1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/plugin-syntax-jsx': 7.28.6(@babel/core@7.29.0)
@@ -11569,7 +11577,7 @@ snapshots:
       '@babel/traverse': 7.29.0
       '@babel/types': 7.29.0
       '@tanstack/router-core': 1.170.1
-      '@tanstack/router-generator': 1.167.2
+      '@tanstack/router-generator': 1.167.1
       '@tanstack/router-utils': 1.162.0
       '@tanstack/virtual-file-routes': 1.162.0
       chokidar: 5.0.0
@@ -11639,15 +11647,15 @@ snapshots:
 
   '@tanstack/start-fn-stubs@1.162.0': {}
 
-  '@tanstack/start-plugin-core@1.170.2(@tanstack/react-router@1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(crossws@0.4.5(srvx@0.11.15))(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)':
+  '@tanstack/start-plugin-core@1.170.1(@tanstack/react-router@1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(crossws@0.4.5(srvx@0.11.15))(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)':
     dependencies:
       '@babel/code-frame': 7.27.1
       '@babel/core': 7.29.0
       '@babel/types': 7.29.0
       '@rolldown/pluginutils': 1.0.0-beta.40
       '@tanstack/router-core': 1.170.1
-      '@tanstack/router-generator': 1.167.2
-      '@tanstack/router-plugin': 1.168.2(@tanstack/react-router@1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)
+      '@tanstack/router-generator': 1.167.1
+      '@tanstack/router-plugin': 1.168.1(@tanstack/react-router@1.170.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13))(vite@8.0.13)
       '@tanstack/router-utils': 1.162.0
       '@tanstack/start-client-core': 1.169.1
       '@tanstack/start-server-core': 1.168.1(crossws@0.4.5(srvx@0.11.15))
@@ -11922,11 +11930,11 @@ snapshots:
     transitivePeerDependencies:
       - graphql
 
-  '@urql/solid@1.0.1(@urql/core@6.0.1)(solid-js@1.9.12)':
+  '@urql/solid@1.0.1(@urql/core@6.0.1)(solid-js@1.9.13)':
     dependencies:
-      '@solid-primitives/utils': 6.4.0(solid-js@1.9.12)
+      '@solid-primitives/utils': 6.4.0(solid-js@1.9.13)
       '@urql/core': 6.0.1(graphql@17.0.0-beta.1)
-      solid-js: 1.9.12
+      solid-js: 1.9.13
       wonka: 6.3.6
 
   '@urql/svelte@5.0.0(@urql/core@6.0.1(graphql@17.0.0-beta.1))(svelte@5.55.7(@typescript-eslint/types@8.59.3))':
@@ -12420,20 +12428,12 @@ snapshots:
     dependencies:
       '@babel/types': 7.29.0
 
-  babel-preset-solid@1.9.12(@babel/core@7.29.0)(solid-js@1.9.12):
-    dependencies:
-      '@babel/core': 7.29.0
-      babel-plugin-jsx-dom-expressions: 0.40.7(@babel/core@7.29.0)
-    optionalDependencies:
-      solid-js: 1.9.12
-
   babel-preset-solid@1.9.12(@babel/core@7.29.0)(solid-js@1.9.13):
     dependencies:
       '@babel/core': 7.29.0
       babel-plugin-jsx-dom-expressions: 0.40.7(@babel/core@7.29.0)
     optionalDependencies:
       solid-js: 1.9.13
-    optional: true
 
   balanced-match@1.0.2: {}
 
@@ -14357,7 +14357,7 @@ snapshots:
 
   lines-and-columns@2.0.3: {}
 
-  lint-staged@17.0.5:
+  lint-staged@17.0.4:
     dependencies:
       listr2: 10.2.1
       picomatch: 4.0.4
@@ -14456,9 +14456,9 @@ snapshots:
     dependencies:
       react: 19.2.6
 
-  lucide-solid@1.16.0(solid-js@1.9.12):
+  lucide-solid@1.16.0(solid-js@1.9.13):
     dependencies:
-      solid-js: 1.9.12
+      solid-js: 1.9.13
 
   magic-regexp@0.10.0:
     dependencies:
@@ -16446,31 +16446,16 @@ snapshots:
 
   smol-toml@1.6.1: {}
 
-  solid-element@1.9.1(solid-js@1.9.12):
+  solid-element@1.9.1(solid-js@1.9.13):
     dependencies:
       component-register: 0.8.8
-      solid-js: 1.9.12
-
-  solid-js@1.9.12:
-    dependencies:
-      csstype: 3.2.3
-      seroval: 1.5.4
-      seroval-plugins: 1.5.4(seroval@1.5.4)
+      solid-js: 1.9.13
 
   solid-js@1.9.13:
     dependencies:
       csstype: 3.2.3
       seroval: 1.5.4
       seroval-plugins: 1.5.4(seroval@1.5.4)
-
-  solid-refresh@0.6.3(solid-js@1.9.12):
-    dependencies:
-      '@babel/generator': 7.29.1
-      '@babel/helper-module-imports': 7.28.6
-      '@babel/types': 7.29.0
-      solid-js: 1.9.12
-    transitivePeerDependencies:
-      - supports-color
 
   solid-refresh@0.6.3(solid-js@1.9.13):
     dependencies:
@@ -16480,11 +16465,10 @@ snapshots:
       solid-js: 1.9.13
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
-  solid-use@0.9.1(solid-js@1.9.12):
+  solid-use@0.9.1(solid-js@1.9.13):
     dependencies:
-      solid-js: 1.9.12
+      solid-js: 1.9.13
 
   source-map-js@1.2.1: {}
 
@@ -16821,10 +16805,10 @@ snapshots:
       - bare-abort-controller
       - react-native-b4a
 
-  terracotta@1.1.0(solid-js@1.9.12):
+  terracotta@1.1.0(solid-js@1.9.13):
     dependencies:
-      solid-js: 1.9.12
-      solid-use: 0.9.1(solid-js@1.9.12)
+      solid-js: 1.9.13
+      solid-use: 0.9.1(solid-js@1.9.13)
 
   terser@5.47.1:
     dependencies:
@@ -17231,19 +17215,6 @@ snapshots:
     transitivePeerDependencies:
       - postcss
 
-  vite-plugin-solid@2.11.12(solid-js@1.9.12)(vite@8.0.13):
-    dependencies:
-      '@babel/core': 7.29.0
-      '@types/babel__core': 7.20.5
-      babel-preset-solid: 1.9.12(@babel/core@7.29.0)(solid-js@1.9.12)
-      merge-anything: 5.1.7
-      solid-js: 1.9.12
-      solid-refresh: 0.6.3(solid-js@1.9.12)
-      vite: 8.0.13(@types/node@25.8.0)(@vitejs/devtools@0.1.24)(esbuild@0.28.0)(jiti@2.7.0)(sass-embedded@1.99.0)(sass@1.99.0)(terser@5.47.1)(tsx@4.22.0)(yaml@2.9.0)
-      vitefu: 1.1.3(vite@8.0.13)
-    transitivePeerDependencies:
-      - supports-color
-
   vite-plugin-solid@2.11.12(solid-js@1.9.13)(vite@8.0.13):
     dependencies:
       '@babel/core': 7.29.0
@@ -17256,7 +17227,6 @@ snapshots:
       vitefu: 1.1.3(vite@8.0.13)
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   vite-plugin-vue-tracer@1.4.0(vite@8.0.13)(vue@3.5.34(typescript@6.0.3)):
     dependencies:
