@@ -1,9 +1,6 @@
 # Build stage
 FROM node:24-alpine AS builder
 
-# Enable corepack for pnpm
-RUN corepack enable && corepack prepare pnpm@10.20.0 --activate
-
 # Set CI environment variable for pnpm
 ENV CI=true
 
@@ -11,6 +8,9 @@ WORKDIR /app
 
 # Copy workspace configuration and lockfile (leveraging Docker cache layers)
 COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.eslint.json .npmrc ./
+
+# Enable corepack for pnpm
+RUN corepack enable && corepack install
 
 # Install dependencies with frozen lockfile
 RUN pnpm fetch
