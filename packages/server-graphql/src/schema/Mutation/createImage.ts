@@ -2,6 +2,7 @@ import type { ImageMeta } from "models";
 import { mergeImageMeta } from "models";
 import { getPixivMetadata, matchFilename } from "services/pixiv";
 import { processFile } from "#lib/index.js";
+import { pubSub } from "../../pubSub.js";
 import { builder } from "../builder.js";
 import { PothosImage } from "../Image.js";
 
@@ -56,7 +57,11 @@ builder.mutationField("createImage", t =>
           imageMeta = mergeImageMeta(imageMeta, imageMetaArgs);
 
           // insert image into db
-          return processFile(file, imageMeta);
+          const res = await processFile(file, imageMeta);
+
+          pubSub.publish("NEW_IMAGE", res);
+
+          return res;
         }),
       );
     },
