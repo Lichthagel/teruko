@@ -1,0 +1,14 @@
+{
+  "extends": ["tsconfig/base.json"],
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "types": ["vite/client"],
+    "noUncheckedIndexedAccess": false,
+    "declaration": false,
+    "declarationMap": false
+  }
+}

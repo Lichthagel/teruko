@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import type { TagExt } from "models";
+import type { Tag, TagCategory } from "models";
+import { BadgeCheck } from "@lucide/vue";
 import styles from "client-css/m/imagepage.module.scss";
-import { tagsStore } from "client-stores";
 
 const props = defineProps<{
-  tag: TagExt;
+  tag: Pick<Tag, "slug" | "approved"> & { category?: Pick<TagCategory, "color"> | null };
 }>();
 
 const router = useRouter();
 
+const { tags } = useFilters();
+
 const onClick = () => {
-  tagsStore.set([props.tag.slug]);
+  tags.value = [props.tag.slug];
   void router.push("/");
 };
 </script>
@@ -21,6 +23,7 @@ const onClick = () => {
     :style="{ 'background-color': props.tag.category?.color ?? undefined }"
     @click="onClick"
   >
-    {{ props.tag.slug }}
+    <span>{{ props.tag.slug }}</span>
+    <BadgeCheck v-if="props.tag.approved" :size="16" />
   </button>
 </template>

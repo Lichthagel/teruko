@@ -10,6 +10,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./snippets": {
+      "types": "./dist/snippets/index.d.ts",
+      "default": "./dist/snippets/index.js"
     }
   },
   "scripts": {
@@ -23,6 +27,7 @@
     "@urql/exchange-graphcache": "catalog:"
   },
   "devDependencies": {
+    "models": "workspace:*",
     "tsconfig": "workspace:^",
     "typescript": "catalog:"
   }

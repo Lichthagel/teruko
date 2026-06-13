@@ -1,0 +1,29 @@
+@use "../variables";
+
+.checkbox {
+  height: variables.$item-height;
+  display: inline-flex;
+  align-items: center;
+  gap: variables.$size-2;
+  padding-inline: variables.$size-2;
+  background-color: var(--mantle);
+  border-radius: variables.$radius;
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .checkmark {
+    display: inline-block;
+    width: variables.$size-4;
+    height: variables.$size-4;
+    border: 2px solid var(--text);
+    border-radius: variables.$radius;
+    transition: background-color .5s;
+  }
+
+  input:checked+.checkmark {
+    background-color: var(--pink);
+  }
+}

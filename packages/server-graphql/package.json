@@ -6,6 +6,9 @@
   "description": "",
   "author": "Lichthagel",
   "keywords": [],
+  "sideEffects": [
+    "./dist/schema/**/*.js"
+  ],
   "imports": {
     "#lib/*": "./dist/lib/*",
     "#schema/*": "./dist/schema/*"
@@ -38,11 +41,11 @@
     "server-db": "workspace:^",
     "server-env": "workspace:^",
     "services": "workspace:^",
-    "sharp": "catalog:",
-    "zod": "catalog:"
+    "sharp": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "@types/pg": "catalog:",
     "tsconfig": "workspace:^",
     "typescript": "catalog:"
   }

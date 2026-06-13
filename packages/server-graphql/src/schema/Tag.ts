@@ -51,5 +51,6 @@ builder.node(PothosTag, {
         return res[0];
       },
     }),
+    approved: t.exposeBoolean("approved"),
   }),
 });

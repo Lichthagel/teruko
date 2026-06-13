@@ -3,10 +3,9 @@
   import type { Action } from "svelte/action";
 
   import StatusBar from "$lib/components/status/StatusBar.svelte";
-  import imagesStore from "$lib/imagesStore.js";
-  import { getContextClient } from "@urql/svelte";
-  import styles from "client-css/m/gallery.module.scss";
+  import { useImages } from "$lib/images.svelte.js";
 
+  import styles from "client-css/m/gallery.module.scss";
   import ImageCard from "./ImageCard.svelte";
   import ErrorMessage from "./status/ErrorMessage.svelte";
 
@@ -17,14 +16,12 @@
 
   const { tags = [], sort = "NEWEST" }: Props = $props();
 
-  const client = getContextClient();
-
-  const result = imagesStore(client, tags, sort);
+  const result = useImages(() => tags, () => sort);
 
   const endAction: Action = (node) => {
     const observer = new IntersectionObserver((entries) => {
       if (entries[0] && entries[0].isIntersecting) {
-        $result.fetchMore();
+        result.fetchMore();
       }
     });
 
@@ -38,17 +35,17 @@
   };
 </script>
 
-{#if $result.images}
+{#if result.images}
   <div class={styles.gallery}>
-    {#each $result.images as image (image.id)}
+    {#each result.images as image (image.id)}
       <ImageCard {image} />
     {/each}
     <div use:endAction></div>
   </div>
 {/if}
 
-{#if $result.error}
-  <ErrorMessage error={$result.error} title={$result.error.name}></ErrorMessage>
+{#if result.error}
+  <ErrorMessage error={result.error} title={result.error.name}></ErrorMessage>
 {/if}
 
-<StatusBar error={!!$result.error} fetching={$result.fetching}></StatusBar>
+<StatusBar error={!!result.error} fetching={result.fetching}></StatusBar>

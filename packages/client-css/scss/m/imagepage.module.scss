@@ -100,7 +100,7 @@
 
 .tag-chip {
   margin: variables.$size-0;
-  display: inline-block;
+  display: inline-flex;
   user-select: none;
   border-radius: variables.$radius;
   background-color: var(--subtext0);
@@ -109,6 +109,8 @@
   color: var(--inverted-text);
   transition: filter 0.25s;
   border: none;
+  align-items: center;
+  gap: variables.$size-1;
 
   @media (hover: hover) {
     &:hover {

@@ -9,4 +9,7 @@ export default defineConfig({
   css: {
     postcss: "client-css/postcss",
   },
+  server: {
+    host: "0.0.0.0",
+  },
 });

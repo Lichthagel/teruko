@@ -1,37 +1,29 @@
 <script setup lang="ts">
-import type { TagExt } from "models";
-import { X } from "@lucide/vue";
-import { useStore } from "@nanostores/vue";
-import { gql, useQuery } from "@urql/vue";
+import { BadgeCheck, Pencil, X } from "@lucide/vue";
+import { useQuery } from "@urql/vue";
 import styles from "client-css/m/filters.module.scss";
-import { tagsStore } from "client-stores";
+import { Tag } from "client-graphql/snippets";
 
 const props = defineProps<{
   tag: string;
 }>();
 
-const tags = useStore(tagsStore);
+const { tags } = useFilters();
+
+const dialogOpen = ref(false);
 
 const {
   data,
   fetching,
   stale,
   error,
-} = useQuery<{ tag: TagExt }>({
-  query: gql`
-    query Tag($slug: String!) {
-      tag(slug: $slug) {
-        category {
-          color
-        }
-      }
-    }
-  `,
+} = useQuery({
+  query: Tag,
   variables: { slug: props.tag },
 });
 
 const removeTag = () => {
-  tagsStore.set(tags.value.filter(tag => tag !== props.tag));
+  tags.value = tags.value.filter(tag => tag !== props.tag);
 };
 </script>
 
@@ -43,6 +35,13 @@ const removeTag = () => {
     }"
   >
     <span>{{ props.tag }}</span>
+    <BadgeCheck v-if="data?.tag.approved" :size="16" />
+    <button
+      type="button"
+      @click="dialogOpen = true"
+    >
+      <Pencil />
+    </button>
     <button
       type="button"
       @click="removeTag"
@@ -50,6 +49,8 @@ const removeTag = () => {
       <X />
     </button>
   </div>
+
+  <TagDialog v-model:open=" dialogOpen " :slug="tag" />
 
   <StatusBar
     :error="!!error"

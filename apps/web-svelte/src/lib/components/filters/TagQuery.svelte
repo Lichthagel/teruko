@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { TagExt } from "models";
-
   import StatusBar from "$lib/components/status/StatusBar.svelte";
-  import { X } from "@lucide/svelte";
-  import { getContextClient, gql, queryStore } from "@urql/svelte";
+  import { filters } from "$lib/filters.svelte.js";
+  import { BadgeCheck, Pencil, X } from "@lucide/svelte";
+  import { getContextClient, queryStore } from "@urql/svelte";
   import styles from "client-css/m/filters.module.scss";
-  import { tagsStore } from "client-stores";
+  import { Tag } from "client-graphql/snippets";
+  import TagDialog from "../tag/TagDialog.svelte";
 
   type Props = {
     tag: string;
@@ -13,26 +13,18 @@
 
   const { tag }: Props = $props();
 
+  let dialogOpen = $state(false);
+
   const client = getContextClient();
 
-  const result = queryStore<{ tag: TagExt }>({
+  const result = $derived(queryStore({
     client,
-    query: gql`
-      query Tag($slug: String!) {
-        tag(slug: $slug) {
-          category {
-            color
-          }
-        }
-      }
-    `,
+    query: Tag,
     variables: { slug: tag },
-  });
+  }));
 
   const removeTag = () => {
-    const newTags = $tagsStore.filter(t => t !== tag);
-
-    tagsStore.set(newTags);
+    filters.tags = filters.tags.filter(t => t !== tag);
   };
 </script>
 
@@ -41,6 +33,17 @@
   style:background-color={$result.data?.tag.category?.color}
 >
   <span>{tag}</span>
+  {#if $result.data?.tag.approved}
+    <BadgeCheck size={16} />
+  {/if}
+  <button
+    onclick={(e) => {
+      e.preventDefault();
+      dialogOpen = true;
+    }}
+    type="button">
+    <Pencil />
+  </button>
   <button
     onclick={(e) => {
       e.preventDefault();
@@ -51,5 +54,7 @@
     <X />
   </button>
 </div>
+
+<TagDialog bind:open={dialogOpen} slug={tag} />
 
 <StatusBar error={!!$result.error} fetching={$result.fetching} />

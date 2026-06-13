@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import type { ComponentPublicInstance } from "#imports";
 import type { ImageSort } from "models";
-import { useImages } from "#imports";
-
+import type { ComponentPublicInstance } from "#imports";
 import styles from "client-css/m/gallery.module.scss";
+import { useImages } from "#imports";
 
 const props = defineProps<{
   tags: readonly string[];
@@ -29,7 +28,7 @@ const endRef = (node: ComponentPublicInstance | Element | null) => {
   }
 
   observer.value = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
+    if (entries[0]?.isIntersecting) {
       fetchMore();
     }
   });
@@ -48,10 +47,11 @@ const endRef = (node: ComponentPublicInstance | Element | null) => {
       v-for="image in images"
       :key="image.id"
     >
-      <div :ref="image.id === images.at(-1)?.id ? endRef : undefined">
+      <div>
         <ImageCard :image="image" />
       </div>
     </template>
+    <div :ref="endRef" />
   </div>
 
   <ErrorMessage

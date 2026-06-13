@@ -1,0 +1,33 @@
+{
+  "name": "web-solidstart",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "start": "vite start",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@solidjs/meta": "catalog:",
+    "@solidjs/router": "catalog:",
+    "@solidjs/start": "catalog:",
+    "@solidjs/vite-plugin-nitro-2": "catalog:",
+    "@urql/solid": "catalog:",
+    "client-css": "workspace:*",
+    "client-graphql": "workspace:*",
+    "drizzle-orm": "catalog:",
+    "lucide-solid": "catalog:",
+    "models": "workspace:*",
+    "server-db": "workspace:*",
+    "server-env": "workspace:*",
+    "server-graphql": "workspace:*",
+    "sharp": "catalog:",
+    "solid-js": "catalog:",
+    "tsconfig": "workspace:*",
+    "valibot": "catalog:",
+    "vite": "catalog:"
+  }
+}
