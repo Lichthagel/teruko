@@ -17,7 +17,7 @@ RUN pnpm fetch
 
 # Copy only the necessary source files for building
 COPY packages packages
-COPY apps/web-svelte apps/web-svelte
+COPY apps apps
 COPY nx.json graphql.config.yml ./
 
 # Install dependencies with frozen lockfile
