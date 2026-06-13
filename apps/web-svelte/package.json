@@ -36,10 +36,12 @@
   },
   "dependencies": {
     "drizzle-orm": "catalog:",
+    "graphql": "catalog:",
     "server-db": "workspace:^",
     "server-env": "workspace:^",
     "server-graphql": "workspace:^",
-    "sharp": "catalog:"
+    "sharp": "catalog:",
+    "tslib": "catalog:"
   },
   "devDependencies": {
     "@lucide/svelte": "catalog:",
@@ -50,13 +52,11 @@
     "@urql/svelte": "catalog:",
     "client-css": "workspace:*",
     "client-graphql": "workspace:*",
-    "graphql": "catalog:",
     "models": "workspace:*",
     "sass-embedded": "catalog:",
     "svelte": "catalog:",
     "svelte-check": "catalog:",
     "tsconfig": "workspace:*",
-    "tslib": "catalog:",
     "typescript": "catalog:",
     "valibot": "catalog:",
     "vite": "catalog:"

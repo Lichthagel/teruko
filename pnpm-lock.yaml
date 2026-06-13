@@ -15,6 +15,9 @@ catalogs:
     '@envelop/graphql-jit':
       specifier: ^11.1.1
       version: 11.1.1
+    '@eslint-react/eslint-plugin':
+      specifier: ^5.0.0
+      version: 5.8.19
     '@fontsource-variable/gabarito':
       specifier: ^5.2.8
       version: 5.2.8
@@ -432,6 +435,9 @@ importers:
       drizzle-orm:
         specifier: 'catalog:'
         version: 0.45.2(@libsql/client@0.17.3)(@types/pg@8.20.0)(pg@8.21.0)
+      graphql:
+        specifier: 'catalog:'
+        version: 17.0.0-rc.0
       server-db:
         specifier: workspace:^
         version: link:../../packages/server-db
@@ -444,6 +450,9 @@ importers:
       sharp:
         specifier: 'catalog:'
         version: 0.35.1
+      tslib:
+        specifier: 'catalog:'
+        version: 2.8.1
     devDependencies:
       '@lucide/svelte':
         specifier: 'catalog:'
@@ -469,9 +478,6 @@ importers:
       client-graphql:
         specifier: workspace:*
         version: link:../../packages/client-graphql
-      graphql:
-        specifier: 'catalog:'
-        version: 17.0.0-rc.0
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -487,9 +493,6 @@ importers:
       tsconfig:
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      tslib:
-        specifier: 'catalog:'
-        version: 2.8.1
       typescript:
         specifier: 'catalog:'
         version: 6.0.3
