@@ -102,15 +102,15 @@ catalogs:
     '@urql/core':
       specifier: ^6.0.1
       version: 6.0.2
+    '@urql/exchange-graphcache':
+      specifier: ^9.0.0
+      version: 9.0.1
     '@urql/solid':
       specifier: ^1.0.1
       version: 1.0.1
     '@urql/svelte':
       specifier: ^5.0.0
       version: 5.0.0
-    '@urql/vue':
-      specifier: ^2.1.0
-      version: 2.1.0
     '@vitejs/plugin-react':
       specifier: ^6.0.1
       version: 6.0.2
@@ -322,7 +322,7 @@ importers:
         version: 1.18.0(vue@3.5.38(typescript@6.0.3))
       '@urql/vue':
         specifier: 'catalog:'
-        version: 2.1.0(@urql/core@6.0.2(graphql@17.0.0-rc.0))(vue@3.5.38(typescript@6.0.3))
+        version: 2.1.1(@urql/core@6.0.2(graphql@17.0.0-rc.0))(vue@3.5.38(typescript@6.0.3))
       client-css:
         specifier: workspace:*
         version: link:../../packages/client-css
@@ -4049,8 +4049,8 @@ packages:
       '@urql/core': ^6.0.0
       svelte: ^3.0.0 || ^4.0.0 || ^5.0.0
 
-  '@urql/vue@2.1.0':
-    resolution: {integrity: sha512-fRsMOSJze7d9y2NUd31ekZMUWDoc+HYv/jFcO9iPpRFCFlqcuqto5r0v54jDB6C7MEo+xLsqRQGuxe0NM0J8YA==}
+  '@urql/vue@2.1.1':
+    resolution: {integrity: sha512-gmQBQtHO7Rtw1W+CiLb6YcnQEczog3ZxLsFhMvTex1aM1mczT6dDJuiYpJDg2KkuJ8zqXSbMnbwwbm4ukr9vTA==}
     peerDependencies:
       '@urql/core': ^6.0.0
       vue: ^3.2.0
@@ -11843,7 +11843,7 @@ snapshots:
       svelte: 5.56.3(@typescript-eslint/types@8.61.0)
       wonka: 6.3.6
 
-  '@urql/vue@2.1.0(@urql/core@6.0.2(graphql@17.0.0-rc.0))(vue@3.5.38(typescript@6.0.3))':
+  '@urql/vue@2.1.1(@urql/core@6.0.2(graphql@17.0.0-rc.0))(vue@3.5.38(typescript@6.0.3))':
     dependencies:
       '@urql/core': 6.0.2(graphql@17.0.0-rc.0)
       vue: 3.5.38(typescript@6.0.3)
