@@ -99,9 +99,9 @@ catalogs:
     '@types/react-dom':
       specifier: ^19.2.3
       version: 19.2.3
-    '@urql/exchange-graphcache':
-      specifier: ^9.0.0
-      version: 9.0.0
+    '@urql/core':
+      specifier: ^6.0.1
+      version: 6.0.2
     '@urql/solid':
       specifier: ^1.0.1
       version: 1.0.1
@@ -632,7 +632,7 @@ importers:
         version: 6.0.2(graphql@17.0.0-rc.0)
       '@urql/exchange-graphcache':
         specifier: 'catalog:'
-        version: 9.0.0(@urql/core@6.0.2)
+        version: 9.0.1(@urql/core@6.0.2)
     devDependencies:
       models:
         specifier: workspace:*
@@ -2059,8 +2059,8 @@ packages:
   '@libsql/client@0.17.3':
     resolution: {integrity: sha512-HXk9wiAoJbKFbyBH4O+aEhN6ir5ERXuXvwE5OD2eR4/5RUa3Pw/8L9zrnVdU+iNJitRvisPWaIwmhkO3bH7giA==}
 
-  '@libsql/core@0.17.3':
-    resolution: {integrity: sha512-2UjK1i7JBkMduJo4WdvvBxMMvVJ31pArBZNONyz/GCJJAH+1UHat2X6vn10S/WpY5fKzIT98WqYFl2vzWRLOfg==}
+  '@libsql/core@0.17.4':
+    resolution: {integrity: sha512-LqF9gIvnJ38nmAH1y/ChizHqDO/MO1wLgA96XrraulEEbqXxLjleSH92YWTolbuJKgPUmGu4aJk9W3UnAcxLOQ==}
 
   '@libsql/darwin-arm64@0.5.29':
     resolution: {integrity: sha512-K+2RIB1OGFPYQbfay48GakLhqf3ArcbHqPFu7EZiaUcRgFcdw8RoltsMyvbj5ix2fY0HV3Q3Ioa/ByvQdaSM0A==}
@@ -4032,8 +4032,8 @@ packages:
   '@urql/core@6.0.2':
     resolution: {integrity: sha512-9Z4/o97iJujIHKIXcT6jTz147nEb2myZGUKRZ7caHomnKNmm6vd3kpIrkaCuoWJDWrF21eVbNhHWhrBP7gItYw==}
 
-  '@urql/exchange-graphcache@9.0.0':
-    resolution: {integrity: sha512-5ACktvMFdnD5JC6DaSUrlj345c1JIUi7PwgvmnkwVOWsCRt/Vo9946UaG+sg69ku8seESMBK4xkeI41M39Dd5A==}
+  '@urql/exchange-graphcache@9.0.1':
+    resolution: {integrity: sha512-22V46OIIkJTz8Ex23e95+ZmvgRWqbzH77wpNjdfMknmmhR8bjBFNd24oDoQUI4AbYUhoTKmvAZ5XOBQSsbBzaQ==}
     peerDependencies:
       '@urql/core': ^6.0.0
 
@@ -9910,7 +9910,7 @@ snapshots:
 
   '@libsql/client@0.17.3':
     dependencies:
-      '@libsql/core': 0.17.3
+      '@libsql/core': 0.17.4
       '@libsql/hrana-client': 0.10.0
       js-base64: 3.7.8
       libsql: 0.5.29
@@ -9919,7 +9919,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@libsql/core@0.17.3':
+  '@libsql/core@0.17.4':
     dependencies:
       js-base64: 3.7.8
 
@@ -11822,7 +11822,7 @@ snapshots:
     transitivePeerDependencies:
       - graphql
 
-  '@urql/exchange-graphcache@9.0.0(@urql/core@6.0.2)':
+  '@urql/exchange-graphcache@9.0.1(@urql/core@6.0.2)':
     dependencies:
       '@0no-co/graphql.web': 1.3.2(graphql@17.0.0-rc.0)
       '@urql/core': 6.0.2(graphql@17.0.0-rc.0)
