@@ -1,4 +1,5 @@
 import type { ImageExt, ImageMeta } from "models";
+import type { Metadata } from "sharp";
 import fs from "node:fs";
 import path from "node:path";
 import { finished } from "node:stream/promises";
@@ -19,8 +20,8 @@ const mimeTypeRegex = /^image\/(?:jpeg|gif|png|webp|avif)$/;
 const inUpload: string[] = [];
 
 const hasDimensions = (
-  metadata: sharp.Metadata,
-): metadata is sharp.Metadata & { width: number; height: number } =>
+  metadata: Metadata,
+): metadata is Metadata & { width: number; height: number } =>
   metadata.width !== undefined && metadata.height !== undefined;
 
 const toFilename = (basename: string) => `${basename}.avif`;
@@ -64,7 +65,7 @@ const saveBlob = async (blob: Blob, filename: string) => {
   };
 };
 
-const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: sharp.Metadata & { width: number; height: number }, filename: string) => {
+const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: Metadata & { width: number; height: number }, filename: string) => {
   const image = await db.transaction(async (tx) => {
     const imageResults = await tx
       .insert(dImage)
