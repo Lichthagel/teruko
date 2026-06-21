@@ -17,7 +17,7 @@ import sharp from "sharp";
 
 const mimeTypeRegex = /^image\/(?:jpeg|gif|png|webp|avif)$/;
 
-const inUpload: string[] = [];
+const inUpload: Set<string> = new Set();
 
 const hasDimensions = (
   metadata: Metadata,
@@ -114,11 +114,11 @@ const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: Metadata & { width: 
 export const processBlob = async (blob: Blob, basename: string, meta: ImageMeta) => {
   const filename = toFilename(basename);
 
-  if (inUpload.includes(filename)) {
+  if (inUpload.has(filename)) {
     throw new GraphQLError("image is already being uploaded");
   }
 
-  inUpload.push(filename);
+  inUpload.add(filename);
 
   try {
     const { metadata } = await saveBlob(blob, filename);
@@ -131,7 +131,7 @@ export const processBlob = async (blob: Blob, basename: string, meta: ImageMeta)
       throw error;
     }
   } finally {
-    inUpload.splice(inUpload.indexOf(filename), 1);
+    inUpload.delete(filename);
   }
 };
 
