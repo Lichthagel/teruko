@@ -114,9 +114,6 @@ catalogs:
     '@vitejs/plugin-react':
       specifier: ^6.0.1
       version: 6.0.3
-    autoprefixer:
-      specifier: ^10.4.27
-      version: 10.5.1
     babel-plugin-react-compiler:
       specifier: ^1.0.0
       version: 1.0.0
@@ -608,7 +605,7 @@ importers:
     devDependencies:
       autoprefixer:
         specifier: 'catalog:'
-        version: 10.5.1(postcss@8.5.15)
+        version: 10.5.2(postcss@8.5.15)
       postcss:
         specifier: 'catalog:'
         version: 8.5.15
@@ -4532,8 +4529,8 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  autoprefixer@10.5.1:
-    resolution: {integrity: sha512-jwM2pcTuCWUoN70FEvf5XrXyDbUgRURK4FnU8v0jWZZYU/KkVvN9T33mu1sVLFY9JW3kTWzKheEpn6xYLRc/VA==}
+  autoprefixer@10.5.2:
+    resolution: {integrity: sha512-rD5t5DwOjJdmSORcTq64j8MawTC+tbQ+HHqjR4NDumamy/ambn1UJrlKL+KdwujWxMkFjPM3pPHOEA9tl4767Q==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
@@ -6928,8 +6925,8 @@ packages:
   node-mock-http@1.0.4:
     resolution: {integrity: sha512-8DY+kFsDkNXy1sJglUfuODx1/opAGJGyrTuFqEoN90oRc2Vk0ZbD4K2qmKXBBEhZQzdKHIVfEJpDU8Ak2NJEvQ==}
 
-  node-releases@2.0.49:
-    resolution: {integrity: sha512-f06bl1D+8ZDkn2oOQQKAh5/otFWqVnM1Q5oerA8Pex7UfT66Tx4IPHIqVVFKqFT3FUtaDstdgkM7yT7JWhqxfw==}
+  node-releases@2.0.50:
+    resolution: {integrity: sha512-J6l92tKHX6w8Jy5nO1Vuc01NoIiRGi/d6qBKVxh+IQ8Cr3b6HbVNfKiF8ZpFKufTwpwxMmce2W3iQZ861ZRyTg==}
     engines: {node: '>=18'}
 
   nopt@8.1.0:
@@ -10600,7 +10597,7 @@ snapshots:
       '@rollup/plugin-replace': 6.0.3(rollup@4.62.0)
       '@vitejs/plugin-vue': 6.0.7(vite@7.3.5(@types/node@25.9.4)(jiti@2.7.0)(lightningcss@1.32.0)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))(vue@3.5.38(typescript@6.0.3))
       '@vitejs/plugin-vue-jsx': 5.1.5(vite@7.3.5(@types/node@25.9.4)(jiti@2.7.0)(lightningcss@1.32.0)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))(vue@3.5.38(typescript@6.0.3))
-      autoprefixer: 10.5.1(postcss@8.5.15)
+      autoprefixer: 10.5.2(postcss@8.5.15)
       consola: 3.4.2
       cssnano: 8.0.2(postcss@8.5.15)
       defu: 6.1.7
@@ -12929,7 +12926,7 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  autoprefixer@10.5.1(postcss@8.5.15):
+  autoprefixer@10.5.2(postcss@8.5.15):
     dependencies:
       browserslist: 4.28.4
       caniuse-lite: 1.0.30001799
@@ -13060,7 +13057,7 @@ snapshots:
       baseline-browser-mapping: 2.10.38
       caniuse-lite: 1.0.30001799
       electron-to-chromium: 1.5.378
-      node-releases: 2.0.49
+      node-releases: 2.0.50
       update-browserslist-db: 1.2.3(browserslist@4.28.4)
 
   buffer-crc32@1.0.0: {}
@@ -15763,7 +15760,7 @@ snapshots:
 
   node-mock-http@1.0.4: {}
 
-  node-releases@2.0.49: {}
+  node-releases@2.0.50: {}
 
   nopt@8.1.0:
     dependencies:
