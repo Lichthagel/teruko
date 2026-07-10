@@ -39,12 +39,6 @@ catalogs:
     '@nuxt/devtools':
       specifier: 4.0.0-alpha.7
       version: 4.0.0-alpha.7
-    '@pothos/core':
-      specifier: ^4.12.0
-      version: 4.13.0
-    '@pothos/plugin-relay':
-      specifier: ^4.7.0
-      version: 4.7.0
     '@solidjs/meta':
       specifier: ^0.29.4
       version: 0.29.4
@@ -714,10 +708,10 @@ importers:
         version: 3.21.2(graphql-yoga@5.21.2(graphql@17.0.2))
       '@pothos/core':
         specifier: 'catalog:'
-        version: 4.13.0(graphql@17.0.2)
+        version: 4.13.1(graphql@17.0.2)
       '@pothos/plugin-relay':
         specifier: 'catalog:'
-        version: 4.7.0(@pothos/core@4.13.0(graphql@17.0.2))(graphql@17.0.2)
+        version: 4.7.1(@pothos/core@4.13.1(graphql@17.0.2))(graphql@17.0.2)
       drizzle-orm:
         specifier: 'catalog:'
         version: 0.45.2(@libsql/client@0.17.4)(@types/pg@8.20.0)(pg@8.22.0)
@@ -3077,16 +3071,16 @@ packages:
   '@poppinss/exception@1.2.3':
     resolution: {integrity: sha512-dCED+QRChTVatE9ibtoaxc+WkdzOSjYTKi/+uacHWIsfodVfpsueo3+DKpgU5Px8qXjgmXkSvhXvSCz3fnP9lw==}
 
-  '@pothos/core@4.13.0':
-    resolution: {integrity: sha512-bIaVdLTkwPkkmIn0Ji13vsc9Zy0mEi++a9iMFIRVa88l0G7JuFJrJX5qGPo1GGu4drvRW4SAr2aDm2V5KcYj4A==}
+  '@pothos/core@4.13.1':
+    resolution: {integrity: sha512-2hkLxmvrT7VnbiWAfYhfF09PjaHeflZ5HrBHYzU6Tn/P9tDviuZS7IS5xO4k/KnK5GkRo3YxDzXyn+HnkEkVNw==}
     peerDependencies:
       graphql: ^16.10.0 || ^17.0.0
 
-  '@pothos/plugin-relay@4.7.0':
-    resolution: {integrity: sha512-IQ7f7WLu7uXxiZBcJgUTdspjIVzX3bgvd8XjnzxGJUbn/uE5HlVyCFmvhJffHIIS2OKSHhOOJRMwIwVwauwnSg==}
+  '@pothos/plugin-relay@4.7.1':
+    resolution: {integrity: sha512-aj0xgdcvktx0k6iOvtkfJvb6FYdoWnlQkDMumr1WQm7uTXsJOASYQndytfnS0/0wsctCF/UTTK6Y53+F0UIeMw==}
     peerDependencies:
       '@pothos/core': '*'
-      graphql: ^16.10.0
+      graphql: ^16.10.0 || ^17.0.0
 
   '@publint/pack@0.1.5':
     resolution: {integrity: sha512-edgyN2pP07uXiP4tJs0s8KVmU8M8i60YPbbI0/WDeok1mIJHRXz+CgD8I0nelwDkoCh3EWL/G5kGfbuHjsdbvw==}
@@ -10964,13 +10958,13 @@ snapshots:
 
   '@poppinss/exception@1.2.3': {}
 
-  '@pothos/core@4.13.0(graphql@17.0.2)':
+  '@pothos/core@4.13.1(graphql@17.0.2)':
     dependencies:
       graphql: 17.0.2
 
-  '@pothos/plugin-relay@4.7.0(@pothos/core@4.13.0(graphql@17.0.2))(graphql@17.0.2)':
+  '@pothos/plugin-relay@4.7.1(@pothos/core@4.13.1(graphql@17.0.2))(graphql@17.0.2)':
     dependencies:
-      '@pothos/core': 4.13.0(graphql@17.0.2)
+      '@pothos/core': 4.13.1(graphql@17.0.2)
       graphql: 17.0.2
 
   '@publint/pack@0.1.5':
