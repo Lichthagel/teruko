@@ -48,9 +48,6 @@ catalogs:
     '@solidjs/router':
       specifier: ^0.16.1
       version: 0.16.1
-    '@solidjs/start':
-      specifier: ^2.0.0-alpha.3
-      version: 2.0.0-alpha.3
     '@solidjs/vite-plugin-nitro-2':
       specifier: ^0.3.0
       version: 0.3.0
@@ -380,7 +377,7 @@ importers:
         version: 0.16.1(solid-js@1.9.14)
       '@solidjs/start':
         specifier: 'catalog:'
-        version: 2.0.0-alpha.3(crossws@0.4.10(srvx@0.11.22))(vite@8.1.5)
+        version: 2.0.0-beta.3(crossws@0.4.10(srvx@0.11.22))(vite@8.1.5)
       '@solidjs/vite-plugin-nitro-2':
         specifier: 'catalog:'
         version: 0.3.0(@libsql/client@0.17.4)(drizzle-orm@0.45.2(@libsql/client@0.17.4)(@types/pg@8.20.0)(pg@8.22.0))(oxc-parser@0.133.0)(rolldown@1.1.5)(srvx@0.11.22)(vite@8.1.5)
@@ -3482,11 +3479,11 @@ packages:
     peerDependencies:
       solid-js: ^1.8.6
 
-  '@solidjs/start@2.0.0-alpha.3':
-    resolution: {integrity: sha512-xMGtkiN4FrXOaWEcnTfuwHhf9t+hS+L5MnRt8JzVlmTIAFiOvAZQReAtgUaVxirXuBf7V+jP1DMzshlQOKzjQw==}
-    engines: {node: '>=22'}
+  '@solidjs/start@2.0.0-beta.3':
+    resolution: {integrity: sha512-ZD0x0O4c0atf+UXNpr7Sg2OLM11CqWgk+i5LgmfH6xvhEIpDTny7EtHKIZ4pLrEcD7XD2L2xxTcu10uZYuYRFw==}
+    engines: {node: '>=24'}
     peerDependencies:
-      vite: ^7
+      vite: ^8
 
   '@solidjs/vite-plugin-nitro-2@0.3.0':
     resolution: {integrity: sha512-MfWL85+ewOM3gmma+Fb9Sor/3u8AAtO62Q8uuc0uGXh15gGOaNIsRgVWfUrHaTvnGSwHdyV4x+Efklfh2mmXbA==}
@@ -9389,7 +9386,7 @@ snapshots:
 
   '@esbuild-kit/core-utils@3.3.2':
     dependencies:
-      esbuild: 0.25.12
+      esbuild: 0.28.1
       source-map-support: 0.5.21
 
   '@esbuild-kit/esm-loader@2.6.5':
@@ -11282,7 +11279,7 @@ snapshots:
     dependencies:
       solid-js: 1.9.14
 
-  '@solidjs/start@2.0.0-alpha.3(crossws@0.4.10(srvx@0.11.22))(vite@8.1.5)':
+  '@solidjs/start@2.0.0-beta.3(crossws@0.4.10(srvx@0.11.22))(vite@8.1.5)':
     dependencies:
       '@babel/core': 7.29.7
       '@babel/traverse': 7.29.7
