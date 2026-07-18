@@ -48,9 +48,6 @@ catalogs:
     '@solidjs/router':
       specifier: ^0.16.1
       version: 0.16.2
-    '@solidjs/start':
-      specifier: ^2.0.0-alpha.3
-      version: 2.0.0-beta.7
     '@sveltejs/adapter-node':
       specifier: ^5.5.4
       version: 5.5.7
@@ -380,7 +377,7 @@ importers:
         version: 0.16.2(solid-js@1.9.14)
       '@solidjs/start':
         specifier: 'catalog:'
-        version: 2.0.0-beta.7(crossws@0.4.10(srvx@0.11.22))(vite@8.1.5)
+        version: 2.0.0-beta.8(crossws@0.4.10(srvx@0.11.22))(vite@8.1.5)
       '@urql/solid':
         specifier: 'catalog:'
         version: 1.0.1(@urql/core@6.0.3)(solid-js@1.9.14)
@@ -3450,11 +3447,11 @@ packages:
     peerDependencies:
       solid-js: ^1.8.6
 
-  '@solidjs/start@2.0.0-beta.7':
-    resolution: {integrity: sha512-9cwiTuDmCIRRoJIqU0OQyyjLvXGqcXQUV9YhXtkudAjy//DF/K44LeaF4Wgp1PgLuepWy5c9RIOmp9+D3LHrDw==}
+  '@solidjs/start@2.0.0-beta.8':
+    resolution: {integrity: sha512-hpDokPEPr5z670VFmFrm8EYrrY1cS+1x2C/SARG38HHqPG4XKOhin30RxbF/NZuPdLD87hNGBTWCEdk2fgBMAA==}
     engines: {node: '>=24'}
     peerDependencies:
-      vite: ^8
+      vite: ^8 || ^9
 
   '@speed-highlight/core@1.2.17':
     resolution: {integrity: sha512-Z92FwKpCtfaW1V0jTU/fh3QzYEZN8wDwrzRIBoADCJfn4mJCNcJN/XegifX7BDrQ8/h9Xh/JnbyMchL0FqXrkg==}
@@ -11223,7 +11220,7 @@ snapshots:
     dependencies:
       solid-js: 1.9.14
 
-  '@solidjs/start@2.0.0-beta.7(crossws@0.4.10(srvx@0.11.22))(vite@8.1.5)':
+  '@solidjs/start@2.0.0-beta.8(crossws@0.4.10(srvx@0.11.22))(vite@8.1.5)':
     dependencies:
       '@babel/core': 7.29.7
       '@babel/traverse': 7.29.7
