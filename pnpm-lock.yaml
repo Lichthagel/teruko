@@ -18,12 +18,6 @@ catalogs:
     '@eslint-react/eslint-plugin':
       specifier: ^5.0.0
       version: 5.17.1
-    '@fontsource-variable/gabarito':
-      specifier: ^5.2.8
-      version: 5.2.8
-    '@fontsource-variable/noto-sans-jp':
-      specifier: ^5.2.10
-      version: 5.2.10
     '@graphql-yoga/plugin-apq':
       specifier: ^3.21.0
       version: 3.21.2
@@ -51,6 +45,9 @@ catalogs:
     '@solidjs/router':
       specifier: ^0.16.1
       version: 0.16.2
+    '@solidjs/start':
+      specifier: ^2.0.0-alpha.3
+      version: 2.0.0-beta.9
     '@sveltejs/adapter-node':
       specifier: ^5.5.4
       version: 5.5.7
@@ -589,10 +586,10 @@ importers:
         version: 1.8.0
       '@fontsource-variable/gabarito':
         specifier: 'catalog:'
-        version: 5.2.8
+        version: 5.3.0
       '@fontsource-variable/noto-sans-jp':
         specifier: 'catalog:'
-        version: 5.2.10
+        version: 5.3.0
       modern-normalize:
         specifier: 'catalog:'
         version: 3.0.1
@@ -1598,11 +1595,11 @@ packages:
   '@floating-ui/utils@0.2.12':
     resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
 
-  '@fontsource-variable/gabarito@5.2.8':
-    resolution: {integrity: sha512-wIAwvNwzfoYMm4iisswaUYgCxDWFe6JdKDL1gjgUjYe7LU1u/zjGekEigJgkabvMgZbWyJjkRNCb2gJlcMxvpg==}
+  '@fontsource-variable/gabarito@5.3.0':
+    resolution: {integrity: sha512-p7ROuY70ufLI5/hVvdgo4iJo17Dz2OfQXgdkaeS0U/B2wMqNIPt+/2WWWaAzrUYvcrNquL7farT2MY/vVo2ENw==}
 
-  '@fontsource-variable/noto-sans-jp@5.2.10':
-    resolution: {integrity: sha512-m0XfZ38rZtCaGAuAQL0cBPQ6fc/RguYEOqw66zvuLOV9vNRUBf9MFqyoazTu2JVCRIcnkrxbwF29UUaHHgTKdg==}
+  '@fontsource-variable/noto-sans-jp@5.3.0':
+    resolution: {integrity: sha512-XVL9GfGBRjj523v9w3Bctu4mNq7E5rUa+AMZm8DK1EM3LAGlKC3DZMvuqkLn4DB4TwwoAjcsJUCiRpUTDzzOkw==}
 
   '@graphql-tools/executor@1.5.5':
     resolution: {integrity: sha512-JAdn4G+ehthnGdJABS+wO6LxAIcoGPiSRHIz1ECYLtaQGkpFIdqH6BLUbZcToX/W/nmOG0kTFLoepCGkugbsBA==}
@@ -9644,9 +9641,9 @@ snapshots:
 
   '@floating-ui/utils@0.2.12': {}
 
-  '@fontsource-variable/gabarito@5.2.8': {}
+  '@fontsource-variable/gabarito@5.3.0': {}
 
-  '@fontsource-variable/noto-sans-jp@5.2.10': {}
+  '@fontsource-variable/noto-sans-jp@5.3.0': {}
 
   '@graphql-tools/executor@1.5.5(graphql@17.0.2)':
     dependencies:
