@@ -51,9 +51,6 @@ catalogs:
     '@solidjs/router':
       specifier: ^0.16.1
       version: 0.16.2
-    '@solidjs/start':
-      specifier: ^2.0.0-alpha.3
-      version: 2.0.0-beta.10
     '@sveltejs/adapter-node':
       specifier: ^5.5.4
       version: 5.5.7
@@ -180,6 +177,9 @@ catalogs:
     pg:
       specifier: ^8.20.0
       version: 8.22.0
+    postcss:
+      specifier: ^8.5.9
+      version: 8.5.21
     postcss-load-config:
       specifier: ^6.0.1
       version: 6.0.1
@@ -207,6 +207,9 @@ catalogs:
     stylelint-config-standard-scss:
       specifier: ^17.0.0
       version: 17.0.0
+    svelte:
+      specifier: ^5.55.7
+      version: 5.56.7
     svelte-check:
       specifier: ^4.4.6
       version: 4.7.3
@@ -377,7 +380,7 @@ importers:
         version: 0.16.2(solid-js@1.9.14)
       '@solidjs/start':
         specifier: 'catalog:'
-        version: 2.0.0-beta.10(crossws@0.4.10(srvx@0.11.22))(supports-color@10.2.2)(vite@8.1.5)
+        version: 2.0.0-rc.1(crossws@0.4.10(srvx@0.11.22))(supports-color@10.2.2)(vite@8.1.5)
       '@urql/solid':
         specifier: 'catalog:'
         version: 1.0.1(@urql/core@6.0.3)(solid-js@1.9.14)
@@ -3163,8 +3166,8 @@ packages:
     peerDependencies:
       solid-js: ^1.8.6
 
-  '@solidjs/start@2.0.0-beta.10':
-    resolution: {integrity: sha512-6Bz5PLDwDEw47laTvzB+bIuMDZqNkHEuqQT7EuOY/1R2bLl5tediiKbxo8A9cl0XME0fDT5EMkWGTMGs9TDtbA==}
+  '@solidjs/start@2.0.0-rc.1':
+    resolution: {integrity: sha512-T+rVcD4Si6wyUsgwpxka8pGph8OLrIrxWK7wb4b/JyLDaCrx+q6dxTJ3TxCljCgw58NWY+grmGllEgAcTm783g==}
     engines: {node: '>=24'}
     peerDependencies:
       vite: ^8 || ^9
@@ -10880,7 +10883,7 @@ snapshots:
     dependencies:
       solid-js: 1.9.14
 
-  '@solidjs/start@2.0.0-beta.10(crossws@0.4.10(srvx@0.11.22))(supports-color@10.2.2)(vite@8.1.5)':
+  '@solidjs/start@2.0.0-rc.1(crossws@0.4.10(srvx@0.11.22))(supports-color@10.2.2)(vite@8.1.5)':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/traverse': 7.29.7(supports-color@10.2.2)
@@ -12002,7 +12005,7 @@ snapshots:
       '@vue/shared': 3.5.40
       estree-walker: 2.0.2
       magic-string: 0.30.21
-      postcss: 8.5.20
+      postcss: 8.5.21
       source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.5.40':
@@ -15699,9 +15702,9 @@ snapshots:
     dependencies:
       postcss: 8.5.20
 
-  postcss-scss@4.0.9(postcss@8.5.20):
+  postcss-safe-parser@7.0.1(postcss@8.5.21):
     dependencies:
-      postcss: 8.5.20
+      postcss: 8.5.21
 
   postcss-scss@4.0.9(postcss@8.5.21):
     dependencies:
@@ -16503,8 +16506,8 @@ snapshots:
       micromatch: 4.0.8
       normalize-path: 3.0.0
       picocolors: 1.1.1
-      postcss: 8.5.20
-      postcss-safe-parser: 7.0.1(postcss@8.5.20)
+      postcss: 8.5.21
+      postcss-safe-parser: 7.0.1(postcss@8.5.21)
       postcss-selector-parser: 7.1.4
       postcss-value-parser: 4.2.0
       string-width: 8.2.2
@@ -16551,8 +16554,8 @@ snapshots:
       eslint-scope: 8.4.0
       eslint-visitor-keys: 4.2.1
       espree: 10.4.0
-      postcss: 8.5.20
-      postcss-scss: 4.0.9(postcss@8.5.20)
+      postcss: 8.5.21
+      postcss-scss: 4.0.9(postcss@8.5.21)
       postcss-selector-parser: 7.1.4
       semver: 7.8.5
     optionalDependencies:
