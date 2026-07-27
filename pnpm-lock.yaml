@@ -51,9 +51,6 @@ catalogs:
     '@solidjs/router':
       specifier: ^0.16.1
       version: 0.16.2
-    '@solidjs/start':
-      specifier: ^2.0.0-alpha.3
-      version: 2.0.0-rc.2
     '@sveltejs/adapter-node':
       specifier: ^5.5.4
       version: 5.5.7
@@ -210,6 +207,9 @@ catalogs:
     stylelint-config-standard-scss:
       specifier: ^17.0.0
       version: 17.0.0
+    svelte:
+      specifier: ^5.55.7
+      version: 5.56.8
     svelte-check:
       specifier: ^4.4.6
       version: 4.7.3
@@ -380,7 +380,7 @@ importers:
         version: 0.16.2(solid-js@1.9.14)
       '@solidjs/start':
         specifier: 'catalog:'
-        version: 2.0.0-rc.2(crossws@0.4.10(srvx@0.12.4))(supports-color@10.2.2)(vite@8.1.5)
+        version: 2.0.0-rc.3(crossws@0.4.10(srvx@0.12.4))(supports-color@10.2.2)(vite@8.1.5)
       '@urql/solid':
         specifier: 'catalog:'
         version: 1.0.1(@urql/core@6.0.3)(solid-js@1.9.14)
@@ -3259,8 +3259,8 @@ packages:
     peerDependencies:
       solid-js: ^1.8.6
 
-  '@solidjs/start@2.0.0-rc.2':
-    resolution: {integrity: sha512-LqLJr7FOjcN64U7fzpIYpJaQ16qJYKV74yKpStDybgmvpKle5Dt8H2vr80PYoWKFCzTCDCAxh2HX3+VZNGd3Xg==}
+  '@solidjs/start@2.0.0-rc.3':
+    resolution: {integrity: sha512-kNOtSe0Q8Zj2zNoJ76UTqXN8zdBZ3d46spyh3wP0eehg5O98TZGbcek2UbD2KX4CBysthT06l4bmcxq1fpknqg==}
     engines: {node: '>=24'}
     peerDependencies:
       vite: ^8 || ^9
@@ -5747,6 +5747,16 @@ packages:
       crossws:
         optional: true
 
+  h3@2.0.1-rc.26:
+    resolution: {integrity: sha512-GDxlvDsKxgjRvG5UBRJYyGJTMWLV30CJ4cV+e7QCTgftDHihrvio1fVPbNembhEr6J4WNm8IWy3fookgyTweLw==}
+    engines: {node: '>=20.11.1'}
+    hasBin: true
+    peerDependencies:
+      crossws: ^0.4.9
+    peerDependenciesMeta:
+      crossws:
+        optional: true
+
   has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
     engines: {node: '>=8'}
@@ -7603,8 +7613,18 @@ packages:
     peerDependencies:
       seroval: ^1.0
 
+  seroval-plugins@1.5.6:
+    resolution: {integrity: sha512-HXuLAX2pu/UByPpaeo/TaMfvMIi+1QqIoPJYCcAtU8QkVNwgR6MPlGuCQTErV1JwraaMbYaWVIBX7mppzGLATQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      seroval: ^1.0
+
   seroval@1.5.5:
     resolution: {integrity: sha512-bSjOuPcwPKLSJNhr9+bZxA20nQxVle5J5MNsYRVE6cIg7KpRLXGupymePavu0jrxlPiPsr4xGZSB8yUY2sH2sw==}
+    engines: {node: '>=10'}
+
+  seroval@1.5.6:
+    resolution: {integrity: sha512-rVQVWjjSvlINzaQPZH5JFqsqEsIWdTxY3iJZCnTL/5gQbXIRooVZKI60tVCkOVfzcRPejboxO2t0P89dg5mQaA==}
     engines: {node: '>=10'}
 
   serve-placeholder@2.0.2:
@@ -11197,7 +11217,7 @@ snapshots:
     dependencies:
       solid-js: 1.9.14
 
-  '@solidjs/start@2.0.0-rc.2(crossws@0.4.10(srvx@0.12.4))(supports-color@10.2.2)(vite@8.1.5)':
+  '@solidjs/start@2.0.0-rc.3(crossws@0.4.10(srvx@0.12.4))(supports-color@10.2.2)(vite@8.1.5)':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/traverse': 7.29.7(supports-color@10.2.2)
@@ -11209,15 +11229,15 @@ snapshots:
       defu: 6.1.7
       error-stack-parser: 2.1.4
       fast-glob: 3.3.3
-      h3: 2.0.1-rc.25(crossws@0.4.10(srvx@0.12.4))
+      h3: 2.0.1-rc.26(crossws@0.4.10(srvx@0.12.4))
       html-to-image: 1.11.13
       micromatch: 4.0.8
       oxc-parser: 0.139.0
       path-to-regexp: 8.4.2
       pathe: 2.0.3
       radix3: 1.1.2
-      seroval: 1.5.5
-      seroval-plugins: 1.5.5(seroval@1.5.5)
+      seroval: 1.5.6
+      seroval-plugins: 1.5.6(seroval@1.5.6)
       shiki: 1.29.2
       solid-js: 1.9.14
       source-map-js: 1.2.1
@@ -14340,10 +14360,10 @@ snapshots:
     optionalDependencies:
       crossws: 0.4.10(srvx@0.11.22)
 
-  h3@2.0.1-rc.25(crossws@0.4.10(srvx@0.12.4)):
+  h3@2.0.1-rc.26(crossws@0.4.10(srvx@0.12.4)):
     dependencies:
       rou3: 0.9.1
-      srvx: 0.11.22
+      srvx: 0.12.4
     optionalDependencies:
       crossws: 0.4.10(srvx@0.12.4)
 
@@ -16761,7 +16781,13 @@ snapshots:
     dependencies:
       seroval: 1.5.5
 
+  seroval-plugins@1.5.6(seroval@1.5.6):
+    dependencies:
+      seroval: 1.5.6
+
   seroval@1.5.5: {}
+
+  seroval@1.5.6: {}
 
   serve-placeholder@2.0.2:
     dependencies:
