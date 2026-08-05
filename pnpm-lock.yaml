@@ -15,6 +15,9 @@ catalogs:
     '@envelop/graphql-jit':
       specifier: ^11.1.1
       version: 11.1.1
+    '@eslint-react/eslint-plugin':
+      specifier: ^5.0.0
+      version: 5.18.2
     '@fontsource-variable/gabarito':
       specifier: ^5.2.8
       version: 5.3.0
@@ -48,9 +51,6 @@ catalogs:
     '@solidjs/router':
       specifier: ^1.0.0
       version: 1.0.0
-    '@solidjs/start':
-      specifier: ^2.0.0-alpha.3
-      version: 2.0.0-rc.10
     '@sveltejs/adapter-node':
       specifier: ^5.5.4
       version: 5.5.7
@@ -380,7 +380,7 @@ importers:
         version: 1.0.0(solid-js@1.9.14)
       '@solidjs/start':
         specifier: 'catalog:'
-        version: 2.0.0-rc.10(@solidjs/router@1.0.0(solid-js@1.9.14))(crossws@0.4.10(srvx@0.12.5))(supports-color@10.2.2)(vite@8.2.0)
+        version: 2.0.0(@solidjs/router@1.0.0(solid-js@1.9.14))(crossws@0.4.10(srvx@0.12.5))(supports-color@10.2.2)(vite@8.2.0)
       '@urql/solid':
         specifier: 'catalog:'
         version: 1.0.1(@urql/core@6.0.3)(solid-js@1.9.14)
@@ -3164,8 +3164,8 @@ packages:
     peerDependencies:
       solid-js: ^1.8.6
 
-  '@solidjs/start@2.0.0-rc.10':
-    resolution: {integrity: sha512-UXOyBb17uhVpWESTz7gIMGm9FLvjwdiotO9WRs29jkYqezPgz5IltUtoxmPzUUB3/mszGWTGSM7mJZA3k06rOg==}
+  '@solidjs/start@2.0.0':
+    resolution: {integrity: sha512-OXO2BzEi5aqEgPqu9bbSXlKuAr9Pp4D33hJ0cAJh65fQFr6Zn+IxeMSpIyTeR8/Mzz2SAJwGAxwvMuvdZ1ylZQ==}
     engines: {node: '>=24'}
     peerDependencies:
       '@solidjs/router': '>=0.16.0 <2.0.0-0'
@@ -7486,12 +7486,22 @@ packages:
     peerDependencies:
       seroval: ^1.0
 
+  seroval-plugins@1.6.2:
+    resolution: {integrity: sha512-TfxuUjlbBESzUOWdTkTKqvSmav0ABym+itetDXLK6mDz8SmrpdI30aF8RTXE8Bvq+tH/1yIDkvy3W0lfQb1ipQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      seroval: ^1.0
+
   seroval@1.5.6:
     resolution: {integrity: sha512-rVQVWjjSvlINzaQPZH5JFqsqEsIWdTxY3iJZCnTL/5gQbXIRooVZKI60tVCkOVfzcRPejboxO2t0P89dg5mQaA==}
     engines: {node: '>=10'}
 
   seroval@1.6.0:
     resolution: {integrity: sha512-TBwwKfscTEgnBEWmYKKeCcmCGmrJi0LV6qNUY//WBA3MDesh/zfn+KOMq/ckpxM4gZ0ouAE706A1eenekM2sug==}
+    engines: {node: '>=10'}
+
+  seroval@1.6.2:
+    resolution: {integrity: sha512-mPT+SD2TrlB6wvte1KkYOYUkubaTbd6pZ/6Kk3C9nxzrHmCZyhxOO7XGAeL7f+yLKZglzGtM9odUVvg/EhO+vQ==}
     engines: {node: '>=10'}
 
   serve-placeholder@2.0.2:
@@ -11023,7 +11033,7 @@ snapshots:
     dependencies:
       solid-js: 1.9.14
 
-  '@solidjs/start@2.0.0-rc.10(@solidjs/router@1.0.0(solid-js@1.9.14))(crossws@0.4.10(srvx@0.12.5))(supports-color@10.2.2)(vite@8.2.0)':
+  '@solidjs/start@2.0.0(@solidjs/router@1.0.0(solid-js@1.9.14))(crossws@0.4.10(srvx@0.12.5))(supports-color@10.2.2)(vite@8.2.0)':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/traverse': 7.29.8(supports-color@10.2.2)
@@ -11042,8 +11052,8 @@ snapshots:
       path-to-regexp: 8.4.2
       pathe: 2.0.3
       radix3: 1.1.2
-      seroval: 1.6.0
-      seroval-plugins: 1.6.0(seroval@1.6.0)
+      seroval: 1.6.2
+      seroval-plugins: 1.6.2(seroval@1.6.2)
       shiki: 4.4.1
       solid-js: 1.9.14
       source-map-js: 1.2.1
@@ -16253,9 +16263,15 @@ snapshots:
     dependencies:
       seroval: 1.6.0
 
+  seroval-plugins@1.6.2(seroval@1.6.2):
+    dependencies:
+      seroval: 1.6.2
+
   seroval@1.5.6: {}
 
   seroval@1.6.0: {}
+
+  seroval@1.6.2: {}
 
   serve-placeholder@2.0.2:
     dependencies:
