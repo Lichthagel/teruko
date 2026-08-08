@@ -156,9 +156,6 @@ catalogs:
     lucide-react:
       specifier: ^1.8.0
       version: 1.29.0
-    lucide-solid:
-      specifier: ^1.8.0
-      version: 1.29.0
     modern-normalize:
       specifier: ^3.0.1
       version: 3.0.1
@@ -389,7 +386,7 @@ importers:
         version: 0.45.2(@libsql/client@0.17.4)(@types/pg@8.20.4)(pg@8.22.0)
       lucide-solid:
         specifier: 'catalog:'
-        version: 1.29.0(solid-js@1.9.14)
+        version: 1.30.0(solid-js@1.9.14)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -6109,8 +6106,8 @@ packages:
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  lucide-solid@1.29.0:
-    resolution: {integrity: sha512-LGunJ3sL8hebwVbAtiqkmvFLCgskMzUlV16+WlZCfYz8lEtgqsVsU9BMF7Ajoozn5msgh7XjNCC+cwbUiV3W+w==}
+  lucide-solid@1.30.0:
+    resolution: {integrity: sha512-BjNqMaZ4cDjE8DjW3ALA3u7o/7bnkLophQ9QUPU0MOsLmXBYbDub4o+iQNAgpZ7+1jKkSiQvpaGWZUGTaFTp0w==}
     peerDependencies:
       solid-js: ^1.4.7
 
@@ -14229,7 +14226,7 @@ snapshots:
     dependencies:
       react: 19.2.8
 
-  lucide-solid@1.29.0(solid-js@1.9.14):
+  lucide-solid@1.30.0(solid-js@1.9.14):
     dependencies:
       solid-js: 1.9.14
 
