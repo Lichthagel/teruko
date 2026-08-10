@@ -159,12 +159,6 @@ catalogs:
     lint-staged:
       specifier: ^17.0.0
       version: 17.3.0
-    lucide-react:
-      specifier: ^1.8.0
-      version: 1.30.0
-    lucide-solid:
-      specifier: ^1.8.0
-      version: 1.30.0
     modern-normalize:
       specifier: ^3.0.1
       version: 3.0.1
@@ -177,6 +171,9 @@ catalogs:
     nx:
       specifier: 23.1.1
       version: 23.1.1
+    pg:
+      specifier: ^8.20.0
+      version: 8.23.0
     postcss:
       specifier: ^8.5.9
       version: 8.5.26
@@ -395,7 +392,7 @@ importers:
         version: 0.45.2(@libsql/client@0.17.4)(@types/pg@8.21.0)(pg@8.23.0)
       lucide-solid:
         specifier: 'catalog:'
-        version: 1.30.0(solid-js@1.9.14)
+        version: 1.31.0(solid-js@1.9.14)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -525,7 +522,7 @@ importers:
         version: 0.45.2(@libsql/client@0.17.4)(@types/pg@8.21.0)(pg@8.23.0)
       lucide-react:
         specifier: 'catalog:'
-        version: 1.30.0(react@19.2.8)
+        version: 1.31.0(react@19.2.8)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -6110,13 +6107,13 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-react@1.30.0:
-    resolution: {integrity: sha512-tUIr2jXLbWpCkdtH8XP7P7YppM9ueWgTky99lpWDY6z5REs6B+O6ZQ3U5tHkUUY59ANyOv/PBcs8E4Fe3KO3eA==}
+  lucide-react@1.31.0:
+    resolution: {integrity: sha512-G8u2eEtoHUnUa9f8lbvqDhCiORMnYLdUEo06EEG9MQvHQrInKcX3Pa2TH39MM5qyzRcWETxB0+aOwAPI1g1kEg==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  lucide-solid@1.30.0:
-    resolution: {integrity: sha512-BjNqMaZ4cDjE8DjW3ALA3u7o/7bnkLophQ9QUPU0MOsLmXBYbDub4o+iQNAgpZ7+1jKkSiQvpaGWZUGTaFTp0w==}
+  lucide-solid@1.31.0:
+    resolution: {integrity: sha512-yRJChFmaeWF8+hmm/9s2O0NrlQVr/t/p11Hd9+MON0biY0a7LLeCYZ/yH4s2G5df6vNP8hhmZsoi2v46v4rgKQ==}
     peerDependencies:
       solid-js: ^1.4.7
 
@@ -6729,9 +6726,6 @@ packages:
     resolution: {integrity: sha512-gKtPkFdQPU3DksooVLi9LsjZxrsBUZIpa+7aVx+LV5pNh0KzP4Zleud2po+ConrxbuXGBJ6Hfer6hdgpIBpBaw==}
     peerDependencies:
       pg: '>=8.0'
-
-  pg-protocol@1.15.0:
-    resolution: {integrity: sha512-cq9sECI5s0+uPUXjbz8ioyPJni6RzsRib0US67i5IoTZKw8fNeYlVE7u8F4dG7vEJJtc5wdD1K189lCCUwqWTQ==}
 
   pg-protocol@1.16.0:
     resolution: {integrity: sha512-sILXutLVjCLjcDuOmvhX5e2Z4cS5qG/6Bu3VkpFwdf/633ElGLpEh9bgmuI5I4sqKqkifQiGyiCcx1HdtrK7tg==}
@@ -11445,7 +11439,7 @@ snapshots:
   '@types/pg@8.21.0':
     dependencies:
       '@types/node': 26.2.0
-      pg-protocol: 1.15.0
+      pg-protocol: 1.16.0
       pg-types: 2.2.0
 
   '@types/react-dom@19.2.4(@types/react@19.2.18)':
@@ -14234,11 +14228,11 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-react@1.30.0(react@19.2.8):
+  lucide-react@1.31.0(react@19.2.8):
     dependencies:
       react: 19.2.8
 
-  lucide-solid@1.30.0(solid-js@1.9.14):
+  lucide-solid@1.31.0(solid-js@1.9.14):
     dependencies:
       solid-js: 1.9.14
 
@@ -15433,8 +15427,6 @@ snapshots:
   pg-pool@3.14.0(pg@8.23.0):
     dependencies:
       pg: 8.23.0
-
-  pg-protocol@1.15.0: {}
 
   pg-protocol@1.16.0: {}
 
