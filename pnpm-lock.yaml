@@ -135,9 +135,6 @@ catalogs:
     eslint:
       specifier: ^10.2.0
       version: 10.8.1
-    eslint-plugin-react-refresh:
-      specifier: ^0.5.2
-      version: 0.5.3
     eslint-plugin-solid:
       specifier: ^0.14.5
       version: 0.14.5
@@ -177,6 +174,9 @@ catalogs:
     nx:
       specifier: 23.1.1
       version: 23.1.1
+    pg:
+      specifier: ^8.20.0
+      version: 8.23.0
     postcss:
       specifier: ^8.5.9
       version: 8.5.26
@@ -253,7 +253,7 @@ importers:
     devDependencies:
       '@antfu/eslint-config':
         specifier: 'catalog:'
-        version: 9.3.0(@eslint-react/eslint-plugin@5.18.3(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(@typescript-eslint/typescript-estree@8.66.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0))(@typescript-eslint/utils@8.66.0(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(@typescript/typescript6@6.0.2)(@vue/compiler-sfc@3.5.41)(eslint-plugin-react-refresh@0.5.3(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0)))(eslint-plugin-solid@0.14.5(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(eslint-plugin-svelte@3.22.0(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.8(@typescript-eslint/types@8.66.0)))(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(svelte-eslint-parser@1.8.0(svelte@5.56.8(@typescript-eslint/types@8.66.0)))
+        version: 9.3.0(@eslint-react/eslint-plugin@5.18.3(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(@typescript-eslint/typescript-estree@8.66.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0))(@typescript-eslint/utils@8.66.0(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(@typescript/typescript6@6.0.2)(@vue/compiler-sfc@3.5.41)(eslint-plugin-react-refresh@0.5.4(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0)))(eslint-plugin-solid@0.14.5(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(eslint-plugin-svelte@3.22.0(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.8(@typescript-eslint/types@8.66.0)))(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(svelte-eslint-parser@1.8.0(svelte@5.56.8(@typescript-eslint/types@8.66.0)))
       '@eslint-react/eslint-plugin':
         specifier: 'catalog:'
         version: 5.18.3(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)
@@ -262,7 +262,7 @@ importers:
         version: 10.8.1(jiti@2.7.0)(supports-color@7.2.0)
       eslint-plugin-react-refresh:
         specifier: 'catalog:'
-        version: 0.5.3(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))
+        version: 0.5.4(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))
       eslint-plugin-solid:
         specifier: 'catalog:'
         version: 0.14.5(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)
@@ -5060,8 +5060,8 @@ packages:
       eslint: '*'
       typescript: '*'
 
-  eslint-plugin-react-refresh@0.5.3:
-    resolution: {integrity: sha512-5EMmLCV98Pi4o/f/3DP/v/tNqLHMIc9I8LKClNDWhZ9JTho89/kQcitCXQBMG7sAfVRK0Ie3T2EDOzp1YXYiVA==}
+  eslint-plugin-react-refresh@0.5.4:
+    resolution: {integrity: sha512-7bqTKz7T0r+HKWFarNXByDE9/5+73wI2ru+M3zuqGbR7s/b/5/pQJXZoufWlrngqGqoZto73ZkGumCdLxk+4rw==}
     peerDependencies:
       eslint: ^9 || ^10
 
@@ -6729,9 +6729,6 @@ packages:
     resolution: {integrity: sha512-gKtPkFdQPU3DksooVLi9LsjZxrsBUZIpa+7aVx+LV5pNh0KzP4Zleud2po+ConrxbuXGBJ6Hfer6hdgpIBpBaw==}
     peerDependencies:
       pg: '>=8.0'
-
-  pg-protocol@1.15.0:
-    resolution: {integrity: sha512-cq9sECI5s0+uPUXjbz8ioyPJni6RzsRib0US67i5IoTZKw8fNeYlVE7u8F4dG7vEJJtc5wdD1K189lCCUwqWTQ==}
 
   pg-protocol@1.16.0:
     resolution: {integrity: sha512-sILXutLVjCLjcDuOmvhX5e2Z4cS5qG/6Bu3VkpFwdf/633ElGLpEh9bgmuI5I4sqKqkifQiGyiCcx1HdtrK7tg==}
@@ -8598,7 +8595,7 @@ snapshots:
     optionalDependencies:
       graphql: 17.0.2
 
-  '@antfu/eslint-config@9.3.0(@eslint-react/eslint-plugin@5.18.3(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(@typescript-eslint/typescript-estree@8.66.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0))(@typescript-eslint/utils@8.66.0(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(@typescript/typescript6@6.0.2)(@vue/compiler-sfc@3.5.41)(eslint-plugin-react-refresh@0.5.3(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0)))(eslint-plugin-solid@0.14.5(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(eslint-plugin-svelte@3.22.0(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.8(@typescript-eslint/types@8.66.0)))(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(svelte-eslint-parser@1.8.0(svelte@5.56.8(@typescript-eslint/types@8.66.0)))':
+  '@antfu/eslint-config@9.3.0(@eslint-react/eslint-plugin@5.18.3(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(@typescript-eslint/typescript-estree@8.66.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0))(@typescript-eslint/utils@8.66.0(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(@typescript/typescript6@6.0.2)(@vue/compiler-sfc@3.5.41)(eslint-plugin-react-refresh@0.5.4(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0)))(eslint-plugin-solid@0.14.5(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(eslint-plugin-svelte@3.22.0(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.8(@typescript-eslint/types@8.66.0)))(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(svelte-eslint-parser@1.8.0(svelte@5.56.8(@typescript-eslint/types@8.66.0)))':
     dependencies:
       '@antfu/install-pkg': 2.0.1
       '@clack/prompts': 1.7.0
@@ -8639,7 +8636,7 @@ snapshots:
       yaml-eslint-parser: 2.1.0
     optionalDependencies:
       '@eslint-react/eslint-plugin': 5.18.3(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)
-      eslint-plugin-react-refresh: 0.5.3(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))
+      eslint-plugin-react-refresh: 0.5.4(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))
       eslint-plugin-solid: 0.14.5(@typescript/typescript6@6.0.2)(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)
       eslint-plugin-svelte: 3.22.0(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.8(@typescript-eslint/types@8.66.0))
       svelte-eslint-parser: 1.8.0(svelte@5.56.8(@typescript-eslint/types@8.66.0))
@@ -11445,7 +11442,7 @@ snapshots:
   '@types/pg@8.21.0':
     dependencies:
       '@types/node': 26.2.0
-      pg-protocol: 1.15.0
+      pg-protocol: 1.16.0
       pg-types: 2.2.0
 
   '@types/react-dom@19.2.4(@types/react@19.2.18)':
@@ -13087,7 +13084,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-react-refresh@0.5.3(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0)):
+  eslint-plugin-react-refresh@0.5.4(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0)):
     dependencies:
       eslint: 10.8.1(jiti@2.7.0)(supports-color@7.2.0)
 
@@ -15433,8 +15430,6 @@ snapshots:
   pg-pool@3.14.0(pg@8.23.0):
     dependencies:
       pg: 8.23.0
-
-  pg-protocol@1.15.0: {}
 
   pg-protocol@1.16.0: {}
 
