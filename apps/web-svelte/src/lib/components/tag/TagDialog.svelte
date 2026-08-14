@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { filters } from "$lib/filters.svelte";
   import styles from "client-css/m/tag.module.scss";
+  import { filters } from "#lib/filters.svelte.js";
   import Dialog from "../common/Dialog.svelte";
   import TagEditSection from "./TagEditSection.svelte";
 

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { filters } from "$lib/filters.svelte.js";
   import { ListX, Search } from "@lucide/svelte";
   import styles from "client-css/m/filters.module.scss";
+  import { filters } from "#lib/filters.svelte.js";
   import TagInput from "../common/TagInput.svelte";
   import SortSelect from "./SortSelect.svelte";
   import TagQuery from "./TagQuery.svelte";
