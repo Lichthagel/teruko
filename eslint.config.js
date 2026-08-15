@@ -19,6 +19,7 @@ export default antfu({
     "**/.nitro/**",
     "**/.solid-start/**",
     "**/routeTree.gen.ts",
+    "**/solid-env.d.ts",
   ],
   rules: {
     "antfu/top-level-function": "off",
