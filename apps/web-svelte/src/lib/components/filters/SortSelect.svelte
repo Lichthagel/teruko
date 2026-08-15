@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { filters } from "$lib/filters.svelte.js";
   import { ArrowDownNarrowWide } from "@lucide/svelte";
+  import { filters } from "#lib/filters.svelte.js";
   import Select from "../common/Select.svelte";
 </script>
 
