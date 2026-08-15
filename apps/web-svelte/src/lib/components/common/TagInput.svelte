@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { useSuggestions } from "$lib/suggestions.svelte.js";
   import { Icon as IconType, LoaderCircle } from "@lucide/svelte";
   import styles from "client-css/m/taginput.module.scss";
+  import { useSuggestions } from "#lib/suggestions.svelte.js";
 
   let {
     icon,

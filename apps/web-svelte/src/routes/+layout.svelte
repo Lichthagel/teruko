@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Nav from "$lib/components/Nav.svelte";
   import { setContextClient } from "@urql/svelte";
   import { urqlClient } from "client-graphql";
+  import Nav from "#lib/components/Nav.svelte";
   import "client-css/global.scss";
 
   type Props = {

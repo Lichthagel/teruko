@@ -1,9 +1,9 @@
 <script lang="ts">
   import type { ImageExt } from "models";
   import { resolve } from "$app/paths";
-  import { filters } from "$lib/filters.svelte.js";
   import styles from "client-css/m/gallery.module.scss";
   import { fly } from "svelte/transition";
+  import { filters } from "#lib/filters.svelte.js";
 
   type Props = {
     image: ImageExt;

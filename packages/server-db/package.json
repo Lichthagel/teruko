@@ -19,7 +19,9 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "lint": "eslint .",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "seed": "node --experimental-strip-types scripts/seed.ts",
+    "create-sample-images": "node --experimental-strip-types scripts/createSampleImages.ts"
   },
   "peerDependencies": {
     "drizzle-orm": "^0.31.1 || ^0.32.0 || ^0.33.0 || ^0.34.0 || ^0.35.0 || ^0.36.0 || ^0.37.0 || ^0.38.0 || ^0.39.0 || ^0.40.0 || ^0.41.0 || ^0.42.0 || ^0.43.0 || ^0.44.0 || ^0.45.0"
@@ -36,9 +38,10 @@
   },
   "devDependencies": {
     "@libsql/client": "catalog:",
+    "@types/node": "catalog:",
     "@types/pg": "catalog:",
+    "@typescript/native": "catalog:",
     "drizzle-kit": "catalog:",
-    "tsconfig": "workspace:^",
-    "typescript": "catalog:"
+    "tsconfig": "workspace:^"
   }
 }

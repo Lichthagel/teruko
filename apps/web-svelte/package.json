@@ -3,6 +3,10 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
+  "imports": {
+    "#lib": "./src/lib/index.js",
+    "#lib/*": "./src/lib/*"
+  },
   "files": [
     "build"
   ],
@@ -57,7 +61,6 @@
     "svelte": "catalog:",
     "svelte-check": "catalog:",
     "tsconfig": "workspace:*",
-    "typescript": "catalog:",
     "valibot": "catalog:",
     "vite": "catalog:"
   }

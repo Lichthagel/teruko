@@ -2,13 +2,13 @@
   import type { EventHandler } from "svelte/elements";
   import { resolve } from "$app/paths";
   import { page } from "$app/state";
-  import ErrorMessage from "$lib/components/status/ErrorMessage.svelte";
-  import StatusBar from "$lib/components/status/StatusBar.svelte";
-  import TagChip from "$lib/components/TagChip.svelte";
   import { Download } from "@lucide/svelte";
   import { getContextClient, queryStore } from "@urql/svelte";
   import styles from "client-css/m/imagepage.module.scss";
   import { Image } from "client-graphql/snippets";
+  import ErrorMessage from "#lib/components/status/ErrorMessage.svelte";
+  import StatusBar from "#lib/components/status/StatusBar.svelte";
+  import TagChip from "#lib/components/TagChip.svelte";
 
   const { id } = page.params;
 
