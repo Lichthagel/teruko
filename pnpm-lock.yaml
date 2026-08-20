@@ -53,7 +53,7 @@ catalogs:
       version: 1.0.0
     '@solidjs/start':
       specifier: ^2.0.0-alpha.3
-      version: 2.0.1
+      version: 2.0.2
     '@sveltejs/adapter-node':
       specifier: ^6.0.0-next.10
       version: 6.0.0-next.10
@@ -383,7 +383,7 @@ importers:
         version: 1.0.0(solid-js@1.9.15)
       '@solidjs/start':
         specifier: 'catalog:'
-        version: 2.0.1(@solidjs/router@1.0.0(solid-js@1.9.15))(crossws@0.4.10(srvx@0.12.5))(supports-color@10.2.2)(vite@8.2.1)
+        version: 2.0.2(@solidjs/router@1.0.0(solid-js@1.9.15))(crossws@0.4.10(srvx@0.12.5))(supports-color@10.2.2)(vite@8.2.1)
       '@urql/solid':
         specifier: 'catalog:'
         version: 1.0.1(@urql/core@6.0.3)(solid-js@1.9.15)
@@ -3031,8 +3031,8 @@ packages:
     peerDependencies:
       solid-js: ^1.8.6
 
-  '@solidjs/start@2.0.1':
-    resolution: {integrity: sha512-uhY03Ey4PHdU6fyu0vipBzPPQw+x3Z0Onu6x2hNYR7t/U9bb3jvpr/zV6xz1BfxKEgcwq6nuqzxwo4eXv1/fgg==}
+  '@solidjs/start@2.0.2':
+    resolution: {integrity: sha512-GubWk3pz4ZbamcIGg4viq7/cF2M3F08E3xhiTAXO1k6M1tSn2F3dCb46DLgpj9iBzmNebtZG5GjekqZJI77a3w==}
     engines: {node: '>=24'}
     peerDependencies:
       '@solidjs/router': '>=0.16.0 <2.0.0-0'
@@ -5438,6 +5438,19 @@ packages:
       crossws: ^0.4.9
     peerDependenciesMeta:
       crossws:
+        optional: true
+
+  h3@2.0.1-rc.27:
+    resolution: {integrity: sha512-qKIRJCVFXeo0QdXTVaPqF8OqcMW6h4ZW3AA6f+biAh+dbP+ZJmU1tSuVR8syRUZ8UWooFRAqYpfC/6WojAQxYg==}
+    engines: {node: '>=20.11.1'}
+    hasBin: true
+    peerDependencies:
+      crossws: ^0.4.9
+      ocache: '>=0.3.0'
+    peerDependenciesMeta:
+      crossws:
+        optional: true
+      ocache:
         optional: true
 
   has-flag@4.0.0:
@@ -10710,7 +10723,7 @@ snapshots:
     dependencies:
       solid-js: 1.9.15
 
-  '@solidjs/start@2.0.1(@solidjs/router@1.0.0(solid-js@1.9.15))(crossws@0.4.10(srvx@0.12.5))(supports-color@10.2.2)(vite@8.2.1)':
+  '@solidjs/start@2.0.2(@solidjs/router@1.0.0(solid-js@1.9.15))(crossws@0.4.10(srvx@0.12.5))(supports-color@10.2.2)(vite@8.2.1)':
     dependencies:
       '@babel/core': 7.29.7(supports-color@10.2.2)
       '@babel/traverse': 7.29.8(supports-color@10.2.2)
@@ -10722,7 +10735,7 @@ snapshots:
       defu: 6.1.7
       error-stack-parser: 2.1.4
       fast-glob: 3.3.3
-      h3: 2.0.1-rc.26(crossws@0.4.10(srvx@0.12.5))
+      h3: 2.0.1-rc.27(crossws@0.4.10(srvx@0.12.5))
       html-to-image: 1.11.13
       micromatch: 4.0.8
       oxc-parser: 0.141.0
@@ -10743,6 +10756,7 @@ snapshots:
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - crossws
+      - ocache
       - supports-color
 
   '@speed-highlight/core@1.2.24': {}
@@ -13466,6 +13480,14 @@ snapshots:
       crossws: 0.4.10(srvx@0.11.22)
 
   h3@2.0.1-rc.26(crossws@0.4.10(srvx@0.12.5)):
+    dependencies:
+      rou3: 0.9.2
+      srvx: 0.12.5
+    optionalDependencies:
+      crossws: 0.4.10(srvx@0.12.5)
+    optional: true
+
+  h3@2.0.1-rc.27(crossws@0.4.10(srvx@0.12.5)):
     dependencies:
       rou3: 0.9.2
       srvx: 0.12.5
