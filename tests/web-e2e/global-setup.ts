@@ -61,7 +61,7 @@ const waitForServer = async (port: number, server: ReturnType<typeof spawn>) => 
 
 const globalSetup = async () => {
   if (process.env.SKIP_E2E_DB_SETUP !== "1") {
-    run(["--filter", "server-db", "exec", "drizzle-kit", "migrate"]);
+    run(["--filter", "server-db", "run", "migrate"]);
     run(["--filter", "server-db", "run", "seed"]);
   }
 

@@ -2,7 +2,6 @@ import { Buffer } from "node:buffer";
 import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
-import env from "server-env";
 
 const dimensions = [
   { w: 1280, h: 720 },
@@ -22,7 +21,7 @@ const images = Array.from({ length: 64 }, (_, i) => ({
 }));
 
 const createSampleImages = async () => {
-  const folder = path.resolve(env.IMG_FOLDER);
+  const folder = path.resolve(process.env.IMG_FOLDER ?? "./data");
   await fs.rm(folder, { recursive: true, force: true });
   await fs.mkdir(folder, { recursive: true });
 

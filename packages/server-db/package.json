@@ -20,8 +20,9 @@
     "dev": "tsc --watch",
     "lint": "eslint .",
     "clean": "rm -rf dist",
-    "seed": "node --experimental-strip-types scripts/seed.ts",
-    "create-sample-images": "node --experimental-strip-types scripts/createSampleImages.ts"
+    "migrate": "varlock run --path ../.. -- drizzle-kit migrate",
+    "seed": "varlock run --path ../.. -- node --experimental-strip-types scripts/seed.ts",
+    "create-sample-images": "varlock run --path ../.. -- node --experimental-strip-types scripts/createSampleImages.ts"
   },
   "peerDependencies": {
     "drizzle-orm": "^0.31.1 || ^0.32.0 || ^0.33.0 || ^0.34.0 || ^0.35.0 || ^0.36.0 || ^0.37.0 || ^0.38.0 || ^0.39.0 || ^0.40.0 || ^0.41.0 || ^0.42.0 || ^0.43.0 || ^0.44.0 || ^0.45.0"
@@ -42,6 +43,7 @@
     "@types/pg": "catalog:",
     "@typescript/native": "catalog:",
     "drizzle-kit": "catalog:",
-    "tsconfig": "workspace:^"
+    "tsconfig": "workspace:^",
+    "varlock": "catalog:"
   }
 }
