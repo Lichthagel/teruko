@@ -65,18 +65,24 @@ const globalSetup = async () => {
     run(["--filter", "server-db", "run", "seed"]);
   }
 
-  const servers = apps.map(({ args, command, cwd, port }) => spawn(command, args, {
-    cwd: path.join(workspacePath, cwd),
-    detached: true,
-    env: {
-      ...process.env,
-      HOST: "127.0.0.1",
-      IMG_FOLDER: process.env.IMG_FOLDER ?? path.join(workspacePath, "data"),
-      NITRO_HOST: "127.0.0.1",
-      PORT: String(port),
-    },
-    stdio: "ignore",
-  }));
+  const servers = apps.map(({ args, command, cwd, port }) => {
+    const server = spawn(command, args, {
+      cwd: path.join(workspacePath, cwd),
+      detached: true,
+      env: {
+        ...process.env,
+        HOST: "127.0.0.1",
+        IMG_FOLDER: process.env.IMG_FOLDER ?? path.join(workspacePath, "data"),
+        NITRO_HOST: "127.0.0.1",
+        PORT: String(port),
+      },
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+
+    server.stdout?.on("data", chunk => process.stdout.write(`[e2e:${port}] ${chunk}`));
+    server.stderr?.on("data", chunk => process.stderr.write(`[e2e:${port}] ${chunk}`));
+    return server;
+  });
 
   try {
     await Promise.all(apps.map(({ port }, index) => waitForServer(port, servers[index]!)));
