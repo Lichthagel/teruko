@@ -16,9 +16,7 @@ const config = defineConfig({
       },
     }),
     viteReact({
-      babel: {
-        plugins: ["babel-plugin-react-compiler"],
-      },
+      compiler: true,
     }),
   ],
   resolve: {

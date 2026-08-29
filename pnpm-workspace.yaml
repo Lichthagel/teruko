@@ -15,6 +15,7 @@ trustPolicyExclude:
 packages:
   - apps/*
   - packages/*
+  - tests/*
 overrides:
   axios@>=1.0.0 <=1.13.4: ">=1.13.5"
   chokidar: ^5.0.0
@@ -34,7 +35,8 @@ catalog:
   "@libsql/client": ^0.17.2
   "@lucide/svelte": ^1.8.0
   "@lucide/vue": ^1.8.0
-  "@nuxt/devtools": 4.0.0-alpha.10
+  "@nuxt/devtools": 4.0.0-alpha.15
+  "@playwright/test": 1.62.1
   "@pothos/core": ^4.12.0
   "@pothos/plugin-relay": ^4.7.0
   "@solidjs/meta": ^0.29.4
@@ -67,7 +69,7 @@ catalog:
   drizzle-orm: ^0.45.2
   eslint: ^10.2.0
   eslint-plugin-react-refresh: ^0.5.2
-  eslint-plugin-solid: ^0.15.0
+  eslint-plugin-solid: ^0.16.0
   eslint-plugin-svelte: ^3.17.0
   file-type: ^22.0.1
   graphql: 17.0.2
@@ -79,7 +81,8 @@ catalog:
   modern-normalize: ^3.0.1
   nitro: 3.0.260311-beta
   nuxt: ^4.4.2
-  nx: 23.1.1
+  nx: 23.1.2
+  oxc-transform-react: ^0.147.0
   pg: ^8.20.0
   postcss: ^8.5.9
   postcss-load-config: ^6.0.1

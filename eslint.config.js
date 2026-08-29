@@ -1,6 +1,7 @@
 import antfu, { react, solid } from "@antfu/eslint-config";
 
 export default antfu({
+  playwright: true,
   vue: true,
   svelte: true,
   stylistic: {
@@ -18,7 +19,9 @@ export default antfu({
     "**/build/**",
     "**/.nitro/**",
     "**/.solid-start/**",
+    "**/playwright-report/**",
     "**/routeTree.gen.ts",
+    "**/test-results/**",
   ],
   rules: {
     "antfu/top-level-function": "off",

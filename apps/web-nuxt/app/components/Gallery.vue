@@ -51,8 +51,8 @@ const endRef = (node: ComponentPublicInstance | Element | null) => {
         <ImageCard :image="image" />
       </div>
     </template>
-    <div :ref="endRef" />
   </div>
+  <div :ref="endRef" :class="styles.sentinel" />
 
   <ErrorMessage
     v-if="error"

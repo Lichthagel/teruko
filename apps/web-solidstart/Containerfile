@@ -26,6 +26,9 @@ RUN pnpm install --frozen-lockfile --offline
 # Build the application
 RUN pnpm --filter=web-solidstart... build
 
+# Deploy the production server and its runtime dependencies
+RUN pnpm --filter=web-solidstart --prod --legacy deploy deploy
+
 # Production stage
 FROM node:24-alpine
 
@@ -35,8 +38,10 @@ RUN addgroup -g 1001 -S nodejs && adduser -S nodejs -u 1001
 WORKDIR /app
 
 # Copy built application and dependencies from builder stage
-COPY --chown=nodejs:nodejs --from=builder /app/apps/web-solidstart/.output .
-COPY --chown=nodejs:nodejs --from=builder /app/node_modules/@libsql/linux-x64-musl ./node_modules/@libsql/linux-x64-musl
+COPY --chown=nodejs:nodejs --from=builder /app/apps/web-solidstart/dist ./dist
+COPY --chown=nodejs:nodejs --from=builder /app/apps/web-solidstart/server.mjs ./server.mjs
+COPY --chown=nodejs:nodejs --from=builder /app/deploy/node_modules ./node_modules
+COPY --chown=nodejs:nodejs --from=builder /app/deploy/package.json ./package.json
 
 # Switch to non-root user
 USER nodejs
@@ -53,4 +58,4 @@ ENV NODE_ENV=production
 ENV PORT=3000
 
 # Start the application
-CMD ["node", "server/index.mjs"]
+CMD ["node", "server.mjs"]

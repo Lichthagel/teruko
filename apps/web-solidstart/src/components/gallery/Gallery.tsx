@@ -38,9 +38,9 @@ const Gallery: Component<{
             <ImageCard image={image} />
           )}
         </For>
-
-        <div ref={endDiv} />
       </div>
+
+      <div class={styles.sentinel} ref={endDiv} />
 
       <Show when={error()}>
         <ErrorMessage error={error()} title={error()?.name} />
