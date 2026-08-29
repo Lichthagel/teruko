@@ -34,12 +34,14 @@ const Gallery: FunctionComponent<{
   return (
     <>
       {result.images && (
-        <div className={styles.gallery}>
-          {result.images.map(image => (
-            <ImageCard key={image.id} image={image} />
-          ))}
-          <div ref={endDivRef}></div>
-        </div>
+        <>
+          <div className={styles.gallery}>
+            {result.images.map(image => (
+              <ImageCard key={image.id} image={image} />
+            ))}
+          </div>
+          <div className={styles.sentinel} ref={endDivRef}></div>
+        </>
       )}
 
       {result.error

@@ -77,3 +77,13 @@
     }
   }
 }
+
+.sentinel {
+  min-height: 1px;
+}
+
+@supports not (grid-template-rows: masonry) {
+  .gallery {
+    align-items: start;
+  }
+}

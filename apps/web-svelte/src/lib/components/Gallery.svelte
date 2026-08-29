@@ -38,8 +38,8 @@
     {#each result.images as image (image.id)}
       <ImageCard {image} />
     {/each}
-    <div use:endAction></div>
   </div>
+  <div class={styles.sentinel} use:endAction></div>
 {/if}
 
 {#if result.error}
