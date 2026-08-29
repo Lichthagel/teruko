@@ -66,6 +66,7 @@ const globalSetup = async () => {
     detached: true,
     env: {
       ...process.env,
+      IMG_FOLDER: process.env.IMG_FOLDER ?? path.join(workspacePath, "data"),
       PORT: String(port),
     },
     stdio: "ignore",

@@ -76,6 +76,10 @@ jobs:
         run: pnpm install
       - name: Build applications
         run: pnpm run build
+      - name: Generate sample images
+        run: pnpm --filter server-db run create-sample-images
+        env:
+          IMG_FOLDER: ${{ github.workspace }}/data
       - name: Install Playwright browser
         run: pnpm --filter web-e2e exec playwright install --with-deps chromium firefox
       - name: Run end-to-end tests
