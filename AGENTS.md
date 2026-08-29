@@ -9,7 +9,7 @@ pnpm + Nx monorepo. Package manager is pinned in `package.json` (`pnpm@11.14.0`)
 - Build/test one project: `pnpm nx run <project>:<target>` (e.g. `pnpm nx run web-svelte:build`, `:lint`, `:dev`, `:check`).
   - Project names are the package `name` fields in each `apps/*` / `packages/*` `package.json`.
 - Lint (root, whole repo): `pnpm run lint` → `eslint `. Individual projects also expose `pnpm nx run <project>:lint`.
-- No top-level `test` script — verify via `build` + `lint` + per-app typechecks.
+- No top-level `test` script — verify via `build` + `lint` + per-app typechecks. End-to-end tests live in `tests/web-e2e` and run with `pnpm nx run web-e2e:test`; they require PostgreSQL and automatically migrate and seed the database.
 
 ## CI / pre-commit
 
@@ -19,6 +19,7 @@ pnpm + Nx monorepo. Package manager is pinned in `package.json` (`pnpm@11.14.0`)
 ## Structure
 
 - `apps/` — 5 web frontends, each a different framework: `web-nuxt` (Nuxt), `web-solidstart` (SolidStart), `web-svelte` (SvelteKit), `web-tanstack-react` (TanStack Start/React), `userscript` (Vite + `vite-plugin-monkey`, browser userscript). The first four all consume the shared GraphQL layer.
+- `tests/web-e2e/` — shared Playwright suite for the four `web-*` applications.
 - `packages/` — shared libs: `server-graphql` (Pothos + graphql-yoga schema), `server-db` (Drizzle ORM), `server-env` (env loading), `models`, `services` (bsky/pixiv integrations), `client-graphql`, `client-css`, `tsconfig` (shared base configs).
 
 ## Framework / toolchain quirks

@@ -15,6 +15,7 @@ trustPolicyExclude:
 packages:
   - apps/*
   - packages/*
+  - tests/*
 overrides:
   axios@>=1.0.0 <=1.13.4: ">=1.13.5"
   chokidar: ^5.0.0
@@ -35,6 +36,7 @@ catalog:
   "@lucide/svelte": ^1.8.0
   "@lucide/vue": ^1.8.0
   "@nuxt/devtools": 4.0.0-alpha.15
+  "@playwright/test": 1.62.1
   "@pothos/core": ^4.12.0
   "@pothos/plugin-relay": ^4.7.0
   "@solidjs/meta": ^0.29.4

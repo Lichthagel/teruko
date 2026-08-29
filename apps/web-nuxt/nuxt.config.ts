@@ -11,11 +11,12 @@ const config: NuxtConfig = defineNuxtConfig({
     host: "0.0.0.0",
   },
   modules: [],
-  plugins: ["~/plugins/urql/index.ts"],
+  plugins: ["~/plugins/urql/index.client.ts"],
   postcss: {
     plugins: postcssConfig.plugins,
   },
   components: ["~/components", { path: "~/components/Filters", prefix: "Filters" }],
+  ssr: false,
   telemetry: false,
 });
 
