@@ -66,6 +66,6 @@ builder.queryField("image", t =>
         }
       }
 
-      return reduced[0] ?? undefined;
+      return reduced[0] ?? null;
     },
   }));
