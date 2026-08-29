@@ -18,6 +18,8 @@ RUN pnpm fetch
 # Copy only the necessary source files for building
 COPY packages packages
 COPY apps apps
+# Include every workspace package manifest so pnpm can validate the lockfile.
+COPY tests/web-e2e/package.json tests/web-e2e/package.json
 COPY nx.json graphql.config.yml ./
 
 # Install dependencies with frozen lockfile
@@ -36,7 +38,6 @@ WORKDIR /app
 
 # Copy built application and dependencies from builder stage
 COPY --chown=nodejs:nodejs --from=builder /app/apps/web-nuxt/.output .
-COPY --chown=nodejs:nodejs --from=builder /app/node_modules/@libsql/linux-x64-musl ./node_modules/@libsql/linux-x64-musl
 
 # Switch to non-root user
 USER nodejs
