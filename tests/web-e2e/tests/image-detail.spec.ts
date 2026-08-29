@@ -18,7 +18,7 @@ test.describe("image detail", () => {
   });
 
   test("filters the gallery from a tag chip", async ({ page }, testInfo) => {
-    test.skip(testInfo.project.name === "web-nuxt", "Nuxt production SPA gallery hydration is currently unavailable");
+    test.skip(testInfo.project.name.startsWith("web-nuxt-"), "Nuxt production SPA gallery hydration is currently unavailable");
     await page.goto("/");
     const unfilteredCards = page.locator("a:has(img[src^='/img/'])");
     await expect(unfilteredCards.first()).toBeVisible();

@@ -77,7 +77,7 @@ jobs:
       - name: Build applications
         run: pnpm run build
       - name: Install Playwright browser
-        run: pnpm --filter web-e2e exec playwright install --with-deps chromium
+        run: pnpm --filter web-e2e exec playwright install --with-deps chromium firefox
       - name: Run end-to-end tests
         run: pnpm nx run web-e2e:test
       - name: Upload Playwright report

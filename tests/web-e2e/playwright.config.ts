@@ -20,6 +20,11 @@ const apps = [
   },
 ] as const;
 
+const browsers = [
+  { name: "chromium", device: devices["Desktop Chrome"] },
+  { name: "firefox", device: devices["Desktop Firefox"] },
+] as const;
+
 export default defineConfig({
   testDir: "./tests",
   globalSetup: "./global-setup.ts",
@@ -31,10 +36,11 @@ export default defineConfig({
     screenshot: "only-on-failure",
     trace: "on-first-retry",
   },
-  projects: apps.map(app => ({
-    name: app.name,
+  projects: apps.flatMap(app => browsers.map(browser => ({
+    name: `${app.name}-${browser.name}`,
     use: {
+      ...browser.device,
       baseURL: `http://127.0.0.1:${app.port}`,
     },
-  })),
+  }))),
 });

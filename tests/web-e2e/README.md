@@ -17,10 +17,10 @@ Run the full suite with:
 pnpm nx run web-e2e:test
 ```
 
-Install the Chromium browser once when setting up a new environment:
+Install Chromium and Firefox once when setting up a new environment:
 
 ```sh
-pnpm --filter web-e2e exec playwright install chromium
+pnpm --filter web-e2e exec playwright install chromium firefox
 ```
 
 Run an individual frontend project with:
@@ -28,6 +28,10 @@ Run an individual frontend project with:
 ```sh
 pnpm --filter web-e2e exec playwright test --project=web-svelte
 ```
+
+Firefox projects use names such as `web-svelte-firefox`. Playwright's bundled
+Firefox is used so the suite tracks the latest version supported by the pinned
+Playwright release.
 
 PostgreSQL must be available at the default `DATABASE_URL`, unless a different
 connection is supplied through the environment.

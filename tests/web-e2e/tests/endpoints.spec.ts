@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { notFoundText, seededImage } from "./fixtures";
+import { appNameFromProject, notFoundText, seededImage } from "./fixtures";
 
 test.describe("server endpoints", () => {
   test("serves the original image", async ({ request }) => {
@@ -34,7 +34,7 @@ test.describe("server endpoints", () => {
   test("handles unknown image IDs", async ({ page }, testInfo) => {
     await page.goto("/999999");
 
-    const expectedText = notFoundText[testInfo.project.name];
+    const expectedText = notFoundText[appNameFromProject(testInfo.project.name)];
     if (expectedText) {
       await expect(page.locator("body")).toContainText(expectedText);
     } else {
