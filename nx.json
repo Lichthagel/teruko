@@ -3,7 +3,11 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["{projectRoot}/dist"],
+      "outputs": [
+        "{projectRoot}/dist",
+        "{projectRoot}/.output",
+        "{projectRoot}/build"
+      ],
       "cache": true
     },
     "lint": {
