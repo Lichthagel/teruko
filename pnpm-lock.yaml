@@ -697,6 +697,9 @@ importers:
       tsconfig:
         specifier: workspace:^
         version: link:../tsconfig
+      varlock:
+        specifier: 'catalog:'
+        version: 1.16.1
 
   packages/server-env:
     dependencies:
