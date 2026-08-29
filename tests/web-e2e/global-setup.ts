@@ -39,11 +39,15 @@ const run = (args: string[]) => {
   });
 };
 
-const waitForServer = async (port: number) => {
+const waitForServer = async (port: number, server: ReturnType<typeof spawn>) => {
   const url = `http://127.0.0.1:${port}/`;
   const deadline = Date.now() + 180_000;
 
   while (Date.now() < deadline) {
+    if (server.exitCode !== null) {
+      throw new Error(`Server on port ${port} exited with code ${server.exitCode}`);
+    }
+
     try {
       await fetch(url);
       return;
@@ -66,14 +70,16 @@ const globalSetup = async () => {
     detached: true,
     env: {
       ...process.env,
+      HOST: "127.0.0.1",
       IMG_FOLDER: process.env.IMG_FOLDER ?? path.join(workspacePath, "data"),
+      NITRO_HOST: "127.0.0.1",
       PORT: String(port),
     },
     stdio: "ignore",
   }));
 
   try {
-    await Promise.all(apps.map(({ port }) => waitForServer(port)));
+    await Promise.all(apps.map(({ port }, index) => waitForServer(port, servers[index]!)));
   } catch (error) {
     for (const server of servers) {
       server.kill();
