@@ -145,10 +145,10 @@ catalogs:
       version: 1.63.0
     '@pothos/core':
       specifier: ^4.12.0
-      version: 4.13.1
+      version: 4.14.0
     '@pothos/plugin-relay':
       specifier: ^4.7.0
-      version: 4.7.1
+      version: 4.7.2
     '@solidjs/meta':
       specifier: ^0.29.4
       version: 0.29.4
@@ -824,10 +824,10 @@ importers:
         version: 3.22.0(graphql-yoga@5.22.0(graphql@17.0.2))
       '@pothos/core':
         specifier: 'catalog:'
-        version: 4.13.1(graphql@17.0.2)
+        version: 4.14.0(graphql@17.0.2)
       '@pothos/plugin-relay':
         specifier: 'catalog:'
-        version: 4.7.1(@pothos/core@4.13.1(graphql@17.0.2))(graphql@17.0.2)
+        version: 4.7.2(@pothos/core@4.14.0(graphql@17.0.2))(graphql@17.0.2)
       drizzle-orm:
         specifier: 'catalog:'
         version: 0.45.2(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)
@@ -2916,13 +2916,13 @@ packages:
   '@poppinss/exception@1.2.3':
     resolution: {integrity: sha512-dCED+QRChTVatE9ibtoaxc+WkdzOSjYTKi/+uacHWIsfodVfpsueo3+DKpgU5Px8qXjgmXkSvhXvSCz3fnP9lw==}
 
-  '@pothos/core@4.13.1':
-    resolution: {integrity: sha512-2hkLxmvrT7VnbiWAfYhfF09PjaHeflZ5HrBHYzU6Tn/P9tDviuZS7IS5xO4k/KnK5GkRo3YxDzXyn+HnkEkVNw==}
+  '@pothos/core@4.14.0':
+    resolution: {integrity: sha512-NvwqdxeWFahfHUvA4xBAMt+v+Fh8R+vlSvGfg3v8T/nO6aneyYguqIB6dxaloAQk6IsuP4gMQKmybDvVKVQbRw==}
     peerDependencies:
       graphql: ^16.10.0 || ^17.0.0
 
-  '@pothos/plugin-relay@4.7.1':
-    resolution: {integrity: sha512-aj0xgdcvktx0k6iOvtkfJvb6FYdoWnlQkDMumr1WQm7uTXsJOASYQndytfnS0/0wsctCF/UTTK6Y53+F0UIeMw==}
+  '@pothos/plugin-relay@4.7.2':
+    resolution: {integrity: sha512-5MCYA/m3PKlzYHGjbI2PJSDUHVSWEJ6riFJyAe5i09Ttyb7qagW1HNIsbDHE0L8bXUw8ZUoOp89O93GaEFrqKw==}
     peerDependencies:
       '@pothos/core': '*'
       graphql: ^16.10.0 || ^17.0.0
@@ -9207,7 +9207,7 @@ snapshots:
       devframe: 0.9.18(cac@7.0.0)(srvx@1.0.3)
       zigpty: 0.2.1
     optionalDependencies:
-      vite: 8.3.0(@types/node@26.4.1)(@vitejs/devtools@0.7.3)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.104.0)(sass@1.104.0)(terser@5.51.2)(tsx@4.23.13)(yaml@2.9.0)
+      vite: 8.3.0(@types/node@25.9.6)(@vitejs/devtools@0.7.3)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.104.0)(sass@1.104.0)(terser@5.51.2)(tsx@4.23.13)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@devframes/hub'
       - '@devframes/hub-ui'
@@ -9263,7 +9263,7 @@ snapshots:
     optionalDependencies:
       '@devframes/hub': 0.9.18(crossws@0.4.12(srvx@1.0.3))(devframe@0.9.18(cac@7.0.0)(srvx@1.0.3))
       '@devframes/hub-ui': 0.9.18(@devframes/hub@0.9.18(crossws@0.4.12(srvx@1.0.3))(devframe@0.9.18(cac@7.0.0)(srvx@1.0.3)))(@devframes/json-render@0.9.18)(devframe@0.9.18(cac@7.0.0)(srvx@1.0.3))
-      vite: 8.3.0(@types/node@26.4.1)(@vitejs/devtools@0.7.3)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.104.0)(sass@1.104.0)(terser@5.51.2)(tsx@4.23.13)(yaml@2.9.0)
+      vite: 8.3.0(@types/node@25.9.6)(@vitejs/devtools@0.7.3)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.104.0)(sass@1.104.0)(terser@5.51.2)(tsx@4.23.13)(yaml@2.9.0)
 
   '@drizzle-team/brocli@0.10.2': {}
 
@@ -10832,13 +10832,13 @@ snapshots:
 
   '@poppinss/exception@1.2.3': {}
 
-  '@pothos/core@4.13.1(graphql@17.0.2)':
+  '@pothos/core@4.14.0(graphql@17.0.2)':
     dependencies:
       graphql: 17.0.2
 
-  '@pothos/plugin-relay@4.7.1(@pothos/core@4.13.1(graphql@17.0.2))(graphql@17.0.2)':
+  '@pothos/plugin-relay@4.7.2(@pothos/core@4.14.0(graphql@17.0.2))(graphql@17.0.2)':
     dependencies:
-      '@pothos/core': 4.13.1(graphql@17.0.2)
+      '@pothos/core': 4.14.0(graphql@17.0.2)
       graphql: 17.0.2
 
   '@repeaterjs/repeater@3.1.0': {}
@@ -12141,7 +12141,7 @@ snapshots:
       nostics: 1.2.0
       obug: 2.1.4
       pathe: 2.0.3
-      vite: 8.3.0(@types/node@26.4.1)(@vitejs/devtools@0.7.3)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.104.0)(sass@1.104.0)(terser@5.51.2)(tsx@4.23.13)(yaml@2.9.0)
+      vite: 8.3.0(@types/node@25.9.6)(@vitejs/devtools@0.7.3)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.104.0)(sass@1.104.0)(terser@5.51.2)(tsx@4.23.13)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@devframes/json-render'
       - '@devframes/plugin-inspect--assets'
