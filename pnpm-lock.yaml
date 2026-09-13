@@ -250,7 +250,7 @@ catalogs:
       version: 3.23.0
     file-type:
       specifier: ^22.0.1
-      version: 22.0.2
+      version: 22.1.0
     graphql:
       specifier: 17.0.2
       version: 17.0.2
@@ -833,7 +833,7 @@ importers:
         version: 0.45.2(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)
       file-type:
         specifier: 'catalog:'
-        version: 22.0.2(supports-color@7.2.0)
+        version: 22.1.0(supports-color@7.2.0)
       graphql:
         specifier: 'catalog:'
         version: 17.0.2
@@ -5520,8 +5520,8 @@ packages:
   file-entry-cache@11.1.5:
     resolution: {integrity: sha512-+PFTHITI08JIGhnNpGNI8T8inUpgZfk3GNEqfT9R2zZV2iFXg3CvqzSl/uEhs7TSGujYRELEANyDvS8Fj7+S7Q==}
 
-  file-type@22.0.2:
-    resolution: {integrity: sha512-0H8TsCUGBLx+V5adH3EY52hTAcyLKbV1D4gq5cIOJ6DnQAHeV9Z2Hhuc5CoBX4YmvB2oL+JIC84z0qO7JsCoNw==}
+  file-type@22.1.0:
+    resolution: {integrity: sha512-fbvf9u6jnHWr1EP6V8R99E9iLMhNLXgZkUzWBiPpJ5/89UJ/Atuxjn5YXR+XaZWo2hc2/8mGfTez+NDAgOcpLA==}
     engines: {node: '>=22'}
 
   file-uri-to-path@1.0.0:
@@ -13783,7 +13783,7 @@ snapshots:
     dependencies:
       flat-cache: 6.1.23
 
-  file-type@22.0.2(supports-color@7.2.0):
+  file-type@22.1.0(supports-color@7.2.0):
     dependencies:
       '@tokenizer/inflate': 0.4.1(supports-color@7.2.0)
       strtok3: 10.3.5
