@@ -250,7 +250,7 @@ catalogs:
       version: 3.23.0
     file-type:
       specifier: ^22.0.1
-      version: 22.1.0
+      version: 22.1.1
     graphql:
       specifier: 17.0.2
       version: 17.0.2
@@ -833,7 +833,7 @@ importers:
         version: 0.45.2(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)
       file-type:
         specifier: 'catalog:'
-        version: 22.1.0(supports-color@7.2.0)
+        version: 22.1.1(supports-color@7.2.0)
       graphql:
         specifier: 'catalog:'
         version: 17.0.2
@@ -5625,8 +5625,8 @@ packages:
   file-entry-cache@11.1.5:
     resolution: {integrity: sha512-+PFTHITI08JIGhnNpGNI8T8inUpgZfk3GNEqfT9R2zZV2iFXg3CvqzSl/uEhs7TSGujYRELEANyDvS8Fj7+S7Q==}
 
-  file-type@22.1.0:
-    resolution: {integrity: sha512-fbvf9u6jnHWr1EP6V8R99E9iLMhNLXgZkUzWBiPpJ5/89UJ/Atuxjn5YXR+XaZWo2hc2/8mGfTez+NDAgOcpLA==}
+  file-type@22.1.1:
+    resolution: {integrity: sha512-sEB0oStmeLGtpmSAD88RDNuLsvhv4iC3u0lE25CUvfCULvj49xoQ3l3K525Vn+ZzsZ6DOLajQCV6RmhwwhqiJg==}
     engines: {node: '>=22'}
 
   file-uri-to-path@1.0.0:
@@ -11838,7 +11838,7 @@ snapshots:
 
   '@types/pg@8.23.1':
     dependencies:
-      '@types/node': 25.9.6
+      '@types/node': 26.5.1
       pg-protocol: 1.16.0
       pg-types: 2.2.0
 
@@ -11856,7 +11856,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 25.9.6
+      '@types/node': 26.5.1
 
   '@typescript-eslint/eslint-plugin@8.70.0(@typescript-eslint/parser@8.70.0(@typescript/typescript6@6.0.2)(eslint@10.10.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(@typescript/typescript6@6.0.2)(eslint@10.10.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
@@ -13984,7 +13984,7 @@ snapshots:
     dependencies:
       flat-cache: 6.1.23
 
-  file-type@22.1.0(supports-color@7.2.0):
+  file-type@22.1.1(supports-color@7.2.0):
     dependencies:
       '@tokenizer/inflate': 0.4.1(supports-color@7.2.0)
       strtok3: 10.3.5
