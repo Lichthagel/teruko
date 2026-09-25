@@ -347,10 +347,10 @@ catalogs:
       version: 17.5.1
     lucide-react:
       specifier: ^1.8.0
-      version: 1.47.0
+      version: 1.48.0
     lucide-solid:
       specifier: ^1.8.0
-      version: 1.47.0
+      version: 1.48.0
     modern-normalize:
       specifier: ^3.0.1
       version: 3.0.1
@@ -590,7 +590,7 @@ importers:
         version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)
       lucide-solid:
         specifier: 'catalog:'
-        version: 1.47.0(solid-js@1.9.15)
+        version: 1.48.0(solid-js@1.9.15)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -720,7 +720,7 @@ importers:
         version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)
       lucide-react:
         specifier: 'catalog:'
-        version: 1.47.0(react@19.3.0)
+        version: 1.48.0(react@19.3.0)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -6354,13 +6354,13 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-react@1.47.0:
-    resolution: {integrity: sha512-o8C23aXpNQypRY73W7fW02EyvWJinEMXgKeGjFoKym0zj3Q73hD97A1IQps1g8C14HTGsOpZL0Am+xjfgFZAbg==}
+  lucide-react@1.48.0:
+    resolution: {integrity: sha512-R0CIKY/fXiC6y9xRBADgsK+VW2p/pcTJOMhLZf1T+uG+vJUvyUR02nGOgmIIC7MPkiNK4Ox8QDnbqF8rJYWPZQ==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  lucide-solid@1.47.0:
-    resolution: {integrity: sha512-upKY9VSMWsk91pjSCJ/2VtstGJha6qXflfJSN/ahtmWNfy+vtl0ZTMj3KNcnGZCgHVQO5SCG2OecFV7ZlvWVyQ==}
+  lucide-solid@1.48.0:
+    resolution: {integrity: sha512-tes5UEPXUpMYwk8MRgFS9EtV90miJ8P/19H8NR4hhaiVDBfZY39YG0zm7Ofxv3YVNNdKP95XckdYXXc0CtQaoQ==}
     peerDependencies:
       solid-js: ^1.4.7
 
@@ -14467,11 +14467,11 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-react@1.47.0(react@19.3.0):
+  lucide-react@1.48.0(react@19.3.0):
     dependencies:
       react: 19.3.0
 
-  lucide-solid@1.47.0(solid-js@1.9.15):
+  lucide-solid@1.48.0(solid-js@1.9.15):
     dependencies:
       solid-js: 1.9.15
 
