@@ -286,7 +286,7 @@ catalogs:
       version: 1.0.0
     dotenv:
       specifier: ^18.0.0
-      version: 18.0.4
+      version: 18.0.5
     drizzle-kit:
       specifier: ^0.31.10
       version: 0.31.11
@@ -701,7 +701,7 @@ importers:
         version: link:../../packages/models
       nitro:
         specifier: 'catalog:'
-        version: 3.0.260311-beta(@libsql/client@0.18.0)(dotenv@18.0.4)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(giget@3.3.1)(jiti@2.7.0)(rollup@4.63.5)(vite@8.3.1)
+        version: 3.0.260311-beta(@libsql/client@0.18.0)(dotenv@18.0.5)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(giget@3.3.1)(jiti@2.7.0)(rollup@4.63.5)(vite@8.3.1)
       react:
         specifier: 'catalog:'
         version: 19.3.0
@@ -856,7 +856,7 @@ importers:
     dependencies:
       dotenv:
         specifier: 'catalog:'
-        version: 18.0.4
+        version: 18.0.5
       valibot:
         specifier: 'catalog:'
         version: 1.5.0(typescript@7.0.2)
@@ -4958,8 +4958,8 @@ packages:
     resolution: {integrity: sha512-nI4U3TottKAcAD9LLud4Cb7b2QztQMUEfHbvhTH09bqXTxnSie8WnjPALV/WMCrJZ6UV/qHJ6L03OqO3LcdYZw==}
     engines: {node: '>=12'}
 
-  dotenv@18.0.4:
-    resolution: {integrity: sha512-jGt9uI5BIxpVO15kvy+iEFqNAwxYClKWnkptLjSNPnFLC003Imd0ofr3aEVsbpHdSBdSsbcApNIlz4nbyGMwdA==}
+  dotenv@18.0.5:
+    resolution: {integrity: sha512-aBrGvt6KhjxbEnatqMWOMidftwsrCiCvqh1yNIGB9QyF0J+VcWkKDMsvYOEm7ZS82oiV+BT1sTOtIlAmUlTpwQ==}
     engines: {node: '>=12'}
     hasBin: true
 
@@ -13068,7 +13068,7 @@ snapshots:
 
   dotenv@17.4.2: {}
 
-  dotenv@18.0.4: {}
+  dotenv@18.0.5: {}
 
   drizzle-kit@0.31.11:
     dependencies:
@@ -15028,7 +15028,7 @@ snapshots:
 
   nf3@0.3.24: {}
 
-  nitro@3.0.260311-beta(@libsql/client@0.18.0)(dotenv@18.0.4)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(giget@3.3.1)(jiti@2.7.0)(rollup@4.63.5)(vite@8.3.1):
+  nitro@3.0.260311-beta(@libsql/client@0.18.0)(dotenv@18.0.5)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(giget@3.3.1)(jiti@2.7.0)(rollup@4.63.5)(vite@8.3.1):
     dependencies:
       consola: 3.4.2
       crossws: 0.4.12(srvx@0.11.22)
@@ -15045,7 +15045,7 @@ snapshots:
       unenv: 2.0.0-rc.24
       unstorage: 2.0.0-alpha.10
     optionalDependencies:
-      dotenv: 18.0.4
+      dotenv: 18.0.5
       giget: 3.3.1
       jiti: 2.7.0
       rollup: 4.63.5
