@@ -1,32 +1,32 @@
-import type { TagExt } from "models";
+import type { Tag, TagExt } from "models";
 import { eq } from "drizzle-orm";
-import { db, dTag, dTagCategory } from "server-db";
+import { db, dTag, dTagAlias, dTagCategory } from "server-db";
 
 import { builder } from "./builder.js";
 import { PothosTagCategory } from "./TagCategory.js";
 
-export const PothosTag = builder.objectRef<TagExt>("Tag");
+export const PothosTag = builder.objectRef<Tag & Partial<TagExt>>("Tag");
 
 builder.node(PothosTag, {
   id: {
     resolve: parent => parent.slug,
   },
-  loadOne: async (id) => {
-    const res = await db
-      .select()
-      .from(dTag)
-      .where(eq(dTag.slug, id))
-      .leftJoin(dTagCategory, eq(dTag.categorySlug, dTagCategory.slug));
+  loadOne: async (id): Promise<TagExt | null> => {
+    const res = await db.query.Tag.findFirst({
+      where: fields => eq(fields.slug, id),
+      with: {
+        aliases: true,
+        category: true,
+      },
+    });
 
-    const item = res[0];
-
-    if (!item) {
+    if (!res) {
       return null;
     }
 
     return {
-      ...item.Tag,
-      category: item.TagCategory,
+      ...res,
+      aliases: res.aliases.map(a => a.alias),
     };
   },
   fields: t => ({
@@ -39,7 +39,7 @@ builder.node(PothosTag, {
           return;
         }
 
-        if (parent.category !== undefined) {
+        if ("category" in parent && parent.category !== undefined) {
           return parent.category;
         }
 
@@ -52,5 +52,23 @@ builder.node(PothosTag, {
       },
     }),
     approved: t.exposeBoolean("approved"),
+    aliases: t.field({
+      type: ["String"],
+      resolve: async (parent): Promise<string[]> => {
+        if ("aliases" in parent && parent.aliases !== undefined) {
+          return parent.aliases;
+        }
+
+        const res = await db
+          .select()
+          .from(dTag)
+          .where(eq(dTag.slug, parent.slug))
+          .innerJoin(dTagAlias, eq(dTag.id, dTagAlias.tagId));
+
+        const items = res.map(el => el.TagAlias.alias);
+
+        return items;
+      },
+    }),
   }),
 });
