@@ -343,7 +343,7 @@ catalogs:
       version: 0.152.0
     pg:
       specifier: ^8.20.0
-      version: 8.23.0
+      version: 8.23.1
     postcss:
       specifier: ^8.5.9
       version: 8.5.28
@@ -501,7 +501,7 @@ importers:
         version: link:../../packages/client-graphql
       drizzle-orm:
         specifier: 'catalog:'
-        version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)
+        version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
       graphql:
         specifier: 'catalog:'
         version: 17.0.2
@@ -526,13 +526,13 @@ importers:
     devDependencies:
       '@nuxt/devtools':
         specifier: 'catalog:'
-        version: 4.0.0-beta.2(879af487c7253d0082230914593a0388)
+        version: 4.0.0-beta.2(759d37f231280c1df95f01f5fa05f50a)
       '@types/node':
         specifier: 'catalog:'
         version: 25.9.8
       nuxt:
         specifier: 'catalog:'
-        version: 4.5.2(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@libsql/client@0.18.0)(@oxc-project/types@0.151.0)(@parcel/watcher@2.6.0)(@types/node@25.9.8)(@vitejs/devtools@0.7.6)(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)))(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(esbuild@0.28.2)(eslint@10.11.0(jiti@2.7.0)(supports-color@10.2.2))(ioredis@5.11.1(supports-color@10.2.2))(lightningcss@1.33.0)(magicast@0.5.5)(meow@14.1.0)(optionator@0.9.4)(oxc-parser@0.141.0)(rolldown@1.2.11)(rollup-plugin-visualizer@7.1.1(rolldown@1.2.11)(rollup@4.63.5))(rollup@4.63.5)(sass-embedded@1.105.1)(sass@1.105.0)(srvx@0.11.22)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))(supports-color@10.2.2)(terser@5.51.2)(tsx@4.23.15)(typescript@6.0.3)(vite@8.3.2)(yaml@2.9.1)
+        version: 4.5.2(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@libsql/client@0.18.0)(@oxc-project/types@0.151.0)(@parcel/watcher@2.6.0)(@types/node@25.9.8)(@vitejs/devtools@0.7.6)(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)))(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))(esbuild@0.28.2)(eslint@10.11.0(jiti@2.7.0)(supports-color@10.2.2))(ioredis@5.11.1(supports-color@10.2.2))(lightningcss@1.33.0)(magicast@0.5.5)(meow@14.1.0)(optionator@0.9.4)(oxc-parser@0.141.0)(rolldown@1.2.11)(rollup-plugin-visualizer@7.1.1(rolldown@1.2.11)(rollup@4.63.5))(rollup@4.63.5)(sass-embedded@1.105.1)(sass@1.105.0)(srvx@0.11.22)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))(supports-color@10.2.2)(terser@5.51.2)(tsx@4.23.15)(typescript@6.0.3)(vite@8.3.2)(yaml@2.9.1)
       sass-embedded:
         specifier: 'catalog:'
         version: 1.105.1
@@ -562,7 +562,7 @@ importers:
         version: link:../../packages/client-graphql
       drizzle-orm:
         specifier: 'catalog:'
-        version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)
+        version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
       lucide-solid:
         specifier: 'catalog:'
         version: 1.49.0(solid-js@1.9.15)
@@ -598,7 +598,7 @@ importers:
     dependencies:
       drizzle-orm:
         specifier: 'catalog:'
-        version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)
+        version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
       graphql:
         specifier: 'catalog:'
         version: 17.0.2
@@ -692,7 +692,7 @@ importers:
         version: link:../../packages/client-graphql
       drizzle-orm:
         specifier: 'catalog:'
-        version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)
+        version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
       lucide-react:
         specifier: 'catalog:'
         version: 1.49.0(@types/react@19.3.0)(react@19.3.0)
@@ -701,7 +701,7 @@ importers:
         version: link:../../packages/models
       nitro:
         specifier: 'catalog:'
-        version: 3.0.260311-beta(@libsql/client@0.18.0)(dotenv@18.0.5)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(giget@3.3.1)(jiti@2.7.0)(rollup@4.63.5)(vite@8.3.2)
+        version: 3.0.260311-beta(@libsql/client@0.18.0)(dotenv@18.0.5)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))(giget@3.3.1)(jiti@2.7.0)(rollup@4.63.5)(vite@8.3.2)
       react:
         specifier: 'catalog:'
         version: 19.3.0
@@ -825,10 +825,10 @@ importers:
     dependencies:
       drizzle-orm:
         specifier: 'catalog:'
-        version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)
+        version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
       pg:
         specifier: 'catalog:'
-        version: 8.23.0
+        version: 8.23.1
       server-env:
         specifier: workspace:^
         version: link:../server-env
@@ -887,7 +887,7 @@ importers:
         version: 4.8.1(@pothos/core@4.15.1(graphql@17.0.2))(graphql@17.0.2)
       drizzle-orm:
         specifier: 'catalog:'
-        version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)
+        version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
       file-type:
         specifier: 'catalog:'
         version: 22.1.1(supports-color@7.2.0)
@@ -7056,11 +7056,11 @@ packages:
   perfect-debounce@2.1.0:
     resolution: {integrity: sha512-LjgdTytVFXeUgtHZr9WYViYSM/g8MkcTPYDlPa3cDqMirHjKiSZPYd6DoL7pK8AJQr+uWkQvCjHNdiMqsrJs+g==}
 
-  pg-cloudflare@1.4.0:
-    resolution: {integrity: sha512-Vo7z/6rrQYxpNRylp4Tlob2elzbh+N/MOQbxFVWCxS7oEx6jF53GTJFxK2WWpKuBRkmiin4Mt+xofFDjx09R0A==}
+  pg-cloudflare@1.4.1:
+    resolution: {integrity: sha512-6PQbsFWZcp9EmJEwy5cGQ2La+AMWpP46lgbb8X+U/XsHIUweYDNCpeuKck5RxL2MdVFi7krbbEi5nX4Zh7JhrQ==}
 
-  pg-connection-string@2.14.0:
-    resolution: {integrity: sha512-XwWDGcLRGCXAR8F/AM5bG7Q+A3Wm2s6QeEjlOKZLlH3UYcguiqCWKyWXVag5TLTIjR7oOJUY8kcADaZgWPyLeg==}
+  pg-connection-string@2.14.1:
+    resolution: {integrity: sha512-qR3kGNPBLpCNtz0evbKA0Y/MRFXwSSdT+pTJvYp/bXTcReZbvX1kzF0IyTc1QnxqF7AZbOeBhNL8R5mYQZV/MA==}
 
   pg-int8@1.0.1:
     resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
@@ -7074,12 +7074,15 @@ packages:
   pg-protocol@1.16.0:
     resolution: {integrity: sha512-sILXutLVjCLjcDuOmvhX5e2Z4cS5qG/6Bu3VkpFwdf/633ElGLpEh9bgmuI5I4sqKqkifQiGyiCcx1HdtrK7tg==}
 
+  pg-protocol@1.16.1:
+    resolution: {integrity: sha512-p9VOFMiHB/ZbJATetbg+99PxssTVSQRnyuPSQ67mN1+1KBOjZaZ83ZQzltnxPhJwSsC3nwVjJ10DVJlerbFzLg==}
+
   pg-types@2.2.0:
     resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
     engines: {node: '>=4'}
 
-  pg@8.23.0:
-    resolution: {integrity: sha512-Ip2EQCngowJLGOfCwkFhPXU7/ljlhn6Rxlmy4XYfL2Y+vyRM59+8uR2xqRWKdYmbXmxCFOAmKxBuSUCdF34qLg==}
+  pg@8.23.1:
+    resolution: {integrity: sha512-aL96AHANtWjPLDOLqnhx+ngp9+UK7ETEU8VJrDCGvsSSi/mGLcWYsS6Herg7lmaBJe4uwrfqsa7gTEFaSizDoQ==}
     engines: {node: '>= 16.0.0'}
     peerDependencies:
       pg-native: '>=3.0.1'
@@ -10330,14 +10333,14 @@ snapshots:
       - rolldown
       - unplugin
 
-  '@nuxt/devtools-kit@4.0.0-beta.2(@nuxt/kit@4.5.2(magic-string@1.4.2)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2)))(nitropack@2.13.4(@libsql/client@0.18.0)(@parcel/watcher@2.6.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(oxc-parser@0.141.0)(rolldown@1.2.11)(srvx@0.11.22)(supports-color@10.2.2)(vite@8.3.2))(vite@8.3.2)':
+  '@nuxt/devtools-kit@4.0.0-beta.2(@nuxt/kit@4.5.2(magic-string@1.4.2)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2)))(nitropack@2.13.4(@libsql/client@0.18.0)(@parcel/watcher@2.6.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))(oxc-parser@0.141.0)(rolldown@1.2.11)(srvx@0.11.22)(supports-color@10.2.2)(vite@8.3.2))(vite@8.3.2)':
     dependencies:
       '@nuxt/kit': 4.5.2(magic-string@1.4.2)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2))
       nostics: 1.3.0
       tinyexec: 1.3.1
       vite: 8.3.2(@types/node@25.9.8)(@vitejs/devtools@0.7.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
     optionalDependencies:
-      nitropack: 2.13.4(@libsql/client@0.18.0)(@parcel/watcher@2.6.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(oxc-parser@0.141.0)(rolldown@1.2.11)(srvx@0.11.22)(supports-color@10.2.2)(vite@8.3.2)
+      nitropack: 2.13.4(@libsql/client@0.18.0)(@parcel/watcher@2.6.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))(oxc-parser@0.141.0)(rolldown@1.2.11)(srvx@0.11.22)(supports-color@10.2.2)(vite@8.3.2)
 
   '@nuxt/devtools-wizard@3.4.2':
     dependencies:
@@ -10350,7 +10353,7 @@ snapshots:
       pkg-types: 2.3.3
       semver: 7.8.5
 
-  '@nuxt/devtools@3.4.2(@vitejs/devtools@0.7.6)(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)))(ioredis@5.11.1(supports-color@10.2.2))(magic-string@1.4.2)(oxc-parser@0.141.0)(rolldown@1.2.11)(supports-color@10.2.2)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2))(vite@8.3.2)(vue@3.5.43(typescript@6.0.3))':
+  '@nuxt/devtools@3.4.2(@vitejs/devtools@0.7.6)(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)))(ioredis@5.11.1(supports-color@10.2.2))(magic-string@1.4.2)(oxc-parser@0.141.0)(rolldown@1.2.11)(supports-color@10.2.2)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2))(vite@8.3.2)(vue@3.5.43(typescript@6.0.3))':
     dependencies:
       '@nuxt/devtools-kit': 3.4.2(magic-string@1.4.2)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2))(vite@8.3.2)
       '@nuxt/devtools-wizard': 3.4.2
@@ -10380,7 +10383,7 @@ snapshots:
       sirv: 3.0.2
       structured-clone-es: 2.0.1
       tinyglobby: 0.2.17
-      unstorage: 1.17.5(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)))(ioredis@5.11.1(supports-color@10.2.2))
+      unstorage: 1.17.5(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)))(ioredis@5.11.1(supports-color@10.2.2))
       vite: 8.3.2(@types/node@25.9.8)(@vitejs/devtools@0.7.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
       vite-plugin-inspect: 11.4.1(@nuxt/kit@4.5.2(magic-string@1.4.2)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2)))(vite@8.3.2)
       vite-plugin-vue-tracer: 1.5.0(vite@8.3.2)(vue@3.5.43(typescript@6.0.3))
@@ -10417,12 +10420,12 @@ snapshots:
       - utf-8-validate
       - vue
 
-  '@nuxt/devtools@4.0.0-beta.2(879af487c7253d0082230914593a0388)':
+  '@nuxt/devtools@4.0.0-beta.2(759d37f231280c1df95f01f5fa05f50a)':
     dependencies:
       '@devframes/hub': 1.1.0(@devframes/agentic@1.1.0)(crossws@0.4.12(srvx@0.11.22))(devframe@1.1.0)(ocache@0.1.5)
       '@devframes/plugin-code-server': 1.1.0(@devframes/hub-ui@1.1.0(@devframes/hub@1.1.0(@devframes/agentic@1.1.0)(crossws@0.4.12(srvx@0.11.22))(devframe@1.1.0))(@devframes/json-render@1.1.0(@devframes/hub@1.1.0(@devframes/agentic@1.1.0)(crossws@0.4.12(srvx@0.11.22))(devframe@1.1.0))(devframe@1.1.0))(devframe@1.1.0))(@devframes/hub@1.1.0(@devframes/agentic@1.1.0)(crossws@0.4.12(srvx@0.11.22))(devframe@1.1.0))(devframe@1.1.0)(vite@8.3.2)
       '@devframes/plugin-data-inspector': 1.1.0(devframe@1.1.0)(vite@8.3.2)
-      '@nuxt/devtools-kit': 4.0.0-beta.2(@nuxt/kit@4.5.2(magic-string@1.4.2)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2)))(nitropack@2.13.4(@libsql/client@0.18.0)(@parcel/watcher@2.6.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(oxc-parser@0.141.0)(rolldown@1.2.11)(srvx@0.11.22)(supports-color@10.2.2)(vite@8.3.2))(vite@8.3.2)
+      '@nuxt/devtools-kit': 4.0.0-beta.2(@nuxt/kit@4.5.2(magic-string@1.4.2)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2)))(nitropack@2.13.4(@libsql/client@0.18.0)(@parcel/watcher@2.6.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))(oxc-parser@0.141.0)(rolldown@1.2.11)(srvx@0.11.22)(supports-color@10.2.2)(vite@8.3.2))(vite@8.3.2)
       '@nuxt/kit': 4.5.2(magic-string@1.4.2)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2))
       '@vitejs/devtools': 0.7.6(@devframes/json-render@1.1.0(@devframes/hub@1.1.0(@devframes/agentic@1.1.0)(crossws@0.4.12(srvx@0.11.22))(devframe@1.1.0))(devframe@1.1.0))(crossws@0.4.12(srvx@0.11.22))(srvx@0.11.22)(vite@8.3.2)
       '@vitejs/devtools-kit': 0.7.6(@devframes/agentic@1.1.0)(cac@7.0.0)(crossws@0.4.12(srvx@0.11.22))(ocache@0.1.5)(srvx@0.11.22)(vite@8.3.2)
@@ -10439,13 +10442,13 @@ snapshots:
       perfect-debounce: 2.1.0
       pkg-types: 2.3.3
       tinyglobby: 0.2.17
-      unstorage: 1.17.5(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)))(ioredis@5.11.1(supports-color@10.2.2))
+      unstorage: 1.17.5(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)))(ioredis@5.11.1(supports-color@10.2.2))
       verkit: 0.4.1
       vite: 8.3.2(@types/node@25.9.8)(@vitejs/devtools@0.7.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
       vite-plugin-vue-devtools: 9.0.0-beta.0(@devframes/agentic@1.1.0)(@vitejs/devtools@0.7.6)(cac@7.0.0)(crossws@0.4.12(srvx@0.11.22))(srvx@0.11.22)(vite@8.3.2)
       vite-plugin-vue-tracer: 1.5.0(vite@8.3.2)(vue@3.5.43(typescript@6.0.3))
     optionalDependencies:
-      nitropack: 2.13.4(@libsql/client@0.18.0)(@parcel/watcher@2.6.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(oxc-parser@0.141.0)(rolldown@1.2.11)(srvx@0.11.22)(supports-color@10.2.2)(vite@8.3.2)
+      nitropack: 2.13.4(@libsql/client@0.18.0)(@parcel/watcher@2.6.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))(oxc-parser@0.141.0)(rolldown@1.2.11)(srvx@0.11.22)(supports-color@10.2.2)(vite@8.3.2)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -10514,7 +10517,7 @@ snapshots:
       - rolldown
       - unplugin
 
-  '@nuxt/nitro-server@4.5.2(9551e6216a8c56fc475f4030cc17ee3b)':
+  '@nuxt/nitro-server@4.5.2(6b13eaf2a6aaa3d58db7bf61162baac4)':
     dependencies:
       '@nuxt/devalue': 2.0.2
       '@nuxt/kit': 4.5.2(magic-string@1.4.2)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2))
@@ -10531,9 +10534,9 @@ snapshots:
       impound: 1.2.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2)
       klona: 2.0.6
       mocked-exports: 0.1.1
-      nitropack: 2.13.4(@libsql/client@0.18.0)(@parcel/watcher@2.6.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(oxc-parser@0.141.0)(rolldown@1.2.11)(srvx@0.11.22)(supports-color@10.2.2)(vite@8.3.2)
+      nitropack: 2.13.4(@libsql/client@0.18.0)(@parcel/watcher@2.6.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))(oxc-parser@0.141.0)(rolldown@1.2.11)(srvx@0.11.22)(supports-color@10.2.2)(vite@8.3.2)
       nostics: 1.3.0
-      nuxt: 4.5.2(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@libsql/client@0.18.0)(@oxc-project/types@0.151.0)(@parcel/watcher@2.6.0)(@types/node@25.9.8)(@vitejs/devtools@0.7.6)(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)))(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(esbuild@0.28.2)(eslint@10.11.0(jiti@2.7.0)(supports-color@10.2.2))(ioredis@5.11.1(supports-color@10.2.2))(lightningcss@1.33.0)(magicast@0.5.5)(meow@14.1.0)(optionator@0.9.4)(oxc-parser@0.141.0)(rolldown@1.2.11)(rollup-plugin-visualizer@7.1.1(rolldown@1.2.11)(rollup@4.63.5))(rollup@4.63.5)(sass-embedded@1.105.1)(sass@1.105.0)(srvx@0.11.22)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))(supports-color@10.2.2)(terser@5.51.2)(tsx@4.23.15)(typescript@6.0.3)(vite@8.3.2)(yaml@2.9.1)
+      nuxt: 4.5.2(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@libsql/client@0.18.0)(@oxc-project/types@0.151.0)(@parcel/watcher@2.6.0)(@types/node@25.9.8)(@vitejs/devtools@0.7.6)(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)))(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))(esbuild@0.28.2)(eslint@10.11.0(jiti@2.7.0)(supports-color@10.2.2))(ioredis@5.11.1(supports-color@10.2.2))(lightningcss@1.33.0)(magicast@0.5.5)(meow@14.1.0)(optionator@0.9.4)(oxc-parser@0.141.0)(rolldown@1.2.11)(rollup-plugin-visualizer@7.1.1(rolldown@1.2.11)(rollup@4.63.5))(rollup@4.63.5)(sass-embedded@1.105.1)(sass@1.105.0)(srvx@0.11.22)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))(supports-color@10.2.2)(terser@5.51.2)(tsx@4.23.15)(typescript@6.0.3)(vite@8.3.2)(yaml@2.9.1)
       nypm: 0.6.10
       ohash: 2.0.12
       pathe: 2.0.3
@@ -10541,7 +10544,7 @@ snapshots:
       std-env: 4.2.0
       ufo: 1.6.4
       unctx: 3.0.1(magic-string@1.4.2)(oxc-parser@0.141.0)(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2))
-      unstorage: 1.17.5(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)))(ioredis@5.11.1(supports-color@10.2.2))
+      unstorage: 1.17.5(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)))(ioredis@5.11.1(supports-color@10.2.2))
       vue: 3.5.43(typescript@6.0.3)
       vue-bundle-renderer: 2.4.0
       vue-devtools-stub: 0.1.0
@@ -10618,7 +10621,7 @@ snapshots:
       rc9: 3.1.0
       std-env: 4.2.0
 
-  '@nuxt/vite-builder@4.5.2(8d0ce0c51944429165e107d1c0482285)':
+  '@nuxt/vite-builder@4.5.2(31b661163c3c36ba09564f01fcfe5188)':
     dependencies:
       '@nuxt/kit': 4.5.2(magic-string@1.4.2)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2))
       '@vitejs/plugin-vue': 6.0.9(vite@8.3.2)(vue@3.5.43(typescript@6.0.3))
@@ -10636,7 +10639,7 @@ snapshots:
       knitwork: 1.3.0
       mlly: 1.8.2
       mocked-exports: 0.1.1
-      nuxt: 4.5.2(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@libsql/client@0.18.0)(@oxc-project/types@0.151.0)(@parcel/watcher@2.6.0)(@types/node@25.9.8)(@vitejs/devtools@0.7.6)(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)))(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(esbuild@0.28.2)(eslint@10.11.0(jiti@2.7.0)(supports-color@10.2.2))(ioredis@5.11.1(supports-color@10.2.2))(lightningcss@1.33.0)(magicast@0.5.5)(meow@14.1.0)(optionator@0.9.4)(oxc-parser@0.141.0)(rolldown@1.2.11)(rollup-plugin-visualizer@7.1.1(rolldown@1.2.11)(rollup@4.63.5))(rollup@4.63.5)(sass-embedded@1.105.1)(sass@1.105.0)(srvx@0.11.22)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))(supports-color@10.2.2)(terser@5.51.2)(tsx@4.23.15)(typescript@6.0.3)(vite@8.3.2)(yaml@2.9.1)
+      nuxt: 4.5.2(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@libsql/client@0.18.0)(@oxc-project/types@0.151.0)(@parcel/watcher@2.6.0)(@types/node@25.9.8)(@vitejs/devtools@0.7.6)(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)))(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))(esbuild@0.28.2)(eslint@10.11.0(jiti@2.7.0)(supports-color@10.2.2))(ioredis@5.11.1(supports-color@10.2.2))(lightningcss@1.33.0)(magicast@0.5.5)(meow@14.1.0)(optionator@0.9.4)(oxc-parser@0.141.0)(rolldown@1.2.11)(rollup-plugin-visualizer@7.1.1(rolldown@1.2.11)(rollup@4.63.5))(rollup@4.63.5)(sass-embedded@1.105.1)(sass@1.105.0)(srvx@0.11.22)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))(supports-color@10.2.2)(terser@5.51.2)(tsx@4.23.15)(typescript@6.0.3)(vite@8.3.2)(yaml@2.9.1)
       nypm: 0.6.10
       pathe: 2.0.3
       pkg-types: 2.3.3
@@ -13076,10 +13079,10 @@ snapshots:
 
   dayjs@1.11.23: {}
 
-  db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)):
+  db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)):
     optionalDependencies:
       '@libsql/client': 0.18.0
-      drizzle-orm: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)
+      drizzle-orm: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
 
   debug@4.4.3(supports-color@10.2.2):
     dependencies:
@@ -13232,11 +13235,11 @@ snapshots:
       esbuild: 0.25.12
       tsx: 4.23.15
 
-  drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0):
+  drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1):
     optionalDependencies:
       '@libsql/client': 0.18.0
       '@types/pg': 8.23.1
-      pg: 8.23.0
+      pg: 8.23.1
 
   dunder-proto@1.0.1:
     dependencies:
@@ -15184,11 +15187,11 @@ snapshots:
 
   nf3@0.3.24: {}
 
-  nitro@3.0.260311-beta(@libsql/client@0.18.0)(dotenv@18.0.5)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(giget@3.3.1)(jiti@2.7.0)(rollup@4.63.5)(vite@8.3.2):
+  nitro@3.0.260311-beta(@libsql/client@0.18.0)(dotenv@18.0.5)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))(giget@3.3.1)(jiti@2.7.0)(rollup@4.63.5)(vite@8.3.2):
     dependencies:
       consola: 3.4.2
       crossws: 0.4.12(srvx@0.11.22)
-      db0: 0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))
+      db0: 0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))
       env-runner: 0.1.16
       h3: 2.0.1-rc.32(crossws@0.4.12(srvx@0.11.22))(ocache@0.1.5)
       hookable: 6.1.2
@@ -15218,7 +15221,7 @@ snapshots:
       - sqlite3
       - wrangler
 
-  nitropack@2.13.4(@libsql/client@0.18.0)(@parcel/watcher@2.6.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(oxc-parser@0.141.0)(rolldown@1.2.11)(srvx@0.11.22)(supports-color@10.2.2)(vite@8.3.2):
+  nitropack@2.13.4(@libsql/client@0.18.0)(@parcel/watcher@2.6.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))(oxc-parser@0.141.0)(rolldown@1.2.11)(srvx@0.11.22)(supports-color@10.2.2)(vite@8.3.2):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.2
       '@rollup/plugin-alias': 6.0.0(rollup@4.63.5)
@@ -15239,7 +15242,7 @@ snapshots:
       cookie-es: 2.0.1
       croner: 10.0.1
       crossws: 0.3.5
-      db0: 0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))
+      db0: 0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))
       defu: 6.1.7
       destr: 2.0.5
       dot-prop: 10.2.0
@@ -15285,7 +15288,7 @@ snapshots:
       unenv: 2.0.0-rc.24
       unimport: 6.5.0(esbuild@0.28.2)(oxc-parser@0.141.0)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2)
       unplugin-utils: 0.3.2
-      unstorage: 1.17.5(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)))(ioredis@5.11.1(supports-color@10.2.2))
+      unstorage: 1.17.5(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)))(ioredis@5.11.1(supports-color@10.2.2))
       untyped: 2.0.0
       unwasm: 0.5.3
       youch: 4.1.1
@@ -15373,16 +15376,16 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nuxt@4.5.2(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@libsql/client@0.18.0)(@oxc-project/types@0.151.0)(@parcel/watcher@2.6.0)(@types/node@25.9.8)(@vitejs/devtools@0.7.6)(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)))(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))(esbuild@0.28.2)(eslint@10.11.0(jiti@2.7.0)(supports-color@10.2.2))(ioredis@5.11.1(supports-color@10.2.2))(lightningcss@1.33.0)(magicast@0.5.5)(meow@14.1.0)(optionator@0.9.4)(oxc-parser@0.141.0)(rolldown@1.2.11)(rollup-plugin-visualizer@7.1.1(rolldown@1.2.11)(rollup@4.63.5))(rollup@4.63.5)(sass-embedded@1.105.1)(sass@1.105.0)(srvx@0.11.22)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))(supports-color@10.2.2)(terser@5.51.2)(tsx@4.23.15)(typescript@6.0.3)(vite@8.3.2)(yaml@2.9.1):
+  nuxt@4.5.2(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@libsql/client@0.18.0)(@oxc-project/types@0.151.0)(@parcel/watcher@2.6.0)(@types/node@25.9.8)(@vitejs/devtools@0.7.6)(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)))(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))(esbuild@0.28.2)(eslint@10.11.0(jiti@2.7.0)(supports-color@10.2.2))(ioredis@5.11.1(supports-color@10.2.2))(lightningcss@1.33.0)(magicast@0.5.5)(meow@14.1.0)(optionator@0.9.4)(oxc-parser@0.141.0)(rolldown@1.2.11)(rollup-plugin-visualizer@7.1.1(rolldown@1.2.11)(rollup@4.63.5))(rollup@4.63.5)(sass-embedded@1.105.1)(sass@1.105.0)(srvx@0.11.22)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))(supports-color@10.2.2)(terser@5.51.2)(tsx@4.23.15)(typescript@6.0.3)(vite@8.3.2)(yaml@2.9.1):
     dependencies:
       '@dxup/nuxt': 0.5.10(esbuild@0.28.2)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2)
       '@nuxt/cli': 3.37.0(@nuxt/schema@4.5.2)(@parcel/watcher@2.6.0)(cac@7.0.0)(magicast@0.5.5)(supports-color@10.2.2)
-      '@nuxt/devtools': 3.4.2(@vitejs/devtools@0.7.6)(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)))(ioredis@5.11.1(supports-color@10.2.2))(magic-string@1.4.2)(oxc-parser@0.141.0)(rolldown@1.2.11)(supports-color@10.2.2)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2))(vite@8.3.2)(vue@3.5.43(typescript@6.0.3))
+      '@nuxt/devtools': 3.4.2(@vitejs/devtools@0.7.6)(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)))(ioredis@5.11.1(supports-color@10.2.2))(magic-string@1.4.2)(oxc-parser@0.141.0)(rolldown@1.2.11)(supports-color@10.2.2)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2))(vite@8.3.2)(vue@3.5.43(typescript@6.0.3))
       '@nuxt/kit': 4.5.2(magic-string@1.4.2)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2))
-      '@nuxt/nitro-server': 4.5.2(9551e6216a8c56fc475f4030cc17ee3b)
+      '@nuxt/nitro-server': 4.5.2(6b13eaf2a6aaa3d58db7bf61162baac4)
       '@nuxt/schema': 4.5.2
       '@nuxt/telemetry': 2.9.1(@nuxt/kit@4.5.2(magic-string@1.4.2)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2)))
-      '@nuxt/vite-builder': 4.5.2(8d0ce0c51944429165e107d1c0482285)
+      '@nuxt/vite-builder': 4.5.2(31b661163c3c36ba09564f01fcfe5188)
       '@unhead/vue': 3.4.1(@oxc-project/types@0.151.0)(esbuild@0.28.2)(lightningcss@1.33.0)(oxc-parser@0.141.0)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.2)(vue@3.5.43(typescript@6.0.3))
       '@vue/shared': 3.5.43
       chokidar: 5.0.0
@@ -15893,18 +15896,20 @@ snapshots:
 
   perfect-debounce@2.1.0: {}
 
-  pg-cloudflare@1.4.0:
+  pg-cloudflare@1.4.1:
     optional: true
 
-  pg-connection-string@2.14.0: {}
+  pg-connection-string@2.14.1: {}
 
   pg-int8@1.0.1: {}
 
-  pg-pool@3.14.0(pg@8.23.0):
+  pg-pool@3.14.0(pg@8.23.1):
     dependencies:
-      pg: 8.23.0
+      pg: 8.23.1
 
   pg-protocol@1.16.0: {}
+
+  pg-protocol@1.16.1: {}
 
   pg-types@2.2.0:
     dependencies:
@@ -15914,15 +15919,15 @@ snapshots:
       postgres-date: 1.0.7
       postgres-interval: 1.2.0
 
-  pg@8.23.0:
+  pg@8.23.1:
     dependencies:
-      pg-connection-string: 2.14.0
-      pg-pool: 3.14.0(pg@8.23.0)
-      pg-protocol: 1.16.0
+      pg-connection-string: 2.14.1
+      pg-pool: 3.14.0(pg@8.23.1)
+      pg-protocol: 1.16.1
       pg-types: 2.2.0
       pgpass: 1.0.5
     optionalDependencies:
-      pg-cloudflare: 1.4.0
+      pg-cloudflare: 1.4.1
 
   pgpass@1.0.5:
     dependencies:
@@ -17369,7 +17374,7 @@ snapshots:
       escape-string-regexp: 5.0.0
       ufo: 1.6.4
 
-  unstorage@1.17.5(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0)))(ioredis@5.11.1(supports-color@10.2.2)):
+  unstorage@1.17.5(db0@0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)))(ioredis@5.11.1(supports-color@10.2.2)):
     dependencies:
       anymatch: 3.1.3
       chokidar: 5.0.0
@@ -17380,7 +17385,7 @@ snapshots:
       ofetch: 1.5.1
       ufo: 1.6.4
     optionalDependencies:
-      db0: 0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.0))
+      db0: 0.3.4(@libsql/client@0.18.0)(drizzle-orm@0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1))
       ioredis: 5.11.1(supports-color@10.2.2)
 
   unstorage@2.0.0-alpha.10: {}
