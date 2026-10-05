@@ -322,10 +322,10 @@ catalogs:
       version: 17.6.0
     lucide-react:
       specifier: ^1.8.0
-      version: 1.51.0
+      version: 1.52.0
     lucide-solid:
       specifier: ^1.8.0
-      version: 1.51.0
+      version: 1.52.0
     modern-normalize:
       specifier: ^3.0.1
       version: 3.0.1
@@ -565,7 +565,7 @@ importers:
         version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
       lucide-solid:
         specifier: 'catalog:'
-        version: 1.51.0(solid-js@1.9.15)
+        version: 1.52.0(solid-js@1.9.15)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -695,7 +695,7 @@ importers:
         version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
       lucide-react:
         specifier: 'catalog:'
-        version: 1.51.0(@types/react@19.3.0)(react@19.3.0)
+        version: 1.52.0(@types/react@19.3.0)(react@19.3.0)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -6441,8 +6441,8 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-react@1.51.0:
-    resolution: {integrity: sha512-9929jimol5y7VbXUlVKcgURMSeIxFJB7dtWCkRAaNnF7KiCRkSkhmqWPUmAmUFYPezNawFk6qvz3Mu0gEnfI4g==}
+  lucide-react@1.52.0:
+    resolution: {integrity: sha512-TUgPtl5ZI9WgxOcbu4ckaC5B3l1qxPQrCMgb6OfUB9owx/OvSJfcf93SMgUWAxRw5/1XDfh9uI5F5iNGXCcGDQ==}
     peerDependencies:
       '@types/react': '*'
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -6450,8 +6450,8 @@ packages:
       '@types/react':
         optional: true
 
-  lucide-solid@1.51.0:
-    resolution: {integrity: sha512-b0z/9xRox77JhPkDPAmh+/SQGWeSQ4k/eG08WyUKMhmRrykH8pPIwFapPotgVGi7GR5gh0jFsZ8YKlhU6COp0A==}
+  lucide-solid@1.52.0:
+    resolution: {integrity: sha512-uesU2FyxqeSmPNxdMkbjL20ZpTEu1U0WS3kXXsuPrd3aku8vVyPmz9+/d1PO8G6PvKKVaVH3MDZmL5gLO6kYSg==}
     peerDependencies:
       solid-js: ^1.4.7
 
@@ -14689,13 +14689,13 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-react@1.51.0(@types/react@19.3.0)(react@19.3.0):
+  lucide-react@1.52.0(@types/react@19.3.0)(react@19.3.0):
     dependencies:
       react: 19.3.0
     optionalDependencies:
       '@types/react': 19.3.0
 
-  lucide-solid@1.51.0(solid-js@1.9.15):
+  lucide-solid@1.52.0(solid-js@1.9.15):
     dependencies:
       solid-js: 1.9.15
 
