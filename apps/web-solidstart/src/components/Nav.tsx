@@ -10,6 +10,7 @@ const Nav = () => {
           <A class={styles.button} href="/">てる子</A>
         </div>
         <div>
+          <A class={styles.button} href="/settings/tokens">Account</A>
           <A class={`${styles.button} ${styles.square}`} href="/new">
             <Plus />
           </A>

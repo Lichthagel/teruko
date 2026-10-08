@@ -31,6 +31,35 @@ test.describe("server endpoints", () => {
     expect(result.data.images.edges).toHaveLength(3);
   });
 
+  test("opens the signed-in userscript token settings", async ({ request }) => {
+    const response = await request.get("/settings/tokens");
+
+    expect(response.status()).toBe(200);
+    expect(await response.text()).toContain("Create token");
+  });
+
+  test("token management endpoints require an authenticated origin", async ({ request }) => {
+    const response = await request.post("/settings/tokens", { data: {} });
+
+    expect(response.status()).toBe(403);
+  });
+
+  test("test-only bearer token can be revoked", async ({ request }, testInfo) => {
+    const origin = testInfo.project.use.baseURL as string;
+    const minted = await request.post("/settings/tokens", { headers: { Origin: origin }, data: {} });
+    expect(minted.status()).toBe(201);
+    const { id, token } = await minted.json() as { id: string; token: string };
+
+    const query = await request.post("/graphql", {
+      headers: { Authorization: `Bearer ${token}` },
+      data: { query: "{ images(first: 1) { edges { node { id } } } }" },
+    });
+    expect(query.status()).toBe(200);
+
+    const revoked = await request.delete(`/settings/tokens?id=${encodeURIComponent(id)}`, { headers: { Origin: origin }, data: {} });
+    expect(revoked.status()).toBe(204);
+  });
+
   test("handles unknown image IDs", async ({ page }, testInfo) => {
     await page.goto("/999999");
 

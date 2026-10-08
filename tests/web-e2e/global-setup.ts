@@ -1,9 +1,17 @@
 import { execFileSync, spawn } from "node:child_process";
-import path from "node:path";
+import { existsSync, realpathSync } from "node:fs";
+import path, { delimiter } from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 
 const workspacePath = fileURLToPath(new URL("../..", import.meta.url));
+const pnpmShim = process.env.PATH?.split(delimiter).map(dir => path.join(dir, "pnpm")).find(existsSync);
+if (!pnpmShim)
+  throw new Error("pnpm executable not found on PATH");
+const resolvedPnpm = realpathSync(pnpmShim);
+const pnpmCli = [path.join(path.dirname(resolvedPnpm), "bin", "pnpm.mjs"), path.join(path.dirname(resolvedPnpm), "pnpm.mjs"), resolvedPnpm].find(candidate => existsSync(candidate) && /\.m?js$/.test(candidate));
+if (!pnpmCli)
+  throw new Error(`Cannot resolve pnpm JavaScript CLI from ${resolvedPnpm}`);
 
 const apps = [
   {
@@ -19,7 +27,7 @@ const apps = [
     port: 3101,
   },
   {
-    args: ["build"],
+    args: ["build/index.js"],
     command: process.execPath,
     cwd: "apps/web-svelte",
     port: 3102,
@@ -33,7 +41,7 @@ const apps = [
 ] as const;
 
 const run = (args: string[]) => {
-  execFileSync("pnpm", args, {
+  execFileSync(process.execPath, [pnpmCli, ...args], {
     cwd: workspacePath,
     stdio: "inherit",
   });
@@ -72,6 +80,9 @@ const globalSetup = async () => {
       env: {
         ...process.env,
         HOST: "127.0.0.1",
+        NODE_ENV: "test",
+        AUTH_TEST_BYPASS: "1",
+        AUTH_TEST_ALLOW_BEARER: "1",
         IMG_FOLDER: process.env.IMG_FOLDER ?? path.join(workspacePath, "data"),
         NITRO_HOST: "127.0.0.1",
         PORT: String(port),

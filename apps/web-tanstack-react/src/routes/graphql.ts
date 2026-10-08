@@ -1,14 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { getYoga } from "server-graphql";
+import { authHandler, getYoga, protectRequest } from "server-graphql";
 
-const yogaApp = getYoga({ Response });
-
+const yoga = getYoga({ Response });
 export const Route = createFileRoute("/graphql")({
   server: {
     handlers: {
-      GET: yogaApp,
-      OPTIONS: yogaApp,
-      POST: yogaApp,
+      GET: async ({ request }: { request: Request }) => {
+        const authResponse = await authHandler(request);
+        if (authResponse)
+          return authResponse;
+        const protectedResponse = await protectRequest(request);
+        if (protectedResponse)
+          return protectedResponse;
+        return yoga(request);
+      },
+      OPTIONS: async ({ request }: { request: Request }) => yoga(request),
+      POST: async ({ request }: { request: Request }) => {
+        const authResponse = await authHandler(request);
+        if (authResponse)
+          return authResponse;
+        const protectedResponse = await protectRequest(request);
+        if (protectedResponse)
+          return protectedResponse;
+        return yoga(request);
+      },
     },
   },
 });

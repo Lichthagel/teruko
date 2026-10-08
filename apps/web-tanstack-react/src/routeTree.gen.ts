@@ -15,7 +15,11 @@ import { Route as GraphqlRouteImport } from './routes/graphql'
 import { Route as IdAvifRouteImport } from './routes/$id/avif'
 import { Route as IdOriginalRouteImport } from './routes/$id/original'
 import { Route as IdWebpRouteImport } from './routes/$id/webp'
+import { Route as AuthCallbackRouteImport } from './routes/auth.callback'
+import { Route as AuthLoginRouteImport } from './routes/auth.login'
+import { Route as AuthLogoutRouteImport } from './routes/auth.logout'
 import { Route as ImgFilenameRouteImport } from './routes/img/$filename'
+import { Route as SettingsTokensRouteImport } from './routes/settings.tokens'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -47,9 +51,29 @@ const IdWebpRoute = IdWebpRouteImport.update({
   path: '/webp',
   getParentRoute: () => IdRoute,
 } as any)
+const AuthCallbackRoute = AuthCallbackRouteImport.update({
+  id: '/auth/callback',
+  path: '/auth/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/auth/login',
+  path: '/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthLogoutRoute = AuthLogoutRouteImport.update({
+  id: '/auth/logout',
+  path: '/auth/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ImgFilenameRoute = ImgFilenameRouteImport.update({
   id: '/img/$filename',
   path: '/img/$filename',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsTokensRoute = SettingsTokensRouteImport.update({
+  id: '/settings/tokens',
+  path: '/settings/tokens',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -60,7 +84,11 @@ export interface FileRoutesByFullPath {
   '/$id/avif': typeof IdAvifRoute
   '/$id/original': typeof IdOriginalRoute
   '/$id/webp': typeof IdWebpRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/logout': typeof AuthLogoutRoute
   '/img/$filename': typeof ImgFilenameRoute
+  '/settings/tokens': typeof SettingsTokensRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -69,7 +97,11 @@ export interface FileRoutesByTo {
   '/$id/avif': typeof IdAvifRoute
   '/$id/original': typeof IdOriginalRoute
   '/$id/webp': typeof IdWebpRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/logout': typeof AuthLogoutRoute
   '/img/$filename': typeof ImgFilenameRoute
+  '/settings/tokens': typeof SettingsTokensRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -79,7 +111,11 @@ export interface FileRoutesById {
   '/$id/avif': typeof IdAvifRoute
   '/$id/original': typeof IdOriginalRoute
   '/$id/webp': typeof IdWebpRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/logout': typeof AuthLogoutRoute
   '/img/$filename': typeof ImgFilenameRoute
+  '/settings/tokens': typeof SettingsTokensRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -90,7 +126,11 @@ export interface FileRouteTypes {
     | '/$id/avif'
     | '/$id/original'
     | '/$id/webp'
+    | '/auth/callback'
+    | '/auth/login'
+    | '/auth/logout'
     | '/img/$filename'
+    | '/settings/tokens'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -99,7 +139,11 @@ export interface FileRouteTypes {
     | '/$id/avif'
     | '/$id/original'
     | '/$id/webp'
+    | '/auth/callback'
+    | '/auth/login'
+    | '/auth/logout'
     | '/img/$filename'
+    | '/settings/tokens'
   id:
     | '__root__'
     | '/'
@@ -108,14 +152,22 @@ export interface FileRouteTypes {
     | '/$id/avif'
     | '/$id/original'
     | '/$id/webp'
+    | '/auth/callback'
+    | '/auth/login'
+    | '/auth/logout'
     | '/img/$filename'
+    | '/settings/tokens'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   IdRoute: typeof IdRouteWithChildren
   GraphqlRoute: typeof GraphqlRoute
+  AuthCallbackRoute: typeof AuthCallbackRoute
+  AuthLoginRoute: typeof AuthLoginRoute
+  AuthLogoutRoute: typeof AuthLogoutRoute
   ImgFilenameRoute: typeof ImgFilenameRoute
+  SettingsTokensRoute: typeof SettingsTokensRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -162,11 +214,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IdWebpRouteImport
       parentRoute: typeof IdRoute
     }
+    '/auth/callback': {
+      id: '/auth/callback'
+      path: '/auth/callback'
+      fullPath: '/auth/callback'
+      preLoaderRoute: typeof AuthCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/login': {
+      id: '/auth/login'
+      path: '/auth/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/logout': {
+      id: '/auth/logout'
+      path: '/auth/logout'
+      fullPath: '/auth/logout'
+      preLoaderRoute: typeof AuthLogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/img/$filename': {
       id: '/img/$filename'
       path: '/img/$filename'
       fullPath: '/img/$filename'
       preLoaderRoute: typeof ImgFilenameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings/tokens': {
+      id: '/settings/tokens'
+      path: '/settings/tokens'
+      fullPath: '/settings/tokens'
+      preLoaderRoute: typeof SettingsTokensRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -190,17 +270,22 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   IdRoute: IdRouteWithChildren,
   GraphqlRoute: GraphqlRoute,
+  AuthCallbackRoute: AuthCallbackRoute,
+  AuthLoginRoute: AuthLoginRoute,
+  AuthLogoutRoute: AuthLogoutRoute,
   ImgFilenameRoute: ImgFilenameRoute,
+  SettingsTokensRoute: SettingsTokensRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
+import type { startInstance } from './start.ts'
 declare module '@tanstack/react-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
   }
 }
