@@ -1,18 +1,9 @@
 import { execFileSync, spawn } from "node:child_process";
-import { existsSync, realpathSync } from "node:fs";
-import path, { delimiter } from "node:path";
+import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 
 const workspacePath = fileURLToPath(new URL("../..", import.meta.url));
-const pnpmShim = process.env.PATH?.split(delimiter).map(dir => path.join(dir, "pnpm")).find(existsSync);
-if (!pnpmShim)
-  throw new Error("pnpm executable not found on PATH");
-const resolvedPnpm = realpathSync(pnpmShim);
-const pnpmCli = [path.join(path.dirname(resolvedPnpm), "bin", "pnpm.mjs"), path.join(path.dirname(resolvedPnpm), "pnpm.mjs"), resolvedPnpm].find(candidate => existsSync(candidate) && /\.m?js$/.test(candidate));
-if (!pnpmCli)
-  throw new Error(`Cannot resolve pnpm JavaScript CLI from ${resolvedPnpm}`);
-
 const apps = [
   {
     args: [".output/server/index.mjs"],
@@ -41,8 +32,9 @@ const apps = [
 ] as const;
 
 const run = (args: string[]) => {
-  execFileSync(process.execPath, [pnpmCli, ...args], {
+  execFileSync(process.platform === "win32" ? "pnpm.cmd" : "pnpm", args, {
     cwd: workspacePath,
+    shell: process.platform === "win32",
     stdio: "inherit",
   });
 };
