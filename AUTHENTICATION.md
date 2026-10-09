@@ -12,6 +12,6 @@ Set these server-side environment variables on each app:
 - `AUTH_SESSION_SECRET`: random secret of at least 32 characters, shared by apps on the same host
 - `AUTH_BASE_URL`: canonical public origin, such as `https://gallery.example.com`
 
-Apply the `server-db` Drizzle migration before starting the apps. User sessions and userscript tokens are stored in PostgreSQL. All app pages, image routes, downloads, and GraphQL operations require authentication. Create and revoke bearer tokens at `/settings/tokens`; tokens are shown once, stored hashed, and revoked server-side. A valid token authenticates the same access as an OIDC session. The userscript needs its configured Teruko host in its `@connect` metadata and a signed-in Teruko browser session open to create a token.
+Apply the `server-db` Drizzle migration before starting the apps. User sessions and userscript tokens are stored in PostgreSQL. All app pages, image routes, downloads, and GraphQL operations require authentication. Generate or reset the single userscript bearer token at `/settings/tokens`; the secret is shown once, stored hashed, and reset invalidates the previous token. A valid token authenticates the same access as an OIDC session. The userscript needs its configured Teruko host in its `@connect` metadata and a signed-in Teruko browser session open to create a token.
 
 `AUTH_TEST_BYPASS=1` only enables a fixed test identity when `NODE_ENV=test`; it must never be set in a deployed environment.

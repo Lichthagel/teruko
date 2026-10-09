@@ -31,33 +31,40 @@ test.describe("server endpoints", () => {
     expect(result.data.images.edges).toHaveLength(3);
   });
 
-  test("opens the signed-in userscript token settings", async ({ request }) => {
-    const response = await request.get("/settings/tokens");
+  test("opens the signed-in userscript token settings", async ({ page }) => {
+    await page.goto("/settings/tokens");
 
-    expect(response.status()).toBe(200);
-    expect(await response.text()).toContain("Create token");
+    await expect(page.getByRole("heading", { name: "Userscript access" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Generate / reset token" })).toBeVisible();
+  });
+
+  test("generates and resets the userscript bearer token", async ({ page, request }) => {
+    await page.goto("/settings/tokens");
+
+    await page.getByRole("button", { name: "Generate / reset token" }).click();
+    const firstToken = page.getByLabel("New bearer token");
+    await expect(firstToken).toContainText(/^teruko_/);
+    const firstSecret = (await firstToken.textContent()) ?? "";
+    const firstAccess = await request.post("/graphql", {
+      headers: { Authorization: `Bearer ${firstSecret}` },
+      data: { query: "{ images(first: 1) { edges { node { id } } } }" },
+    });
+    expect(firstAccess.status()).toBe(200);
+
+    await page.getByRole("button", { name: "Generate / reset token" }).click();
+    await expect(page.getByLabel("New bearer token")).not.toHaveText(firstSecret ?? "");
+    await expect(page.getByLabel("New bearer token")).toContainText(/^teruko_/);
+    const revokedAccess = await request.post("/graphql", {
+      headers: { Authorization: `Bearer ${firstSecret}` },
+      data: { query: "{ images(first: 1) { edges { node { id } } } }" },
+    });
+    expect(revokedAccess.status()).toBe(401);
   });
 
   test("token management endpoints require an authenticated origin", async ({ request }) => {
-    const response = await request.post("/settings/tokens", { data: {} });
+    const response = await request.post("/api/settings/tokens", { headers: { Origin: "https://not-teruko.invalid" }, data: {} });
 
     expect(response.status()).toBe(403);
-  });
-
-  test("test-only bearer token can be revoked", async ({ request }, testInfo) => {
-    const origin = testInfo.project.use.baseURL as string;
-    const minted = await request.post("/settings/tokens", { headers: { Origin: origin }, data: {} });
-    expect(minted.status()).toBe(201);
-    const { id, token } = await minted.json() as { id: string; token: string };
-
-    const query = await request.post("/graphql", {
-      headers: { Authorization: `Bearer ${token}` },
-      data: { query: "{ images(first: 1) { edges { node { id } } } }" },
-    });
-    expect(query.status()).toBe(200);
-
-    const revoked = await request.delete(`/settings/tokens?id=${encodeURIComponent(id)}`, { headers: { Origin: origin }, data: {} });
-    expect(revoked.status()).toBe(204);
   });
 
   test("handles unknown image IDs", async ({ page }, testInfo) => {

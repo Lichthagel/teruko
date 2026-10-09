@@ -20,6 +20,7 @@ import { Route as AuthLoginRouteImport } from './routes/auth.login'
 import { Route as AuthLogoutRouteImport } from './routes/auth.logout'
 import { Route as ImgFilenameRouteImport } from './routes/img/$filename'
 import { Route as SettingsTokensRouteImport } from './routes/settings.tokens'
+import { Route as ApiSettingsTokensRouteImport } from './routes/api.settings.tokens'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -76,6 +77,11 @@ const SettingsTokensRoute = SettingsTokensRouteImport.update({
   path: '/settings/tokens',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiSettingsTokensRoute = ApiSettingsTokensRouteImport.update({
+  id: '/api/settings/tokens',
+  path: '/api/settings/tokens',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,6 +95,7 @@ export interface FileRoutesByFullPath {
   '/auth/logout': typeof AuthLogoutRoute
   '/img/$filename': typeof ImgFilenameRoute
   '/settings/tokens': typeof SettingsTokensRoute
+  '/api/settings/tokens': typeof ApiSettingsTokensRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -102,6 +109,7 @@ export interface FileRoutesByTo {
   '/auth/logout': typeof AuthLogoutRoute
   '/img/$filename': typeof ImgFilenameRoute
   '/settings/tokens': typeof SettingsTokensRoute
+  '/api/settings/tokens': typeof ApiSettingsTokensRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/auth/logout': typeof AuthLogoutRoute
   '/img/$filename': typeof ImgFilenameRoute
   '/settings/tokens': typeof SettingsTokensRoute
+  '/api/settings/tokens': typeof ApiSettingsTokensRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
     | '/auth/logout'
     | '/img/$filename'
     | '/settings/tokens'
+    | '/api/settings/tokens'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -144,6 +154,7 @@ export interface FileRouteTypes {
     | '/auth/logout'
     | '/img/$filename'
     | '/settings/tokens'
+    | '/api/settings/tokens'
   id:
     | '__root__'
     | '/'
@@ -157,6 +168,7 @@ export interface FileRouteTypes {
     | '/auth/logout'
     | '/img/$filename'
     | '/settings/tokens'
+    | '/api/settings/tokens'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -168,6 +180,7 @@ export interface RootRouteChildren {
   AuthLogoutRoute: typeof AuthLogoutRoute
   ImgFilenameRoute: typeof ImgFilenameRoute
   SettingsTokensRoute: typeof SettingsTokensRoute
+  ApiSettingsTokensRoute: typeof ApiSettingsTokensRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -249,6 +262,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsTokensRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/settings/tokens': {
+      id: '/api/settings/tokens'
+      path: '/api/settings/tokens'
+      fullPath: '/api/settings/tokens'
+      preLoaderRoute: typeof ApiSettingsTokensRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -275,6 +295,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthLogoutRoute: AuthLogoutRoute,
   ImgFilenameRoute: ImgFilenameRoute,
   SettingsTokensRoute: SettingsTokensRoute,
+  ApiSettingsTokensRoute: ApiSettingsTokensRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

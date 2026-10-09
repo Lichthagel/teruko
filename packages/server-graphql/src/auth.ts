@@ -1,7 +1,7 @@
 import { Buffer } from "node:buffer";
 import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 import process from "node:process";
-import { and, eq, gt, isNull, lt } from "drizzle-orm";
+import { and, eq, gt, isNull, lt, sql } from "drizzle-orm";
 import * as oidc from "openid-client";
 import { dAuthSession, db, dUserToken } from "server-db";
 import env from "server-env";
@@ -73,6 +73,8 @@ const isSameOrigin = (request: Request, origin: string) => {
     return false;
   }
 };
+export const isSameOriginRequest = (request: Request, origin: string) => isSameOrigin(request, origin);
+
 const cookieHeader = (request: Request, name: string, value: string, maxAge: number) =>
   `${name}=${value}; Path=${cookiePath}; HttpOnly; SameSite=Lax; Max-Age=${maxAge}${secureCookie(request) ? "; Secure" : ""}`;
 
@@ -215,17 +217,22 @@ export const logout = async (request: Request) => {
   return new Response(null, { status: 303, headers: { "Location": "/login", "Set-Cookie": cookieHeader(request, sessionCookieName(request), "", 0) } });
 };
 
-export const createUserToken = async (user: AuthUser) => {
+export const resetUserToken = async (user: AuthUser) => {
   const token = `teruko_${randomToken(32)}`;
   const id = randomToken(16);
-  await db.insert(dUserToken).values({ id, subject: user.subject, tokenHash: sha256(token) });
+  await db.transaction(async (tx) => {
+    await tx.execute(sql`SELECT pg_advisory_xact_lock(hashtext(${user.subject}))`);
+    await tx.update(dUserToken).set({ revokedAt: new Date() }).where(and(eq(dUserToken.subject, user.subject), isNull(dUserToken.revokedAt)));
+    await tx.insert(dUserToken).values({ id, subject: user.subject, tokenHash: sha256(token) });
+  });
   return { id, token };
 };
 
-export const revokeUserToken = async (user: AuthUser, id: string) => {
-  await db.update(dUserToken).set({ revokedAt: new Date() }).where(and(eq(dUserToken.id, id), eq(dUserToken.subject, user.subject), isNull(dUserToken.revokedAt)));
+export const userTokenStatus = async (user: AuthUser) => {
+  const active = await db.select({ createdAt: dUserToken.createdAt })
+    .from(dUserToken)
+    .where(and(eq(dUserToken.subject, user.subject), isNull(dUserToken.revokedAt)))
+    .orderBy(sql`${dUserToken.createdAt} DESC`)
+    .limit(1);
+  return { active: active.length > 0, createdAt: active[0]?.createdAt.toISOString() ?? null };
 };
-
-export const listUserTokens = async (user: AuthUser) => db.select({ id: dUserToken.id, createdAt: dUserToken.createdAt, revokedAt: dUserToken.revokedAt })
-  .from(dUserToken)
-  .where(eq(dUserToken.subject, user.subject));

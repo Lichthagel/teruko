@@ -1,9 +1,31 @@
-import { authorizeRequest, createUserToken, finishLogin, logout, requireGraphqlUser, requireUser, revokeUserToken, startLogin } from "./auth.js";
+import { authorizeRequest, finishLogin, isSameOriginRequest, logout, requireGraphqlUser, requireUser, resetUserToken, startLogin, userTokenStatus } from "./auth.js";
 
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), {
   status,
   headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
 });
+
+export const userTokenHandler = async (request: Request): Promise<Response | null> => {
+  const url = new URL(request.url);
+  if (url.pathname !== "/api/settings/tokens")
+    return null;
+
+  const user = await requireUser(request);
+  if (!user)
+    return json({ error: "Unauthorized" }, 401);
+
+  if (request.method === "GET") {
+    return json(await userTokenStatus(user));
+  }
+
+  const origin = request.headers.get("origin");
+  if (!origin || !isSameOriginRequest(request, origin))
+    return json({ error: "Forbidden" }, 403);
+
+  if (request.method === "POST")
+    return json(await resetUserToken(user), 201);
+  return new Response(null, { status: 405, headers: { Allow: "GET, POST" } });
+};
 
 export const authHandler = async (request: Request): Promise<Response | null> => {
   const url = new URL(request.url);
@@ -19,24 +41,6 @@ export const authHandler = async (request: Request): Promise<Response | null> =>
 export const protectRequest = async (request: Request) => {
   const requestUrl = new URL(request.url);
   const path = requestUrl.pathname;
-  if (path === "/settings/tokens" && request.method === "POST") {
-    const user = await authorizeRequest(request);
-    if (!user)
-      return json({ error: "Unauthorized" }, 401);
-    if (!request.headers.get("origin") || request.headers.get("origin") !== requestUrl.origin)
-      return json({ error: "Forbidden" }, 403);
-    return json(await createUserToken(user), 201);
-  }
-  if (path === "/settings/tokens" && request.method === "DELETE") {
-    const user = await authorizeRequest(request);
-    if (!user)
-      return json({ error: "Unauthorized" }, 401);
-    const tokenId = requestUrl.searchParams.get("id");
-    if (!tokenId || !request.headers.get("origin") || request.headers.get("origin") !== requestUrl.origin)
-      return json({ error: "Forbidden" }, 403);
-    await revokeUserToken(user, tokenId);
-    return new Response(null, { status: 204 });
-  }
   if (path === "/graphql" && request.method === "OPTIONS")
     return null;
   if (path === "/login" && request.method === "GET") {
