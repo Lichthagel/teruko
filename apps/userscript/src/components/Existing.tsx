@@ -1,6 +1,6 @@
 import type { Component } from "solid-js";
 import { createEffect, createResource, Match, onCleanup, Switch } from "solid-js";
-import { createUrqlClient, IMAGE_BY_FILENAME, TERUKO_BASE_URL } from "../constants";
+import { graphqlRequest, IMAGE_BY_FILENAME, TERUKO_BASE_URL } from "../constants";
 
 const Existing: Component<{ filename: string }> = (props) => {
   const [existingId, { refetch }] = createResource(
@@ -9,9 +9,10 @@ const Existing: Component<{ filename: string }> = (props) => {
       const token = GM_getValue<string>("teruko_token", "");
       if (!token)
         return undefined;
-      const client = createUrqlClient(`${TERUKO_BASE_URL}/graphql`);
-      const result = await client.query(IMAGE_BY_FILENAME, { filename }).toPromise();
-      return (result.data?.imageByFilename as { id: string } | null)?.id;
+      const result = await graphqlRequest<{ imageByFilename: { id: string } | null }>(IMAGE_BY_FILENAME, { filename });
+      if (result.errors?.length)
+        throw new Error(result.errors[0]?.message ?? "GraphQL request failed");
+      return result.data?.imageByFilename?.id;
     },
   );
 

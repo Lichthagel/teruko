@@ -1,5 +1,3 @@
-import { createUrqlClient as createSharedUrqlClient } from "client-graphql";
-
 export const CREATE_IMAGE = `
 mutation ($files: [Upload!]!, $title: String, $source: String, $tags: [String!]) {
   createImage(files: $files, title: $title, source: $source, tags: $tags) {
@@ -18,33 +16,41 @@ query ImageByFilename($filename: String!) {
 
 export const TERUKO_BASE_URL = import.meta.env.VITE_TERUKO_BASE_URL as string;
 
-export const createUrqlClient = (url: string) => createSharedUrqlClient(url, {
-  fetch: async (input: RequestInfo | URL, init?: RequestInit) => {
-    const token = GM_getValue<string>("teruko_token", "");
-    if (!token)
-      throw new Error("Add a userscript token at Teruko settings first");
-    const response = await new Promise<GmResponseEvent<"text", any>>((resolve, reject) => {
-      GM_xmlhttpRequest({
-        url: String(input),
-        method: "POST",
-        data: init?.body as FormData | string | undefined,
-        headers: {
-          ...Object.fromEntries(new Headers(init?.headers).entries()),
-          Authorization: `Bearer ${token}`,
-        },
-        responseType: "text",
-        onload: resolve,
-        onerror: reject,
-      });
+type GraphqlResponse<T> = {
+  data?: T;
+  errors?: { message: string }[];
+};
+
+export const graphqlRequest = <T>(query: string, variables: Record<string, unknown> = {}) => {
+  const token = GM_getValue<string>("teruko_token", "");
+  if (!token)
+    return Promise.reject(new Error("Add a userscript token at Teruko settings first"));
+
+  return new Promise<GraphqlResponse<T>>((resolve, reject) => {
+    GM_xmlhttpRequest({
+      url: `${TERUKO_BASE_URL}/graphql`,
+      method: "POST",
+      data: JSON.stringify({ query, variables }),
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+      responseType: "text",
+      onload: (response) => {
+        if (response.status < 200 || response.status >= 300) {
+          reject(new Error(`GraphQL request failed with status ${response.status}`));
+          return;
+        }
+
+        try {
+          resolve(JSON.parse(response.responseText) as GraphqlResponse<T>);
+        } catch (error) {
+          reject(error);
+        }
+      },
+      onerror: event => reject(event.error),
     });
-    const responseHeaders = new Headers();
-    for (const header of response.responseHeaders.split(/\r?\n/)) {
-      const separator = header.indexOf(":");
-      if (separator > 0)
-        responseHeaders.append(header.slice(0, separator).trim(), header.slice(separator + 1).trim());
-    }
-    return new Response(response.responseText, { status: response.status, headers: responseHeaders });
-  },
-});
+  });
+};
 
 export const setUserscriptToken = (token: string) => GM_setValue("teruko_token", token);
