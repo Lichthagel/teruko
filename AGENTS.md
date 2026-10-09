@@ -1,6 +1,6 @@
 # AGENTS.md
 
-pnpm + Nx monorepo. Package manager is pinned in `package.json` (`pnpm@11.14.0`); never use npm or yarn. Node version is pinned in `.node-version` (24.18.0). `.npmrc` sets `shamefully-hoist=true` and `auto-install-peers=true` — rely on this, don't "fix" hoisting issues.
+pnpm + Nx monorepo. Package manager and runtime versions are pinned in `package.json`; never use npm or yarn. `.npmrc` sets `shamefully-hoist=true` and `auto-install-peers=true` — rely on this, don't "fix" hoisting issues.
 
 ## Commands
 
