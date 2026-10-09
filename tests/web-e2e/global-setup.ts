@@ -85,6 +85,7 @@ const globalSetup = async () => {
         AUTH_TEST_ALLOW_BEARER: "1",
         IMG_FOLDER: process.env.IMG_FOLDER ?? path.join(workspacePath, "data"),
         NITRO_HOST: "127.0.0.1",
+        ...(cwd === "apps/web-svelte" ? { PROTOCOL_HEADER: "x-forwarded-proto" } : {}),
         PORT: String(port),
       },
       stdio: ["ignore", "pipe", "pipe"],
