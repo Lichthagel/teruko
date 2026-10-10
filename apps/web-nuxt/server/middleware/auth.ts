@@ -1,4 +1,4 @@
-import { protectRequest } from "server-graphql";
+import { protectAppRequest } from "server-auth/routes";
 
 export default defineEventHandler(async (event) => {
   const headers = event.node.req.headers;
@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
     method: event.node.req.method,
     headers: headers as HeadersInit,
   });
-  const response = await protectRequest(request);
+  const response = await protectAppRequest(request);
   if (!response)
     return;
   event.node.res.statusCode = response.status;

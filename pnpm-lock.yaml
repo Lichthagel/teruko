@@ -511,6 +511,9 @@ importers:
       models:
         specifier: workspace:*
         version: link:../../packages/models
+      server-auth:
+        specifier: workspace:^
+        version: link:../../packages/server-auth
       server-db:
         specifier: workspace:^
         version: link:../../packages/server-db
@@ -572,6 +575,9 @@ importers:
       models:
         specifier: workspace:*
         version: link:../../packages/models
+      server-auth:
+        specifier: workspace:*
+        version: link:../../packages/server-auth
       server-db:
         specifier: workspace:*
         version: link:../../packages/server-db
@@ -605,6 +611,9 @@ importers:
       graphql:
         specifier: 'catalog:'
         version: 17.0.2
+      server-auth:
+        specifier: workspace:^
+        version: link:../../packages/server-auth
       server-db:
         specifier: workspace:^
         version: link:../../packages/server-db
@@ -711,6 +720,9 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.3.0(react@19.3.0)
+      server-auth:
+        specifier: workspace:*
+        version: link:../../packages/server-auth
       server-db:
         specifier: workspace:*
         version: link:../../packages/server-db
@@ -824,6 +836,34 @@ importers:
         specifier: workspace:^
         version: link:../tsconfig
 
+  packages/server-auth:
+    dependencies:
+      drizzle-orm:
+        specifier: 'catalog:'
+        version: 0.45.3(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
+      openid-client:
+        specifier: 'catalog:'
+        version: 6.8.8
+      server-db:
+        specifier: workspace:^
+        version: link:../server-db
+      server-env:
+        specifier: workspace:^
+        version: link:../server-env
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 25.9.9
+      '@types/pg':
+        specifier: 'catalog:'
+        version: 8.23.1
+      '@typescript/native':
+        specifier: 'catalog:'
+        version: typescript@7.0.2
+      tsconfig:
+        specifier: workspace:^
+        version: link:../tsconfig
+
   packages/server-db:
     dependencies:
       drizzle-orm:
@@ -903,9 +943,9 @@ importers:
       models:
         specifier: workspace:^
         version: link:../models
-      openid-client:
-        specifier: 'catalog:'
-        version: 6.8.8
+      server-auth:
+        specifier: workspace:^
+        version: link:../server-auth
       server-db:
         specifier: workspace:^
         version: link:../server-db

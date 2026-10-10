@@ -133,16 +133,24 @@ export const requireUser = async (request: Request) => {
   return user;
 };
 
+export const requireSessionUser = async (request: Request): Promise<AuthUser | null> => {
+  if (testAuthEnabled())
+    return testUser;
+  const user = await getSession(request);
+  if (!user)
+    return null;
+  const origin = request.headers.get("origin");
+  if (request.method !== "GET" && request.method !== "HEAD" && (!origin || !isSameOrigin(request, origin)))
+    return null;
+  if (origin && !isSameOrigin(request, origin))
+    return null;
+  return user;
+};
+
 export const authorizeRequest = async (request: Request): Promise<AuthUser | null> => {
   if (request.headers.get("authorization")?.startsWith("Bearer "))
     return authenticateRequest(request);
   return requireUser(request);
-};
-
-export const requireGraphqlUser = async (request: Request) => {
-  if (testAuthEnabled() && (!request.headers.get("authorization")?.startsWith("Bearer ") || !testBearerEnabled()))
-    return testUser;
-  return authenticateRequest(request);
 };
 
 export const startLogin = async (request: Request) => {

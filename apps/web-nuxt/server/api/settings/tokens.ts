@@ -1,4 +1,4 @@
-import { userTokenHandler } from "server-graphql";
+import { userTokenHandler } from "server-auth/routes";
 
 export default defineEventHandler(async (event) => {
   const forwardedProto = event.node.req.headers["x-forwarded-proto"];

@@ -7,9 +7,9 @@ type TokenStatus = { active: boolean; createdAt: string | null };
 
 const getTokenStatus = createServerFn({ method: "GET" }).handler(async () => {
   const { getRequest, setResponseHeader } = await import("@tanstack/react-start/server");
-  const { requireUser, userTokenStatus } = await import("server-graphql");
+  const { requireSessionUser, userTokenStatus } = await import("server-auth/auth");
   const request = getRequest();
-  const user = await requireUser(request);
+  const user = await requireSessionUser(request);
   if (!user)
     throw redirect({ href: `/login?returnTo=${encodeURIComponent("/settings/tokens")}` });
   setResponseHeader("Cache-Control", "no-store");
@@ -18,9 +18,9 @@ const getTokenStatus = createServerFn({ method: "GET" }).handler(async () => {
 
 const resetToken = createServerFn({ method: "POST" }).handler(async () => {
   const { getRequest, getRequestUrl, setResponseHeader } = await import("@tanstack/react-start/server");
-  const { requireUser, resetUserToken } = await import("server-graphql");
+  const { requireSessionUser, resetUserToken } = await import("server-auth/auth");
   const request = getRequest();
-  const user = await requireUser(request);
+  const user = await requireSessionUser(request);
   if (!user)
     throw new Error("Unauthorized");
   const origin = request.headers.get("origin");

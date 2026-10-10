@@ -1,4 +1,4 @@
-import { logout } from "server-graphql";
+import { logout } from "server-auth/auth";
 
 export default defineEventHandler(async (event) => {
   const headers = event.node.req.headers;

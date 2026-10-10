@@ -20,8 +20,6 @@ export const getYoga = (
     },
   });
 
-export * from "./auth.js";
-
 export * from "./routes.js";
 export { default as schema } from "./schema/index.js";
 

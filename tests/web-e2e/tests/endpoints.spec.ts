@@ -35,6 +35,7 @@ test.describe("server endpoints", () => {
     await page.goto("/login?returnTo=%2Fsettings%2Ftokens");
 
     await expect(page.getByRole("heading", { name: "A quieter way to browse." })).toBeVisible();
+    expect(page.url()).toContain("/login?");
     await expect(page.locator("a[href^='/auth/login?returnTo=']")).toHaveAttribute(
       "href",
       /\/auth\/login\?returnTo=%2Fsettings%2Ftokens$/,

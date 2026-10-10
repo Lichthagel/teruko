@@ -9,6 +9,7 @@ const config = defineConfig({
     devtools(),
     tanstackStart(),
     nitro({
+      inlineDynamicImports: true,
       rolldownConfig: {
         treeshake: {
           moduleSideEffects: true,

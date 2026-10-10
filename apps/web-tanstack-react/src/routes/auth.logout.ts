@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { logout } from "server-graphql";
+import { logout } from "server-auth/auth";
 
 export const Route = createFileRoute("/auth/logout")({
   server: {

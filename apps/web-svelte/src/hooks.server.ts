@@ -1,8 +1,10 @@
 import type { Handle } from "@sveltejs/kit/hooks";
-import { protectRequest } from "server-graphql";
+import { protectAppRequest } from "server-auth/routes";
 
 export const handle: Handle = async ({ event, resolve }) => {
-  const response = await protectRequest(event.request);
+  if (event.url.pathname === "/graphql")
+    return resolve(event);
+  const response = await protectAppRequest(event.request);
   if (response) {
     return response;
   }
