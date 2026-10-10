@@ -1,10 +1,10 @@
 <script lang="ts">
+  import { resolve } from "$app/paths";
   import styles from "client-css/m/login.module.scss";
 
   type Props = { data: { returnTo: string } };
   const { data }: Props = $props();
 
-  const loginUrl = $derived(`/auth/login?returnTo=${encodeURIComponent(data.returnTo)}`);
 </script>
 
 <svelte:head>
@@ -18,6 +18,6 @@
   <section class={styles.card} aria-labelledby="signin-title">
     <h2 id="signin-title" class={styles.cardTitle}>Welcome back</h2>
     <p class={styles.cardText}>Your collection is waiting. Authentication is handled securely by your organization.</p>
-    <a class={styles.button} href={loginUrl}>Continue with Authentik</a>
+    <a class={styles.button} href={resolve(`/auth/login?returnTo=${encodeURIComponent(data.returnTo)}`, {})}>Continue with Authentik</a>
   </section>
 </main>

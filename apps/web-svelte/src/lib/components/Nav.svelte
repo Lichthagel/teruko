@@ -10,7 +10,7 @@
       <a class={styles.button} href={resolve("/", {})}>てる子</a>
     </div>
     <div>
-      <a class={styles.button} href="/settings/tokens">Account</a>
+      <a class={styles.button} href={resolve("/settings/tokens", {})}>Account</a>
       <a class="{styles.button} {styles.square}" href={resolve("/new", {})}>
         <Plus />
       </a>
