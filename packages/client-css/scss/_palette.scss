@@ -12,8 +12,10 @@
     }
   }
 
+  --primary: #b32368;
+  --primary-foreground: #fff;
   --inverted-text: var(--base);
-  --selection-color: var(--blue);
+  --selection-color: var(--primary);
 
   @media (prefers-color-scheme: dark) {
     @each $flavor, $colors in catppuccin.$palette {
@@ -24,7 +26,9 @@
       }
     }
 
+    --primary: var(--pink);
+    --primary-foreground: var(--base);
     --inverted-text: var(--crust);
-    --selection-color: var(--mauve);
+    --selection-color: var(--primary);
   }
 }

@@ -6,7 +6,7 @@
 }
 
 .eyebrow {
-  color: var(--teal);
+  color: var(--primary);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -65,8 +65,8 @@
 }
 
 .primaryButton {
-  background: var(--teal);
-  color: var(--base);
+  background: var(--primary);
+  color: var(--primary-foreground);
 }
 
 .secondaryButton {
@@ -78,7 +78,7 @@
   overflow-wrap: anywhere;
   margin: 1rem 0 0;
   padding: 1rem;
-  border: 1px solid var(--teal);
+  border: 1px solid var(--primary);
   border-radius: variables.$radius;
   background: var(--base);
   color: var(--text);
