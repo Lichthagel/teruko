@@ -7,7 +7,7 @@ const json = (body: unknown, status = 200) => new Response(JSON.stringify(body),
 });
 
 export const requireGraphqlUser = async (request: Request) => {
-  if (process.env.NODE_ENV === "test" && process.env.AUTH_TEST_BYPASS === "1" && (!request.headers.get("authorization")?.startsWith("Bearer ") || process.env.AUTH_TEST_ALLOW_BEARER !== "1"))
+  if (process.env.NODE_ENV === "test" && process.env.AUTH_TEST_BYPASS === "1" && request.headers.get("x-teruko-e2e-oidc") !== "1" && (!request.headers.get("authorization")?.startsWith("Bearer ") || process.env.AUTH_TEST_ALLOW_BEARER !== "1"))
     return { subject: "teruko-e2e-test-user", email: "test@example.invalid" };
   return authenticateRequest(request);
 };

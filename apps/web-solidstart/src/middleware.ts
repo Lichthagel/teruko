@@ -8,7 +8,6 @@ export default createMiddleware({
     const response = await protectAppRequest(event.request);
     if (response) {
       event.response.status = response.status;
-      response.headers.forEach((value, key) => event.response.headers.set(key, value));
       return response;
     }
   }],

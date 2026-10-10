@@ -16,6 +16,7 @@ const cookiePath = "/";
 const testUser = { subject: "teruko-e2e-test-user", email: "test@example.invalid" };
 const testAuthEnabled = () => env.NODE_ENV === "test" && process.env.AUTH_TEST_BYPASS === "1";
 const testBearerEnabled = () => testAuthEnabled() && process.env.AUTH_TEST_ALLOW_BEARER === "1";
+const testAuthBypassFor = (request: Request) => testAuthEnabled() && request.headers.get("x-teruko-e2e-oidc") !== "1";
 const randomToken = (bytes = 32) => randomBytes(bytes).toString("base64url");
 const sha256 = (value: string) => createHash("sha256").update(value).digest("hex");
 const signature = (value: string) => createHmac("sha256", authConfig().sessionSecret).update(value).digest("base64url");
@@ -33,7 +34,13 @@ const authConfig = () => {
 let oidcConfiguration: Promise<oidc.Configuration> | undefined;
 const getOidcConfiguration = () => {
   const { issuer, clientId, clientSecret } = authConfig();
-  oidcConfiguration ??= oidc.discovery(new URL(issuer), clientId, { token_endpoint_auth_method: "client_secret_basic" }, oidc.ClientSecretBasic(clientSecret));
+  oidcConfiguration ??= oidc.discovery(
+    new URL(issuer),
+    clientId,
+    { token_endpoint_auth_method: "client_secret_basic" },
+    oidc.ClientSecretBasic(clientSecret),
+    env.NODE_ENV === "test" ? { execute: [oidc.allowInsecureRequests] } : undefined,
+  );
   return oidcConfiguration;
 };
 
@@ -78,9 +85,11 @@ export const isSameOriginRequest = (request: Request, origin: string) => isSameO
 const cookieHeader = (request: Request, name: string, value: string, maxAge: number) =>
   `${name}=${value}; Path=${cookiePath}; HttpOnly; SameSite=Lax; Max-Age=${maxAge}${secureCookie(request) ? "; Secure" : ""}`;
 
-const appendCookie = (response: Response, value: string) => {
-  response.headers.append("Set-Cookie", value);
-  return response;
+const redirectWithCookies = (url: string | URL, cookies: string[]) => {
+  const headers = new Headers({ Location: url.toString() });
+  for (const cookie of cookies)
+    headers.append("Set-Cookie", cookie);
+  return new Response(null, { status: 302, headers });
 };
 
 export const getSession = async (request: Request): Promise<AuthUser | null> => {
@@ -97,7 +106,7 @@ export const getSession = async (request: Request): Promise<AuthUser | null> => 
 };
 
 export const authenticateRequest = async (request: Request): Promise<AuthUser | null> => {
-  if (testAuthEnabled() && (!request.headers.get("authorization")?.startsWith("Bearer ") || !testBearerEnabled()))
+  if (testAuthBypassFor(request) && (!request.headers.get("authorization")?.startsWith("Bearer ") || !testBearerEnabled()))
     return testUser;
   const authorization = request.headers.get("authorization");
   if (authorization?.startsWith("Bearer ")) {
@@ -120,7 +129,7 @@ const authenticateUserToken = async (rawToken: string): Promise<AuthUser | null>
 };
 
 export const requireUser = async (request: Request) => {
-  if (testAuthEnabled() && !request.headers.get("authorization")?.startsWith("Bearer "))
+  if (testAuthBypassFor(request) && !request.headers.get("authorization")?.startsWith("Bearer "))
     return testUser;
   const user = await getSession(request);
   if (!user)
@@ -134,7 +143,7 @@ export const requireUser = async (request: Request) => {
 };
 
 export const requireSessionUser = async (request: Request): Promise<AuthUser | null> => {
-  if (testAuthEnabled())
+  if (testAuthBypassFor(request))
     return testUser;
   const user = await getSession(request);
   if (!user)
@@ -173,7 +182,7 @@ export const startLogin = async (request: Request) => {
     state,
   });
   const transactionPayload = Buffer.from(JSON.stringify({ verifier, nonce, state, redirectUri: redirectUri.href, returnTo, createdAt: Date.now() })).toString("base64url");
-  return appendCookie(Response.redirect(authorizationUrl.href, 302), cookieHeader(request, "teruko_oidc", `${transactionPayload}.${signature(transactionPayload)}`, transactionTtlSeconds));
+  return redirectWithCookies(authorizationUrl.href, [cookieHeader(request, "teruko_oidc", `${transactionPayload}.${signature(transactionPayload)}`, transactionTtlSeconds)]);
 };
 
 export const finishLogin = async (request: Request) => {
@@ -206,8 +215,10 @@ export const finishLogin = async (request: Request) => {
     const expiresAt = new Date(Date.now() + sessionTtlSeconds * 1000);
     await db.delete(dAuthSession).where(lt(dAuthSession.expiresAt, new Date()));
     await db.insert(dAuthSession).values({ id, subject: claims.sub, email: typeof claims.email === "string" ? claims.email : null, expiresAt });
-    const response = appendCookie(Response.redirect(new URL(transaction.returnTo ?? "/", baseUrl(request)), 302), cookieHeader(request, sessionCookieName(request), `${id}.${signature(id)}`, sessionTtlSeconds));
-    return appendCookie(response, cookieHeader(request, "teruko_oidc", "", 0));
+    return redirectWithCookies(new URL(transaction.returnTo ?? "/", baseUrl(request)), [
+      cookieHeader(request, sessionCookieName(request), `${id}.${signature(id)}`, sessionTtlSeconds),
+      cookieHeader(request, "teruko_oidc", "", 0),
+    ]);
   } catch (error) {
     console.error("OIDC callback failed", error);
     return new Response("Authentication failed", { status: 400, headers: { "Set-Cookie": cookieHeader(request, "teruko_oidc", "", 0) } });

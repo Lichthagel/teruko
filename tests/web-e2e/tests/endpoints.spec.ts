@@ -31,15 +31,18 @@ test.describe("server endpoints", () => {
     expect(result.data.images.edges).toHaveLength(3);
   });
 
-  test("renders a framework login page and preserves its return destination", async ({ page }) => {
+  test("redirects through the identity provider and returns to the requested page", async ({ page }) => {
+    const authorizationRequest = page.waitForRequest((request) => {
+      const url = new URL(request.url());
+      return url.pathname === "/authorize" && url.searchParams.has("code_challenge");
+    });
+    await page.setExtraHTTPHeaders({ "x-teruko-e2e-oidc": "1" });
     await page.goto("/login?returnTo=%2Fsettings%2Ftokens");
 
-    await expect(page.getByRole("heading", { name: "A quieter way to browse." })).toBeVisible();
-    expect(page.url()).toContain("/login?");
-    await expect(page.locator("a[href^='/auth/login?returnTo=']")).toHaveAttribute(
-      "href",
-      /\/auth\/login\?returnTo=%2Fsettings%2Ftokens$/,
-    );
+    const authorizationUrl = new URL((await authorizationRequest).url());
+    expect(authorizationUrl.searchParams.get("code_challenge_method")).toBe("S256");
+    await expect(page).toHaveURL(/\/settings\/tokens$/);
+    await expect(page.getByRole("heading", { name: "Userscript access" })).toBeVisible();
   });
 
   test("auth API routes reach their framework handlers", async ({ request }, testInfo) => {

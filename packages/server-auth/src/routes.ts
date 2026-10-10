@@ -1,9 +1,15 @@
-import { authorizeRequest, getSession, isSameOriginRequest, requireUser, resetUserToken, userTokenStatus } from "./auth.js";
+import { authorizeRequest, getSession, isSameOriginRequest, requireUser, resetUserToken, startLogin, userTokenStatus } from "./auth.js";
 
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), {
   status,
   headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
 });
+
+const redirectToIdentityProvider = (request: Request, returnTo: string) => {
+  const url = new URL(request.url);
+  url.searchParams.set("returnTo", returnTo);
+  return startLogin(new Request(url, { method: "GET", headers: request.headers }));
+};
 
 export const userTokenHandler = async (request: Request): Promise<Response | null> => {
   const url = new URL(request.url);
@@ -30,12 +36,12 @@ export const userTokenHandler = async (request: Request): Promise<Response | nul
 export const protectAppRequest = async (request: Request) => {
   const requestUrl = new URL(request.url);
   const path = requestUrl.pathname;
-  if (path === "/api/settings/tokens")
+  if (path.startsWith("/auth/") || path === "/api/settings/tokens")
     return null;
   if (path === "/login" && request.method === "GET") {
     if (await getSession(request))
       return Response.redirect(new URL("/", request.url), 302);
-    return null;
+    return redirectToIdentityProvider(request, requestUrl.searchParams.get("returnTo") ?? "/");
   }
   if (path.startsWith("/assets/") || path.startsWith("/_nuxt/") || path.startsWith("/_build/") || path.startsWith("/_app/") || path.startsWith("/favicon") || /^\/[^/]+\.(?:css|js|mjs|map|woff2?|ttf|svg|png|ico)$/.test(path))
     return null;
@@ -45,15 +51,13 @@ export const protectAppRequest = async (request: Request) => {
       return null;
     if (/^\/\d+\/[^/]+$/.test(path))
       return new Response("Unauthorized", { status: 401 });
-    return Response.redirect(new URL(`/login?returnTo=${encodeURIComponent(`${path}${requestUrl.search}`)}`, request.url), 302);
+    return redirectToIdentityProvider(request, `${path}${requestUrl.search}`);
   }
   const user = await authorizeRequest(request);
   if (user)
     return null;
   if (request.method === "GET" || request.method === "HEAD") {
-    const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("returnTo", `${path}${new URL(request.url).search}`);
-    return Response.redirect(loginUrl, 302);
+    return redirectToIdentityProvider(request, `${path}${requestUrl.search}`);
   }
   return new Response("Unauthorized", { status: 401 });
 };
