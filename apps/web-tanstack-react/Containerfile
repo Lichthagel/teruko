@@ -38,6 +38,7 @@ WORKDIR /app
 
 # Copy built application and dependencies from builder stage
 COPY --chown=nodejs:nodejs --from=builder /app/apps/web-tanstack-react/.output .
+COPY --chown=nodejs:nodejs --from=builder /app/packages/server-db/drizzle ./packages/server-db/drizzle
 
 # Switch to non-root user
 USER nodejs

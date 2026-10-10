@@ -10,6 +10,13 @@ const config: NuxtConfig = defineNuxtConfig({
   devServer: {
     host: "0.0.0.0",
   },
+  nitro: {
+    esbuild: {
+      options: {
+        target: "es2022",
+      },
+    },
+  },
   modules: [],
   plugins: ["~/plugins/urql/index.client.ts"],
   postcss: {
