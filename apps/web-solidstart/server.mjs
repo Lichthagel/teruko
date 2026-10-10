@@ -51,7 +51,13 @@ const server = createServer(async (request, response) => {
     });
     const webResponse = await handler.fetch(webRequest);
 
-    webResponse.headers.forEach((value, key) => response.setHeader(key, value));
+    const setCookies = webResponse.headers.getSetCookie();
+    webResponse.headers.forEach((value, key) => {
+      if (key !== "set-cookie")
+        response.setHeader(key, value);
+    });
+    if (setCookies.length > 0)
+      response.setHeader("set-cookie", setCookies);
     response.writeHead(webResponse.status);
 
     response.end(Buffer.from(await webResponse.arrayBuffer()));

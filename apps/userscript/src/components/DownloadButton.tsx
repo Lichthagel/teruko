@@ -1,7 +1,7 @@
 import type { Component } from "solid-js";
 import { getPixivMetadata } from "services/pixiv";
 import { createEffect, createMemo, createSignal, on } from "solid-js";
-import { CREATE_IMAGE, TERUKO_BASE_URL, TERUKO_BASIC_AUTH } from "../constants.js";
+import { CREATE_IMAGE, TERUKO_BASE_URL } from "../constants.js";
 import { GMfetch } from "../utils.js";
 
 type Props = {
@@ -43,8 +43,16 @@ const DownloadButton: Component<Props> = (props) => {
         type: blob.type,
       });
 
-      setText("up...");
+      let token = GM_getValue<string>("teruko_token", "");
+      if (!token) {
+        token = window.prompt("Create a token from Teruko Account settings and paste it here") ?? ""; // eslint-disable-line no-alert
+      }
+      if (!token) {
+        throw new Error("A Teruko userscript token is required");
+      }
+      GM_setValue("teruko_token", token);
 
+      setText("up...");
       const formData = new FormData();
       formData.append("operations", JSON.stringify({
         query: CREATE_IMAGE,
@@ -55,39 +63,27 @@ const DownloadButton: Component<Props> = (props) => {
           tags: meta?.tags?.map(tag => tag.slug),
         },
       }));
-      formData.append("map", JSON.stringify({
-        0: ["variables.files.0"],
-      }));
+      formData.append("map", JSON.stringify({ 0: ["variables.files.0"] }));
       formData.append("0", file);
-
       const result = await GMfetch(`${TERUKO_BASE_URL}/graphql`, {
         method: "POST",
         data: formData,
         headers: {
-          "Apollo-Require-Preflight": "true",
-          ...(TERUKO_BASIC_AUTH ? { Authorization: `Basic ${TERUKO_BASIC_AUTH}` } : {}),
+          Authorization: `Bearer ${token}`,
         },
-      })
-        .then(res => JSON.parse(res.responseText) as {
-          data: {
-            createImage: { id: string }[];
-          } | null;
-          errors?: {
-            message: string;
-          }[];
-        });
+      }).then(response => JSON.parse(response.responseText) as {
+        data: { createImage: { id: string }[] } | null;
+        errors?: { message: string }[];
+      });
 
       window.removeEventListener("beforeunload", beforeUnload);
-      if (result.errors) {
+      if (result.errors?.length) {
         setSmall(true);
         setText(result.errors?.[0]?.message ?? JSON.stringify(result));
         // alert(`error: ${result}`);
       } else if (result.data) {
         if (open) {
-          window.open(
-            `${TERUKO_BASE_URL}/${result.data.createImage[0]?.id as string}`,
-            "_blank",
-          );
+          window.open(`${TERUKO_BASE_URL}/${result.data.createImage[0]?.id as string}`, "_blank");
         } else {
           setText(`id: ${result.data.createImage[0]?.id as string}`);
         }

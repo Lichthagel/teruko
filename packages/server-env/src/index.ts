@@ -13,6 +13,11 @@ const Env = v.object({
   ),
   IMG_FOLDER: v.optional(v.string(), "./data"),
   NODE_ENV: v.optional(v.string(), "production"),
+  OIDC_ISSUER_URL: v.optional(v.string()),
+  OIDC_CLIENT_ID: v.optional(v.string()),
+  OIDC_CLIENT_SECRET: v.optional(v.string()),
+  AUTH_SESSION_SECRET: v.optional(v.string()),
+  AUTH_BASE_URL: v.optional(v.string()),
 });
 
 type Env = Readonly<v.InferOutput<typeof Env>>;

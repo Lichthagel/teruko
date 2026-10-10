@@ -1,30 +1,33 @@
 import type { Component } from "solid-js";
 import { createEffect, createResource, Match, onCleanup, Switch } from "solid-js";
-import { IMAGE_BY_FILENAME, TERUKO_BASE_URL, TERUKO_BASIC_AUTH } from "../constants";
-import { GMfetch } from "../utils";
+import { IMAGE_BY_FILENAME, TERUKO_BASE_URL } from "../constants";
+import { GMfetch } from "../utils.js";
 
 const Existing: Component<{ filename: string }> = (props) => {
   const [existingId, { refetch }] = createResource(
     () => props.filename,
     async (filename) => {
-      const res = await GMfetch(`${TERUKO_BASE_URL}/graphql`, {
+      const token = GM_getValue<string>("teruko_token", "");
+      if (!token)
+        return undefined;
+      const response = await GMfetch(`${TERUKO_BASE_URL}/graphql`, {
         method: "POST",
-        data: JSON.stringify(
-          {
-            query: IMAGE_BY_FILENAME,
-            variables: { filename },
-          },
-        ),
+        data: JSON.stringify({ query: IMAGE_BY_FILENAME, variables: { filename } }),
         headers: {
           "Content-Type": "application/json",
-          "Apollo-Require-Preflight": "true",
-          ...(TERUKO_BASIC_AUTH ? { Authorization: `Basic ${TERUKO_BASIC_AUTH}` } : {}),
+          "Authorization": `Bearer ${token}`,
         },
       });
+      if (response.status < 200 || response.status >= 300)
+        throw new Error(`GraphQL request failed with status ${response.status}`);
 
-      const json = JSON.parse(res.responseText);
-
-      return (json.data.imageByFilename as { id: string } | null)?.id;
+      const result = JSON.parse(response.responseText) as {
+        data?: { imageByFilename: { id: string } | null };
+        errors?: { message: string }[];
+      };
+      if (result.errors?.length)
+        throw new Error(result.errors[0]?.message ?? "GraphQL request failed");
+      return result.data?.imageByFilename?.id;
     },
   );
 

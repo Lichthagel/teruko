@@ -10,6 +10,7 @@ const Nav = () => {
           <Link className={styles.button} to="/">てる子</Link>
         </div>
         <div>
+          <Link className={styles.button} to="/settings/tokens">Account</Link>
           {/* @ts-expect-error not yet implemented */}
           <Link className={`${styles.button} ${styles.square}`} to="/new">
             <Plus />

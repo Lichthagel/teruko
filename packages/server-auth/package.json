@@ -1,0 +1,42 @@
+{
+  "name": "server-auth",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "OIDC sessions and bearer-token authentication",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./auth": {
+      "types": "./dist/auth.d.ts",
+      "default": "./dist/auth.js"
+    },
+    "./routes": {
+      "types": "./dist/routes.d.ts",
+      "default": "./dist/routes.js"
+    }
+  },
+  "engines": {
+    "node": ">=21.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint .",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "drizzle-orm": "catalog:",
+    "openid-client": "catalog:",
+    "server-db": "workspace:^",
+    "server-env": "workspace:^"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@types/pg": "catalog:",
+    "@typescript/native": "catalog:",
+    "tsconfig": "workspace:^"
+  }
+}
