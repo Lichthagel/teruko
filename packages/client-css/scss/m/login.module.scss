@@ -1,0 +1,98 @@
+@use "../variables";
+
+.page {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  width: min(calc(100% - 2rem), 36rem);
+  min-height: min(76vh, 46rem);
+  align-content: center;
+  margin: 0 auto;
+  padding-block: clamp(3rem, 12vh, 8rem);
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    inset: 16% -18% auto;
+    height: 25rem;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, color-mix(in srgb, var(--teal) 16%, transparent), transparent 68%);
+    content: "";
+    filter: blur(0.4rem);
+  }
+}
+
+.eyebrow {
+  color: var(--teal);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.title {
+  max-width: 12ch;
+  margin: 0.55rem 0 0.75rem;
+  font-size: clamp(2.5rem, 10vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.intro {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--subtext1);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.65;
+}
+
+.card {
+  margin-top: 2rem;
+  padding: clamp(1.25rem, 5vw, 2rem);
+  border: 1px solid var(--surface1);
+  border-radius: variables.$radius-2;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--mantle) 94%, white), var(--base) 80%);
+  box-shadow: 0 1.5rem 4rem rgb(30 30 46 / 12%);
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.cardText {
+  margin: 0.45rem 0 1.3rem;
+  color: var(--subtext0);
+  line-height: 1.55;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.15rem;
+  border-radius: variables.$radius;
+  background: var(--teal);
+  color: var(--base);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 160ms ease, background-color 160ms ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    background: var(--sapphire);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--text);
+    outline-offset: 3px;
+  }
+}
+
+.footnote {
+  margin: 1rem 0 0;
+  color: var(--subtext0);
+  font-size: 0.9rem;
+}

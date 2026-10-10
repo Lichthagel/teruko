@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as IdRouteImport } from './routes/$id'
 import { Route as GraphqlRouteImport } from './routes/graphql'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as IdAvifRouteImport } from './routes/$id/avif'
 import { Route as IdOriginalRouteImport } from './routes/$id/original'
 import { Route as IdWebpRouteImport } from './routes/$id/webp'
@@ -35,6 +36,11 @@ const IdRoute = IdRouteImport.update({
 const GraphqlRoute = GraphqlRouteImport.update({
   id: '/graphql',
   path: '/graphql',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IdAvifRoute = IdAvifRouteImport.update({
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$id': typeof IdRouteWithChildren
   '/graphql': typeof GraphqlRoute
+  '/login': typeof LoginRoute
   '/$id/avif': typeof IdAvifRoute
   '/$id/original': typeof IdOriginalRoute
   '/$id/webp': typeof IdWebpRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$id': typeof IdRouteWithChildren
   '/graphql': typeof GraphqlRoute
+  '/login': typeof LoginRoute
   '/$id/avif': typeof IdAvifRoute
   '/$id/original': typeof IdOriginalRoute
   '/$id/webp': typeof IdWebpRoute
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$id': typeof IdRouteWithChildren
   '/graphql': typeof GraphqlRoute
+  '/login': typeof LoginRoute
   '/$id/avif': typeof IdAvifRoute
   '/$id/original': typeof IdOriginalRoute
   '/$id/webp': typeof IdWebpRoute
@@ -132,6 +141,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$id'
     | '/graphql'
+    | '/login'
     | '/$id/avif'
     | '/$id/original'
     | '/$id/webp'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$id'
     | '/graphql'
+    | '/login'
     | '/$id/avif'
     | '/$id/original'
     | '/$id/webp'
@@ -160,6 +171,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$id'
     | '/graphql'
+    | '/login'
     | '/$id/avif'
     | '/$id/original'
     | '/$id/webp'
@@ -175,6 +187,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   IdRoute: typeof IdRouteWithChildren
   GraphqlRoute: typeof GraphqlRoute
+  LoginRoute: typeof LoginRoute
   AuthCallbackRoute: typeof AuthCallbackRoute
   AuthLoginRoute: typeof AuthLoginRoute
   AuthLogoutRoute: typeof AuthLogoutRoute
@@ -204,6 +217,13 @@ declare module '@tanstack/react-router' {
       path: '/graphql'
       fullPath: '/graphql'
       preLoaderRoute: typeof GraphqlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$id/avif': {
@@ -290,6 +310,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   IdRoute: IdRouteWithChildren,
   GraphqlRoute: GraphqlRoute,
+  LoginRoute: LoginRoute,
   AuthCallbackRoute: AuthCallbackRoute,
   AuthLoginRoute: AuthLoginRoute,
   AuthLogoutRoute: AuthLogoutRoute,

@@ -1,4 +1,4 @@
-import { authorizeRequest, finishLogin, isSameOriginRequest, logout, requireGraphqlUser, requireUser, resetUserToken, startLogin, userTokenStatus } from "./auth.js";
+import { authorizeRequest, finishLogin, getSession, isSameOriginRequest, logout, requireGraphqlUser, requireUser, resetUserToken, startLogin, userTokenStatus } from "./auth.js";
 
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), {
   status,
@@ -44,14 +44,10 @@ export const protectRequest = async (request: Request) => {
   if (path === "/graphql" && request.method === "OPTIONS")
     return null;
   if (path === "/login" && request.method === "GET") {
-    const user = await requireUser(request);
+    const user = await getSession(request);
     if (user)
       return Response.redirect(new URL("/", request.url), 302);
-    const returnTo = `${requestUrl.searchParams.get("returnTo") ?? "/"}`;
-    const returnToUrl = new URL(returnTo, requestUrl);
-    const safeReturnTo = returnToUrl.origin === requestUrl.origin && !returnToUrl.pathname.startsWith("/auth/") && returnToUrl.pathname !== "/login" ? `${returnToUrl.pathname}${returnToUrl.search}${returnToUrl.hash}` : "/";
-    const loginUrl = `/auth/login?returnTo=${encodeURIComponent(safeReturnTo)}`;
-    return new Response(`<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Sign in - Teruko</title></head><body style="font-family: sans-serif; max-width: 32rem; margin: 12vh auto; padding: 2rem"><h1>Sign in to Teruko</h1><p>Sign in with your organization account to view the gallery.</p><a href="${loginUrl}" style="display:inline-block;padding:.8rem 1.2rem;background:#193c3e;color:white;text-decoration:none">Continue with Authentik</a></body></html>`, { headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" } });
+    return null;
   }
   const authResponse = await authHandler(request);
   if (authResponse)

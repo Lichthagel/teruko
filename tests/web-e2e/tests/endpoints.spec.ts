@@ -31,6 +31,16 @@ test.describe("server endpoints", () => {
     expect(result.data.images.edges).toHaveLength(3);
   });
 
+  test("renders a framework login page and preserves its return destination", async ({ page }) => {
+    await page.goto("/login?returnTo=%2Fsettings%2Ftokens");
+
+    await expect(page.getByRole("heading", { name: "A quieter way to browse." })).toBeVisible();
+    await expect(page.locator("a[href^='/auth/login?returnTo=']")).toHaveAttribute(
+      "href",
+      /\/auth\/login\?returnTo=%2Fsettings%2Ftokens$/,
+    );
+  });
+
   test("opens the signed-in userscript token settings", async ({ page }) => {
     await page.goto("/settings/tokens");
 
