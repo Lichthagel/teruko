@@ -44,15 +44,15 @@ const createToken = async () => {
       Userscript access
     </h1>
     <p :class="styles.intro">
-      Generate a bearer token for the Pixiv userscript, then paste it into your userscript settings. The secret appears only once.
+      Create a token for the Pixiv userscript.
     </p>
 
     <section :class="styles.card" aria-labelledby="create-heading">
       <h2 id="create-heading" :class="styles.sectionTitle">
-        Personal access
+        Access token
       </h2>
       <p :class="styles.muted">
-        Treat this token like a password. Generating a replacement immediately invalidates the previous one.
+        Resetting replaces your current token.
       </p>
       <div :class="styles.actions">
         <button :class="styles.primaryButton" type="button" :disabled="busy" @click="createToken">
@@ -61,7 +61,7 @@ const createToken = async () => {
       </div>
       <div v-if="secret">
         <div :class="styles.notice" role="status">
-          Copy this secret now. It will not be displayed again.
+          Copy your token now; it will only be shown once.
         </div>
         <pre :class="styles.tokenSecret" aria-label="New bearer token">{{ secret }}</pre>
       </div>
@@ -72,13 +72,13 @@ const createToken = async () => {
 
     <section :class="styles.card" aria-labelledby="tokens-heading">
       <h2 id="tokens-heading" :class="styles.sectionTitle">
-        Current userscript token
+        Token status
       </h2>
       <p v-if="data?.active" :class="styles.muted">
-        An active token was generated{{ data.createdAt ? ` on ${data.createdAt.slice(0, 16).replace("T", " ")} UTC` : "" }}. Generate a new one to invalidate and replace it.
+        Active{{ data.createdAt ? ` since ${data.createdAt.slice(0, 16).replace("T", " ")} UTC` : "" }}.
       </p>
       <p v-else :class="styles.muted">
-        No active token. Generate one to connect the userscript.
+        No active token.
       </p>
     </section>
 

@@ -66,11 +66,11 @@ const TokenSettings = () => {
     <main className={styles.page}>
       <div className={styles.eyebrow}>Account settings</div>
       <h1 className={styles.title}>Userscript access</h1>
-      <p className={styles.intro}>Generate a bearer token for the Pixiv userscript, then paste it into your userscript settings. The secret appears only once.</p>
+      <p className={styles.intro}>Create a token for the Pixiv userscript.</p>
 
       <section className={styles.card} aria-labelledby="create-heading">
-        <h2 id="create-heading" className={styles.sectionTitle}>Personal access</h2>
-        <p className={styles.muted}>Treat this token like a password. Generating a replacement immediately invalidates the previous one.</p>
+        <h2 id="create-heading" className={styles.sectionTitle}>Access token</h2>
+        <p className={styles.muted}>Resetting replaces your current token.</p>
         <div className={styles.actions}>
           <button className={styles.primaryButton} type="button" disabled={busy} onClick={() => void create()}>
             {busy ? "Working..." : "Generate / reset token"}
@@ -78,7 +78,7 @@ const TokenSettings = () => {
         </div>
         {secret && (
           <>
-            <div className={styles.notice} role="status">Copy this secret now. It will not be displayed again.</div>
+            <div className={styles.notice} role="status">Copy your token now; it will only be shown once.</div>
             <pre className={styles.tokenSecret} aria-label="New bearer token">{secret}</pre>
           </>
         )}
@@ -86,16 +86,16 @@ const TokenSettings = () => {
       </section>
 
       <section className={styles.card} aria-labelledby="tokens-heading">
-        <h2 id="tokens-heading" className={styles.sectionTitle}>Current userscript token</h2>
+        <h2 id="tokens-heading" className={styles.sectionTitle}>Token status</h2>
         {status.active
           ? (
               <p className={styles.muted}>
-                An active token was generated
-                {status.createdAt ? ` on ${status.createdAt.slice(0, 16).replace("T", " ")} UTC` : ""}
-                . Generate a new one to invalidate and replace it.
+                Active
+                {status.createdAt ? ` since ${status.createdAt.slice(0, 16).replace("T", " ")} UTC` : ""}
+                .
               </p>
             )
-          : <p className={styles.muted}>No active token. Generate one to connect the userscript.</p>}
+          : <p className={styles.muted}>No active token.</p>}
       </section>
 
       <div className={styles.footer}>

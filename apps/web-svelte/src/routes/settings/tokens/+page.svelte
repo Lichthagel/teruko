@@ -52,29 +52,29 @@
 <main class={styles.page}>
   <div class={styles.eyebrow}>Account settings</div>
   <h1 class={styles.title}>Userscript access</h1>
-  <p class={styles.intro}>Generate a bearer token for the Pixiv userscript, then paste it into your userscript settings. The secret appears only once.</p>
+  <p class={styles.intro}>Create a token for the Pixiv userscript.</p>
 
   <section class={styles.card} aria-labelledby="create-heading">
-    <h2 id="create-heading" class={styles.sectionTitle}>Personal access</h2>
-    <p class={styles.muted}>Treat this token like a password. Generating a replacement immediately invalidates the previous one.</p>
+    <h2 id="create-heading" class={styles.sectionTitle}>Access token</h2>
+    <p class={styles.muted}>Resetting replaces your current token.</p>
     <div class={styles.actions}>
       <button class={styles.primaryButton} type="button" disabled={busy} onclick={create}>
         {busy ? "Working..." : "Generate / reset token"}
       </button>
     </div>
     {#if secret}
-      <div class={styles.notice} role="status">Copy this secret now. It will not be displayed again.</div>
+      <div class={styles.notice} role="status">Copy your token now; it will only be shown once.</div>
       <pre class={styles.tokenSecret} aria-label="New bearer token">{secret}</pre>
     {/if}
     {#if error}<p class={styles.error} role="alert">{error}</p>{/if}
   </section>
 
   <section class={styles.card} aria-labelledby="status-heading">
-    <h2 id="status-heading" class={styles.sectionTitle}>Current userscript token</h2>
+    <h2 id="status-heading" class={styles.sectionTitle}>Token status</h2>
     {#if tokenStatus.active}
-      <p class={styles.muted}>An active token was generated{tokenStatus.createdAt ? ` on ${tokenStatus.createdAt.slice(0, 16).replace("T", " ")} UTC` : ""}. Generate a new one to invalidate and replace it.</p>
+      <p class={styles.muted}>Active{tokenStatus.createdAt ? ` since ${tokenStatus.createdAt.slice(0, 16).replace("T", " ")} UTC` : ""}.</p>
     {:else}
-      <p class={styles.muted}>No active token. Generate one to connect the userscript.</p>
+      <p class={styles.muted}>No active token.</p>
     {/if}
   </section>
 

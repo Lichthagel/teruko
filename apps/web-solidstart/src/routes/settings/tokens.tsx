@@ -58,30 +58,30 @@ export default function TokenSettings() {
       <Title>Userscript access - てる子</Title>
       <div class={styles.eyebrow}>Account settings</div>
       <h1 class={styles.title}>Userscript access</h1>
-      <p class={styles.intro}>Generate a bearer token for the Pixiv userscript, then paste it into your userscript settings. The secret appears only once.</p>
+      <p class={styles.intro}>Create a token for the Pixiv userscript.</p>
 
       <section class={styles.card} aria-labelledby="create-heading">
-        <h2 id="create-heading" class={styles.sectionTitle}>Personal access</h2>
-        <p class={styles.muted}>Treat this token like a password. Generating a replacement immediately invalidates the previous one.</p>
+        <h2 id="create-heading" class={styles.sectionTitle}>Access token</h2>
+        <p class={styles.muted}>Resetting replaces your current token.</p>
         <div class={styles.actions}>
           <button class={styles.primaryButton} type="button" disabled={busy()} onClick={() => void create()}>
             {busy() ? "Working..." : "Generate / reset token"}
           </button>
         </div>
         <Show when={secret()}>
-          <div class={styles.notice} role="status">Copy this secret now. It will not be displayed again.</div>
+          <div class={styles.notice} role="status">Copy your token now; it will only be shown once.</div>
           <pre class={styles.tokenSecret} aria-label="New bearer token">{secret()}</pre>
         </Show>
         <Show when={error()}><p class={styles.error} role="alert">{error()}</p></Show>
       </section>
 
       <section class={styles.card} aria-labelledby="tokens-heading">
-        <h2 id="tokens-heading" class={styles.sectionTitle}>Current userscript token</h2>
-        <Show when={status().active} fallback={<p class={styles.muted}>No active token. Generate one to connect the userscript.</p>}>
+        <h2 id="tokens-heading" class={styles.sectionTitle}>Token status</h2>
+        <Show when={status().active} fallback={<p class={styles.muted}>No active token.</p>}>
           <p class={styles.muted}>
-            An active token was generated
-            {status().createdAt ? ` on ${status().createdAt!.slice(0, 16).replace("T", " ")} UTC` : ""}
-            . Generate a new one to invalidate and replace it.
+            Active
+            {status().createdAt ? ` since ${status().createdAt!.slice(0, 16).replace("T", " ")} UTC` : ""}
+            .
           </p>
         </Show>
       </section>
