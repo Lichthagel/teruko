@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Plus } from "@lucide/vue";
+import { Plus, User } from "@lucide/vue";
 import styles from "client-css/m/nav.module.scss";
 </script>
 
@@ -15,8 +15,8 @@ import styles from "client-css/m/nav.module.scss";
         </NuxtLink>
       </div>
       <div>
-        <NuxtLink :class="styles.button" href="/settings/tokens">
-          Account
+        <NuxtLink :class="[styles.button, styles.square]" href="/settings/tokens" aria-label="Account" title="Account">
+          <User :size="20" />
         </NuxtLink>
         <NuxtLink
           :class="[styles.button, styles.square]"
