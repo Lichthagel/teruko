@@ -6,6 +6,7 @@ import { createServer } from "node:http";
 import path from "node:path";
 import process from "node:process";
 import { Readable } from "node:stream";
+import { ensureDatabaseReady } from "server-db";
 import handler from "./dist/server/entry-server.js";
 
 const port = Number(process.env.PORT ?? 3000);
@@ -61,6 +62,16 @@ const server = createServer(async (request, response) => {
   }
 });
 
-server.listen(port, "0.0.0.0", () => {
-  process.stdout.write(`Listening on http://0.0.0.0:${port}\n`);
+server.on("error", (error) => {
+  console.error("Server failed to start", error);
+  process.exitCode = 1;
+});
+
+ensureDatabaseReady().then(() => {
+  server.listen(port, "0.0.0.0", () => {
+    process.stdout.write(`Listening on http://0.0.0.0:${port}\n`);
+  });
+}).catch((error) => {
+  console.error("Database migrations failed", error);
+  process.exit(1);
 });

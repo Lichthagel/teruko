@@ -9,6 +9,7 @@ const config = defineConfig({
     devtools(),
     tanstackStart(),
     nitro({
+      plugins: ["server/plugins/database.ts"],
       rolldownConfig: {
         treeshake: {
           moduleSideEffects: true,
