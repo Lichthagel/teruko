@@ -1,6 +1,7 @@
 import type { Component } from "solid-js";
 import { createEffect, createResource, Match, onCleanup, Switch } from "solid-js";
-import { graphqlRequest, IMAGE_BY_FILENAME, TERUKO_BASE_URL } from "../constants";
+import { IMAGE_BY_FILENAME, TERUKO_BASE_URL } from "../constants";
+import { GMfetch } from "../utils.js";
 
 const Existing: Component<{ filename: string }> = (props) => {
   const [existingId, { refetch }] = createResource(
@@ -9,7 +10,21 @@ const Existing: Component<{ filename: string }> = (props) => {
       const token = GM_getValue<string>("teruko_token", "");
       if (!token)
         return undefined;
-      const result = await graphqlRequest<{ imageByFilename: { id: string } | null }>(IMAGE_BY_FILENAME, { filename });
+      const response = await GMfetch(`${TERUKO_BASE_URL}/graphql`, {
+        method: "POST",
+        data: JSON.stringify({ query: IMAGE_BY_FILENAME, variables: { filename } }),
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+      if (response.status < 200 || response.status >= 300)
+        throw new Error(`GraphQL request failed with status ${response.status}`);
+
+      const result = JSON.parse(response.responseText) as {
+        data?: { imageByFilename: { id: string } | null };
+        errors?: { message: string }[];
+      };
       if (result.errors?.length)
         throw new Error(result.errors[0]?.message ?? "GraphQL request failed");
       return result.data?.imageByFilename?.id;
