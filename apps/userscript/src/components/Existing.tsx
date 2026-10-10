@@ -10,7 +10,7 @@ const Existing: Component<{ filename: string }> = (props) => {
       const token = GM_getValue<string>("teruko_token", "");
       if (!token)
         return undefined;
-      const response = await GMfetch(`${TERUKO_BASE_URL}/graphql`, {
+      const res = await GMfetch(`${TERUKO_BASE_URL}/graphql`, {
         method: "POST",
         data: JSON.stringify({ query: IMAGE_BY_FILENAME, variables: { filename } }),
         headers: {
@@ -18,16 +18,10 @@ const Existing: Component<{ filename: string }> = (props) => {
           "Authorization": `Bearer ${token}`,
         },
       });
-      if (response.status < 200 || response.status >= 300)
-        throw new Error(`GraphQL request failed with status ${response.status}`);
 
-      const result = JSON.parse(response.responseText) as {
-        data?: { imageByFilename: { id: string } | null };
-        errors?: { message: string }[];
-      };
-      if (result.errors?.length)
-        throw new Error(result.errors[0]?.message ?? "GraphQL request failed");
-      return result.data?.imageByFilename?.id;
+      const json = JSON.parse(res.responseText);
+
+      return (json.data.imageByFilename as { id: string } | null)?.id;
     },
   );
 
