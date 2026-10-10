@@ -15,7 +15,7 @@ const error = ref("");
 const busy = ref(false);
 if (loadError.value) {
   if (loadError.value.statusCode === 401) {
-    await navigateTo(`/login?returnTo=${encodeURIComponent("/settings/tokens")}`);
+    await navigateTo(`/login?returnTo=${encodeURIComponent("/account")}`);
   }
   error.value = loadError.value.message;
 }

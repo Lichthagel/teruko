@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as IdRouteImport } from './routes/$id'
+import { Route as AccountRouteImport } from './routes/account'
 import { Route as GraphqlRouteImport } from './routes/graphql'
 import { Route as IdAvifRouteImport } from './routes/$id/avif'
 import { Route as IdOriginalRouteImport } from './routes/$id/original'
@@ -19,7 +20,6 @@ import { Route as AuthCallbackRouteImport } from './routes/auth.callback'
 import { Route as AuthLoginRouteImport } from './routes/auth.login'
 import { Route as AuthLogoutRouteImport } from './routes/auth.logout'
 import { Route as ImgFilenameRouteImport } from './routes/img/$filename'
-import { Route as SettingsTokensRouteImport } from './routes/settings.tokens'
 import { Route as ApiSettingsTokensRouteImport } from './routes/api.settings.tokens'
 
 const IndexRoute = IndexRouteImport.update({
@@ -30,6 +30,11 @@ const IndexRoute = IndexRouteImport.update({
 const IdRoute = IdRouteImport.update({
   id: '/$id',
   path: '/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GraphqlRoute = GraphqlRouteImport.update({
@@ -72,11 +77,6 @@ const ImgFilenameRoute = ImgFilenameRouteImport.update({
   path: '/img/$filename',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SettingsTokensRoute = SettingsTokensRouteImport.update({
-  id: '/settings/tokens',
-  path: '/settings/tokens',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ApiSettingsTokensRoute = ApiSettingsTokensRouteImport.update({
   id: '/api/settings/tokens',
   path: '/api/settings/tokens',
@@ -86,6 +86,7 @@ const ApiSettingsTokensRoute = ApiSettingsTokensRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$id': typeof IdRouteWithChildren
+  '/account': typeof AccountRoute
   '/graphql': typeof GraphqlRoute
   '/$id/avif': typeof IdAvifRoute
   '/$id/original': typeof IdOriginalRoute
@@ -94,12 +95,12 @@ export interface FileRoutesByFullPath {
   '/auth/login': typeof AuthLoginRoute
   '/auth/logout': typeof AuthLogoutRoute
   '/img/$filename': typeof ImgFilenameRoute
-  '/settings/tokens': typeof SettingsTokensRoute
   '/api/settings/tokens': typeof ApiSettingsTokensRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$id': typeof IdRouteWithChildren
+  '/account': typeof AccountRoute
   '/graphql': typeof GraphqlRoute
   '/$id/avif': typeof IdAvifRoute
   '/$id/original': typeof IdOriginalRoute
@@ -108,13 +109,13 @@ export interface FileRoutesByTo {
   '/auth/login': typeof AuthLoginRoute
   '/auth/logout': typeof AuthLogoutRoute
   '/img/$filename': typeof ImgFilenameRoute
-  '/settings/tokens': typeof SettingsTokensRoute
   '/api/settings/tokens': typeof ApiSettingsTokensRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$id': typeof IdRouteWithChildren
+  '/account': typeof AccountRoute
   '/graphql': typeof GraphqlRoute
   '/$id/avif': typeof IdAvifRoute
   '/$id/original': typeof IdOriginalRoute
@@ -123,7 +124,6 @@ export interface FileRoutesById {
   '/auth/login': typeof AuthLoginRoute
   '/auth/logout': typeof AuthLogoutRoute
   '/img/$filename': typeof ImgFilenameRoute
-  '/settings/tokens': typeof SettingsTokensRoute
   '/api/settings/tokens': typeof ApiSettingsTokensRoute
 }
 export interface FileRouteTypes {
@@ -131,6 +131,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$id'
+    | '/account'
     | '/graphql'
     | '/$id/avif'
     | '/$id/original'
@@ -139,12 +140,12 @@ export interface FileRouteTypes {
     | '/auth/login'
     | '/auth/logout'
     | '/img/$filename'
-    | '/settings/tokens'
     | '/api/settings/tokens'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/$id'
+    | '/account'
     | '/graphql'
     | '/$id/avif'
     | '/$id/original'
@@ -153,12 +154,12 @@ export interface FileRouteTypes {
     | '/auth/login'
     | '/auth/logout'
     | '/img/$filename'
-    | '/settings/tokens'
     | '/api/settings/tokens'
   id:
     | '__root__'
     | '/'
     | '/$id'
+    | '/account'
     | '/graphql'
     | '/$id/avif'
     | '/$id/original'
@@ -167,19 +168,18 @@ export interface FileRouteTypes {
     | '/auth/login'
     | '/auth/logout'
     | '/img/$filename'
-    | '/settings/tokens'
     | '/api/settings/tokens'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   IdRoute: typeof IdRouteWithChildren
+  AccountRoute: typeof AccountRoute
   GraphqlRoute: typeof GraphqlRoute
   AuthCallbackRoute: typeof AuthCallbackRoute
   AuthLoginRoute: typeof AuthLoginRoute
   AuthLogoutRoute: typeof AuthLogoutRoute
   ImgFilenameRoute: typeof ImgFilenameRoute
-  SettingsTokensRoute: typeof SettingsTokensRoute
   ApiSettingsTokensRoute: typeof ApiSettingsTokensRoute
 }
 
@@ -197,6 +197,13 @@ declare module '@tanstack/react-router' {
       path: '/$id'
       fullPath: '/$id'
       preLoaderRoute: typeof IdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/graphql': {
@@ -255,13 +262,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ImgFilenameRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/settings/tokens': {
-      id: '/settings/tokens'
-      path: '/settings/tokens'
-      fullPath: '/settings/tokens'
-      preLoaderRoute: typeof SettingsTokensRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/api/settings/tokens': {
       id: '/api/settings/tokens'
       path: '/api/settings/tokens'
@@ -289,12 +289,12 @@ const IdRouteWithChildren = IdRoute._addFileChildren(IdRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   IdRoute: IdRouteWithChildren,
+  AccountRoute: AccountRoute,
   GraphqlRoute: GraphqlRoute,
   AuthCallbackRoute: AuthCallbackRoute,
   AuthLoginRoute: AuthLoginRoute,
   AuthLogoutRoute: AuthLogoutRoute,
   ImgFilenameRoute: ImgFilenameRoute,
-  SettingsTokensRoute: SettingsTokensRoute,
   ApiSettingsTokensRoute: ApiSettingsTokensRoute,
 }
 export const routeTree = rootRouteImport

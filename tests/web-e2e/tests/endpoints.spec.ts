@@ -37,11 +37,11 @@ test.describe("server endpoints", () => {
       return url.pathname === "/authorize" && url.searchParams.has("code_challenge");
     });
     await page.setExtraHTTPHeaders({ "x-teruko-e2e-oidc": "1" });
-    await page.goto("/login?returnTo=%2Fsettings%2Ftokens");
+    await page.goto("/login?returnTo=%2Faccount");
 
     const authorizationUrl = new URL((await authorizationRequest).url());
     expect(authorizationUrl.searchParams.get("code_challenge_method")).toBe("S256");
-    await expect(page).toHaveURL(/\/settings\/tokens$/);
+    await expect(page).toHaveURL(/\/account$/);
     await expect(page.getByRole("heading", { name: "Userscript access" })).toBeVisible();
   });
 
@@ -55,15 +55,15 @@ test.describe("server endpoints", () => {
     expect(logout.headers().location).toBe("/login");
   });
 
-  test("opens the signed-in userscript token settings", async ({ page }) => {
-    await page.goto("/settings/tokens");
+  test("opens the account token settings", async ({ page }) => {
+    await page.goto("/account");
 
     await expect(page.getByRole("heading", { name: "Userscript access" })).toBeVisible();
     await expect(page.getByRole("button", { name: "Generate / reset token" })).toBeVisible();
   });
 
   test("generates and resets the userscript bearer token", async ({ page, request }) => {
-    await page.goto("/settings/tokens");
+    await page.goto("/account");
 
     await page.getByRole("button", { name: "Generate / reset token" }).click();
     const firstToken = page.getByLabel("New bearer token");

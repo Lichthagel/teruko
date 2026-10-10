@@ -14,7 +14,7 @@ export default function TokenSettings() {
     const response = await fetch("/api/settings/tokens", { cache: "no-store" });
     const result = await response.json();
     if (response.status === 401) {
-      location.assign(`/login?returnTo=${encodeURIComponent("/settings/tokens")}`);
+      location.assign(`/login?returnTo=${encodeURIComponent("/account")}`);
       return;
     }
     if (!response.ok)
@@ -39,7 +39,7 @@ export default function TokenSettings() {
       });
       const result = await response.json();
       if (response.status === 401) {
-        location.assign(`/login?returnTo=${encodeURIComponent("/settings/tokens")}`);
+        location.assign(`/login?returnTo=${encodeURIComponent("/account")}`);
         return;
       }
       if (!response.ok)

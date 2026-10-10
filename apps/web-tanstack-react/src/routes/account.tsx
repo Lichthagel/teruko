@@ -11,7 +11,7 @@ const getTokenStatus = createServerFn({ method: "GET" }).handler(async () => {
   const request = getRequest();
   const user = await requireSessionUser(request);
   if (!user)
-    throw redirect({ href: `/login?returnTo=${encodeURIComponent("/settings/tokens")}` });
+    throw redirect({ href: `/login?returnTo=${encodeURIComponent("/account")}` });
   setResponseHeader("Cache-Control", "no-store");
   return userTokenStatus(user);
 });
@@ -105,7 +105,7 @@ const TokenSettings = () => {
   );
 };
 
-export const Route = createFileRoute("/settings/tokens")({
+export const Route = createFileRoute("/account")({
   loader: () => getTokenStatus(),
   head: () => ({ meta: [{ title: "Userscript access - てる子" }] }),
   component: TokenSettings,

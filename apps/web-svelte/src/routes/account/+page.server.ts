@@ -5,7 +5,7 @@ import { requireSessionUser, userTokenStatus } from "server-auth/auth";
 export const load: PageServerLoad = async ({ request, setHeaders }) => {
   const user = await requireSessionUser(request);
   if (!user) {
-    redirect(302, `/login?returnTo=${encodeURIComponent("/settings/tokens")}`);
+    redirect(302, `/login?returnTo=${encodeURIComponent("/account")}`);
   }
 
   setHeaders({ "Cache-Control": "no-store" });
