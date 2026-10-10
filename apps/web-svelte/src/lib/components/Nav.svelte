@@ -1,6 +1,6 @@
 <script lang="ts">
   import { resolve } from "$app/paths";
-  import { Plus } from "@lucide/svelte";
+  import { Plus, User } from "@lucide/svelte";
   import styles from "client-css/m/nav.module.scss";
 </script>
 
@@ -10,7 +10,9 @@
       <a class={styles.button} href={resolve("/", {})}>てる子</a>
     </div>
     <div>
-      <a class={styles.button} href={resolve("/account", {})}>Account</a>
+      <a class="{styles.button} {styles.square}" href={resolve("/account", {})} aria-label="Account" title="Account">
+        <User size={20} />
+      </a>
       <a class="{styles.button} {styles.square}" href={resolve("/new", {})}>
         <Plus />
       </a>
