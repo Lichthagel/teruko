@@ -1,4 +1,4 @@
-import { authorizeRequest, finishLogin, getSession, isSameOriginRequest, logout, requireGraphqlUser, requireUser, resetUserToken, startLogin, userTokenStatus } from "./auth.js";
+import { authorizeRequest, getSession, isSameOriginRequest, requireGraphqlUser, requireUser, resetUserToken, userTokenStatus } from "./auth.js";
 
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), {
   status,
@@ -27,20 +27,11 @@ export const userTokenHandler = async (request: Request): Promise<Response | nul
   return new Response(null, { status: 405, headers: { Allow: "GET, POST" } });
 };
 
-export const authHandler = async (request: Request): Promise<Response | null> => {
-  const url = new URL(request.url);
-  if (url.pathname === "/auth/login" && request.method === "GET")
-    return startLogin(request);
-  if (url.pathname === "/auth/callback" && request.method === "GET")
-    return finishLogin(request);
-  if (url.pathname === "/auth/logout" && request.method === "POST")
-    return logout(request);
-  return null;
-};
-
 export const protectRequest = async (request: Request) => {
   const requestUrl = new URL(request.url);
   const path = requestUrl.pathname;
+  if (path.startsWith("/auth/"))
+    return null;
   if (path === "/graphql" && request.method === "OPTIONS")
     return null;
   if (path === "/login" && request.method === "GET") {
@@ -49,9 +40,6 @@ export const protectRequest = async (request: Request) => {
       return Response.redirect(new URL("/", request.url), 302);
     return null;
   }
-  const authResponse = await authHandler(request);
-  if (authResponse)
-    return authResponse;
   if (path.startsWith("/assets/") || path.startsWith("/_nuxt/") || path.startsWith("/_build/") || path.startsWith("/_app/") || path.startsWith("/favicon") || /^\/[^/]+\.(?:css|js|mjs|map|woff2?|ttf|svg|png|ico)$/.test(path))
     return null;
   if (path === "/graphql")

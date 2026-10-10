@@ -41,6 +41,16 @@ test.describe("server endpoints", () => {
     );
   });
 
+  test("auth API routes reach their framework handlers", async ({ request }, testInfo) => {
+    const origin = testInfo.project.use.baseURL as string;
+    const callback = await request.get("/auth/callback");
+    const logout = await request.post("/auth/logout", { headers: { Origin: origin }, maxRedirects: 0 });
+
+    expect(callback.status()).toBe(400);
+    expect(logout.status()).toBe(303);
+    expect(logout.headers().location).toBe("/login");
+  });
+
   test("opens the signed-in userscript token settings", async ({ page }) => {
     await page.goto("/settings/tokens");
 

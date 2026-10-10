@@ -1,4 +1,4 @@
-import { authHandler, getYoga, protectRequest } from "server-graphql";
+import { getYoga, protectRequest } from "server-graphql";
 
 const yogaApp = getYoga({ Response });
 const requestUrl = (event: Parameters<Parameters<typeof defineEventHandler>[0]>[0]) => {
@@ -19,8 +19,7 @@ export default defineEventHandler(
     if (event.node.req.method === "OPTIONS") {
       return yogaApp(request);
     }
-    const authResponse = await authHandler(request);
-    const protectedResponse = authResponse ?? await protectRequest(request);
+    const protectedResponse = await protectRequest(request);
     if (protectedResponse) {
       event.node.res.statusCode = protectedResponse.status;
       protectedResponse.headers.forEach((value, name) => event.node.res.setHeader(name, value));
