@@ -15,7 +15,7 @@ import styles from "client-css/m/nav.module.scss";
         </NuxtLink>
       </div>
       <div>
-        <NuxtLink class="auth-link" href="/settings/tokens">
+        <NuxtLink :class="styles.button" href="/settings/tokens">
           Account
         </NuxtLink>
         <NuxtLink
