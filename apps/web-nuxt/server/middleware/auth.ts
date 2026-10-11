@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
   const forwardedProto = headers["x-forwarded-proto"];
   const protocol = (Array.isArray(forwardedProto) ? forwardedProto[0] : forwardedProto) === "https" ? "https" : "http";
   const url = new URL(event.node.req.url ?? "/", `${protocol}://${headers.host ?? "localhost"}`);
-  if (url.pathname === "/graphql" || url.pathname.startsWith("/auth/") || url.pathname.startsWith("/_nuxt/") || url.pathname.startsWith("/favicon"))
+  if (url.pathname === "/graphql" || url.pathname === "/api/settings/tokens" || url.pathname.startsWith("/auth/") || url.pathname.startsWith("/_nuxt/") || url.pathname.startsWith("/favicon"))
     return;
 
   const request = new Request(url, {

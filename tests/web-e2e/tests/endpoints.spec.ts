@@ -55,6 +55,19 @@ test.describe("server endpoints", () => {
     expect(logout.headers().location).toBe("/login");
   });
 
+  test("redirects unauthenticated page requests to the identity provider", async ({ request }, testInfo) => {
+    const headers = {
+      "x-teruko-e2e-oidc": "1",
+      ...(testInfo.project.name.startsWith("web-svelte") ? { "x-forwarded-proto": "http" } : {}),
+    };
+    for (const path of ["/", "/account"]) {
+      const response = await request.get(path, { headers, maxRedirects: 0 });
+
+      expect(response.status()).toBe(302);
+      expect(new URL(response.headers().location ?? "", testInfo.project.use.baseURL as string).pathname).toBe("/authorize");
+    }
+  });
+
   test("checks cookie-authenticated GraphQL origins", async ({ request }, testInfo) => {
     const origin = testInfo.project.use.baseURL as string;
     const headers = { "x-teruko-e2e-oidc": "1", ...(testInfo.project.name.startsWith("web-svelte") ? { "x-forwarded-proto": "http" } : {}) };

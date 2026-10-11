@@ -8,12 +8,8 @@ const { error: loadError } = await useFetch("/api/settings/tokens", {
 const secret = ref("");
 const error = ref("");
 const busy = ref(false);
-if (loadError.value) {
-  if (loadError.value.statusCode === 401) {
-    await navigateTo(`/login?returnTo=${encodeURIComponent("/account")}`);
-  }
+if (loadError.value)
   error.value = loadError.value.message;
-}
 
 const createToken = async () => {
   busy.value = true;
