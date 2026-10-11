@@ -1,9 +1,8 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 import { createServerFn, useServerFn } from "@tanstack/react-start";
+import styles from "client-css/m/form.module.scss";
 import { useState } from "react";
-import ActionRow from "../components/common/ActionRow";
 import CopyableSecret from "../components/common/CopyableSecret";
-import FormError from "../components/common/FormError";
 import LoadingButton from "../components/common/LoadingButton";
 import PageLayout from "../components/common/PageLayout";
 import Panel from "../components/common/Panel";
@@ -61,15 +60,15 @@ const TokenSettings = () => {
   return (
     <PageLayout title="Account">
       <Panel id="token-heading" title="Token">
-        <ActionRow>
+        <div className={styles.actionRow}>
           <LoadingButton loading={busy} loadingLabel="Regenerating token" type="button" onClick={() => void create()}>
             Regenerate
           </LoadingButton>
-        </ActionRow>
+        </div>
         {secret && (
           <CopyableSecret key={secret} value={secret} label="Token" />
         )}
-        {error && <FormError>{error}</FormError>}
+        {error && <p className={styles.formError} role="alert">{error}</p>}
       </Panel>
     </PageLayout>
   );

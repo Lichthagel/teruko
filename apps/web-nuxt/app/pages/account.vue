@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import styles from "client-css/m/form.module.scss";
+
 useHead({ title: "Account - てる子" });
 
 const { error: loadError } = await useFetch("/api/settings/tokens", {
@@ -28,15 +30,15 @@ const createToken = async () => {
 <template>
   <CommonPageLayout title="Account">
     <CommonPanel id="token-heading" title="Token">
-      <CommonActionRow>
+      <div :class="styles.actionRow">
         <CommonLoadingButton :loading="busy" loading-label="Regenerating token" @click="createToken">
           Regenerate
         </CommonLoadingButton>
-      </CommonActionRow>
+      </div>
       <CommonCopyableSecret v-if="secret" :value="secret" label="Token" />
-      <CommonFormError v-if="error">
+      <p v-if="error" :class="styles.formError" role="alert">
         {{ error }}
-      </CommonFormError>
+      </p>
     </CommonPanel>
   </CommonPageLayout>
 </template>
