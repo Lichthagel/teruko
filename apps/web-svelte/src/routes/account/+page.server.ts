@@ -1,6 +1,6 @@
-import type { PageServerLoad } from "./$types";
-import { redirect } from "@sveltejs/kit";
-import { requireSessionUser, userTokenStatus } from "server-auth/auth";
+import type { Actions, PageServerLoad } from "./$types";
+import { fail, redirect } from "@sveltejs/kit";
+import { isSameOriginRequest, requireSessionUser, resetUserToken, userTokenStatus } from "server-auth/auth";
 
 export const load: PageServerLoad = async ({ request, setHeaders }) => {
   const user = await requireSessionUser(request);
@@ -10,4 +10,19 @@ export const load: PageServerLoad = async ({ request, setHeaders }) => {
 
   setHeaders({ "Cache-Control": "no-store" });
   return { status: await userTokenStatus(user) };
+};
+
+export const actions: Actions = {
+  resetToken: async ({ request }) => {
+    const origin = request.headers.get("origin");
+    if (!origin || !isSameOriginRequest(request, origin))
+      return fail(403, { error: "Forbidden" });
+
+    const user = await requireSessionUser(request);
+    if (!user)
+      redirect(303, `/login?returnTo=${encodeURIComponent("/account")}`);
+
+    const { token } = await resetUserToken(user);
+    return { token };
+  },
 };

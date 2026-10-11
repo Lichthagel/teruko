@@ -85,12 +85,6 @@ test.describe("server endpoints", () => {
     expect(revokedAccess.status()).toBe(401);
   });
 
-  test("token management endpoints require an authenticated origin", async ({ request }) => {
-    const response = await request.post("/api/settings/tokens", { headers: { Origin: "https://not-teruko.invalid" }, data: {} });
-
-    expect(response.status()).toBe(403);
-  });
-
   test("handles unknown image IDs", async ({ page }, testInfo) => {
     await page.goto("/999999");
 

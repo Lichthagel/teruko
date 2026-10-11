@@ -22,7 +22,7 @@ const resetToken = createServerFn({ method: "POST" }).handler(async () => {
   const request = getRequest();
   const user = await requireSessionUser(request);
   if (!user)
-    throw new Error("Unauthorized");
+    throw redirect({ href: `/login?returnTo=${encodeURIComponent("/account")}` });
   const origin = request.headers.get("origin");
   const requestUrl = getRequestUrl({ xForwardedHost: true, xForwardedProto: true });
   let originUrl: URL;
@@ -38,15 +38,12 @@ const resetToken = createServerFn({ method: "POST" }).handler(async () => {
 });
 
 const TokenSettings = () => {
-  const initialStatus = Route.useLoaderData();
-  const [status, setStatus] = useState<TokenStatus>(initialStatus);
+  const [status, setStatus] = useState<TokenStatus>(Route.useLoaderData());
   const [secret, setSecret] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const callGetTokenStatus = useServerFn(getTokenStatus);
   const callResetToken = useServerFn(resetToken);
-
-  const refresh = async () => setStatus(await callGetTokenStatus());
 
   const create = async () => {
     setBusy(true);
@@ -54,7 +51,7 @@ const TokenSettings = () => {
     try {
       const result = await callResetToken();
       setSecret(result.token);
-      await refresh();
+      setStatus(await callGetTokenStatus());
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : String(cause));
     } finally {

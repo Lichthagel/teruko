@@ -1,11 +1,11 @@
-import { userTokenHandler } from "server-auth/routes";
+import { isSameOriginRequest, requireSessionUser, resetUserToken, userTokenStatus } from "server-auth/auth";
 
 export default defineEventHandler(async (event) => {
+  const method = event.node.req.method ?? "GET";
   const forwardedProto = event.node.req.headers["x-forwarded-proto"];
   const protocol = (Array.isArray(forwardedProto) ? forwardedProto[0] : forwardedProto) === "https" ? "https" : "http";
   const forwardedHost = event.node.req.headers["x-forwarded-host"];
   const host = (Array.isArray(forwardedHost) ? forwardedHost[0] : forwardedHost) ?? event.node.req.headers.host ?? "localhost";
-  const method = event.node.req.method ?? "GET";
   const requestHeaders = new Headers();
   for (const [name, value] of Object.entries(event.node.req.headers)) {
     if (typeof value !== "undefined")
@@ -15,17 +15,30 @@ export default defineEventHandler(async (event) => {
     method,
     headers: requestHeaders,
   });
-  const response = await userTokenHandler(request);
-  if (!response) {
-    setResponseStatus(event, 404);
-    return { error: "Not Found" };
+  const user = await requireSessionUser(request);
+  if (!user) {
+    setResponseHeader(event, "Cache-Control", "no-store");
+    setResponseStatus(event, 401);
+    return { error: "Unauthorized" };
   }
 
-  setResponseHeader(event, "Cache-Control", "no-store");
-  setResponseStatus(event, response.status);
-  response.headers.forEach((value, name) => setResponseHeader(event, name, value));
-  if (response.status === 204) {
-    return null;
+  if (method === "GET") {
+    setResponseHeader(event, "Cache-Control", "no-store");
+    return userTokenStatus(user);
   }
-  return response.json();
+
+  const origin = request.headers.get("origin");
+  if (!origin || !isSameOriginRequest(request, origin)) {
+    setResponseHeader(event, "Cache-Control", "no-store");
+    setResponseStatus(event, 403);
+    return { error: "Forbidden" };
+  }
+  if (method === "POST") {
+    setResponseHeader(event, "Cache-Control", "no-store");
+    return resetUserToken(user);
+  }
+
+  setResponseHeader(event, "Allow", "GET, POST");
+  setResponseStatus(event, 405);
+  return { error: "Method Not Allowed" };
 });

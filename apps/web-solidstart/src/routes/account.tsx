@@ -1,8 +1,8 @@
+import type { TokenStatus } from "../lib/server/account";
 import { Title } from "@solidjs/meta";
 import styles from "client-css/m/tokens.module.scss";
 import { createSignal, onMount, Show } from "solid-js";
-
-type TokenStatus = { active: boolean; createdAt: string | null };
+import { createAccountToken, getAccountTokenStatus } from "../lib/server/account";
 
 export default function TokenSettings() {
   const [status, setStatus] = createSignal<TokenStatus>({ active: false, createdAt: null });
@@ -11,15 +11,12 @@ export default function TokenSettings() {
   const [busy, setBusy] = createSignal(false);
 
   const refresh = async () => {
-    const response = await fetch("/api/settings/tokens", { cache: "no-store" });
-    const result = await response.json();
-    if (response.status === 401) {
+    const result = await getAccountTokenStatus();
+    if (result.unauthorized) {
       location.assign(`/login?returnTo=${encodeURIComponent("/account")}`);
       return;
     }
-    if (!response.ok)
-      throw new Error(result.error ?? "Could not load token status");
-    setStatus(result);
+    setStatus(result.status);
   };
 
   onMount(() => {
@@ -32,18 +29,13 @@ export default function TokenSettings() {
     setBusy(true);
     setError("");
     try {
-      const response = await fetch("/api/settings/tokens", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: "{}",
-      });
-      const result = await response.json();
-      if (response.status === 401) {
+      const result = await createAccountToken();
+      if (result.unauthorized) {
         location.assign(`/login?returnTo=${encodeURIComponent("/account")}`);
         return;
       }
-      if (!response.ok)
-        throw new Error(result.error ?? "Could not create token");
+      if ("error" in result)
+        throw new Error(result.error);
       setSecret(result.token);
       await refresh();
     } catch (cause) {

@@ -1,47 +1,10 @@
 <script lang="ts">
+  import type { PageProps } from "./$types";
+  import { enhance } from "$app/forms";
+
   import styles from "client-css/m/tokens.module.scss";
 
-  type TokenStatus = { active: boolean; createdAt: string | null };
-  type Props = { data: { status: TokenStatus } };
-
-  const { data }: Props = $props();
-  let status = $state<TokenStatus | null>(null);
-  const tokenStatus = $derived(status ?? data.status);
-  let secret = $state("");
-  let busy = $state(false);
-  let error = $state("");
-
-  const request = async () => {
-    const response = await fetch("/api/settings/tokens", { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" });
-    const result = response.status === 204 ? null : await response.json();
-    if (!response.ok)
-      throw new Error(result?.error ?? "Token request failed");
-    return result;
-  };
-
-  const refresh = async () => {
-    const response = await fetch("/api/settings/tokens", { cache: "no-store" });
-    const result = await response.json();
-    if (!response.ok)
-      throw new Error(result.error ?? "Could not load tokens");
-    status = result;
-  };
-
-  const create = async () => {
-    busy = true;
-    error = "";
-    try {
-      const result = await request();
-      if (result?.token) {
-        secret = result.token;
-      }
-      await refresh();
-    } catch (cause) {
-      error = cause instanceof Error ? cause.message : String(cause);
-    } finally {
-      busy = false;
-    }
-  };
+  const { data, form }: PageProps = $props();
 
 </script>
 
@@ -58,21 +21,21 @@
     <h2 id="create-heading" class={styles.sectionTitle}>Access token</h2>
     <p class={styles.muted}>Resetting replaces your current token.</p>
     <div class={styles.actions}>
-      <button class={styles.primaryButton} type="button" disabled={busy} onclick={create}>
-        {busy ? "Working..." : "Generate / reset token"}
-      </button>
+      <form method="POST" action="?/resetToken" use:enhance>
+        <button class={styles.primaryButton} type="submit">Generate / reset token</button>
+      </form>
     </div>
-    {#if secret}
+    {#if form?.token}
       <div class={styles.notice} role="status">Copy your token now; it will only be shown once.</div>
-      <pre class={styles.tokenSecret} aria-label="New bearer token">{secret}</pre>
+      <pre class={styles.tokenSecret} aria-label="New bearer token">{form.token}</pre>
     {/if}
-    {#if error}<p class={styles.error} role="alert">{error}</p>{/if}
+    {#if form?.error}<p class={styles.error} role="alert">{form.error}</p>{/if}
   </section>
 
   <section class={styles.card} aria-labelledby="status-heading">
     <h2 id="status-heading" class={styles.sectionTitle}>Token status</h2>
-    {#if tokenStatus.active}
-      <p class={styles.muted}>Active{tokenStatus.createdAt ? ` since ${tokenStatus.createdAt.slice(0, 16).replace("T", " ")} UTC` : ""}.</p>
+    {#if data.status.active}
+      <p class={styles.muted}>Active{data.status.createdAt ? ` since ${data.status.createdAt.slice(0, 16).replace("T", " ")} UTC` : ""}.</p>
     {:else}
       <p class={styles.muted}>No active token.</p>
     {/if}
