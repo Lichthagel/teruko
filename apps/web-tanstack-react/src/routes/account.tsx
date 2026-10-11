@@ -1,19 +1,21 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 import { createServerFn, useServerFn } from "@tanstack/react-start";
-import styles from "client-css/m/tokens.module.scss";
 import { useState } from "react";
+import ActionRow from "../components/common/ActionRow";
+import CopyableSecret from "../components/common/CopyableSecret";
+import FormError from "../components/common/FormError";
+import LoadingButton from "../components/common/LoadingButton";
+import PageLayout from "../components/common/PageLayout";
+import Panel from "../components/common/Panel";
 
-type TokenStatus = { active: boolean; createdAt: string | null };
-
-const getTokenStatus = createServerFn({ method: "GET" }).handler(async () => {
+const requireAccount = createServerFn({ method: "GET" }).handler(async () => {
   const { getRequest, setResponseHeader } = await import("@tanstack/react-start/server");
-  const { requireSessionUser, userTokenStatus } = await import("server-auth/auth");
+  const { requireSessionUser } = await import("server-auth/auth");
   const request = getRequest();
   const user = await requireSessionUser(request);
   if (!user)
     throw redirect({ href: `/login?returnTo=${encodeURIComponent("/account")}` });
   setResponseHeader("Cache-Control", "no-store");
-  return userTokenStatus(user);
 });
 
 const resetToken = createServerFn({ method: "POST" }).handler(async () => {
@@ -38,11 +40,9 @@ const resetToken = createServerFn({ method: "POST" }).handler(async () => {
 });
 
 const TokenSettings = () => {
-  const [status, setStatus] = useState<TokenStatus>(Route.useLoaderData());
   const [secret, setSecret] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
-  const callGetTokenStatus = useServerFn(getTokenStatus);
   const callResetToken = useServerFn(resetToken);
 
   const create = async () => {
@@ -51,7 +51,6 @@ const TokenSettings = () => {
     try {
       const result = await callResetToken();
       setSecret(result.token);
-      setStatus(await callGetTokenStatus());
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : String(cause));
     } finally {
@@ -60,50 +59,24 @@ const TokenSettings = () => {
   };
 
   return (
-    <main className={styles.page}>
-      <div className={styles.eyebrow}>Account settings</div>
-      <h1 className={styles.title}>Userscript access</h1>
-      <p className={styles.intro}>Create a token for the Pixiv userscript.</p>
-
-      <section className={styles.card} aria-labelledby="create-heading">
-        <h2 id="create-heading" className={styles.sectionTitle}>Access token</h2>
-        <p className={styles.muted}>Resetting replaces your current token.</p>
-        <div className={styles.actions}>
-          <button className={styles.primaryButton} type="button" disabled={busy} onClick={() => void create()}>
-            {busy ? "Working..." : "Generate / reset token"}
-          </button>
-        </div>
+    <PageLayout title="Account">
+      <Panel id="token-heading" title="Token">
+        <ActionRow>
+          <LoadingButton loading={busy} loadingLabel="Regenerating token" type="button" onClick={() => void create()}>
+            Regenerate
+          </LoadingButton>
+        </ActionRow>
         {secret && (
-          <>
-            <div className={styles.notice} role="status">Copy your token now; it will only be shown once.</div>
-            <pre className={styles.tokenSecret} aria-label="New bearer token">{secret}</pre>
-          </>
+          <CopyableSecret key={secret} value={secret} label="Token" />
         )}
-        {error && <p className={styles.error} role="alert">{error}</p>}
-      </section>
-
-      <section className={styles.card} aria-labelledby="tokens-heading">
-        <h2 id="tokens-heading" className={styles.sectionTitle}>Token status</h2>
-        {status.active
-          ? (
-              <p className={styles.muted}>
-                Active
-                {status.createdAt ? ` since ${status.createdAt.slice(0, 16).replace("T", " ")} UTC` : ""}
-                .
-              </p>
-            )
-          : <p className={styles.muted}>No active token.</p>}
-      </section>
-
-      <div className={styles.footer}>
-        <form method="post" action="/auth/logout"><button className={styles.secondaryButton} type="submit">Sign out</button></form>
-      </div>
-    </main>
+        {error && <FormError>{error}</FormError>}
+      </Panel>
+    </PageLayout>
   );
 };
 
 export const Route = createFileRoute("/account")({
-  loader: () => getTokenStatus(),
-  head: () => ({ meta: [{ title: "Userscript access - てる子" }] }),
+  loader: () => requireAccount(),
+  head: () => ({ meta: [{ title: "Account - てる子" }] }),
   component: TokenSettings,
 });

@@ -1,16 +1,11 @@
 "use server";
 
-import { authorizeRequest, isSameOriginRequest, requireSessionUser, resetUserToken, userTokenStatus } from "server-auth/auth";
+import { authorizeRequest, isSameOriginRequest, requireSessionUser, resetUserToken } from "server-auth/auth";
 import { getRequestEvent } from "solid-js/web";
 
-export type TokenStatus = { active: boolean; createdAt: string | null };
-
-export const getAccountTokenStatus = async () => {
+export const hasAccountAccess = async () => {
   const event = getRequestEvent();
-  const user = event ? await authorizeRequest(event.request) : null;
-  if (!user)
-    return { unauthorized: true as const };
-  return { unauthorized: false as const, status: await userTokenStatus(user) };
+  return Boolean(event && await authorizeRequest(event.request));
 };
 
 export const createAccountToken = async () => {

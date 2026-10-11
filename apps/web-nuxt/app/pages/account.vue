@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import styles from "client-css/m/tokens.module.scss";
+useHead({ title: "Account - てる子" });
 
-type TokenStatus = { active: boolean; createdAt: string | null };
-type TokenResponse = TokenStatus;
-
-useHead({ title: "Userscript access - てる子" });
-
-const { data, refresh, error: loadError } = await useFetch<TokenResponse>("/api/settings/tokens", {
+const { error: loadError } = await useFetch("/api/settings/tokens", {
   key: "userscript-tokens",
   cache: "no-store",
 });
@@ -26,7 +21,6 @@ const createToken = async () => {
   try {
     const result = await $fetch<{ id: string; token: string }>("/api/settings/tokens", { method: "POST" });
     secret.value = result.token;
-    await refresh();
   } catch (cause) {
     error.value = cause instanceof Error ? cause.message : String(cause);
   } finally {
@@ -36,58 +30,17 @@ const createToken = async () => {
 </script>
 
 <template>
-  <main :class="styles.page">
-    <div :class="styles.eyebrow">
-      Account settings
-    </div>
-    <h1 :class="styles.title">
-      Userscript access
-    </h1>
-    <p :class="styles.intro">
-      Create a token for the Pixiv userscript.
-    </p>
-
-    <section :class="styles.card" aria-labelledby="create-heading">
-      <h2 id="create-heading" :class="styles.sectionTitle">
-        Access token
-      </h2>
-      <p :class="styles.muted">
-        Resetting replaces your current token.
-      </p>
-      <div :class="styles.actions">
-        <button :class="styles.primaryButton" type="button" :disabled="busy" @click="createToken">
-          {{ busy ? "Working..." : "Generate / reset token" }}
-        </button>
-      </div>
-      <div v-if="secret">
-        <div :class="styles.notice" role="status">
-          Copy your token now; it will only be shown once.
-        </div>
-        <pre :class="styles.tokenSecret" aria-label="New bearer token">{{ secret }}</pre>
-      </div>
-      <p v-if="error" :class="styles.error" role="alert">
+  <CommonPageLayout title="Account">
+    <CommonPanel id="token-heading" title="Token">
+      <CommonActionRow>
+        <CommonLoadingButton :loading="busy" loading-label="Regenerating token" @click="createToken">
+          Regenerate
+        </CommonLoadingButton>
+      </CommonActionRow>
+      <CommonCopyableSecret v-if="secret" :value="secret" label="Token" />
+      <CommonFormError v-if="error">
         {{ error }}
-      </p>
-    </section>
-
-    <section :class="styles.card" aria-labelledby="tokens-heading">
-      <h2 id="tokens-heading" :class="styles.sectionTitle">
-        Token status
-      </h2>
-      <p v-if="data?.active" :class="styles.muted">
-        Active{{ data.createdAt ? ` since ${data.createdAt.slice(0, 16).replace("T", " ")} UTC` : "" }}.
-      </p>
-      <p v-else :class="styles.muted">
-        No active token.
-      </p>
-    </section>
-
-    <div :class="styles.footer">
-      <form method="post" action="/auth/logout">
-        <button :class="styles.secondaryButton" type="submit">
-          Sign out
-        </button>
-      </form>
-    </div>
-  </main>
+      </CommonFormError>
+    </CommonPanel>
+  </CommonPageLayout>
 </template>

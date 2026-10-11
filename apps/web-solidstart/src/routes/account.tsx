@@ -1,26 +1,23 @@
-import type { TokenStatus } from "../lib/server/account";
 import { Title } from "@solidjs/meta";
-import styles from "client-css/m/tokens.module.scss";
 import { createSignal, onMount, Show } from "solid-js";
-import { createAccountToken, getAccountTokenStatus } from "../lib/server/account";
+import ActionRow from "../components/common/ActionRow";
+import CopyableSecret from "../components/common/CopyableSecret";
+import FormError from "../components/common/FormError";
+import LoadingButton from "../components/common/LoadingButton";
+import PageLayout from "../components/common/PageLayout";
+import Panel from "../components/common/Panel";
+import { createAccountToken, hasAccountAccess } from "../lib/server/account";
 
 export default function TokenSettings() {
-  const [status, setStatus] = createSignal<TokenStatus>({ active: false, createdAt: null });
   const [secret, setSecret] = createSignal("");
   const [error, setError] = createSignal("");
   const [busy, setBusy] = createSignal(false);
 
-  const refresh = async () => {
-    const result = await getAccountTokenStatus();
-    if (result.unauthorized) {
-      location.assign(`/login?returnTo=${encodeURIComponent("/account")}`);
-      return;
-    }
-    setStatus(result.status);
-  };
-
   onMount(() => {
-    void refresh().catch((cause) => {
+    void hasAccountAccess().then((authorized) => {
+      if (!authorized)
+        location.assign(`/login?returnTo=${encodeURIComponent("/account")}`);
+    }).catch((cause) => {
       setError(cause instanceof Error ? cause.message : String(cause));
     });
   });
@@ -37,7 +34,6 @@ export default function TokenSettings() {
       if ("error" in result)
         throw new Error(result.error);
       setSecret(result.token);
-      await refresh();
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : String(cause));
     } finally {
@@ -46,41 +42,19 @@ export default function TokenSettings() {
   };
 
   return (
-    <main class={styles.page}>
-      <Title>Userscript access - てる子</Title>
-      <div class={styles.eyebrow}>Account settings</div>
-      <h1 class={styles.title}>Userscript access</h1>
-      <p class={styles.intro}>Create a token for the Pixiv userscript.</p>
-
-      <section class={styles.card} aria-labelledby="create-heading">
-        <h2 id="create-heading" class={styles.sectionTitle}>Access token</h2>
-        <p class={styles.muted}>Resetting replaces your current token.</p>
-        <div class={styles.actions}>
-          <button class={styles.primaryButton} type="button" disabled={busy()} onClick={() => void create()}>
-            {busy() ? "Working..." : "Generate / reset token"}
-          </button>
-        </div>
+    <PageLayout title="Account">
+      <Title>Account - てる子</Title>
+      <Panel id="token-heading" title="Token">
+        <ActionRow>
+          <LoadingButton loading={busy()} loadingLabel="Regenerating token" type="button" onClick={() => void create()}>
+            Regenerate
+          </LoadingButton>
+        </ActionRow>
         <Show when={secret()}>
-          <div class={styles.notice} role="status">Copy your token now; it will only be shown once.</div>
-          <pre class={styles.tokenSecret} aria-label="New bearer token">{secret()}</pre>
+          <CopyableSecret value={secret()} label="Token" />
         </Show>
-        <Show when={error()}><p class={styles.error} role="alert">{error()}</p></Show>
-      </section>
-
-      <section class={styles.card} aria-labelledby="tokens-heading">
-        <h2 id="tokens-heading" class={styles.sectionTitle}>Token status</h2>
-        <Show when={status().active} fallback={<p class={styles.muted}>No active token.</p>}>
-          <p class={styles.muted}>
-            Active
-            {status().createdAt ? ` since ${status().createdAt!.slice(0, 16).replace("T", " ")} UTC` : ""}
-            .
-          </p>
-        </Show>
-      </section>
-
-      <div class={styles.footer}>
-        <form method="post" action="/auth/logout"><button class={styles.secondaryButton} type="submit">Sign out</button></form>
-      </div>
-    </main>
+        <Show when={error()}><FormError>{error()}</FormError></Show>
+      </Panel>
+    </PageLayout>
   );
 }

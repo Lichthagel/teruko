@@ -5,28 +5,13 @@
   margin: clamp(2rem, 8vh, 5rem) auto;
 }
 
-.eyebrow {
-  color: var(--primary);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.title {
+.pageTitle {
   margin: 0.4rem 0 0.5rem;
   font-size: clamp(2rem, 7vw, 3.5rem);
   line-height: 1;
 }
 
-.intro {
-  max-width: 38rem;
-  color: var(--subtext1);
-  font-size: 1.05rem;
-  line-height: 1.6;
-}
-
-.card {
+.panel {
   margin-top: 2rem;
   padding: clamp(1.25rem, 4vw, 2rem);
   border: 1px solid var(--surface1);
@@ -35,17 +20,12 @@
   box-shadow: 0 1.25rem 3rem rgb(30 30 46 / 10%);
 }
 
-.sectionTitle {
+.panelTitle {
   margin: 0 0 0.5rem;
   font-size: 1.35rem;
 }
 
-.muted {
-  color: var(--subtext0);
-  line-height: 1.5;
-}
-
-.actions {
+.actionRow {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -53,9 +33,8 @@
   margin-top: 1.25rem;
 }
 
-.primaryButton,
-.secondaryButton,
-.dangerButton {
+.buttonPrimary,
+.buttonSecondary {
   min-height: 2.6rem;
   padding: 0.55rem 1rem;
   border: 0;
@@ -64,48 +43,78 @@
   font-weight: 700;
 }
 
-.primaryButton {
+.buttonPrimary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: var(--primary);
   color: var(--primary-foreground);
 }
 
-.secondaryButton {
+.buttonPrimary:disabled[aria-busy="true"] {
+  animation: button-pulse 0.7s ease-in-out infinite alternate;
+}
+
+@keyframes button-pulse {
+  from { opacity: 1; }
+  to { opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .buttonPrimary:disabled[aria-busy="true"] {
+    animation: none;
+  }
+}
+
+.buttonSecondary {
   background: var(--surface1);
   color: var(--text);
 }
 
-.tokenSecret {
-  overflow-wrap: anywhere;
-  margin: 1rem 0 0;
-  padding: 1rem;
+.copyButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  padding: 0.55rem;
+}
+
+.copyIcon {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.secretField {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.maskedInput {
+  min-width: 0;
+  flex: 1;
+  padding: 0.65rem 0.8rem;
   border: 1px solid var(--primary);
   border-radius: variables.$radius;
   background: var(--base);
-  color: var(--text);
+  color: transparent;
+  text-shadow: 0 0 8px var(--text);
   font: 0.95rem/1.5 ui-monospace, "Cascadia Code", monospace;
   user-select: all;
 }
 
-.notice,
-.error {
+.maskedInput:hover,
+.maskedInput:focus {
+  color: var(--text);
+  text-shadow: none;
+}
+
+.formError {
   margin-top: 1rem;
   padding: 0.8rem 1rem;
   border-radius: variables.$radius;
   line-height: 1.5;
-}
-
-.notice {
-  background: var(--surface0);
-  color: var(--text);
-}
-
-.error {
   background: color-mix(in srgb, var(--red) 12%, var(--base));
   color: var(--red);
-}
-
-.footer {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1.5rem;
 }

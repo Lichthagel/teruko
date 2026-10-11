@@ -1,6 +1,6 @@
 import type { Actions, PageServerLoad } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
-import { isSameOriginRequest, requireSessionUser, resetUserToken, userTokenStatus } from "server-auth/auth";
+import { isSameOriginRequest, requireSessionUser, resetUserToken } from "server-auth/auth";
 
 export const load: PageServerLoad = async ({ request, setHeaders }) => {
   const user = await requireSessionUser(request);
@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ request, setHeaders }) => {
   }
 
   setHeaders({ "Cache-Control": "no-store" });
-  return { status: await userTokenStatus(user) };
+  return {};
 };
 
 export const actions: Actions = {
