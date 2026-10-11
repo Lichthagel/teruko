@@ -40,7 +40,10 @@ const getOidcConfiguration = () => {
     { token_endpoint_auth_method: "client_secret_basic" },
     oidc.ClientSecretBasic(clientSecret),
     env.NODE_ENV === "test" ? { execute: [oidc.allowInsecureRequests] } : undefined,
-  );
+  ).catch((error) => {
+    oidcConfiguration = undefined;
+    throw error;
+  });
   return oidcConfiguration;
 };
 

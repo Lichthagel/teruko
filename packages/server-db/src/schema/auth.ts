@@ -11,7 +11,7 @@ export const dAuthSession = pgTable("AuthSession", {
 export const dUserToken = pgTable("UserToken", {
   id: text("id").primaryKey(),
   subject: text("subject").notNull(),
-  tokenHash: text("tokenHash").notNull().unique(),
+  tokenHash: text("tokenHash").notNull().unique("UserToken_tokenHash_key"),
   createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
   revokedAt: timestamp("revokedAt", { mode: "date" }),
 }, table => [index("UserToken_subject_idx").on(table.subject)]);

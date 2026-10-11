@@ -1,6 +1,7 @@
 import type { Component } from "solid-js";
 import { createEffect, createResource, Match, onCleanup, Switch } from "solid-js";
 import { IMAGE_BY_FILENAME, TERUKO_BASE_URL } from "../constants";
+import { clearRejectedUserscriptToken } from "../token.js";
 import { GMfetch } from "../utils.js";
 
 const Existing: Component<{ filename: string }> = (props) => {
@@ -18,6 +19,11 @@ const Existing: Component<{ filename: string }> = (props) => {
           "Authorization": `Bearer ${token}`,
         },
       });
+
+      if (res.status === 401) {
+        clearRejectedUserscriptToken(token);
+        return undefined;
+      }
 
       const json = JSON.parse(res.responseText);
 

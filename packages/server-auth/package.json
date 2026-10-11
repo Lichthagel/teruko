@@ -25,6 +25,8 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "lint": "eslint .",
+    "test": "node --experimental-test-module-mocks --experimental-strip-types --test test/*.test.ts",
+    "check:test": "tsc --noEmit -p test/tsconfig.json",
     "clean": "rm -rf dist"
   },
   "dependencies": {

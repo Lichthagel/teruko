@@ -55,6 +55,41 @@ test.describe("server endpoints", () => {
     expect(logout.headers().location).toBe("/login");
   });
 
+  test("checks cookie-authenticated GraphQL origins", async ({ request }, testInfo) => {
+    const origin = testInfo.project.use.baseURL as string;
+    const headers = { "x-teruko-e2e-oidc": "1", ...(testInfo.project.name.startsWith("web-svelte") ? { "x-forwarded-proto": "http" } : {}) };
+    const unauthenticated = await request.post("/graphql", {
+      headers: { ...headers, Origin: origin },
+      data: { query: "mutation { __typename }" },
+    });
+    expect(unauthenticated.status()).toBe(401);
+    const login = await request.get("/login?returnTo=%2Faccount", { headers });
+    expect(login.status()).toBe(200);
+    expect(new URL(login.url()).pathname).toBe("/account");
+
+    const operations = JSON.stringify({ query: "mutation { __typename }" });
+    const allowed = await request.post("/graphql", {
+      headers: { ...headers, Origin: origin },
+      multipart: { operations },
+    });
+    expect(allowed.status()).toBe(200);
+    expect((await allowed.json()).data.__typename).toBe("Mutation");
+
+    for (const requestHeaders of [headers, { ...headers, Origin: "https://untrusted.example.invalid" }]) {
+      const rejected = await request.post("/graphql", {
+        headers: requestHeaders,
+        data: { query: "mutation { __typename }" },
+      });
+      expect(rejected.status()).toBe(401);
+      const rejectedForm = await request.post("/graphql", {
+        headers: requestHeaders,
+        multipart: { operations },
+      });
+      // SvelteKit can reject form submissions before the GraphQL handler runs.
+      expect([401, 403]).toContain(rejectedForm.status());
+    }
+  });
+
   test("opens the account token settings", async ({ page }) => {
     await page.goto("/account");
 
@@ -74,6 +109,11 @@ test.describe("server endpoints", () => {
       data: { query: "{ images(first: 1) { edges { node { id } } } }" },
     });
     expect(firstAccess.status()).toBe(200);
+    const pixivAccess = await request.post("/graphql", {
+      headers: { Authorization: `Bearer ${firstSecret}`, Origin: "https://www.pixiv.net" },
+      data: { query: "{ images(first: 1) { edges { node { id } } } }" },
+    });
+    expect(pixivAccess.status()).toBe(200);
 
     await page.getByRole("button", { name: "Generate / reset token" }).click();
     await expect(page.getByLabel("New bearer token")).not.toHaveText(firstSecret ?? "");

@@ -2,6 +2,7 @@ import type { Component } from "solid-js";
 import { getPixivMetadata } from "services/pixiv";
 import { createEffect, createMemo, createSignal, on } from "solid-js";
 import { CREATE_IMAGE, TERUKO_BASE_URL } from "../constants.js";
+import { clearRejectedUserscriptToken } from "../token.js";
 import { GMfetch } from "../utils.js";
 
 type Props = {
@@ -71,21 +72,26 @@ const DownloadButton: Component<Props> = (props) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }).then(response => JSON.parse(response.responseText) as {
+      });
+      if (result.status === 401) {
+        clearRejectedUserscriptToken(token);
+        throw new Error("Teruko rejected your token. Click again to enter a new token.");
+      }
+      const response = JSON.parse(result.responseText) as {
         data: { createImage: { id: string }[] } | null;
         errors?: { message: string }[];
-      });
+      };
 
       window.removeEventListener("beforeunload", beforeUnload);
-      if (result.errors?.length) {
+      if (response.errors?.length) {
         setSmall(true);
-        setText(result.errors?.[0]?.message ?? JSON.stringify(result));
+        setText(response.errors?.[0]?.message ?? JSON.stringify(response));
         // alert(`error: ${result}`);
-      } else if (result.data) {
+      } else if (response.data) {
         if (open) {
-          window.open(`${TERUKO_BASE_URL}/${result.data.createImage[0]?.id as string}`, "_blank");
+          window.open(`${TERUKO_BASE_URL}/${response.data.createImage[0]?.id as string}`, "_blank");
         } else {
-          setText(`id: ${result.data.createImage[0]?.id as string}`);
+          setText(`id: ${response.data.createImage[0]?.id as string}`);
         }
         // alert(`uploaded (id: ${result.data.createImage[0].id})`);
       } else {
