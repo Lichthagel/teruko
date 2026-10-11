@@ -3,7 +3,7 @@ import { getPixivMetadata } from "services/pixiv";
 import { createEffect, createMemo, createSignal, on } from "solid-js";
 import { CREATE_IMAGE, TERUKO_BASE_URL } from "../constants.js";
 import { clearToken, requireToken } from "../token.js";
-import { GMfetch } from "../utils.js";
+import { GMgraphql } from "../utils.js";
 
 type Props = {
   url: string | null;
@@ -59,26 +59,16 @@ const DownloadButton: Component<Props> = (props) => {
       }));
       formData.append("map", JSON.stringify({ 0: ["variables.files.0"] }));
       formData.append("0", file);
-      const result = await GMfetch(`${TERUKO_BASE_URL}/graphql`, {
-        method: "POST",
-        data: formData,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (result.status === 401) {
+      const { res: graphqlRes, response } = await GMgraphql<{ createImage: { id: string }[] }>(formData, token);
+      if (graphqlRes.status === 401) {
         clearToken();
         throw new Error("Teruko rejected your token. Click again to enter a new token.");
       }
-      const response = JSON.parse(result.responseText) as {
-        data: { createImage: { id: string }[] } | null;
-        errors?: { message: string }[];
-      };
 
       window.removeEventListener("beforeunload", beforeUnload);
       if (response.errors?.length) {
         setSmall(true);
-        setText(response.errors?.[0]?.message ?? JSON.stringify(response));
+        setText(response.errors[0]?.message ?? JSON.stringify(response));
         // alert(`error: ${result}`);
       } else if (response.data) {
         if (open) {

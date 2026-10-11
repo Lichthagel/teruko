@@ -2,7 +2,7 @@ import type { Component } from "solid-js";
 import { createEffect, createResource, Match, onCleanup, Switch } from "solid-js";
 import { IMAGE_BY_FILENAME, TERUKO_BASE_URL } from "../constants";
 import { clearToken, getToken } from "../token.js";
-import { GMfetch } from "../utils.js";
+import { GMgraphql } from "../utils.js";
 
 const Existing: Component<{ filename: string }> = (props) => {
   const [existingId, { refetch }] = createResource(
@@ -11,23 +11,17 @@ const Existing: Component<{ filename: string }> = (props) => {
       const token = getToken();
       if (!token)
         return undefined;
-      const res = await GMfetch(`${TERUKO_BASE_URL}/graphql`, {
-        method: "POST",
-        data: JSON.stringify({ query: IMAGE_BY_FILENAME, variables: { filename } }),
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
-        },
-      });
+      const { res, response } = await GMgraphql<{ imageByFilename: { id: string } | null }>(
+        JSON.stringify({ query: IMAGE_BY_FILENAME, variables: { filename } }),
+        token,
+      );
 
       if (res.status === 401) {
         clearToken();
         return undefined;
       }
 
-      const json = JSON.parse(res.responseText);
-
-      return (json.data.imageByFilename as { id: string } | null)?.id;
+      return response.data?.imageByFilename?.id;
     },
   );
 
