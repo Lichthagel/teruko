@@ -12,6 +12,7 @@ export const getYoga = (
     schema,
     graphqlEndpoint: "/graphql",
     fetchAPI,
+    maxRequestBodySize: 500 * 1024 * 1024,
     plugins: [useGraphQlJit(), useAPQ()],
     cors: {
       origin: "https://www.pixiv.net",
