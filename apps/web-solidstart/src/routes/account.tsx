@@ -1,8 +1,7 @@
 import { Title } from "@solidjs/meta";
+import styles from "client-css/m/form.module.scss";
 import { createSignal, onMount, Show } from "solid-js";
-import ActionRow from "../components/common/ActionRow";
 import CopyableSecret from "../components/common/CopyableSecret";
-import FormError from "../components/common/FormError";
 import LoadingButton from "../components/common/LoadingButton";
 import PageLayout from "../components/common/PageLayout";
 import Panel from "../components/common/Panel";
@@ -45,15 +44,15 @@ export default function TokenSettings() {
     <PageLayout title="Account">
       <Title>Account - てる子</Title>
       <Panel id="token-heading" title="Token">
-        <ActionRow>
+        <div class={styles.actionRow}>
           <LoadingButton loading={busy()} loadingLabel="Regenerating token" type="button" onClick={() => void create()}>
             Regenerate
           </LoadingButton>
-        </ActionRow>
+        </div>
         <Show when={secret()}>
           <CopyableSecret value={secret()} label="Token" />
         </Show>
-        <Show when={error()}><FormError>{error()}</FormError></Show>
+        <Show when={error()}><p class={styles.formError} role="alert">{error()}</p></Show>
       </Panel>
     </PageLayout>
   );

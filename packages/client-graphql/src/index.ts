@@ -3,9 +3,8 @@ import { cacheExchange } from "@urql/exchange-graphcache";
 
 import resolvers from "./resolvers/index.js";
 
-export const createUrqlOptions = (url: string, options: { fetch?: typeof fetch } = {}) => ({
+export const createUrqlOptions = (url: string) => ({
   url,
-  ...(options.fetch ? { fetch: options.fetch } : {}),
   exchanges: [
     cacheExchange({
       keys: {
@@ -19,6 +18,6 @@ export const createUrqlOptions = (url: string, options: { fetch?: typeof fetch }
   ],
 });
 
-export const createUrqlClient = (url: string, options: { fetch?: typeof fetch } = {}) => new Client(createUrqlOptions(url, options));
+export const createUrqlClient = (url: string) => new Client(createUrqlOptions(url));
 
 export const urqlClient = createUrqlClient("/graphql");

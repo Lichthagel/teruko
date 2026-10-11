@@ -42,7 +42,7 @@ test.describe("server endpoints", () => {
     const authorizationUrl = new URL((await authorizationRequest).url());
     expect(authorizationUrl.searchParams.get("code_challenge_method")).toBe("S256");
     await expect(page).toHaveURL(/\/account$/);
-    await expect(page.getByRole("heading", { name: "Userscript access" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Account" })).toBeVisible();
   });
 
   test("auth API routes reach their framework handlers", async ({ request }, testInfo) => {
@@ -106,17 +106,17 @@ test.describe("server endpoints", () => {
   test("opens the account token settings", async ({ page }) => {
     await page.goto("/account");
 
-    await expect(page.getByRole("heading", { name: "Userscript access" })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Generate / reset token" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Account" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Regenerate" })).toBeVisible();
   });
 
   test("generates and resets the userscript bearer token", async ({ page, request }) => {
     await page.goto("/account");
 
-    await page.getByRole("button", { name: "Generate / reset token" }).click();
-    const firstToken = page.getByLabel("New bearer token");
-    await expect(firstToken).toContainText(/^teruko_/);
-    const firstSecret = (await firstToken.textContent()) ?? "";
+    await page.getByRole("button", { name: "Regenerate" }).click();
+    const firstToken = page.getByLabel("Token");
+    await expect(firstToken).toHaveValue(/^teruko_/);
+    const firstSecret = await firstToken.inputValue();
     const firstAccess = await request.post("/graphql", {
       headers: { Authorization: `Bearer ${firstSecret}` },
       data: { query: "{ images(first: 1) { edges { node { id } } } }" },
@@ -128,9 +128,9 @@ test.describe("server endpoints", () => {
     });
     expect(pixivAccess.status()).toBe(200);
 
-    await page.getByRole("button", { name: "Generate / reset token" }).click();
-    await expect(page.getByLabel("New bearer token")).not.toHaveText(firstSecret ?? "");
-    await expect(page.getByLabel("New bearer token")).toContainText(/^teruko_/);
+    await page.getByRole("button", { name: "Regenerate" }).click();
+    await expect(page.getByLabel("Token")).not.toHaveValue(firstSecret);
+    await expect(page.getByLabel("Token")).toHaveValue(/^teruko_/);
     const revokedAccess = await request.post("/graphql", {
       headers: { Authorization: `Bearer ${firstSecret}` },
       data: { query: "{ images(first: 1) { edges { node { id } } } }" },

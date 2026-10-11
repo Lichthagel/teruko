@@ -1,9 +1,8 @@
 <script lang="ts">
   import type { PageProps } from "./$types";
   import { enhance } from "$app/forms";
-  import ActionRow from "#lib/components/common/ActionRow.svelte";
+  import styles from "client-css/m/form.module.scss";
   import CopyableSecret from "#lib/components/common/CopyableSecret.svelte";
-  import FormError from "#lib/components/common/FormError.svelte";
   import LoadingButton from "#lib/components/common/LoadingButton.svelte";
   import PageLayout from "#lib/components/common/PageLayout.svelte";
   import Panel from "#lib/components/common/Panel.svelte";
@@ -18,7 +17,7 @@
 
 <PageLayout title="Account">
   <Panel id="token-heading" title="Token">
-    <ActionRow>
+    <div class={styles.actionRow}>
       <form method="POST" action="?/resetToken" use:enhance={() => {
         submitting = true;
         return async ({ update }) => {
@@ -37,12 +36,12 @@
           Regenerate
         </LoadingButton>
       </form>
-    </ActionRow>
+    </div>
     {#if form?.token}
       {#key form.token}
         <CopyableSecret value={form.token} label="Token" />
       {/key}
     {/if}
-    {#if form?.error}<FormError>{form.error}</FormError>{/if}
+    {#if form?.error}<p class={styles.formError} role="alert">{form.error}</p>{/if}
   </Panel>
 </PageLayout>

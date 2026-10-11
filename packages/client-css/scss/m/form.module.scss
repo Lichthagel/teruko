@@ -1,8 +1,16 @@
 @use "../variables";
 
 .page {
+  --primary: #b32368;
+  --primary-foreground: #fff;
+
   width: min(calc(100% - 2rem), 48rem);
   margin: clamp(2rem, 8vh, 5rem) auto;
+
+  @media (prefers-color-scheme: dark) {
+    --primary: var(--pink);
+    --primary-foreground: var(--base);
+  }
 }
 
 .pageTitle {
