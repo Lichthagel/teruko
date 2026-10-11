@@ -2,7 +2,7 @@ import type { Component } from "solid-js";
 import { getPixivMetadata } from "services/pixiv";
 import { createEffect, createMemo, createSignal, on } from "solid-js";
 import { CREATE_IMAGE, TERUKO_BASE_URL } from "../constants.js";
-import { clearRejectedUserscriptToken } from "../token.js";
+import { clearToken, requireToken } from "../token.js";
 import { GMfetch } from "../utils.js";
 
 type Props = {
@@ -44,14 +44,7 @@ const DownloadButton: Component<Props> = (props) => {
         type: blob.type,
       });
 
-      let token = GM_getValue<string>("teruko_token", "");
-      if (!token) {
-        token = window.prompt("Create a token from Teruko Account settings and paste it here") ?? ""; // eslint-disable-line no-alert
-      }
-      if (!token) {
-        throw new Error("A Teruko userscript token is required");
-      }
-      GM_setValue("teruko_token", token);
+      const token = requireToken();
 
       setText("up...");
       const formData = new FormData();
@@ -74,7 +67,7 @@ const DownloadButton: Component<Props> = (props) => {
         },
       });
       if (result.status === 401) {
-        clearRejectedUserscriptToken(token);
+        clearToken();
         throw new Error("Teruko rejected your token. Click again to enter a new token.");
       }
       const response = JSON.parse(result.responseText) as {

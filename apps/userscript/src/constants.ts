@@ -15,5 +15,3 @@ query ImageByFilename($filename: String!) {
 `;
 
 export const TERUKO_BASE_URL = import.meta.env.VITE_TERUKO_BASE_URL as string;
-
-export const setUserscriptToken = (token: string) => GM_setValue("teruko_token", token);

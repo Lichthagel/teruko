@@ -1,14 +1,14 @@
 import type { Component } from "solid-js";
 import { createEffect, createResource, Match, onCleanup, Switch } from "solid-js";
 import { IMAGE_BY_FILENAME, TERUKO_BASE_URL } from "../constants";
-import { clearRejectedUserscriptToken } from "../token.js";
+import { clearToken, getToken } from "../token.js";
 import { GMfetch } from "../utils.js";
 
 const Existing: Component<{ filename: string }> = (props) => {
   const [existingId, { refetch }] = createResource(
     () => props.filename,
     async (filename) => {
-      const token = GM_getValue<string>("teruko_token", "");
+      const token = getToken();
       if (!token)
         return undefined;
       const res = await GMfetch(`${TERUKO_BASE_URL}/graphql`, {
@@ -21,7 +21,7 @@ const Existing: Component<{ filename: string }> = (props) => {
       });
 
       if (res.status === 401) {
-        clearRejectedUserscriptToken(token);
+        clearToken();
         return undefined;
       }
 
