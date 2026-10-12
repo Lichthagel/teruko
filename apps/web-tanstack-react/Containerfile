@@ -1,9 +1,6 @@
 # Build stage
 FROM node:24-alpine AS builder
 
-# Enable corepack for pnpm
-RUN corepack enable && corepack prepare pnpm@10.20.0 --activate
-
 # Set CI environment variable for pnpm
 ENV CI=true
 
@@ -12,12 +9,17 @@ WORKDIR /app
 # Copy workspace configuration and lockfile (leveraging Docker cache layers)
 COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.eslint.json .npmrc ./
 
+# Enable corepack for pnpm
+RUN corepack enable && corepack install
+
 # Install dependencies with frozen lockfile
 RUN pnpm fetch
 
 # Copy only the necessary source files for building
 COPY packages packages
-COPY apps/web-tanstack-react apps/web-tanstack-react
+COPY apps apps
+# Include every workspace package manifest so pnpm can validate the lockfile.
+COPY tests/web-e2e/package.json tests/web-e2e/package.json
 COPY nx.json graphql.config.yml ./
 
 # Install dependencies with frozen lockfile
@@ -36,7 +38,7 @@ WORKDIR /app
 
 # Copy built application and dependencies from builder stage
 COPY --chown=nodejs:nodejs --from=builder /app/apps/web-tanstack-react/.output .
-COPY --chown=nodejs:nodejs --from=builder /app/node_modules/@libsql/linux-x64-musl ./node_modules/@libsql/linux-x64-musl
+COPY --chown=nodejs:nodejs --from=builder /app/packages/server-db/drizzle ./packages/server-db/drizzle
 
 # Switch to non-root user
 USER nodejs

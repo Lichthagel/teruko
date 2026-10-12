@@ -5,6 +5,13 @@ mutation ($files: [Upload!]!, $title: String, $source: String, $tags: [String!])
   }
 }
 `;
+export const IMAGE_BY_FILENAME = `
+query ImageByFilename($filename: String!) {
+  imageByFilename(filename: $filename) {
+    id
+  }
+}
+`;
 
 export const TERUKO_BASE_URL = import.meta.env.VITE_TERUKO_BASE_URL as string;
 export const TERUKO_BASIC_AUTH = import.meta.env.VITE_TERUKO_BASIC_AUTH as string | undefined;

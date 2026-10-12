@@ -1,5 +1,5 @@
-import { processUrl } from "#lib/index.js";
 import { BSKY_POST_REGEX, fetchData } from "services/bsky";
+import { processUrl } from "#lib/index.js";
 import { builder } from "../builder.js";
 import { PothosImage } from "../Image.js";
 

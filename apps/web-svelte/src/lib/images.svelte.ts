@@ -1,7 +1,7 @@
 import type { CombinedError, OperationResult } from "@urql/svelte";
 import type { ImagesArgs, ImagesResult } from "client-graphql/snippets";
 import type { ImageSort } from "models";
-import { browser } from "$app/environment";
+import { browser } from "$app/env";
 import { createRequest, getContextClient } from "@urql/svelte";
 import { Images } from "client-graphql/snippets";
 
@@ -60,9 +60,7 @@ export const useImages = (
             edges = newEdges;
           }
         } else {
-            const idx = edges.findIndex(
-              image => image.cursor === newEdges.at(-1)?.cursor,
-            );
+          const idx = edges.findIndex(image => image.cursor === newEdges.at(-1)?.cursor);
 
             edges = idx === -1
               ? newEdges

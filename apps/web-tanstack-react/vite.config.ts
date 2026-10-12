@@ -9,6 +9,7 @@ const config = defineConfig({
     devtools(),
     tanstackStart(),
     nitro({
+      plugins: ["server/plugins/database.ts"],
       rolldownConfig: {
         treeshake: {
           moduleSideEffects: true,
@@ -16,9 +17,7 @@ const config = defineConfig({
       },
     }),
     viteReact({
-      babel: {
-        plugins: ["babel-plugin-react-compiler"],
-      },
+      compiler: true,
     }),
   ],
   resolve: {

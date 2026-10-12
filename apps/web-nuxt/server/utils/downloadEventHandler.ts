@@ -1,6 +1,5 @@
 import path from "node:path";
 import { eq } from "drizzle-orm";
-import { HTTPError } from "h3";
 import { db, dImage } from "server-db";
 import env from "server-env";
 import * as v from "valibot";
@@ -25,7 +24,7 @@ export const defineDownloadEventHandler = (getData: (filepath: string) => BodyIn
     const image = res[0];
 
     if (!image || !image.filename) {
-      throw new HTTPError({
+      throw createError({
         statusCode: 404,
         statusMessage: "Not Found",
       });

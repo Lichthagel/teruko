@@ -1,11 +1,9 @@
 <script lang="ts">
   import type { ImageSort } from "models";
   import type { Action } from "svelte/action";
-
-  import StatusBar from "$lib/components/status/StatusBar.svelte";
-  import { useImages } from "$lib/images.svelte.js";
-
   import styles from "client-css/m/gallery.module.scss";
+  import StatusBar from "#lib/components/status/StatusBar.svelte";
+  import { useImages } from "#lib/images.svelte.js";
   import ImageCard from "./ImageCard.svelte";
   import ErrorMessage from "./status/ErrorMessage.svelte";
 
@@ -40,8 +38,8 @@
     {#each result.images as image (image.id)}
       <ImageCard {image} />
     {/each}
-    <div use:endAction></div>
   </div>
+  <div class={styles.sentinel} use:endAction></div>
 {/if}
 
 {#if result.error}

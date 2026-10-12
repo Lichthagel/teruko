@@ -1,11 +1,10 @@
 <script lang="ts">
   import type { Tag, TagCategory } from "models";
-
   import { goto } from "$app/navigation";
   import { resolve } from "$app/paths";
-  import { filters } from "$lib/filters.svelte.js";
   import { BadgeCheck } from "@lucide/svelte";
   import styles from "client-css/m/imagepage.module.scss";
+  import { filters } from "#lib/filters.svelte.js";
 
   type Props = {
     tag: Pick<Tag, "slug" | "approved"> & { category?: Pick<TagCategory, "color"> | null };

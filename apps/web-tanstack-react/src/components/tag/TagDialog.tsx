@@ -1,7 +1,7 @@
 import type { FunctionComponent } from "react";
-import { useFilters } from "#/stores/filters";
 import styles from "client-css/m/tag.module.scss";
 import { useCallback, useEffect, useState } from "react";
+import { useFilters } from "#/stores/filters";
 import Dialog from "../common/Dialog";
 import TagEditSection from "./TagEditSection";
 

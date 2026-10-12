@@ -1,8 +1,8 @@
 import type { ImageExt } from "models";
 import type { FunctionComponent } from "react";
-import { useFilters } from "#/stores/filters";
 import { Link } from "@tanstack/react-router";
 import styles from "client-css/m/gallery.module.scss";
+import { useFilters } from "#/stores/filters";
 
 const ImageCard: FunctionComponent<{ image: ImageExt }> = ({ image }) => {
   const { setTags } = useFilters();

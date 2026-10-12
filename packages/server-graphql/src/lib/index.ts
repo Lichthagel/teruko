@@ -1,9 +1,10 @@
 import type { ImageExt, ImageMeta } from "models";
+import type { Metadata } from "sharp";
 import fs from "node:fs";
 import path from "node:path";
 import { finished } from "node:stream/promises";
 import { sql } from "drizzle-orm";
-import { fileTypeFromBlob } from "file-type";
+import { fileTypeFromBuffer } from "file-type";
 import { GraphQLError } from "graphql";
 import {
   d_ImageToTag,
@@ -16,17 +17,19 @@ import sharp from "sharp";
 
 const mimeTypeRegex = /^image\/(?:jpeg|gif|png|webp|avif)$/;
 
-const inUpload: string[] = [];
+const inUpload: Set<string> = new Set();
 
 const hasDimensions = (
-  metadata: sharp.Metadata,
-): metadata is sharp.Metadata & { width: number; height: number } =>
+  metadata: Metadata,
+): metadata is Metadata & { width: number; height: number } =>
   metadata.width !== undefined && metadata.height !== undefined;
 
 const toFilename = (basename: string) => `${basename}.avif`;
 
 const saveBlob = async (blob: Blob, filename: string) => {
-  const fileType = await fileTypeFromBlob(blob);
+  const buffer = await blob.arrayBuffer();
+
+  const fileType = await fileTypeFromBuffer(buffer);
 
   if (
     !fileType
@@ -40,7 +43,7 @@ const saveBlob = async (blob: Blob, filename: string) => {
     })
   ) { throw new GraphQLError("image with that filename already exists"); }
 
-  const transform = sharp(await blob.arrayBuffer()).avif({ quality: 90 });
+  const transform = sharp(buffer).avif({ quality: 90 });
 
   const out = fs.createWriteStream(
     path.resolve(env.IMG_FOLDER, filename),
@@ -62,7 +65,7 @@ const saveBlob = async (blob: Blob, filename: string) => {
   };
 };
 
-const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: sharp.Metadata & { width: number; height: number }, filename: string) => {
+const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: Metadata & { width: number; height: number }, filename: string) => {
   const image = await db.transaction(async (tx) => {
     const imageResults = await tx
       .insert(dImage)
@@ -111,11 +114,11 @@ const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: sharp.Metadata & { w
 export const processBlob = async (blob: Blob, basename: string, meta: ImageMeta) => {
   const filename = toFilename(basename);
 
-  if (inUpload.includes(filename)) {
+  if (inUpload.has(filename)) {
     throw new GraphQLError("image is already being uploaded");
   }
 
-  inUpload.push(filename);
+  inUpload.add(filename);
 
   try {
     const { metadata } = await saveBlob(blob, filename);
@@ -128,7 +131,7 @@ export const processBlob = async (blob: Blob, basename: string, meta: ImageMeta)
       throw error;
     }
   } finally {
-    inUpload.splice(inUpload.indexOf(filename), 1);
+    inUpload.delete(filename);
   }
 };
 

@@ -1,10 +1,10 @@
 import type { FC } from "react";
-import { useFilters } from "#/stores/filters";
 import styles from "client-css/m/filters.module.scss";
 import { Tag } from "client-graphql/snippets";
 import { BadgeCheck, Pencil, X } from "lucide-react";
 import { useCallback, useState } from "react";
 import { useQuery } from "urql";
+import { useFilters } from "#/stores/filters";
 import StatusBar from "../status/StatusBar";
 import TagDialog from "../tag/TagDialog";
 

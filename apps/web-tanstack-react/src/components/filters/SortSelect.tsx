@@ -1,5 +1,5 @@
-import { useFilters } from "#/stores/filters";
 import { ArrowDownNarrowWide } from "lucide-react";
+import { useFilters } from "#/stores/filters";
 import Select from "../common/Select";
 
 export const SortSelect = () => {

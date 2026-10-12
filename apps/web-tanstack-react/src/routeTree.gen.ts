@@ -9,17 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as GraphqlRouteImport } from './routes/graphql'
-import { Route as IdRouteImport } from './routes/$id'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ImgFilenameRouteImport } from './routes/img/$filename'
-import { Route as IdWebpRouteImport } from './routes/$id/webp'
-import { Route as IdOriginalRouteImport } from './routes/$id/original'
+import { Route as IdRouteImport } from './routes/$id'
+import { Route as GraphqlRouteImport } from './routes/graphql'
 import { Route as IdAvifRouteImport } from './routes/$id/avif'
+import { Route as IdOriginalRouteImport } from './routes/$id/original'
+import { Route as IdWebpRouteImport } from './routes/$id/webp'
+import { Route as ImgFilenameRouteImport } from './routes/img/$filename'
 
-const GraphqlRoute = GraphqlRouteImport.update({
-  id: '/graphql',
-  path: '/graphql',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IdRoute = IdRouteImport.update({
@@ -27,19 +27,14 @@ const IdRoute = IdRouteImport.update({
   path: '/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const GraphqlRoute = GraphqlRouteImport.update({
+  id: '/graphql',
+  path: '/graphql',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ImgFilenameRoute = ImgFilenameRouteImport.update({
-  id: '/img/$filename',
-  path: '/img/$filename',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IdWebpRoute = IdWebpRouteImport.update({
-  id: '/webp',
-  path: '/webp',
+const IdAvifRoute = IdAvifRouteImport.update({
+  id: '/avif',
+  path: '/avif',
   getParentRoute: () => IdRoute,
 } as any)
 const IdOriginalRoute = IdOriginalRouteImport.update({
@@ -47,10 +42,15 @@ const IdOriginalRoute = IdOriginalRouteImport.update({
   path: '/original',
   getParentRoute: () => IdRoute,
 } as any)
-const IdAvifRoute = IdAvifRouteImport.update({
-  id: '/avif',
-  path: '/avif',
+const IdWebpRoute = IdWebpRouteImport.update({
+  id: '/webp',
+  path: '/webp',
   getParentRoute: () => IdRoute,
+} as any)
+const ImgFilenameRoute = ImgFilenameRouteImport.update({
+  id: '/img/$filename',
+  path: '/img/$filename',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -120,11 +120,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/graphql': {
-      id: '/graphql'
-      path: '/graphql'
-      fullPath: '/graphql'
-      preLoaderRoute: typeof GraphqlRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$id': {
@@ -134,25 +134,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IdRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/graphql': {
+      id: '/graphql'
+      path: '/graphql'
+      fullPath: '/graphql'
+      preLoaderRoute: typeof GraphqlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/img/$filename': {
-      id: '/img/$filename'
-      path: '/img/$filename'
-      fullPath: '/img/$filename'
-      preLoaderRoute: typeof ImgFilenameRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/$id/webp': {
-      id: '/$id/webp'
-      path: '/webp'
-      fullPath: '/$id/webp'
-      preLoaderRoute: typeof IdWebpRouteImport
+    '/$id/avif': {
+      id: '/$id/avif'
+      path: '/avif'
+      fullPath: '/$id/avif'
+      preLoaderRoute: typeof IdAvifRouteImport
       parentRoute: typeof IdRoute
     }
     '/$id/original': {
@@ -162,12 +155,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IdOriginalRouteImport
       parentRoute: typeof IdRoute
     }
-    '/$id/avif': {
-      id: '/$id/avif'
-      path: '/avif'
-      fullPath: '/$id/avif'
-      preLoaderRoute: typeof IdAvifRouteImport
+    '/$id/webp': {
+      id: '/$id/webp'
+      path: '/webp'
+      fullPath: '/$id/webp'
+      preLoaderRoute: typeof IdWebpRouteImport
       parentRoute: typeof IdRoute
+    }
+    '/img/$filename': {
+      id: '/img/$filename'
+      path: '/img/$filename'
+      fullPath: '/img/$filename'
+      preLoaderRoute: typeof ImgFilenameRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }

@@ -1,10 +1,10 @@
 <script lang="ts">
-  import StatusBar from "$lib/components/status/StatusBar.svelte";
-  import { filters } from "$lib/filters.svelte.js";
   import { BadgeCheck, Pencil, X } from "@lucide/svelte";
   import { getContextClient, queryStore } from "@urql/svelte";
   import styles from "client-css/m/filters.module.scss";
   import { Tag } from "client-graphql/snippets";
+  import StatusBar from "#lib/components/status/StatusBar.svelte";
+  import { filters } from "#lib/filters.svelte.js";
   import TagDialog from "../tag/TagDialog.svelte";
 
   type Props = {

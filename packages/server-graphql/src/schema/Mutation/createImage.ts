@@ -1,7 +1,7 @@
 import type { ImageMeta } from "models";
-import { processFile } from "#lib/index.js";
 import { mergeImageMeta } from "models";
 import { getPixivMetadata, matchFilename } from "services/pixiv";
+import { processFile } from "#lib/index.js";
 import { builder } from "../builder.js";
 import { PothosImage } from "../Image.js";
 

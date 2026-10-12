@@ -1,6 +1,6 @@
+import { db, dTagCategory } from "server-db";
 import { builder } from "#schema/builder.js";
 import { PothosTagCategory } from "#schema/TagCategory.js";
-import { db, dTagCategory } from "server-db";
 
 builder.queryField("tagCategories", t =>
   t.field({
