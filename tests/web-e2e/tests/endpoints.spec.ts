@@ -114,7 +114,7 @@ test.describe("server endpoints", () => {
     await page.goto("/account");
 
     await page.getByRole("button", { name: "Regenerate" }).click();
-    const firstToken = page.getByLabel("Token");
+    const firstToken = page.getByRole("textbox", { name: "Token" });
     await expect(firstToken).toHaveValue(/^teruko_/);
     const firstSecret = await firstToken.inputValue();
     const firstAccess = await request.post("/graphql", {
@@ -129,8 +129,9 @@ test.describe("server endpoints", () => {
     expect(pixivAccess.status()).toBe(200);
 
     await page.getByRole("button", { name: "Regenerate" }).click();
-    await expect(page.getByLabel("Token")).not.toHaveValue(firstSecret);
-    await expect(page.getByLabel("Token")).toHaveValue(/^teruko_/);
+    const regeneratedToken = page.getByRole("textbox", { name: "Token" });
+    await expect(regeneratedToken).not.toHaveValue(firstSecret);
+    await expect(regeneratedToken).toHaveValue(/^teruko_/);
     const revokedAccess = await request.post("/graphql", {
       headers: { Authorization: `Bearer ${firstSecret}` },
       data: { query: "{ images(first: 1) { edges { node { id } } } }" },
