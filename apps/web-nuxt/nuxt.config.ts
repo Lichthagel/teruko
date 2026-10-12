@@ -10,12 +10,20 @@ const config: NuxtConfig = defineNuxtConfig({
   devServer: {
     host: "0.0.0.0",
   },
+  nitro: {
+    esbuild: {
+      options: {
+        target: "es2022",
+      },
+    },
+  },
   modules: [],
-  plugins: ["~/plugins/urql/index.ts"],
+  plugins: ["~/plugins/urql/index.client.ts"],
   postcss: {
     plugins: postcssConfig.plugins,
   },
   components: ["~/components", { path: "~/components/Filters", prefix: "Filters" }],
+  ssr: false,
   telemetry: false,
 });
 

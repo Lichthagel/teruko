@@ -1,0 +1,16 @@
+{
+  "name": "web-e2e",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "check": "tsc --noEmit",
+    "lint": "eslint .",
+    "clean": "rm -rf test-results playwright-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "catalog:",
+    "@types/node": "catalog:",
+    "tsconfig": "workspace:^"
+  }
+}

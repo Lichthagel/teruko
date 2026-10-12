@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { filters } from "$lib/filters.svelte.js";
-
   import { ArrowDownNarrowWide } from "@lucide/svelte";
-  import { zImageSort } from "models";
+  import { vImageSort } from "models";
+  import { filters } from "#lib/filters.svelte.js";
   import Select from "../common/Select.svelte";
 
   const setValue = (value?: string) => {
-    const parsedSort = zImageSort.parse(value);
+    const parsedSort = vImageSort.parse(value);
 
     filters.sort = parsedSort;
   };

@@ -5,8 +5,8 @@ import keys from "./keys.js";
 import resolvers from "./resolvers/index.js";
 import updates from "./updates/index.js";
 
-export const urqlClient = new Client({
-  url: "/graphql",
+export const createUrqlOptions = (url: string) => ({
+  url,
   exchanges: [
     cacheExchange({
       keys,
@@ -16,3 +16,7 @@ export const urqlClient = new Client({
     fetchExchange,
   ],
 });
+
+export const createUrqlClient = (url: string) => new Client(createUrqlOptions(url));
+
+export const urqlClient = createUrqlClient("/graphql");

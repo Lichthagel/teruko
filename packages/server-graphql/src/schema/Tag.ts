@@ -94,5 +94,6 @@ builder.node(PothosTag, {
         } satisfies TagRuleExt));
       },
     }),
+    approved: t.exposeBoolean("approved"),
   }),
 });

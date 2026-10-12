@@ -1,0 +1,35 @@
+{
+  "name": "web-e2e",
+  "sourceRoot": "tests/web-e2e",
+  "projectType": "application",
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "web-nuxt:build",
+        "web-solidstart:build",
+        "web-svelte:build",
+        "web-tanstack-react:build"
+      ],
+      "options": {
+        "command": "pnpm exec playwright test",
+        "cwd": "tests/web-e2e"
+      },
+      "cache": false
+    },
+    "check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm exec tsc --noEmit",
+        "cwd": "tests/web-e2e"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm exec eslint .",
+        "cwd": "tests/web-e2e"
+      }
+    }
+  }
+}

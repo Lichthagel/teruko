@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { X } from "@lucide/vue";
+import { BadgeCheck, Pencil, X } from "@lucide/vue";
 import { useQuery } from "@urql/vue";
 import styles from "client-css/m/filters.module.scss";
 import { Tag } from "client-graphql/snippets";
@@ -9,6 +9,8 @@ const props = defineProps<{
 }>();
 
 const { tags } = useFilters();
+
+const dialogOpen = ref(false);
 
 const {
   data,
@@ -33,6 +35,13 @@ const removeTag = () => {
     }"
   >
     <span>{{ props.tag }}</span>
+    <BadgeCheck v-if="data?.tag.approved" :size="16" />
+    <button
+      type="button"
+      @click="dialogOpen = true"
+    >
+      <Pencil />
+    </button>
     <button
       type="button"
       @click="removeTag"
@@ -40,6 +49,8 @@ const removeTag = () => {
       <X />
     </button>
   </div>
+
+  <TagDialog v-model:open=" dialogOpen " :slug="tag" />
 
   <StatusBar
     :error="!!error"

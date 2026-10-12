@@ -1,0 +1,80 @@
+@use "../variables";
+
+.search-container {
+  position: relative;
+  display: inline-flex;
+  height: variables.$item-height;
+  align-items: center;
+  gap: variables.$gap;
+  border-radius: variables.$radius;
+  background-color: var(--mantle);
+  padding-inline: variables.$size-2;
+
+  &:focus-within {
+    outline: var(--pink) solid 2px;
+  }
+
+  input {
+    height: 100%;
+    background-color: transparent;
+    border-width: 0;
+    color: var(--text);
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.suggestions-loading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--surface0);
+  padding: variables.$size-1;
+
+  .icon {
+    height: variables.$size-7;
+    width: variables.$size-7;
+    animation: spin 2s linear infinite;
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
+.suggestions-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 20;
+  display: block;
+  background-color: var(--surface0);
+  margin: 0;
+  padding: 0;
+  border-radius: variables.$radius;
+
+  li {
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: inherit;
+    padding: variables.$size-1;
+    line-height: variables.$size-4;
+
+    &.active {
+      background-color: var(--pink);
+      color: var(--inverted-text);
+    }
+  }
+}

@@ -41,10 +41,12 @@ export const fetchData = async (handle: string, postId: string) => {
     {
       slug: "bsky",
       categorySlug: "source",
+      approved: false,
     },
     {
       slug: `artist_${post.author.handle}`,
       categorySlug: "artist",
+      approved: false,
     },
     ...(
       post.author.displayName
@@ -52,6 +54,7 @@ export const fetchData = async (handle: string, postId: string) => {
             {
               slug: post.author.displayName,
               categorySlug: "artist",
+              approved: false,
             },
           ]
         : []
@@ -64,6 +67,7 @@ export const fetchData = async (handle: string, postId: string) => {
         tags.push({
           slug: facetFeature.tag,
           categorySlug: null,
+          approved: false,
         });
       }
     }

@@ -57,7 +57,7 @@
 <h1>Rules</h1>
 <h2>Outgoing rules</h2>
 <div class="list">
-  {#each $result.data?.tag.rules as rule}
+  {#each $result.data?.tag.rules as rule (rule._id)}
     <TagRuleRow {rule} mode="outgoing" />
   {/each}
   {#if !$result.data?.tag.rules.length}
@@ -68,7 +68,7 @@
 
 <h2>Incoming rules</h2>
 <div class="list">
-  {#each $result.data?.tag.referencingRules as rule}
+  {#each $result.data?.tag.referencingRules as rule (rule._id)}
     <TagRuleRow {rule} mode="incoming" />
   {/each}
   {#if !$result.data?.tag.referencingRules.length}

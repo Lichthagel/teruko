@@ -1,9 +1,9 @@
-import type { builder } from "#schema/builder.js";
 import type { TagRuleExt } from "models";
-import { PothosTagRule } from "#schema/TagRule.js";
+import type { builder } from "#schema/builder.js";
 import { eq, sql } from "drizzle-orm";
 import { alias } from "drizzle-orm/pg-core";
 import { db, dTag, dTagCategory, dTagRule } from "server-db";
+import { PothosTagRule } from "#schema/TagRule.js";
 
 const dOtherTag = alias(dTag, "OtherTag");
 

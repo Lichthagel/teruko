@@ -22,6 +22,7 @@ export type ImagesArgs = {
   before?: string | null;
   first?: number | null;
   last?: number | null;
+  random?: boolean;
 };
 
 export const Images = gql<ImagesResult, ImagesArgs>`

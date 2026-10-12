@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import type { ComponentPublicInstance } from "#imports";
 import type { ImageSort } from "models";
-import { useImages } from "#imports";
-
+import type { ComponentPublicInstance } from "#imports";
 import styles from "client-css/m/gallery.module.scss";
+import { useImages } from "#imports";
 
 const props = defineProps<{
   tags: readonly string[];
@@ -52,8 +51,8 @@ const endRef = (node: ComponentPublicInstance | Element | null) => {
         <ImageCard :image="image" />
       </div>
     </template>
-    <div :ref="endRef" />
   </div>
+  <div :ref="endRef" :class="styles.sentinel" />
 
   <ErrorMessage
     v-if="error"

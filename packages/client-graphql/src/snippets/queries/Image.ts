@@ -18,6 +18,7 @@ query Image($id: ID!) {
     height
     tags {
       slug
+      approved
       category {
         color
       }

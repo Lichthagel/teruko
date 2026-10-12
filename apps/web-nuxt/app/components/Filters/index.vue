@@ -1,12 +1,16 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-import { ListX } from "@lucide/vue";
+import { ListX, Search } from "@lucide/vue";
 import styles from "client-css/m/filters.module.scss";
+import TagSearch from "../common/TagInput.vue";
 import SortSelect from "./SortSelect.vue";
 import TagQuery from "./TagQuery.vue";
-import TagSearch from "./TagSearch.vue";
 
 const { tags } = useFilters();
+
+const addTag = (value: string) => {
+  tags.value = [...tags.value, value];
+};
 
 const resetTags = () => {
   tags.value = [];
@@ -31,7 +35,11 @@ const resetTags = () => {
       </div>
     </div>
 
-    <TagSearch />
+    <TagSearch
+      :icon="Search"
+      @submit="addTag"
+      @escape="resetTags"
+    />
 
     <SortSelect />
   </div>

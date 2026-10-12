@@ -1,12 +1,13 @@
 <script lang="ts">
-  import { filters } from "$lib/filters.svelte.js";
-  import Dialog from "../Dialog.svelte";
+  import styles from "client-css/m/tag.module.scss";
+  import { filters } from "#lib/filters.svelte.js";
+  import Dialog from "../common/Dialog.svelte";
   import TagEditSection from "./TagEditSection.svelte";
   import TagRuleSection from "./TagRuleSection.svelte";
 
   let { open = $bindable(false), slug }: { open?: boolean; slug: string } = $props();
 
-  const onSubmit = (newSlug?: string) => {
+  const afterUpdate = (newSlug?: string) => {
     open = false;
     if (newSlug) {
       const idx = filters.tags.findIndex(el => el === slug);
@@ -17,15 +18,8 @@
   };
 </script>
 
-<Dialog bind:open={open} class="tag-dialog">
-  <TagEditSection {slug} onSubmit={onSubmit} />
+<Dialog bind:open={open} class={styles["tag-dialog"]}>
+  <TagEditSection {slug} {afterUpdate} />
 
   <TagRuleSection {slug} />
 </Dialog>
-
-<style>
-:global .tag-dialog {
-  width: 50rem;
-  padding-bottom: 5rem;
-}
-</style>

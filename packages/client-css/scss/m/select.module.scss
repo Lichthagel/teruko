@@ -1,11 +1,9 @@
 @use "../variables";
 
-$height: 2.5rem;
-
 .select {
   position: relative;
   display: inline-flex;
-  height: $height;
+  height: variables.$item-height;
   align-items: center;
   gap: variables.$gap;
   border-radius: variables.$radius;
@@ -23,6 +21,7 @@ $height: 2.5rem;
   select {
     border: 0;
     color: var(--text);
+    height: 100%;
     width: 100%;
     background-color: transparent;
     padding: variables.$size-2;
