@@ -1,9 +1,5 @@
 import { eq } from "drizzle-orm";
-import {
-  d_ImageToTag,
-  db,
-  dTag,
-} from "server-db";
+import { d_ImageToTag, db, dTag } from "server-db";
 import { builder } from "../builder.js";
 import { PothosTag } from "../Tag.js";
 

@@ -9,20 +9,20 @@ export type TagEditResult = {
 export type TagEditArgs = { slug: string };
 
 export const TagEdit = gql<TagEditResult, TagEditArgs>`
-query TagEdit($slug: String!) {
-  tag(slug: $slug) {
-    slug
-    approved
-    category {
-      _id
+  query TagEdit($slug: String!) {
+    tag(slug: $slug) {
       slug
-      color
+      approved
+      category {
+        _id
+        slug
+        color
+      }
     }
-  }        
-  tagCategories {
-    _id
-    color
-    slug
+    tagCategories {
+      _id
+      color
+      slug
+    }
   }
-}
 `;
