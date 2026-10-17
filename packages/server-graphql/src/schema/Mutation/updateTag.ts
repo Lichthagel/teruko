@@ -3,6 +3,7 @@ import {
   d_ImageToTag,
   db,
   dTag,
+  dTagRule,
 } from "server-db";
 import { builder } from "../builder.js";
 import { PothosTag } from "../Tag.js";
@@ -74,6 +75,16 @@ builder.mutationField("updateTag", t =>
               })),
             )
             .onConflictDoNothing();
+
+          await tx
+            .update(dTagRule)
+            .set({ tagId: newTag.id })
+            .where(eq(dTagRule.tagId, oldTag.id));
+
+          await tx
+            .update(dTagRule)
+            .set({ otherTagId: newTag.id })
+            .where(eq(dTagRule.otherTagId, oldTag.id));
 
           // delete old tag
           await tx.delete(dTag).where(eq(dTag.id, oldTag.id));

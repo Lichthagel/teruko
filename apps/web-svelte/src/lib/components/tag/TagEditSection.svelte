@@ -57,11 +57,10 @@
   });
 </script>
 
-<h1>Meta</h1>
-
 {#if $result.fetching}
   <SkeletonLoader />
 {:else if $result.data}
+  <h1>Meta</h1>
   <div class={styles.content}>
     <div class={styles.row}>
       <Input bind:value={slugInputValue} />
