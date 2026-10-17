@@ -19,9 +19,7 @@
     "vite-plus": "catalog:"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,vue,svelte,css,scss,md,json,yml,yaml}": [
-      "vp lint --max-warnings=0 --no-warn-ignored"
-    ]
+    "*.{js,jsx,ts,tsx,vue,svelte,css,scss,md,json,yml,yaml}": "vp lint --max-warnings=0 ."
   },
   "devEngines": {
     "runtime": {
