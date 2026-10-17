@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { Icon as IconType, LoaderCircle } from "@lucide/svelte";
+  import { LoaderCircle } from "@lucide/svelte";
+  import type { LucideIcon } from "@lucide/svelte";
   import styles from "client-css/m/taginput.module.scss";
   import { useSuggestions } from "#lib/suggestions.svelte.js";
 
@@ -10,7 +11,7 @@
     onSubmit,
     onEscape,
   }: {
-    icon?: typeof IconType;
+    icon?: LucideIcon;
     tagInput?: string;
     clearOnSubmit?: boolean;
     onSubmit: (value: string) => void;

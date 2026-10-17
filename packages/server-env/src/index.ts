@@ -7,10 +7,7 @@ config({
 });
 
 const Env = v.object({
-  DATABASE_URL: v.optional(
-    v.string(),
-    "postgresql://postgres:postgres@localhost:5432/postgres",
-  ),
+  DATABASE_URL: v.optional(v.string(), "postgresql://postgres:postgres@localhost:5432/postgres"),
   IMG_FOLDER: v.optional(v.string(), "./data"),
   NODE_ENV: v.optional(v.string(), "production"),
 });

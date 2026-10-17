@@ -11,7 +11,7 @@ const Checkbox: Component<{
       <input
         type="checkbox"
         checked={props.checked}
-        onInput={e => props.setChecked(e.currentTarget.checked)}
+        onInput={(e) => props.setChecked(e.currentTarget.checked)}
       />
       <span class={styles.checkmark} />
       <span>{props.label}</span>

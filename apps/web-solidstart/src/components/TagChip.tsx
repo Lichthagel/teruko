@@ -19,7 +19,9 @@ const TagChip: Component<{
     <button
       class={styles["tag-chip"]}
       onClick={onClick}
-      style={props.tag.category?.color ? `background-color: ${props.tag.category?.color}` : undefined}
+      style={
+        props.tag.category?.color ? `background-color: ${props.tag.category?.color}` : undefined
+      }
       type="button"
     >
       <span>{props.tag.slug}</span>

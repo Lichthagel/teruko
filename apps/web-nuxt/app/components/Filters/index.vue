@@ -19,15 +19,8 @@ const resetTags = () => {
 
 <template>
   <div :class="styles.main">
-    <div
-      v-if="tags.length > 0"
-      :class="styles['tag-container']"
-    >
-      <TagQuery
-        v-for="tag in tags"
-        :key="tag"
-        :tag="tag"
-      />
+    <div v-if="tags.length > 0" :class="styles['tag-container']">
+      <TagQuery v-for="tag in tags" :key="tag" :tag="tag" />
       <div :class="[styles['tag-query'], styles.reset]">
         <button @click="resetTags">
           <ListX />
@@ -35,11 +28,7 @@ const resetTags = () => {
       </div>
     </div>
 
-    <TagSearch
-      :icon="Search"
-      @submit="addTag"
-      @escape="resetTags"
-    />
+    <TagSearch :icon="Search" @submit="addTag" @escape="resetTags" />
 
     <SortSelect />
   </div>

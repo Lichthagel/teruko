@@ -11,9 +11,12 @@ const Gallery: Component<{
   tags: readonly string[];
   sort: ImageSort;
 }> = (props) => {
-  const { images, fetching, error, fetchMore } = useImages(() => props.tags, () => props.sort);
+  const { images, fetching, error, fetchMore } = useImages(
+    () => props.tags,
+    () => props.sort,
+  );
 
-  let endDiv: HTMLDivElement | undefined;
+  let endDiv = null as unknown as HTMLDivElement;
 
   const observer = new IntersectionObserver((entries) => {
     if (entries[0] && entries[0].isIntersecting) {
@@ -31,13 +34,8 @@ const Gallery: Component<{
 
   return (
     <>
-
       <div class={styles.gallery}>
-        <For each={images()}>
-          {image => (
-            <ImageCard image={image} />
-          )}
-        </For>
+        <For each={images()}>{(image) => <ImageCard image={image} />}</For>
       </div>
 
       <div class={styles.sentinel} ref={endDiv} />

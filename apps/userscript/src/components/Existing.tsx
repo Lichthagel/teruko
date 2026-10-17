@@ -9,12 +9,10 @@ const Existing: Component<{ filename: string }> = (props) => {
     async (filename) => {
       const res = await GMfetch(`${TERUKO_BASE_URL}/graphql`, {
         method: "POST",
-        data: JSON.stringify(
-          {
-            query: IMAGE_BY_FILENAME,
-            variables: { filename },
-          },
-        ),
+        data: JSON.stringify({
+          query: IMAGE_BY_FILENAME,
+          variables: { filename },
+        }),
         headers: {
           "Content-Type": "application/json",
           "Apollo-Require-Preflight": "true",
@@ -41,14 +39,8 @@ const Existing: Component<{ filename: string }> = (props) => {
   return (
     <div>
       <Switch fallback="missing">
-        <Match when={existingId.error}>
-          Error:
-          {" "}
-          {existingId.error}
-        </Match>
-        <Match when={existingId.loading}>
-          ...
-        </Match>
+        <Match when={existingId.error}>Error: {existingId.error}</Match>
+        <Match when={existingId.loading}>...</Match>
         <Match when={existingId()}>
           <a
             href={`${TERUKO_BASE_URL}/${existingId()}`}

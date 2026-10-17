@@ -35,17 +35,18 @@ const TagEditSection: Component<TagEditSectionProps> = (props) => {
   });
 
   const [resultUpdateTag, updateTag_] = createMutation(UpdateTag);
-  const updateTag = () => updateTag_({
-    slug: props.slug,
-    newSlug: slugInputValue(),
-    category: categoryInputValue(),
-    approved: approvedInputValue(),
-  }).then((res) => {
-    const afterUpdate = untrack(() => props.afterUpdate);
-    if (afterUpdate && res.data?.updateTag) {
-      afterUpdate(res.data.updateTag.slug);
-    }
-  });
+  const updateTag = () =>
+    updateTag_({
+      slug: props.slug,
+      newSlug: slugInputValue(),
+      category: categoryInputValue(),
+      approved: approvedInputValue(),
+    }).then((res) => {
+      const afterUpdate = untrack(() => props.afterUpdate);
+      if (afterUpdate && res.data?.updateTag) {
+        afterUpdate(res.data.updateTag.slug);
+      }
+    });
 
   return (
     <>
@@ -55,18 +56,22 @@ const TagEditSection: Component<TagEditSectionProps> = (props) => {
           <SkeletonLoader />
         </Match>
         <Match when={result.data}>
-          {data => (
+          {(data) => (
             <div class={styles.content}>
               <div class={styles.row}>
                 <Input value={slugInputValue()} setValue={setSlugInputValue} />
                 <Select
-                  options={data().tagCategories.map(v => v.slug) ?? []}
+                  options={data().tagCategories.map((v) => v.slug) ?? []}
                   value={categoryInputValue()}
                   setValue={setCategoryInputValue}
                 />
               </div>
               <div class={styles.row}>
-                <Checkbox checked={approvedInputValue() ?? false} setChecked={setApprovedInputValue} label="approved" />
+                <Checkbox
+                  checked={approvedInputValue() ?? false}
+                  setChecked={setApprovedInputValue}
+                  label="approved"
+                />
                 <Button
                   style={{ "flex-grow": 0 }}
                   icon={Save}

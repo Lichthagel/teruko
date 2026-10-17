@@ -12,7 +12,7 @@ const Input: FunctionComponent<InputProps> = ({ value, setValue, ...restProps })
       <input
         type="text"
         value={value}
-        onInput={event => setValue(event.currentTarget.value)}
+        onInput={(event) => setValue(event.currentTarget.value)}
         {...restProps}
       />
     </div>

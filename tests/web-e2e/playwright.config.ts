@@ -36,11 +36,13 @@ export default defineConfig({
     screenshot: "only-on-failure",
     trace: "on-first-retry",
   },
-  projects: apps.flatMap(app => browsers.map(browser => ({
-    name: `${app.name}-${browser.name}`,
-    use: {
-      ...browser.device,
-      baseURL: `http://127.0.0.1:${app.port}`,
-    },
-  }))),
+  projects: apps.flatMap((app) =>
+    browsers.map((browser) => ({
+      name: `${app.name}-${browser.name}`,
+      use: {
+        ...browser.device,
+        baseURL: `http://127.0.0.1:${app.port}`,
+      },
+    })),
+  ),
 });

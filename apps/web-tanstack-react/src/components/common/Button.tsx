@@ -7,7 +7,12 @@ export type ButtonProps = {
   icon?: LucideIcon;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: FunctionComponent<ButtonProps> = ({ icon: Icon, className, children, ...restProps }) => {
+const Button: FunctionComponent<ButtonProps> = ({
+  icon: Icon,
+  className,
+  children,
+  ...restProps
+}) => {
   return (
     <button className={`${styles.button} ${className}`} type="button" {...restProps}>
       {Icon && <Icon />}

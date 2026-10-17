@@ -9,13 +9,7 @@ const props = defineProps<{
   sort: ImageSort;
 }>();
 
-const {
-  images,
-  fetching,
-  error,
-  stale,
-  fetchMore,
-} = useImages(
+const { images, fetching, error, stale, fetchMore } = useImages(
   toRef(() => props.tags),
   toRef(() => props.sort),
 );
@@ -40,13 +34,8 @@ const endRef = (node: ComponentPublicInstance | Element | null) => {
 </script>
 
 <template>
-  <div
-    :class="styles.gallery"
-  >
-    <template
-      v-for="image in images"
-      :key="image.id"
-    >
+  <div :class="styles.gallery">
+    <template v-for="image in images" :key="image.id">
       <div>
         <ImageCard :image="image" />
       </div>
@@ -54,16 +43,9 @@ const endRef = (node: ComponentPublicInstance | Element | null) => {
   </div>
   <div :ref="endRef" :class="styles.sentinel" />
 
-  <ErrorMessage
-    v-if="error"
-    :error="error"
-    :title="error.name"
-  />
+  <ErrorMessage v-if="error" :error="error" :title="error.name" />
 
-  <StatusBar
-    :error="!!error"
-    :fetching="fetching || stale"
-  />
+  <StatusBar :error="!!error" :fetching="fetching || stale" />
 
   <ScrollButtons />
 </template>

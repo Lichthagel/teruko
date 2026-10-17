@@ -27,10 +27,7 @@ const useSuggestions = (
     fetching.value = true;
     const timeout = setTimeout(() => {
       clientHandle.client
-        .query(
-          TagSuggestions,
-          { query },
-        )
+        .query(TagSuggestions, { query })
         .toPromise()
         .then(({ data }) => {
           if (data?.tagSuggestions) {

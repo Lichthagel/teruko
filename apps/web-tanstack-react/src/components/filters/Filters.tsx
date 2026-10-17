@@ -10,16 +10,21 @@ import { TagQuery } from "./TagQuery";
 export const Filters = () => {
   const { tags, setTags } = useFilters();
 
-  const resetTags: MouseEventHandler<HTMLButtonElement> = useCallback((event) => {
-    event.preventDefault();
-    setTags([]);
-  }, [setTags]);
+  const resetTags: MouseEventHandler<HTMLButtonElement> = useCallback(
+    (event) => {
+      event.preventDefault();
+      setTags([]);
+    },
+    [setTags],
+  );
 
   return (
     <div className={styles.main}>
       {tags.length > 0 && (
         <div className={styles["tag-container"]}>
-          {tags.map(tag => (<TagQuery key={tag} tag={tag} />))}
+          {tags.map((tag) => (
+            <TagQuery key={tag} tag={tag} />
+          ))}
           <div className={`${styles["tag-query"]} ${styles.reset}`}>
             <button onClick={resetTags}>
               <ListX />
@@ -30,7 +35,7 @@ export const Filters = () => {
 
       <TagInput
         icon={Search}
-        onSubmit={value => setTags(prev => [...prev, value])}
+        onSubmit={(value) => setTags((prev) => [...prev, value])}
         onEscape={() => setTags([])}
       />
       <SortSelect />

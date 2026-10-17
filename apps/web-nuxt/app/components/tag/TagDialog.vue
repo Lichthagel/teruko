@@ -13,7 +13,7 @@ const { tags } = useFilters();
 const afterUpdate = (newSlug?: string) => {
   open.value = false;
   if (newSlug) {
-    const idx = tags.value.findIndex(el => el === props.slug);
+    const idx = tags.value.findIndex((el) => el === props.slug);
     if (idx >= 0) {
       tags.value = tags.value.toSpliced(idx, 1, newSlug);
     }

@@ -6,4 +6,4 @@ export const filters = $state<{
 }>({
   tags: [],
   sort: "NEWEST",
- });
+});

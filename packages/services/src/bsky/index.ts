@@ -2,16 +2,19 @@ import type { ImageMeta, Tag } from "models";
 import type { GetPostThreadResponse } from "./types.js";
 import { isFacetTag } from "./types.js";
 
-export const BSKY_POST_REGEX = /^(https?:\/\/)?(www\.)?bsky.app\/profile\/(?<handle>[^/]+)\/post\/(?<postId>[^/]+)$/;
+export const BSKY_POST_REGEX =
+  /^(https?:\/\/)?(www\.)?bsky.app\/profile\/(?<handle>[^/]+)\/post\/(?<postId>[^/]+)$/;
 
 export const fetchPost = async (handle: string, postId: string) => {
-  const response = await fetch(`https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=at://${handle}/app.bsky.feed.post/${postId}&depth=0&parentHeight=0`);
+  const response = await fetch(
+    `https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=at://${handle}/app.bsky.feed.post/${postId}&depth=0&parentHeight=0`,
+  );
 
   if (!response.ok) {
     throw new Error("Failed to fetch post");
   }
 
-  const data = await response.json() as GetPostThreadResponse;
+  const data = (await response.json()) as GetPostThreadResponse;
 
   if ("blocked" in data.thread) {
     throw new Error("Post is blocked");
@@ -48,17 +51,15 @@ export const fetchData = async (handle: string, postId: string) => {
       categorySlug: "artist",
       approved: false,
     },
-    ...(
-      post.author.displayName
-        ? [
-            {
-              slug: post.author.displayName,
-              categorySlug: "artist",
-              approved: false,
-            },
-          ]
-        : []
-    ),
+    ...(post.author.displayName
+      ? [
+          {
+            slug: post.author.displayName,
+            categorySlug: "artist",
+            approved: false,
+          },
+        ]
+      : []),
   ];
 
   for (const facet of post.record.facets ?? []) {
@@ -81,6 +82,6 @@ export const fetchData = async (handle: string, postId: string) => {
 
   return {
     meta: imageMeta,
-    imageUrls: embed.images.map(image => image.fullsize),
+    imageUrls: embed.images.map((image) => image.fullsize),
   };
 };

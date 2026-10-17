@@ -9,7 +9,7 @@ const sqlite = createClient({
 
 const TABLE = "_ImageToTAg";
 const TABLE_DRIZZLE = d_ImageToTag;
-const ORDER_BY = "\"imageId\", \"tagId\"";
+const ORDER_BY = '"imageId", "tagId"';
 const CHUNK_SIZE = 1000;
 const TIMESTAMP_COLS = ["createdAt", "updatedAt"];
 
@@ -20,7 +20,9 @@ console.log(total);
 for (let skip = 0; skip < total; skip += CHUNK_SIZE) {
   console.log(skip);
 
-  const chunk = await sqlite.execute(`SELECT * FROM ${TABLE} ORDER BY ${ORDER_BY} LIMIT ${CHUNK_SIZE} OFFSET ${skip}`);
+  const chunk = await sqlite.execute(
+    `SELECT * FROM ${TABLE} ORDER BY ${ORDER_BY} LIMIT ${CHUNK_SIZE} OFFSET ${skip}`,
+  );
 
   try {
     db.transaction(async (tx) => {
@@ -29,11 +31,12 @@ for (let skip = 0; skip < total; skip += CHUNK_SIZE) {
 
         for (const timestampCol of TIMESTAMP_COLS) {
           if (row[timestampCol]) {
-            newRow[timestampCol] = new Date(row[timestampCol] as number * 1000);
+            newRow[timestampCol] = new Date((row[timestampCol] as number) * 1000);
           }
         }
 
-        await tx.insert(TABLE_DRIZZLE)
+        await tx
+          .insert(TABLE_DRIZZLE)
           .overridingSystemValue()
           /* @ts-expect-error ignore this */
           .values(newRow);

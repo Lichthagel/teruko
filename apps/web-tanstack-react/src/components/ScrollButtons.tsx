@@ -9,7 +9,9 @@ const ScrollButtons = () => {
   useEffect(() => {
     const onScroll = () => {
       setShowToTop(window.scrollY > 50);
-      setShowToBottom(window.scrollY + window.innerHeight < globalThis.document.body.scrollHeight - 50);
+      setShowToBottom(
+        window.scrollY + window.innerHeight < globalThis.document.body.scrollHeight - 50,
+      );
     };
 
     window.addEventListener("scroll", onScroll);
@@ -39,7 +41,6 @@ const ScrollButtons = () => {
         <ChevronDown />
       </button>
     </div>
-
   );
 };
 

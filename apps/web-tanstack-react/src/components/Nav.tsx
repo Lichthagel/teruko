@@ -7,7 +7,9 @@ const Nav = () => {
     <div className={styles.bar}>
       <div className={`container ${styles.content}`}>
         <div className={styles.left}>
-          <Link className={styles.button} to="/">てる子</Link>
+          <Link className={styles.button} to="/">
+            てる子
+          </Link>
         </div>
         <div>
           {/* @ts-expect-error not yet implemented */}

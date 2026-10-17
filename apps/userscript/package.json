@@ -1,16 +1,13 @@
 {
   "name": "userscript",
-  "type": "module",
   "version": "0.0.1",
   "private": true,
-  "engines": {
-    "node": ">=21.0.0"
-  },
+  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "lint": "eslint .",
+    "dev": "vp dev",
+    "build": "tsc && vp build",
+    "preview": "vp preview",
+    "lint": "vp lint .",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
@@ -22,5 +19,8 @@
     "vite": "catalog:",
     "vite-plugin-monkey": "catalog:",
     "vite-plugin-solid": "catalog:"
+  },
+  "engines": {
+    "node": ">=21.0.0"
   }
 }

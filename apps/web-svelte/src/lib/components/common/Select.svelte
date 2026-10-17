@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Icon as IconType } from "@lucide/svelte";
+  import type { LucideIcon } from "@lucide/svelte";
   import styles from "client-css/m/select.module.scss";
 
   let { icon, options, value = $bindable() }: {
-    icon?: typeof IconType;
+    icon?: LucideIcon;
     options: (string | { value: string; label: string })[];
     value?: string;
   } = $props();

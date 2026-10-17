@@ -34,18 +34,22 @@ export type ImageSort = v.InferOutput<typeof vImageSort>;
 
 export const vTagExt = v.intersect([
   vTag,
-  v.partial(v.object({
-    category: v.nullable(vTagCategory),
-  })),
+  v.partial(
+    v.object({
+      category: v.nullable(vTagCategory),
+    }),
+  ),
 ]);
 
 export type TagExt = v.InferOutput<typeof vTagExt>;
 
 export const vImageExt = v.intersect([
   vImage,
-  v.partial(v.object({
-    tags: v.array(vTagExt),
-  })),
+  v.partial(
+    v.object({
+      tags: v.array(vTagExt),
+    }),
+  ),
 ]);
 
 export type ImageExt = v.InferOutput<typeof vImageExt>;
@@ -55,24 +59,20 @@ export type ImageMeta = {
   source?: string | null;
   tags?:
     | {
-      slug: string;
-      categorySlug?: string | null;
-    }[]
+        slug: string;
+        categorySlug?: string | null;
+      }[]
     | null;
 };
 
-export const mergeImageMeta = (
-  meta: ImageMeta,
-  meta2: ImageMeta,
-): ImageMeta => ({
+export const mergeImageMeta = (meta: ImageMeta, meta2: ImageMeta): ImageMeta => ({
   title: meta.title ?? meta2.title,
   source: meta.source ?? meta2.source,
   tags: meta.tags
     ? [
         ...meta.tags,
         ...(meta2.tags?.filter(
-          value =>
-            meta.tags?.findIndex(value2 => value2.slug === value.slug) === -1,
+          (value) => meta.tags?.findIndex((value2) => value2.slug === value.slug) === -1,
         ) ?? []),
       ]
     : meta2.tags,

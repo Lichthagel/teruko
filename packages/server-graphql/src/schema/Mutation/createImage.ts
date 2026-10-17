@@ -5,7 +5,7 @@ import { processFile } from "#lib/index.js";
 import { builder } from "../builder.js";
 import { PothosImage } from "../Image.js";
 
-builder.mutationField("createImage", t =>
+builder.mutationField("createImage", (t) =>
   t.field({
     type: [PothosImage],
     args: {
@@ -17,16 +17,11 @@ builder.mutationField("createImage", t =>
       source: t.arg.string(),
       tags: t.arg.stringList(),
     },
-    resolve: async (parent, {
-      files,
-      title,
-      source,
-      tags,
-    }) => {
+    resolve: async (parent, { files, title, source, tags }) => {
       const imageMetaArgs = {
         title: title ?? undefined,
         source: source ?? undefined,
-        tags: ((tags ?? []).map(slug => ({ slug }))),
+        tags: (tags ?? []).map((slug) => ({ slug })),
       };
 
       return Promise.all(
@@ -39,7 +34,7 @@ builder.mutationField("createImage", t =>
           // pixiv stuff
           const pixivId = matchFilename(filename);
 
-          if (pixivId && !imageMetaArgs.tags.some(tag => tag.slug === "pixiv")) {
+          if (pixivId && !imageMetaArgs.tags.some((tag) => tag.slug === "pixiv")) {
             try {
               const pixivMeta = await getPixivMetadata(pixivId);
 
@@ -60,4 +55,5 @@ builder.mutationField("createImage", t =>
         }),
       );
     },
-  }));
+  }),
+);

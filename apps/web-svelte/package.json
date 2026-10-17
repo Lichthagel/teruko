@@ -1,42 +1,23 @@
 {
   "name": "web-svelte",
-  "type": "module",
   "version": "0.0.1",
   "private": true,
+  "files": [
+    "build"
+  ],
+  "type": "module",
   "imports": {
     "#lib": "./src/lib/index.js",
     "#lib/*": "./src/lib/*"
   },
-  "files": [
-    "build"
-  ],
-  "engines": {
-    "node": ">=21.0.0"
-  },
   "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite preview",
+    "dev": "vp dev",
+    "build": "vp build",
+    "preview": "vp preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint": "eslint .",
+    "lint": "vp lint .",
     "clean": "rm -rf .svelte-kit build"
-  },
-  "nx": {
-    "targets": {
-      "build": {
-        "outputs": [
-          "{projectRoot}/.svelte-kit",
-          "{projectRoot}/build"
-        ]
-      }
-    },
-    "includedScripts": [
-      "dev",
-      "build",
-      "preview",
-      "lint"
-    ]
   },
   "dependencies": {
     "drizzle-orm": "catalog:",
@@ -63,5 +44,8 @@
     "tsconfig": "workspace:*",
     "valibot": "catalog:",
     "vite": "catalog:"
+  },
+  "engines": {
+    "node": ">=21.0.0"
   }
 }

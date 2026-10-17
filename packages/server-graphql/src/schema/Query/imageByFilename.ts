@@ -1,14 +1,11 @@
 import { inArray } from "drizzle-orm";
-import {
-  db,
-  dImage,
-} from "server-db";
+import { db, dImage } from "server-db";
 
 import { builder } from "../builder.js";
 
 import { PothosImage } from "../Image.js";
 
-builder.queryField("imageByFilename", t =>
+builder.queryField("imageByFilename", (t) =>
   t.field({
     type: PothosImage,
     nullable: true,
@@ -28,4 +25,5 @@ builder.queryField("imageByFilename", t =>
 
       return image;
     },
-  }));
+  }),
+);

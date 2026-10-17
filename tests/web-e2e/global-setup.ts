@@ -52,7 +52,7 @@ const waitForServer = async (port: number, server: ReturnType<typeof spawn>) => 
       await fetch(url);
       return;
     } catch {
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 500));
     }
   }
 
@@ -79,8 +79,8 @@ const globalSetup = async () => {
       stdio: ["ignore", "pipe", "pipe"],
     });
 
-    server.stdout?.on("data", chunk => process.stdout.write(`[e2e:${port}] ${chunk}`));
-    server.stderr?.on("data", chunk => process.stderr.write(`[e2e:${port}] ${chunk}`));
+    server.stdout?.on("data", (chunk) => process.stdout.write(`[e2e:${port}] ${chunk}`));
+    server.stderr?.on("data", (chunk) => process.stderr.write(`[e2e:${port}] ${chunk}`));
     return server;
   });
 

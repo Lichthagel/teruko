@@ -30,7 +30,6 @@ const ErrorMessage: Component<{
         </div>
       </div>
     </div>
-
   );
 };
 

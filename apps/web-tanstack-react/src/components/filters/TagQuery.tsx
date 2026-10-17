@@ -19,7 +19,7 @@ export const TagQuery: FC<{ tag: string }> = ({ tag }) => {
   });
 
   const removeTag = useCallback(() => {
-    setTags(prev => prev.filter(t => t !== tag));
+    setTags((prev) => prev.filter((t) => t !== tag));
   }, [setTags, tag]);
 
   return (

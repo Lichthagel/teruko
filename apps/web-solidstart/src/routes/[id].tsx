@@ -37,7 +37,7 @@ export default () => {
 
       <Switch>
         <Match when={image()}>
-          {image => (
+          {(image) => (
             <div>
               <img
                 alt={image().title ?? image().filename}
@@ -51,9 +51,7 @@ export default () => {
               <div class="container">
                 <div class={styles["meta-container"]}>
                   <div class={styles["meta-title"]}>
-                    <h1>
-                      {image()?.title || "No title"}
-                    </h1>
+                    <h1>{image()?.title || "No title"}</h1>
 
                     <span>
                       Source:
@@ -79,37 +77,31 @@ export default () => {
                       </div>
                     </div>
 
-                    <a class={styles["meta-dlicon"]} href={`/${image().id}/original`} target="_blank">
+                    <a
+                      class={styles["meta-dlicon"]}
+                      href={`/${image().id}/original`}
+                      target="_blank"
+                    >
                       <Download class={styles.icon} />
-                      <span>
-                        {fileExt()}
-                      </span>
+                      <span>{fileExt()}</span>
                     </a>
 
                     <Show when={!!fileExt() && fileExt() !== "avif"}>
                       <a class={styles["meta-dlicon"]} href={`/${image().id}/avif`} target="_blank">
                         <Download class={styles.icon} />
-                        <span>
-                          avif
-                        </span>
+                        <span>avif</span>
                       </a>
                     </Show>
 
                     <a class={styles["meta-dlicon"]} href={`/${image().id}/webp`} target="_blank">
                       <Download class={styles.icon} />
-                      <span>
-                        webp
-                      </span>
+                      <span>webp</span>
                     </a>
                   </div>
                 </div>
 
                 <div class={styles.tags}>
-                  <For each={image().tags}>
-                    {tag => (
-                      <TagChip tag={tag} />
-                    )}
-                  </For>
+                  <For each={image().tags}>{(tag) => <TagChip tag={tag} />}</For>
                 </div>
               </div>
             </div>

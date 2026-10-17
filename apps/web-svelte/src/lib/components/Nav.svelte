@@ -7,10 +7,10 @@
 <div class={styles.bar}>
   <div class="container {styles.content}">
     <div class={styles.left}>
-      <a class={styles.button} href={resolve("/", {})}>てる子</a>
+      <a class={styles.button} href={resolve("/")}>てる子</a>
     </div>
     <div>
-      <a class="{styles.button} {styles.square}" href={resolve("/new", {})}>
+      <a class="{styles.button} {styles.square}" href="/new">
         <Plus />
       </a>
     </div>

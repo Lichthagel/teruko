@@ -21,7 +21,7 @@
 <div class={styles.backdrop}>
   <div class="container">
     <div class={styles.above}>
-      <a href={resolve("/", {})}>
+      <a href={resolve("/")}>
         <House />
         <span>return home</span>
       </a>

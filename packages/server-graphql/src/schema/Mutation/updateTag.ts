@@ -7,7 +7,7 @@ import {
 import { builder } from "../builder.js";
 import { PothosTag } from "../Tag.js";
 
-builder.mutationField("updateTag", t =>
+builder.mutationField("updateTag", (t) =>
   t.field({
     type: PothosTag,
     args: {
@@ -25,10 +25,7 @@ builder.mutationField("updateTag", t =>
         // TODO less requests, without non-null assertion
         const res = await db.transaction(async (tx) => {
           // get old tag
-          const oldTagResult = await tx
-            .select()
-            .from(dTag)
-            .where(eq(dTag.slug, slug));
+          const oldTagResult = await tx.select().from(dTag).where(eq(dTag.slug, slug));
 
           const oldTag = oldTagResult[0];
 
@@ -68,7 +65,7 @@ builder.mutationField("updateTag", t =>
           await tx
             .insert(d_ImageToTag)
             .values(
-              existing.map(e => ({
+              existing.map((e) => ({
                 imageId: e.imageId,
                 tagId: newTag.id,
               })),
@@ -98,4 +95,5 @@ builder.mutationField("updateTag", t =>
         return item;
       }
     },
-  }));
+  }),
+);

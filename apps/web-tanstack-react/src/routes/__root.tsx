@@ -16,9 +16,7 @@ const RootDocument = ({ children }: { children: React.ReactNode }) => {
       <body>
         <Nav />
         <Provider value={urqlClient}>
-          <FiltersProvider>
-            {children}
-          </FiltersProvider>
+          <FiltersProvider>{children}</FiltersProvider>
         </Provider>
         <TanStackDevtools
           config={{

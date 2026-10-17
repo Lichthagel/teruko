@@ -10,9 +10,6 @@ const { tags, sort } = useFilters();
   <div class="container">
     <Filters />
 
-    <Gallery
-      :sort="sort"
-      :tags="tags"
-    />
+    <Gallery :sort="sort" :tags="tags" />
   </div>
 </template>

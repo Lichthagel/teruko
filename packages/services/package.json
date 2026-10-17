@@ -1,11 +1,11 @@
 {
   "name": "services",
-  "type": "module",
   "version": "0.0.0",
   "private": true,
   "description": "",
-  "author": "Lichthagel",
   "keywords": [],
+  "author": "Lichthagel",
+  "type": "module",
   "exports": {
     "./bsky": {
       "types": "./dist/bsky/index.d.ts",
@@ -16,18 +16,18 @@
       "default": "./dist/pixiv/index.js"
     }
   },
-  "engines": {
-    "node": ">=21.0.0"
-  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "lint": "eslint .",
+    "lint": "vp lint .",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
     "@typescript/native": "catalog:",
     "models": "workspace:^",
     "tsconfig": "workspace:^"
+  },
+  "engines": {
+    "node": ">=21.0.0"
   }
 }

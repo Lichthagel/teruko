@@ -12,9 +12,7 @@ export const matchFilename = (filename: string) => {
   return null;
 };
 
-export const fetchPixiv = async (
-  pixivId: string,
-): Promise<PixivIllustResult> => {
+export const fetchPixiv = async (pixivId: string): Promise<PixivIllustResult> => {
   const res = await fetch(`https://www.pixiv.net/ajax/illust/${pixivId}`, {
     headers: {
       "Accept-Language": "en-US",
@@ -37,9 +35,7 @@ export const toImageMeta = (
 
   if (!pixivResult.body) {
     return {
-      source: pixivIdFallback
-        ? `https://www.pixiv.net/en/artworks/${pixivIdFallback}`
-        : undefined,
+      source: pixivIdFallback ? `https://www.pixiv.net/en/artworks/${pixivIdFallback}` : undefined,
       tags,
     };
   }
@@ -74,10 +70,9 @@ export const toImageMeta = (
 
   if (pixivResult.body.tags != null && pixivResult.body.tags.tags != null) {
     for (const tag of pixivResult.body.tags.tags) {
-      const slug
-        = (tag.translation && tag.translation.en) ?? tag.romaji ?? tag.tag;
+      const slug = (tag.translation && tag.translation.en) ?? tag.romaji ?? tag.tag;
 
-      if (tags.some(value => value.slug === slug)) {
+      if (tags.some((value) => value.slug === slug)) {
         continue;
       }
 
@@ -94,9 +89,7 @@ export const toImageMeta = (
   };
 };
 
-export const getPixivMetadata = async (
-  pixivId: string,
-): Promise<ImageMeta | null> => {
+export const getPixivMetadata = async (pixivId: string): Promise<ImageMeta | null> => {
   const pixivResult = await fetchPixiv(pixivId);
 
   return toImageMeta(pixivResult, pixivId);

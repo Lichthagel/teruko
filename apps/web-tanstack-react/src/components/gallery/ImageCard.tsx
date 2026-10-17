@@ -22,28 +22,24 @@ const ImageCard: FunctionComponent<{ image: ImageExt }> = ({ image }) => {
             width={image.width}
           />
 
-          {!!image.title
-            && (
-              <div>
-                {image.title}
-              </div>
-            )}
+          {!!image.title && <div>{image.title}</div>}
         </div>
       </Link>
       <div className={styles["tag-list"]}>
-        {(image.tags ?? []).filter(tag => !tag.slug.startsWith("artist_")).map(tag => (
-          <button
-            key={tag.slug}
-            onClick={() => onTagClick(tag.slug)}
-            style={{ backgroundColor: tag.category?.color ?? "gray" }}
-            type="button"
-          >
-            {tag.slug}
-          </button>
-        ))}
+        {(image.tags ?? [])
+          .filter((tag) => !tag.slug.startsWith("artist_"))
+          .map((tag) => (
+            <button
+              key={tag.slug}
+              onClick={() => onTagClick(tag.slug)}
+              style={{ backgroundColor: tag.category?.color ?? "gray" }}
+              type="button"
+            >
+              {tag.slug}
+            </button>
+          ))}
       </div>
     </div>
-
   );
 };
 

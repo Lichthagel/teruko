@@ -23,14 +23,18 @@ const Actions: Component<Props> = (props) => {
 };
 
 export const defineActions = () => {
-  customElement<Props>("teruko-actions", {
-    url: null,
-  }, props => (
-    <>
-      <style>{styles}</style>
-      <Actions {...props} />
-    </>
-  ));
+  customElement<Props>(
+    "teruko-actions",
+    {
+      url: null,
+    },
+    (props) => (
+      <>
+        <style>{styles}</style>
+        <Actions {...props} />
+      </>
+    ),
+  );
 };
 
 export type ActionsElement = HTMLElement & Props;

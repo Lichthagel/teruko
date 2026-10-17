@@ -10,8 +10,8 @@ const model = defineModel<boolean>("checked");
     <input
       type="checkbox"
       :checked="model"
-      @input="e => model = (e.currentTarget as HTMLInputElement).checked"
-    >
+      @input="(e) => (model = (e.currentTarget as HTMLInputElement).checked)"
+    />
     <span :class="styles.checkmark" />
     <span>{{ label }}</span>
   </label>

@@ -2,6 +2,12 @@
   import { ArrowDownNarrowWide } from "@lucide/svelte";
   import { filters } from "#lib/filters.svelte.js";
   import Select from "../common/Select.svelte";
+
+  const setValue = (value?: string) => {
+    if (value && vImageSort.options.includes(value as typeof vImageSort.options[number])) {
+      filters.sort = value as typeof filters.sort;
+    }
+  };
 </script>
 
 <Select

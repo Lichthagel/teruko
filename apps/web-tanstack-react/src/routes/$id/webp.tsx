@@ -7,14 +7,11 @@ import { defineDownloadRequestHandler } from "#/downloadRequestHandler";
 export const Route = createFileRoute("/$id/webp")({
   server: {
     handlers: {
-      GET: defineDownloadRequestHandler(
-        (filepath) => {
-          const pipeline = sharp().webp({ quality: 100 });
-          const filestream = createReadStream(filepath);
-          return Readable.toWeb(filestream.pipe(pipeline)) as ReadableStream;
-        },
-        "webp",
-      ),
+      GET: defineDownloadRequestHandler((filepath) => {
+        const pipeline = sharp().webp({ quality: 100 });
+        const filestream = createReadStream(filepath);
+        return Readable.toWeb(filestream.pipe(pipeline)) as ReadableStream;
+      }, "webp"),
     },
   },
 });

@@ -1,14 +1,11 @@
 {
   "name": "web-solidstart",
   "type": "module",
-  "engines": {
-    "node": ">=22"
-  },
   "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
+    "dev": "vp dev",
+    "build": "vp build",
     "start": "node server.mjs",
-    "preview": "vite preview"
+    "preview": "vp preview"
   },
   "dependencies": {
     "@solidjs/meta": "catalog:",
@@ -28,5 +25,8 @@
     "tsconfig": "workspace:*",
     "valibot": "catalog:",
     "vite": "catalog:"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

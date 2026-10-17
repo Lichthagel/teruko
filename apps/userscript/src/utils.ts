@@ -25,7 +25,10 @@ export const applyToAllConstantlyDebounced = (
   observer.observe(container, { childList: true, subtree: true });
 };
 
-export const GMfetch = (url: string, options: Omit<GmXmlhttpRequestOption<"text", any>, "url" | "onload" | "onerror ">) => {
+export const GMfetch = (
+  url: string,
+  options: Omit<GmXmlhttpRequestOption<"text", any>, "url" | "onload" | "onerror ">,
+) => {
   return new Promise<GmResponseEvent<"text", any>>((resolve, reject) => {
     GM_xmlhttpRequest({
       url,

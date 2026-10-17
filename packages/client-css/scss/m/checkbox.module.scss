@@ -20,10 +20,10 @@
     height: variables.$size-4;
     border: 2px solid var(--text);
     border-radius: variables.$radius;
-    transition: background-color .5s;
+    transition: background-color 0.5s;
   }
 
-  input:checked+.checkmark {
+  input:checked + .checkmark {
     background-color: var(--pink);
   }
 }

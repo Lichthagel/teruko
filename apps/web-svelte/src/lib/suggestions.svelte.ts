@@ -21,15 +21,12 @@ export const useSuggestions = (query: () => string) => {
     fetching = true;
 
     const querySubscription = client
-    .query(
-      TagSuggestions,
-    { query: query() },
-    )
-    .subscribe(({ data, error: error_ }) => {
-      error = error_;
-      suggestions = data?.tagSuggestions ?? [];
-      fetching = false;
-    });
+      .query(TagSuggestions, { query: query() })
+      .subscribe(({ data, error: error_ }) => {
+        error = error_;
+        suggestions = data?.tagSuggestions ?? [];
+        fetching = false;
+      });
 
     return () => {
       querySubscription.unsubscribe();

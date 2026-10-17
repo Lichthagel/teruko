@@ -1,11 +1,11 @@
 {
   "name": "web-e2e",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
     "test": "playwright test",
     "check": "tsc --noEmit",
-    "lint": "eslint .",
+    "lint": "vp lint .",
     "clean": "rm -rf test-results playwright-report"
   },
   "devDependencies": {

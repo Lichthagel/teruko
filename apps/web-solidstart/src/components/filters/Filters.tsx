@@ -16,9 +16,7 @@ export const Filters = () => {
     <div class={styles.main}>
       <Show when={tags().length}>
         <div class={styles["tag-container"]}>
-          <For each={tags()}>
-            {tag => (<TagQuery tag={tag} />)}
-          </For>
+          <For each={tags()}>{(tag) => <TagQuery tag={tag} />}</For>
           <div class={`${styles["tag-query"]} ${styles.reset}`}>
             <button onClick={resetTags}>
               <ListX />
@@ -29,7 +27,7 @@ export const Filters = () => {
 
       <TagInput
         icon={Search}
-        onSubmit={v => setTags(old => [...old, v])}
+        onSubmit={(v) => setTags((old) => [...old, v])}
         onEscape={() => setTags([])}
       />
 

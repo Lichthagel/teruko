@@ -16,13 +16,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-      - name: Cache Nx
-        uses: actions/cache@v6
-        with:
-          path: .nx
-          key: ${{ runner.os }}-nx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-nx-
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
       - name: Setup Node
@@ -57,14 +50,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-      - name: Cache Nx
-        uses: actions/cache@v6
-        with:
-          path: .nx
-          key: ${{ runner.os }}-nx-e2e-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-nx-e2e-
-            ${{ runner.os }}-nx-
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
       - name: Setup Node
@@ -83,7 +68,7 @@ jobs:
       - name: Install Playwright browser
         run: pnpm --filter web-e2e exec playwright install --with-deps chromium firefox
       - name: Run end-to-end tests
-        run: pnpm nx run web-e2e:test
+        run: pnpm run test:e2e
       - name: Upload Playwright report
         if: failure()
         uses: actions/upload-artifact@v7

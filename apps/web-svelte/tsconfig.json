@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "$app/tsconfig",
-    "tsconfig/base.json"
-  ],
+  "extends": ["$app/tsconfig", "tsconfig/base.json"],
   "include": [
     "./.svelte-kit/ambient.d.ts",
     "./.svelte-kit/types/**/$types.d.ts",
@@ -12,5 +9,6 @@
     "./**/*.mjs",
     "./**/*.ts",
     "./**/*.svelte"
-  ]
+  ],
+  "exclude": ["./build/**", "./.svelte-kit/**"]
 }

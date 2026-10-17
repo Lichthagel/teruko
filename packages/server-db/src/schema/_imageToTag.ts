@@ -19,12 +19,12 @@ export const d_ImageToTag = pgTable(
         onUpdate: "cascade",
       }),
   },
-  table => ([
+  (table) => [
     primaryKey({
       name: "_ImageToTag_pkey",
       columns: [table.imageId, table.tagId],
     }),
-  ]),
+  ],
 );
 
 export const _ImageToTagRelations = relations(d_ImageToTag, ({ one }) => ({

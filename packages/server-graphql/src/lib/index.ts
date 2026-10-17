@@ -6,12 +6,7 @@ import { finished } from "node:stream/promises";
 import { sql } from "drizzle-orm";
 import { fileTypeFromBuffer } from "file-type";
 import { GraphQLError } from "graphql";
-import {
-  d_ImageToTag,
-  db,
-  dImage,
-  dTag,
-} from "server-db";
+import { d_ImageToTag, db, dImage, dTag } from "server-db";
 import env from "server-env";
 import sharp from "sharp";
 
@@ -31,23 +26,22 @@ const saveBlob = async (blob: Blob, filename: string) => {
 
   const fileType = await fileTypeFromBuffer(buffer);
 
-  if (
-    !fileType
-    || !mimeTypeRegex.test(fileType.mime)
-  ) { throw new GraphQLError("not an image"); }
+  if (!fileType || !mimeTypeRegex.test(fileType.mime)) {
+    throw new GraphQLError("not an image");
+  }
 
   // check for existing image
   if (
     await db.query.Image.findFirst({
       where: (images, { eq }) => eq(images.filename, filename),
     })
-  ) { throw new GraphQLError("image with that filename already exists"); }
+  ) {
+    throw new GraphQLError("image with that filename already exists");
+  }
 
   const transform = sharp(buffer).avif({ quality: 90 });
 
-  const out = fs.createWriteStream(
-    path.resolve(env.IMG_FOLDER, filename),
-  );
+  const out = fs.createWriteStream(path.resolve(env.IMG_FOLDER, filename));
 
   transform.pipe(out);
 
@@ -65,19 +59,21 @@ const saveBlob = async (blob: Blob, filename: string) => {
   };
 };
 
-const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: Metadata & { width: number; height: number }, filename: string) => {
+const insertIntoDB = async (
+  imageMeta: ImageMeta,
+  fileMeta: Metadata & { width: number; height: number },
+  filename: string,
+) => {
   const image = await db.transaction(async (tx) => {
     const imageResults = await tx
       .insert(dImage)
-      .values(
-        {
-          filename,
-          width: fileMeta.width,
-          height: fileMeta.height,
-          title: imageMeta.title,
-          source: imageMeta.source,
-        },
-      )
+      .values({
+        filename,
+        width: fileMeta.width,
+        height: fileMeta.height,
+        title: imageMeta.title,
+        source: imageMeta.source,
+      })
       .returning();
 
     const imageResult = imageResults[0];
@@ -92,13 +88,10 @@ const insertIntoDB = async (imageMeta: ImageMeta, fileMeta: Metadata & { width: 
     };
 
     if (imageMeta.tags && imageMeta.tags.length > 0) {
-      await tx
-        .insert(dTag)
-        .values(imageMeta.tags)
-        .onConflictDoNothing();
+      await tx.insert(dTag).values(imageMeta.tags).onConflictDoNothing();
 
       await tx.insert(d_ImageToTag).values(
-        imageMeta.tags.map(tag => ({
+        imageMeta.tags.map((tag) => ({
           imageId: image.id,
           tagId: sql`(SELECT id FROM "Tag" WHERE "slug" = ${tag.slug})`,
         })),

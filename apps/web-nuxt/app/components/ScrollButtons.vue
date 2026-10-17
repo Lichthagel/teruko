@@ -7,9 +7,8 @@ const showToBottom = ref(false);
 
 const onScroll = () => {
   showToTop.value = window.scrollY > 50;
-  showToBottom.value
-    = window.scrollY + window.innerHeight
-      < globalThis.document.body.scrollHeight - 50;
+  showToBottom.value =
+    window.scrollY + window.innerHeight < globalThis.document.body.scrollHeight - 50;
 };
 
 const scrollToTop = () => {
@@ -34,18 +33,10 @@ onBeforeUnmount(() => {
 
 <template>
   <div :class="styles.buttons">
-    <button
-      :class="!showToTop && styles.hidden"
-      type="button"
-      @click="scrollToTop"
-    >
+    <button :class="!showToTop && styles.hidden" type="button" @click="scrollToTop">
       <ChevronUp />
     </button>
-    <button
-      :class="!showToBottom && styles.hidden"
-      type="button"
-      @click="scrollToBottom"
-    >
+    <button :class="!showToBottom && styles.hidden" type="button" @click="scrollToBottom">
       <ChevronDown />
     </button>
   </div>

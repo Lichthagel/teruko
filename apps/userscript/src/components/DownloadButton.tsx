@@ -46,18 +46,24 @@ const DownloadButton: Component<Props> = (props) => {
       setText("up...");
 
       const formData = new FormData();
-      formData.append("operations", JSON.stringify({
-        query: CREATE_IMAGE,
-        variables: {
-          files: [null],
-          title: meta?.title,
-          source: meta?.source,
-          tags: meta?.tags?.map(tag => tag.slug),
-        },
-      }));
-      formData.append("map", JSON.stringify({
-        0: ["variables.files.0"],
-      }));
+      formData.append(
+        "operations",
+        JSON.stringify({
+          query: CREATE_IMAGE,
+          variables: {
+            files: [null],
+            title: meta?.title,
+            source: meta?.source,
+            tags: meta?.tags?.map((tag) => tag.slug),
+          },
+        }),
+      );
+      formData.append(
+        "map",
+        JSON.stringify({
+          0: ["variables.files.0"],
+        }),
+      );
       formData.append("0", file);
 
       const result = await GMfetch(`${TERUKO_BASE_URL}/graphql`, {
@@ -67,15 +73,17 @@ const DownloadButton: Component<Props> = (props) => {
           "Apollo-Require-Preflight": "true",
           ...(TERUKO_BASIC_AUTH ? { Authorization: `Basic ${TERUKO_BASIC_AUTH}` } : {}),
         },
-      })
-        .then(res => JSON.parse(res.responseText) as {
-          data: {
-            createImage: { id: string }[];
-          } | null;
-          errors?: {
-            message: string;
-          }[];
-        });
+      }).then(
+        (res) =>
+          JSON.parse(res.responseText) as {
+            data: {
+              createImage: { id: string }[];
+            } | null;
+            errors?: {
+              message: string;
+            }[];
+          },
+      );
 
       window.removeEventListener("beforeunload", beforeUnload);
       if (result.errors) {
@@ -84,10 +92,7 @@ const DownloadButton: Component<Props> = (props) => {
         // alert(`error: ${result}`);
       } else if (result.data) {
         if (open) {
-          window.open(
-            `${TERUKO_BASE_URL}/${result.data.createImage[0]?.id as string}`,
-            "_blank",
-          );
+          window.open(`${TERUKO_BASE_URL}/${result.data.createImage[0]?.id as string}`, "_blank");
         } else {
           setText(`id: ${result.data.createImage[0]?.id as string}`);
         }
@@ -104,10 +109,15 @@ const DownloadButton: Component<Props> = (props) => {
     }
   };
 
-  createEffect(on(() => props.url, () => {
-    setText("teruko");
-    setSmall(false);
-  }));
+  createEffect(
+    on(
+      () => props.url,
+      () => {
+        setText("teruko");
+        setSmall(false);
+      },
+    ),
+  );
 
   return (
     <button

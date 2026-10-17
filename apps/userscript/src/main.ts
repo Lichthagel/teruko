@@ -4,7 +4,7 @@ import { applyToAllConstantlyDebounced } from "./utils.js";
 defineActions();
 
 applyToAllConstantlyDebounced(
-  el => el.querySelectorAll("div[role=presentation] > a.gtm-expand-full-size-illust"),
+  (el) => el.querySelectorAll("div[role=presentation] > a.gtm-expand-full-size-illust"),
   (node) => {
     const linkUrl = (node as HTMLLinkElement).href;
 

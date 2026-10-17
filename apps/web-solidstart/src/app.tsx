@@ -15,7 +15,7 @@ export default function App() {
 
   return (
     <Router
-      root={props => (
+      root={(props) => (
         <MetaProvider>
           <Provider value={client}>
             <Title>てる子</Title>

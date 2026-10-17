@@ -15,7 +15,7 @@ const Input: Component<InputProps> = (props_) => {
       <input
         type="text"
         value={props.value}
-        onInput={event => props.setValue(event.currentTarget.value)}
+        onInput={(event) => props.setValue(event.currentTarget.value)}
         {...restProps}
       />
     </div>

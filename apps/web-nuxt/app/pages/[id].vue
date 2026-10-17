@@ -15,14 +15,11 @@ const result = useQuery({
   },
 });
 
-const {
-  data,
-  fetching,
-  stale,
-  error,
-} = result;
+const { data, fetching, stale, error } = result;
 
-const fileExt = computed<string | null>(() => data.value?.image?.filename ? (data.value.image.filename.split(".").pop() ?? null) : null);
+const fileExt = computed<string | null>(() =>
+  data.value?.image?.filename ? (data.value.image.filename.split(".").pop() ?? null) : null,
+);
 
 const scroll = (payload: Event) => {
   (payload.target as HTMLElement).scrollIntoView({
@@ -32,23 +29,14 @@ const scroll = (payload: Event) => {
 };
 
 useHead({
-  title: computed(
-    () =>
-      `${data.value?.image?.title ? `${data.value.image.title} - ` : ""}てる子`,
-  ),
+  title: computed(() => `${data.value?.image?.title ? `${data.value.image.title} - ` : ""}てる子`),
 });
 </script>
 
 <template>
   <div>
-    <div
-      v-if="data && data.image"
-    >
-      <img
-        :class="styles.image"
-        :src="`/img/${data.image.filename}`"
-        @load="scroll"
-      >
+    <div v-if="data && data.image">
+      <img :class="styles.image" :src="`/img/${data.image.filename}`" @load="scroll" />
 
       <div class="container">
         <div :class="styles['meta-container']">
@@ -59,11 +47,7 @@ useHead({
 
             <span>
               Source:
-              <NuxtLink
-                v-if="data.image.source"
-                :href="data.image.source"
-                target="_blank"
-              >
+              <NuxtLink v-if="data.image.source" :href="data.image.source" target="_blank">
                 {{ data.image.source }}
               </NuxtLink>
               <span v-else>unknown</span>
@@ -100,9 +84,7 @@ useHead({
               :href="`/${data.image.id}/avif`"
             >
               <DownloadIcon :class="styles.icon" />
-              <span>
-                avif
-              </span>
+              <span> avif </span>
             </NuxtLink>
 
             <NuxtLink
@@ -111,37 +93,21 @@ useHead({
               :href="`/${data.image.id}/webp`"
             >
               <DownloadIcon :class="styles.icon" />
-              <span>
-                webp
-              </span>
+              <span> webp </span>
             </NuxtLink>
           </div>
         </div>
 
         <div :class="styles.tags">
-          <TagChip
-            v-for="tag in data.image.tags"
-            :key="tag.slug"
-            :tag="tag"
-          />
+          <TagChip v-for="tag in data.image.tags" :key="tag.slug" :tag="tag" />
         </div>
       </div>
     </div>
 
-    <ErrorMessage
-      v-if="error"
-      :message="error.message"
-      :title="error.name"
-    />
+    <ErrorMessage v-if="error" :message="error.message" :title="error.name" />
 
-    <ErrorMessage
-      v-if="!fetching && !error && (!data || !data.image)"
-      title="Not Found"
-    />
+    <ErrorMessage v-if="!fetching && !error && (!data || !data.image)" title="Not Found" />
 
-    <StatusBar
-      :error="!!error"
-      :fetching="fetching || stale"
-    />
+    <StatusBar :error="!!error" :fetching="fetching || stale" />
   </div>
 </template>

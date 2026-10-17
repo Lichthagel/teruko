@@ -26,9 +26,9 @@ const TagEditSection: FunctionComponent<TagEditSectionProps> = ({ slug, afterUpd
   });
 
   useEffect(() => {
-    // eslint-disable-next-line react/set-state-in-effect
+    // oxlint-disable-next-line react/set-state-in-effect
     setCategoryInputValue(result.data?.tag?.category?.slug);
-    // eslint-disable-next-line react/set-state-in-effect
+    // oxlint-disable-next-line react/set-state-in-effect
     setApprovedInputValue(result.data?.tag?.approved);
   }, [result.data?.tag?.approved, result.data?.tag?.category?.slug]);
 
@@ -46,38 +46,42 @@ const TagEditSection: FunctionComponent<TagEditSectionProps> = ({ slug, afterUpd
     if (afterUpdate && resultUpdateTag.data?.updateTag) {
       afterUpdate(resultUpdateTag.data.updateTag.slug);
     }
-  // eslint-disable-next-line react/exhaustive-deps
+    // oxlint-disable-next-line react/exhaustive-deps
   }, [resultUpdateTag.data?.updateTag]);
 
   return (
     <>
       <h1>Meta</h1>
-      {result.fetching
-        ? <SkeletonLoader />
-        : (
-            <div className={styles.content}>
-              <div className={styles.row}>
-                <Input value={slugInputValue} setValue={setSlugInputValue} />
-                <Select
-                  options={result.data?.tagCategories.map(v => v.slug) ?? []}
-                  value={categoryInputValue}
-                  setValue={setCategoryInputValue}
-                />
-              </div>
-              <div className={styles.row}>
-                <Checkbox checked={approvedInputValue ?? false} setChecked={setApprovedInputValue} label="approved" />
-                <Button
-                  style={{ flexGrow: 0 }}
-                  icon={Save}
-                  disabled={resultUpdateTag?.fetching}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    updateTag();
-                  }}
-                />
-              </div>
-            </div>
-          )}
+      {result.fetching ? (
+        <SkeletonLoader />
+      ) : (
+        <div className={styles.content}>
+          <div className={styles.row}>
+            <Input value={slugInputValue} setValue={setSlugInputValue} />
+            <Select
+              options={result.data?.tagCategories.map((v) => v.slug) ?? []}
+              value={categoryInputValue}
+              setValue={setCategoryInputValue}
+            />
+          </div>
+          <div className={styles.row}>
+            <Checkbox
+              checked={approvedInputValue ?? false}
+              setChecked={setApprovedInputValue}
+              label="approved"
+            />
+            <Button
+              style={{ flexGrow: 0 }}
+              icon={Save}
+              disabled={resultUpdateTag?.fetching}
+              onClick={(e) => {
+                e.preventDefault();
+                updateTag();
+              }}
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 };

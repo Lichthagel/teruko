@@ -7,7 +7,8 @@ import * as v from "valibot";
 
 const fileExtensionRegex = /[^./\\]+$/;
 
-export const defineDownloadRequestHandler = (getData: (filepath: string) => BodyInit | PromiseLike<BodyInit>, fileType?: "avif" | "webp") =>
+export const defineDownloadRequestHandler =
+  (getData: (filepath: string) => BodyInit | PromiseLike<BodyInit>, fileType?: "avif" | "webp") =>
   async ({ params }: APIEvent): Promise<Response> => {
     const { id } = v.parse(
       v.object({
@@ -16,11 +17,7 @@ export const defineDownloadRequestHandler = (getData: (filepath: string) => Body
       params,
     );
 
-    const image = await db
-      .select()
-      .from(dImage)
-      .where(eq(dImage.id, id))
-      .limit(1);
+    const image = await db.select().from(dImage).where(eq(dImage.id, id)).limit(1);
 
     if (!image[0]) {
       return new Response(null, { status: 404 });
@@ -32,12 +29,7 @@ export const defineDownloadRequestHandler = (getData: (filepath: string) => Body
 
     const data = await getData(filepath);
 
-    const responseFilename = fileType
-      ? filename.replace(
-          fileExtensionRegex,
-          fileType,
-        )
-      : filename;
+    const responseFilename = fileType ? filename.replace(fileExtensionRegex, fileType) : filename;
 
     return new Response(data, {
       headers: {

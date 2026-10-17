@@ -14,31 +14,23 @@ const setTag = (slug: string) => {
 </script>
 
 <template>
-  <div
-    :class="styles.card"
-  >
+  <div :class="styles.card">
     <NuxtLink :href="`/${props.image.id}`">
       <div :class="styles['image-container']">
         <img
           :height="props.image.height"
           :src="`/img/${props.image.filename}`"
           :width="props.image.width"
-        >
+        />
 
-        <div
-          v-if="!!props.image.title"
-        >
+        <div v-if="!!props.image.title">
           {{ props.image.title }}
         </div>
       </div>
     </NuxtLink>
-    <div
-      :class="styles['tag-list']"
-    >
+    <div :class="styles['tag-list']">
       <template
-        v-for="tag in props.image.tags?.filter(
-          (tag) => !tag.slug.startsWith('artist_'),
-        )"
+        v-for="tag in props.image.tags?.filter((tag) => !tag.slug.startsWith('artist_'))"
         :key="tag.slug"
       >
         <button

@@ -28,14 +28,16 @@ const TagInput: Component<{
     props.setTagInput?.(tagInput());
   });
 
-  const [result] = createQuery(({
+  const [result] = createQuery({
     query: TagSuggestions,
     variables: () => ({ query: tagInput() ?? "" }),
     pause: () => tagInput().length < 3,
-  }));
+  });
 
   const fetching = createMemo(() => result.fetching);
-  const suggestions = createMemo(() => (tagInput().length >= 3 && result.data?.tagSuggestions) || []);
+  const suggestions = createMemo(
+    () => (tagInput().length >= 3 && result.data?.tagSuggestions) || [],
+  );
 
   const handleSubmit = () => {
     const suggestion = suggestions()[activeSuggestion()];
@@ -96,7 +98,7 @@ const TagInput: Component<{
 
         break;
       }
-    // No default
+      // No default
     }
   };
 
@@ -135,8 +137,16 @@ const TagInput: Component<{
                 onClick={() => handleSubmit()}
                 onMouseEnter={() => setActiveSuggestion(index())}
                 style={{
-                  "background-color": (index() === activeSuggestion() && suggestion.category && suggestion.category.color) || undefined,
-                  "color": (index() !== activeSuggestion() && suggestion.category && suggestion.category.color) || undefined,
+                  "background-color":
+                    (index() === activeSuggestion() &&
+                      suggestion.category &&
+                      suggestion.category.color) ||
+                    undefined,
+                  color:
+                    (index() !== activeSuggestion() &&
+                      suggestion.category &&
+                      suggestion.category.color) ||
+                    undefined,
                 }}
               >
                 {suggestion.slug}
@@ -146,7 +156,6 @@ const TagInput: Component<{
         </ul>
       </Show>
     </div>
-
   );
 };
 

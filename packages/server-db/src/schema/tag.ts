@@ -4,17 +4,13 @@ import { d_ImageToTag } from "./_imageToTag.js";
 import { dTagCategory } from "./tagCategory.js";
 
 export const dTag = pgTable("Tag", {
-  id: bigint("id", { mode: "number" })
-    .primaryKey()
-    .generatedAlwaysAsIdentity(),
+  id: bigint("id", { mode: "number" }).primaryKey().generatedAlwaysAsIdentity(),
   slug: text("slug").notNull().unique(),
   categorySlug: text("categorySlug").references(() => dTagCategory.slug, {
     onDelete: "set null",
     onUpdate: "cascade",
   }),
-  approved: boolean("approved")
-    .notNull()
-    .default(false),
+  approved: boolean("approved").notNull().default(false),
 });
 
 export const TagRelations = relations(dTag, ({ one, many }) => ({

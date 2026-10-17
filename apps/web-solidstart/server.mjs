@@ -24,7 +24,10 @@ const contentTypes = {
 
 const server = createServer(async (request, response) => {
   try {
-    const url = new URL(request.url ?? "/", `http://${request.headers.host ?? `localhost:${port}`}`);
+    const url = new URL(
+      request.url ?? "/",
+      `http://${request.headers.host ?? `localhost:${port}`}`,
+    );
     const method = request.method ?? "GET";
 
     if (method === "GET" && url.pathname.startsWith("/_build/")) {
@@ -33,7 +36,10 @@ const server = createServer(async (request, response) => {
         try {
           const file = await stat(filePath);
           if (file.isFile()) {
-            response.setHeader("Content-Type", contentTypes[path.extname(filePath)] ?? "application/octet-stream");
+            response.setHeader(
+              "Content-Type",
+              contentTypes[path.extname(filePath)] ?? "application/octet-stream",
+            );
             response.end(await readFile(filePath));
             return;
           }
@@ -67,11 +73,13 @@ server.on("error", (error) => {
   process.exitCode = 1;
 });
 
-ensureDatabaseReady().then(() => {
-  server.listen(port, "0.0.0.0", () => {
-    process.stdout.write(`Listening on http://0.0.0.0:${port}\n`);
+ensureDatabaseReady()
+  .then(() => {
+    server.listen(port, "0.0.0.0", () => {
+      process.stdout.write(`Listening on http://0.0.0.0:${port}\n`);
+    });
+  })
+  .catch((error) => {
+    console.error("Database migrations failed", error);
+    process.exit(1);
   });
-}).catch((error) => {
-  console.error("Database migrations failed", error);
-  process.exit(1);
-});

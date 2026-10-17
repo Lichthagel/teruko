@@ -25,7 +25,7 @@ const TagDialog: Component<{
     if (newSlug) {
       // eslint-disable-next-line solid/reactivity
       setTags((prev) => {
-        const idx = prev.findIndex(el => el === props.slug);
+        const idx = prev.findIndex((el) => el === props.slug);
         if (idx >= 0) {
           return prev.toSpliced(idx, 1, newSlug);
         }

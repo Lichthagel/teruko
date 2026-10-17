@@ -25,7 +25,10 @@ const slugInput = ref(props.slug);
 const categoryInput = ref<string | undefined>(data.value?.tag?.category?.slug);
 const approvedInput = ref(data.value?.tag?.approved);
 
-watch(() => props.slug, value => slugInput.value = value);
+watch(
+  () => props.slug,
+  (value) => (slugInput.value = value),
+);
 
 watch(data, (v) => {
   categoryInput.value = v?.tag?.category?.slug;
@@ -33,16 +36,17 @@ watch(data, (v) => {
 });
 
 const { fetching: fetchingUpdateTag, executeMutation: updateTag_ } = useMutation(UpdateTag);
-const updateTag = () => updateTag_({
-  slug: props.slug,
-  newSlug: slugInput.value,
-  category: categoryInput.value,
-  approved: approvedInput.value,
-}).then((res) => {
-  if (res.data?.updateTag) {
-    emit("afterUpdate", res.data.updateTag.slug);
-  }
-});
+const updateTag = () =>
+  updateTag_({
+    slug: props.slug,
+    newSlug: slugInput.value,
+    category: categoryInput.value,
+    approved: approvedInput.value,
+  }).then((res) => {
+    if (res.data?.updateTag) {
+      emit("afterUpdate", res.data.updateTag.slug);
+    }
+  });
 </script>
 
 <template>
@@ -52,10 +56,7 @@ const updateTag = () => updateTag_({
   <div v-else :class="styles.content">
     <div :class="styles.row">
       <Input v-model="slugInput" />
-      <Select
-        v-model="categoryInput"
-        :options="data?.tagCategories.map(v => v.slug) ?? []"
-      />
+      <Select v-model="categoryInput" :options="data?.tagCategories.map((v) => v.slug) ?? []" />
     </div>
     <div :class="styles.row">
       <Checkbox v-model:checked="approvedInput" label="approved" />
@@ -63,10 +64,12 @@ const updateTag = () => updateTag_({
         :style="{ flexGrow: 0 }"
         :icon="Save"
         :disabled="fetchingUpdateTag"
-        @click="(e: MouseEvent) => {
-          e.preventDefault();
-          updateTag();
-        }"
+        @click="
+          (e: MouseEvent) => {
+            e.preventDefault();
+            updateTag();
+          }
+        "
       />
     </div>
   </div>

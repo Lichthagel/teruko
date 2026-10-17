@@ -10,7 +10,6 @@ const ErrorMessage: FunctionComponent<{
   title?: string;
 }> = ({ error, message, subtitle, title }) => {
   return (
-
     <div className={styles.backdrop}>
       <div className="container">
         <div className={styles.above}>
@@ -21,14 +20,11 @@ const ErrorMessage: FunctionComponent<{
         </div>
         <div className={styles.content}>
           <h1>{title || "An error occurred"}</h1>
-          {(subtitle || error)
-            && <h2>{subtitle || error?.message}</h2>}
-          {!!message
-            && <span>{message}</span>}
+          {(subtitle || error) && <h2>{subtitle || error?.message}</h2>}
+          {!!message && <span>{message}</span>}
         </div>
       </div>
     </div>
-
   );
 };
 

@@ -43,18 +43,11 @@ const ImagePage = () => {
       <div className="container">
         <div className={styles["meta-container"]}>
           <div className={styles["meta-title"]}>
-            <h1>
-              {image.title || "No title"}
-            </h1>
+            <h1>{image.title || "No title"}</h1>
 
             <span>
-              Source:
-              {" "}
-              <a
-                href={image.source ?? undefined}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
+              Source:{" "}
+              <a href={image.source ?? undefined} rel="noopener noreferrer" target="_blank">
                 {image.source}
               </a>
             </span>
@@ -74,32 +67,26 @@ const ImagePage = () => {
 
             <a className={styles["meta-dlicon"]} href={`/${image.id}/original`}>
               <Download className={styles.icon} />
-              <span>
-                {fileExt}
-              </span>
+              <span>{fileExt}</span>
             </a>
 
             {!!fileExt && fileExt !== "avif" && (
               <a className={styles["meta-dlicon"]} href={`/${image.id}/avif`}>
                 <Download className={styles.icon} />
-                <span>
-                  avif
-                </span>
+                <span>avif</span>
               </a>
             )}
 
             <a className={styles["meta-dlicon"]} href={`/${image.id}/webp`}>
               <Download className={styles.icon} />
-              <span>
-                webp
-              </span>
+              <span>webp</span>
             </a>
           </div>
         </div>
 
         <div className={styles.tags}>
           {image.tags?.map((tag) => {
-            return (<TagChip key={tag.slug} tag={tag} />);
+            return <TagChip key={tag.slug} tag={tag} />;
           })}
         </div>
       </div>

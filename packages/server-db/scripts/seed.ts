@@ -17,24 +17,31 @@ const dimensions = [
 const seed = async () => {
   console.log("Seeding TagCategory...");
 
-  await db.insert(dTagCategory).values([
-    { slug: "artist", color: "#ff6b6b" },
-    { slug: "series", color: "#4ecdc4" },
-    { slug: "general", color: "#95e1d3" },
-  ]).onConflictDoNothing();
+  await db
+    .insert(dTagCategory)
+    .values([
+      { slug: "artist", color: "#ff6b6b" },
+      { slug: "series", color: "#4ecdc4" },
+      { slug: "general", color: "#95e1d3" },
+    ])
+    .onConflictDoNothing();
 
   console.log("Seeding Tag...");
 
-  await db.insert(dTag).overridingSystemValue().values([
-    { id: 1, slug: "landscape", categorySlug: "general", approved: true },
-    { id: 2, slug: "portrait", categorySlug: "general", approved: true },
-    { id: 3, slug: "anime", categorySlug: "series", approved: true },
-    { id: 4, slug: "nature", categorySlug: "general", approved: true },
-    { id: 5, slug: "cityscape", categorySlug: "general", approved: true },
-    { id: 6, slug: "abstract", categorySlug: "general", approved: true },
-    { id: 7, slug: "rei-ayanami", categorySlug: "artist", approved: true },
-    { id: 8, slug: "sunset", categorySlug: "general", approved: false },
-  ]).onConflictDoNothing();
+  await db
+    .insert(dTag)
+    .overridingSystemValue()
+    .values([
+      { id: 1, slug: "landscape", categorySlug: "general", approved: true },
+      { id: 2, slug: "portrait", categorySlug: "general", approved: true },
+      { id: 3, slug: "anime", categorySlug: "series", approved: true },
+      { id: 4, slug: "nature", categorySlug: "general", approved: true },
+      { id: 5, slug: "cityscape", categorySlug: "general", approved: true },
+      { id: 6, slug: "abstract", categorySlug: "general", approved: true },
+      { id: 7, slug: "rei-ayanami", categorySlug: "artist", approved: true },
+      { id: 8, slug: "sunset", categorySlug: "general", approved: false },
+    ])
+    .onConflictDoNothing();
 
   console.log("Seeding Image...");
 
@@ -51,12 +58,10 @@ const seed = async () => {
 
   console.log("Seeding _ImageToTag...");
 
-  const joinEntries = imageEntries.flatMap(img => (
-    [
-      { imageId: img.id, tagId: (img.id * 3) % 8 + 1 },
-      { imageId: img.id, tagId: (img.id * 3 + 1) % 8 + 1 },
-    ]
-  ));
+  const joinEntries = imageEntries.flatMap((img) => [
+    { imageId: img.id, tagId: ((img.id * 3) % 8) + 1 },
+    { imageId: img.id, tagId: ((img.id * 3 + 1) % 8) + 1 },
+  ]);
 
   await db.insert(d_ImageToTag).values(joinEntries).onConflictDoNothing();
 

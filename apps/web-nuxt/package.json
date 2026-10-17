@@ -1,31 +1,13 @@
 {
   "name": "web-nuxt",
   "private": true,
-  "engines": {
-    "node": ">=21.0.0"
-  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "lint": "eslint .",
+    "lint": "vp lint .",
     "clean": "rm -rf .nuxt .output"
-  },
-  "nx": {
-    "targets": {
-      "build": {
-        "outputs": [
-          "{projectRoot}/.output"
-        ]
-      }
-    },
-    "includedScripts": [
-      "build",
-      "dev",
-      "lint",
-      "preview"
-    ]
   },
   "dependencies": {
     "@lucide/vue": "catalog:",
@@ -47,5 +29,8 @@
     "nuxt": "catalog:",
     "sass-embedded": "catalog:",
     "tsconfig": "workspace:*"
+  },
+  "engines": {
+    "node": ">=21.0.0"
   }
 }

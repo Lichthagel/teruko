@@ -14,7 +14,7 @@ migrations and seed data.
 Run the full suite with:
 
 ```sh
-pnpm nx run web-e2e:test
+pnpm exec vp run --filter web-e2e test
 ```
 
 Install Chromium and Firefox once when setting up a new environment:

@@ -8,7 +8,11 @@ const { sort } = useFilters();
 <template>
   <Select
     v-model="sort"
-    :options="[{ value: 'NEWEST', label: 'newest' }, { value: 'OLDEST', label: 'oldest' }, { value: 'RANDOM', label: 'random' }]"
+    :options="[
+      { value: 'NEWEST', label: 'newest' },
+      { value: 'OLDEST', label: 'oldest' },
+      { value: 'RANDOM', label: 'random' },
+    ]"
     :icon="ArrowDownNarrowWide"
   />
 </template>

@@ -6,10 +6,6 @@ const model = defineModel();
 
 <template>
   <div :class="styles.container">
-    <input
-      v-model="model"
-      type="text"
-      v-bind="$attrs"
-    >
+    <input v-model="model" type="text" v-bind="$attrs" />
   </div>
 </template>

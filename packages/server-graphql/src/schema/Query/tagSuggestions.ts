@@ -3,7 +3,7 @@ import { db, dTag, dTagCategory } from "server-db";
 import { builder } from "../builder.js";
 import { PothosTag } from "../Tag.js";
 
-builder.queryField("tagSuggestions", t =>
+builder.queryField("tagSuggestions", (t) =>
   t.field({
     type: [PothosTag],
     args: {
@@ -15,16 +15,15 @@ builder.queryField("tagSuggestions", t =>
       const result = await db
         .select()
         .from(dTag)
-        .where(
-          sql`LOWER(${dTag.slug}) LIKE LOWER(${`%${query}%`}) ESCAPE '\\'`,
-        )
+        .where(sql`LOWER(${dTag.slug}) LIKE LOWER(${`%${query}%`}) ESCAPE '\\'`)
         .orderBy(sql`LENGTH(${dTag.slug})`)
         .limit(10)
         .leftJoin(dTagCategory, eq(dTag.categorySlug, dTagCategory.slug));
 
-      return result.map(r => ({
+      return result.map((r) => ({
         ...r.Tag,
         category: r.TagCategory,
       }));
     },
-  }));
+  }),
+);

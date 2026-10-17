@@ -15,7 +15,11 @@ const model = defineModel();
     <component :is="icon" v-if="icon" :class="styles.icon" />
 
     <select v-model="model">
-      <option v-for="option in options" :key="(typeof option === 'string' ? option : option.value)" :value="typeof option === 'string' ? option : option.value">
+      <option
+        v-for="option in options"
+        :key="typeof option === 'string' ? option : option.value"
+        :value="typeof option === 'string' ? option : option.value"
+      >
         {{ typeof option === "string" ? option : option.label }}
       </option>
     </select>

@@ -48,12 +48,11 @@ export type VideoEmbed = {
   aspectRatio?: unknown;
 };
 
-export const isFacetTag
-  = (facetFeature: unknown): facetFeature is FacetTag =>
-    typeof facetFeature === "object"
-    && facetFeature !== null
-    && "$type" in facetFeature
-    && facetFeature.$type === "app.bsky.richtext.facet#tag";
+export const isFacetTag = (facetFeature: unknown): facetFeature is FacetTag =>
+  typeof facetFeature === "object" &&
+  facetFeature !== null &&
+  "$type" in facetFeature &&
+  facetFeature.$type === "app.bsky.richtext.facet#tag";
 
 export type BlockedPost = {
   uri: string;

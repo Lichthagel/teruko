@@ -14,22 +14,16 @@ defineProps<{
   <div :class="styles.backdrop">
     <div class="container">
       <div :class="styles.above">
-        <a
-          href="/"
-        >
+        <a href="/">
           <Home />
           <span>return home</span>
         </a>
       </div>
-      <div
-        :class="styles.content"
-      >
+      <div :class="styles.content">
         <h1>
           {{ title || "An error occurred" }}
         </h1>
-        <h2
-          v-if="subtitle || error"
-        >
+        <h2 v-if="subtitle || error">
           {{ subtitle || error?.message }}
         </h2>
         <span v-if="message">{{ message }}</span>

@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vite-plus";
 import monkey from "vite-plugin-monkey";
 import solid from "vite-plugin-solid";
 

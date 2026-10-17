@@ -3,7 +3,7 @@ import { processUrl } from "#lib/index.js";
 import { builder } from "../builder.js";
 import { PothosImage } from "../Image.js";
 
-builder.mutationField("createImageFromUrlBsky", t =>
+builder.mutationField("createImageFromUrlBsky", (t) =>
   t.field({
     type: [PothosImage],
     args: {
@@ -26,8 +26,7 @@ builder.mutationField("createImageFromUrlBsky", t =>
 
       const data = await fetchData(handle, postId);
 
-      return Promise.all(
-        data.imageUrls.map(async imageUrl => processUrl(imageUrl, data.meta)),
-      );
+      return Promise.all(data.imageUrls.map(async (imageUrl) => processUrl(imageUrl, data.meta)));
     },
-  }));
+  }),
+);

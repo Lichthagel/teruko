@@ -1,24 +1,21 @@
 {
   "name": "server-env",
-  "type": "module",
   "version": "0.0.0",
   "private": true,
   "description": "",
-  "author": "Lichthagel",
   "keywords": [],
+  "author": "Lichthagel",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     }
   },
-  "engines": {
-    "node": ">=20.0.0"
-  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "lint": "eslint .",
+    "lint": "vp lint .",
     "clean": "rm -rf dist"
   },
   "dependencies": {
@@ -29,5 +26,8 @@
     "@types/node": "catalog:",
     "@typescript/native": "catalog:",
     "tsconfig": "workspace:^"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }

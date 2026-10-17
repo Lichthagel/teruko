@@ -7,14 +7,11 @@ import { defineDownloadRequestHandler } from "#/downloadRequestHandler";
 export const Route = createFileRoute("/$id/avif")({
   server: {
     handlers: {
-      GET: defineDownloadRequestHandler(
-        (filepath) => {
-          const pipeline = sharp().avif({ quality: 90 });
-          const filestream = createReadStream(filepath);
-          return Readable.toWeb(filestream.pipe(pipeline)) as ReadableStream;
-        },
-        "avif",
-      ),
+      GET: defineDownloadRequestHandler((filepath) => {
+        const pipeline = sharp().avif({ quality: 90 });
+        const filestream = createReadStream(filepath);
+        return Readable.toWeb(filestream.pipe(pipeline)) as ReadableStream;
+      }, "avif"),
     },
   },
 });

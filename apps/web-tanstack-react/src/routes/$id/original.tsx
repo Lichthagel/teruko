@@ -7,8 +7,7 @@ export const Route = createFileRoute("/$id/original")({
   server: {
     handlers: {
       GET: defineDownloadRequestHandler(
-        filepath =>
-          Readable.toWeb(createReadStream(filepath)) as ReadableStream,
+        (filepath) => Readable.toWeb(createReadStream(filepath)) as ReadableStream,
       ),
     },
   },

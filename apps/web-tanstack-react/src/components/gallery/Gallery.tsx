@@ -36,7 +36,7 @@ const Gallery: FunctionComponent<{
       {result.images && (
         <>
           <div className={styles.gallery}>
-            {result.images.map(image => (
+            {result.images.map((image) => (
               <ImageCard key={image.id} image={image} />
             ))}
           </div>
@@ -44,8 +44,7 @@ const Gallery: FunctionComponent<{
         </>
       )}
 
-      {result.error
-        && <ErrorMessage error={result.error} title={result.error.name}></ErrorMessage>}
+      {result.error && <ErrorMessage error={result.error} title={result.error.name}></ErrorMessage>}
 
       <StatusBar error={!!result.error} fetching={result.fetching}></StatusBar>
     </>

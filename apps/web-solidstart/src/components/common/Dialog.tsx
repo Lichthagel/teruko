@@ -2,11 +2,13 @@ import type { Component, JSX } from "solid-js";
 import styles from "client-css/m/dialog.module.scss";
 import { children, createComputed, createEffect, createSignal, Show, splitProps } from "solid-js";
 
-const Dialog: Component<{
-  children?: JSX.Element;
-  open?: boolean;
-  setOpen?: (value: boolean) => void;
-} & JSX.DialogHtmlAttributes<HTMLDialogElement>> = (props_) => {
+const Dialog: Component<
+  {
+    children?: JSX.Element;
+    open?: boolean;
+    setOpen?: (value: boolean) => void;
+  } & JSX.DialogHtmlAttributes<HTMLDialogElement>
+> = (props_) => {
   const [props, restProps] = splitProps(props_, ["children", "open", "setOpen", "class"]);
   const safeChildren = children(() => props.children);
 
@@ -31,7 +33,13 @@ const Dialog: Component<{
 
   return (
     <Show when={open}>
-      <dialog class={`${props.class} ${styles.dialog}`} ref={setDialogRef} closedby="any" onClose={() => setOpen(false)} {...restProps}>
+      <dialog
+        class={`${props.class} ${styles.dialog}`}
+        ref={setDialogRef}
+        closedby="any"
+        onClose={() => setOpen(false)}
+        {...restProps}
+      >
         {safeChildren()}
       </dialog>
     </Show>

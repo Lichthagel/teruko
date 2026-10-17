@@ -7,18 +7,10 @@ import styles from "client-css/m/nav.module.scss";
   <div :class="styles.bar">
     <div class="container" :class="[styles.content]">
       <div :class="styles.left">
-        <NuxtLink
-          :class="styles.button"
-          href="/"
-        >
-          てる子
-        </NuxtLink>
+        <NuxtLink :class="styles.button" href="/"> てる子 </NuxtLink>
       </div>
       <div>
-        <NuxtLink
-          :class="[styles.button, styles.square]"
-          href="/new"
-        >
+        <NuxtLink :class="[styles.button, styles.square]" href="/new">
           <Plus />
         </NuxtLink>
       </div>

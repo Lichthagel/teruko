@@ -3,43 +3,24 @@ import type { SQL } from "drizzle-orm";
 import type { GraphQLResolveInfo } from "graphql";
 import type { ImageExt } from "models";
 import { decodeBase64, encodeBase64 } from "@pothos/core";
-import {
-  resolveCursorConnection,
-} from "@pothos/plugin-relay";
-import {
-  and,
-  asc,
-  desc,
-  eq,
-  gt,
-  inArray,
-  lt,
-  or,
-  sql,
-} from "drizzle-orm";
+import { resolveCursorConnection } from "@pothos/plugin-relay";
+import { and, asc, desc, eq, gt, inArray, lt, or, sql } from "drizzle-orm";
 import { GraphQLError, Kind } from "graphql";
-import {
-  d_ImageToTag,
-  db,
-  dImage,
-  dTag,
-  dTagCategory,
-} from "server-db";
+import { d_ImageToTag, db, dImage, dTag, dTagCategory } from "server-db";
 import { builder } from "../builder.js";
 import { PothosImage } from "../Image.js";
 
 const shouldIncludeTags = (info: GraphQLResolveInfo) =>
   info.fieldNodes[0]?.selectionSet?.selections.some(
-    selection =>
-      selection.kind === Kind.FIELD
-      && selection.name.value === "edges"
-      && selection.selectionSet?.selections.some(
-        selection =>
-          selection.kind === Kind.FIELD
-          && selection.name.value === "node"
-          && selection.selectionSet?.selections.some(
-            selection =>
-              selection.kind === Kind.FIELD && selection.name.value === "tags",
+    (selection) =>
+      selection.kind === Kind.FIELD &&
+      selection.name.value === "edges" &&
+      selection.selectionSet?.selections.some(
+        (selection) =>
+          selection.kind === Kind.FIELD &&
+          selection.name.value === "node" &&
+          selection.selectionSet?.selections.some(
+            (selection) => selection.kind === Kind.FIELD && selection.name.value === "tags",
           ),
       ),
   );
@@ -76,7 +57,7 @@ const parseCursor = (
   };
 };
 
-builder.queryField("images", t =>
+builder.queryField("images", (t) =>
   t.connection({
     type: PothosImage,
     args: {
@@ -91,15 +72,9 @@ builder.queryField("images", t =>
       resolveCursorConnection(
         {
           args,
-          toCursor: image =>
-            encodeBase64(`${image.createdAt.toISOString()};${image.id}`),
+          toCursor: (image) => encodeBase64(`${image.createdAt.toISOString()};${image.id}`),
         },
-        async ({
-          before,
-          after,
-          limit,
-          inverted,
-        }: ResolveCursorConnectionArgs) => {
+        async ({ before, after, limit, inverted }: ResolveCursorConnectionArgs) => {
           const conditions: (SQL | undefined)[] = [];
 
           const random = args.random ?? false;
@@ -155,7 +130,7 @@ builder.queryField("images", t =>
           if (!shouldIncludeTags(info)) {
             const res = await db.select().from(query);
 
-            return res.map(image => ({
+            return res.map((image) => ({
               ...image,
             }));
           }
@@ -211,4 +186,5 @@ builder.queryField("images", t =>
           return reduced;
         },
       ),
-  }));
+  }),
+);

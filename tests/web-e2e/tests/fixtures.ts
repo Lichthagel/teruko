@@ -12,4 +12,5 @@ export const notFoundText: Record<string, string | null> = {
   "web-solidstart": null,
 };
 
-export const appNameFromProject = (projectName: string) => projectName.replace(/-(?:chromium|firefox)$/, "");
+export const appNameFromProject = (projectName: string) =>
+  projectName.replace(/-(?:chromium|firefox)$/, "");

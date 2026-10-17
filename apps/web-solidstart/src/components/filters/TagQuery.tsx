@@ -19,15 +19,12 @@ export const TagQuery: Component<{ tag: string }> = (props) => {
   const removeTag: JSX.EventHandlerUnion<HTMLButtonElement, Event> = (event) => {
     event.preventDefault();
     // eslint-disable-next-line solid/reactivity
-    setTags(prev => prev.filter(t => t !== props.tag));
+    setTags((prev) => prev.filter((t) => t !== props.tag));
   };
 
   return (
     <>
-      <div
-        class={styles["tag-query"]}
-        style:background-color={result.data?.tag.category?.color}
-      >
+      <div class={styles["tag-query"]} style:background-color={result.data?.tag.category?.color}>
         <span>{props.tag}</span>
         <Show when={result.data?.tag.approved}>
           <BadgeCheck size={16} />
@@ -41,10 +38,7 @@ export const TagQuery: Component<{ tag: string }> = (props) => {
         >
           <Pencil />
         </button>
-        <button
-          onClick={removeTag}
-          type="button"
-        >
+        <button onClick={removeTag} type="button">
           <X />
         </button>
       </div>

@@ -39,16 +39,14 @@ const handleKeyDown = (e: KeyboardEvent) => {
   switch (e.key) {
     case "ArrowDown": {
       e.preventDefault();
-      activeSuggestion.value
-        = (activeSuggestion.value + 1) % suggestions.value.length;
+      activeSuggestion.value = (activeSuggestion.value + 1) % suggestions.value.length;
 
       break;
     }
     case "ArrowUp": {
       e.preventDefault();
-      activeSuggestion.value
-        = (activeSuggestion.value - 1 + suggestions.value.length)
-          % suggestions.value.length;
+      activeSuggestion.value =
+        (activeSuggestion.value - 1 + suggestions.value.length) % suggestions.value.length;
 
       break;
     }
@@ -74,37 +72,22 @@ const handleKeyDown = (e: KeyboardEvent) => {
   <div :class="styles['search-container']">
     <component :is="icon" v-if="icon" :class="styles.icon" />
 
-    <input
-      v-model="tagInput"
-      placeholder="Search..."
-      type="text"
-      @keydown="handleKeyDown"
-    >
-    <div
-      v-if="fetching"
-      :class="styles['suggestions-loading']"
-    >
+    <input v-model="tagInput" placeholder="Search..." type="text" @keydown="handleKeyDown" />
+    <div v-if="fetching" :class="styles['suggestions-loading']">
       <LoaderCircle :class="styles.icon" />
     </div>
-    <ul
-      v-if="suggestions.length > 0"
-      :class="styles['suggestions-container']"
-    >
+    <ul v-if="suggestions.length > 0" :class="styles['suggestions-container']">
       <li
         v-for="(suggestion, index) in suggestions"
         :key="suggestion.slug"
         :class="index === activeSuggestion && styles.active"
         :style="{
           'background-color':
-            (index === activeSuggestion
-              && suggestion.category
-              && suggestion.category.color)
-            || undefined,
-          'color':
-            (index !== activeSuggestion
-              && suggestion.category
-              && suggestion.category.color)
-            || undefined,
+            (index === activeSuggestion && suggestion.category && suggestion.category.color) ||
+            undefined,
+          color:
+            (index !== activeSuggestion && suggestion.category && suggestion.category.color) ||
+            undefined,
         }"
         @click="handleSubmit"
         @mouseenter="activeSuggestion = index"

@@ -1,33 +1,20 @@
 import type { CombinedError, OperationResult } from "@urql/vue";
 import type { ImagesArgs, ImagesResult } from "client-graphql/snippets";
 import type { ImageSort } from "models";
-import {
-  createRequest,
-  useClientHandle,
-} from "@urql/vue";
+import { createRequest, useClientHandle } from "@urql/vue";
 import { Images } from "client-graphql/snippets";
 
-const getRequest = (
-  tags: readonly string[],
-  sort: ImageSort,
-  cursor?: string,
-) =>
-  createRequest(
-    Images,
-    {
-      tags,
-      after: sort === "NEWEST" || sort === "RANDOM" ? cursor : undefined,
-      before: sort === "OLDEST" ? cursor : undefined,
-      first: sort === "NEWEST" || sort === "RANDOM" ? 20 : undefined,
-      last: sort === "OLDEST" ? 20 : undefined,
-      random: sort === "RANDOM" ? true : undefined,
-    },
-  );
+const getRequest = (tags: readonly string[], sort: ImageSort, cursor?: string) =>
+  createRequest(Images, {
+    tags,
+    after: sort === "NEWEST" || sort === "RANDOM" ? cursor : undefined,
+    before: sort === "OLDEST" ? cursor : undefined,
+    first: sort === "NEWEST" || sort === "RANDOM" ? 20 : undefined,
+    last: sort === "OLDEST" ? 20 : undefined,
+    random: sort === "RANDOM" ? true : undefined,
+  });
 
-export const useImages = (
-  tags: Ref<readonly string[]>,
-  sort: Ref<ImageSort>,
-) => {
+export const useImages = (tags: Ref<readonly string[]>, sort: Ref<ImageSort>) => {
   const clientHandle = useClientHandle();
 
   const fetching = ref(false);
@@ -55,26 +42,22 @@ export const useImages = (
           }
 
           if (usedCursor) {
-            const idx = prevEdges.findIndex(
-              edge => edge.cursor === usedCursor,
-            );
+            const idx = prevEdges.findIndex((edge) => edge.cursor === usedCursor);
 
             if (idx >= 0) {
               const previousKept = prevEdges.slice(0, idx + 1);
-              const filteredNewEdges = newEdges.filter(edge => !previousKept.some(prev => prev.node.id === edge.node.id));
+              const filteredNewEdges = newEdges.filter(
+                (edge) => !previousKept.some((prev) => prev.node.id === edge.node.id),
+              );
 
               return [...previousKept, ...filteredNewEdges];
             } else {
               return newEdges;
             }
           } else {
-            const idx = prevEdges.findIndex(
-              image => image.cursor === newEdges.at(-1)?.cursor,
-            );
+            const idx = prevEdges.findIndex((image) => image.cursor === newEdges.at(-1)?.cursor);
 
-            return idx === -1
-              ? newEdges
-              : [...newEdges, ...prevEdges.slice(idx + 1)];
+            return idx === -1 ? newEdges : [...newEdges, ...prevEdges.slice(idx + 1)];
           }
         }
 
@@ -154,7 +137,7 @@ export const useImages = (
   watch(sort, () => newQuery());
 
   return {
-    images: computed(() => edges.value.map(edge => edge.node)),
+    images: computed(() => edges.value.map((edge) => edge.node)),
     fetching,
     error,
     stale,

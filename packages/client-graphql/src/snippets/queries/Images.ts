@@ -26,47 +26,47 @@ export type ImagesArgs = {
 };
 
 export const Images = gql<ImagesResult, ImagesArgs>`
-query Images(
-  $tags: [String!]
-  $after: String
-  $before: String
-  $first: Int
-  $last: Int
-  $random: Boolean
-) {
-  images(
-    tags: $tags
-    after: $after
-    before: $before
-    first: $first
-    last: $last
-    random: $random
+  query Images(
+    $tags: [String!]
+    $after: String
+    $before: String
+    $first: Int
+    $last: Int
+    $random: Boolean
   ) {
-    edges {
-      cursor
-      node {
-        id
-        title
-        source
-        filename
-        createdAt
-        updatedAt
-        width
-        height
-        tags {
-          slug
-          category {
-            color
+    images(
+      tags: $tags
+      after: $after
+      before: $before
+      first: $first
+      last: $last
+      random: $random
+    ) {
+      edges {
+        cursor
+        node {
+          id
+          title
+          source
+          filename
+          createdAt
+          updatedAt
+          width
+          height
+          tags {
+            slug
+            category {
+              color
+            }
           }
         }
       }
-    }
-    pageInfo {
-      startCursor
-      endCursor
-      hasPreviousPage
-      hasNextPage
+      pageInfo {
+        startCursor
+        endCursor
+        hasPreviousPage
+        hasNextPage
+      }
     }
   }
-}
 `;

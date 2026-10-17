@@ -1,20 +1,20 @@
 # AGENTS.md
 
-pnpm + Nx monorepo. Package manager and runtime versions are pinned in `package.json`; never use npm or yarn. `.npmrc` sets `shamefully-hoist=true` and `auto-install-peers=true` — rely on this, don't "fix" hoisting issues.
+pnpm + Vite+ monorepo. Package manager and runtime versions are pinned in `package.json`; never use npm or yarn. `.npmrc` sets `shamefully-hoist=true` and `auto-install-peers=true` — rely on this, don't "fix" hoisting issues.
 
 ## Commands
 
 - Install: `pnpm install` (run after any change to `pnpm-workspace.yaml` or deps).
-- Build everything: `pnpm run build` (runs `nx run-many -t build`; respects project graph, builds deps first).
-- Build/test one project: `pnpm nx run <project>:<target>` (e.g. `pnpm nx run web-svelte:build`, `:lint`, `:dev`, `:check`).
+- Build everything: `pnpm run build` (`vp run -r build`; follows workspace dependency order).
+- Run a package task: `pnpm exec vp run --filter <project> <task>` (e.g. `pnpm exec vp run --filter web-svelte build`).
   - Project names are the package `name` fields in each `apps/*` / `packages/*` `package.json`.
-- Lint (root, whole repo): `pnpm run lint` → `eslint `. Individual projects also expose `pnpm nx run <project>:lint`.
-- No top-level `test` script — verify via `build` + `lint` + per-app typechecks. End-to-end tests live in `tests/web-e2e` and run with `pnpm nx run web-e2e:test`; they require PostgreSQL and automatically migrate and seed the database.
+- Lint (root, whole repo): `pnpm run lint` → Vite+ Oxlint. Package scripts are available with `pnpm exec vp run -r lint`.
+- E2E tests: `pnpm --filter web-e2e run test`; checks: `pnpm --filter web-e2e run check`. E2E requires PostgreSQL and automatically migrates and seeds the database.
 
 ## CI / pre-commit
 
 - `.github/workflows/ci.yml` runs exactly `pnpm install` → `pnpm run build` → `pnpm run lint`. Match this order locally.
-- Pre-commit runs `lint-staged` (eslint with `--max-warnings=0`) over staged files. Keep commits lint-clean.
+- Pre-commit runs `lint-staged` (Vite+ lint with `--max-warnings=0`) over staged files. Keep commits lint-clean.
 
 ## Structure
 
@@ -24,8 +24,8 @@ pnpm + Nx monorepo. Package manager and runtime versions are pinned in `package.
 
 ## Framework / toolchain quirks
 
-- ESLint uses `@antfu/eslint-config` with **double quotes** and **semicolons** (override of antfu defaults) and `func-style: expression` + `consistent-type-definitions: type`. Don't reformat to single quotes. TypeScript rule `ts/no-redeclare` and `ts/no-use-before-define` are turned off.
-- `web-tanstack-react` uses `@tanstack/router-plugin`: `src/routeTree.gen.ts` is **generated** — do not edit it by hand; regenerate via the app's build/dev (`pnpm nx run web-tanstack-react:build` or its dev server).
+- Vite+ uses Oxlint for linting. Preserve the configured double quotes and semicolons when editing; the prior ESLint configuration was migrated.
+- `web-tanstack-react` uses `@tanstack/router-plugin`: `src/routeTree.gen.ts` is **generated** — do not edit it by hand; regenerate via the app's build/dev (`pnpm exec vp -C apps/web-tanstack-react build` or its dev server).
 - `userscript` build is `tsc && vite build` (no framework dev server). Uses `vite-plugin-monkey` for building the userscript.
 - `server-graphql` marks `./dist/schema/**` as side-effects and uses `#lib/*` / `#schema/*` subpath imports — keep the `dist` build outputs intact.
 
@@ -38,5 +38,5 @@ pnpm + Nx monorepo. Package manager and runtime versions are pinned in `package.
 
 ## Per-project config notes
 
-- Nx caches `build`/`lint`; `dev` and `clean` are uncached. `build` depends on `^build` (upstream deps built first), outputs to `{projectRoot}/dist`.
+- Vite+ task runner executes workspace scripts with dependency ordering (`vp run -r build`) and caches task definitions in root `vite.config.ts`.
 - `pnpm-workspace.yaml` uses a centralized `catalog` (version pins live there, not in per-package `package.json`). Add/change a dependency version in the catalog, not in individual packages. `catalogMode: manual` — unused catalog entries are cleaned up automatically.

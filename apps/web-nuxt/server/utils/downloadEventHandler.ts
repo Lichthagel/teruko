@@ -6,7 +6,10 @@ import * as v from "valibot";
 
 const fileExtensionRegex = /[^./\\]+$/;
 
-export const defineDownloadEventHandler = (getData: (filepath: string) => BodyInit | PromiseLike<BodyInit>, fileType?: "avif" | "webp") => (
+export const defineDownloadEventHandler = (
+  getData: (filepath: string) => BodyInit | PromiseLike<BodyInit>,
+  fileType?: "avif" | "webp",
+) =>
   defineEventHandler(async (event) => {
     const { id } = v.parse(
       v.object({
@@ -15,11 +18,7 @@ export const defineDownloadEventHandler = (getData: (filepath: string) => BodyIn
       event.context.params,
     );
 
-    const res = await db
-      .select()
-      .from(dImage)
-      .where(eq(dImage.id, id))
-      .limit(1);
+    const res = await db.select().from(dImage).where(eq(dImage.id, id)).limit(1);
 
     const image = res[0];
 
@@ -32,12 +31,13 @@ export const defineDownloadEventHandler = (getData: (filepath: string) => BodyIn
 
     const filepath = path.resolve(env.IMG_FOLDER as string, image.filename);
 
-    const respFilename = fileType ? image.filename.replace(fileExtensionRegex, fileType) : image.filename;
+    const respFilename = fileType
+      ? image.filename.replace(fileExtensionRegex, fileType)
+      : image.filename;
 
     return new Response(await getData(filepath), {
       headers: {
         "Content-Disposition": `attachment; filename=${respFilename}`,
       },
     });
-  })
-);
+  });

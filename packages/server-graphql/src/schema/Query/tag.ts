@@ -3,7 +3,7 @@ import { db, dTag, dTagCategory } from "server-db";
 import { builder } from "../builder.js";
 import { PothosTag } from "../Tag.js";
 
-builder.queryField("tag", t =>
+builder.queryField("tag", (t) =>
   t.field({
     type: PothosTag,
     nullable: true,
@@ -31,4 +31,5 @@ builder.queryField("tag", t =>
         category: item.TagCategory,
       };
     },
-  }));
+  }),
+);

@@ -27,8 +27,8 @@ export const ImageCard: Component<{ image: ImageExt }> = (props) => {
         </div>
       </A>
       <div class={styles["tag-list"]}>
-        <For each={(props.image.tags ?? []).filter(tag => !tag.slug.startsWith("artist_"))}>
-          {tag => (
+        <For each={(props.image.tags ?? []).filter((tag) => !tag.slug.startsWith("artist_"))}>
+          {(tag) => (
             <button
               onClick={() => onTagClick(tag.slug)}
               style:background-color={tag.category?.color ?? "gray"}
@@ -40,6 +40,5 @@ export const ImageCard: Component<{ image: ImageExt }> = (props) => {
         </For>
       </div>
     </div>
-
   );
 };

@@ -1,18 +1,12 @@
 import type { ImageExt } from "models";
 import { asc, eq } from "drizzle-orm";
-import {
-  d_ImageToTag,
-  db,
-  dImage,
-  dTag,
-  dTagCategory,
-} from "server-db";
+import { d_ImageToTag, db, dImage, dTag, dTagCategory } from "server-db";
 
 import { builder } from "../builder.js";
 
 import { PothosImage } from "../Image.js";
 
-builder.queryField("image", t =>
+builder.queryField("image", (t) =>
   t.field({
     type: PothosImage,
     nullable: true,
@@ -68,4 +62,5 @@ builder.queryField("image", t =>
 
       return reduced[0] ?? undefined;
     },
-  }));
+  }),
+);

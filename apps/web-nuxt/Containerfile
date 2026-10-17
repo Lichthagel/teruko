@@ -7,7 +7,7 @@ ENV CI=true
 WORKDIR /app
 
 # Copy workspace configuration and lockfile (leveraging Docker cache layers)
-COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.eslint.json .npmrc ./
+COPY pnpm-workspace.yaml pnpm-lock.yaml package.json vite.config.ts tsconfig.eslint.json .npmrc ./
 
 # Enable corepack for pnpm
 RUN corepack enable && corepack install
@@ -20,13 +20,13 @@ COPY packages packages
 COPY apps apps
 # Include every workspace package manifest so pnpm can validate the lockfile.
 COPY tests/web-e2e/package.json tests/web-e2e/package.json
-COPY nx.json graphql.config.yml ./
+COPY vite.config.ts graphql.config.yml ./
 
 # Install dependencies with frozen lockfile
 RUN pnpm install --frozen-lockfile --offline
 
 # Build the application
-RUN pnpm --filter=web-nuxt... build
+RUN pnpm exec vp run --filter web-nuxt... build
 
 # Production stage
 FROM node:24-alpine

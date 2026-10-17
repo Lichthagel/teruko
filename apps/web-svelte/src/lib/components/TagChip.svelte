@@ -14,7 +14,7 @@
 
   const onClick = () => {
     filters.tags = [tag.slug];
-    void goto(resolve("/", {}));
+    void goto(resolve("/"));
   };
 </script>
 

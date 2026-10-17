@@ -93,9 +93,7 @@
         "Image_filename_unique": {
           "name": "Image_filename_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "filename"
-          ]
+          "columns": ["filename"]
         }
       },
       "policies": {},
@@ -149,12 +147,8 @@
           "name": "Tag_categorySlug_TagCategory_slug_fk",
           "tableFrom": "Tag",
           "tableTo": "TagCategory",
-          "columnsFrom": [
-            "categorySlug"
-          ],
-          "columnsTo": [
-            "slug"
-          ],
+          "columnsFrom": ["categorySlug"],
+          "columnsTo": ["slug"],
           "onDelete": "set null",
           "onUpdate": "cascade"
         }
@@ -164,9 +158,7 @@
         "Tag_slug_unique": {
           "name": "Tag_slug_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "slug"
-          ]
+          "columns": ["slug"]
         }
       },
       "policies": {},
@@ -221,12 +213,8 @@
           "name": "_ImageToTag_imageId_Image_id_fk",
           "tableFrom": "_ImageToTag",
           "tableTo": "Image",
-          "columnsFrom": [
-            "imageId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["imageId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -234,12 +222,8 @@
           "name": "_ImageToTag_tagId_Tag_id_fk",
           "tableFrom": "_ImageToTag",
           "tableTo": "Tag",
-          "columnsFrom": [
-            "tagId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["tagId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -247,10 +231,7 @@
       "compositePrimaryKeys": {
         "_ImageToTag_pkey": {
           "name": "_ImageToTag_pkey",
-          "columns": [
-            "imageId",
-            "tagId"
-          ]
+          "columns": ["imageId", "tagId"]
         }
       },
       "uniqueConstraints": {},

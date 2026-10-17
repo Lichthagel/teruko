@@ -34,7 +34,7 @@ const findMigrationsFolder = () => {
     }
   }
 
-  return candidates.find(folder => folder && existsSync(resolve(folder, "meta/_journal.json")));
+  return candidates.find((folder) => folder && existsSync(resolve(folder, "meta/_journal.json")));
 };
 
 const migrationsFolder = findMigrationsFolder();

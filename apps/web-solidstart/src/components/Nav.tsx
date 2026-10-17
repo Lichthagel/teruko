@@ -7,7 +7,9 @@ const Nav = () => {
     <div class={styles.bar}>
       <div class={`container ${styles.content}`}>
         <div class={styles.left}>
-          <A class={styles.button} href="/">てる子</A>
+          <A class={styles.button} href="/">
+            てる子
+          </A>
         </div>
         <div>
           <A class={`${styles.button} ${styles.square}`} href="/new">

@@ -8,7 +8,5 @@ const { error, fetching } = defineProps<{
 </script>
 
 <template>
-  <div
-    :class="[styles.bar, error && styles.error, fetching && styles.busy]"
-  />
+  <div :class="[styles.bar, error && styles.error, fetching && styles.busy]" />
 </template>
