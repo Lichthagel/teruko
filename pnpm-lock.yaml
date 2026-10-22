@@ -190,10 +190,10 @@ catalogs:
       version: 0.18.0
     '@lucide/svelte':
       specifier: ^1.8.0
-      version: 1.60.0
+      version: 1.61.0
     '@lucide/vue':
       specifier: ^1.8.0
-      version: 1.60.0
+      version: 1.61.0
     '@nuxt/devtools':
       specifier: 4.0.0-beta.7
       version: 4.0.0-beta.7
@@ -322,10 +322,10 @@ catalogs:
       version: 17.6.0
     lucide-react:
       specifier: ^1.8.0
-      version: 1.60.0
+      version: 1.61.0
     lucide-solid:
       specifier: ^1.8.0
-      version: 1.60.0
+      version: 1.61.0
     modern-normalize:
       specifier: ^3.0.1
       version: 3.0.1
@@ -489,7 +489,7 @@ importers:
     dependencies:
       '@lucide/vue':
         specifier: 'catalog:'
-        version: 1.60.0(vue@3.5.44(typescript@6.0.3))
+        version: 1.61.0(vue@3.5.44(typescript@6.0.3))
       '@urql/vue':
         specifier: 'catalog:'
         version: 2.1.1(@urql/core@6.0.3(graphql@17.0.2))(vue@3.5.44(typescript@6.0.3))
@@ -565,7 +565,7 @@ importers:
         version: 0.45.4(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
       lucide-solid:
         specifier: 'catalog:'
-        version: 1.60.0(solid-js@1.9.17)
+        version: 1.61.0(solid-js@1.9.17)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -620,7 +620,7 @@ importers:
     devDependencies:
       '@lucide/svelte':
         specifier: 'catalog:'
-        version: 1.60.0(svelte@5.57.2(@typescript-eslint/types@8.71.2))
+        version: 1.61.0(svelte@5.57.2(@typescript-eslint/types@8.71.2))
       '@sveltejs/adapter-node':
         specifier: 'catalog:'
         version: 6.0.0(@sveltejs/kit@3.1.0(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.2(@typescript-eslint/types@8.71.2))(vite@8.3.4))(@typescript/typescript6@6.0.2)(svelte@5.57.2(@typescript-eslint/types@8.71.2))(vite@8.3.4))
@@ -695,7 +695,7 @@ importers:
         version: 0.45.4(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
       lucide-react:
         specifier: 'catalog:'
-        version: 1.60.0(@types/react@19.3.0)(react@19.3.1)
+        version: 1.61.0(@types/react@19.3.0)(react@19.3.1)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -2308,13 +2308,13 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@lucide/svelte@1.60.0':
-    resolution: {integrity: sha512-Q4lkuuBLrhxjBK8yuJ6GjeHZDOzrxlRH5GOzCzI7HJBeCE+Rj1kwi4KsD81XM50bjnfwhPhSFrh/j+D4vn8jUg==}
+  '@lucide/svelte@1.61.0':
+    resolution: {integrity: sha512-Vwj4ADoKgVogLFpEbXv2PS2hh2fj+aAqPuiNydI88Zkyb1l7veL4fXgRrOX3tgpESHhIGneNkSSYhHupvCBshg==}
     peerDependencies:
       svelte: ^5
 
-  '@lucide/vue@1.60.0':
-    resolution: {integrity: sha512-rARqkhMbeBa+YWgDNInZavBAt+FUxdEyOx/gfrMZ466im0EnBTWgSKBra08bHhnRytyv4AGucf1+9AhrEDQqMA==}
+  '@lucide/vue@1.61.0':
+    resolution: {integrity: sha512-XYclbwUQ6Mvf0UskBG9gJH91BdF3VK4Tt6Pv8PSntwPwNnf357PCQnma4TrzOEdwD49UYCtsTafpfytRIxm1cQ==}
     peerDependencies:
       vue: '>=3.0.1'
 
@@ -6457,8 +6457,8 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-react@1.60.0:
-    resolution: {integrity: sha512-UqxOW0FgAfDyb9VmjKb6/BkOzW6yfhf/QNboKtS2NDsscnNRW2CDzlyhbMKBQ1ontmcxuIDqHJ2AVgFR3NI+GA==}
+  lucide-react@1.61.0:
+    resolution: {integrity: sha512-v2SQPPPNjnr+BlhL9Spuzmo5yR+hLkftfuE4E3jaxdNPgSH0hJKPcLJBP7yAta87jQNPsSERS59PJjCJ/CorBA==}
     peerDependencies:
       '@types/react': '*'
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -6466,8 +6466,8 @@ packages:
       '@types/react':
         optional: true
 
-  lucide-solid@1.60.0:
-    resolution: {integrity: sha512-NA9D6z5B7MsKgAtJrzgaQ6pJPM+HU+S3yscS3pl4C5SEA76LOQKZIQ24dHpJKmtrZWZ/NOvDpcjA0J//aqrPYQ==}
+  lucide-solid@1.61.0:
+    resolution: {integrity: sha512-2FzBQ7TvH6XS7Lgb5qQQ+oCGOK/FwDF8Y30xC2/zv1MvZR6uO0ijG4vAoF1Cq0qwGOg6LtpMPpzeZHCCFrfYmw==}
     peerDependencies:
       solid-js: ^1.4.7
 
@@ -9036,11 +9036,11 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.1.6
 
-  '@devframes/agentic@1.2.5(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5)':
+  '@devframes/agentic@1.2.5(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5)':
     dependencies:
       '@modelcontextprotocol/client': 2.3.1
       '@modelcontextprotocol/server': 2.3.1
-      devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
       h3: 2.0.3(crossws@0.4.15(srvx@0.11.22))(ocache@0.1.5)
       pathe: 2.0.3
     transitivePeerDependencies:
@@ -9058,12 +9058,17 @@ snapshots:
       - crossws
       - ocache
 
-  '@devframes/hub-ui@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5)':
+  '@devframes/agentic@1.2.5(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)':
     dependencies:
-      '@devframes/hub': 1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5)
-      devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
-    optionalDependencies:
-      '@devframes/json-render': 1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5)
+      '@modelcontextprotocol/client': 2.3.1
+      '@modelcontextprotocol/server': 2.3.1
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+      h3: 2.0.3(crossws@0.4.15(srvx@1.0.6))
+      pathe: 2.0.3
+    transitivePeerDependencies:
+      - crossws
+      - ocache
+    optional: true
 
   '@devframes/hub-ui@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5)':
     dependencies:
@@ -9072,19 +9077,27 @@ snapshots:
     optionalDependencies:
       '@devframes/json-render': 1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5)
 
-  '@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5)':
+  '@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6)':
     dependencies:
-      destr: 2.0.5
-      devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
-      h3: 2.0.3(crossws@0.4.15(srvx@0.11.22))(ocache@0.1.5)
-      pathe: 2.0.3
-      tinyexec: 1.3.1
-      zigpty: 0.2.1
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5)
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
     optionalDependencies:
-      '@devframes/agentic': 1.2.5(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5)
-    transitivePeerDependencies:
-      - crossws
-      - ocache
+      '@devframes/json-render': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)
+
+  '@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.6)':
+    dependencies:
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+    optionalDependencies:
+      '@devframes/json-render': 1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5)
+
+  '@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6)':
+    dependencies:
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+    optionalDependencies:
+      '@devframes/json-render': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)
+    optional: true
 
   '@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5)':
     dependencies:
@@ -9100,6 +9113,20 @@ snapshots:
       - crossws
       - ocache
 
+  '@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5)':
+    dependencies:
+      destr: 2.0.5
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
+      h3: 2.0.3(crossws@0.4.15(srvx@0.11.22))(ocache@0.1.5)
+      pathe: 2.0.3
+      tinyexec: 1.3.1
+      zigpty: 0.2.1
+    optionalDependencies:
+      '@devframes/agentic': 1.2.5(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5)
+    transitivePeerDependencies:
+      - crossws
+      - ocache
+
   '@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)':
     dependencies:
       destr: 2.0.5
@@ -9109,28 +9136,26 @@ snapshots:
       tinyexec: 1.3.1
       zigpty: 0.2.1
     optionalDependencies:
-      '@devframes/agentic': 1.2.5(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5)
+      '@devframes/agentic': 1.2.5(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
     transitivePeerDependencies:
       - crossws
       - ocache
-
-  '@devframes/json-render-ui@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(devframe@1.2.5)':
-    optionalDependencies:
-      '@devframes/hub': 1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5)
-      devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
 
   '@devframes/json-render-ui@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5)':
     optionalDependencies:
       '@devframes/hub': 1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5)
       devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
 
-  '@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(devframe@1.2.5)':
-    dependencies:
-      '@json-render/core': 0.21.1(zod@4.6.7)
-      devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
-      zod: 4.6.7
+  '@devframes/json-render-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(devframe@1.2.6)':
     optionalDependencies:
-      '@devframes/hub': 1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5)
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5)
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
+
+  '@devframes/json-render-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)':
+    optionalDependencies:
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+    optional: true
 
   '@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5)':
     dependencies:
@@ -9139,6 +9164,22 @@ snapshots:
       zod: 4.6.7
     optionalDependencies:
       '@devframes/hub': 1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5)
+
+  '@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(devframe@1.2.6)':
+    dependencies:
+      '@json-render/core': 0.21.1(zod@4.6.7)
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
+      zod: 4.6.7
+    optionalDependencies:
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5)
+
+  '@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)':
+    dependencies:
+      '@json-render/core': 0.21.1(zod@4.6.7)
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+      zod: 4.6.7
+    optionalDependencies:
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
 
   '@devframes/plugin-assets@1.2.6(devframe@1.2.6)(vite@8.3.4)':
     dependencies:
@@ -9175,16 +9216,15 @@ snapshots:
       cac: 7.1.0
       devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
     optionalDependencies:
-      vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.7.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+      vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.8.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
 
-  '@devframes/plugin-messages@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(devframe@1.2.5)(vite@8.3.4)':
+  '@devframes/plugin-inspect@1.2.5(devframe@1.2.6)(vite@8.3.4)':
     dependencies:
-      '@devframes/hub': 1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5)
-      '@devframes/service-open': 1.2.5(devframe@1.2.5)
       cac: 7.1.0
-      devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
     optionalDependencies:
       vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.7.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+    optional: true
 
   '@devframes/plugin-messages@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5)(vite@8.3.4)':
     dependencies:
@@ -9193,7 +9233,26 @@ snapshots:
       cac: 7.1.0
       devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
     optionalDependencies:
+      vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.8.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+
+  '@devframes/plugin-messages@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(devframe@1.2.6)(vite@8.3.4)':
+    dependencies:
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5)
+      '@devframes/service-open': 1.2.5(devframe@1.2.6)
+      cac: 7.1.0
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
+    optionalDependencies:
       vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.7.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+
+  '@devframes/plugin-messages@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)(vite@8.3.4)':
+    dependencies:
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
+      '@devframes/service-open': 1.2.5(devframe@1.2.6)
+      cac: 7.1.0
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+    optionalDependencies:
+      vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.7.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+    optional: true
 
   '@devframes/plugin-og@1.2.6(devframe@1.2.6)(vite@8.3.4)':
     dependencies:
@@ -9203,18 +9262,6 @@ snapshots:
     optionalDependencies:
       vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.8.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
 
-  '@devframes/plugin-terminals@1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5))(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(devframe@1.2.5)(vite@8.3.4)':
-    dependencies:
-      '@devframes/vite': 1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5))(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(devframe@1.2.5)(vite@8.3.4)
-      cac: 7.1.0
-      devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
-      zigpty: 0.2.1
-    optionalDependencies:
-      vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.7.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
-    transitivePeerDependencies:
-      - '@devframes/hub'
-      - '@devframes/hub-ui'
-
   '@devframes/plugin-terminals@1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5))(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5)(vite@8.3.4)':
     dependencies:
       '@devframes/vite': 1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5))(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5)(vite@8.3.4)
@@ -9222,29 +9269,63 @@ snapshots:
       devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
       zigpty: 0.2.1
     optionalDependencies:
+      vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.8.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+    transitivePeerDependencies:
+      - '@devframes/hub'
+      - '@devframes/hub-ui'
+
+  '@devframes/plugin-terminals@1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6))(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(devframe@1.2.6)(vite@8.3.4)':
+    dependencies:
+      '@devframes/vite': 1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6))(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(devframe@1.2.6)(vite@8.3.4)
+      cac: 7.1.0
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
+      zigpty: 0.2.1
+    optionalDependencies:
       vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.7.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
     transitivePeerDependencies:
       - '@devframes/hub'
       - '@devframes/hub-ui'
+
+  '@devframes/plugin-terminals@1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.6))(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)(vite@8.3.4)':
+    dependencies:
+      '@devframes/vite': 1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.6))(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)(vite@8.3.4)
+      cac: 7.1.0
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+      zigpty: 0.2.1
+    optionalDependencies:
+      vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.8.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+    transitivePeerDependencies:
+      - '@devframes/hub'
+      - '@devframes/hub-ui'
+
+  '@devframes/plugin-terminals@1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6))(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)(vite@8.3.4)':
+    dependencies:
+      '@devframes/vite': 1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6))(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)(vite@8.3.4)
+      cac: 7.1.0
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+      zigpty: 0.2.1
+    optionalDependencies:
+      vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.7.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+    transitivePeerDependencies:
+      - '@devframes/hub'
+      - '@devframes/hub-ui'
+    optional: true
 
   '@devframes/service-open@1.2.5(devframe@1.2.5)':
     dependencies:
       devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
       pathe: 2.0.3
 
+  '@devframes/service-open@1.2.5(devframe@1.2.6)':
+    dependencies:
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+      pathe: 2.0.3
+    optional: true
+
   '@devframes/service-open@1.2.6(devframe@1.2.6)':
     dependencies:
       devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
       pathe: 2.0.3
-
-  '@devframes/vite@1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5))(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(devframe@1.2.5)(vite@8.3.4)':
-    dependencies:
-      devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
-      pathe: 2.0.3
-    optionalDependencies:
-      '@devframes/hub': 1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5)
-      '@devframes/hub-ui': 1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5)
-      vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.7.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
 
   '@devframes/vite@1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5))(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5)(vite@8.3.4)':
     dependencies:
@@ -9253,7 +9334,35 @@ snapshots:
     optionalDependencies:
       '@devframes/hub': 1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5)
       '@devframes/hub-ui': 1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5)
+      vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.8.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+
+  '@devframes/vite@1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6))(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(devframe@1.2.6)(vite@8.3.4)':
+    dependencies:
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
+      pathe: 2.0.3
+    optionalDependencies:
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5)
+      '@devframes/hub-ui': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6)
       vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.7.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+
+  '@devframes/vite@1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.6))(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)(vite@8.3.4)':
+    dependencies:
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+      pathe: 2.0.3
+    optionalDependencies:
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
+      '@devframes/hub-ui': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.6)
+      vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.8.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+
+  '@devframes/vite@1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6))(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)(vite@8.3.4)':
+    dependencies:
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+      pathe: 2.0.3
+    optionalDependencies:
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
+      '@devframes/hub-ui': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6)
+      vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.7.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+    optional: true
 
   '@devframes/vite@1.2.6(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5))(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)(vite@8.3.4)':
     dependencies:
@@ -10006,11 +10115,11 @@ snapshots:
   '@libsql/win32-x64-msvc@0.5.29':
     optional: true
 
-  '@lucide/svelte@1.60.0(svelte@5.57.2(@typescript-eslint/types@8.71.2))':
+  '@lucide/svelte@1.61.0(svelte@5.57.2(@typescript-eslint/types@8.71.2))':
     dependencies:
       svelte: 5.57.2(@typescript-eslint/types@8.71.2)
 
-  '@lucide/vue@1.60.0(vue@3.5.44(typescript@6.0.3))':
+  '@lucide/vue@1.61.0(vue@3.5.44(typescript@6.0.3))':
     dependencies:
       vue: 3.5.44(typescript@6.0.3)
 
@@ -12016,9 +12125,9 @@ snapshots:
 
   '@vitejs/devtools-kit@0.7.6(@devframes/agentic@1.2.5)(cac@7.1.0)(crossws@0.4.15(srvx@0.11.22))(ocache@0.1.5)(srvx@0.11.22)(vite@8.3.4)':
     dependencies:
-      '@devframes/hub': 1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5)
-      '@devframes/json-render': 1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(devframe@1.2.5)
-      devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5)
+      '@devframes/json-render': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(devframe@1.2.6)
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
       local-pkg: 1.2.1
       nostics: 1.3.0
       package-manager-detector: 1.9.0
@@ -12032,9 +12141,9 @@ snapshots:
 
   '@vitejs/devtools-kit@0.7.6(@devframes/agentic@1.2.5)(cac@7.1.0)(crossws@0.4.15(srvx@1.0.6))(srvx@1.0.6)(vite@8.3.4)':
     dependencies:
-      '@devframes/hub': 1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5)
-      '@devframes/json-render': 1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5)
-      devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
+      '@devframes/json-render': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
       local-pkg: 1.2.1
       nostics: 1.3.0
       package-manager-detector: 1.9.0
@@ -12061,18 +12170,45 @@ snapshots:
       - ocache
       - srvx
 
-  '@vitejs/devtools@0.7.6(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(crossws@0.4.15(srvx@0.11.22))(ocache@0.1.5)(srvx@0.11.22)(vite@8.3.4)':
+  '@vitejs/devtools@0.7.6(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(crossws@0.4.15(srvx@1.0.6))(srvx@1.0.6)(vite@8.3.4)':
     dependencies:
-      '@devframes/agentic': 1.2.5(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5)
-      '@devframes/hub': 1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5)
-      '@devframes/hub-ui': 1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5)
-      '@devframes/json-render-ui': 1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(devframe@1.2.5)
-      '@devframes/plugin-inspect': 1.2.5(devframe@1.2.5)(vite@8.3.4)
-      '@devframes/plugin-messages': 1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(devframe@1.2.5)(vite@8.3.4)
-      '@devframes/plugin-terminals': 1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5))(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5))(devframe@1.2.5)(vite@8.3.4)
+      '@devframes/agentic': 1.2.5(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
+      '@devframes/hub-ui': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.6)
+      '@devframes/json-render-ui': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)
+      '@devframes/plugin-inspect': 1.2.5(devframe@1.2.6)(vite@8.3.4)
+      '@devframes/plugin-messages': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)(vite@8.3.4)
+      '@devframes/plugin-terminals': 1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.6))(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)(vite@8.3.4)
+      '@vitejs/devtools-kit': 0.7.6(@devframes/agentic@1.2.5)(cac@7.1.0)(crossws@0.4.15(srvx@1.0.6))(srvx@1.0.6)(vite@8.3.4)
+      cac: 7.1.0
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+      h3: 2.0.3(crossws@0.4.15(srvx@1.0.6))
+      local-pkg: 1.2.1
+      nostics: 1.3.0
+      obug: 3.0.0
+      pathe: 2.0.3
+      vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.8.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+    transitivePeerDependencies:
+      - '@devframes/json-render'
+      - '@devframes/plugin-inspect--assets'
+      - '@devframes/plugin-messages--assets'
+      - '@devframes/plugin-terminals--assets'
+      - crossws
+      - ocache
+      - srvx
+
+  '@vitejs/devtools@0.7.6(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(crossws@0.4.15(srvx@0.11.22))(ocache@0.1.5)(srvx@0.11.22)(vite@8.3.4)':
+    dependencies:
+      '@devframes/agentic': 1.2.5(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5)
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5)
+      '@devframes/hub-ui': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6)
+      '@devframes/json-render-ui': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(devframe@1.2.6)
+      '@devframes/plugin-inspect': 1.2.5(devframe@1.2.6)(vite@8.3.4)
+      '@devframes/plugin-messages': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(devframe@1.2.6)(vite@8.3.4)
+      '@devframes/plugin-terminals': 1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6))(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5))(devframe@1.2.6)(vite@8.3.4)
       '@vitejs/devtools-kit': 0.7.6(@devframes/agentic@1.2.5)(cac@7.1.0)(crossws@0.4.15(srvx@0.11.22))(ocache@0.1.5)(srvx@0.11.22)(vite@8.3.4)
       cac: 7.1.0
-      devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22)
       h3: 2.0.3(crossws@0.4.15(srvx@0.11.22))(ocache@0.1.5)
       local-pkg: 1.2.1
       nostics: 1.3.0
@@ -12088,18 +12224,45 @@ snapshots:
       - ocache
       - srvx
 
-  '@vitejs/devtools@0.7.6(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(crossws@0.4.15(srvx@1.0.6))(srvx@1.0.6)(vite@8.3.4)':
+  '@vitejs/devtools@0.7.6(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(crossws@0.4.15(srvx@1.0.6))(srvx@1.0.6)(vite@8.3.4)':
     dependencies:
-      '@devframes/agentic': 1.2.5(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5)
-      '@devframes/hub': 1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5)
-      '@devframes/hub-ui': 1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5)
-      '@devframes/json-render-ui': 1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5)
-      '@devframes/plugin-inspect': 1.2.5(devframe@1.2.5)(vite@8.3.4)
-      '@devframes/plugin-messages': 1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5)(vite@8.3.4)
-      '@devframes/plugin-terminals': 1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.5))(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5)(vite@8.3.4)
+      '@devframes/agentic': 1.2.5(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
+      '@devframes/hub-ui': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6)
+      '@devframes/json-render-ui': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)
+      '@devframes/plugin-inspect': 1.2.5(devframe@1.2.6)(vite@8.3.4)
+      '@devframes/plugin-messages': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)(vite@8.3.4)
+      '@devframes/plugin-terminals': 1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(devframe@1.2.6))(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)(vite@8.3.4)
       '@vitejs/devtools-kit': 0.7.6(@devframes/agentic@1.2.5)(cac@7.1.0)(crossws@0.4.15(srvx@1.0.6))(srvx@1.0.6)(vite@8.3.4)
       cac: 7.1.0
-      devframe: 1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
+      h3: 2.0.3(crossws@0.4.15(srvx@1.0.6))
+      local-pkg: 1.2.1
+      nostics: 1.3.0
+      obug: 3.0.0
+      pathe: 2.0.3
+      vite: 8.3.4(@types/node@25.9.9)(@vitejs/devtools@0.7.6)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+    transitivePeerDependencies:
+      - '@devframes/json-render'
+      - '@devframes/plugin-inspect--assets'
+      - '@devframes/plugin-messages--assets'
+      - '@devframes/plugin-terminals--assets'
+      - crossws
+      - ocache
+      - srvx
+
+  '@vitejs/devtools@0.7.6(crossws@0.4.15(srvx@1.0.6))(srvx@1.0.6)(vite@8.3.4)':
+    dependencies:
+      '@devframes/agentic': 1.2.5(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
+      '@devframes/hub': 1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
+      '@devframes/hub-ui': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6)
+      '@devframes/json-render-ui': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)
+      '@devframes/plugin-inspect': 1.2.5(devframe@1.2.6)(vite@8.3.4)
+      '@devframes/plugin-messages': 1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)(vite@8.3.4)
+      '@devframes/plugin-terminals': 1.2.5(@devframes/hub-ui@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(@devframes/json-render@1.2.5(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6))(devframe@1.2.6))(@devframes/hub@1.2.6(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6))(devframe@1.2.6)(vite@8.3.4)
+      '@vitejs/devtools-kit': 0.7.6(@devframes/agentic@1.2.5)(cac@7.1.0)(crossws@0.4.15(srvx@1.0.6))(srvx@1.0.6)(vite@8.3.4)
+      cac: 7.1.0
+      devframe: 1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6)
       h3: 2.0.3(crossws@0.4.15(srvx@1.0.6))
       local-pkg: 1.2.1
       nostics: 1.3.0
@@ -12897,19 +13060,6 @@ snapshots:
 
   devalue@6.0.3: {}
 
-  devframe@1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22):
-    dependencies:
-      crossws: 0.4.15(srvx@0.11.22)
-      h3: 2.0.3(crossws@0.4.15(srvx@0.11.22))(ocache@0.1.5)
-      nostics: 1.3.0
-      pathe: 2.0.3
-    optionalDependencies:
-      '@devframes/agentic': 1.2.5(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.5)(ocache@0.1.5)
-      cac: 7.1.0
-    transitivePeerDependencies:
-      - ocache
-      - srvx
-
   devframe@1.2.5(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6):
     dependencies:
       crossws: 0.4.15(srvx@1.0.6)
@@ -12923,6 +13073,19 @@ snapshots:
       - ocache
       - srvx
 
+  devframe@1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(ocache@0.1.5)(srvx@0.11.22):
+    dependencies:
+      crossws: 0.4.15(srvx@0.11.22)
+      h3: 2.0.3(crossws@0.4.15(srvx@0.11.22))(ocache@0.1.5)
+      nostics: 1.3.0
+      pathe: 2.0.3
+    optionalDependencies:
+      '@devframes/agentic': 1.2.5(crossws@0.4.15(srvx@0.11.22))(devframe@1.2.6)(ocache@0.1.5)
+      cac: 7.1.0
+    transitivePeerDependencies:
+      - ocache
+      - srvx
+
   devframe@1.2.6(@devframes/agentic@1.2.5)(cac@7.1.0)(srvx@1.0.6):
     dependencies:
       crossws: 0.4.15(srvx@1.0.6)
@@ -12930,7 +13093,7 @@ snapshots:
       nostics: 1.3.0
       pathe: 2.0.3
     optionalDependencies:
-      '@devframes/agentic': 1.2.5(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5)
+      '@devframes/agentic': 1.2.5(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.6)
       cac: 7.1.0
     transitivePeerDependencies:
       - ocache
@@ -14334,13 +14497,13 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-react@1.60.0(@types/react@19.3.0)(react@19.3.1):
+  lucide-react@1.61.0(@types/react@19.3.0)(react@19.3.1):
     dependencies:
       react: 19.3.1
     optionalDependencies:
       '@types/react': 19.3.0
 
-  lucide-solid@1.60.0(solid-js@1.9.17):
+  lucide-solid@1.61.0(solid-js@1.9.17):
     dependencies:
       solid-js: 1.9.17
 
@@ -17021,7 +17184,7 @@ snapshots:
       tinyglobby: 0.2.17
     optionalDependencies:
       '@types/node': 25.9.9
-      '@vitejs/devtools': 0.7.6(@devframes/json-render@1.2.5(@devframes/hub@1.2.5(@devframes/agentic@1.2.5)(crossws@0.4.15(srvx@1.0.6))(devframe@1.2.5))(devframe@1.2.5))(crossws@0.4.15(srvx@1.0.6))(srvx@1.0.6)(vite@8.3.4)
+      '@vitejs/devtools': 0.7.6(crossws@0.4.15(srvx@1.0.6))(srvx@1.0.6)(vite@8.3.4)
       esbuild: 0.28.2
       fsevents: 2.3.3
       jiti: 2.7.0
