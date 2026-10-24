@@ -32,7 +32,9 @@ export const defineDownloadEventHandler = (getData: (filepath: string) => BodyIn
 
     const filepath = path.resolve(env.IMG_FOLDER as string, image.filename);
 
-    const respFilename = fileType ? image.filename.replace(fileExtensionRegex, fileType) : image.filename;
+    const respFilename = fileType
+      ? image.filename.replace(fileExtensionRegex, fileType)
+      : image.filename;
 
     return new Response(await getData(filepath), {
       headers: {

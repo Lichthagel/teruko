@@ -23,7 +23,9 @@ export const dImage = pgTable(
     width: integer("width").notNull(),
   },
   table => (
-    [index("Image_createdAt_idx").on(table.createdAt)]
+    [
+      index("Image_createdAt_idx").on(table.createdAt),
+    ]
   ),
 );
 

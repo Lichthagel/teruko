@@ -12,7 +12,9 @@ const ImagePage = () => {
 
   const [result] = useQuery({
     query: Image,
-    variables: { id: Number.parseInt(id) },
+    variables: {
+      id: Number.parseInt(id),
+    },
   });
 
   const image = useMemo(() => result.data?.image, [result.data?.image]);

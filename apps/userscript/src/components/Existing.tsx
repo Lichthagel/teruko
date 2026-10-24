@@ -18,7 +18,9 @@ const Existing: Component<{ filename: string }> = (props) => {
         headers: {
           "Content-Type": "application/json",
           "Apollo-Require-Preflight": "true",
-          ...(TERUKO_BASIC_AUTH ? { Authorization: `Basic ${TERUKO_BASIC_AUTH}` } : {}),
+          ...(TERUKO_BASIC_AUTH
+            ? { Authorization: `Basic ${TERUKO_BASIC_AUTH}` }
+            : {}),
         },
       });
 

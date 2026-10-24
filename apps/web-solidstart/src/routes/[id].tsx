@@ -13,7 +13,9 @@ export default () => {
 
   const [result] = createQuery({
     query: Image,
-    variables: { id: Number.parseInt(id!) },
+    variables: {
+      id: Number.parseInt(id!),
+    },
   });
 
   const image = createMemo(() => result.data?.image);

@@ -5,7 +5,11 @@ import Select from "../common/Select";
 export const SortSelect = () =>
   (
     <Select
-      options={[{ value: "NEWEST", label: "newest" }, { value: "OLDEST", label: "oldest" }, { value: "RANDOM", label: "random" }]}
+      options={[
+        { value: "NEWEST", label: "newest" },
+        { value: "OLDEST", label: "oldest" },
+        { value: "RANDOM", label: "random" },
+      ]}
       icon={ArrowDownNarrowWide}
       value={sort()}
       setValue={setSort}

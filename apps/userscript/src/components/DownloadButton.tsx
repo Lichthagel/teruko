@@ -31,11 +31,15 @@ const DownloadButton: Component<Props> = (props) => {
 
       setText("fetching metadata...");
 
-      const meta = id ? await getPixivMetadata(id) : null;
+      const meta = id
+        ? await getPixivMetadata(id)
+        : null;
 
       setText("down...");
 
-      const res = await fetch(props.url, { headers: { Referer: location.origin } });
+      const res = await fetch(props.url, {
+        headers: { Referer: location.origin },
+      });
 
       const blob = await res.blob();
 
@@ -65,7 +69,9 @@ const DownloadButton: Component<Props> = (props) => {
         data: formData,
         headers: {
           "Apollo-Require-Preflight": "true",
-          ...(TERUKO_BASIC_AUTH ? { Authorization: `Basic ${TERUKO_BASIC_AUTH}` } : {}),
+          ...(TERUKO_BASIC_AUTH
+            ? { Authorization: `Basic ${TERUKO_BASIC_AUTH}` }
+            : {}),
         },
       })
         .then(res => JSON.parse(res.responseText) as {
@@ -112,7 +118,9 @@ const DownloadButton: Component<Props> = (props) => {
   return (
     <button
       class="button"
-      classList={{ small: small() }}
+      classList={{
+        small: small(),
+      }}
       on:click={(event) => {
         event.stopPropagation();
         event.preventDefault();
