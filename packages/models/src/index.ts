@@ -36,6 +36,7 @@ export const vTagExt = v.intersect([
   vTag,
   v.partial(v.object({
     category: v.nullable(vTagCategory),
+    aliases: v.array(v.string()),
   })),
 ]);
 
