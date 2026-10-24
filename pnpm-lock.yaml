@@ -202,7 +202,7 @@ catalogs:
       version: 1.64.1
     '@pothos/core':
       specifier: ^4.12.0
-      version: 4.15.1
+      version: 4.16.0
     '@pothos/plugin-relay':
       specifier: ^4.7.0
       version: 4.8.1
@@ -881,10 +881,10 @@ importers:
         version: 3.24.6(graphql-yoga@5.24.6(graphql@17.0.2))
       '@pothos/core':
         specifier: 'catalog:'
-        version: 4.15.1(graphql@17.0.2)
+        version: 4.16.0(graphql@17.0.2)
       '@pothos/plugin-relay':
         specifier: 'catalog:'
-        version: 4.8.1(@pothos/core@4.15.1(graphql@17.0.2))(graphql@17.0.2)
+        version: 4.8.1(@pothos/core@4.16.0(graphql@17.0.2))(graphql@17.0.2)
       drizzle-orm:
         specifier: 'catalog:'
         version: 0.45.4(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
@@ -3114,8 +3114,8 @@ packages:
   '@poppinss/exception@1.2.3':
     resolution: {integrity: sha512-dCED+QRChTVatE9ibtoaxc+WkdzOSjYTKi/+uacHWIsfodVfpsueo3+DKpgU5Px8qXjgmXkSvhXvSCz3fnP9lw==}
 
-  '@pothos/core@4.15.1':
-    resolution: {integrity: sha512-G0riOIbF6zer2SU7V1MmivkSdoKk+gYRf+Ru8JVcy3p9GhyJ8OzQj92RgCfCpEvkTgl6EdH8VueLe1Lm7lY4aA==}
+  '@pothos/core@4.16.0':
+    resolution: {integrity: sha512-csiYUWWgxdpw7drDAIPcsuFu4/FFCZpooa3OWsItwlbcYCfMzTr3//tRev6H7FivKanhX6c9TGwGEpDfppQb8g==}
     peerDependencies:
       graphql: ^16.10.0 || ^17.0.0
 
@@ -10856,13 +10856,13 @@ snapshots:
 
   '@poppinss/exception@1.2.3': {}
 
-  '@pothos/core@4.15.1(graphql@17.0.2)':
+  '@pothos/core@4.16.0(graphql@17.0.2)':
     dependencies:
       graphql: 17.0.2
 
-  '@pothos/plugin-relay@4.8.1(@pothos/core@4.15.1(graphql@17.0.2))(graphql@17.0.2)':
+  '@pothos/plugin-relay@4.8.1(@pothos/core@4.16.0(graphql@17.0.2))(graphql@17.0.2)':
     dependencies:
-      '@pothos/core': 4.15.1(graphql@17.0.2)
+      '@pothos/core': 4.16.0(graphql@17.0.2)
       graphql: 17.0.2
 
   '@repeaterjs/repeater@3.1.0': {}
