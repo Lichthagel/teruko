@@ -18,7 +18,7 @@ query TagEdit($slug: String!) {
       slug
       color
     }
-  }        
+  }
   tagCategories {
     _id
     color

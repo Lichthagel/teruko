@@ -77,3 +77,22 @@ export const mergeImageMeta = (
       ]
     : meta2.tags,
 });
+
+export const vTagRule = v.object({
+  id: v.number(),
+  tagSlug: v.string(),
+  kind: v.picklist(["implies", "remove"]),
+  otherTagSlug: v.optional(v.string()),
+});
+
+export type TagRule = v.InferOutput<typeof vTagRule>;
+
+export const vTagRuleExt = v.intersect([
+  vTagRule,
+  v.object({
+    tag: vTag,
+    otherTag: v.optional(vTag),
+  }),
+]);
+
+export type TagRuleExt = v.InferOutput<typeof vTagRuleExt>;
