@@ -10,7 +10,9 @@ const handleGraphQLRequest = ({ request }: { request: Request }) => {
     method: request.method,
     headers: request.headers,
     signal: request.signal,
-    ...(body ? { body, duplex: "half" as const } : {}),
+    ...(body
+      ? { body, duplex: "half" as const }
+      : {}),
   } as RequestInit & { duplex?: "half" });
 
   return yogaApp(yogaRequest);
