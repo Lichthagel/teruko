@@ -184,7 +184,7 @@ catalogs:
       version: 5.3.1
     '@graphql-yoga/plugin-apq':
       specifier: ^4.0.0
-      version: 4.0.0
+      version: 4.0.1
     '@libsql/client':
       specifier: ^0.18.0
       version: 0.18.0
@@ -313,7 +313,7 @@ catalogs:
       version: 17.0.2
     graphql-yoga:
       specifier: ^6.0.0
-      version: 6.0.0
+      version: 6.0.1
     husky:
       specifier: ^9.1.7
       version: 9.1.7
@@ -878,7 +878,7 @@ importers:
         version: 12.0.0(@envelop/core@6.0.0)(@graphql-hive/logger@1.1.1)(graphql@17.0.2)
       '@graphql-yoga/plugin-apq':
         specifier: 'catalog:'
-        version: 4.0.0(graphql-yoga@6.0.0(graphql@17.0.2))(graphql@17.0.2)
+        version: 4.0.1(graphql-yoga@6.0.1(graphql@17.0.2))(graphql@17.0.2)
       '@pothos/core':
         specifier: 'catalog:'
         version: 4.16.0(graphql@17.0.2)
@@ -896,7 +896,7 @@ importers:
         version: 17.0.2
       graphql-yoga:
         specifier: 'catalog:'
-        version: 6.0.0(graphql@17.0.2)
+        version: 6.0.1(graphql@17.0.2)
       models:
         specifier: workspace:^
         version: link:../models
@@ -2023,12 +2023,12 @@ packages:
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
 
-  '@graphql-yoga/plugin-apq@4.0.0':
-    resolution: {integrity: sha512-bXn2RXGddxAcDN+IKoalatnO0AdorV+i00vx2PplAdFhkjUk1T+4OH07+Rh673G8AQYeMWScA5psnkSlRvBFIA==}
+  '@graphql-yoga/plugin-apq@4.0.1':
+    resolution: {integrity: sha512-PHi+wodsaeV9NdTB9d5KVITDhCVQyPUvoc0/3Xlnflvt4aBWXTuLI395RW+a0DYOk58rwH77+f8H6Y647TLsqQ==}
     engines: {node: '>=22.15.0'}
     peerDependencies:
       graphql: ^16.0.0 || ^17.0.0
-      graphql-yoga: ^6.0.0
+      graphql-yoga: ^6.0.1
 
   '@graphql-yoga/subscription@6.0.0':
     resolution: {integrity: sha512-7itRaKCigZXL5gbgtKg8+/xCB2NI5T/1p1yIcAx8fht2nEMmu/2RlQ8xtpsa25xKy/u5h4Y9nDSQo7kV/nCcBg==}
@@ -5881,8 +5881,8 @@ packages:
     peerDependencies:
       graphql: '>=15'
 
-  graphql-yoga@6.0.0:
-    resolution: {integrity: sha512-XOXLeDpB4zCOPDz3c3ai8Hqo2aoJKS1bqaBlKNW00z16PlgsmXiBvTUKAzA+b7/AUHo8Rc+oCyHfLCDMS1b3RQ==}
+  graphql-yoga@6.0.1:
+    resolution: {integrity: sha512-uGfyZNivj4HaNvFi25ce9YLoywWLwxzlt9lM9dYETep00qsPOyGr5jR2Jeg/KxTCqOKMiyqS3oWuM0uhL8QgaQ==}
     engines: {node: '>=22.15.0'}
     peerDependencies:
       graphql: ^16.0.0 || ^17.0.0
@@ -9765,11 +9765,11 @@ snapshots:
     dependencies:
       graphql: 17.0.2
 
-  '@graphql-yoga/plugin-apq@4.0.0(graphql-yoga@6.0.0(graphql@17.0.2))(graphql@17.0.2)':
+  '@graphql-yoga/plugin-apq@4.0.1(graphql-yoga@6.0.1(graphql@17.0.2))(graphql@17.0.2)':
     dependencies:
       '@whatwg-node/promise-helpers': 2.0.0
       graphql: 17.0.2
-      graphql-yoga: 6.0.0(graphql@17.0.2)
+      graphql-yoga: 6.0.1(graphql@17.0.2)
 
   '@graphql-yoga/subscription@6.0.0':
     dependencies:
@@ -13774,7 +13774,7 @@ snapshots:
       lodash.merge: 4.6.2
       lodash.mergewith: 4.6.2
 
-  graphql-yoga@6.0.0(graphql@17.0.2):
+  graphql-yoga@6.0.1(graphql@17.0.2):
     dependencies:
       '@envelop/core': 6.0.0
       '@envelop/instrumentation': 2.0.0
