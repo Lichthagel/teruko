@@ -32,11 +32,15 @@ const DownloadButton: Component<Props> = (props) => {
 
       setText("fetching metadata...");
 
-      const meta = id ? await getPixivMetadata(id) : null;
+      const meta = id
+        ? await getPixivMetadata(id)
+        : null;
 
       setText("down...");
 
-      const res = await fetch(props.url, { headers: { Referer: location.origin } });
+      const res = await fetch(props.url, {
+        headers: { Referer: location.origin },
+      });
 
       const blob = await res.blob();
 
@@ -57,7 +61,9 @@ const DownloadButton: Component<Props> = (props) => {
           tags: meta?.tags?.map(tag => tag.slug),
         },
       }));
-      formData.append("map", JSON.stringify({ 0: ["variables.files.0"] }));
+      formData.append("map", JSON.stringify({
+        0: ["variables.files.0"],
+      }));
       formData.append("0", file);
       const { res: graphqlRes, response } = await GMgraphql<{ createImage: { id: string }[] }>(formData, token);
       if (graphqlRes.status === 401) {
@@ -97,7 +103,9 @@ const DownloadButton: Component<Props> = (props) => {
   return (
     <button
       class="button"
-      classList={{ small: small() }}
+      classList={{
+        small: small(),
+      }}
       on:click={(event) => {
         event.stopPropagation();
         event.preventDefault();

@@ -11,4 +11,11 @@ const authMiddleware = createMiddleware({ type: "request" }).server(async ({ req
   return next();
 });
 
-export const startInstance = createStart(() => ({ requestMiddleware: [createCsrfMiddleware({ filter: ctx => ctx.handlerType === "serverFn" }), authMiddleware] }));
+export const startInstance = createStart(() => ({
+  requestMiddleware: [
+    createCsrfMiddleware({
+      filter: ctx => ctx.handlerType === "serverFn",
+    }),
+    authMiddleware,
+  ],
+}));

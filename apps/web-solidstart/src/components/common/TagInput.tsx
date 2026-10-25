@@ -131,7 +131,9 @@ const TagInput: Component<{
           <For each={suggestions()}>
             {(suggestion, index) => (
               <li
-                class={index() === activeSuggestion() ? styles.active : undefined}
+                class={index() === activeSuggestion()
+                  ? styles.active
+                  : undefined}
                 onClick={() => handleSubmit()}
                 onMouseEnter={() => setActiveSuggestion(index())}
                 style={{

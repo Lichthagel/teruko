@@ -53,9 +53,14 @@ export const GMgraphql = async <T>(body: string | FormData, token: string) => {
     data: body,
     headers: {
       Authorization: `Bearer ${token}`,
-      ...(typeof body === "string" ? { "Content-Type": "application/json" } : {}),
+      ...(typeof body === "string"
+        ? { "Content-Type": "application/json" }
+        : {}),
     },
   });
 
-  return { res, response: JSON.parse(res.responseText) as GraphqlResponse<T> };
+  return {
+    res,
+    response: JSON.parse(res.responseText) as GraphqlResponse<T>,
+  };
 };

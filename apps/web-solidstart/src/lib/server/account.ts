@@ -11,7 +11,9 @@ export const hasAccountAccess = async () => {
 export const createAccountToken = async () => {
   const event = getRequestEvent();
   const request = event?.request;
-  const user = request ? await requireSessionUser(request) : null;
+  const user = request
+    ? await requireSessionUser(request)
+    : null;
   if (!request || !user)
     return { unauthorized: true as const };
   const origin = request.headers.get("origin");

@@ -9,7 +9,13 @@ type LoadingButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const LoadingButton: Component<LoadingButtonProps> = (props) => {
-  const [local, rest] = splitProps(props, ["class", "loading", "loadingLabel", "children", "type"]);
+  const [local, rest] = splitProps(props, [
+    "class",
+    "loading",
+    "loadingLabel",
+    "children",
+    "type",
+  ]);
   return (
     <button
       {...rest}
@@ -17,7 +23,9 @@ const LoadingButton: Component<LoadingButtonProps> = (props) => {
       type={local.type ?? "button"}
       disabled={rest.disabled || local.loading}
       aria-busy={local.loading ?? false}
-      aria-label={local.loading ? local.loadingLabel ?? "Loading" : rest["aria-label"]}
+      aria-label={local.loading
+        ? local.loadingLabel ?? "Loading"
+        : rest["aria-label"]}
     >
       {local.children}
     </button>

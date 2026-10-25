@@ -17,7 +17,9 @@ export default function TokenSettings() {
       if (!authorized)
         location.assign(`/login?returnTo=${encodeURIComponent("/account")}`);
     }).catch((cause) => {
-      setError(cause instanceof Error ? cause.message : String(cause));
+      setError(cause instanceof Error
+        ? cause.message
+        : String(cause));
     });
   });
 
@@ -34,7 +36,9 @@ export default function TokenSettings() {
         throw new Error(result.error);
       setSecret(result.token);
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : String(cause));
+      setError(cause instanceof Error
+        ? cause.message
+        : String(cause));
     } finally {
       setBusy(false);
     }

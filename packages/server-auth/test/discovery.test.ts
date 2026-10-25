@@ -20,7 +20,9 @@ test("retries failed OIDC discovery and shares successful discovery between logi
       throw error;
     return configuration;
   });
-  const moduleMock = mock.module("openid-client", { namedExports: { ...oidc, discovery } });
+  const moduleMock = mock.module("openid-client", {
+    namedExports: { ...oidc, discovery },
+  });
   t.after(() => moduleMock.restore());
 
   const settings = {
@@ -44,7 +46,10 @@ test("retries failed OIDC discovery and shares successful discovery between logi
 
   const { startLogin } = await import("server-auth/auth");
   const request = new Request(`${settings.AUTH_BASE_URL}/login`);
-  const failed = await Promise.allSettled([startLogin(request), startLogin(request)]);
+  const failed = await Promise.allSettled([
+    startLogin(request),
+    startLogin(request),
+  ]);
   for (const result of failed) {
     if (result.status === "rejected")
       assert.equal(result.reason, error);
@@ -53,7 +58,10 @@ test("retries failed OIDC discovery and shares successful discovery between logi
   }
   assert.equal(discovery.mock.callCount(), 1);
 
-  const recovered = await Promise.all([startLogin(request), startLogin(request)]);
+  const recovered = await Promise.all([
+    startLogin(request),
+    startLogin(request),
+  ]);
   for (const response of recovered) {
     assert.equal(response.status, 302);
     assert.equal(new URL(response.headers.get("location")!).origin, issuer);

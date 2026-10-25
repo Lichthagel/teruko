@@ -5,7 +5,9 @@ export default defineNuxtRouteMiddleware(async (to) => {
   try {
     await $fetch("/auth/session");
   } catch (cause) {
-    const statusCode = typeof cause === "object" && cause !== null && "statusCode" in cause ? cause.statusCode : undefined;
+    const statusCode = typeof cause === "object" && cause !== null && "statusCode" in cause
+      ? cause.statusCode
+      : undefined;
     if (statusCode !== 401)
       throw cause;
 

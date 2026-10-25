@@ -43,7 +43,9 @@ const server = createServer(async (request, response) => {
       }
     }
 
-    const body = method === "GET" || method === "HEAD" ? undefined : Readable.toWeb(request);
+    const body = method === "GET" || method === "HEAD"
+      ? undefined
+      : Readable.toWeb(request);
     const webRequest = new Request(url, {
       body,
       duplex: "half",
@@ -64,7 +66,9 @@ const server = createServer(async (request, response) => {
     response.end(Buffer.from(await webResponse.arrayBuffer()));
   } catch (error) {
     response.statusCode = 500;
-    response.end(error instanceof Error ? error.message : "Internal Server Error");
+    response.end(error instanceof Error
+      ? error.message
+      : "Internal Server Error");
   }
 });
 

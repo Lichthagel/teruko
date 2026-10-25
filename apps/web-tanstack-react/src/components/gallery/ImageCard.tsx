@@ -13,7 +13,12 @@ const ImageCard: FunctionComponent<{ image: ImageExt }> = ({ image }) => {
 
   return (
     <div className={styles.card}>
-      <Link to="/$id" params={{ id: image.id.toString() }}>
+      <Link
+        to="/$id"
+        params={{
+          id: image.id.toString(),
+        }}
+      >
         <div className={styles["image-container"]}>
           <img
             alt={image.title ?? image.filename}

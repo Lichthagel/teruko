@@ -17,7 +17,9 @@ const copy = async () => {
     copied.value = true;
     error.value = "";
   } catch (cause) {
-    error.value = cause instanceof Error ? cause.message : String(cause);
+    error.value = cause instanceof Error
+      ? cause.message
+      : String(cause);
   }
 };
 </script>

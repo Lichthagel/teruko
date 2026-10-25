@@ -1,7 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getYoga, protectGraphqlRequest } from "server-graphql";
 
-const yoga = getYoga({ Response });
+const yogaApp = getYoga({ Response });
+
+const handleGraphQLRequest = (request: Request) => {
+  // Normalize srvx's lazy Request before Yoga's body limiter wraps its stream.
+  const body = request.body;
+  const yogaRequest = new Request(request.url, {
+    method: request.method,
+    headers: request.headers,
+    signal: request.signal,
+    ...(body
+      ? { body, duplex: "half" as const }
+      : {}),
+  } as RequestInit & { duplex?: "half" });
+
+  return yogaApp(yogaRequest);
+};
+
 export const Route = createFileRoute("/graphql")({
   server: {
     handlers: {
@@ -9,14 +25,14 @@ export const Route = createFileRoute("/graphql")({
         const protectedResponse = await protectGraphqlRequest(request);
         if (protectedResponse)
           return protectedResponse;
-        return yoga(request);
+        return handleGraphQLRequest(request);
       },
-      OPTIONS: async ({ request }: { request: Request }) => yoga(request),
+      OPTIONS: async ({ request }: { request: Request }) => handleGraphQLRequest(request),
       POST: async ({ request }: { request: Request }) => {
         const protectedResponse = await protectGraphqlRequest(request);
         if (protectedResponse)
           return protectedResponse;
-        return yoga(request);
+        return handleGraphQLRequest(request);
       },
     },
   },

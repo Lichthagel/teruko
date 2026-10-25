@@ -20,7 +20,9 @@ const createToken = async () => {
     const result = await $fetch<{ id: string; token: string }>("/api/settings/tokens", { method: "POST" });
     secret.value = result.token;
   } catch (cause) {
-    error.value = cause instanceof Error ? cause.message : String(cause);
+    error.value = cause instanceof Error
+      ? cause.message
+      : String(cause);
   } finally {
     busy.value = false;
   }

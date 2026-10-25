@@ -10,18 +10,28 @@ import Nav from "./components/Nav";
 import "client-css/global.scss";
 
 export default function App() {
-  const request = isServer ? getRequestEvent()!.request : undefined;
-  const requestUrl = request ? new URL(request.url) : undefined;
+  const request = isServer
+    ? getRequestEvent()!.request
+    : undefined;
+  const requestUrl = request
+    ? new URL(request.url)
+    : undefined;
   const forwardedHost = request?.headers.get("x-forwarded-host")?.split(",")[0]?.trim();
   const forwardedProto = request?.headers.get("x-forwarded-proto")?.split(",")[0]?.trim();
   const origin = request?.headers.get("origin")
-    ?? `${forwardedProto === "https" ? "https" : requestUrl?.protocol.slice(0, -1)}://${forwardedHost ?? requestUrl?.host}`;
+    ?? `${forwardedProto === "https"
+      ? "https"
+      : requestUrl?.protocol.slice(0, -1)}://${forwardedHost ?? requestUrl?.host}`;
   const client = request
     ? new Client({
         ...createUrqlOptions(new URL("/graphql", request.url).toString()),
         fetchOptions: {
           headers: {
-            ...(request.headers.get("cookie") ? { cookie: request.headers.get("cookie")! } : {}),
+            ...(request.headers.get("cookie")
+              ? {
+                  cookie: request.headers.get("cookie")!,
+                }
+              : {}),
             origin,
           },
         },

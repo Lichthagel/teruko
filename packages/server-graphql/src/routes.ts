@@ -15,5 +15,11 @@ export const requireGraphqlUser = async (request: Request) => {
 export const protectGraphqlRequest = async (request: Request) => {
   if (request.method === "OPTIONS")
     return null;
-  return await requireGraphqlUser(request) ? null : json({ errors: [{ message: "Unauthorized" }] }, 401);
+  return await requireGraphqlUser(request)
+    ? null
+    : json({
+        errors: [
+          { message: "Unauthorized" },
+        ],
+      }, 401);
 };

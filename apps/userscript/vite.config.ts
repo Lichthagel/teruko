@@ -6,7 +6,9 @@ import solid from "vite-plugin-solid";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const terukoBaseUrl = loadEnv(mode, process.cwd(), "").VITE_TERUKO_BASE_URL;
-  const connectHost = terukoBaseUrl ? new URL(terukoBaseUrl).hostname : "localhost";
+  const connectHost = terukoBaseUrl
+    ? new URL(terukoBaseUrl).hostname
+    : "localhost";
 
   return {
     plugins: [

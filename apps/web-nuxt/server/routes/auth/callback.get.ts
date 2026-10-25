@@ -3,9 +3,15 @@ import { finishLogin } from "server-auth/auth";
 export default defineEventHandler(async (event) => {
   const headers = event.node.req.headers;
   const forwardedProto = headers["x-forwarded-proto"];
-  const protocol = (Array.isArray(forwardedProto) ? forwardedProto[0] : forwardedProto) === "https" ? "https" : "http";
+  const protocol = (Array.isArray(forwardedProto)
+    ? forwardedProto[0]
+    : forwardedProto) === "https"
+    ? "https"
+    : "http";
   const forwardedHost = headers["x-forwarded-host"];
-  const host = (Array.isArray(forwardedHost) ? forwardedHost[0] : forwardedHost) ?? headers.host ?? "localhost";
+  const host = (Array.isArray(forwardedHost)
+    ? forwardedHost[0]
+    : forwardedHost) ?? headers.host ?? "localhost";
   const request = new Request(new URL(event.node.req.url ?? "/auth/callback", `${protocol}://${host}`), { headers: headers as HeadersInit });
   const response = await finishLogin(request);
   const setCookies = response.headers.getSetCookie();

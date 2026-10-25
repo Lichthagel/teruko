@@ -12,7 +12,10 @@ const Existing: Component<{ filename: string }> = (props) => {
       if (!token)
         return undefined;
       const { res, response } = await GMgraphql<{ imageByFilename: { id: string } | null }>(
-        JSON.stringify({ query: IMAGE_BY_FILENAME, variables: { filename } }),
+        JSON.stringify({
+          query: IMAGE_BY_FILENAME,
+          variables: { filename },
+        }),
         token,
       );
 

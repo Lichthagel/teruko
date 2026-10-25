@@ -146,7 +146,12 @@ builder.queryField("images", t =>
             .orderBy(
               ...(random
                 ? [sql`RANDOM()`]
-                : [inverted ? asc(dImage.createdAt) : desc(dImage.createdAt), asc(dImage.id)]),
+                : [
+                    inverted
+                      ? asc(dImage.createdAt)
+                      : desc(dImage.createdAt),
+                    asc(dImage.id),
+                  ]),
             )
             .where(and(...conditions))
             .limit(limit)
@@ -168,7 +173,9 @@ builder.queryField("images", t =>
             .leftJoin(dTagCategory, eq(dTag.categorySlug, dTagCategory.slug))
             .orderBy(
               desc(dImage.createdAt),
-              inverted ? asc(dImage.id) : desc(dImage.id),
+              inverted
+                ? asc(dImage.id)
+                : desc(dImage.id),
               asc(dTag.categorySlug).append(sql` NULLS LAST`),
               asc(dTag.slug),
             );

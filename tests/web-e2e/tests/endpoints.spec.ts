@@ -48,7 +48,10 @@ test.describe("server endpoints", () => {
   test("auth API routes reach their framework handlers", async ({ request }, testInfo) => {
     const origin = testInfo.project.use.baseURL as string;
     const callback = await request.get("/auth/callback");
-    const logout = await request.post("/auth/logout", { headers: { Origin: origin }, maxRedirects: 0 });
+    const logout = await request.post("/auth/logout", {
+      headers: { Origin: origin },
+      maxRedirects: 0,
+    });
 
     expect(callback.status()).toBe(400);
     expect(logout.status()).toBe(303);
@@ -58,7 +61,9 @@ test.describe("server endpoints", () => {
   test("redirects unauthenticated page requests to the identity provider", async ({ request }, testInfo) => {
     const headers = {
       "x-teruko-e2e-oidc": "1",
-      ...(testInfo.project.name.startsWith("web-svelte") ? { "x-forwarded-proto": "http" } : {}),
+      ...(testInfo.project.name.startsWith("web-svelte")
+        ? { "x-forwarded-proto": "http" }
+        : {}),
     };
     for (const path of ["/", "/account"]) {
       const response = await request.get(path, { headers, maxRedirects: 0 });
@@ -70,7 +75,12 @@ test.describe("server endpoints", () => {
 
   test("checks cookie-authenticated GraphQL origins", async ({ request }, testInfo) => {
     const origin = testInfo.project.use.baseURL as string;
-    const headers = { "x-teruko-e2e-oidc": "1", ...(testInfo.project.name.startsWith("web-svelte") ? { "x-forwarded-proto": "http" } : {}) };
+    const headers = {
+      "x-teruko-e2e-oidc": "1",
+      ...(testInfo.project.name.startsWith("web-svelte")
+        ? { "x-forwarded-proto": "http" }
+        : {}),
+    };
     const unauthenticated = await request.post("/graphql", {
       headers: { ...headers, Origin: origin },
       data: { query: "mutation { __typename }" },
@@ -88,7 +98,10 @@ test.describe("server endpoints", () => {
     expect(allowed.status()).toBe(200);
     expect((await allowed.json()).data.__typename).toBe("Mutation");
 
-    for (const requestHeaders of [headers, { ...headers, Origin: "https://untrusted.example.invalid" }]) {
+    for (const requestHeaders of [
+      headers,
+      { ...headers, Origin: "https://untrusted.example.invalid" },
+    ]) {
       const rejected = await request.post("/graphql", {
         headers: requestHeaders,
         data: { query: "mutation { __typename }" },

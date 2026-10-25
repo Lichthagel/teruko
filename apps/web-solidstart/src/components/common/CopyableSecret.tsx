@@ -20,7 +20,9 @@ const CopyableSecret: Component<{ value: string; label?: string }> = (props) => 
       setCopied(true);
       setError("");
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : String(cause));
+      setError(cause instanceof Error
+        ? cause.message
+        : String(cause));
     }
   };
 
@@ -28,7 +30,14 @@ const CopyableSecret: Component<{ value: string; label?: string }> = (props) => 
     <>
       <div class={styles.secretField}>
         <input class={styles.maskedInput} type="text" aria-label={props.label ?? "Secret"} value={value()} readOnly />
-        <button class={`${styles.buttonSecondary} ${styles.copyButton}`} type="button" aria-label={copied() ? "Copied" : "Copy token"} onClick={() => void copy()}>
+        <button
+          class={`${styles.buttonSecondary} ${styles.copyButton}`}
+          type="button"
+          aria-label={copied()
+            ? "Copied"
+            : "Copy token"}
+          onClick={() => void copy()}
+        >
           <Show when={copied()} fallback={<Copy class={styles.copyIcon} aria-hidden="true" />}>
             <Check class={styles.copyIcon} aria-hidden="true" />
           </Show>

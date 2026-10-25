@@ -6,7 +6,9 @@ export const dAuthSession = pgTable("AuthSession", {
   email: text("email"),
   expiresAt: timestamp("expiresAt", { mode: "date" }).notNull(),
   createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
-}, table => [index("AuthSession_expiresAt_idx").on(table.expiresAt)]);
+}, table => [
+  index("AuthSession_expiresAt_idx").on(table.expiresAt),
+]);
 
 export const dUserToken = pgTable("UserToken", {
   id: text("id").primaryKey(),
@@ -14,4 +16,6 @@ export const dUserToken = pgTable("UserToken", {
   tokenHash: text("tokenHash").notNull().unique("UserToken_tokenHash_key"),
   createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
   revokedAt: timestamp("revokedAt", { mode: "date" }),
-}, table => [index("UserToken_subject_idx").on(table.subject)]);
+}, table => [
+  index("UserToken_subject_idx").on(table.subject),
+]);

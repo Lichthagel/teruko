@@ -18,7 +18,9 @@ const CopyableSecret: FunctionComponent<CopyableSecretProps> = ({ value, label =
       setCopied(true);
       setError("");
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : String(cause));
+      setError(cause instanceof Error
+        ? cause.message
+        : String(cause));
     }
   };
 
@@ -33,7 +35,9 @@ const CopyableSecret: FunctionComponent<CopyableSecretProps> = ({ value, label =
       <div className={styles.secretField}>
         <input className={styles.maskedInput} type="text" aria-label={label} value={value} readOnly />
         <button className={`${styles.buttonSecondary} ${styles.copyButton}`} type="button" aria-label={copied ? "Copied" : "Copy token"} onClick={() => void onCopy()}>
-          {copied ? <Check className={styles.copyIcon} aria-hidden="true" /> : <Copy className={styles.copyIcon} aria-hidden="true" />}
+          {copied
+            ? <Check className={styles.copyIcon} aria-hidden="true" />
+            : <Copy className={styles.copyIcon} aria-hidden="true" />}
         </button>
       </div>
       {error && <p className={styles.formError} role="alert">{error}</p>}

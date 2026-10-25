@@ -40,7 +40,9 @@ const mockOidcProvider = createServer((request, response) => {
 
     if (url.pathname === "/jwks") {
       response.writeHead(200, { "Content-Type": "application/json" });
-      response.end(JSON.stringify({ keys: [oidcPublicJwk] }));
+      response.end(JSON.stringify({
+        keys: [oidcPublicJwk],
+      }));
       return;
     }
 
@@ -95,7 +97,12 @@ const mockOidcProvider = createServer((request, response) => {
       signer.end();
       const idToken = `${unsigned}.${signer.sign(oidcPrivateKey).toString("base64url")}`;
       response.writeHead(200, { "Content-Type": "application/json", "Cache-Control": "no-store" });
-      response.end(JSON.stringify({ access_token: randomUUID(), token_type: "Bearer", expires_in: 300, id_token: idToken }));
+      response.end(JSON.stringify({
+        access_token: randomUUID(),
+        token_type: "Bearer",
+        expires_in: 300,
+        id_token: idToken,
+      }));
       return;
     }
 
@@ -146,7 +153,9 @@ const apps = [
 ] as const;
 
 const run = (args: string[]) => {
-  execFileSync(process.platform === "win32" ? "pnpm.cmd" : "pnpm", args, {
+  execFileSync(process.platform === "win32"
+    ? "pnpm.cmd"
+    : "pnpm", args, {
     cwd: workspacePath,
     shell: process.platform === "win32",
     stdio: "inherit",
@@ -176,7 +185,13 @@ const waitForServer = async (port: number, server: ReturnType<typeof spawn>) => 
 const globalSetup = async () => {
   await startMockOidcProvider();
   if (process.env.SKIP_E2E_DB_SETUP !== "1") {
-    run(["--filter", "server-db", "exec", "drizzle-kit", "migrate"]);
+    run([
+      "--filter",
+      "server-db",
+      "exec",
+      "drizzle-kit",
+      "migrate",
+    ]);
     run(["--filter", "server-db", "run", "seed"]);
   }
 
@@ -196,7 +211,9 @@ const globalSetup = async () => {
         AUTH_SESSION_SECRET: testSessionSecret,
         IMG_FOLDER: process.env.IMG_FOLDER ?? path.join(workspacePath, "data"),
         NITRO_HOST: "127.0.0.1",
-        ...(cwd === "apps/web-svelte" ? { PROTOCOL_HEADER: "x-forwarded-proto" } : {}),
+        ...(cwd === "apps/web-svelte"
+          ? { PROTOCOL_HEADER: "x-forwarded-proto" }
+          : {}),
         PORT: String(port),
       },
       stdio: ["ignore", "pipe", "pipe"],

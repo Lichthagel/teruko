@@ -51,7 +51,9 @@ const TokenSettings = () => {
       const result = await callResetToken();
       setSecret(result.token);
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : String(cause));
+      setError(cause instanceof Error
+        ? cause.message
+        : String(cause));
     } finally {
       setBusy(false);
     }
@@ -76,6 +78,10 @@ const TokenSettings = () => {
 
 export const Route = createFileRoute("/account")({
   loader: () => requireAccount(),
-  head: () => ({ meta: [{ title: "Account - てる子" }] }),
+  head: () => ({
+    meta: [
+      { title: "Account - てる子" },
+    ],
+  }),
   component: TokenSettings,
 });

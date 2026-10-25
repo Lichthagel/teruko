@@ -14,7 +14,9 @@
       copied = true;
       error = "";
     } catch (cause) {
-      error = cause instanceof Error ? cause.message : String(cause);
+      error = cause instanceof Error
+        ? cause.message
+        : String(cause);
     }
   };
 </script>
