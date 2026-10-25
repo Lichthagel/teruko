@@ -49,6 +49,11 @@ export default defineConfig({
     use: {
       ...browser.device,
       baseURL: `http://127.0.0.1:${app.port}`,
+      ...(app.name === "web-svelte"
+        ? {
+            extraHTTPHeaders: { "x-forwarded-proto": "http" },
+          }
+        : {}),
     },
   }))),
 });

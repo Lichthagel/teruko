@@ -1,8 +1,9 @@
 import type { Component } from "solid-js";
 import { getPixivMetadata } from "services/pixiv";
 import { createEffect, createMemo, createSignal, on } from "solid-js";
-import { CREATE_IMAGE, TERUKO_BASE_URL, TERUKO_BASIC_AUTH } from "../constants.js";
-import { GMfetch } from "../utils.js";
+import { CREATE_IMAGE, TERUKO_BASE_URL } from "../constants.js";
+import { clearToken, requireToken } from "../token.js";
+import { GMgraphql } from "../utils.js";
 
 type Props = {
   url: string | null;
@@ -47,8 +48,9 @@ const DownloadButton: Component<Props> = (props) => {
         type: blob.type,
       });
 
-      setText("up...");
+      const token = requireToken();
 
+      setText("up...");
       const formData = new FormData();
       formData.append("operations", JSON.stringify({
         query: CREATE_IMAGE,
@@ -63,39 +65,22 @@ const DownloadButton: Component<Props> = (props) => {
         0: ["variables.files.0"],
       }));
       formData.append("0", file);
-
-      const result = await GMfetch(`${TERUKO_BASE_URL}/graphql`, {
-        method: "POST",
-        data: formData,
-        headers: {
-          "Apollo-Require-Preflight": "true",
-          ...(TERUKO_BASIC_AUTH
-            ? { Authorization: `Basic ${TERUKO_BASIC_AUTH}` }
-            : {}),
-        },
-      })
-        .then(res => JSON.parse(res.responseText) as {
-          data: {
-            createImage: { id: string }[];
-          } | null;
-          errors?: {
-            message: string;
-          }[];
-        });
+      const { res: graphqlRes, response } = await GMgraphql<{ createImage: { id: string }[] }>(formData, token);
+      if (graphqlRes.status === 401) {
+        clearToken();
+        throw new Error("Teruko rejected your token. Click again to enter a new token.");
+      }
 
       window.removeEventListener("beforeunload", beforeUnload);
-      if (result.errors) {
+      if (response.errors?.length) {
         setSmall(true);
-        setText(result.errors?.[0]?.message ?? JSON.stringify(result));
+        setText(response.errors[0]?.message ?? JSON.stringify(response));
         // alert(`error: ${result}`);
-      } else if (result.data) {
+      } else if (response.data) {
         if (open) {
-          window.open(
-            `${TERUKO_BASE_URL}/${result.data.createImage[0]?.id as string}`,
-            "_blank",
-          );
+          window.open(`${TERUKO_BASE_URL}/${response.data.createImage[0]?.id as string}`, "_blank");
         } else {
-          setText(`id: ${result.data.createImage[0]?.id as string}`);
+          setText(`id: ${response.data.createImage[0]?.id as string}`);
         }
         // alert(`uploaded (id: ${result.data.createImage[0].id})`);
       } else {

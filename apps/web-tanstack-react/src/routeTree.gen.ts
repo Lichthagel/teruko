@@ -11,10 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as IdRouteImport } from './routes/$id'
+import { Route as AccountRouteImport } from './routes/account'
 import { Route as GraphqlRouteImport } from './routes/graphql'
 import { Route as IdAvifRouteImport } from './routes/$id/avif'
 import { Route as IdOriginalRouteImport } from './routes/$id/original'
 import { Route as IdWebpRouteImport } from './routes/$id/webp'
+import { Route as AuthCallbackRouteImport } from './routes/auth.callback'
+import { Route as AuthLoginRouteImport } from './routes/auth.login'
+import { Route as AuthLogoutRouteImport } from './routes/auth.logout'
 import { Route as ImgFilenameRouteImport } from './routes/img/$filename'
 
 const IndexRoute = IndexRouteImport.update({
@@ -25,6 +29,11 @@ const IndexRoute = IndexRouteImport.update({
 const IdRoute = IdRouteImport.update({
   id: '/$id',
   path: '/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GraphqlRoute = GraphqlRouteImport.update({
@@ -47,6 +56,21 @@ const IdWebpRoute = IdWebpRouteImport.update({
   path: '/webp',
   getParentRoute: () => IdRoute,
 } as any)
+const AuthCallbackRoute = AuthCallbackRouteImport.update({
+  id: '/auth/callback',
+  path: '/auth/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/auth/login',
+  path: '/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthLogoutRoute = AuthLogoutRouteImport.update({
+  id: '/auth/logout',
+  path: '/auth/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ImgFilenameRoute = ImgFilenameRouteImport.update({
   id: '/img/$filename',
   path: '/img/$filename',
@@ -56,29 +80,41 @@ const ImgFilenameRoute = ImgFilenameRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$id': typeof IdRouteWithChildren
+  '/account': typeof AccountRoute
   '/graphql': typeof GraphqlRoute
   '/$id/avif': typeof IdAvifRoute
   '/$id/original': typeof IdOriginalRoute
   '/$id/webp': typeof IdWebpRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/logout': typeof AuthLogoutRoute
   '/img/$filename': typeof ImgFilenameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$id': typeof IdRouteWithChildren
+  '/account': typeof AccountRoute
   '/graphql': typeof GraphqlRoute
   '/$id/avif': typeof IdAvifRoute
   '/$id/original': typeof IdOriginalRoute
   '/$id/webp': typeof IdWebpRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/logout': typeof AuthLogoutRoute
   '/img/$filename': typeof ImgFilenameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$id': typeof IdRouteWithChildren
+  '/account': typeof AccountRoute
   '/graphql': typeof GraphqlRoute
   '/$id/avif': typeof IdAvifRoute
   '/$id/original': typeof IdOriginalRoute
   '/$id/webp': typeof IdWebpRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/logout': typeof AuthLogoutRoute
   '/img/$filename': typeof ImgFilenameRoute
 }
 export interface FileRouteTypes {
@@ -86,35 +122,51 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$id'
+    | '/account'
     | '/graphql'
     | '/$id/avif'
     | '/$id/original'
     | '/$id/webp'
+    | '/auth/callback'
+    | '/auth/login'
+    | '/auth/logout'
     | '/img/$filename'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/$id'
+    | '/account'
     | '/graphql'
     | '/$id/avif'
     | '/$id/original'
     | '/$id/webp'
+    | '/auth/callback'
+    | '/auth/login'
+    | '/auth/logout'
     | '/img/$filename'
   id:
     | '__root__'
     | '/'
     | '/$id'
+    | '/account'
     | '/graphql'
     | '/$id/avif'
     | '/$id/original'
     | '/$id/webp'
+    | '/auth/callback'
+    | '/auth/login'
+    | '/auth/logout'
     | '/img/$filename'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   IdRoute: typeof IdRouteWithChildren
+  AccountRoute: typeof AccountRoute
   GraphqlRoute: typeof GraphqlRoute
+  AuthCallbackRoute: typeof AuthCallbackRoute
+  AuthLoginRoute: typeof AuthLoginRoute
+  AuthLogoutRoute: typeof AuthLogoutRoute
   ImgFilenameRoute: typeof ImgFilenameRoute
 }
 
@@ -132,6 +184,13 @@ declare module '@tanstack/react-router' {
       path: '/$id'
       fullPath: '/$id'
       preLoaderRoute: typeof IdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/graphql': {
@@ -162,6 +221,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IdWebpRouteImport
       parentRoute: typeof IdRoute
     }
+    '/auth/callback': {
+      id: '/auth/callback'
+      path: '/auth/callback'
+      fullPath: '/auth/callback'
+      preLoaderRoute: typeof AuthCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/login': {
+      id: '/auth/login'
+      path: '/auth/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/logout': {
+      id: '/auth/logout'
+      path: '/auth/logout'
+      fullPath: '/auth/logout'
+      preLoaderRoute: typeof AuthLogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/img/$filename': {
       id: '/img/$filename'
       path: '/img/$filename'
@@ -189,7 +269,11 @@ const IdRouteWithChildren = IdRoute._addFileChildren(IdRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   IdRoute: IdRouteWithChildren,
+  AccountRoute: AccountRoute,
   GraphqlRoute: GraphqlRoute,
+  AuthCallbackRoute: AuthCallbackRoute,
+  AuthLoginRoute: AuthLoginRoute,
+  AuthLogoutRoute: AuthLogoutRoute,
   ImgFilenameRoute: ImgFilenameRoute,
 }
 export const routeTree = rootRouteImport
@@ -197,10 +281,11 @@ export const routeTree = rootRouteImport
   ._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
+import type { startInstance } from './start.ts'
 declare module '@tanstack/react-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
   }
 }

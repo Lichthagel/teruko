@@ -10,6 +10,7 @@ const config = defineConfig({
     tanstackStart(),
     nitro({
       plugins: ["server/plugins/database.ts"],
+      inlineDynamicImports: true,
       rolldownConfig: {
         treeshake: {
           moduleSideEffects: true,
