@@ -26,14 +26,54 @@ const seed = async () => {
   console.log("Seeding Tag...");
 
   await db.insert(dTag).overridingSystemValue().values([
-    { id: 1, slug: "landscape", categorySlug: "general", approved: true },
-    { id: 2, slug: "portrait", categorySlug: "general", approved: true },
-    { id: 3, slug: "anime", categorySlug: "series", approved: true },
-    { id: 4, slug: "nature", categorySlug: "general", approved: true },
-    { id: 5, slug: "cityscape", categorySlug: "general", approved: true },
-    { id: 6, slug: "abstract", categorySlug: "general", approved: true },
-    { id: 7, slug: "rei-ayanami", categorySlug: "artist", approved: true },
-    { id: 8, slug: "sunset", categorySlug: "general", approved: false },
+    {
+      id: 1,
+      slug: "landscape",
+      categorySlug: "general",
+      approved: true,
+    },
+    {
+      id: 2,
+      slug: "portrait",
+      categorySlug: "general",
+      approved: true,
+    },
+    {
+      id: 3,
+      slug: "anime",
+      categorySlug: "series",
+      approved: true,
+    },
+    {
+      id: 4,
+      slug: "nature",
+      categorySlug: "general",
+      approved: true,
+    },
+    {
+      id: 5,
+      slug: "cityscape",
+      categorySlug: "general",
+      approved: true,
+    },
+    {
+      id: 6,
+      slug: "abstract",
+      categorySlug: "general",
+      approved: true,
+    },
+    {
+      id: 7,
+      slug: "rei-ayanami",
+      categorySlug: "artist",
+      approved: true,
+    },
+    {
+      id: 8,
+      slug: "sunset",
+      categorySlug: "general",
+      approved: false,
+    },
   ]).onConflictDoNothing();
 
   console.log("Seeding Image...");
@@ -42,7 +82,9 @@ const seed = async () => {
     id: i + 1,
     filename: `img_${String(i + 1).padStart(3, "0")}.jpg`,
     title: `Sample Image ${i + 1}`,
-    source: i % 4 === 0 ? `https://example.com/image/${i + 1}` : null,
+    source: i % 4 === 0
+      ? `https://example.com/image/${i + 1}`
+      : null,
     width: dimensions[i % dimensions.length].w,
     height: dimensions[i % dimensions.length].h,
   }));

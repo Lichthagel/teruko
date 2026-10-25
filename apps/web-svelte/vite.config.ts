@@ -14,10 +14,14 @@ export default defineConfig({
       // If your environment is not supported or you settled on a specific environment, switch out the adapter.
       // See https://kit.svelte.dev/docs/adapters for more information about adapters.
       adapter: adapter(),
-      csrf: { trustedOrigins: ["*"] },
+      csrf: {
+        trustedOrigins: ["*"],
+      },
     }),
   ],
-  optimizeDeps: { exclude: ["@urql/svelte"] },
+  optimizeDeps: {
+    exclude: ["@urql/svelte"],
+  },
   css: { postcss: "client-css/postcss" },
   server: { host: "0.0.0.0" },
 });

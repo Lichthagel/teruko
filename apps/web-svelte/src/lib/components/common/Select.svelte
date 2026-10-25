@@ -17,8 +17,14 @@
   {/if}
 
   <select bind:value={value}>
-    {#each options as option (typeof option === "string" ? option : option.value)}
-      <option value={typeof option === "string" ? option : option.value}>{typeof option === "string" ? option : option.label}</option>
+    {#each options as option (typeof option === "string"
+      ? option
+      : option.value)}
+      <option value={typeof option === "string"
+        ? option
+        : option.value}>{typeof option === "string"
+        ? option
+        : option.label}</option>
     {/each}
   </select>
 </div>

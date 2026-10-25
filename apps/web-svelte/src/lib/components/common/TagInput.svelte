@@ -106,7 +106,9 @@
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
         <li
-          class={index === activeSuggestion ? styles.active : undefined}
+          class={index === activeSuggestion
+            ? styles.active
+            : undefined}
           onclick={() => handleSubmit()}
           onmouseenter={() => (activeSuggestion = index)}
           style:background-color={(index === activeSuggestion && suggestion.category && suggestion.category.color) || undefined}

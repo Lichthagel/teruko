@@ -22,7 +22,10 @@ const config: NuxtConfig = defineNuxtConfig({
   postcss: {
     plugins: postcssConfig.plugins,
   },
-  components: ["~/components", { path: "~/components/Filters", prefix: "Filters" }],
+  components: [
+    "~/components",
+    { path: "~/components/Filters", prefix: "Filters" },
+  ],
   ssr: false,
   telemetry: false,
 });

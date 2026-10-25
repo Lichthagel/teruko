@@ -59,7 +59,12 @@ const TagInput: FunctionComponent<{
       setTagInput("");
     }
     setActiveSuggestion(0);
-  }, [activeSuggestion, clearOnSubmit, onSubmit, suggestions]);
+  }, [
+    activeSuggestion,
+    clearOnSubmit,
+    onSubmit,
+    suggestions,
+  ]);
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = useCallback((e) => {
     switch (e.key) {
@@ -138,7 +143,9 @@ const TagInput: FunctionComponent<{
               return (
                 <li
                   key={suggestion.slug}
-                  className={index === activeSuggestion ? styles.active : undefined}
+                  className={index === activeSuggestion
+                    ? styles.active
+                    : undefined}
                   onClick={() => handleSubmit()}
                   onMouseEnter={() => setActiveSuggestion(index)}
                   style={{

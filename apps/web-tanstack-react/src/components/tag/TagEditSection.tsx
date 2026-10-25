@@ -40,7 +40,13 @@ const TagEditSection: FunctionComponent<TagEditSectionProps> = ({ slug, afterUpd
       category: categoryInputValue,
       approved: approvedInputValue,
     });
-  }, [approvedInputValue, categoryInputValue, slug, slugInputValue, updateTag_]);
+  }, [
+    approvedInputValue,
+    categoryInputValue,
+    slug,
+    slugInputValue,
+    updateTag_,
+  ]);
 
   useEffect(() => {
     if (afterUpdate && resultUpdateTag.data?.updateTag) {

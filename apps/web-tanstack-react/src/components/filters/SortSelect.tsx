@@ -7,7 +7,11 @@ export const SortSelect = () => {
 
   return (
     <Select
-      options={[{ value: "NEWEST", label: "newest" }, { value: "OLDEST", label: "oldest" }, { value: "RANDOM", label: "random" }]}
+      options={[
+        { value: "NEWEST", label: "newest" },
+        { value: "OLDEST", label: "oldest" },
+        { value: "RANDOM", label: "random" },
+      ]}
       icon={ArrowDownNarrowWide}
       value={sort}
       setValue={v => setSort(v as typeof sort)}

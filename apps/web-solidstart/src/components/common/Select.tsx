@@ -25,8 +25,13 @@ const Select: Component<{
       <select value={props.value} onInput={handleInput}>
         <For each={props.options}>
           {option => (
-            <option value={typeof option === "string" ? option : option.value}>
-              {typeof option === "string" ? option : option.label}
+            <option value={typeof option === "string"
+              ? option
+              : option.value}
+            >
+              {typeof option === "string"
+                ? option
+                : option.label}
             </option>
           )}
         </For>

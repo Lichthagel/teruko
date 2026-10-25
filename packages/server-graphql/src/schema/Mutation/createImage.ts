@@ -48,7 +48,9 @@ builder.mutationField("createImage", t =>
               }
             } catch {
               imageMeta = mergeImageMeta(imageMeta, {
-                tags: [{ slug: "pixiv meta fetch failed" }],
+                tags: [
+                  { slug: "pixiv meta fetch failed" },
+                ],
               });
             }
           }

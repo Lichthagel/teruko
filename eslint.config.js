@@ -30,7 +30,11 @@ export default antfu({
     "func-style": ["error", "expression"],
     "ts/strict-boolean-expressions": "off",
     "ts/consistent-type-definitions": ["error", "type"],
-    "style/brace-style": ["error", "1tbs", { allowSingleLine: true }],
+    "style/brace-style": [
+      "error",
+      "1tbs",
+      { allowSingleLine: true },
+    ],
   },
   typescript: {
     ignoresTypeAware: ["**/*.config.js", "**/*.config.cjs", "**/*.config.ts"],

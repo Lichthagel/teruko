@@ -15,7 +15,9 @@
   const result = queryStore({
     client: getContextClient(),
     query: Image,
-    variables: { id: Number.parseInt(id!) },
+    variables: {
+      id: Number.parseInt(id!),
+    },
     pause: !id,
   });
 
@@ -31,7 +33,9 @@
 </script>
 
 <svelte:head>
-  <title>{image && image.title ? `${image.title} - ` : ""}てる子</title>
+  <title>{image && image.title
+    ? `${image.title} - `
+    : ""}てる子</title>
 </svelte:head>
 
 {#if image}

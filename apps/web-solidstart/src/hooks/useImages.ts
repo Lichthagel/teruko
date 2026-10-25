@@ -15,10 +15,18 @@ const getRequest = (
     Images,
     {
       tags,
-      after: sort === "NEWEST" || sort === "RANDOM" ? cursor : null,
-      before: sort === "OLDEST" ? cursor : null,
-      first: sort === "NEWEST" || sort === "RANDOM" ? 20 : null,
-      last: sort === "OLDEST" ? 20 : null,
+      after: sort === "NEWEST" || sort === "RANDOM"
+        ? cursor
+        : null,
+      before: sort === "OLDEST"
+        ? cursor
+        : null,
+      first: sort === "NEWEST" || sort === "RANDOM"
+        ? 20
+        : null,
+      last: sort === "OLDEST"
+        ? 20
+        : null,
       random: sort === "RANDOM",
     },
   );
@@ -59,7 +67,10 @@ export const useImages = (tags: Accessor<readonly string[]>, sort: Accessor<Imag
               const previousKept = prevEdges.slice(0, idx + 1);
               const filteredNewEdges = newEdges.filter(edge => !previousKept.some(prev => prev.node.id === edge.node.id));
 
-              return [...previousKept, ...filteredNewEdges];
+              return [
+                ...previousKept,
+                ...filteredNewEdges,
+              ];
             } else {
               return newEdges;
             }
@@ -70,7 +81,10 @@ export const useImages = (tags: Accessor<readonly string[]>, sort: Accessor<Imag
 
             return idx === -1
               ? newEdges
-              : [...newEdges, ...prevEdges.slice(idx + 1)];
+              : [
+                  ...newEdges,
+                  ...prevEdges.slice(idx + 1),
+                ];
           }
         }
 

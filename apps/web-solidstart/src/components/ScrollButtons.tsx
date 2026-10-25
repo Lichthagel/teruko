@@ -22,13 +22,17 @@ const ScrollButtons = () => {
   return (
     <div class={styles.buttons}>
       <button
-        class={showToTop() ? undefined : styles.hidden}
+        class={showToTop()
+          ? undefined
+          : styles.hidden}
         onClick={() => window.scrollTo({ behavior: "smooth", top: 0 })}
       >
         <ChevronUp />
       </button>
       <button
-        class={showToBottom() ? undefined : styles.hidden}
+        class={showToBottom()
+          ? undefined
+          : styles.hidden}
         onClick={() => {
           window.scrollTo({
             behavior: "smooth",

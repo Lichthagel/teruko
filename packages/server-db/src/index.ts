@@ -15,7 +15,10 @@ const pool = new Pool({
 
 const findMigrationsFolder = () => {
   const moduleDirectory = dirname(fileURLToPath(import.meta.url));
-  const roots = [process.cwd(), moduleDirectory];
+  const roots = [
+    process.cwd(),
+    moduleDirectory,
+  ];
   const candidates = [process.env.DRIZZLE_MIGRATIONS_FOLDER];
 
   for (const root of roots) {

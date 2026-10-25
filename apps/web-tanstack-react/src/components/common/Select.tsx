@@ -21,7 +21,18 @@ const Select: FunctionComponent<{
 
       <select value={value} onInput={handleInput}>
         {options.map(option => (
-          <option key={(typeof option === "string" ? option : option.value)} value={typeof option === "string" ? option : option.value}>{typeof option === "string" ? option : option.label}</option>
+          <option
+            key={(typeof option === "string"
+              ? option
+              : option.value)}
+            value={typeof option === "string"
+              ? option
+              : option.value}
+          >
+            {typeof option === "string"
+              ? option
+              : option.label}
+          </option>
         ))}
       </select>
     </div>

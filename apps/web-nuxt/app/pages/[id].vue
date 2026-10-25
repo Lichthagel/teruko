@@ -22,7 +22,9 @@ const {
   error,
 } = result;
 
-const fileExt = computed<string | null>(() => data.value?.image?.filename ? (data.value.image.filename.split(".").pop() ?? null) : null);
+const fileExt = computed<string | null>(() => data.value?.image?.filename
+  ? (data.value.image.filename.split(".").pop() ?? null)
+  : null);
 
 const scroll = (payload: Event) => {
   (payload.target as HTMLElement).scrollIntoView({
@@ -34,7 +36,9 @@ const scroll = (payload: Event) => {
 useHead({
   title: computed(
     () =>
-      `${data.value?.image?.title ? `${data.value.image.title} - ` : ""}てる子`,
+      `${data.value?.image?.title
+        ? `${data.value.image.title} - `
+        : ""}てる子`,
   ),
 });
 </script>
