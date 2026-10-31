@@ -9,8 +9,8 @@ WORKDIR /app
 # Copy workspace configuration and lockfile (leveraging Docker cache layers)
 COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.eslint.json .npmrc ./
 
-# Enable corepack for pnpm
-RUN corepack enable && corepack install
+# Install the pnpm version declared by the workspace.
+RUN npm install --global "pnpm@$(node -p 'require("./package.json").packageManager.split("@")[1].split("+")[0]')"
 
 # Install dependencies with frozen lockfile
 RUN pnpm fetch
