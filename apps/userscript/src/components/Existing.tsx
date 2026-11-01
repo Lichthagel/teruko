@@ -1,32 +1,30 @@
 import type { Component } from "solid-js";
 import { createEffect, createResource, Match, onCleanup, Switch } from "solid-js";
-import { IMAGE_BY_FILENAME, TERUKO_BASE_URL, TERUKO_BASIC_AUTH } from "../constants";
-import { GMfetch } from "../utils";
+import { IMAGE_BY_FILENAME, TERUKO_BASE_URL } from "../constants";
+import { clearToken, getToken } from "../token.js";
+import { GMgraphql } from "../utils.js";
 
 const Existing: Component<{ filename: string }> = (props) => {
   const [existingId, { refetch }] = createResource(
     () => props.filename,
     async (filename) => {
-      const res = await GMfetch(`${TERUKO_BASE_URL}/graphql`, {
-        method: "POST",
-        data: JSON.stringify(
-          {
-            query: IMAGE_BY_FILENAME,
-            variables: { filename },
-          },
-        ),
-        headers: {
-          "Content-Type": "application/json",
-          "Apollo-Require-Preflight": "true",
-          ...(TERUKO_BASIC_AUTH
-            ? { Authorization: `Basic ${TERUKO_BASIC_AUTH}` }
-            : {}),
-        },
-      });
+      const token = getToken();
+      if (!token)
+        return undefined;
+      const { res, response } = await GMgraphql<{ imageByFilename: { id: string } | null }>(
+        JSON.stringify({
+          query: IMAGE_BY_FILENAME,
+          variables: { filename },
+        }),
+        token,
+      );
 
-      const json = JSON.parse(res.responseText);
+      if (res.status === 401) {
+        clearToken();
+        return undefined;
+      }
 
-      return (json.data.imageByFilename as { id: string } | null)?.id;
+      return response.data?.imageByFilename?.id;
     },
   );
 

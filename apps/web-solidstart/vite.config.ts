@@ -4,7 +4,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [
-    solidStart(),
+    solidStart({ middleware: "src/middleware.ts" }),
   ],
   server: {
     host: "0.0.0.0",

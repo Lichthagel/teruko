@@ -1,5 +1,12 @@
-import { getYoga } from "server-graphql";
+import { getYoga, protectGraphqlRequest } from "server-graphql";
 
-const yogaApp = getYoga({ Response });
+const yoga = getYoga({ Response });
+const yogaApp = async ({ request }: { request: Request }) => {
+  if (request.method === "OPTIONS") {
+    return yoga(request);
+  }
+  const protectedResponse = await protectGraphqlRequest(request);
+  return protectedResponse ?? yoga(request);
+};
 
 export { yogaApp as GET, yogaApp as OPTIONS, yogaApp as POST };
