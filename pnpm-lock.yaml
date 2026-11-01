@@ -382,7 +382,7 @@ catalogs:
       version: 4.7.7
     tslib:
       specifier: ^2.8.1
-      version: 2.8.1
+      version: 2.9.1
     typescript:
       specifier: npm:@typescript/typescript6@^6.0.2
       version: 6.0.2
@@ -616,7 +616,7 @@ importers:
         version: 0.35.5(@types/node@26.6.6)
       tslib:
         specifier: 'catalog:'
-        version: 2.8.1
+        version: 2.9.1
     devDependencies:
       '@lucide/svelte':
         specifier: 'catalog:'
@@ -7998,6 +7998,9 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
+  tslib@2.9.1:
+    resolution: {integrity: sha512-a4Ux9VKuIMHsOS7ENbEq6hK2ZGYIT27Rtl0E4eD9KqwxhKiQeMZE/9xb3IdYwWaSOyIBQLExhQgXDTYoiCxnWA==}
+
   tsx@4.23.15:
     resolution: {integrity: sha512-Yiex1Ovn8z2xPpOWckIiysV1SSyRMY9BkLF++q0yKiDxCqRhosKfMg3janKkiLBwZ5c/YryloKwGZcrEmtwxKw==}
     engines: {node: '>=18.0.0'}
@@ -9261,35 +9264,35 @@ snapshots:
   '@emnapi/core@1.11.2':
     dependencies:
       '@emnapi/wasi-threads': 1.2.2
-      tslib: 2.8.1
+      tslib: 2.9.1
     optional: true
 
   '@emnapi/core@1.4.5':
     dependencies:
       '@emnapi/wasi-threads': 1.0.4
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@emnapi/runtime@1.11.2':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
     optional: true
 
   '@emnapi/runtime@1.11.3':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
     optional: true
 
   '@emnapi/runtime@1.4.5':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@emnapi/wasi-threads@1.0.4':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@emnapi/wasi-threads@1.2.2':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
     optional: true
 
   '@envelop/core@6.0.0':
@@ -9297,7 +9300,7 @@ snapshots:
       '@envelop/instrumentation': 2.0.0
       '@envelop/types': 6.0.0
       '@whatwg-node/promise-helpers': 2.0.0
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@envelop/graphql-jit@12.0.0(@envelop/core@6.0.0)(@graphql-hive/logger@1.1.1)(graphql@17.0.2)':
     dependencies:
@@ -9306,22 +9309,22 @@ snapshots:
       '@whatwg-node/promise-helpers': 2.0.0
       graphql: 17.0.2
       graphql-jit: 0.9.3(graphql@17.0.2)
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@envelop/instrumentation@1.0.1':
     dependencies:
       '@whatwg-node/promise-helpers': 1.3.2
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@envelop/instrumentation@2.0.0':
     dependencies:
       '@whatwg-node/promise-helpers': 2.0.0
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@envelop/types@6.0.0':
     dependencies:
       '@whatwg-node/promise-helpers': 2.0.0
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@es-joy/escodegen@4.2.0':
     dependencies:
@@ -9705,27 +9708,27 @@ snapshots:
       '@whatwg-node/disposablestack': 0.1.0
       '@whatwg-node/promise-helpers': 2.0.0
       graphql: 17.0.2
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@graphql-tools/merge@10.0.6(graphql@17.0.2)':
     dependencies:
       '@graphql-tools/utils': 13.1.3(graphql@17.0.2)
       graphql: 17.0.2
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@graphql-tools/schema@11.0.6(graphql@17.0.2)':
     dependencies:
       '@graphql-tools/merge': 10.0.6(graphql@17.0.2)
       '@graphql-tools/utils': 13.1.3(graphql@17.0.2)
       graphql: 17.0.2
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@graphql-tools/utils@13.1.3(graphql@17.0.2)':
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@17.0.2)
       '@whatwg-node/promise-helpers': 2.0.0
       graphql: 17.0.2
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@graphql-typed-document-node/core@3.2.0(graphql@17.0.2)':
     dependencies:
@@ -9742,12 +9745,12 @@ snapshots:
       '@graphql-yoga/typed-event-target': 4.0.0
       '@repeaterjs/repeater': 3.1.0
       '@whatwg-node/events': 0.1.2
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@graphql-yoga/typed-event-target@4.0.0':
     dependencies:
       '@repeaterjs/repeater': 3.1.0
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@humanfs/core@0.19.2':
     dependencies:
@@ -11562,12 +11565,12 @@ snapshots:
 
   '@tybys/wasm-util@0.10.4':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
     optional: true
 
   '@tybys/wasm-util@0.9.0':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@types/babel__core@7.20.5':
     dependencies:
@@ -12258,11 +12261,11 @@ snapshots:
   '@whatwg-node/disposablestack@0.1.0':
     dependencies:
       '@whatwg-node/promise-helpers': 2.0.0
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@whatwg-node/events@0.1.2':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@whatwg-node/fetch@0.12.1':
     dependencies:
@@ -12274,15 +12277,15 @@ snapshots:
       '@fastify/busboy': 3.2.4
       '@whatwg-node/disposablestack': 0.1.0
       '@whatwg-node/promise-helpers': 2.0.0
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@whatwg-node/promise-helpers@1.3.2':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@whatwg-node/promise-helpers@2.0.0':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@whatwg-node/server@0.13.1':
     dependencies:
@@ -12290,7 +12293,7 @@ snapshots:
       '@whatwg-node/disposablestack': 0.1.0
       '@whatwg-node/fetch': 0.12.1
       '@whatwg-node/promise-helpers': 2.0.0
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@yarnpkg/lockfile@1.1.0': {}
 
@@ -13755,7 +13758,7 @@ snapshots:
       '@whatwg-node/server': 0.13.1
       graphql: 17.0.2
       lru-cache: 10.4.3
-      tslib: 2.8.1
+      tslib: 2.9.1
     transitivePeerDependencies:
       - '@logtape/logtape'
       - pino
@@ -15774,7 +15777,7 @@ snapshots:
 
   rxjs@7.8.2:
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   sade@1.8.1:
     dependencies:
@@ -16479,6 +16482,8 @@ snapshots:
       strip-bom: 3.0.0
 
   tslib@2.8.1: {}
+
+  tslib@2.9.1: {}
 
   tsx@4.23.15:
     dependencies:
