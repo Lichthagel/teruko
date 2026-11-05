@@ -797,13 +797,13 @@ importers:
       '@urql/exchange-graphcache':
         specifier: 'catalog:'
         version: 9.0.2(@urql/core@6.0.3(graphql@17.0.2))(graphql@17.0.2)
+      models:
+        specifier: workspace:^
+        version: link:../models
     devDependencies:
       '@typescript/native':
         specifier: 'catalog:'
         version: typescript@7.0.2
-      models:
-        specifier: workspace:*
-        version: link:../models
       tsconfig:
         specifier: workspace:^
         version: link:../tsconfig

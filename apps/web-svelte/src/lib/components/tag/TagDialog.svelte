@@ -3,6 +3,7 @@
   import { filters } from "#lib/filters.svelte.js";
   import Dialog from "../common/Dialog.svelte";
   import TagEditSection from "./TagEditSection.svelte";
+  import TagRuleSection from "./TagRuleSection.svelte";
 
   let { open = $bindable(false), slug }: { open?: boolean; slug: string } = $props();
 
@@ -18,5 +19,7 @@
 </script>
 
 <Dialog bind:open={open} class={styles["tag-dialog"]}>
-  <TagEditSection {slug} afterUpdate={afterUpdate} />
+  <TagEditSection {slug} {afterUpdate} />
+
+  <TagRuleSection {slug} />
 </Dialog>
