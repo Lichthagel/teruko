@@ -3,7 +3,6 @@ import { useGraphQlJit } from "@envelop/graphql-jit";
 import { useAPQ } from "@graphql-yoga/plugin-apq";
 import {
   createYoga,
-
 } from "graphql-yoga";
 
 import schema from "./schema/index.js";
