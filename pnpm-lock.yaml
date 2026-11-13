@@ -172,7 +172,7 @@ catalogs:
       version: 1.8.0
     '@envelop/graphql-jit':
       specifier: ^12.0.0
-      version: 12.0.0
+      version: 12.0.1
     '@eslint-react/eslint-plugin':
       specifier: ^5.0.0
       version: 5.30.2
@@ -875,7 +875,7 @@ importers:
     dependencies:
       '@envelop/graphql-jit':
         specifier: 'catalog:'
-        version: 12.0.0(@envelop/core@6.0.0)(@graphql-hive/logger@1.1.1)(graphql@17.1.0)
+        version: 12.0.1(@envelop/core@6.0.1)(@graphql-hive/logger@1.1.1)(graphql@17.1.0)
       '@graphql-yoga/plugin-apq':
         specifier: 'catalog:'
         version: 4.0.1(graphql-yoga@6.0.1(graphql@17.1.0))(graphql@17.1.0)
@@ -1468,11 +1468,15 @@ packages:
     resolution: {integrity: sha512-r/FPut3JaDJnH64Hn6umeqxlZNMJsFf2IJmZzmv6F1m+Mxfez1zKmKIOOFFO4DRc6ghqqzZMvIH9r2/LVLWxuw==}
     engines: {node: '>=22.15.0'}
 
-  '@envelop/graphql-jit@12.0.0':
-    resolution: {integrity: sha512-X3Fm9tPXNWXexmmeidOwXWi+Q+zU8Z+DXvLm+OmRh7+wKLZ6FbbYeHUMF1vZBtIr6nFoiyZRdSGSTlFpjPO6EQ==}
+  '@envelop/core@6.0.1':
+    resolution: {integrity: sha512-wFH1atHzCeK+iFOpWOdbpybDh9SIujMsLMDxH4WvVGa/SIMZ4ktLxH4/7Zqr9d4pT7O1r6eDQd3j981OfusZtQ==}
+    engines: {node: '>=22.15.0'}
+
+  '@envelop/graphql-jit@12.0.1':
+    resolution: {integrity: sha512-/Imi5jKA8gyYItpJVQc0u6/Q5cKY9I9Ot08GEWGs/lVxJeT7pWdF7tJM25Ao190JP9bkDQVZ7WpFNsHn1TDoZg==}
     engines: {node: '>=22.15.0'}
     peerDependencies:
-      '@envelop/core': ^6.0.0
+      '@envelop/core': ^6.0.1
       '@graphql-hive/logger': ^1.1.1
       graphql: ^16.0.0 || ^17.0.0
 
@@ -1480,8 +1484,16 @@ packages:
     resolution: {integrity: sha512-nXW9DAHfJ7Fh5nTnvr0uDUvCvMw017Agvk3MiE58u8Eby6mTwuiCFp16as2sPVODLLeCBs6rmKs0F1tkpbAXYQ==}
     engines: {node: '>=22.15.0'}
 
+  '@envelop/instrumentation@2.0.1':
+    resolution: {integrity: sha512-BnHXPcYTGl6bskFwaeOwt7G2KwHhATOMfc2ojMno7QMFKBSxkmPs6o092LDJ+PTNHk7wv4pTIWhP4LsJkvHIew==}
+    engines: {node: '>=22.15.0'}
+
   '@envelop/types@6.0.0':
     resolution: {integrity: sha512-og5ZFJtIvmQwa0Yb/5JarUT4XnpxxcPTpPi+5+cYnJaLT4qYvCVxNIkW+r6/JpTcbG++DuCQHSvt9fsTDRNNOA==}
+    engines: {node: '>=22.15.0'}
+
+  '@envelop/types@6.0.1':
+    resolution: {integrity: sha512-3XOc8X4FRZdKFMmSVDlHJSBIK4jKtzBpnnoKwI7Qoq1k8aqpYHJg2IXnNKpdOubB9xKsWZvIlqSCOWtAg4td+A==}
     engines: {node: '>=22.15.0'}
 
   '@es-joy/escodegen@5.0.1':
@@ -4473,6 +4485,10 @@ packages:
 
   '@whatwg-node/promise-helpers@2.0.1':
     resolution: {integrity: sha512-ziVgm01A9irPLVBaUFei64qp771BrDXldbv5pY6kgFgNtA+7zq8ux6nj/6w8bELGH/+Ttnc76ox04HIjU8nqvg==}
+    engines: {node: '>=22.15.0'}
+
+  '@whatwg-node/promise-helpers@2.0.2':
+    resolution: {integrity: sha512-RKVGTBAuYfObHxUFjlTFmlDndmuXBxkN56yj3z6EQpNpT55R/xaMhTi4+9yXZ5UoDXbKLAsZHCP8ycoWHM/Vdg==}
     engines: {node: '>=22.15.0'}
 
   '@whatwg-node/server@0.13.2':
@@ -9239,11 +9255,18 @@ snapshots:
       '@whatwg-node/promise-helpers': 2.0.1
       tslib: 2.9.1
 
-  '@envelop/graphql-jit@12.0.0(@envelop/core@6.0.0)(@graphql-hive/logger@1.1.1)(graphql@17.1.0)':
+  '@envelop/core@6.0.1':
     dependencies:
-      '@envelop/core': 6.0.0
+      '@envelop/instrumentation': 2.0.1
+      '@envelop/types': 6.0.1
+      '@whatwg-node/promise-helpers': 2.0.2
+      tslib: 2.9.1
+
+  '@envelop/graphql-jit@12.0.1(@envelop/core@6.0.1)(@graphql-hive/logger@1.1.1)(graphql@17.1.0)':
+    dependencies:
+      '@envelop/core': 6.0.1
       '@graphql-hive/logger': 1.1.1
-      '@whatwg-node/promise-helpers': 2.0.1
+      '@whatwg-node/promise-helpers': 2.0.2
       graphql: 17.1.0
       graphql-jit: 0.9.4(graphql@17.1.0)
       tslib: 2.9.1
@@ -9253,9 +9276,19 @@ snapshots:
       '@whatwg-node/promise-helpers': 2.0.1
       tslib: 2.9.1
 
+  '@envelop/instrumentation@2.0.1':
+    dependencies:
+      '@whatwg-node/promise-helpers': 2.0.2
+      tslib: 2.9.1
+
   '@envelop/types@6.0.0':
     dependencies:
       '@whatwg-node/promise-helpers': 2.0.1
+      tslib: 2.9.1
+
+  '@envelop/types@6.0.1':
+    dependencies:
+      '@whatwg-node/promise-helpers': 2.0.2
       tslib: 2.9.1
 
   '@es-joy/escodegen@5.0.1':
@@ -12246,6 +12279,10 @@ snapshots:
       tslib: 2.9.1
 
   '@whatwg-node/promise-helpers@2.0.1':
+    dependencies:
+      tslib: 2.9.1
+
+  '@whatwg-node/promise-helpers@2.0.2':
     dependencies:
       tslib: 2.9.1
 
