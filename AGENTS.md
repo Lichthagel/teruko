@@ -31,7 +31,7 @@ pnpm + Nx monorepo. Package manager and runtime versions are pinned in `package.
 
 ## Env / runtime prerequisites
 
-- Server packages (`server-env`, `server-db`, `server-graphql`) call `dotenv` loading `../../.env` from repo root and require **PostgreSQL**. The devcontainer (`.devcontainer/`) spins up a `postgres:latest` service (`postgres`/`postgres`/`postgres`). Without it, server-side code has no DB.
+- `server-env` reads environment variables from `process.env` and does not load `.env` files. For local development, pass an env file through Node's `--env-file` option if needed. Server packages (`server-db`, `server-graphql`) require **PostgreSQL**. The devcontainer (`.devcontainer/`) spins up a `postgres:latest` service (`postgres`/`postgres`/`postgres`). Without it, server-side code has no DB.
 - Default `DATABASE_URL`: `postgresql://postgres:postgres@localhost:5432/postgres`. `IMG_FOLDER` defaults to `./data`. `.env` is gitignored.
 - `server-db` uses Drizzle; migrations live in `packages/server-db/drizzle/` (via `drizzle.config.ts`). Use `drizzle-kit` for schema/migration changes.
 - `graphql.config.yml` points at `localhost:3000/graphql` and `localhost:5173/graphql` — run a dev server before using GraphQL tooling.
