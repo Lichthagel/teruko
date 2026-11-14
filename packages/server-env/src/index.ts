@@ -1,10 +1,5 @@
 import process from "node:process";
-import { config } from "dotenv";
 import * as v from "valibot";
-
-config({
-  path: "../../.env",
-});
 
 const Env = v.object({
   DATABASE_URL: v.optional(
