@@ -14,6 +14,10 @@
     "./snippets": {
       "types": "./dist/snippets/index.d.ts",
       "default": "./dist/snippets/index.js"
+    },
+    "./gallery": {
+      "types": "./dist/gallery.d.ts",
+      "default": "./dist/gallery.js"
     }
   },
   "scripts": {
@@ -23,6 +27,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "@tanstack/virtual-core": "catalog:",
     "@urql/core": "catalog:",
     "@urql/exchange-graphcache": "catalog:"
   },

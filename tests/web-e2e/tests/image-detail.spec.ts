@@ -20,9 +20,9 @@ test.describe("image detail", () => {
   test("filters the gallery from a tag chip", async ({ page }, testInfo) => {
     test.skip(testInfo.project.name.startsWith("web-nuxt-"), "Nuxt production SPA gallery hydration is currently unavailable");
     await page.goto("/");
-    const unfilteredCards = page.locator("a:has(img[src^='/img/'])");
-    await expect(unfilteredCards.first()).toBeVisible();
-    const unfilteredCount = await unfilteredCards.count();
+    const unfilteredGallery = page.locator("[data-gallery]");
+    await expect(unfilteredGallery.locator("[data-index]").first()).toBeVisible();
+    const unfilteredCount = Number(await unfilteredGallery.getAttribute("data-gallery-count"));
 
     await page.goto(`/${seededImage.id}`);
     await page.getByRole("button", { name: seededImage.filterTag }).evaluate((button) => {
@@ -30,9 +30,9 @@ test.describe("image detail", () => {
     });
 
     await expect(page).toHaveURL(/\/$/);
-    const filteredCards = page.locator("a:has(img[src^='/img/'])");
-    await expect(filteredCards.first()).toBeVisible();
-    expect(await filteredCards.count()).toBeGreaterThan(0);
-    expect(await filteredCards.count()).toBeLessThan(unfilteredCount);
+    const filteredGallery = page.locator("[data-gallery]");
+    await expect(filteredGallery.locator("[data-index]").first()).toBeVisible();
+    await expect.poll(async () => Number(await filteredGallery.getAttribute("data-gallery-count"))).toBeGreaterThan(0);
+    await expect.poll(async () => Number(await filteredGallery.getAttribute("data-gallery-count"))).toBeLessThan(unfilteredCount);
   });
 });
