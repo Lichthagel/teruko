@@ -5,6 +5,7 @@ import {
   createRequest,
   useClientHandle,
 } from "@urql/vue";
+import { galleryState } from "client-graphql/gallery";
 import { Images } from "client-graphql/snippets";
 
 const getRequest = (
@@ -44,10 +45,12 @@ export const useImages = (
   const stale = ref(false);
   const error = ref<CombinedError>();
 
-  const edges = ref<ImagesResult["images"]["edges"]>([]);
-  const hasNextPage = ref(true);
+  const state = galleryState(tags.value, sort.value);
+  const edges = ref<ImagesResult["images"]["edges"]>(state.edges);
+  const hasNextPage = ref(state.hasNextPage);
 
-  let filtersChanged = true;
+  let filtersChanged = state.edges.length === 0;
+  let disposed = false;
 
   const handleChange = (res: OperationResult<ImagesResult, ImagesArgs>): void => {
     if (res.data) {
@@ -102,6 +105,8 @@ export const useImages = (
         : pageInfo.hasNextPage;
     }
 
+    state.edges = edges.value;
+    state.hasNextPage = hasNextPage.value;
     fetching.value = false;
     stale.value = !!res.stale;
     error.value = res.error;
@@ -118,12 +123,16 @@ export const useImages = (
     fetching.value = true;
     error.value = undefined;
 
+    const requested = state;
     clientHandle.client
       .executeQuery(getRequest(tags.value, sort.value, cursor), {
         requestPolicy: refresh ? "network-only" : "cache-first",
       })
       .toPromise()
-      .then(handleChange)
+      .then((res) => {
+        if (!disposed && state === requested)
+          handleChange(res);
+      })
       .catch((error_: CombinedError) => {
         error.value = error_;
       });
@@ -157,17 +166,15 @@ export const useImages = (
   watch(fetching, resetTimeout);
   watch(stale, resetTimeout);
 
-  watchEffect(() => {
-    filtersChanged = true;
-    newQuery();
-
-    return () => {
-      clearTimeout(timeoutId.value);
-    };
+  onMounted(() => {
+    if (state.edges.length === 0)
+      newQuery();
+    else resetTimeout();
   });
-
-  watch(tags, () => newQuery());
-  watch(sort, () => newQuery());
+  onScopeDispose(() => {
+    disposed = true;
+    cancelTimeout();
+  });
 
   return {
     images: computed(() => edges.value.map(edge => edge.node)),

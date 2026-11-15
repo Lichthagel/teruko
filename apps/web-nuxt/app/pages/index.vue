@@ -11,6 +11,7 @@ const { tags, sort } = useFilters();
     <Filters />
 
     <Gallery
+      :key="JSON.stringify([sort, tags])"
       :sort="sort"
       :tags="tags"
     />

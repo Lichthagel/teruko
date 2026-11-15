@@ -3,8 +3,9 @@ import type { ImagesArgs, ImagesResult } from "client-graphql/snippets";
 import type { ImageSort } from "models";
 import type { Accessor } from "solid-js";
 import { createRequest, useClient } from "@urql/solid";
+import { galleryState } from "client-graphql/gallery";
 import { Images } from "client-graphql/snippets";
-import { createEffect, createMemo, createSignal, onCleanup } from "solid-js";
+import { createMemo, createSignal, onCleanup, onMount } from "solid-js";
 
 const getRequest = (
   tags: readonly string[],
@@ -37,9 +38,11 @@ export const useImages = (tags: Accessor<readonly string[]>, sort: Accessor<Imag
   const [fetching, setFetching] = createSignal(false);
   const [error, setError] = createSignal<CombinedError>();
 
-  const [edges, setEdges] = createSignal<ImagesResult["images"]["edges"]>([]);
-  const [hasNextPage, setHasNextPage] = createSignal(true);
-  let filtersChanged = true;
+  const state = galleryState(tags(), sort());
+  const [edges, setEdges] = createSignal<ImagesResult["images"]["edges"]>(state.edges);
+  const [hasNextPage, setHasNextPage] = createSignal(state.hasNextPage);
+  let filtersChanged = state.edges.length === 0;
+  let disposed = false;
 
   const images = createMemo(() => edges()?.map(edge => edge.node) ?? []);
 
@@ -94,6 +97,8 @@ export const useImages = (tags: Accessor<readonly string[]>, sort: Accessor<Imag
       setHasNextPage(result.operation.variables.last ? pageInfo.hasPreviousPage : pageInfo.hasNextPage);
     }
 
+    state.edges = edges();
+    state.hasNextPage = hasNextPage();
     setFetching(false);
     setError(result.error);
 
@@ -108,12 +113,16 @@ export const useImages = (tags: Accessor<readonly string[]>, sort: Accessor<Imag
     setFetching(true);
     setError(undefined);
 
+    const requested = state;
     client
       .executeQuery(getRequest(tags(), sort(), cursor), {
         requestPolicy: refresh ? "network-only" : "cache-first",
       })
       .toPromise()
-      .then(handleResult)
+      .then((res) => {
+        if (!disposed && state === requested)
+          handleResult(res);
+      })
       .catch(setError);
   };
 
@@ -135,17 +144,19 @@ export const useImages = (tags: Accessor<readonly string[]>, sort: Accessor<Imag
     setTimeoutId(globalThis.setTimeout(refresh, 20_000));
   };
 
-  createEffect(() => {
-    filtersChanged = true;
-    newQuery();
+  onMount(() => {
+    if (state.edges.length === 0)
+      newQuery();
+    else if (sort() === "NEWEST")
+      resetTimeout();
   });
-
   onCleanup(() => {
+    disposed = true;
     cancelTimeout();
   });
 
   const fetchMore = () => {
-    if (hasNextPage() && !error()) {
+    if (!fetching() && hasNextPage() && !error()) {
       newQuery(edges().at(-1)?.cursor, false);
     }
   };

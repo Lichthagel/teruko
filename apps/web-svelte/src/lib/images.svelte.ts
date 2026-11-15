@@ -3,7 +3,9 @@ import type { ImagesArgs, ImagesResult } from "client-graphql/snippets";
 import type { ImageSort } from "models";
 import { browser } from "$app/env";
 import { createRequest, getContextClient } from "@urql/svelte";
+import { galleryState } from "client-graphql/gallery";
 import { Images } from "client-graphql/snippets";
+import { onMount } from "svelte";
 
 const getRequest = (
   tags: readonly string[],
@@ -36,9 +38,11 @@ export const useImages = (
 ) => {
   const client = getContextClient();
 
-  let edges: ImagesResult["images"]["edges"] = $state([]);
-  let hasNextPage = $state(true);
-  let filtersChanged = true;
+  const savedState = galleryState(tags(), sort());
+  let edges: ImagesResult["images"]["edges"] = $state(savedState.edges);
+  let hasNextPage = $state(savedState.hasNextPage);
+  let filtersChanged = savedState.edges.length === 0;
+  let disposed = false;
 
   let fetching = $state(false);
   let error = $state<CombinedError>();
@@ -87,6 +91,8 @@ export const useImages = (
         : pageInfo.hasNextPage;
     }
 
+    savedState.edges = edges;
+    savedState.hasNextPage = hasNextPage;
     fetching = false;
     error = res.error;
 
@@ -100,12 +106,16 @@ export const useImages = (
   const newQuery = (cursor?: string, refresh = false) => {
     fetching = true;
 
+    const requested = savedState;
     client
       .executeQuery(getRequest(tags(), sort(), cursor), {
         requestPolicy: refresh ? "network-only" : "cache-first",
       })
       .toPromise()
-      .then(handleChange)
+      .then((res) => {
+ if (!disposed && savedState === requested)
+handleChange(res);
+})
       .catch((error) => {
         console.error(error);
       });
@@ -137,17 +147,19 @@ export const useImages = (
     timeoutId = globalThis.setTimeout(refresh, 20_000);
   };
 
-  $effect(() => {
-    filtersChanged = true;
-    newQuery();
-
+  onMount(() => {
+    if (savedState.edges.length === 0)
+newQuery();
+    else if (sort() === "NEWEST")
+resetTimeout();
     return () => {
+      disposed = true;
       cancelTimeout();
-    };
+     };
   });
 
   const fetchMore = () => {
-    if (hasNextPage && !error) {
+    if (!fetching && hasNextPage && !error) {
       newQuery(edges.at(-1)?.cursor, false);
     }
   };

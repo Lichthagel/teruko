@@ -12,7 +12,9 @@
 <div class="container">
   <Filters />
 
-  <Gallery sort={filters.sort} tags={filters.tags} />
+  {#key JSON.stringify([filters.sort, filters.tags])}
+    <Gallery sort={filters.sort} tags={filters.tags} />
+  {/key}
 </div>
 
 <ScrollButtons />
