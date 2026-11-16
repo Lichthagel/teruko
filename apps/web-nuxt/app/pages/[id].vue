@@ -5,6 +5,10 @@ import styles from "client-css/m/imagepage.module.scss";
 import { createImageNavigation } from "client-graphql/gallery";
 import { Image } from "client-graphql/snippets";
 
+definePageMeta({
+  scrollToTop: (to, from) => to.name !== from.name,
+});
+
 const route = useRoute();
 
 const { client } = useClientHandle();

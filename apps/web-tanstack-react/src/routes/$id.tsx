@@ -14,6 +14,7 @@ const ImagePage = () => {
   const client = useClient();
   const navigation = useMemo(() => createImageNavigation(client, () => Number(id), id => navigate({
     to: "/$id",
+    resetScroll: false,
     params: {
       id: String(id),
     },

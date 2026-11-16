@@ -13,7 +13,7 @@ export default () => {
   const params = useParams();
   const navigate = useNavigate();
   const client = useClient();
-  const navigation = createImageNavigation(client, () => Number(params.id), id => navigate(`/${id}`));
+  const navigation = createImageNavigation(client, () => Number(params.id), id => navigate(`/${id}`, { scroll: false }));
   const [progress, setProgress] = createSignal(navigation.getSnapshot());
   const navigationState = createMemo(() => navigation.getState(progress()));
   onMount(() => {

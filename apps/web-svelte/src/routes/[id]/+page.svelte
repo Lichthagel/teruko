@@ -16,7 +16,7 @@
   const client = getContextClient();
   const navigation = createImageNavigation(client, () => Number(page.params.id), id => goto(resolve("/[id]", {
     id: String(id),
-  })));
+  }), { reset: false }));
   let progress = $state(navigation.getSnapshot());
   const navigationState = $derived(navigation.getState(progress));
   onMount(() => {

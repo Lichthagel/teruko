@@ -170,6 +170,50 @@ test.describe("virtual gallery", () => {
     }
   }
 
+  test("detail navigation skips scroll reset but keeps smooth image-load centering", async ({ page }) => {
+    await page.setViewportSize({ width: 1000, height: 500 });
+    await page.goto("/");
+    // Isolate router scrolling from the intentional image-load centering.
+    await page.evaluate(() => {
+      const positions: number[] = [];
+      const imageLoadScrolls: (boolean | ScrollIntoViewOptions | undefined)[] = [];
+      Object.assign(window, { navigationScrollPositions: positions, imageLoadScrolls });
+      window.addEventListener("scroll", () => positions.push(window.scrollY));
+      Element.prototype.scrollIntoView = (options) => {
+        imageLoadScrolls.push(options);
+      };
+    });
+    await page.locator("[data-index='0'] a:has(img)").click();
+    const next = page.locator("button[data-direction='next']").last();
+    await expect(next).toBeEnabled();
+    await expect.poll(() => page.locator("[data-image-id] img").evaluate(image => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+    await page.evaluate(() => window.scrollTo({ top: 80, behavior: "instant" }));
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(80);
+    await page.evaluate(() => {
+      (window as unknown as { navigationScrollPositions: number[] }).navigationScrollPositions.length = 0;
+    });
+    for (const [key, id] of [
+      ["ArrowRight", "63"],
+      ["ArrowLeft", "64"],
+    ]) {
+      await page.keyboard.press(key!);
+      await expect(page.locator("[data-image-id]")).toHaveAttribute("data-image-id", id!);
+      await page.evaluate(() => new Promise<void>((resolve) => {
+        let frames = 20;
+        const settle = () => --frames
+          ? requestAnimationFrame(settle)
+          : resolve();
+        requestAnimationFrame(settle);
+      }));
+      expect(await page.evaluate(() => window.scrollY)).toBe(80);
+    }
+    const positions = await page.evaluate(() => (window as unknown as { navigationScrollPositions: number[] }).navigationScrollPositions);
+    expect(positions.every(position => Math.abs(position - 80) < 2)).toBe(true);
+    const scrolls = await page.evaluate(() => (window as unknown as { imageLoadScrolls: ScrollIntoViewOptions[] }).imageLoadScrolls);
+    expect(scrolls.length).toBeGreaterThanOrEqual(2);
+    expect(scrolls.every(options => options.behavior === "smooth" && options.block === "center")).toBe(true);
+  });
+
   test("detail navigation renders pagination errors and allows retrying", async ({ page }) => {
     await page.goto("/");
     await page.locator("[data-index='0'] a:has(img)").click();
