@@ -141,6 +141,35 @@ test.describe("virtual gallery", () => {
     await expect(page.locator("[data-gallery]")).toHaveAttribute("data-gallery-count", "64");
   });
 
+  for (const returnVia of ["home", "history"] as const) {
+    for (const mobile of [false, true]) {
+      test(`restores the browsed image via ${returnVia} on ${mobile ? "mobile" : "desktop"}`, async ({ page }) => {
+        if (mobile)
+          await page.setViewportSize({ width: 390, height: 844 });
+        await page.goto("/");
+        await page.locator("[data-index='0'] a:has(img)").click();
+        for (let id = 63; id >= 40; id--) {
+          await expect(page.locator("button[data-direction='next']").last()).toBeEnabled();
+          await page.keyboard.press("ArrowRight");
+          await expect(page.locator("h1")).toHaveText(`Sample Image ${id}`);
+        }
+        for (let id = 41; id <= 44; id++) {
+          await page.keyboard.press("ArrowLeft");
+          await expect(page.locator("h1")).toHaveText(`Sample Image ${id}`);
+        }
+        if (returnVia === "home")
+          await page.getByRole("link", { name: "てる子", exact: true }).click();
+        else
+          await page.evaluate(() => history.go(-29));
+        await expect(page).toHaveURL(/\/$/);
+        const card = page.locator("[data-index='20'] a:has(img)");
+        await expect(card).toHaveAttribute("href", "/44");
+        await expect(card).toBeInViewport();
+        await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(500);
+      });
+    }
+  }
+
   test("detail navigation renders pagination errors and allows retrying", async ({ page }) => {
     await page.goto("/");
     await page.locator("[data-index='0'] a:has(img)").click();

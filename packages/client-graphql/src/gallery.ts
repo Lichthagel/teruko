@@ -15,6 +15,7 @@ type GalleryState = {
   measurements: VirtualItem[];
   width: number;
   anchor?: { id: number; index: number; top: number };
+  returnTo?: number;
   layout?: ReturnType<typeof galleryLayout>;
 };
 
@@ -129,8 +130,16 @@ export const createImageNavigation = (
           throw new Error("No new images returned. Try again.");
       }
       const image = state.edges[target]?.node;
-      if (active() && currentId === getId() && image)
-        await navigate(Number(image.id));
+      if (active() && currentId === getId() && image) {
+        const previousReturnTo = state.returnTo;
+        state.returnTo = Number(image.id);
+        try {
+          await navigate(Number(image.id));
+        } catch (error) {
+          state.returnTo = previousReturnTo;
+          throw error;
+        }
+      }
     } catch {
       if (active())
         publish({ loading: false, error: "Unable to load the image. Please try again." });
@@ -264,11 +273,16 @@ export const watchGallery = (
   window.addEventListener("scroll", scroll, { passive: true });
   // Routers and dynamic measurements can both adjust scroll after the first paint.
   const offset = state.offset;
-  const anchor = previousWidth && previousWidth !== element.clientWidth
-    ? state.anchor
-    : undefined;
+  const returnIndex = state.returnTo === undefined
+    ? -1
+    : state.edges.findIndex(edge => Number(edge.node.id) === state.returnTo);
+  const anchor = returnIndex >= 0
+    ? { id: state.returnTo!, index: returnIndex, top: 16 }
+    : previousWidth && previousWidth !== element.clientWidth
+      ? state.anchor
+      : undefined;
   if (anchor) {
-    const index = state.edges.findIndex(edge => edge.node.id === anchor.id);
+    const index = state.edges.findIndex(edge => Number(edge.node.id) === Number(anchor.id));
     if (index >= 0)
       anchor.index = index;
   }
@@ -291,12 +305,14 @@ export const watchGallery = (
       frame = requestAnimationFrame(restore);
     } else {
       restoring = false;
+      state.returnTo = undefined;
       scroll();
     }
   };
   const interrupt = () => {
     cancelAnimationFrame(frame);
     restoring = false;
+    state.returnTo = undefined;
     scroll();
   };
   window.addEventListener("wheel", interrupt, { passive: true });
