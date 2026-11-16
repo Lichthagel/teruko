@@ -1,20 +1,35 @@
 import type { JSX } from "solid-js/h/jsx-runtime";
 import { Title } from "@solidjs/meta";
-import { useParams } from "@solidjs/router";
-import { createQuery } from "@urql/solid";
+import { useNavigate, useParams } from "@solidjs/router";
+import { createQuery, useClient } from "@urql/solid";
 import styles from "client-css/m/imagepage.module.scss";
+import { createImageNavigation } from "client-graphql/gallery";
 import { Image } from "client-graphql/snippets";
 import { Download } from "lucide-solid";
-import { createMemo, For, Match, Show, Switch } from "solid-js";
+import { createMemo, createSignal, For, Match, onCleanup, onMount, Show, Switch } from "solid-js";
 import TagChip from "~/components/TagChip";
 
 export default () => {
-  const { id } = useParams();
+  const params = useParams();
+  const navigate = useNavigate();
+  const client = useClient();
+  const navigation = createImageNavigation(client, () => Number(params.id), id => navigate(`/${id}`));
+  const [progress, setProgress] = createSignal(navigation.getSnapshot());
+  const navigationState = createMemo(() => navigation.getState(progress()));
+  onMount(() => {
+    const unsubscribe = navigation.subscribe(() => setProgress(navigation.getSnapshot()));
+    window.addEventListener("keydown", navigation.keydown);
+    onCleanup(() => {
+      window.removeEventListener("keydown", navigation.keydown);
+      unsubscribe();
+      navigation.dispose();
+    });
+  });
 
   const [result] = createQuery({
     query: Image,
     variables: {
-      id: Number.parseInt(id!),
+      get id() { return Number.parseInt(params.id!); },
     },
   });
 
@@ -37,18 +52,22 @@ export default () => {
         </Title>
       </Show>
 
+      <div class={styles.viewer} data-image-id={image()?.id} aria-busy={navigationState().loading}>
+        <button type="button" aria-label="Previous image" data-direction="previous" disabled={!navigationState().canPrevious} onClick={() => void navigation.previous()}>&lt;</button>
+        <button type="button" aria-label="Next image" data-direction="next" disabled={!navigationState().canNext} onClick={() => void navigation.next()}>
+          <Show when={image()}>
+            {image => (
+              <img alt={image().title ?? image().filename} class={styles.image} height={image().height} onLoad={scroll} src={`/img/${image().filename}`} width={image().width} />
+            )}
+          </Show>
+        </button>
+        <button type="button" aria-label="Next image" data-direction="next" disabled={!navigationState().canNext} onClick={() => void navigation.next()}>&gt;</button>
+        <span role="status">{navigationState().error}</span>
+      </div>
       <Switch>
         <Match when={image()}>
           {image => (
             <div>
-              <img
-                alt={image().title ?? image().filename}
-                class={styles.image}
-                height={image().height}
-                onLoad={scroll}
-                src={`/img/${image().filename}`}
-                width={image().width}
-              />
 
               <div class="container">
                 <div class={styles["meta-container"]}>

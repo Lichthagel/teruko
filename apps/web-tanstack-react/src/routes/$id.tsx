@@ -1,14 +1,25 @@
 import type { ReactEventHandler } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import styles from "client-css/m/imagepage.module.scss";
+import { createImageNavigation } from "client-graphql/gallery";
 import { Image } from "client-graphql/snippets";
 import { Download } from "lucide-react";
-import { useMemo } from "react";
-import { useQuery } from "urql";
+import { useEffect, useMemo, useSyncExternalStore } from "react";
+import { useClient, useQuery } from "urql";
 import TagChip from "#/components/TagChip";
 
 const ImagePage = () => {
   const { id } = Route.useParams();
+  const navigate = Route.useNavigate();
+  const client = useClient();
+  const navigation = useMemo(() => createImageNavigation(client, () => Number(id), id => navigate({
+    to: "/$id",
+    params: {
+      id: String(id),
+    },
+  })), [client, id, navigate]);
+  const progress = useSyncExternalStore(navigation.subscribe, navigation.getSnapshot, navigation.getSnapshot);
+  const navigationState = navigation.getState(progress);
 
   const [result] = useQuery({
     query: Image,
@@ -19,6 +30,13 @@ const ImagePage = () => {
 
   const image = useMemo(() => result.data?.image, [result.data?.image]);
   const fileExt = useMemo(() => image?.filename.split(".").pop(), [image?.filename]);
+  useEffect(() => {
+    window.addEventListener("keydown", navigation.keydown);
+    return () => {
+      window.removeEventListener("keydown", navigation.keydown);
+      navigation.dispose();
+    };
+  }, [navigation]);
 
   const scroll: ReactEventHandler<HTMLImageElement> = (e) => {
     (e.target as HTMLElement).scrollIntoView({
@@ -33,14 +51,21 @@ const ImagePage = () => {
 
   return (
     <div>
-      <img
-        alt={image.title ?? image.filename}
-        className={styles.image}
-        height={image.height}
-        onLoad={scroll}
-        src={`/img/${image.filename}`}
-        width={image.width}
-      />
+      <div className={styles.viewer} data-image-id={image.id} aria-busy={navigationState.loading}>
+        <button type="button" aria-label="Previous image" data-direction="previous" disabled={!navigationState.canPrevious} onClick={() => void navigation.previous()}>&lt;</button>
+        <button type="button" aria-label="Next image" data-direction="next" disabled={!navigationState.canNext} onClick={() => void navigation.next()}>
+          <img
+            alt={image.title ?? image.filename}
+            className={styles.image}
+            height={image.height}
+            onLoad={scroll}
+            src={`/img/${image.filename}`}
+            width={image.width}
+          />
+        </button>
+        <button type="button" aria-label="Next image" data-direction="next" disabled={!navigationState.canNext} onClick={() => void navigation.next()}>&gt;</button>
+        <span role="status">{navigationState.error}</span>
+      </div>
 
       <div className="container">
         <div className={styles["meta-container"]}>

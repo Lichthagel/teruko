@@ -32,13 +32,15 @@ test.describe("virtual gallery", () => {
         length: Math.min(20, 64 - start),
       }, (_, index) => {
         const position = start + index;
-        const id = 64 - position;
+        const id = variables.random
+          ? ([42, 17, 89][position] ?? 100 + position)
+          : 64 - position;
         return {
           __typename: "ImageEdge",
           cursor: String(position + 1),
           node: {
             __typename: "Image",
-            id,
+            id: String(id),
             title: `Sample Image ${id}`,
             filename: `img_${String(id).padStart(3, "0")}.jpg`,
             width: 800,
@@ -48,7 +50,14 @@ test.describe("virtual gallery", () => {
             createdAt: "2026-01-01T00:00:00.000Z",
             updatedAt: "2026-01-01T00:00:00.000Z",
             source: null,
-            tags: [],
+            tags: [
+              {
+                __typename: "Tag",
+                slug: "nature",
+                approved: true,
+                category: null,
+              },
+            ],
           },
         };
       });
@@ -62,7 +71,9 @@ test.describe("virtual gallery", () => {
                 __typename: "PageInfo",
                 startCursor: edges[0]?.cursor ?? "",
                 endCursor: edges.at(-1)?.cursor ?? "",
-                hasPreviousPage: start > 0,
+                hasPreviousPage: variables.last
+                  ? start + edges.length < 64
+                  : start > 0,
                 hasNextPage: start + edges.length < 64,
               },
             },
@@ -70,6 +81,89 @@ test.describe("virtual gallery", () => {
         },
       });
     });
+  });
+
+  for (const sort of ["NEWEST", "OLDEST", "RANDOM"] as const) {
+    test(`detail navigation follows the ${sort} gallery and reuses cached images`, async ({ page }) => {
+      const [firstId, secondId, thirdId] = sort === "RANDOM"
+        ? [42, 17, 89]
+        : [64, 63, 62];
+      await page.goto("/");
+      await page.locator("select").selectOption(sort);
+      const first = page.locator("[data-index='0'] a:has(img)");
+      await expect(first).toHaveAttribute("href", `/${firstId}`);
+      let detailRequests = 0;
+      page.on("request", (request) => {
+        if (/query(?:%20|\s|\+)Image(?:%28|\()/.test(request.url()) || /query Image\(/.test(request.postData() ?? ""))
+          detailRequests++;
+      });
+      await first.click();
+      const viewer = page.locator("[data-image-id]");
+      await expect(viewer).toHaveAttribute("data-image-id", String(firstId));
+      await expect(page.getByRole("button", { name: "Previous image", exact: true })).toBeDisabled();
+      await page.keyboard.press("ArrowRight");
+      await expect(page.locator("h1")).toHaveText(`Sample Image ${secondId}`);
+      await page.keyboard.press("ArrowLeft");
+      await expect(page.locator("h1")).toHaveText(`Sample Image ${firstId}`);
+      await viewer.locator("button[data-direction='next']").last().click();
+      await expect(page.locator("h1")).toHaveText(`Sample Image ${secondId}`);
+      await viewer.locator("img").click();
+      await expect(page.locator("h1")).toHaveText(`Sample Image ${thirdId}`);
+      await page.keyboard.press("Shift+ArrowRight");
+      await expect(viewer).toHaveAttribute("data-image-id", String(thirdId));
+      await page.evaluate(() => {
+        const input = document.createElement("input");
+        input.id = "navigation-test-input";
+        document.body.append(input);
+        input.focus();
+      });
+      await page.keyboard.press("ArrowRight");
+      await expect(viewer).toHaveAttribute("data-image-id", String(thirdId));
+      await page.locator("#navigation-test-input").evaluate(input => input.remove());
+      await page.getByRole("button", { name: "Previous image", exact: true }).click();
+      await expect(page.locator("h1")).toHaveText(`Sample Image ${secondId}`);
+      expect(detailRequests).toBe(0);
+    });
+  }
+
+  test("detail navigation loads subsequent gallery pages and stops at the end", async ({ page }) => {
+    await page.goto("/");
+    await page.locator("[data-index='0'] a:has(img)").click();
+    for (let id = 63; id >= 1; id--) {
+      await expect(page.locator("button[data-direction='next']").last()).toBeEnabled();
+      await page.keyboard.press("ArrowRight");
+      await expect(page.locator("h1")).toHaveText(`Sample Image ${id}`);
+    }
+    await expect(page.locator("button[data-direction='next']").last()).toBeDisabled();
+    await page.keyboard.press("ArrowRight");
+    await expect(page.locator("h1")).toHaveText("Sample Image 1");
+    await page.getByRole("link", { name: "てる子", exact: true }).click();
+    await expect(page.locator("[data-gallery]")).toHaveAttribute("data-gallery-count", "64");
+  });
+
+  test("detail navigation renders pagination errors and allows retrying", async ({ page }) => {
+    await page.goto("/");
+    await page.locator("[data-index='0'] a:has(img)").click();
+    const next = page.locator("button[data-direction='next']").last();
+    for (let id = 63; id >= 45; id--) {
+      await expect(next).toBeEnabled();
+      await page.keyboard.press("ArrowRight");
+      await expect(page.locator("h1")).toHaveText(`Sample Image ${id}`);
+    }
+    await page.route("**/graphql*", route => route.fulfill({
+      json: {
+        errors: [
+          { message: "Pagination unavailable" },
+        ],
+      },
+    }), { times: 1 });
+    await next.click();
+    await expect(page.getByRole("status")).toHaveText("Unable to load the image. Please try again.");
+    await expect(page.locator("h1")).toHaveText("Sample Image 45");
+    await expect(next).toBeEnabled();
+    await next.click();
+    await expect(page.locator("h1")).toHaveText("Sample Image 44");
+    await expect(page.getByRole("status")).toBeEmpty();
   });
 
   for (const returnVia of ["back", "home", "random"] as const) {
