@@ -226,7 +226,7 @@ catalogs:
       version: 2.2.3
     '@sveltejs/adapter-node':
       specifier: ^6.0.0-next.10
-      version: 6.0.4
+      version: 6.0.5
     '@sveltejs/kit':
       specifier: ^3.0.0-next.23
       version: 3.3.1
@@ -629,7 +629,7 @@ importers:
         version: 1.75.0(svelte@5.58.0(@typescript-eslint/types@8.72.2))
       '@sveltejs/adapter-node':
         specifier: 'catalog:'
-        version: 6.0.4(@sveltejs/kit@3.3.1(@sveltejs/vite-plugin-svelte@7.3.1(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.58.0(@typescript-eslint/types@8.72.2))(vite@8.3.8))(@typescript/typescript6@6.0.2)(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.58.0(@typescript-eslint/types@8.72.2))(vite@8.3.8))
+        version: 6.0.5(@sveltejs/kit@3.3.1(@sveltejs/vite-plugin-svelte@7.3.1(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.58.0(@typescript-eslint/types@8.72.2))(vite@8.3.8))(@typescript/typescript6@6.0.2)(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.58.0(@typescript-eslint/types@8.72.2))(vite@8.3.8))(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(vite@8.3.8)
       '@sveltejs/kit':
         specifier: 'catalog:'
         version: 3.3.1(@sveltejs/vite-plugin-svelte@7.3.1(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.58.0(@typescript-eslint/types@8.72.2))(vite@8.3.8))(@typescript/typescript6@6.0.2)(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.58.0(@typescript-eslint/types@8.72.2))(vite@8.3.8)
@@ -3669,10 +3669,15 @@ packages:
     peerDependencies:
       acorn: ^8.9.0
 
-  '@sveltejs/adapter-node@6.0.4':
-    resolution: {integrity: sha512-zsAGWfMaEaP/e4fSxKp/NTeLWW3o97nFJVmvGLz1D7VGV3OMr4AT9phWtfBXMu0WtcGcLx0sBj6PiYMAkKWUYw==}
+  '@sveltejs/adapter-node@6.0.5':
+    resolution: {integrity: sha512-CcQ9Cnvns+PhI4tHKRrV63UcZqZ2+Dnaa4c65E9WSO932LsSpyWk9WLyiwUTRa7CLX5lCJAppoEEz1A0t6p8lQ==}
     peerDependencies:
       '@sveltejs/kit': ^3.0.0-next.0
+
+  '@sveltejs/adapter-server@0.1.0':
+    resolution: {integrity: sha512-+IlBRTkHENyrVd24pTntoVqwonw2JjkZQD1kyZBnIqJsEtdHzLMdIs+b3p9AiWEzfTNZwVK/IaHGlzgyGiPX0w==}
+    peerDependencies:
+      vite: ^8.0.12
 
   '@sveltejs/kit@3.3.1':
     resolution: {integrity: sha512-v5wOLFONn9kSQNIatFRMAz8MsrC5gkOHNlsQjzno9Eq9o9qOiNsWFYOSLAyGo17IZSlKlU6EkvS2bZC9VrWSdg==}
@@ -11364,9 +11369,23 @@ snapshots:
     dependencies:
       acorn: 8.19.0
 
-  '@sveltejs/adapter-node@6.0.4(@sveltejs/kit@3.3.1(@sveltejs/vite-plugin-svelte@7.3.1(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.58.0(@typescript-eslint/types@8.72.2))(vite@8.3.8))(@typescript/typescript6@6.0.2)(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.58.0(@typescript-eslint/types@8.72.2))(vite@8.3.8))':
+  '@sveltejs/adapter-node@6.0.5(@sveltejs/kit@3.3.1(@sveltejs/vite-plugin-svelte@7.3.1(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.58.0(@typescript-eslint/types@8.72.2))(vite@8.3.8))(@typescript/typescript6@6.0.2)(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.58.0(@typescript-eslint/types@8.72.2))(vite@8.3.8))(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(vite@8.3.8)':
     dependencies:
+      '@sveltejs/adapter-server': 0.1.0(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(vite@8.3.8)
       '@sveltejs/kit': 3.3.1(@sveltejs/vite-plugin-svelte@7.3.1(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.58.0(@typescript-eslint/types@8.72.2))(vite@8.3.8))(@typescript/typescript6@6.0.2)(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.58.0(@typescript-eslint/types@8.72.2))(vite@8.3.8)
+    transitivePeerDependencies:
+      - '@vitejs/devtools'
+      - crossws
+      - srvx
+      - vite
+
+  '@sveltejs/adapter-server@0.1.0(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(vite@8.3.8)':
+    dependencies:
+      vite: 8.3.8(@types/node@26.6.6)(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(srvx@1.0.8)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
+    transitivePeerDependencies:
+      - '@vitejs/devtools'
+      - crossws
+      - srvx
 
   '@sveltejs/kit@3.3.1(@sveltejs/vite-plugin-svelte@7.3.1(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.58.0(@typescript-eslint/types@8.72.2))(vite@8.3.8))(@typescript/typescript6@6.0.2)(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.58.0(@typescript-eslint/types@8.72.2))(vite@8.3.8)':
     dependencies:
