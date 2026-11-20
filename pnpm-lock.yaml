@@ -235,7 +235,7 @@ catalogs:
       version: 7.3.1
     '@tanstack/devtools-vite':
       specifier: ^0.8.0
-      version: 0.8.6
+      version: 0.8.7
     '@tanstack/react-devtools':
       specifier: ^0.10.2
       version: 0.10.14
@@ -735,7 +735,7 @@ importers:
     devDependencies:
       '@tanstack/devtools-vite':
         specifier: 'catalog:'
-        version: 0.8.6(@emnapi/core@2.0.0-beta.2)(@emnapi/runtime@2.0.0-beta.2)(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@0.11.22))(ocache@0.1.5)(srvx@0.11.22)(vite@8.3.8)
+        version: 0.8.7(@emnapi/core@2.0.0-beta.2)(@emnapi/runtime@2.0.0-beta.2)(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@0.11.22))(ocache@0.1.5)(srvx@0.11.22)(vite@8.3.8)
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.6
@@ -3728,8 +3728,8 @@ packages:
     peerDependencies:
       solid-js: ^1.9.13
 
-  '@tanstack/devtools-vite@0.8.6':
-    resolution: {integrity: sha512-CkaVqh3P7cJmQ6mMIxQfEmmR8gwlmgRCcoiWOMLigHaPobrrwTqsZvKqvYRHBybZ3ZT1ZSBj5TwlP7ukJJcRlg==}
+  '@tanstack/devtools-vite@0.8.7':
+    resolution: {integrity: sha512-usKCkvLFmm/4JUIPRO7a+inv2pHeB0MtJ/P+CgWhiAeJQHq/Sx9XJSb1nvGELIg4VSDFsuPSQ2FqxQSZONV2kQ==}
     engines: {node: '>=18'}
     peerDependencies:
       vite: ^6.0.0 || ^7.0.0 || ^8.0.0
@@ -11460,7 +11460,7 @@ snapshots:
     transitivePeerDependencies:
       - csstype
 
-  '@tanstack/devtools-vite@0.8.6(@emnapi/core@2.0.0-beta.2)(@emnapi/runtime@2.0.0-beta.2)(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@0.11.22))(ocache@0.1.5)(srvx@0.11.22)(vite@8.3.8)':
+  '@tanstack/devtools-vite@0.8.7(@emnapi/core@2.0.0-beta.2)(@emnapi/runtime@2.0.0-beta.2)(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@0.11.22))(ocache@0.1.5)(srvx@0.11.22)(vite@8.3.8)':
     dependencies:
       '@tanstack/devtools-bundler-core': 0.1.4(@emnapi/core@2.0.0-beta.2)(@emnapi/runtime@2.0.0-beta.2)
       '@tanstack/devtools-client': 0.0.8
