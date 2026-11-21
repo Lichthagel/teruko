@@ -11,10 +11,10 @@ The test target builds the applications first, starts their production server
 outputs on separate ports, and prepares the local PostgreSQL database with
 migrations and seed data.
 
-Run the full suite with:
+Run the full suite with (Turborepo builds all four applications first):
 
 ```sh
-pnpm nx run web-e2e:test
+pnpm exec turbo run test --filter=web-e2e
 ```
 
 Install Chromium and Firefox once when setting up a new environment:

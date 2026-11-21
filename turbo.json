@@ -1,0 +1,37 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "envMode": "loose",
+  "globalDependencies": [".env", "eslint.config.js"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        "dist/**",
+        ".output/**",
+        ".svelte-kit/**",
+        ".nuxt/**",
+        "build/**"
+      ]
+    },
+    "check": {
+      "outputs": []
+    },
+    "clean": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {},
+    "test": {
+      "dependsOn": [
+        "web-nuxt#build",
+        "web-solidstart#build",
+        "web-svelte#build",
+        "web-tanstack-react#build"
+      ],
+      "cache": false
+    }
+  }
+}

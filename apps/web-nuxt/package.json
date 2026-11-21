@@ -12,21 +12,6 @@
     "lint": "eslint .",
     "clean": "rm -rf .nuxt .output"
   },
-  "nx": {
-    "targets": {
-      "build": {
-        "outputs": [
-          "{projectRoot}/.output"
-        ]
-      }
-    },
-    "includedScripts": [
-      "build",
-      "dev",
-      "lint",
-      "preview"
-    ]
-  },
   "dependencies": {
     "@lucide/vue": "catalog:",
     "@urql/vue": "catalog:",

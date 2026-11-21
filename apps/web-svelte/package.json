@@ -22,22 +22,6 @@
     "lint": "eslint .",
     "clean": "rm -rf .svelte-kit build"
   },
-  "nx": {
-    "targets": {
-      "build": {
-        "outputs": [
-          "{projectRoot}/.svelte-kit",
-          "{projectRoot}/build"
-        ]
-      }
-    },
-    "includedScripts": [
-      "dev",
-      "build",
-      "preview",
-      "lint"
-    ]
-  },
   "dependencies": {
     "drizzle-orm": "catalog:",
     "graphql": "catalog:",
