@@ -11,7 +11,7 @@ export default antfu({
   ignores: [
     "**/node_modules/**",
     "**/dist/**",
-    "**/.nx/**",
+    "**/.turbo/**",
     "**/.next/**",
     "**/.svelte-kit/**",
     "**/.output/**",

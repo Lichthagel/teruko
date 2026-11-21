@@ -2,9 +2,8 @@
 
 .gallery {
   display: grid;
+  display: grid-lanes;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  // noinspection CssInvalidPropertyValue
-  grid-template-rows: masonry;
   gap: variables.$gap;
 
   @media (width >= (variables.$size-md)) {
@@ -82,7 +81,7 @@
   min-height: 1px;
 }
 
-@supports not (grid-template-rows: masonry) {
+@supports not (display: grid-lanes) {
   .gallery {
     align-items: start;
   }
