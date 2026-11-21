@@ -1,22 +1,29 @@
 @use "../variables";
 
 .gallery {
-  display: grid;
-  display: grid-lanes;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  --gallery-columns: 1;
+  position: relative;
+  overflow-anchor: none;
   gap: variables.$gap;
 
   @media (width >= (variables.$size-md)) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    --gallery-columns: 2;
   }
 
   @media (width >= (variables.$size-xl)) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    --gallery-columns: 3;
   }
 
   @media (width >= (variables.$size-xxl)) {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    --gallery-columns: 4;
   }
+}
+
+.virtual-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flow-root;
 }
 
 .card {

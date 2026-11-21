@@ -11,7 +11,7 @@ const App = () => {
       <div className="container">
         <Filters />
 
-        <Gallery tags={tags} sort={sort} />
+        <Gallery key={JSON.stringify([sort, tags])} tags={tags} sort={sort} />
       </div>
       <ScrollButtons />
     </>

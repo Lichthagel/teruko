@@ -1,6 +1,7 @@
 import type { ImagesArgs, ImagesResult } from "client-graphql/snippets";
 import type { ImageSort } from "models";
 import type { CombinedError, OperationResult } from "urql";
+import { galleryState } from "client-graphql/gallery";
 import { Images } from "client-graphql/snippets";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createRequest, useClient } from "urql";
@@ -38,9 +39,12 @@ export const useImages = (
 ) => {
   const client = useClient();
 
-  const [edges, setEdges] = useState<Edge[]>([]);
-  const [hasNextPage, setHasNextPage] = useState(true);
-  const filtersChangedRef = useRef(true);
+  const stateRef = useRef(galleryState(tags, sort));
+  const [edges, setEdges] = useState<Edge[]>(stateRef.current.edges);
+  const [hasNextPage, setHasNextPage] = useState(stateRef.current.hasNextPage);
+  const filtersChangedRef = useRef(stateRef.current.edges.length === 0);
+  const inFlightRef = useRef(false);
+  const disposedRef = useRef(false);
 
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState<CombinedError>();
@@ -55,7 +59,8 @@ export const useImages = (
 
       const { edges: newEdges, pageInfo } = res.data.images;
 
-      setEdges((prevEdges: Edge[]): Edge[] => {
+      const prevEdges = stateRef.current.edges;
+      const merge = (): Edge[] => {
         if (newEdges.length > 0) {
           if (filtersChangedRef.current) {
             filtersChangedRef.current = false;
@@ -87,9 +92,17 @@ export const useImages = (
                 ];
           }
         }
-        return [];
-      });
+        return usedCursor
+          ? prevEdges
+          : [];
+      };
+      const merged = merge();
+      stateRef.current.edges = merged;
+      setEdges(merged);
 
+      stateRef.current.hasNextPage = res.operation.variables.last
+        ? pageInfo.hasPreviousPage
+        : pageInfo.hasNextPage;
       setHasNextPage(res.operation.variables.last
         ? pageInfo.hasPreviousPage
         : pageInfo.hasNextPage);
@@ -100,30 +113,53 @@ export const useImages = (
   }, []);
 
   const newQuery = useCallback((cursor?: string, refresh = false) => {
-    // eslint-disable-next-line react/set-state-in-effect
+    if (inFlightRef.current)
+      return;
+    inFlightRef.current = true;
     setFetching(true);
 
+    const requested = stateRef.current;
     client
       .executeQuery(getRequest(tags, sort, cursor), {
         requestPolicy: refresh ? "network-only" : "cache-first",
       })
       .toPromise()
-      .then(handleChange)
+      .then((res) => {
+        if (!disposedRef.current && stateRef.current === requested)
+          handleChange(res);
+      })
       .catch((error) => {
         console.error(error);
+      })
+      .finally(() => {
+        inFlightRef.current = false;
       });
   }, [client, handleChange, sort, tags]);
 
   useEffect(() => {
-    filtersChangedRef.current = true;
-    newQuery();
-  }, [newQuery]);
+    disposedRef.current = false;
+    stateRef.current = galleryState(tags, sort);
+    setEdges(stateRef.current.edges);
+    setHasNextPage(stateRef.current.hasNextPage);
+    filtersChangedRef.current = stateRef.current.edges.length === 0;
+    if (filtersChangedRef.current)
+      newQuery();
+    return () => {
+      disposedRef.current = true;
+    };
+  }, [newQuery, tags, sort]);
 
   const fetchMore = useCallback(() => {
-    if (hasNextPage && !error) {
+    if (!fetching && hasNextPage && !error) {
       newQuery(edges.at(-1)?.cursor, false);
     }
-  }, [edges, error, hasNextPage, newQuery]);
+  }, [
+    edges,
+    error,
+    fetching,
+    hasNextPage,
+    newQuery,
+  ]);
 
   return { fetching, error, images, fetchMore };
 };
