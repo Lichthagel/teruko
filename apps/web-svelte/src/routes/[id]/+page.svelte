@@ -1,25 +1,42 @@
 <script lang="ts">
   import type { EventHandler } from "svelte/elements";
+  import { goto } from "$app/navigation";
   import { resolve } from "$app/paths";
   import { page } from "$app/state";
   import { Download } from "@lucide/svelte";
   import { getContextClient, queryStore } from "@urql/svelte";
   import styles from "client-css/m/imagepage.module.scss";
+  import { createImageNavigation } from "client-graphql/gallery";
   import { Image } from "client-graphql/snippets";
+  import { onMount } from "svelte";
   import ErrorMessage from "#lib/components/status/ErrorMessage.svelte";
   import StatusBar from "#lib/components/status/StatusBar.svelte";
   import TagChip from "#lib/components/TagChip.svelte";
 
-  const { id } = page.params;
+  const client = getContextClient();
+  const navigation = createImageNavigation(client, () => Number(page.params.id), id => goto(resolve("/[id]", {
+    id: String(id),
+  }), { reset: false }));
+  let progress = $state(navigation.getSnapshot());
+  const navigationState = $derived(navigation.getState(progress));
+  onMount(() => {
+    const unsubscribe = navigation.subscribe(() => {
+      progress = navigation.getSnapshot();
+    });
+    return () => {
+      unsubscribe();
+      navigation.dispose();
+    };
+  });
 
-  const result = queryStore({
-    client: getContextClient(),
+  const result = $derived(queryStore({
+    client,
     query: Image,
     variables: {
-      id: Number.parseInt(id!),
+      id: Number.parseInt(page.params.id!),
     },
-    pause: !id,
-  });
+    pause: !page.params.id,
+  }));
 
   const image = $derived($result.data?.image);
   const fileExt = $derived(image?.filename.split(".").pop());
@@ -38,16 +55,28 @@
     : ""}てる子</title>
 </svelte:head>
 
+<svelte:window onkeydown={navigation.keydown} />
+
+<div class={styles.viewer} data-image-id={image?.id} aria-busy={navigationState.loading}>
+  <button type="button" aria-label="Previous image" data-direction="previous" disabled={!navigationState.canPrevious} onclick={() => void navigation.previous()}>&lt;</button>
+  <button type="button" aria-label="Next image" data-direction="next" disabled={!navigationState.canNext} onclick={() => void navigation.next()}>
+    {#if image}
+      <img
+        alt={image.title ?? image.filename}
+        class={styles.image}
+        height={image.height}
+        onload={scroll}
+        src={`/img/${image.filename}`}
+        width={image.width}
+      />
+    {/if}
+  </button>
+  <button type="button" aria-label="Next image" data-direction="next" disabled={!navigationState.canNext} onclick={() => void navigation.next()}>&gt;</button>
+  <span role="status">{navigationState.error}</span>
+</div>
+
 {#if image}
   <div>
-    <img
-      alt={image.title ?? image.filename}
-      class={styles.image}
-      height={image.height}
-      onload={scroll}
-      src={`/img/${image.filename}`}
-      width={image.width}
-    />
 
     <div class="container">
       <div class={styles["meta-container"]}>

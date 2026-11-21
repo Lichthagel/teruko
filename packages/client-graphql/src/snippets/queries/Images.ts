@@ -55,6 +55,7 @@ query Images(
         height
         tags {
           slug
+          approved
           category {
             color
           }

@@ -1,16 +1,21 @@
 import type { VirtualItem } from "@tanstack/virtual-core";
+import type { Client } from "@urql/core";
 import type { ImageSort } from "models";
 import type { ImagesResult } from "./snippets/index.js";
+import { Images } from "./snippets/index.js";
 
 type Edges = ImagesResult["images"]["edges"];
 type GalleryState = {
   key: string;
+  tags: readonly string[];
+  sort: ImageSort;
   edges: Edges;
   hasNextPage: boolean;
   offset: number;
   measurements: VirtualItem[];
   width: number;
   anchor?: { id: number; index: number; top: number };
+  returnTo?: number;
   layout?: ReturnType<typeof galleryLayout>;
 };
 
@@ -24,6 +29,8 @@ export const galleryState = (tags: readonly string[], sort: ImageSort): GalleryS
   if (typeof window === "undefined") {
     return {
       key,
+      tags,
+      sort,
       edges: [],
       hasNextPage: true,
       offset: 0,
@@ -34,6 +41,8 @@ export const galleryState = (tags: readonly string[], sort: ImageSort): GalleryS
   if (saved?.key !== key) {
     saved = {
       key,
+      tags,
+      sort,
       edges: [],
       hasNextPage: true,
       offset: 0,
@@ -42,6 +51,140 @@ export const galleryState = (tags: readonly string[], sort: ImageSort): GalleryS
     };
   }
   return saved;
+};
+
+export type ImageNavigationSnapshot = { loading: boolean; error: string };
+
+// Reuse the gallery's merged pages; image entities and query results remain in urql.
+export const createImageNavigation = (
+  client: Client,
+  getId: () => number,
+  navigate: (id: number) => unknown,
+) => {
+  const state = typeof window === "undefined"
+    ? undefined
+    : saved;
+  let disposed = false;
+  let generation = 0;
+  let snapshot: ImageNavigationSnapshot = { loading: false, error: "" };
+  const listeners = new Set<() => void>();
+  // GraphQL serializes ID scalars as strings, unlike the numeric database model.
+  const index = () => state?.edges.findIndex(edge => Number(edge.node.id) === getId()) ?? -1;
+  const publish = (value: ImageNavigationSnapshot) => {
+    snapshot = value;
+    for (const listener of listeners)
+      listener();
+  };
+  const getState = (progress = snapshot) => {
+    const position = index();
+    return {
+      ...progress,
+      canPrevious: !progress.loading && position > 0,
+      canNext: !progress.loading && position >= 0 && (position < state!.edges.length - 1 || state!.hasNextPage),
+    };
+  };
+  const move = async (direction: "previous" | "next") => {
+    const position = index();
+    if (!state || disposed || snapshot.loading || position < 0)
+      return;
+    const target = position + (direction === "previous"
+      ? -1
+      : 1);
+    if (target < 0 || (target >= state.edges.length && !state.hasNextPage))
+      return;
+    publish({ loading: true, error: "" });
+    const currentId = getId();
+    const requestGeneration = generation;
+    const active = () => !disposed && generation === requestGeneration;
+    try {
+      if (target >= state.edges.length) {
+        const oldest = state.sort === "OLDEST";
+        const cursor = state.edges.at(-1)?.cursor;
+        // A random sample may contain only seen IDs; retrying must get a fresh sample.
+        const result = await client.query(Images, {
+          tags: state.tags,
+          after: oldest ? null : cursor,
+          before: oldest ? cursor : null,
+          first: oldest ? null : 20,
+          last: oldest ? 20 : null,
+          random: state.sort === "RANDOM",
+        }, {
+          requestPolicy: state.sort === "RANDOM"
+            ? "network-only"
+            : "cache-first",
+        }).toPromise();
+        if (!active() || saved !== state || currentId !== getId())
+          return;
+        if (result.error)
+          throw result.error;
+        if (!result.data)
+          throw new Error("Unable to load the next image.");
+        const { edges, pageInfo } = result.data.images;
+        const ids = new Set(state.edges.map(edge => Number(edge.node.id)));
+        state.edges = [
+          ...state.edges,
+          ...edges.filter(edge => !ids.has(Number(edge.node.id))),
+        ];
+        state.hasNextPage = oldest ? pageInfo.hasPreviousPage : pageInfo.hasNextPage;
+        if (target >= state.edges.length && state.hasNextPage)
+          throw new Error("No new images returned. Try again.");
+      }
+      const image = state.edges[target]?.node;
+      if (active() && currentId === getId() && image) {
+        const previousReturnTo = state.returnTo;
+        state.returnTo = Number(image.id);
+        try {
+          await navigate(Number(image.id));
+        } catch (error) {
+          state.returnTo = previousReturnTo;
+          throw error;
+        }
+      }
+    } catch {
+      if (active())
+        publish({ loading: false, error: "Unable to load the image. Please try again." });
+    } finally {
+      if (active())
+        publish({ ...snapshot, loading: false });
+    }
+  };
+  return {
+    getState,
+    getSnapshot: () => snapshot,
+    subscribe: (listener: () => void) => {
+      disposed = false;
+      listeners.add(listener);
+      return () => {
+        listeners.delete(listener);
+      };
+    },
+    previous: () => move("previous"),
+    next: () => move("next"),
+    keydown: (event: KeyboardEvent) => {
+      if (event.defaultPrevented || event.repeat || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey)
+        return;
+      // Inspect only the event path, including editable ancestors and shadow hosts.
+      if (event.composedPath().some(target => target instanceof HTMLElement
+        && (["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName) || target.isContentEditable || target.getAttribute("role") === "textbox"))) {
+        return;
+      }
+      const direction = event.key === "ArrowLeft"
+        ? "previous"
+        : event.key === "ArrowRight"
+          ? "next"
+          : undefined;
+      if (!direction || index() < 0)
+        return;
+      event.preventDefault();
+      void move(direction);
+    },
+    dispose: () => {
+      disposed = true;
+      generation++;
+      snapshot = { loading: false, error: "" };
+      listeners.clear();
+    },
+  };
 };
 
 export const galleryLayout = (element: HTMLElement) => ({
@@ -130,11 +273,16 @@ export const watchGallery = (
   window.addEventListener("scroll", scroll, { passive: true });
   // Routers and dynamic measurements can both adjust scroll after the first paint.
   const offset = state.offset;
-  const anchor = previousWidth && previousWidth !== element.clientWidth
-    ? state.anchor
-    : undefined;
+  const returnIndex = state.returnTo === undefined
+    ? -1
+    : state.edges.findIndex(edge => Number(edge.node.id) === state.returnTo);
+  const anchor = returnIndex >= 0
+    ? { id: state.returnTo!, index: returnIndex, top: 16 }
+    : previousWidth && previousWidth !== element.clientWidth
+      ? state.anchor
+      : undefined;
   if (anchor) {
-    const index = state.edges.findIndex(edge => edge.node.id === anchor.id);
+    const index = state.edges.findIndex(edge => Number(edge.node.id) === Number(anchor.id));
     if (index >= 0)
       anchor.index = index;
   }
@@ -157,12 +305,14 @@ export const watchGallery = (
       frame = requestAnimationFrame(restore);
     } else {
       restoring = false;
+      state.returnTo = undefined;
       scroll();
     }
   };
   const interrupt = () => {
     cancelAnimationFrame(frame);
     restoring = false;
+    state.returnTo = undefined;
     scroll();
   };
   window.addEventListener("wheel", interrupt, { passive: true });

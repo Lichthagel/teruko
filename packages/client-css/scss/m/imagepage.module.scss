@@ -1,5 +1,44 @@
 @use "../variables";
 
+.viewer {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+  align-items: center;
+
+  button {
+    border: 0;
+    padding: 0;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+    min-height: 44px;
+
+    &:disabled {
+      cursor: default;
+    }
+
+    &:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: -2px;
+    }
+  }
+
+  > button:first-child,
+  > button:nth-child(3) {
+    font-size: 2rem;
+
+    &:disabled {
+      opacity: .25;
+    }
+  }
+
+  > [role="status"] {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+}
+
 .image {
   margin-inline: auto;
   max-height: 100vh;
