@@ -1,15 +1,15 @@
 # AGENTS.md
 
-pnpm + Nx monorepo. Package manager and runtime versions are pinned in `package.json`; never use npm or yarn. `.npmrc` sets `shamefully-hoist=true` and `auto-install-peers=true` — rely on this, don't "fix" hoisting issues.
+pnpm + Turborepo monorepo. Package manager and runtime versions are pinned in `package.json`; never use npm or yarn. `.npmrc` sets `shamefully-hoist=true` and `auto-install-peers=true` — rely on this, don't "fix" hoisting issues.
 
 ## Commands
 
 - Install: `pnpm install` (run after any change to `pnpm-workspace.yaml` or deps).
-- Build everything: `pnpm run build` (runs `nx run-many -t build`; respects project graph, builds deps first).
-- Build/test one project: `pnpm nx run <project>:<target>` (e.g. `pnpm nx run web-svelte:build`, `:lint`, `:dev`, `:check`).
+- Build everything: `pnpm run build` (runs `turbo run build`; respects the workspace graph and builds dependencies first).
+- Build/test one project: `pnpm exec turbo run <target> --filter=<project>` (e.g. `pnpm exec turbo run build --filter=web-svelte`). For scripts without Turbo-specific orchestration, use `pnpm --filter <project> run <script>`.
   - Project names are the package `name` fields in each `apps/*` / `packages/*` `package.json`.
-- Lint (root, whole repo): `pnpm run lint` → `eslint `. Individual projects also expose `pnpm nx run <project>:lint`.
-- No top-level `test` script — verify via `build` + `lint` + per-app typechecks. End-to-end tests live in `tests/web-e2e` and run with `pnpm nx run web-e2e:test`; they require PostgreSQL and automatically migrate and seed the database.
+- Lint (root, whole repo): `pnpm run lint` → `eslint .`. Individual projects with a lint script can be linted with `pnpm exec turbo run lint --filter=<project>`.
+- No top-level `test` script — verify via `build` + `lint` + per-app typechecks. End-to-end tests live in `tests/web-e2e` and run with `pnpm exec turbo run test --filter=web-e2e`; Turbo builds the four applications first. The tests require PostgreSQL and automatically migrate and seed the database.
 
 ## CI / pre-commit
 
@@ -25,7 +25,7 @@ pnpm + Nx monorepo. Package manager and runtime versions are pinned in `package.
 ## Framework / toolchain quirks
 
 - ESLint uses `@antfu/eslint-config` with **double quotes** and **semicolons** (override of antfu defaults) and `func-style: expression` + `consistent-type-definitions: type`. Don't reformat to single quotes. TypeScript rule `ts/no-redeclare` and `ts/no-use-before-define` are turned off.
-- `web-tanstack-react` uses `@tanstack/router-plugin`: `src/routeTree.gen.ts` is **generated** — do not edit it by hand; regenerate via the app's build/dev (`pnpm nx run web-tanstack-react:build` or its dev server).
+- `web-tanstack-react` uses `@tanstack/router-plugin`: `src/routeTree.gen.ts` is **generated** — do not edit it by hand; regenerate via the app's build/dev (`pnpm exec turbo run build --filter=web-tanstack-react` or its dev server).
 - `userscript` build is `tsc && vite build` (no framework dev server). Uses `vite-plugin-monkey` for building the userscript.
 - `server-graphql` marks `./dist/schema/**` as side-effects and uses `#lib/*` / `#schema/*` subpath imports — keep the `dist` build outputs intact.
 
@@ -38,5 +38,5 @@ pnpm + Nx monorepo. Package manager and runtime versions are pinned in `package.
 
 ## Per-project config notes
 
-- Nx caches `build`/`lint`; `dev` and `clean` are uncached. `build` depends on `^build` (upstream deps built first), outputs to `{projectRoot}/dist`.
+- Turborepo caches `build`/`lint`; `dev` and `clean` are uncached. `build` depends on `^build` (upstream deps built first), with `dist`, `.output`, `.svelte-kit`, `.nuxt`, and `build` artifacts cached.
 - `pnpm-workspace.yaml` uses a centralized `catalog` (version pins live there, not in per-package `package.json`). Add/change a dependency version in the catalog, not in individual packages. `catalogMode: manual` — unused catalog entries are cleaned up automatically.

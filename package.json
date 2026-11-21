@@ -14,9 +14,9 @@
     }
   },
   "scripts": {
-    "build": "nx run-many -t build",
+    "build": "turbo run build",
     "lint": "eslint .",
-    "clean": "nx run-many -t clean",
+    "clean": "turbo run clean",
     "prepare": "husky"
   },
   "devDependencies": {
@@ -29,8 +29,8 @@
     "eslint-plugin-svelte": "catalog:",
     "husky": "catalog:",
     "lint-staged": "catalog:",
-    "nx": "catalog:",
     "tsconfig": "workspace:*",
+    "turbo": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:"
   },
