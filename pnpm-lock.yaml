@@ -209,10 +209,10 @@ catalogs:
       version: 0.18.0
     '@lucide/svelte':
       specifier: ^1.8.0
-      version: 1.79.0
+      version: 1.80.0
     '@lucide/vue':
       specifier: ^1.8.0
-      version: 1.79.0
+      version: 1.80.0
     '@nuxt/devtools':
       specifier: 4.2.1
       version: 4.2.1
@@ -341,10 +341,10 @@ catalogs:
       version: 17.6.2
     lucide-react:
       specifier: ^1.8.0
-      version: 1.79.0
+      version: 1.80.0
     lucide-solid:
       specifier: ^1.8.0
-      version: 1.79.0
+      version: 1.80.0
     modern-normalize:
       specifier: ^3.0.1
       version: 3.0.1
@@ -508,7 +508,7 @@ importers:
     dependencies:
       '@lucide/vue':
         specifier: 'catalog:'
-        version: 1.79.0(vue@3.5.46(typescript@6.0.3))
+        version: 1.80.0(vue@3.5.46(typescript@6.0.3))
       '@urql/vue':
         specifier: 'catalog:'
         version: 2.1.1(@urql/core@6.0.3(graphql@17.1.0))(vue@3.5.46(typescript@6.0.3))
@@ -584,7 +584,7 @@ importers:
         version: 0.45.4(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
       lucide-solid:
         specifier: 'catalog:'
-        version: 1.79.0(solid-js@1.9.19)
+        version: 1.80.0(solid-js@1.9.19)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -639,7 +639,7 @@ importers:
     devDependencies:
       '@lucide/svelte':
         specifier: 'catalog:'
-        version: 1.79.0(svelte@5.59.1(@typescript-eslint/types@8.73.0))
+        version: 1.80.0(svelte@5.59.1(@typescript-eslint/types@8.73.0))
       '@sveltejs/adapter-node':
         specifier: 'catalog:'
         version: 6.0.5(@sveltejs/kit@3.4.0(@sveltejs/vite-plugin-svelte@7.3.2(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.59.1(@typescript-eslint/types@8.73.0))(vite@8.3.8))(@typescript/typescript6@6.0.2)(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(svelte@5.59.1(@typescript-eslint/types@8.73.0))(vite@8.3.8))(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(vite@8.3.8)
@@ -717,7 +717,7 @@ importers:
         version: 0.45.4(@libsql/client@0.18.0)(@types/pg@8.23.1)(pg@8.23.1)
       lucide-react:
         specifier: 'catalog:'
-        version: 1.79.0(@types/react@19.3.0)(react@19.3.1)
+        version: 1.80.0(@types/react@19.3.0)(react@19.3.1)
       models:
         specifier: workspace:*
         version: link:../../packages/models
@@ -2321,13 +2321,13 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@lucide/svelte@1.79.0':
-    resolution: {integrity: sha512-GT1yl6pbDLFYq/FBsVJX27HE3T+T/J35+OqZL+jimaj1oJfm9s63wCzVwPRbgWuhkS0vPMg76eEF4dMymZgbgA==}
+  '@lucide/svelte@1.80.0':
+    resolution: {integrity: sha512-4R7op2XACJnSNfIPPf0lXoTBJOVi6w+ZNxbo3Qb9R9naXie/3eoDh1XQ/4oD41z3IMEaG8QEsEQMHtFWcGVDcA==}
     peerDependencies:
       svelte: ^5
 
-  '@lucide/vue@1.79.0':
-    resolution: {integrity: sha512-Qe9DrDeNmIPbClkaOzUC9gW0czx1J3YFmk8ua7CDEByY/JZ7CB4v1s9Ps6lLbuxOSQVLnC8LBei+lS9qI5X0iw==}
+  '@lucide/vue@1.80.0':
+    resolution: {integrity: sha512-vNJr1C3Jx8yUkdTXFYx1iMQ73wkK/opZlTl6mLpvBykXdf5TE9alpfbLfGC4gzrkPV5Ra+YRsUS4TVGJFPASCA==}
     peerDependencies:
       vue: '>=3.0.1'
 
@@ -6241,8 +6241,8 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-react@1.79.0:
-    resolution: {integrity: sha512-MDHKxzUobPRyQgt4hHO1z+pUQJKYMvenh8qw+ndWQE0Wg+Hbjli/ZrkZXBGmRBrMvvqDRjkmQj0Z5RbeL/ogNw==}
+  lucide-react@1.80.0:
+    resolution: {integrity: sha512-f9cQkUMFp2ZrOek9FucpRqQVI67gT09clXcHs3yCvdhJnsK4RW4og/rqoC0YAHd6FV/GPkeiIR3Rdxr2pPRwHA==}
     peerDependencies:
       '@types/react': '*'
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -6250,8 +6250,8 @@ packages:
       '@types/react':
         optional: true
 
-  lucide-solid@1.79.0:
-    resolution: {integrity: sha512-h/mPR36FhYTYNRdwcrTjq0Q3JnjCEeUWN3mAQ+B5p1fk4VYQONJoSCofjQC/rRC4R43dKlrv2hkNzD/JFXYK6A==}
+  lucide-solid@1.80.0:
+    resolution: {integrity: sha512-JOL0eXFubY08R9104CJt8fo0jWbntbazxFf+gAGIe1XLIxIes5IAWa1BnrYiB3DO0dPGqCmZWNqymZclBJNrwQ==}
     peerDependencies:
       solid-js: ^1.4.7
 
@@ -9644,11 +9644,11 @@ snapshots:
   '@libsql/win32-x64-msvc@0.5.29':
     optional: true
 
-  '@lucide/svelte@1.79.0(svelte@5.59.1(@typescript-eslint/types@8.73.0))':
+  '@lucide/svelte@1.80.0(svelte@5.59.1(@typescript-eslint/types@8.73.0))':
     dependencies:
       svelte: 5.59.1(@typescript-eslint/types@8.73.0)
 
-  '@lucide/vue@1.79.0(vue@3.5.46(typescript@6.0.3))':
+  '@lucide/vue@1.80.0(vue@3.5.46(typescript@6.0.3))':
     dependencies:
       vue: 3.5.46(typescript@6.0.3)
 
@@ -13760,13 +13760,13 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-react@1.79.0(@types/react@19.3.0)(react@19.3.1):
+  lucide-react@1.80.0(@types/react@19.3.0)(react@19.3.1):
     dependencies:
       react: 19.3.1
     optionalDependencies:
       '@types/react': 19.3.0
 
-  lucide-solid@1.79.0(solid-js@1.9.19):
+  lucide-solid@1.80.0(solid-js@1.9.19):
     dependencies:
       solid-js: 1.9.19
 
