@@ -226,8 +226,8 @@ catalogs:
       specifier: ^4.7.0
       version: 4.9.0
     '@solidjs/meta':
-      specifier: ^0.29.4
-      version: 0.29.8
+      specifier: ^2.0.0
+      version: 2.0.0
     '@solidjs/router':
       specifier: ^1.0.0
       version: 1.0.3
@@ -563,7 +563,7 @@ importers:
     dependencies:
       '@solidjs/meta':
         specifier: 'catalog:'
-        version: 0.29.8(solid-js@1.9.19)
+        version: 2.0.0(@solidjs/web@2.0.3(solid-js@1.9.19))(solid-js@1.9.19)
       '@solidjs/router':
         specifier: 'catalog:'
         version: 1.0.3(solid-js@1.9.19)
@@ -3559,6 +3559,12 @@ packages:
     peerDependencies:
       solid-js: ^1.8.4
 
+  '@solidjs/meta@2.0.0':
+    resolution: {integrity: sha512-DcT6PbCm03u8fkO8GEhLF/Dcz1vLIy4L1f3GaSbcaVpLn8nF+dJRRkrQ/7366HJecNZGRysrcHl5R7IynH1CAQ==}
+    peerDependencies:
+      '@solidjs/web': ^2.0.0
+      solid-js: ^2.0.0
+
   '@solidjs/router@1.0.3':
     resolution: {integrity: sha512-EULOxZNMGISNgQU+uXLtt6o4X5bIE+0HiPW0gGSOyl3HJmyClSDDHLGJ5JTHkbiyUSc6DttVvnVZYfK1a+70BA==}
     peerDependencies:
@@ -3574,6 +3580,12 @@ packages:
     peerDependenciesMeta:
       '@solidjs/router':
         optional: true
+
+  '@solidjs/web@2.0.3':
+    resolution: {integrity: sha512-XYl9JGOtQ8yJSZRnd6uC+5gYXsYvnIRNxhn89m+F1v6D4d4ZFdTJY2Lq/8XJ3YcjckkCrK/mNfd3kIiqqgnG7w==}
+    engines: {node: '>=22.12.0'}
+    peerDependencies:
+      solid-js: ^2.0.3
 
   '@speed-highlight/core@1.2.24':
     resolution: {integrity: sha512-qeW2e1l78afw8VhRPfPQ1Gjj+KU5XFQ/OFV5ti6eTa9bruO7mJyZtA4vw0ofqmA3tKCkROE9xLk3VZoeRc98nw==}
@@ -10790,6 +10802,11 @@ snapshots:
     dependencies:
       solid-js: 1.9.19
 
+  '@solidjs/meta@2.0.0(@solidjs/web@2.0.3(solid-js@1.9.19))(solid-js@1.9.19)':
+    dependencies:
+      '@solidjs/web': 2.0.3(solid-js@1.9.19)
+      solid-js: 1.9.19
+
   '@solidjs/router@1.0.3(solid-js@1.9.19)':
     dependencies:
       solid-js: 1.9.19
@@ -10831,6 +10848,13 @@ snapshots:
       - ocache
       - srvx
       - supports-color
+
+  '@solidjs/web@2.0.3(solid-js@1.9.19)':
+    dependencies:
+      csstype: 3.2.4
+      seroval: 1.8.2
+      seroval-plugins: 1.8.0(seroval@1.8.2)
+      solid-js: 1.9.19
 
   '@speed-highlight/core@1.2.24': {}
 
