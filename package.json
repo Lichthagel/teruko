@@ -2,7 +2,7 @@
   "name": "teruko",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@12.16.1",
+  "packageManager": "pnpm@12.23.0",
   "engines": {
     "node": ">=21.0.0",
     "pnpm": ">=9.0.0"
@@ -10,13 +10,13 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "26.13.0"
+      "version": "26.13.1"
     }
   },
   "scripts": {
-    "build": "nx run-many -t build",
+    "build": "turbo run build",
     "lint": "eslint .",
-    "clean": "nx run-many -t clean",
+    "clean": "turbo run clean",
     "prepare": "husky"
   },
   "devDependencies": {
@@ -29,8 +29,8 @@
     "eslint-plugin-svelte": "catalog:",
     "husky": "catalog:",
     "lint-staged": "catalog:",
-    "nx": "catalog:",
     "tsconfig": "workspace:*",
+    "turbo": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:"
   },

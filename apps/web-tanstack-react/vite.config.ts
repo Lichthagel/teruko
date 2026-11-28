@@ -8,6 +8,20 @@ import { defineConfig } from "vite";
 const config = defineConfig({
   ssr: {
     noExternal: true,
+    external: [
+      "server-db",
+      "server-env",
+      "server-graphql",
+      "sharp",
+    ],
+    resolve: {
+      // Allow SSR dependencies to select their ESM exports.
+      conditions: [
+        "module",
+        "node",
+        "development|production",
+      ],
+    },
   },
   plugins: [
     devtools(),
