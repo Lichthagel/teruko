@@ -362,7 +362,7 @@ catalogs:
       version: 8.23.1
     postcss:
       specifier: ^8.5.9
-      version: 8.5.33
+      version: 8.5.34
     postcss-load-config:
       specifier: ^6.0.1
       version: 6.0.1
@@ -499,7 +499,7 @@ importers:
         version: 8.4.0(@types/node@26.6.11)(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(srvx@1.0.8)(terser@5.51.4)(tsx@4.23.15)(yaml@2.9.1)
       vite-plugin-monkey:
         specifier: 'catalog:'
-        version: 8.1.1(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(postcss@8.5.33)(srvx@1.0.8)(vite@8.4.0)
+        version: 8.1.1(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(postcss@8.5.34)(srvx@1.0.8)(vite@8.4.0)
       vite-plugin-solid:
         specifier: 'catalog:'
         version: 2.11.17(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(solid-js@1.9.19)(srvx@1.0.8)(supports-color@10.2.2)(vite@8.4.0)
@@ -797,19 +797,19 @@ importers:
         version: typescript@7.0.2
       autoprefixer:
         specifier: 'catalog:'
-        version: 10.7.0(postcss@8.5.33)
+        version: 10.7.0(postcss@8.5.34)
       postcss:
         specifier: 'catalog:'
-        version: 8.5.33
+        version: 8.5.34
       postcss-load-config:
         specifier: 'catalog:'
-        version: 6.0.1(jiti@2.7.0)(postcss@8.5.33)(tsx@4.23.15)(yaml@2.9.1)
+        version: 6.0.1(jiti@2.7.0)(postcss@8.5.34)(tsx@4.23.15)(yaml@2.9.1)
       stylelint:
         specifier: 'catalog:'
         version: 18.1.0
       stylelint-config-standard-scss:
         specifier: 'catalog:'
-        version: 18.0.0(postcss@8.5.33)(stylelint@18.1.0)
+        version: 18.0.0(postcss@8.5.34)(stylelint@18.1.0)
 
   packages/client-graphql:
     dependencies:
@@ -6898,8 +6898,8 @@ packages:
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
 
-  postcss@8.5.33:
-    resolution: {integrity: sha512-RVHEU9/Pp1Fnjr/MpAJsZoADukCKhfIi15OunEYiGktIkYLkPVvC1sioWolGDS7XByMTx9m/IGbro0Js13zhnQ==}
+  postcss@8.5.34:
+    resolution: {integrity: sha512-P1Qzj0XXZjMda74C7qiVnBG90UKNbyNUAOeQRBW8X63RsIMV57gevRqjnkELdwtZ/S2/uQFksJhmwuN8xShLPw==}
     engines: {node: ^10 || ^12 || >=14}
 
   postgres-array@2.0.0:
@@ -10080,10 +10080,10 @@ snapshots:
       '@nuxt/kit': 4.7.0(@nuxt/schema@4.7.0)(confbox@0.3.2)(dotenv@17.4.2)(giget@3.3.1)(jiti@2.7.0)(magic-string@1.4.5)(mlly@1.8.2)(oxc-parser@0.141.0)(rolldown@1.2.19)(unplugin@3.7.0(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(esbuild@0.28.2)(rolldown@1.2.19)(rollup@4.68.8)(srvx@1.0.8)(vite@8.4.0))
       '@vitejs/plugin-vue': 6.0.11(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(vite@8.4.0)(vue@3.5.46(typescript@6.0.3))
       '@vitejs/plugin-vue-jsx': 5.1.6(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(srvx@1.0.8)(supports-color@10.2.2)(vite@8.4.0)(vue@3.5.46(typescript@6.0.3))
-      autoprefixer: 10.7.0(postcss@8.5.33)
+      autoprefixer: 10.7.0(postcss@8.5.34)
       clickable-path: 0.1.1
       consola: 3.4.2
-      cssnano: 9.9.0(postcss@8.5.33)
+      cssnano: 9.9.0(postcss@8.5.34)
       defu: 6.1.7
       escape-string-regexp: 5.0.0
       exsolve: 1.2.0
@@ -10096,7 +10096,7 @@ snapshots:
       nuxt: 4.7.0(4af357226a3b75cc3c9555cd0dbea7e5)
       pathe: 2.0.3
       pkg-types: 2.4.0
-      postcss: 8.5.33
+      postcss: 8.5.34
       rolldown-string: 0.3.1(rolldown@1.2.19)
       seroval: 1.8.2
       std-env: 4.3.0
@@ -11919,7 +11919,7 @@ snapshots:
       '@vue/shared': 3.5.46
       estree-walker: 2.0.2
       magic-string: 0.30.21
-      postcss: 8.5.33
+      postcss: 8.5.34
       source-map-js: 1.2.4
 
   '@vue/compiler-ssr@3.5.46':
@@ -12110,13 +12110,13 @@ snapshots:
 
   async@3.2.6: {}
 
-  autoprefixer@10.7.0(postcss@8.5.33):
+  autoprefixer@10.7.0(postcss@8.5.34):
     dependencies:
       browserslist: 4.29.6
       caniuse-lite: 1.0.30001826
       fraction.js: 5.3.4
       picocolors: 1.1.1
-      postcss: 8.5.33
+      postcss: 8.5.34
       postcss-value-parser: 4.2.0
 
   axobject-query@4.1.0: {}
@@ -12403,14 +12403,14 @@ snapshots:
       mdn-data: 2.27.1
       source-map-js: 1.2.4
 
-  cssnano@9.9.0(postcss@8.5.33):
+  cssnano@9.9.0(postcss@8.5.34):
     dependencies:
       '@colordx/core': 7.3.0
       '@csstools/css-tokenizer': 4.0.3
       browserslist: 4.29.6
       caniuse-api: 4.0.0
-      postcss: 8.5.33
-      postcss-calc: 11.3.0(postcss@8.5.33)
+      postcss: 8.5.34
+      postcss-calc: 11.3.0(postcss@8.5.34)
 
   csstype@3.2.4: {}
 
@@ -12925,9 +12925,9 @@ snapshots:
       esutils: 2.0.3
       globals: 16.5.0
       known-css-properties: 0.37.0
-      postcss: 8.5.33
-      postcss-load-config: 3.1.4(postcss@8.5.33)
-      postcss-safe-parser: 7.1.0(postcss@8.5.33)
+      postcss: 8.5.34
+      postcss-load-config: 3.1.4(postcss@8.5.34)
+      postcss-safe-parser: 7.1.0(postcss@8.5.34)
       semver: 7.8.6
       svelte-eslint-parser: 1.11.0(svelte@5.59.2(@typescript-eslint/types@8.73.0))
     optionalDependencies:
@@ -14838,24 +14838,24 @@ snapshots:
     dependencies:
       yaml: 2.9.1
 
-  postcss-calc@11.3.0(postcss@8.5.33):
+  postcss-calc@11.3.0(postcss@8.5.34):
     dependencies:
       '@csstools/css-tokenizer': 4.0.3
-      postcss: 8.5.33
+      postcss: 8.5.34
 
-  postcss-load-config@3.1.4(postcss@8.5.33):
+  postcss-load-config@3.1.4(postcss@8.5.34):
     dependencies:
       lilconfig: 2.1.0
       yaml: 1.10.3
     optionalDependencies:
-      postcss: 8.5.33
+      postcss: 8.5.34
 
-  postcss-load-config@6.0.1(jiti@2.7.0)(postcss@8.5.33)(tsx@4.23.15)(yaml@2.9.1):
+  postcss-load-config@6.0.1(jiti@2.7.0)(postcss@8.5.34)(tsx@4.23.15)(yaml@2.9.1):
     dependencies:
       lilconfig: 3.1.5
     optionalDependencies:
       jiti: 2.7.0
-      postcss: 8.5.33
+      postcss: 8.5.34
       tsx: 4.23.15
       yaml: 2.9.1
 
@@ -14863,29 +14863,29 @@ snapshots:
 
   postcss-resolve-nested-selector@0.1.7: {}
 
-  postcss-safe-parser@7.1.0(postcss@8.5.33):
+  postcss-safe-parser@7.1.0(postcss@8.5.34):
     dependencies:
-      postcss: 8.5.33
+      postcss: 8.5.34
 
-  postcss-scss@4.0.9(postcss@8.5.33):
+  postcss-scss@4.0.9(postcss@8.5.34):
     dependencies:
-      postcss: 8.5.33
+      postcss: 8.5.34
 
   postcss-selector-parser@7.2.1:
     dependencies:
       util-deprecate: 1.0.2
 
-  postcss-url@10.1.4(postcss@8.5.33):
+  postcss-url@10.1.4(postcss@8.5.34):
     dependencies:
       make-dir: 3.1.0
       mime: 2.5.2
       minimatch: 3.1.5
-      postcss: 8.5.33
+      postcss: 8.5.34
       xxhashjs: 0.2.2
 
   postcss-value-parser@4.2.0: {}
 
-  postcss@8.5.33:
+  postcss@8.5.34:
     dependencies:
       nanoid: 3.3.20
       picocolors: 1.1.1
@@ -15476,26 +15476,26 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.7
 
-  stylelint-config-recommended-scss@18.0.0(postcss@8.5.33)(stylelint@18.1.0):
+  stylelint-config-recommended-scss@18.0.0(postcss@8.5.34)(stylelint@18.1.0):
     dependencies:
-      postcss-scss: 4.0.9(postcss@8.5.33)
+      postcss-scss: 4.0.9(postcss@8.5.34)
       stylelint: 18.1.0
       stylelint-config-recommended: 19.1.0(stylelint@18.1.0)
       stylelint-scss: 7.5.0(stylelint@18.1.0)
     optionalDependencies:
-      postcss: 8.5.33
+      postcss: 8.5.34
 
   stylelint-config-recommended@19.1.0(stylelint@18.1.0):
     dependencies:
       stylelint: 18.1.0
 
-  stylelint-config-standard-scss@18.0.0(postcss@8.5.33)(stylelint@18.1.0):
+  stylelint-config-standard-scss@18.0.0(postcss@8.5.34)(stylelint@18.1.0):
     dependencies:
       stylelint: 18.1.0
-      stylelint-config-recommended-scss: 18.0.0(postcss@8.5.33)(stylelint@18.1.0)
+      stylelint-config-recommended-scss: 18.0.0(postcss@8.5.34)(stylelint@18.1.0)
       stylelint-config-standard: 41.1.0(stylelint@18.1.0)
     optionalDependencies:
-      postcss: 8.5.33
+      postcss: 8.5.34
 
   stylelint-config-standard@41.1.0(stylelint@18.1.0):
     dependencies:
@@ -15532,8 +15532,8 @@ snapshots:
       ignore: 7.0.16
       import-meta-resolve: 4.2.0
       picomatch: 4.0.7
-      postcss: 8.5.33
-      postcss-safe-parser: 7.1.0(postcss@8.5.33)
+      postcss: 8.5.34
+      postcss-safe-parser: 7.1.0(postcss@8.5.34)
       postcss-selector-parser: 7.2.1
       postcss-value-parser: 4.2.0
       tinyglobby: 0.2.17
@@ -15579,8 +15579,8 @@ snapshots:
       eslint-scope: 8.4.0
       eslint-visitor-keys: 4.2.1
       espree: 10.4.0
-      postcss: 8.5.33
-      postcss-scss: 4.0.9(postcss@8.5.33)
+      postcss: 8.5.34
+      postcss-scss: 4.0.9(postcss@8.5.34)
       postcss-selector-parser: 7.2.1
       semver: 7.8.6
     optionalDependencies:
@@ -16074,7 +16074,7 @@ snapshots:
       - crossws
       - srvx
 
-  vite-plugin-monkey@8.1.1(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(postcss@8.5.33)(srvx@1.0.8)(vite@8.4.0):
+  vite-plugin-monkey@8.1.1(@vitejs/devtools@0.8.3)(crossws@0.4.17(srvx@1.0.8))(postcss@8.5.34)(srvx@1.0.8)(vite@8.4.0):
     dependencies:
       acorn-walk: 8.3.5
       cross-spawn: 7.0.6
@@ -16084,7 +16084,7 @@ snapshots:
       mrmime: 2.0.1
       open: 11.0.4
       picocolors: 1.1.1
-      postcss-url: 10.1.4(postcss@8.5.33)
+      postcss-url: 10.1.4(postcss@8.5.34)
       rollup: 4.68.8
       systemjs: 6.15.1
     optionalDependencies:
@@ -16161,7 +16161,7 @@ snapshots:
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
-      postcss: 8.5.33
+      postcss: 8.5.34
       rolldown: 1.3.3
       tinyglobby: 0.2.17
     optionalDependencies:
@@ -16184,7 +16184,7 @@ snapshots:
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
-      postcss: 8.5.33
+      postcss: 8.5.34
       rolldown: 1.3.3
       tinyglobby: 0.2.17
     optionalDependencies:
